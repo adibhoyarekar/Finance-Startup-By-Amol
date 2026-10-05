@@ -60,38 +60,40 @@
     <style>
       .ln{scroll-margin-top:6rem}
       .lc-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
-      @media(min-width:1024px){.lc-grid{grid-template-columns:repeat(4,1fr);gap:1rem}}
-      .lc{position:relative;display:flex;flex-direction:column;justify-content:flex-start;gap:2rem;min-height:260px;padding:1.75rem;background:#f5f5f5;color:#000;border-radius:1.75rem;text-decoration:none;overflow:hidden;transition:background .45s ease,color .45s ease,transform .45s cubic-bezier(.2,.8,.2,1)}
-      .lc-top{display:flex;justify-content:space-between;align-items:flex-start}
+      @media(min-width:1024px){.lc-grid{gap:1.25rem}}
+      .lc{display:flex;flex-direction:column;background:#f5f5f5;color:#000;border-radius:1.75rem;text-decoration:none;overflow:hidden;transition:background .45s ease,color .45s ease,transform .45s cubic-bezier(.2,.8,.2,1)}
+      .lc-img{aspect-ratio:16/10;overflow:hidden;background:#e5e5e5}
+      .lc-img img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+      .lc-body{display:flex;flex-direction:column;justify-content:space-between;gap:1.5rem;flex:1;padding:1.5rem}
+      .lc-top{display:flex;justify-content:space-between;align-items:center}
       .lc-num{font-family:"Anonymous Pro",ui-monospace,monospace;font-size:.9375rem;color:#737373;transition:color .45s ease}
-      .lc-ico{flex-shrink:0;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
       .lc-title{margin:0 0 .5rem;font-size:1.5rem;font-weight:400;letter-spacing:-.02em}
       .lc-desc{margin:0;font-size:1rem;line-height:1.55;color:#404040;transition:color .45s ease}
       .lc-arrow{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid #000;border-radius:9999px;transition:transform .5s cubic-bezier(.2,.8,.2,1),background .45s ease,color .45s ease,border-color .45s ease}
       .lc:hover{background:#000;color:#fff;transform:translateY(-4px)}
       .lc:hover .lc-desc,.lc:hover .lc-num{color:#a3a3a3}
-      .lc:hover .lc-ico{transform:scale(1.1) rotate(-6deg)}
+      .lc:hover .lc-img img{transform:scale(1.07)}
       .lc:hover .lc-arrow{background:#fff;color:#000;border-color:#fff;transform:rotate(-45deg)}
-      .lc-arrow{margin-top:auto}
-      .lc-big{grid-column:span 2;background:#000;color:#fff}
-      .lc-big>div:nth-child(2){margin-top:auto}
-      .lc-big .lc-arrow{margin-top:0}
-      .lc-big .lc-desc,.lc-big .lc-num{color:#a3a3a3}
-      .lc-big .lc-arrow{background:#fff;color:#000;border-color:#fff}
-      .lc-big .lc-title{font-size:2.25rem;line-height:1.1}
-      .lc-big .lc-desc{font-size:1.125rem;max-width:26rem}
-      .lc-cta{grid-column:span 2;background:#fff;border:1px solid #000}
-      .lc-cta:hover{transform:translateY(-4px)}
-      @media(min-width:1024px){.lc-big{grid-row:span 2;min-height:540px}.lc-big .lc-title{font-size:3rem}}
+      .lc-cta{background:#000;color:#fff}
+      .lc-cta .lc-img{display:flex;align-items:center;justify-content:center;background:#141414;color:#fff}
+      .lc-cta .lc-desc,.lc-cta .lc-num{color:#a3a3a3}
+      .lc-cta .lc-arrow{background:#fff;color:#000;border-color:#fff}
+      .lc-cta:hover{background:#262626}
+      @media(min-width:1024px){
+        .lc{flex-direction:row}
+        .lc-img{width:56%;flex-shrink:0;aspect-ratio:auto;min-height:240px}
+        .lc-body{padding:1.75rem}
+        .lc-title{font-size:1.625rem}
+      }
       @media(max-width:639px){
-        .lc{min-height:0;gap:1.25rem;padding:1rem;border-radius:1.25rem}
-        .lc-ico{width:28px;height:28px}
-        .lc-title{font-size:1.0625rem;margin-bottom:.4rem}
-        .lc-desc{font-size:.8125rem;line-height:1.45}
-        .lc-arrow{width:34px;height:34px}
-        .lc-big .lc-title{font-size:1.75rem}
-        .lc-big .lc-desc{font-size:.9375rem}
-        .lc-big .lc-ico{width:36px;height:36px}
+        .lc{border-radius:1.25rem}
+        .lc-img{aspect-ratio:4/3}
+        .lc-body{padding:.875rem;gap:1rem}
+        .lc-num{font-size:.8125rem}
+        .lc-title{font-size:1rem;margin-bottom:.35rem}
+        .lc-desc{font-size:.75rem;line-height:1.45}
+        .lc-arrow{width:32px;height:32px}
+        .lc-arrow svg{width:14px;height:14px}
       }
     </style>
     <section class="ln py-12 lg:py-25" id="loan-types">
@@ -101,69 +103,85 @@
           <p class="text-gray-500 text-lg max-w-sm">Pick the loan that fits your goal and our team will take care of the rest.</p>
         </div>
         <div class="lc-grid">
-          <a class="lc lc-big" href="contact.html">
-            <div class="lc-top"><svg class="lc-ico" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg><span class="lc-num">01</span></div>
-            <div>
-              <h3 class="lc-title">Home Loan</h3>
-              <p class="lc-desc">Buy, build or renovate your home with long tenures and affordable EMIs.</p>
+          <a class="lc" href="contact.html">
+            <div class="lc-img"><img src="images/loan-home.svg" alt="Home Loan illustration" width="640" height="400" loading="lazy"></div>
+            <div class="lc-body">
+              <div class="lc-top"><span class="lc-num">01</span><span class="lc-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+              <div>
+                <h3 class="lc-title">Home Loan</h3>
+                <p class="lc-desc">Buy, build or renovate your home with long tenures and affordable EMIs.</p>
+              </div>
             </div>
-            <span class="lc-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
           <a class="lc" href="contact.html">
-            <div class="lc-top"><svg class="lc-ico" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5.5"/><path d="M12 9.5v5M10.2 11h3.6"/></svg><span class="lc-num">02</span></div>
-            <div>
-              <h3 class="lc-title">Gold Loan</h3>
-              <p class="lc-desc">Quick funds against your gold with minimal paperwork and fast disbursal.</p>
+            <div class="lc-img"><img src="images/loan-gold.svg" alt="Gold Loan illustration" width="640" height="400" loading="lazy"></div>
+            <div class="lc-body">
+              <div class="lc-top"><span class="lc-num">02</span><span class="lc-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+              <div>
+                <h3 class="lc-title">Gold Loan</h3>
+                <p class="lc-desc">Quick funds against your gold with minimal paperwork and fast disbursal.</p>
+              </div>
             </div>
-            <span class="lc-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
           <a class="lc" href="contact.html">
-            <div class="lc-top"><svg class="lc-ico" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg><span class="lc-num">03</span></div>
-            <div>
-              <h3 class="lc-title">Personal Loan</h3>
-              <p class="lc-desc">Cover weddings, travel, medical or any personal need without collateral.</p>
+            <div class="lc-img"><img src="images/loan-personal.svg" alt="Personal Loan illustration" width="640" height="400" loading="lazy"></div>
+            <div class="lc-body">
+              <div class="lc-top"><span class="lc-num">03</span><span class="lc-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+              <div>
+                <h3 class="lc-title">Personal Loan</h3>
+                <p class="lc-desc">Cover weddings, travel, medical or any personal need without collateral.</p>
+              </div>
             </div>
-            <span class="lc-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
           <a class="lc" href="contact.html">
-            <div class="lc-top"><svg class="lc-ico" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2"/><path d="M3 13h18"/></svg><span class="lc-num">04</span></div>
-            <div>
-              <h3 class="lc-title">Business Loan</h3>
-              <p class="lc-desc">Working capital and term loans to start, run and scale your business.</p>
+            <div class="lc-img"><img src="images/loan-business.svg" alt="Business Loan illustration" width="640" height="400" loading="lazy"></div>
+            <div class="lc-body">
+              <div class="lc-top"><span class="lc-num">04</span><span class="lc-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+              <div>
+                <h3 class="lc-title">Business Loan</h3>
+                <p class="lc-desc">Working capital and term loans to start, run and scale your business.</p>
+              </div>
             </div>
-            <span class="lc-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
           <a class="lc" href="contact.html">
-            <div class="lc-top"><svg class="lc-ico" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 16l1.5-5.5A2 2 0 018.4 9h7.2a2 2 0 011.9 1.5L19 16"/><rect x="3" y="16" width="18" height="4" rx="1.5"/><circle cx="7.5" cy="18" r=".6"/><circle cx="16.5" cy="18" r=".6"/></svg><span class="lc-num">05</span></div>
-            <div>
-              <h3 class="lc-title">Vehicle Loan</h3>
-              <p class="lc-desc">Finance a new or used car, bike or commercial vehicle with easy repayment.</p>
+            <div class="lc-img"><img src="images/loan-vehicle.svg" alt="Vehicle Loan illustration" width="640" height="400" loading="lazy"></div>
+            <div class="lc-body">
+              <div class="lc-top"><span class="lc-num">05</span><span class="lc-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+              <div>
+                <h3 class="lc-title">Vehicle Loan</h3>
+                <p class="lc-desc">Finance a new or used car, bike or commercial vehicle with easy repayment.</p>
+              </div>
             </div>
-            <span class="lc-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
           <a class="lc" href="contact.html">
-            <div class="lc-top"><svg class="lc-ico" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-6 9 6"/><path d="M5 9v9M9.5 9v9M14.5 9v9M19 9v9"/><path d="M3 21h18"/></svg><span class="lc-num">06</span></div>
-            <div>
-              <h3 class="lc-title">Government Loan</h3>
-              <p class="lc-desc">Get guided through MUDRA, CGTMSE and other government-backed schemes.</p>
+            <div class="lc-img"><img src="images/loan-government.svg" alt="Government Loan illustration" width="640" height="400" loading="lazy"></div>
+            <div class="lc-body">
+              <div class="lc-top"><span class="lc-num">06</span><span class="lc-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+              <div>
+                <h3 class="lc-title">Government Loan</h3>
+                <p class="lc-desc">Get guided through MUDRA, CGTMSE and other government-backed schemes.</p>
+              </div>
             </div>
-            <span class="lc-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
           <a class="lc" href="contact.html">
-            <div class="lc-top"><svg class="lc-ico" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5-10-5z"/><path d="M6 11.5V16c0 1.4 2.7 3 6 3s6-1.6 6-3v-4.5"/><path d="M22 9v6"/></svg><span class="lc-num">07</span></div>
-            <div>
-              <h3 class="lc-title">Education Loan</h3>
-              <p class="lc-desc">Fund your studies in India or abroad, from tuition to living costs.</p>
+            <div class="lc-img"><img src="images/loan-education.svg" alt="Education Loan illustration" width="640" height="400" loading="lazy"></div>
+            <div class="lc-body">
+              <div class="lc-top"><span class="lc-num">07</span><span class="lc-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+              <div>
+                <h3 class="lc-title">Education Loan</h3>
+                <p class="lc-desc">Fund your studies in India or abroad, from tuition to living costs.</p>
+              </div>
             </div>
-            <span class="lc-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
           <a class="lc lc-cta" href="contact.html">
-            <div class="lc-top"><svg class="lc-ico" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 01-11.5 7.2L4 20l1-4.6A8 8 0 1121 12z"/></svg><span class="lc-num">08</span></div>
-            <div>
-              <h3 class="lc-title">Not sure <span class="italic">which one?</span></h3>
-              <p class="lc-desc">Talk to our team and we will match you with the right loan.</p>
+            <div class="lc-img"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 01-11.5 7.2L4 20l1-4.6A8 8 0 1121 12z"/></svg></div>
+            <div class="lc-body">
+              <div class="lc-top"><span class="lc-num">08</span><span class="lc-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+              <div>
+                <h3 class="lc-title">Not sure <span class="italic">which one?</span></h3>
+                <p class="lc-desc">Talk to our team and we will match you with the right loan.</p>
+              </div>
             </div>
-            <span class="lc-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
         </div>
       </div>
@@ -196,69 +214,68 @@
 
     <!-- Loan Options -->
     <style>
-      .lo{display:grid;gap:2.5rem}
-      @media(min-width:1024px){.lo{grid-template-columns:4fr 8fr;gap:4rem;align-items:start}.lo-head{position:sticky;top:7rem}}
-      .lo-list{border-top:1px solid #e5e5e5}
-      .lo-row{display:grid;grid-template-columns:64px 1fr 44px;gap:1.25rem;align-items:center;padding:1.75rem 1rem;border-bottom:1px solid #e5e5e5;color:#000;text-decoration:none;transition:background .45s ease,color .45s ease,padding .45s ease}
-      .lo-ico{display:flex;align-items:center;justify-content:center;width:56px;height:56px;border:1px solid #000;border-radius:9999px;transition:background .45s ease,color .45s ease,border-color .45s ease}
-      .lo-title{margin:0 0 .4rem;font-size:1.75rem;font-weight:400;letter-spacing:-.02em}
-      .lo-desc{margin:0;font-size:1.0625rem;line-height:1.55;color:#404040;transition:color .45s ease}
-      .lo-arrow{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid #000;border-radius:9999px;transition:transform .5s cubic-bezier(.2,.8,.2,1),background .45s ease,color .45s ease,border-color .45s ease}
-      .lo-row:hover{background:#000;color:#fff;padding-left:2rem}
-      .lo-row:hover .lo-desc{color:#a3a3a3}
-      .lo-row:hover .lo-ico,.lo-row:hover .lo-arrow{background:#fff;color:#000;border-color:#fff}
-      .lo-row:hover .lo-arrow{transform:rotate(-45deg)}
+      .lo-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+      @media(min-width:1024px){.lo-grid{grid-template-columns:repeat(4,1fr);gap:1.25rem}}
+      .lo-card{display:flex;flex-direction:column;gap:2rem;min-height:340px;padding:1.75rem;background:#fff;color:#000;border:1px solid #e5e5e5;border-radius:1.75rem;text-decoration:none;transition:background .45s ease,color .45s ease,border-color .45s ease,transform .45s cubic-bezier(.2,.8,.2,1)}
+      .lo-top{display:flex;justify-content:space-between;align-items:flex-start}
+      .lo-ico{display:flex;align-items:center;justify-content:center;width:60px;height:60px;border:1px solid #000;border-radius:9999px;transition:background .45s ease,color .45s ease,border-color .45s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
+      .lo-num{font-family:"Anonymous Pro",ui-monospace,monospace;font-size:.9375rem;color:#737373;transition:color .45s ease}
+      .lo-title{margin:0 0 .6rem;font-size:1.5rem;font-weight:400;letter-spacing:-.02em}
+      .lo-desc{margin:0;font-size:1rem;line-height:1.55;color:#404040;transition:color .45s ease}
+      .lo-arrow{margin-top:auto;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid #000;border-radius:9999px;transition:transform .5s cubic-bezier(.2,.8,.2,1),background .45s ease,color .45s ease,border-color .45s ease}
+      .lo-card:hover{background:#000;color:#fff;border-color:#000;transform:translateY(-4px)}
+      .lo-card:hover .lo-desc,.lo-card:hover .lo-num{color:#a3a3a3}
+      .lo-card:hover .lo-ico{background:#fff;color:#000;border-color:#fff;transform:rotate(-8deg) scale(1.06)}
+      .lo-card:hover .lo-arrow{background:#fff;color:#000;border-color:#fff;transform:rotate(-45deg)}
       @media(max-width:639px){
-        .lo-row{grid-template-columns:44px 1fr;gap:.9rem;padding:1.25rem .75rem;position:relative}
+        .lo-card{min-height:0;gap:1.25rem;padding:1rem;border-radius:1.25rem}
         .lo-ico{width:44px;height:44px}
         .lo-ico svg{width:20px;height:20px}
-        .lo-title{font-size:1.25rem}
-        .lo-desc{font-size:.9375rem}
-        .lo-arrow{display:none}
-        .lo-row:hover{padding-left:.75rem}
+        .lo-num{font-size:.8125rem}
+        .lo-title{font-size:1.0625rem;margin-bottom:.4rem}
+        .lo-desc{font-size:.8125rem;line-height:1.45}
+        .lo-arrow{width:34px;height:34px}
       }
     </style>
     <section class="py-12 lg:py-25">
       <div class="max-w-7xl mx-auto px-6">
-        <div class="lo">
-          <div class="lo-head">
-            <h2 class="font-normal text-5xl text-black -tracking-[1.92px]">Loan <span class="italic">Options</span></h2>
-            <p class="text-gray-500 text-lg max-w-xs" style="margin-top:1.25rem">Funding solutions for every stage of your business.</p>
-          </div>
-          <div class="lo-list">
-            <a class="lo-row" href="contact.html">
-              <span class="lo-ico"><svg class="" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2"/><path d="M3 13h18"/></svg></span>
-              <div class="lo-body">
-                <h3 class="lo-title">Business Loans</h3>
-                <p class="lo-desc">Term loans and working capital financing tailored to your business cashflow needs.</p>
-              </div>
-              <span class="lo-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-            </a>
-            <a class="lo-row" href="contact.html">
-              <span class="lo-ico"><svg class="" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15c-1.5 1.3-2 4-2 6 2 0 4.7-.5 6-2"/><path d="M12 15l-3-3a22 22 0 012-4c2.2-3.2 5.8-5 10-5 0 4.2-1.800 7.800-5 10a22 22 0 01-4 2z"/><circle cx="15.500" cy="8.500" r="1"/></svg></span>
-              <div class="lo-body">
-                <h3 class="lo-title">Startup Funding</h3>
-                <p class="lo-desc">Seed and early-stage funding solutions to help new ventures get off the ground quickly.</p>
-              </div>
-              <span class="lo-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-            </a>
-            <a class="lo-row" href="contact.html">
-              <span class="lo-ico"><svg class="" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="10" height="18" rx="1"/><path d="M14 9h5a1 1 0 011 1v11H14"/><path d="M8 7h2M8 11h2M8 15h2"/></svg></span>
-              <div class="lo-body">
-                <h3 class="lo-title">Property Loans</h3>
-                <p class="lo-desc">Commercial and residential property financing with competitive rates and fast approval.</p>
-              </div>
-              <span class="lo-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-            </a>
-            <a class="lo-row" href="contact.html">
-              <span class="lo-ico"><svg class="" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-6 9 6"/><path d="M5 9v9M9.5 9v9M14.5 9v9M19 9v9"/><path d="M3 21h18"/></svg></span>
-              <div class="lo-body">
-                <h3 class="lo-title">Government Schemes</h3>
-                <p class="lo-desc">Navigate MUDRA, CGTMSE, and other government-backed schemes with our expert guidance.</p>
-              </div>
-              <span class="lo-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-            </a>
-          </div>
+        <div class="mb-10 lg:mb-16 flex flex-col lg:flex-row lg:items-end justify-between gap-4">
+          <h2 class="font-normal text-5xl lg:text-6xl text-black -tracking-[1.92px]">Loan <span class="italic">Options</span></h2>
+          <p class="text-gray-500 text-lg max-w-sm">Funding solutions for every stage of your business.</p>
+        </div>
+        <div class="lo-grid">
+          <a class="lo-card" href="contact.html">
+            <div class="lo-top"><span class="lo-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2"/><path d="M3 13h18"/></svg></span><span class="lo-num">01</span></div>
+            <div>
+              <h3 class="lo-title">Business Loans</h3>
+              <p class="lo-desc">Term loans and working capital financing tailored to your business cashflow needs.</p>
+            </div>
+            <span class="lo-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="lo-card" href="contact.html">
+            <div class="lo-top"><span class="lo-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15c-1.5 1.3-2 4-2 6 2 0 4.7-.5 6-2"/><path d="M12 15l-3-3a22 22 0 012-4c2.2-3.2 5.8-5 10-5 0 4.2-1.800 7.800-5 10a22 22 0 01-4 2z"/><circle cx="15.500" cy="8.500" r="1"/></svg></span><span class="lo-num">02</span></div>
+            <div>
+              <h3 class="lo-title">Startup Funding</h3>
+              <p class="lo-desc">Seed and early-stage funding solutions to help new ventures get off the ground quickly.</p>
+            </div>
+            <span class="lo-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="lo-card" href="contact.html">
+            <div class="lo-top"><span class="lo-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="10" height="18" rx="1"/><path d="M14 9h5a1 1 0 011 1v11H14"/><path d="M8 7h2M8 11h2M8 15h2"/></svg></span><span class="lo-num">03</span></div>
+            <div>
+              <h3 class="lo-title">Property Loans</h3>
+              <p class="lo-desc">Commercial and residential property financing with competitive rates and fast approval.</p>
+            </div>
+            <span class="lo-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="lo-card" href="contact.html">
+            <div class="lo-top"><span class="lo-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-6 9 6"/><path d="M5 9v9M9.5 9v9M14.5 9v9M19 9v9"/><path d="M3 21h18"/></svg></span><span class="lo-num">04</span></div>
+            <div>
+              <h3 class="lo-title">Government Schemes</h3>
+              <p class="lo-desc">Navigate MUDRA, CGTMSE, and other government-backed schemes with our expert guidance.</p>
+            </div>
+            <span class="lo-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
         </div>
       </div>
     </section>
