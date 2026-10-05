@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ask a Question - RAVEN</title>
+  <link rel="stylesheet" href="nexstudio.css">
+  <link rel="stylesheet" href="mobile-nav.css?v=2">
+  <link rel="stylesheet" href="ask.css?v=1">
+</head>
+<body class="font-sans bg-white text-black antialiased">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 transition-all duration-300 bg-white/80 backdrop-blur-md shadow-sm">
+    <nav>
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex items-center justify-between py-4 lg:py-6">
+          <a href="index.html">
+            <svg width="120" height="24" viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <text x="0" y="20" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="black" letter-spacing="-1">RAVEN</text>
+            </svg>
+          </a>
+          <div id="mobile-nav-root" class="flex items-center justify-end"></div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="ask-main">
+    <section class="ask-wrap">
+      <div class="ask-intro">
+        <h1 class="font-normal text-5xl text-black -tracking-[1.92px]">Ask a <span class="italic">Question</span></h1>
+        <p>Ask our assistant about loans, business registration, insurance or real estate.</p>
+      </div>
+
+      <div class="ask-chat">
+        <div class="ask-body" id="ask-body" aria-live="polite"></div>
+        <div class="ask-chips" id="ask-chips"></div>
+        <form class="ask-form" id="ask-form">
+          <input type="text" id="ask-input" placeholder="Type your question..." aria-label="Your question" autocomplete="off">
+          <button type="submit" aria-label="Send"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#070707] overflow-hidden">
+    <div class="pt-20">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="mb-16">
+          <a href="index.html">
+            <svg width="140" height="28" viewBox="0 0 140 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <text x="0" y="24" font-family="Inter, sans-serif" font-size="26" font-weight="700" fill="white" letter-spacing="-1">RAVEN</text>
+            </svg>
+          </a>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-16">
+          <div>
+            <p class="text-white/60 text-base leading-7">Build. Fund. Brand. Grow.<br>Your business partner in India.</p>
+            <p class="text-white/40 text-sm mt-4">Chhatrapati Sambhajinagar &amp; Pune, India</p>
+          </div>
+          <div>
+            <h4 class="text-white text-sm font-medium uppercase tracking-wider mb-6">Services</h4>
+            <ul class="space-y-4">
+              <li><a href="funding-loans.html" class="text-white/60 hover:text-white transition text-base">Funding &amp; Loans</a></li>
+              <li><a href="registration.html" class="text-white/60 hover:text-white transition text-base">Business Registration</a></li>
+              <li><a href="index.html" class="text-white/60 hover:text-white transition text-base">Real Estate</a></li>
+              <li><a href="index.html" class="text-white/60 hover:text-white transition text-base">Brand Strategy</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-white text-sm font-medium uppercase tracking-wider mb-6">Company</h4>
+            <ul class="space-y-4">
+              <li><a href="index.html#about" class="text-white/60 hover:text-white transition text-base">About Us</a></li>
+              <li><a href="contact.html" class="text-white/60 hover:text-white transition text-base">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-white text-sm font-medium uppercase tracking-wider mb-6">Contact</h4>
+            <ul class="space-y-4">
+              <li><a href="mailto:hello@raven.business" class="text-white/60 hover:text-white transition text-base">hello@raven.business</a></li>
+              <li><span class="text-white/60 text-base">Chhatrapati Sambhajinagar</span></li>
+              <li><span class="text-white/60 text-base">Pune, India</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p class="text-white/40 text-sm">&copy; 2025 RAVEN. All rights reserved.</p>
+          <p class="text-white/40 text-sm">Built for Indian Entrepreneurs.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="mobile-nav.js?v=2"></script>
+  <script src="ai-chat.js?v=2"></script>
+  <script src="ask.js?v=1"></script>
+</body>
+</html>
