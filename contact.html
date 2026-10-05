@@ -4,103 +4,231 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact — RAVEN</title>
+  <meta name="description" content="Get in touch with RAVEN. Tell us what you are building, what you need, and where you want to go.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="nexstudio.css">
+  <style>
+    #mobile-menu { display:none; position:fixed; inset:0; z-index:200; background:#fff; flex-direction:column; align-items:center; justify-content:center; gap:2rem; }
+    #mobile-menu.open { display:flex; }
+    #mobile-menu a { font-size:1.5rem; font-weight:400; text-transform:uppercase; letter-spacing:.05em; color:#000; }
+    .nav-svg-icon { display:inline-block; vertical-align:middle; }
+    input, select, textarea { font-family: 'Inter', sans-serif; }
+  </style>
 </head>
-<body>
+<body class="antialiased">
 
-  <!-- NAV -->
-  <nav class="nav">
-    <a href="index.html" class="nav-brand">
-      <img src="raven-main-logo.png" alt="RAVEN logo">
-      <span class="nav-brand-name">RAVEN</span>
-    </a>
-    <div class="nav-links">
-      <a href="index.html#services">Services</a>
-      <a href="index.html#about">About</a>
-      <a href="index.html#process">How It Works</a>
-      <a href="registration.html">Client Portal</a>
-      <a href="contact.html" class="nav-cta">Contact</a>
-    </div>
-  </nav>
+  <!-- MOBILE MENU -->
+  <div id="mobile-menu">
+    <button id="menu-close" style="position:absolute;top:24px;right:24px;font-size:1.5rem;background:none;border:none;cursor:pointer;">✕</button>
+    <a href="index.html">Home</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#process">How It Works</a>
+    <a href="registration.html">Client Portal</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- HEADER / NAV -->
+  <header class="sticky top-0 z-50 transition-all duration-300 bg-white/80 backdrop-blur-md shadow-sm">
+    <nav>
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex items-center justify-between py-4 lg:py-6">
+          <div>
+            <a href="index.html" class="flex items-center gap-3">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="nav-svg-icon">
+                <path d="M16 2L28 8V16C28 22.627 22.627 28 16 28C9.373 28 4 22.627 4 16V8L16 2Z" fill="black"/>
+                <path d="M12 14H20M12 18H17" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span style="font-family:'Inter',sans-serif;font-weight:700;font-size:1.15rem;letter-spacing:.06em;color:#000;">RAVEN</span>
+            </a>
+          </div>
+
+          <div class="hidden lg:flex items-center gap-8">
+            <a href="index.html#services" class="group relative overflow-hidden inline-block text-xs uppercase tracking-widest text-black font-medium" style="font-family:'Inter',sans-serif;">
+              <span class="block transition-transform duration-300 group-hover:-translate-y-full">Services</span>
+              <span class="absolute inset-0 flex items-center justify-center transition-transform duration-300 translate-y-full group-hover:translate-y-0">Services</span>
+            </a>
+            <a href="index.html#about" class="group relative overflow-hidden inline-block text-xs uppercase tracking-widest text-black font-medium" style="font-family:'Inter',sans-serif;">
+              <span class="block transition-transform duration-300 group-hover:-translate-y-full">About</span>
+              <span class="absolute inset-0 flex items-center justify-center transition-transform duration-300 translate-y-full group-hover:translate-y-0">About</span>
+            </a>
+            <a href="funding-loans.html" class="group relative overflow-hidden inline-block text-xs uppercase tracking-widest text-black font-medium" style="font-family:'Inter',sans-serif;">
+              <span class="block transition-transform duration-300 group-hover:-translate-y-full">Funding</span>
+              <span class="absolute inset-0 flex items-center justify-center transition-transform duration-300 translate-y-full group-hover:translate-y-0">Funding</span>
+            </a>
+            <a href="registration.html" class="group relative overflow-hidden inline-block text-xs uppercase tracking-widest text-black font-medium" style="font-family:'Inter',sans-serif;">
+              <span class="block transition-transform duration-300 group-hover:-translate-y-full">Client Portal</span>
+              <span class="absolute inset-0 flex items-center justify-center transition-transform duration-300 translate-y-full group-hover:translate-y-0">Client Portal</span>
+            </a>
+            <a href="contact.html" class="rounded-full bg-black text-white text-xs uppercase tracking-widest px-5 py-2.5 font-medium hover:bg-neutral-800 transition-colors" style="font-family:'Inter',sans-serif;">
+              Contact
+            </a>
+          </div>
+
+          <button id="menu-open" class="lg:hidden p-2" aria-label="Open menu">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect y="4" width="22" height="1.5" rx=".75" fill="black"/><rect y="10" width="22" height="1.5" rx=".75" fill="black"/><rect y="16" width="22" height="1.5" rx=".75" fill="black"/></svg>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
 
   <!-- PAGE HERO -->
-  <section class="page-hero">
-    <span class="eyebrow">CONTACT RAVEN</span>
-    <h1>Let's build something <span class="red">real.</span></h1>
-    <p>Tell us what you are building, what you need, and where you want to go.</p>
+  <section class="max-w-7xl mx-auto px-6 pt-20 pb-12 lg:pt-28 lg:pb-16">
+    <p class="text-xs uppercase tracking-widest text-gray-400 mb-6" style="font-family:'Anonymous Pro',monospace;">Contact RAVEN</p>
+    <h1 class="text-4xl lg:text-6xl font-normal -tracking-[2px] leading-tight text-black mb-6" style="font-family:'Inter',sans-serif;">
+      Let's build something<br><em>real.</em>
+    </h1>
+    <p class="text-base lg:text-lg text-gray-500 max-w-xl leading-relaxed">Tell us what you are building, what you need, and where you want to go.</p>
   </section>
 
   <!-- CONTACT LAYOUT -->
-  <div class="contact-layout">
-    <!-- Contact Info -->
-    <div>
-      <div class="contact-info-block">
-        <span class="contact-label">General Enquiries</span>
-        <h3>hello@raven.business</h3>
-      </div>
-      <div class="contact-info-block">
-        <span class="contact-label">Phone</span>
-        <h3>+91 XXX XXX XXXX</h3>
-      </div>
-      <div class="contact-info-block">
-        <span class="contact-label">Office</span>
-        <h3>Chhatrapati Sambhajinagar / Pune, India</h3>
-      </div>
-    </div>
+  <section class="max-w-7xl mx-auto px-6 pb-20 lg:pb-28">
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-20">
 
-    <!-- Form -->
-    <div class="form-card">
-      <h3>Send an Enquiry</h3>
-      <form onsubmit="event.preventDefault(); alert('Thank you. Connect this form to your preferred CRM/email backend to receive enquiries.');">
-        <div class="form-grid">
-          <div class="form-group">
-            <label for="c-name">Name <span style="color:#d90429">*</span></label>
-            <input type="text" id="c-name" name="name" required placeholder="Your full name">
-          </div>
-          <div class="form-group">
-            <label for="c-biz">Business Name</label>
-            <input type="text" id="c-biz" name="business" placeholder="Your business name">
-          </div>
+      <!-- Contact Info -->
+      <div class="lg:col-span-2 flex flex-col gap-10">
+        <div class="border-t border-gray-200 pt-8">
+          <p class="text-xs uppercase tracking-widest text-gray-400 mb-3" style="font-family:'Anonymous Pro',monospace;">General Enquiries</p>
+          <a href="mailto:hello@raven.business" class="text-xl font-normal text-black hover:text-gray-600 transition-colors" style="font-family:'Inter',sans-serif;">hello@raven.business</a>
         </div>
-        <div class="form-grid">
-          <div class="form-group">
-            <label for="c-email">Email <span style="color:#d90429">*</span></label>
-            <input type="email" id="c-email" name="email" required placeholder="you@company.com">
-          </div>
-          <div class="form-group">
-            <label for="c-phone">Phone</label>
-            <input type="tel" id="c-phone" name="phone" placeholder="+91 00000 00000">
+        <div class="border-t border-gray-200 pt-8">
+          <p class="text-xs uppercase tracking-widest text-gray-400 mb-3" style="font-family:'Anonymous Pro',monospace;">Phone</p>
+          <a href="tel:+91XXXXXXXXXX" class="text-xl font-normal text-black hover:text-gray-600 transition-colors" style="font-family:'Inter',sans-serif;">+91 XXX XXX XXXX</a>
+        </div>
+        <div class="border-t border-gray-200 pt-8">
+          <p class="text-xs uppercase tracking-widest text-gray-400 mb-3" style="font-family:'Anonymous Pro',monospace;">Office</p>
+          <p class="text-xl font-normal text-black" style="font-family:'Inter',sans-serif;">Chhatrapati Sambhajinagar<br>/ Pune, India</p>
+        </div>
+        <div class="border-t border-gray-200 pt-8">
+          <p class="text-xs uppercase tracking-widest text-gray-400 mb-5" style="font-family:'Anonymous Pro',monospace;">What we do</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="text-xs uppercase tracking-widest border border-gray-200 rounded-full px-4 py-2" style="font-family:'Anonymous Pro',monospace;">Funding &amp; Loans</span>
+            <span class="text-xs uppercase tracking-widest border border-gray-200 rounded-full px-4 py-2" style="font-family:'Anonymous Pro',monospace;">Real Estate</span>
+            <span class="text-xs uppercase tracking-widest border border-gray-200 rounded-full px-4 py-2" style="font-family:'Anonymous Pro',monospace;">Business Strategy</span>
           </div>
         </div>
-        <div class="form-group">
-          <label for="c-service">Service</label>
-          <select id="c-service" name="service">
-            <option value="">Select a service</option>
-            <option value="funding">Funding &amp; Loans</option>
-            <option value="realestate">Real Estate</option>
-          </select>
+      </div>
+
+      <!-- Form -->
+      <div class="lg:col-span-3">
+        <div class="bg-neutral-950 rounded-3xl p-8 lg:p-12">
+          <p class="text-xs uppercase tracking-widest text-white/40 mb-2" style="font-family:'Anonymous Pro',monospace;">Send an Enquiry</p>
+          <h2 class="text-2xl lg:text-3xl font-normal text-white mb-8" style="font-family:'Inter',sans-serif;">Start a conversation</h2>
+
+          <form onsubmit="event.preventDefault(); document.getElementById('contact-success').style.display='block'; this.reset();" class="flex flex-col gap-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div class="flex flex-col gap-2">
+                <label for="c-name" class="text-xs uppercase tracking-widest text-white/50" style="font-family:'Anonymous Pro',monospace;">Name *</label>
+                <input type="text" id="c-name" name="name" required placeholder="Your full name"
+                  class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-white/40 transition-colors">
+              </div>
+              <div class="flex flex-col gap-2">
+                <label for="c-biz" class="text-xs uppercase tracking-widest text-white/50" style="font-family:'Anonymous Pro',monospace;">Business Name</label>
+                <input type="text" id="c-biz" name="business" placeholder="Your business name"
+                  class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-white/40 transition-colors">
+              </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div class="flex flex-col gap-2">
+                <label for="c-email" class="text-xs uppercase tracking-widest text-white/50" style="font-family:'Anonymous Pro',monospace;">Email *</label>
+                <input type="email" id="c-email" name="email" required placeholder="you@company.com"
+                  class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-white/40 transition-colors">
+              </div>
+              <div class="flex flex-col gap-2">
+                <label for="c-phone" class="text-xs uppercase tracking-widest text-white/50" style="font-family:'Anonymous Pro',monospace;">Phone</label>
+                <input type="tel" id="c-phone" name="phone" placeholder="+91 00000 00000"
+                  class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-white/40 transition-colors">
+              </div>
+            </div>
+            <div class="flex flex-col gap-2">
+              <label for="c-service" class="text-xs uppercase tracking-widest text-white/50" style="font-family:'Anonymous Pro',monospace;">Service</label>
+              <select id="c-service" name="service"
+                class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white/40 transition-colors appearance-none" style="background-color:rgba(255,255,255,0.05);">
+                <option value="" style="background:#1a1a1a;">Select a service</option>
+                <option value="funding" style="background:#1a1a1a;">Funding &amp; Loans</option>
+                <option value="realestate" style="background:#1a1a1a;">Real Estate</option>
+              </select>
+            </div>
+            <div class="flex flex-col gap-2">
+              <label for="c-message" class="text-xs uppercase tracking-widest text-white/50" style="font-family:'Anonymous Pro',monospace;">Message</label>
+              <textarea id="c-message" name="message" rows="4" placeholder="Tell us about your project or enquiry..."
+                class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-white/40 transition-colors resize-none"></textarea>
+            </div>
+            <button type="submit"
+              class="rounded-full bg-white text-black text-xs uppercase tracking-widest px-8 py-4 font-medium hover:bg-gray-100 transition-colors mt-2 w-full" style="font-family:'Inter',sans-serif;">
+              Send Enquiry &rarr;
+            </button>
+            <div id="contact-success" style="display:none;" class="text-xs text-white/50 text-center" style="font-family:'Anonymous Pro',monospace;">
+              Message sent. We'll be in touch shortly.
+            </div>
+          </form>
         </div>
-        <div class="form-group">
-          <label for="c-message">Message</label>
-          <textarea id="c-message" name="message" rows="5" placeholder="Tell us about your project or enquiry..."></textarea>
-        </div>
-        <button type="submit" class="btn primary" style="width:100%; justify-content:center;">Send Enquiry &rarr;</button>
-      </form>
+      </div>
     </div>
-  </div>
+  </section>
 
   <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-brand">
-      <img src="raven-main-logo.png" alt="RAVEN">
-      <span class="footer-brand-name">RAVEN</span>
+  <footer class="bg-[#070707] pt-16 pb-10">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="overflow-hidden mb-12">
+        <svg viewBox="0 0 900 160" xmlns="http://www.w3.org/2000/svg" class="w-full">
+          <defs>
+            <linearGradient id="fgf" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.08"/>
+              <stop offset="100%" stop-color="#070707" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <text x="50%" y="85%" text-anchor="middle" font-family="Inter,sans-serif" font-size="160" font-weight="700" letter-spacing="-6" fill="url(#fgf)">RAVEN</text>
+        </svg>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div>
+          <p class="text-xs uppercase tracking-widest text-white/30 mb-4" style="font-family:'Anonymous Pro',monospace;">Services</p>
+          <ul class="flex flex-col gap-3">
+            <li><a href="funding-loans.html" class="text-sm text-white/60 hover:text-white transition-colors" style="font-family:'Inter',sans-serif;">Funding &amp; Loans</a></li>
+            <li><a href="index.html#services" class="text-sm text-white/60 hover:text-white transition-colors" style="font-family:'Inter',sans-serif;">Real Estate</a></li>
+            <li><a href="index.html#services" class="text-sm text-white/60 hover:text-white transition-colors" style="font-family:'Inter',sans-serif;">Brand Building</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-xs uppercase tracking-widest text-white/30 mb-4" style="font-family:'Anonymous Pro',monospace;">Company</p>
+          <ul class="flex flex-col gap-3">
+            <li><a href="index.html#about" class="text-sm text-white/60 hover:text-white transition-colors" style="font-family:'Inter',sans-serif;">About</a></li>
+            <li><a href="index.html#process" class="text-sm text-white/60 hover:text-white transition-colors" style="font-family:'Inter',sans-serif;">How It Works</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-xs uppercase tracking-widest text-white/30 mb-4" style="font-family:'Anonymous Pro',monospace;">Client</p>
+          <ul class="flex flex-col gap-3">
+            <li><a href="registration.html" class="text-sm text-white/60 hover:text-white transition-colors" style="font-family:'Inter',sans-serif;">Client Portal</a></li>
+            <li><a href="contact.html" class="text-sm text-white/60 hover:text-white transition-colors" style="font-family:'Inter',sans-serif;">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-xs uppercase tracking-widest text-white/30 mb-4" style="font-family:'Anonymous Pro',monospace;">Contact</p>
+          <ul class="flex flex-col gap-3">
+            <li><a href="mailto:hello@raven.business" class="text-sm text-white/60 hover:text-white transition-colors" style="font-family:'Inter',sans-serif;">hello@raven.business</a></li>
+            <li><span class="text-sm text-white/60" style="font-family:'Inter',sans-serif;">Pune / Chh. Sambhajinagar</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <span class="text-xs text-white/30" style="font-family:'Anonymous Pro',monospace;">&copy; 2026 RAVEN. All rights reserved.</span>
+        <span class="text-xs text-white/30" style="font-family:'Anonymous Pro',monospace;">Build &middot; Fund &middot; Brand &middot; Grow</span>
+      </div>
     </div>
-    <span class="footer-tagline">Build &middot; Fund &middot; Brand &middot; Grow</span>
-    <span class="footer-copy">&copy; 2026 RAVEN</span>
   </footer>
 
+  <script>
+    document.getElementById('menu-open').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.add('open');
+    });
+    document.getElementById('menu-close').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.remove('open');
+    });
+  </script>
 </body>
 </html>
