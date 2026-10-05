@@ -5,105 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RAVEN - Build. Fund. Brand. Grow.</title>
   <link rel="stylesheet" href="nexstudio.css">
+  <link rel="stylesheet" href="floating-dock.css">
 </head>
 <body class="font-sans bg-white text-black antialiased">
-
-  <!-- ======================== FLOATING DOCK ======================== -->
-  <style>
-    .fdock{position:fixed;top:1rem;right:1rem;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;}
-    .fdock-desktop{display:flex;align-items:flex-end;gap:.5rem;background:rgba(15,15,15,.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:.625rem .875rem;border-radius:1.25rem;border:1px solid rgba(255,255,255,.09);box-shadow:0 20px 60px rgba(0,0,0,.5);}
-    @media(max-width:767px){.fdock-desktop{display:none;}}
-    .fdock-mobile{display:none;flex-direction:column;align-items:flex-end;gap:.5rem;}
-    @media(max-width:767px){.fdock-mobile{display:flex;}}
-    .fdock-item{position:relative;display:flex;flex-direction:column;align-items:center;}
-    .fdock-btn{display:flex;align-items:center;justify-content:center;width:40px;height:40px;min-width:40px;background:rgba(255,255,255,.1);border-radius:.75rem;text-decoration:none;transition:background .15s;transform-origin:bottom center;border:none;cursor:pointer;}
-    .fdock-btn:hover{background:rgba(255,255,255,.18);}
-    .fdock-btn svg{width:20px;height:20px;stroke:white;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;pointer-events:none;}
-    .fdock-label{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:rgba(15,15,15,.96);color:#fff;font-size:11px;font-weight:500;white-space:nowrap;padding:4px 9px;border-radius:6px;border:1px solid rgba(255,255,255,.1);opacity:0;pointer-events:none;transition:opacity .12s;font-family:Inter,sans-serif;}
-    .fdock-item:hover .fdock-label{opacity:1;}
-    .fdock-mob-toggle{display:flex;align-items:center;justify-content:center;width:44px;height:44px;background:rgba(15,15,15,.96);border-radius:50%;border:1px solid rgba(255,255,255,.09);box-shadow:0 8px 32px rgba(0,0,0,.4);cursor:pointer;transition:background .15s;}
-    .fdock-mob-toggle:hover{background:rgba(30,30,30,.96);}
-    .fdock-mob-toggle svg{width:20px;height:20px;stroke:white;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-    .fdock-mob-items{display:flex;flex-direction:column;align-items:flex-end;gap:.375rem;overflow:hidden;max-height:0;opacity:0;transition:max-height .35s cubic-bezier(.4,0,.2,1),opacity .25s;}
-    .fdock-mob-items.open{max-height:320px;opacity:1;}
-    .fdock-mob-link{display:flex;align-items:center;gap:.5rem;text-decoration:none;}
-    .fdock-mob-icon{display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:rgba(15,15,15,.96);border-radius:50%;border:1px solid rgba(255,255,255,.09);box-shadow:0 4px 16px rgba(0,0,0,.3);flex-shrink:0;}
-    .fdock-mob-icon svg{width:18px;height:18px;stroke:white;stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-    .fdock-mob-lbl{background:rgba(15,15,15,.96);color:#fff;font-size:12px;font-weight:500;padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,.09);font-family:Inter,sans-serif;white-space:nowrap;}
-  </style>
-  <div class="fdock">
-    <!-- Desktop dock -->
-    <div class="fdock-desktop" id="fdock-desktop">
-      <div class="fdock-item">
-        <div class="fdock-label">Home</div>
-        <a href="index.html" class="fdock-btn">
-          <svg viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        </a>
-      </div>
-      <div class="fdock-item">
-        <div class="fdock-label">Funding &amp; Loans</div>
-        <a href="funding-loans.html" class="fdock-btn">
-          <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        </a>
-      </div>
-      <div class="fdock-item">
-        <div class="fdock-label">Registration</div>
-        <a href="registration.html" class="fdock-btn">
-          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-        </a>
-      </div>
-      <div class="fdock-item">
-        <div class="fdock-label">Contact</div>
-        <a href="contact.html" class="fdock-btn">
-          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        </a>
-      </div>
-    </div>
-    <!-- Mobile dock -->
-    <div class="fdock-mobile">
-      <div class="fdock-mob-items" id="fdock-mob-items">
-        <a href="index.html" class="fdock-mob-link">
-          <span class="fdock-mob-lbl">Home</span>
-          <div class="fdock-mob-icon"><svg viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-        </a>
-        <a href="funding-loans.html" class="fdock-mob-link">
-          <span class="fdock-mob-lbl">Funding &amp; Loans</span>
-          <div class="fdock-mob-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-        </a>
-        <a href="registration.html" class="fdock-mob-link">
-          <span class="fdock-mob-lbl">Registration</span>
-          <div class="fdock-mob-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-        </a>
-        <a href="contact.html" class="fdock-mob-link">
-          <span class="fdock-mob-lbl">Contact</span>
-          <div class="fdock-mob-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-        </a>
-      </div>
-      <button class="fdock-mob-toggle" onclick="document.getElementById('fdock-mob-items').classList.toggle('open')">
-        <svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-      </button>
-    </div>
-  </div>
-  <script>
-  (function(){
-    var dock=document.getElementById('fdock-desktop');
-    if(!dock)return;
-    var btns=dock.querySelectorAll('.fdock-btn');
-    var BASE=40,MAX=68,RANGE=130;
-    function upd(mx,my){
-      btns.forEach(function(b){
-        var r=b.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;
-        var d=Math.sqrt((mx-cx)*(mx-cx)+(my-cy)*(my-cy));
-        var s=d<RANGE?1+(MAX/BASE-1)*(1-d/RANGE):1;
-        b.style.transform='scale('+s.toFixed(3)+')';
-      });
-    }
-    function rst(){btns.forEach(function(b){b.style.transform='scale(1)';});}
-    dock.addEventListener('mousemove',function(e){upd(e.clientX,e.clientY);});
-    dock.addEventListener('mouseleave',rst);
-  })();
-  </script>
-  <!-- ======================== END FLOATING DOCK ======================== -->
 
   <!-- Header -->
   <header class="sticky top-0 z-50 transition-all duration-300 bg-white/80 backdrop-blur-md shadow-sm">
@@ -115,53 +19,7 @@
               <text x="0" y="20" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="black" letter-spacing="-1">RAVEN</text>
             </svg>
           </a>
-          <div class="hidden lg:block">
-            <ul class="flex space-x-8">
-              <li>
-                <a class="group py-4 inline-block uppercase font-normal text-black hover:text-gray-500" href="funding-loans.html">
-                  <span class="relative inline-block overflow-hidden">
-                    <span class="block transition-transform duration-300 ease-in-out group-hover:-translate-y-full">Services</span>
-                    <span class="absolute top-0 left-0 block w-full transition-transform duration-300 ease-in-out translate-y-full group-hover:translate-y-0">Services</span>
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a class="group py-4 inline-block uppercase font-normal text-black hover:text-gray-500" href="index.html#about">
-                  <span class="relative inline-block overflow-hidden">
-                    <span class="block transition-transform duration-300 ease-in-out group-hover:-translate-y-full">About</span>
-                    <span class="absolute top-0 left-0 block w-full transition-transform duration-300 ease-in-out translate-y-full group-hover:translate-y-0">About</span>
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a class="group py-4 inline-block uppercase font-normal text-black hover:text-gray-500" href="registration.html">
-                  <span class="relative inline-block overflow-hidden">
-                    <span class="block transition-transform duration-300 ease-in-out group-hover:-translate-y-full">Register</span>
-                    <span class="absolute top-0 left-0 block w-full transition-transform duration-300 ease-in-out translate-y-full group-hover:translate-y-0">Register</span>
-                  </span>
-                </a>
-              </li>
-              <li>
-                <a class="group py-4 inline-block uppercase font-normal text-black hover:text-gray-500" href="contact.html">
-                  <span class="relative inline-block overflow-hidden">
-                    <span class="block transition-transform duration-300 ease-in-out group-hover:-translate-y-full">Contact</span>
-                    <span class="absolute top-0 left-0 block w-full transition-transform duration-300 ease-in-out translate-y-full group-hover:translate-y-0">Contact</span>
-                  </span>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div class="flex gap-3 lg:gap-5 items-center">
-            <a class="group px-4 lg:px-6 py-2.5 lg:py-4.5 hidden sm:inline-flex items-center justify-center bg-black text-xs lg:text-sm font-medium -tracking-[0.2px] leading-5 text-white rounded-full hover:bg-gray-800 transition-all duration-300" href="contact.html">
-              <span class="relative inline-block overflow-hidden">
-                <span class="block transition-transform duration-300 ease-in-out group-hover:-translate-y-full">GET STARTED</span>
-                <span class="absolute top-0 left-0 block w-full transition-transform duration-300 ease-in-out translate-y-full group-hover:translate-y-0">GET STARTED</span>
-              </span>
-            </a>
-            <div class="block lg:hidden">
-              <button class="text-black font-medium text-sm uppercase hover:text-gray-500 transition">Menu</button>
-            </div>
-          </div>
+          <div id="floating-dock-root" class="flex items-center justify-end pt-8"></div>
         </div>
       </div>
     </nav>
@@ -457,5 +315,6 @@
     </div>
   </footer>
 
+  <script src="floating-dock.js"></script>
 </body>
 </html>
