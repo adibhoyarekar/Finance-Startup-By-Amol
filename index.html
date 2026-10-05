@@ -33,6 +33,26 @@
       .wpu-card p{font-size:.875rem;line-height:1.5}
     }
   </style>
+  <style>
+    .svc-list{border-top:1px solid #e5e5e5}
+    .svc-row{position:relative;display:grid;grid-template-columns:1fr;gap:1rem;align-items:center;padding:2rem 1rem;border-bottom:1px solid #e5e5e5;color:#000;text-decoration:none;overflow:hidden;transition:background .45s ease,color .45s ease,padding .45s ease}
+    @media(min-width:1024px){.svc-row{grid-template-columns:72px minmax(0,1.1fr) minmax(0,1fr) 64px;gap:2rem;padding:3rem 2rem}}
+    .svc-num{font-family:"Anonymous Pro",ui-monospace,monospace;font-size:1rem;color:#737373;transition:color .45s ease}
+    .svc-title{margin:0;font-size:2.5rem;line-height:1.1;font-weight:400;letter-spacing:-.04em}
+    @media(min-width:1024px){.svc-title{font-size:3.5rem}}
+    .svc-desc{margin:0;font-size:1.125rem;line-height:1.6;color:#404040;transition:color .45s ease}
+    .svc-arrow{display:flex;align-items:center;justify-content:center;width:56px;height:56px;border:1px solid #000;border-radius:9999px;transition:transform .5s cubic-bezier(.2,.8,.2,1),background .45s ease,color .45s ease,border-color .45s ease}
+    .svc-row:hover{background:#000;color:#fff}
+    .svc-row:hover .svc-num,.svc-row:hover .svc-desc{color:#a3a3a3}
+    .svc-row:hover .svc-arrow{background:#fff;color:#000;border-color:#fff;transform:rotate(-45deg)}
+    @media(min-width:1024px){.svc-row:hover{padding-left:3rem}}
+    @media(max-width:1023px){
+      .svc-row{gap:.5rem;padding:1.5rem 1rem}
+      .svc-title{font-size:2rem}
+      .svc-desc{font-size:1rem;max-width:calc(100% - 3rem)}
+      .svc-arrow{position:absolute;top:1.25rem;right:1rem;width:44px;height:44px}
+    }
+  </style>
 </head>
 <body class="font-sans bg-white text-black antialiased">
 
@@ -176,28 +196,26 @@
       <div class="max-w-7xl mx-auto px-6">
         <div>
           <h2 class="mb-16 font-normal text-5xl text-black -tracking-[1.92px]">Our <span class="italic">Services</span></h2>
-          <ul class="max-w-[1120px] mx-auto space-y-12">
-            <li class="flex flex-col gap-2 lg:grid lg:grid-cols-[auto_auto_370px] lg:items-center lg:gap-8">
-              <span class="text-black text-lg italic">#1</span>
-              <h3 class="font-normal whitespace-nowrap text-2xl text-black">Funding &amp; Loans</h3>
-              <p class="text-gray-700 text-lg font-normal">Secure business funding and tailored loan solutions to fuel your growth at every stage.</p>
-            </li>
-            <li class="flex flex-col gap-2 lg:grid lg:grid-cols-[auto_auto_370px] lg:items-center lg:gap-8">
-              <span class="text-black text-lg italic">#2</span>
-              <h3 class="font-normal whitespace-nowrap text-2xl text-black">Business Registration</h3>
-              <p class="text-gray-700 text-lg font-normal">Fast and compliant company registration services to get your business legally established.</p>
-            </li>
-            <li class="flex flex-col gap-2 lg:grid lg:grid-cols-[auto_auto_370px] lg:items-center lg:gap-8">
-              <span class="text-black text-lg italic">#3</span>
-              <h3 class="font-normal whitespace-nowrap text-2xl text-black">Real Estate Advisory</h3>
-              <p class="text-gray-700 text-lg font-normal">Expert guidance on commercial and residential property investment and acquisition strategies.</p>
-            </li>
-            <li class="flex flex-col gap-2 lg:grid lg:grid-cols-[auto_auto_370px] lg:items-center lg:gap-8">
-              <span class="text-black text-lg italic">#4</span>
-              <h3 class="font-normal whitespace-nowrap text-2xl text-black">Brand Strategy</h3>
-              <p class="text-gray-700 text-lg font-normal">Build a powerful brand identity that positions your business for lasting market presence.</p>
-            </li>
-          </ul>
+          <div class="svc-list">
+            <a class="svc-row" href="contact.html">
+              <span class="svc-num">01</span>
+              <h3 class="svc-title">Insurance</h3>
+              <p class="svc-desc">Protect your business, assets and people with coverage built around the risks you actually face.</p>
+              <span class="svc-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </a>
+            <a class="svc-row" href="funding-loans.html">
+              <span class="svc-num">02</span>
+              <h3 class="svc-title">Loans</h3>
+              <p class="svc-desc">Business, startup and property loans with tailored terms to fuel your growth at every stage.</p>
+              <span class="svc-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </a>
+            <a class="svc-row" href="contact.html">
+              <span class="svc-num">03</span>
+              <h3 class="svc-title">Real <span class="italic">Estate</span></h3>
+              <p class="svc-desc">Expert guidance on commercial and residential property investment and acquisition strategies.</p>
+              <span class="svc-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </a>
+          </div>
         </div>
       </div>
     </section>
