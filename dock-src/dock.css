@@ -3,3 +3,13 @@
 @source "./floating-dock.tsx";
 @source "./main.tsx";
 @source "../index.html";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* The dock lives at the top of the page, so the mobile menu opens downward */
+#floating-dock-root .absolute.bottom-full {
+  bottom: auto;
+  top: 100%;
+  margin-bottom: 0;
+  margin-top: 0.5rem;
+}
+#floating-dock-root > div { position: relative; }
