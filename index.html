@@ -4,186 +4,470 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RAVEN — Build. Fund. Brand. Grow.</title>
+  <meta name="description" content="RAVEN brings funding assistance and real estate together under one roof — helping businesses build, fund, brand and grow.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="nexstudio.css">
+  <style>
+    /* Mobile menu */
+    #mobile-menu { display:none; position:fixed; inset:0; z-index:200; background:#fff; flex-direction:column; align-items:center; justify-content:center; gap:2rem; }
+    #mobile-menu.open { display:flex; }
+    #mobile-menu a { font-size:1.5rem; font-weight:400; text-transform:uppercase; letter-spacing:.05em; color:#000; }
+    .nav-svg-icon { display:inline-block; vertical-align:middle; }
+  </style>
 </head>
-<body>
+<body class="antialiased">
 
-  <!-- NAV -->
-  <nav class="nav">
-    <a href="index.html" class="nav-brand">
-      <img src="raven-main-logo.png" alt="RAVEN logo">
-      <span class="nav-brand-name">RAVEN</span>
-    </a>
-    <div class="nav-links">
-      <a href="#services">Services</a>
-      <a href="#about">About</a>
-      <a href="#process">How It Works</a>
-      <a href="registration.html">Client Portal</a>
-      <a href="contact.html" class="nav-cta">Contact</a>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-copy">
-      <span class="eyebrow">ONE BUSINESS ECOSYSTEM</span>
-      <h1>Build.<br><span class="red">Fund.</span><br>Brand.<br>Grow.</h1>
-      <p>RAVEN brings funding assistance and real estate together under one roof.</p>
-      <div class="hero-btns">
-        <a href="contact.html" class="btn primary">Start a Conversation</a>
-        <a href="#services" class="btn ghost">Explore Services</a>
-      </div>
-    </div>
-    <div class="hero-art" aria-hidden="true">
-      <div class="hero-orbit-1"></div>
-      <div class="hero-orb"></div>
-      <div id="credit-card-animation"></div>
-      <div class="hero-orbit-2"></div>
-    </div>
-  </section>
-
-  <!-- TRUST STRIP -->
-  <div class="trust-strip">
-    <div class="trust-strip-inner">
-      <span class="trust-item">CAPITAL</span>
-      <span class="trust-dot"></span>
-      <span class="trust-item">REALTY</span>
-    </div>
+  <!-- MOBILE MENU -->
+  <div id="mobile-menu">
+    <button id="menu-close" style="position:absolute;top:24px;right:24px;font-size:1.5rem;background:none;border:none;cursor:pointer;">✕</button>
+    <a href="index.html">Home</a>
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#process">How It Works</a>
+    <a href="registration.html">Client Portal</a>
+    <a href="contact.html">Contact</a>
   </div>
 
-  <!-- SERVICES -->
-  <section class="section" id="services">
-    <div class="section-head">
-      <span class="eyebrow">WHAT WE DO</span>
-      <h2>Everything your business needs.<br><span class="red">One roof.</span></h2>
-      <p>From the first idea to expansion, RAVEN connects the people, expertise and execution needed to move a business forward.</p>
-    </div>
-    <div class="service-grid">
-      <div class="service-card featured" style="grid-column: 1 / 3;">
-        <div class="num">01</div>
-        <h3>Funding &amp; Loans</h3>
-        <p>Funding guidance, loan assistance, MSME/government scheme support and documentation.</p>
-        <a href="funding-loans.html">Explore funding &rarr;</a>
-      </div>
-      <div class="service-card" style="grid-column: 3 / 5;">
-        <div class="num">02</div>
-        <h3>Real Estate</h3>
-        <p>Commercial offices, shops, warehouses, buying, selling and leasing support.</p>
-        <a href="contact.html">Find a property &rarr;</a>
-      </div>
-    </div>
-  </section>
+  <!-- HEADER / NAV -->
+  <header class="sticky top-0 z-50 transition-all duration-300 bg-white/80 backdrop-blur-md shadow-sm">
+    <nav>
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex items-center justify-between py-4 lg:py-6">
 
-  <!-- ABOUT / WHY RAVEN -->
-  <section class="split-section" id="about">
-    <div class="yellow-panel">
-      <span class="eyebrow" style="color:#333">WHY RAVEN</span>
-      <h2>Stop managing six vendors.</h2>
-      <p>Work with one connected team that understands the bigger picture.</p>
-    </div>
-    <div class="grey-panel">
-      <div class="feature-row">
-        <div class="feature-num">01</div>
-        <div>
-          <h3>One Team</h3>
-          <p>Finance and property working together.</p>
+          <!-- Logo -->
+          <div>
+            <a href="index.html" class="flex items-center gap-3">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="nav-svg-icon">
+                <path d="M16 2L28 8V16C28 22.627 22.627 28 16 28C9.373 28 4 22.627 4 16V8L16 2Z" fill="black"/>
+                <path d="M12 14H20M12 18H17" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span style="font-family:'Inter',sans-serif;font-weight:700;font-size:1.15rem;letter-spacing:.06em;color:#000;">RAVEN</span>
+            </a>
+          </div>
+
+          <!-- Desktop Nav Links -->
+          <div class="hidden lg:block">
+            <ul class="flex space-x-8">
+              <li><a class="group py-4 inline-block uppercase font-normal text-black hover:text-gray-500 transition duration-300" href="#services">
+                <span class="relative inline-block overflow-hidden">
+                  <span class="block transition-transform duration-300 ease-in-out group-hover:-translate-y-full">Services</span>
+                  <span class="absolute top-0 left-0 block w-full transition-transform duration-300 ease-in-out translate-y-full group-hover:translate-y-0">Services</span>
+                </span>
+              </a></li>
+              <li><a class="group py-4 inline-block uppercase font-normal text-black hover:text-gray-500 transition duration-300" href="#about">
+                <span class="relative inline-block overflow-hidden">
+                  <span class="block transition-transform duration-300 ease-in-out group-hover:-translate-y-full">About</span>
+                  <span class="absolute top-0 left-0 block w-full transition-transform duration-300 ease-in-out translate-y-full group-hover:translate-y-0">About</span>
+                </span>
+              </a></li>
+              <li><a class="group py-4 inline-block uppercase font-normal text-black hover:text-gray-500 transition duration-300" href="#process">
+                <span class="relative inline-block overflow-hidden">
+                  <span class="block transition-transform duration-300 ease-in-out group-hover:-translate-y-full">Process</span>
+                  <span class="absolute top-0 left-0 block w-full transition-transform duration-300 ease-in-out translate-y-full group-hover:translate-y-0">Process</span>
+                </span>
+              </a></li>
+              <li><a class="group py-4 inline-block uppercase font-normal text-black hover:text-gray-500 transition duration-300" href="registration.html">
+                <span class="relative inline-block overflow-hidden">
+                  <span class="block transition-transform duration-300 ease-in-out group-hover:-translate-y-full">Portal</span>
+                  <span class="absolute top-0 left-0 block w-full transition-transform duration-300 ease-in-out translate-y-full group-hover:translate-y-0">Portal</span>
+                </span>
+              </a></li>
+            </ul>
+          </div>
+
+          <!-- Desktop CTA + Mobile Menu Toggle -->
+          <div class="flex items-center gap-4">
+            <a class="group px-6 py-2.5 lg:py-4.5 hidden sm:inline-flex items-center justify-center bg-black text-xs lg:text-sm font-medium -tracking-[0.2px] leading-5 text-white rounded-full hover:bg-gray-800 transition-all duration-300" href="contact.html">
+              <span class="relative inline-block overflow-hidden">
+                <span class="block transition-transform duration-300 ease-in-out group-hover:-translate-y-full">GET STARTED</span>
+                <span class="absolute top-0 left-0 block w-full transition-transform duration-300 ease-in-out translate-y-full group-hover:translate-y-0">GET STARTED</span>
+              </span>
+            </a>
+            <div class="block lg:hidden">
+              <button id="menu-open" class="text-black font-medium text-sm uppercase hover:text-gray-500 transition">Menu</button>
+            </div>
+          </div>
+
         </div>
       </div>
-      <div class="feature-row">
-        <div class="feature-num">02</div>
-        <div>
-          <h3>Strategic Thinking</h3>
-          <p>We focus on what your business actually needs, not just what we can sell.</p>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO SECTION -->
+    <section class="lg:pt-30 lg:pb-20 pt-20 pb-10">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="max-w-3xl text-center mx-auto">
+          <h1 class="text-5xl lg:text-7xl font-normal -tracking-[2.88px] mb-4 text-black">
+            Build. <span class="italic">Fund.</span> Brand. Grow.
+          </h1>
+          <p class="mb-8 lg:mb-12 text-gray-700 text-lg leading-6 -tracking-[0.2px] max-w-xl mx-auto">
+            RAVEN brings funding assistance and real estate together under one roof — your complete business ecosystem from first idea to full expansion.
+          </p>
+          <div class="flex flex-col sm:flex-row justify-center items-center gap-5">
+            <a class="group px-6 py-4.5 flex gap-2 items-center bg-black text-sm font-medium -tracking-[0.2px] leading-5 text-white rounded-full hover:bg-gray-800 transition-all duration-300" href="#services">
+              <span class="relative inline-block overflow-hidden">
+                <span class="block transition-transform duration-300 ease-in-out group-hover:-translate-y-full">EXPLORE SERVICES</span>
+                <span class="absolute top-0 left-0 block w-full transition-transform duration-300 ease-in-out translate-y-full group-hover:translate-y-0">EXPLORE SERVICES</span>
+              </span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" class="transition-transform duration-300 group-hover:translate-x-1 shrink-0">
+                <path d="M17.994 5.253c.083 0 .156.017.23.042.017.006.035.009.051.016.05.02.097.046.141.077.037.025.072.054.105.086.119.12.187.269.209.424.003.02.005.042.006.064.001.02.004.041.003.062l.003 8.97c0 .414-.337.75-.75.75-.414 0-.75-.336-.75-.75l-.002-7.178L6.53 18.531c-.293.293-.768.293-1.061 0-.293-.293-.293-.768 0-1.061l10.72-10.72-7.19-.001c-.414-.001-.75-.337-.75-.75 0-.414.337-.75.75-.75l8.994.003Z" fill="white"/>
+              </svg>
+            </a>
+            <a class="group px-6 py-4.5 flex gap-2 items-center bg-white border border-black text-sm font-medium -tracking-[0.2px] leading-5 text-black rounded-full hover:bg-gray-100 transition-all duration-300" href="contact.html">
+              <span class="relative inline-block overflow-hidden">
+                <span class="block transition-transform duration-300 ease-in-out group-hover:-translate-y-full">CONTACT US</span>
+                <span class="absolute top-0 left-0 block w-full transition-transform duration-300 ease-in-out translate-y-full group-hover:translate-y-0">CONTACT US</span>
+              </span>
+            </a>
+          </div>
         </div>
       </div>
-      <div class="feature-row">
-        <div class="feature-num">03</div>
-        <div>
-          <h3>Long-Term Growth</h3>
-          <p>We aim to become a partner in your journey from launch to scale.</p>
+    </section>
+
+    <!-- MARQUEE STRIP -->
+    <div style="position:relative;width:100%;overflow:hidden;">
+      <section>
+        <div class="mx-auto max-w-[1440px]">
+          <div class="w-full inline-flex flex-nowrap overflow-hidden mask-[linear-gradient(to_right,transparent_0,black_128px,black_calc(100%-200px),transparent_100%)] py-11">
+            <ul class="flex items-center justify-center md:justify-start [&_li]:mx-10 [&_img]:max-w-none animate-infinite-scroll">
+              <li><span style="font-family:'Inter',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:.18em;color:#000;opacity:.7">CAPITAL</span></li>
+              <li><span style="color:#000;opacity:.3;font-size:1.5rem">·</span></li>
+              <li><span style="font-family:'Inter',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:.18em;color:#000;opacity:.7">REALTY</span></li>
+              <li><span style="color:#000;opacity:.3;font-size:1.5rem">·</span></li>
+              <li><span style="font-family:'Inter',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:.18em;color:#000;opacity:.7">FUNDING</span></li>
+              <li><span style="color:#000;opacity:.3;font-size:1.5rem">·</span></li>
+              <li><span style="font-family:'Inter',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:.18em;color:#000;opacity:.7">STRATEGY</span></li>
+              <li><span style="color:#000;opacity:.3;font-size:1.5rem">·</span></li>
+              <li><span style="font-family:'Inter',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:.18em;color:#000;opacity:.7">GROWTH</span></li>
+              <li><span style="color:#000;opacity:.3;font-size:1.5rem">·</span></li>
+              <li><span style="font-family:'Inter',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:.18em;color:#000;opacity:.7">MSME</span></li>
+              <li><span style="color:#000;opacity:.3;font-size:1.5rem">·</span></li>
+              <li><span style="font-family:'Inter',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:.18em;color:#000;opacity:.7">COMMERCIAL</span></li>
+              <li><span style="color:#000;opacity:.3;font-size:1.5rem">·</span></li>
+            </ul>
+            <!-- Duplicate for seamless loop -->
+            <ul class="flex items-center justify-center md:justify-start [&_li]:mx-10 [&_img]:max-w-none animate-infinite-scroll" aria-hidden="true">
+              <li><span style="font-family:'Inter',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:.18em;color:#000;opacity:.7">CAPITAL</span></li>
+              <li><span style="color:#000;opacity:.3;font-size:1.5rem">·</span></li>
+              <li><span style="font-family:'Inter',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:.18em;color:#000;opacity:.7">REALTY</span></li>
+              <li><span style="color:#000;opacity:.3;font-size:1.5rem">·</span></li>
+              <li><span style="font-family:'Inter',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:.18em;color:#000;opacity:.7">FUNDING</span></li>
+              <li><span style="color:#000;opacity:.3;font-size:1.5rem">·</span></li>
+              <li><span style="font-family:'Inter',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:.18em;color:#000;opacity:.7">STRATEGY</span></li>
+              <li><span style="color:#000;opacity:.3;font-size:1.5rem">·</span></li>
+              <li><span style="font-family:'Inter',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:.18em;color:#000;opacity:.7">GROWTH</span></li>
+              <li><span style="color:#000;opacity:.3;font-size:1.5rem">·</span></li>
+              <li><span style="font-family:'Inter',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:.18em;color:#000;opacity:.7">MSME</span></li>
+              <li><span style="color:#000;opacity:.3;font-size:1.5rem">·</span></li>
+              <li><span style="font-family:'Inter',sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:.18em;color:#000;opacity:.7">COMMERCIAL</span></li>
+              <li><span style="color:#000;opacity:.3;font-size:1.5rem">·</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ABOUT / DARK SECTION -->
+    <section class="bg-black py-20" id="about">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col lg:flex-row lg:items-center">
+          <div class="sm:mb-16 mb-8 lg:mb-0 lg:w-6/12">
+            <h2 class="text-white text-5xl font-normal -tracking-[1.92px]">One Team. <span class="italic">Endless Capability.</span></h2>
+          </div>
+          <div class="lg:w-6/12">
+            <p class="text-white text-xl mb-5 font-normal -tracking-[0.2px]">Stop managing six vendors. Work with one connected team that understands the bigger picture.</p>
+            <p class="text-white/60 -tracking-[0.2px]"><span class="text-white">From day one</span> to expansion, RAVEN connects the people, expertise and execution needed to move your business forward — with funding guidance and real estate in one place.</p>
+            <div class="mt-12 space-y-8 sm:space-y-0 columns-1 sm:columns-2">
+              <div>
+                <h3 class="text-white text-5xl mb-3 font-normal">₹50Cr+</h3>
+                <p class="text-lg text-white font-mono font-normal">Funding Facilitated</p>
+              </div>
+              <div>
+                <h3 class="text-white text-5xl mb-3 font-normal">500+</h3>
+                <p class="text-lg text-white font-mono font-normal">Businesses Supported</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- PROCESS -->
-  <section class="section dark" id="process">
-    <div class="section-head centered">
-      <span class="eyebrow" style="color:#ffc107">THE RAVEN METHOD</span>
-      <h2 style="color:#ffffff">From idea to <span class="red">impact.</span></h2>
-    </div>
-    <div class="process-grid">
-      <div class="process-step">
-        <span class="step-num">01</span>
-        <h3>Understand</h3>
-        <p>We learn your business, goals and challenges.</p>
-      </div>
-      <div class="process-step">
-        <span class="step-num">02</span>
-        <h3>Strategize</h3>
-        <p>We build a practical roadmap around your priorities.</p>
-      </div>
-      <div class="process-step">
-        <span class="step-num">03</span>
-        <h3>Build</h3>
-        <p>We bring the right services and specialists together.</p>
-      </div>
-      <div class="process-step">
-        <span class="step-num">04</span>
-        <h3>Grow</h3>
-        <p>We execute, measure and help you scale.</p>
-      </div>
-    </div>
-  </section>
+    <!-- WHY RAVEN / FEATURES -->
+    <section class="py-12 lg:py-25" id="services">
+      <div class="max-w-7xl mx-auto px-6">
+        <h2 class="lg:w-5/12 mb-8 lg:mb-16 font-normal text-5xl text-black -tracking-[1.92px]">Everything Your Business <span class="italic">Needs.</span></h2>
+        <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
 
-  <!-- PILLARS -->
-  <section class="section" style="background:#ffc107; padding-top:80px; padding-bottom:0;">
-    <div class="pillars-grid">
-      <div class="pillar">
-        <span class="pillar-icon">&#10086;</span>
-        <h3>Intelligence</h3>
-        <p>Smart thinking. Better decisions.</p>
-      </div>
-      <div class="pillar">
-        <span class="pillar-icon">&#9678;</span>
-        <h3>Vision</h3>
-        <p>See opportunities before they become obvious.</p>
-      </div>
-      <div class="pillar">
-        <span class="pillar-icon">&#9822;</span>
-        <h3>Strategy</h3>
-        <p>Plan clearly. Execute decisively.</p>
-      </div>
-      <div class="pillar">
-        <span class="pillar-icon">&#8635;</span>
-        <h3>Adaptability</h3>
-        <p>Change fast. Keep moving forward.</p>
-      </div>
-    </div>
-  </section>
+          <article>
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="56" height="56" rx="28" fill="url(#g1)"/>
+              <path d="M18 28h20M28 18v20" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <defs><linearGradient id="g1" x1="28" y1="0" x2="28" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#545454"/><stop offset="1" stop-color="#BABABA"/></linearGradient></defs>
+            </svg>
+            <h4 class="mb-5 mt-8 text-2xl font-normal text-black -tracking-[0.5px]">Funding & Loans</h4>
+            <p class="text-lg text-gray-700 -tracking-[0.2px]">Funding guidance, loan assistance, MSME and government scheme support with complete documentation help.</p>
+          </article>
 
-  <!-- PORTAL CTA -->
-  <section class="portal-cta">
-    <span class="eyebrow">CLIENT PORTAL</span>
-    <h2>Once you say yes, we keep you <span class="red">in the loop.</span></h2>
-    <p>Register your business with RAVEN and track the progress of your work from one simple dashboard.</p>
-    <a href="registration.html" class="btn primary">Open Client Registration &rarr;</a>
-  </section>
+          <article>
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 52L28 4L52 52H4Z" fill="url(#g2)"/>
+              <defs><linearGradient id="g2" x1="28" y1="4" x2="28" y2="52" gradientUnits="userSpaceOnUse"><stop stop-color="#545454"/><stop offset="1" stop-color="#BABABA"/></linearGradient></defs>
+            </svg>
+            <h4 class="mb-5 mt-8 text-2xl font-normal text-black -tracking-[0.5px]">Real Estate</h4>
+            <p class="text-lg text-gray-700 -tracking-[0.2px]">Commercial offices, shops, warehouses — buying, selling and leasing support with strategic location guidance.</p>
+          </article>
+
+          <article>
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="4" y="4" width="48" height="48" fill="url(#g3)"/>
+              <rect x="14" y="14" width="12" height="12" fill="white" opacity=".6"/>
+              <rect x="30" y="30" width="12" height="12" fill="white" opacity=".6"/>
+              <defs><linearGradient id="g3" x1="28" y1="4" x2="28" y2="52" gradientUnits="userSpaceOnUse"><stop stop-color="#545454"/><stop offset="1" stop-color="#BABABA"/></linearGradient></defs>
+            </svg>
+            <h4 class="mb-5 mt-8 text-2xl font-normal text-black -tracking-[0.5px]">Strategic Growth</h4>
+            <p class="text-lg text-gray-700 -tracking-[0.2px]">We focus on what your business actually needs — not just what we can sell. Long-term thinking at every step.</p>
+          </article>
+
+          <article>
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="28" cy="28" r="24" fill="url(#g4)"/>
+              <circle cx="28" cy="28" r="12" fill="white" opacity=".3"/>
+              <defs><linearGradient id="g4" x1="28" y1="4" x2="28" y2="52" gradientUnits="userSpaceOnUse"><stop stop-color="#545454"/><stop offset="1" stop-color="#BABABA"/></linearGradient></defs>
+            </svg>
+            <h4 class="mb-5 mt-8 text-2xl font-normal text-black -tracking-[0.5px]">One Roof Access</h4>
+            <p class="text-lg text-gray-700 -tracking-[0.2px]">Finance and property working together as one connected team — so you never have to coordinate between vendors.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES CARDS (dark) -->
+    <section class="py-12 lg:py-25 bg-[#FBFBFB]">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="mb-8 lg:mb-16 flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+          <h2 class="lg:w-5/12 font-normal text-5xl text-black -tracking-[1.92px]">Our <span class="italic">Core Services</span></h2>
+          <a href="funding-loans.html" class="group px-6 py-3 inline-flex items-center gap-2 border border-black text-sm font-medium uppercase text-black rounded-full hover:bg-black hover:text-white transition-all duration-300 self-start sm:self-auto">
+            <span>View Funding Details</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" class="transition-transform duration-300 group-hover:translate-x-1">
+              <path d="M17.994 5.253c.083 0 .156.017.23.042.017.006.035.009.051.016.05.02.097.046.141.077.037.025.072.054.105.086.119.12.187.269.209.424.003.02.005.042.006.064.001.02.004.041.003.062l.003 8.97c0 .414-.337.75-.75.75-.414 0-.75-.336-.75-.75l-.002-7.178L6.53 18.531c-.293.293-.768.293-1.061 0-.293-.293-.293-.768 0-1.061l10.72-10.72-7.19-.001c-.414-.001-.75-.337-.75-.75 0-.414.337-.75.75-.75l8.994.003Z" fill="currentColor"/>
+            </svg>
+          </a>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+
+          <!-- Service Card 1 -->
+          <div class="bg-neutral-950 rounded-3xl p-8 flex flex-col min-h-[500px]">
+            <div class="flex items-center justify-between mb-6">
+              <span class="text-xs uppercase tracking-widest text-white/60 font-mono">01 / SERVICE</span>
+              <span class="text-xs uppercase tracking-widest text-white/60 font-mono">CAPITAL</span>
+            </div>
+            <h3 class="text-white text-4xl font-normal -tracking-[1.92px] mb-4">Funding &amp; Loans</h3>
+            <p class="text-white/60 text-base leading-7 mb-8 flex-1">Comprehensive funding guidance including MSME loan assistance, government scheme eligibility, SBA/MUDRA programs, and end-to-end documentation support. We connect you to the capital your business deserves.</p>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-center gap-3 text-white/80 text-sm font-mono">
+                <span class="w-1.5 h-1.5 rounded-full bg-white/60 shrink-0"></span>MSME &amp; Government Schemes
+              </li>
+              <li class="flex items-center gap-3 text-white/80 text-sm font-mono">
+                <span class="w-1.5 h-1.5 rounded-full bg-white/60 shrink-0"></span>Business &amp; Startup Loans
+              </li>
+              <li class="flex items-center gap-3 text-white/80 text-sm font-mono">
+                <span class="w-1.5 h-1.5 rounded-full bg-white/60 shrink-0"></span>Documentation Assistance
+              </li>
+            </ul>
+            <a href="funding-loans.html" class="group self-start px-6 py-3 inline-flex items-center gap-2 bg-white text-black text-sm font-medium uppercase rounded-full hover:bg-gray-100 transition-all duration-300">
+              <span>Explore Funding</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" class="transition-transform duration-300 group-hover:translate-x-1">
+                <path d="M17.994 5.253c.083 0 .156.017.23.042.017.006.035.009.051.016.05.02.097.046.141.077.037.025.072.054.105.086.119.12.187.269.209.424.003.02.005.042.006.064.001.02.004.041.003.062l.003 8.97c0 .414-.337.75-.75.75-.414 0-.75-.336-.75-.75l-.002-7.178L6.53 18.531c-.293.293-.768.293-1.061 0-.293-.293-.293-.768 0-1.061l10.72-10.72-7.19-.001c-.414-.001-.75-.337-.75-.75 0-.414.337-.75.75-.75l8.994.003Z" fill="currentColor"/>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Service Card 2 -->
+          <div class="bg-neutral-950 rounded-3xl p-8 flex flex-col min-h-[500px]">
+            <div class="flex items-center justify-between mb-6">
+              <span class="text-xs uppercase tracking-widest text-white/60 font-mono">02 / SERVICE</span>
+              <span class="text-xs uppercase tracking-widest text-white/60 font-mono">REALTY</span>
+            </div>
+            <h3 class="text-white text-4xl font-normal -tracking-[1.92px] mb-4">Real Estate</h3>
+            <p class="text-white/60 text-base leading-7 mb-8 flex-1">Find the right commercial space for your business — offices, shops, warehouses and more. We handle buying, selling and leasing with a deep understanding of what growing businesses actually need.</p>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-center gap-3 text-white/80 text-sm font-mono">
+                <span class="w-1.5 h-1.5 rounded-full bg-white/60 shrink-0"></span>Commercial Office Spaces
+              </li>
+              <li class="flex items-center gap-3 text-white/80 text-sm font-mono">
+                <span class="w-1.5 h-1.5 rounded-full bg-white/60 shrink-0"></span>Retail &amp; Warehouse Units
+              </li>
+              <li class="flex items-center gap-3 text-white/80 text-sm font-mono">
+                <span class="w-1.5 h-1.5 rounded-full bg-white/60 shrink-0"></span>Buy, Sell &amp; Lease Support
+              </li>
+            </ul>
+            <a href="contact.html" class="group self-start px-6 py-3 inline-flex items-center gap-2 bg-white text-black text-sm font-medium uppercase rounded-full hover:bg-gray-100 transition-all duration-300">
+              <span>Find a Property</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" class="transition-transform duration-300 group-hover:translate-x-1">
+                <path d="M17.994 5.253c.083 0 .156.017.23.042.017.006.035.009.051.016.05.02.097.046.141.077.037.025.072.054.105.086.119.12.187.269.209.424.003.02.005.042.006.064.001.02.004.041.003.062l.003 8.97c0 .414-.337.75-.75.75-.414 0-.75-.336-.75-.75l-.002-7.178L6.53 18.531c-.293.293-.768.293-1.061 0-.293-.293-.293-.768 0-1.061l10.72-10.72-7.19-.001c-.414-.001-.75-.337-.75-.75 0-.414.337-.75.75-.75l8.994.003Z" fill="currentColor"/>
+              </svg>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS SECTION -->
+    <section class="py-12 lg:py-25" id="process">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="mb-8 lg:mb-16">
+          <h2 class="lg:w-5/12 font-normal text-5xl text-black -tracking-[1.92px]">From Idea to <span class="italic">Impact.</span></h2>
+          <p class="mt-4 text-gray-700 text-lg -tracking-[0.2px] max-w-lg">The RAVEN Method — four focused steps that take your business from conversation to results.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border border-gray-200 rounded-3xl overflow-hidden">
+
+          <div class="p-8 border-b sm:border-b-0 sm:border-r border-gray-200">
+            <span class="font-mono text-xs text-gray-400 uppercase tracking-widest block mb-8">01</span>
+            <h3 class="text-2xl font-normal text-black mb-3 -tracking-[0.5px]">Understand</h3>
+            <p class="text-gray-700 text-base leading-7">We learn your business, goals and challenges in depth before we suggest anything.</p>
+          </div>
+
+          <div class="p-8 border-b sm:border-b-0 lg:border-r border-gray-200">
+            <span class="font-mono text-xs text-gray-400 uppercase tracking-widest block mb-8">02</span>
+            <h3 class="text-2xl font-normal text-black mb-3 -tracking-[0.5px]">Strategize</h3>
+            <p class="text-gray-700 text-base leading-7">We build a practical roadmap around your priorities — not a one-size-fits-all plan.</p>
+          </div>
+
+          <div class="p-8 border-b lg:border-b-0 sm:border-r border-gray-200">
+            <span class="font-mono text-xs text-gray-400 uppercase tracking-widest block mb-8">03</span>
+            <h3 class="text-2xl font-normal text-black mb-3 -tracking-[0.5px]">Build</h3>
+            <p class="text-gray-700 text-base leading-7">We bring the right services and specialists together and execute with precision.</p>
+          </div>
+
+          <div class="p-8">
+            <span class="font-mono text-xs text-gray-400 uppercase tracking-widest block mb-8">04</span>
+            <h3 class="text-2xl font-normal text-black mb-3 -tracking-[0.5px]">Grow</h3>
+            <p class="text-gray-700 text-base leading-7">We measure outcomes and help you scale — staying with you for the long run.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTAL CTA -->
+    <section class="py-12 lg:py-25 bg-black">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-12">
+          <div class="lg:w-7/12">
+            <p class="font-mono text-xs text-white/40 uppercase tracking-widest mb-4">CLIENT PORTAL</p>
+            <h2 class="text-white text-5xl font-normal -tracking-[1.92px] mb-6">Once You Say Yes, We Keep You <span class="italic">In the Loop.</span></h2>
+            <p class="text-white/60 text-lg leading-7 -tracking-[0.2px] max-w-lg">Register your business with RAVEN and track the progress of your work from one simple dashboard.</p>
+          </div>
+          <div class="flex flex-col gap-4">
+            <a href="registration.html" class="group px-8 py-4.5 inline-flex items-center justify-center gap-2 bg-white text-black text-sm font-medium uppercase -tracking-[0.2px] rounded-full hover:bg-gray-100 transition-all duration-300">
+              <span class="relative inline-block overflow-hidden">
+                <span class="block transition-transform duration-300 ease-in-out group-hover:-translate-y-full">OPEN CLIENT REGISTRATION</span>
+                <span class="absolute top-0 left-0 block w-full transition-transform duration-300 ease-in-out translate-y-full group-hover:translate-y-0">OPEN CLIENT REGISTRATION</span>
+              </span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" class="transition-transform duration-300 group-hover:translate-x-1 shrink-0">
+                <path d="M17.994 5.253c.083 0 .156.017.23.042.017.006.035.009.051.016.05.02.097.046.141.077.037.025.072.054.105.086.119.12.187.269.209.424.003.02.005.042.006.064.001.02.004.041.003.062l.003 8.97c0 .414-.337.75-.75.75-.414 0-.75-.336-.75-.75l-.002-7.178L6.53 18.531c-.293.293-.768.293-1.061 0-.293-.293-.293-.768 0-1.061l10.72-10.72-7.19-.001c-.414-.001-.75-.337-.75-.75 0-.414.337-.75.75-.75l8.994.003Z" fill="currentColor"/>
+              </svg>
+            </a>
+            <a href="contact.html" class="group px-8 py-4.5 inline-flex items-center justify-center gap-2 border border-white/30 text-white text-sm font-medium uppercase -tracking-[0.2px] rounded-full hover:border-white hover:bg-white/10 transition-all duration-300">
+              <span>TALK TO US FIRST</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
 
   <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-brand">
-      <img src="raven-main-logo.png" alt="RAVEN">
-      <span class="footer-brand-name">RAVEN</span>
+  <footer class="bg-[#070707] overflow-hidden">
+    <div class="pt-20">
+      <div class="max-w-7xl mx-auto px-6">
+
+        <!-- Footer top -->
+        <div class="mb-16 grid grid-cols-1 lg:grid-cols-[auto_auto_370px] gap-16">
+          <div>
+            <a href="index.html" class="flex items-center gap-3 mb-6">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 2L28 8V16C28 22.627 22.627 28 16 28C9.373 28 4 22.627 4 16V8L16 2Z" fill="white"/>
+                <path d="M12 14H20M12 18H17" stroke="#070707" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <span style="font-family:'Inter',sans-serif;font-weight:700;font-size:1.15rem;letter-spacing:.06em;color:#fff;">RAVEN</span>
+            </a>
+            <p class="text-white/40 text-sm leading-6 max-w-xs">Build. Fund. Brand. Grow. — Your complete business ecosystem.</p>
+          </div>
+          <div class="grid grid-cols-2 gap-16">
+            <div>
+              <h4 class="text-lg font-semibold text-white mb-4">Services</h4>
+              <ul class="space-y-4 text-white [&>li>a]:text-base [&>li>a]:leading-6 [&>li>a]:opacity-80 [&>li>a]:hover:opacity-100 [&>li>a]:transition-opacity [&>li>a]:duration-300">
+                <li><a href="funding-loans.html">Funding &amp; Loans</a></li>
+                <li><a href="contact.html">Real Estate</a></li>
+                <li><a href="contact.html">MSME Support</a></li>
+                <li><a href="contact.html">Govt. Schemes</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="text-lg font-semibold text-white mb-4">Company</h4>
+              <ul class="space-y-4 text-white [&>li>a]:text-base [&>li>a]:leading-6 [&>li>a]:opacity-80 [&>li>a]:hover:opacity-100 [&>li>a]:transition-opacity [&>li>a]:duration-300">
+                <li><a href="#about">About</a></li>
+                <li><a href="#process">How It Works</a></li>
+                <li><a href="registration.html">Client Portal</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <h4 class="text-lg font-semibold text-white mb-4">Get in Touch</h4>
+            <p class="text-white/50 text-sm leading-6 mb-6">Ready to start your journey? Let's have a conversation.</p>
+            <a href="contact.html" class="group px-6 py-3 inline-flex items-center gap-2 bg-white text-black text-sm font-medium uppercase rounded-full hover:bg-gray-100 transition-all duration-300">
+              <span>Start a Conversation</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" class="transition-transform duration-300 group-hover:translate-x-1">
+                <path d="M17.994 5.253c.083 0 .156.017.23.042.017.006.035.009.051.016.05.02.097.046.141.077.037.025.072.054.105.086.119.12.187.269.209.424.003.02.005.042.006.064.001.02.004.041.003.062l.003 8.97c0 .414-.337.75-.75.75-.414 0-.75-.336-.75-.75l-.002-7.178L6.53 18.531c-.293.293-.768.293-1.061 0-.293-.293-.293-.768 0-1.061l10.72-10.72-7.19-.001c-.414-.001-.75-.337-.75-.75 0-.414.337-.75.75-.75l8.994.003Z" fill="currentColor"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Large brand name at bottom (NexStudio style) -->
+        <div class="mb-6 overflow-hidden">
+          <svg viewBox="0 0 800 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+            <text x="0" y="90" font-family="Inter,sans-serif" font-weight="700" font-size="100" letter-spacing="-4" fill="url(#footerGrad)" opacity="0.15">RAVEN</text>
+            <defs>
+              <linearGradient id="footerGrad" x1="400" y1="0" x2="400" y2="100" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#fff"/>
+                <stop offset="1" stop-color="#070707"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
+        <!-- Footer bottom -->
+        <div class="flex flex-col sm:flex-row gap-5 justify-between pb-10 border-t border-white/10 pt-6">
+          <div class="flex space-x-4 text-white [&>a]:text-base [&>a]:leading-6 [&>a]:hover:text-white/80 [&>a]:transition">
+            <a href="#">Terms &amp; conditions</a>
+            <a href="#">Privacy</a>
+          </div>
+          <div>
+            <p class="text-white text-base hover:text-white/80 transition">© 2026 RAVEN. All rights reserved.</p>
+          </div>
+        </div>
+
+      </div>
     </div>
-    <span class="footer-tagline">Build &middot; Fund &middot; Brand &middot; Grow</span>
-    <span class="footer-copy">&copy; 2026 RAVEN. All rights reserved.</span>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
-  <script src="script.js"></script>
+  <script>
+    const menuOpen = document.getElementById('menu-open');
+    const menuClose = document.getElementById('menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuOpen) menuOpen.addEventListener('click', () => mobileMenu.classList.add('open'));
+    if (menuClose) menuClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+  </script>
 </body>
 </html>
