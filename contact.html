@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — RAVEN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="index.html" class="nav-brand">
+      <img src="raven-main-logo.png" alt="RAVEN logo">
+      <span class="nav-brand-name">RAVEN</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html#services">Services</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#process">How It Works</a>
+      <a href="registration.html">Client Portal</a>
+      <a href="contact.html" class="nav-cta">Contact</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <span class="eyebrow">CONTACT RAVEN</span>
+    <h1>Let's build something <span class="red">real.</span></h1>
+    <p>Tell us what you are building, what you need, and where you want to go.</p>
+  </section>
+
+  <!-- CONTACT LAYOUT -->
+  <div class="contact-layout">
+    <!-- Contact Info -->
+    <div>
+      <div class="contact-info-block">
+        <span class="contact-label">General Enquiries</span>
+        <h3>hello@raven.business</h3>
+      </div>
+      <div class="contact-info-block">
+        <span class="contact-label">Phone</span>
+        <h3>+91 XXX XXX XXXX</h3>
+      </div>
+      <div class="contact-info-block">
+        <span class="contact-label">Office</span>
+        <h3>Chhatrapati Sambhajinagar / Pune, India</h3>
+      </div>
+    </div>
+
+    <!-- Form -->
+    <div class="form-card">
+      <h3>Send an Enquiry</h3>
+      <form onsubmit="event.preventDefault(); alert('Thank you. Connect this form to your preferred CRM/email backend to receive enquiries.');">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="c-name">Name <span style="color:#d90429">*</span></label>
+            <input type="text" id="c-name" name="name" required placeholder="Your full name">
+          </div>
+          <div class="form-group">
+            <label for="c-biz">Business Name</label>
+            <input type="text" id="c-biz" name="business" placeholder="Your business name">
+          </div>
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="c-email">Email <span style="color:#d90429">*</span></label>
+            <input type="email" id="c-email" name="email" required placeholder="you@company.com">
+          </div>
+          <div class="form-group">
+            <label for="c-phone">Phone</label>
+            <input type="tel" id="c-phone" name="phone" placeholder="+91 00000 00000">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="c-service">Service</label>
+          <select id="c-service" name="service">
+            <option value="">Select a service</option>
+            <option value="funding">Funding &amp; Loans</option>
+            <option value="realestate">Real Estate</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="c-message">Message</label>
+          <textarea id="c-message" name="message" rows="5" placeholder="Tell us about your project or enquiry..."></textarea>
+        </div>
+        <button type="submit" class="btn primary" style="width:100%; justify-content:center;">Send Enquiry &rarr;</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-brand">
+      <img src="raven-main-logo.png" alt="RAVEN">
+      <span class="footer-brand-name">RAVEN</span>
+    </div>
+    <span class="footer-tagline">Build &middot; Fund &middot; Brand &middot; Grow</span>
+    <span class="footer-copy">&copy; 2026 RAVEN</span>
+  </footer>
+
+</body>
+</html>

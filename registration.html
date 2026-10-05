@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Portal — RAVEN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="index.html" class="nav-brand">
+      <img src="raven-main-logo.png" alt="RAVEN logo">
+      <span class="nav-brand-name">RAVEN</span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html#services">Services</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#process">How It Works</a>
+      <a href="registration.html" class="nav-cta">Client Portal</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero portal-hero">
+    <span class="eyebrow">RAVEN CLIENT PORTAL</span>
+    <h1>Register once.<br><span class="red">Track everything.</span></h1>
+    <p>After a client finalizes a service, their RAVEN workspace becomes the single place to follow documents, tasks, milestones and updates.</p>
+  </section>
+
+  <!-- REGISTRATION LAYOUT -->
+  <div class="registration-layout">
+
+    <!-- Registration Form -->
+    <div class="reg-form-card">
+      <span class="eyebrow">NEW CLIENT</span>
+      <h2>Business registration</h2>
+      <p class="muted">This front-end form is ready to connect to a secure database/CRM.</p>
+
+      <form id="reg-form" onsubmit="handleReg(event)">
+        <div class="form-group">
+          <label for="r-name">Full Name <span style="color:#d90429">*</span></label>
+          <input type="text" id="r-name" name="name" required placeholder="Your full name">
+        </div>
+        <div class="form-group">
+          <label for="r-biz">Business Name <span style="color:#d90429">*</span></label>
+          <input type="text" id="r-biz" name="business" required placeholder="Your business name">
+        </div>
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="r-email">Email <span style="color:#d90429">*</span></label>
+            <input type="email" id="r-email" name="email" required placeholder="you@company.com">
+          </div>
+          <div class="form-group">
+            <label for="r-phone">Phone <span style="color:#d90429">*</span></label>
+            <input type="tel" id="r-phone" name="phone" required placeholder="+91 00000 00000">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="r-type">Business Type</label>
+          <select id="r-type" name="business_type">
+            <option value="startup">Startup</option>
+            <option value="msme">MSME / Existing Business</option>
+            <option value="ecommerce">Product / E-commerce</option>
+            <option value="investor">Investor</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="r-service">Services Required</label>
+          <select id="r-service" name="service">
+            <option value="funding">Funding &amp; Loans</option>
+            <option value="realestate">Real Estate</option>
+            <option value="multiple">Multiple Services</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="r-brief">Project Brief</label>
+          <textarea id="r-brief" name="brief" rows="5" placeholder="Briefly tell us what you need..."></textarea>
+        </div>
+
+        <!-- Terms & Conditions -->
+        <div class="terms-box">
+          <h4>Terms &amp; Conditions</h4>
+          <p>By registering with RAVEN, you confirm that the information provided is accurate and agree to work with RAVEN according to the scope, timelines, deliverables and communication process agreed for your project. Final terms, service scope and commercial conditions will be confirmed before work begins.</p>
+          <div class="checkbox-row">
+            <input type="checkbox" id="r-terms" name="terms" required>
+            <label for="r-terms">I have read and agree to the RAVEN Terms &amp; Conditions.</label>
+          </div>
+        </div>
+
+        <!-- Payment Terms -->
+        <div class="payment-box">
+          <h4>Payment Terms</h4>
+          <p><span class="yellow-text">Provisional:</span> Payment amount, advance, milestones and final payment schedule will be discussed and finalized with the client before project commencement.</p>
+          <span class="payment-badge">Payment Terms — To Be Finalized</span>
+        </div>
+
+        <button type="submit" class="btn primary" style="width:100%; justify-content:center; margin-top:24px;">Submit Registration &rarr;</button>
+        <div class="success-msg" id="success">Registration submitted. Connect the form to your backend to create the client&rsquo;s dashboard record.</div>
+      </form>
+    </div>
+
+    <!-- Dashboard Preview -->
+    <div class="dashboard-preview">
+      <div class="dash-header">
+        <span>Client Dashboard</span>
+        <span>RAVEN</span>
+      </div>
+
+      <div class="client-card">
+        <span class="proj-label">Project ID</span>
+        <div class="proj-id">RVN-2026-001</div>
+        <span class="proj-badge">IN PROGRESS</span>
+      </div>
+
+      <div class="progress-box">
+        <div class="progress-header">
+          <span>Business Launch</span>
+          <span>62%</span>
+        </div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" style="width:62%"></div>
+        </div>
+      </div>
+
+      <div class="dash-timeline">
+        <div class="timeline-step done-step">
+          <div class="t-circle done">&#10003;</div>
+          <span class="t-label">Initial Consultation</span>
+          <span class="t-status">Completed</span>
+        </div>
+        <div class="timeline-step done-step">
+          <div class="t-circle done">&#10003;</div>
+          <span class="t-label">Business Strategy</span>
+          <span class="t-status">Completed</span>
+        </div>
+        <div class="timeline-step">
+          <div class="t-circle active">03</div>
+          <span class="t-label">Documentation</span>
+          <span class="t-status" style="color:#d90429">In progress</span>
+        </div>
+        <div class="timeline-step">
+          <div class="t-circle upcoming">04</div>
+          <span class="t-label" style="color:#666">Execution</span>
+          <span class="t-status">Upcoming</span>
+        </div>
+        <div class="timeline-step">
+          <div class="t-circle upcoming">05</div>
+          <span class="t-label" style="color:#666">Final Delivery</span>
+          <span class="t-status">Upcoming</span>
+        </div>
+      </div>
+
+      <div class="dash-note">
+        <div class="note-title">Latest update</div>
+        <p>RAVEN team uploaded the required documents and moved the project to the next stage.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-brand">
+      <img src="raven-main-logo.png" alt="RAVEN">
+      <span class="footer-brand-name">RAVEN</span>
+    </div>
+    <span class="footer-tagline">Build &middot; Fund &middot; Brand &middot; Grow</span>
+    <span class="footer-copy">&copy; 2026 RAVEN</span>
+  </footer>
+
+  <script>
+    function handleReg(e) {
+      e.preventDefault();
+      document.getElementById('success').style.display = 'block';
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>
