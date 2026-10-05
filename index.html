@@ -114,24 +114,57 @@
     </section>
 
     <!-- Dark Stats / About Section -->
-    <section class="bg-black py-20">
+    <style>
+      .tm{position:relative;background:#000;color:#fff;overflow:hidden}
+      .tm-grid{display:grid;gap:2.5rem}
+      @media(min-width:1024px){.tm-grid{grid-template-columns:7fr 5fr;gap:5rem;align-items:end}}
+      .tm-eyebrow{display:inline-flex;align-items:center;gap:.75rem;font-family:"Anonymous Pro",ui-monospace,monospace;font-size:.875rem;letter-spacing:.14em;text-transform:uppercase;color:#a3a3a3;margin-bottom:1.5rem}
+      .tm-eyebrow::before{content:"";width:2.5rem;height:1px;background:#a3a3a3}
+      .tm-title{margin:0;font-weight:400;font-size:clamp(2.75rem,7vw,5.5rem);line-height:1;letter-spacing:-.045em;color:#fff}
+      .tm-lead{margin:0 0 1.25rem;font-size:1.25rem;line-height:1.5;color:#fff}
+      .tm-sub{margin:0;font-size:1rem;line-height:1.7;color:rgba(255,255,255,.6)}
+      .tm-sub span{color:#fff}
+      .tm-stats{display:grid;grid-template-columns:1fr 1fr;margin-top:4rem;border-top:1px solid rgba(255,255,255,.2);border-bottom:1px solid rgba(255,255,255,.2)}
+      @media(min-width:1024px){.tm-stats{margin-top:6rem}}
+      .tm-stat{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:3rem;padding:1.5rem 1rem 1.5rem 0;min-height:200px;transition:background .45s ease,color .45s ease,padding .45s ease}
+      .tm-stat+.tm-stat{border-left:1px solid rgba(255,255,255,.2);padding-left:1.5rem}
+      @media(min-width:1024px){.tm-stat{min-height:320px;padding:2.5rem 2rem 2.5rem 0}.tm-stat+.tm-stat{padding-left:3rem}}
+      .tm-top{display:flex;justify-content:space-between;align-items:flex-start;font-family:"Anonymous Pro",ui-monospace,monospace;font-size:.875rem;color:#737373;transition:color .45s ease}
+      .tm-arrow{width:36px;height:36px;border:1px solid rgba(255,255,255,.4);border-radius:9999px;display:flex;align-items:center;justify-content:center;color:#fff;transition:transform .5s cubic-bezier(.2,.8,.2,1),background .45s ease,color .45s ease,border-color .45s ease}
+      .tm-num{margin:0;font-weight:400;font-size:clamp(2.75rem,8vw,7.5rem);line-height:.95;letter-spacing:-.05em;color:#fff;transition:color .45s ease}
+      .tm-label{margin:1rem 0 0;font-family:"Anonymous Pro",ui-monospace,monospace;font-size:1rem;text-transform:uppercase;letter-spacing:.08em;color:#a3a3a3;transition:color .45s ease}
+      .tm-stat:hover{background:#fff}
+      @media(min-width:1024px){.tm-stat:hover{padding-left:2rem}.tm-stat+.tm-stat:hover{padding-left:3rem}}
+      .tm-stat:hover .tm-num{color:#000}
+      .tm-stat:hover .tm-label,.tm-stat:hover .tm-top{color:#525252}
+      .tm-stat:hover .tm-arrow{background:#000;color:#fff;border-color:#000;transform:rotate(-45deg)}
+      @media(max-width:639px){.tm-label{font-size:.8125rem;min-height:2.6em}.tm-arrow{width:30px;height:30px}.tm-lead{font-size:1.125rem}}
+    </style>
+    <section class="tm py-20 lg:py-28">
       <div class="max-w-7xl mx-auto px-6">
-        <div class="flex flex-col lg:flex-row lg:items-center">
-          <div class="sm:mb-16 mb-8 lg:mb-0">
-            <h2 class="text-white text-5xl font-normal">A Team of Funders &amp; <span class="italic">Builders</span></h2>
+        <div class="tm-grid">
+          <div>
+            <span class="tm-eyebrow">About RAVEN</span>
+            <h2 class="tm-title">A Team of Funders &amp; <span class="italic">Builders</span></h2>
           </div>
-          <div class="lg:w-6/12">
-            <p class="text-white text-xl mb-5 font-normal">We combine financial expertise with business strategy to help Indian enterprises grow and thrive.</p>
-            <p class="text-white/60"><span class="text-white">From early-stage</span> startups to established businesses, we help our clients transform their vision into funded, registered, and branded realities.</p>
-            <div class="mt-12 space-y-8 sm:space-y-0 columns-1 sm:columns-2">
-              <div>
-                <h3 class="text-white text-5xl mb-6 font-normal"><span class="">50+</span></h3>
-                <p class="text-lg text-white font-mono font-normal">Businesses Funded</p>
-              </div>
-              <div>
-                <h3 class="text-white text-5xl mb-6 font-normal"><span class="">&#8377;5Cr+</span></h3>
-                <p class="text-lg text-white font-mono font-normal">Capital Facilitated</p>
-              </div>
+          <div>
+            <p class="tm-lead">We combine financial expertise with business strategy to help Indian enterprises grow and thrive.</p>
+            <p class="tm-sub"><span>From early-stage</span> startups to established businesses, we help our clients transform their vision into funded, registered, and branded realities.</p>
+          </div>
+        </div>
+        <div class="tm-stats">
+          <div class="tm-stat">
+            <div class="tm-top"><span>01</span><span class="tm-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+            <div>
+              <h3 class="tm-num">50+</h3>
+              <p class="tm-label">Businesses Funded</p>
+            </div>
+          </div>
+          <div class="tm-stat">
+            <div class="tm-top"><span>02</span><span class="tm-arrow"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span></div>
+            <div>
+              <h3 class="tm-num">&#8377;5Cr+</h3>
+              <p class="tm-label">Capital Facilitated</p>
             </div>
           </div>
         </div>
@@ -221,35 +254,66 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section class="py-12 lg:py-25">
-      <div class="max-w-[1440px] mx-auto">
-        <div class="pl-4 sm:pl-10 xl:pl-20 px-6">
-          <div class="flex flex-col gap-10 lg:flex-row items-center">
-            <div class="w-full lg:w-4/12 mb-10 sm:mb-0">
-              <h2 class="font-normal text-5xl text-left mb-10 lg:mb-16 sm:text-left text-black -tracking-[1.92px]">Client <span class="italic">Reviews</span></h2>
-            </div>
-            <div class="w-full lg:w-8/12 overflow-hidden">
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div class="rounded-[20px] border border-gray-200 bg-[#FBFBFB] p-10">
-                  <p class="text-gray-700 text-lg mb-6">"RAVEN helped us secure funding when every bank said no. Their network and expertise made all the difference for our startup."</p>
-                  <div>
-                    <p class="font-medium text-black">Rahul Sharma</p>
-                    <p class="text-gray-500 text-sm">CEO, TechVenture Pune</p>
-                  </div>
-                </div>
-                <div class="rounded-[20px] border border-gray-200 bg-[#FBFBFB] p-10">
-                  <p class="text-gray-700 text-lg mb-6">"From registration to funding, RAVEN handled everything. We launched our business in record time with zero hassle."</p>
-                  <div>
-                    <p class="font-medium text-black">Priya Deshmukh</p>
-                    <p class="text-gray-500 text-sm">Founder, GreenBuild Solutions</p>
-                  </div>
-                </div>
+    <section class="py-16 lg:py-28 bg-white">
+      <div class="max-w-7xl mx-auto px-6">
+
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-14">
+          <h2 class="font-normal text-5xl lg:text-6xl text-black -tracking-[2px]">What our <span class="italic">clients say</span></h2>
+          <p class="text-gray-400 text-base lg:text-right max-w-xs">Trusted by everyday people across Maharashtra.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-gray-200 border border-gray-200 rounded-[28px] overflow-hidden">
+
+          <!-- Card 1 -->
+          <div class="trev bg-white p-8 lg:p-10 flex flex-col gap-8 transition-colors duration-500">
+            <svg width="36" height="28" viewBox="0 0 36 28" fill="none" class="trev-q flex-shrink-0 transition-colors duration-500"><path d="M0 28V17.2C0 12.48 1.12 8.56 3.36 5.44 5.6 2.24 9.12 0.48 13.92 0.16L14.88 3.04C12.16 3.6 10.08 4.8 8.64 6.64 7.28 8.48 6.64 10.52 6.72 12.76H13.44V28H0ZM21.6 28V17.2C21.6 12.48 22.72 8.56 24.96 5.44 27.2 2.24 30.72 0.48 35.52 0.16L36 3.04C33.28 3.6 31.2 4.8 29.76 6.64 28.4 8.48 27.76 10.52 27.84 12.76H34.56V28H21.6Z" fill="currentColor"/></svg>
+            <p class="trev-txt text-gray-600 text-lg leading-relaxed flex-1 transition-colors duration-500">"I never thought getting a business loan would be this easy. RAVEN sorted everything out and I had the money in my account within a week."</p>
+            <div class="flex items-center gap-4">
+              <img src="https://i.pravatar.cc/64?img=12" class="w-14 h-14 rounded-full object-cover flex-shrink-0 ring-2 ring-gray-100" alt="Amit Patil" loading="lazy">
+              <div>
+                <p class="trev-name font-medium text-black text-base leading-tight transition-colors duration-500">Amit Patil</p>
+                <p class="trev-sub text-gray-400 text-sm mt-0.5 transition-colors duration-500">Kirana shop owner, Nashik</p>
               </div>
             </div>
           </div>
+
+          <!-- Card 2 -->
+          <div class="trev bg-white p-8 lg:p-10 flex flex-col gap-8 transition-colors duration-500">
+            <svg width="36" height="28" viewBox="0 0 36 28" fill="none" class="trev-q flex-shrink-0 transition-colors duration-500"><path d="M0 28V17.2C0 12.48 1.12 8.56 3.36 5.44 5.6 2.24 9.12 0.48 13.92 0.16L14.88 3.04C12.16 3.6 10.08 4.8 8.64 6.64 7.28 8.48 6.64 10.52 6.72 12.76H13.44V28H0ZM21.6 28V17.2C21.6 12.48 22.72 8.56 24.96 5.44 27.2 2.24 30.72 0.48 35.52 0.16L36 3.04C33.28 3.6 31.2 4.8 29.76 6.64 28.4 8.48 27.76 10.52 27.84 12.76H34.56V28H21.6Z" fill="currentColor"/></svg>
+            <p class="trev-txt text-gray-600 text-lg leading-relaxed flex-1 transition-colors duration-500">"I started selling homemade food from my kitchen and wanted to register it properly. RAVEN took care of everything in just a few days."</p>
+            <div class="flex items-center gap-4">
+              <img src="https://i.pravatar.cc/64?img=47" class="w-14 h-14 rounded-full object-cover flex-shrink-0 ring-2 ring-gray-100" alt="Priya Kulkarni" loading="lazy">
+              <div>
+                <p class="trev-name font-medium text-black text-base leading-tight transition-colors duration-500">Priya Kulkarni</p>
+                <p class="trev-sub text-gray-400 text-sm mt-0.5 transition-colors duration-500">Home food business, Pune</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="trev bg-white p-8 lg:p-10 flex flex-col gap-8 transition-colors duration-500">
+            <svg width="36" height="28" viewBox="0 0 36 28" fill="none" class="trev-q flex-shrink-0 transition-colors duration-500"><path d="M0 28V17.2C0 12.48 1.12 8.56 3.36 5.44 5.6 2.24 9.12 0.48 13.92 0.16L14.88 3.04C12.16 3.6 10.08 4.8 8.64 6.64 7.28 8.48 6.64 10.52 6.72 12.76H13.44V28H0ZM21.6 28V17.2C21.6 12.48 22.72 8.56 24.96 5.44 27.2 2.24 30.72 0.48 35.52 0.16L36 3.04C33.28 3.6 31.2 4.8 29.76 6.64 28.4 8.48 27.76 10.52 27.84 12.76H34.56V28H21.6Z" fill="currentColor"/></svg>
+            <p class="trev-txt text-gray-600 text-lg leading-relaxed flex-1 transition-colors duration-500">"Opening my beauty parlour felt like a far dream. RAVEN helped me get the loan and handle all the paperwork. Now I have my own place."</p>
+            <div class="flex items-center gap-4">
+              <img src="https://i.pravatar.cc/64?img=56" class="w-14 h-14 rounded-full object-cover flex-shrink-0 ring-2 ring-gray-100" alt="Neha Bhosale" loading="lazy">
+              <div>
+                <p class="trev-name font-medium text-black text-base leading-tight transition-colors duration-500">Neha Bhosale</p>
+                <p class="trev-sub text-gray-400 text-sm mt-0.5 transition-colors duration-500">Beauty parlour owner, Aurangabad</p>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
+    <style>
+      .trev:hover{background:#000}
+      .trev:hover .trev-q{color:#fff}
+      .trev:hover .trev-txt{color:#a3a3a3}
+      .trev:hover .trev-name{color:#fff}
+      .trev:hover .trev-sub{color:#525252}
+      .trev:hover img{ring-color:#333}
+    </style>
 
     <!-- CTA Section -->
     <section class="py-14 bg-[#FBFBFB]">
