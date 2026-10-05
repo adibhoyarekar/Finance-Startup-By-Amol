@@ -343,6 +343,153 @@
       .trev:hover img{ring-color:#333}
     </style>
 
+    <!-- Subscription Plans Section -->
+    <style>
+      .plans-grid{display:grid;grid-template-columns:1fr;gap:1.5rem}
+      @media(min-width:768px){.plans-grid{grid-template-columns:repeat(3,1fr);gap:2rem}}
+      .pricing-card{display:flex;flex-direction:column;position:relative;padding:2rem}
+      @media(min-width:1024px){.pricing-card{padding:2.5rem}}
+      .pricing-card:hover{box-shadow:0 20px 40px -20px rgba(0,0,0,.25);transform:translateY(-4px)}
+      .pricing-card .flex-1{flex:1 1 0%}
+      .pricing-card .mt-0\.5{margin-top:.125rem}
+      .pricing-card .font-bold{font-weight:700}
+      .pricing-card [class*="space-y-4"]>*+*{margin-top:1rem}
+      .pricing-card button{cursor:pointer}
+      .plan-badge{position:absolute;top:-.75rem;left:1.5rem;background:#fff;color:#000;border:1px solid #000;font-size:.75rem;font-weight:700;letter-spacing:.05em;padding:.25rem 1rem;border-radius:9999px}
+    </style>
+    <section class="py-16 lg:py-28 bg-white">
+      <div class="max-w-7xl mx-auto px-6">
+
+        <div class="mb-16">
+          <h2 class="font-normal text-5xl lg:text-6xl text-black -tracking-[2px]">Simple, Transparent <span class="italic">Pricing</span></h2>
+          <p class="text-gray-600 text-lg mt-4 max-w-2xl">Choose the plan that works best for your business. Scale as you grow.</p>
+        </div>
+
+        <div class="plans-grid">
+
+          <!-- Free Plan -->
+          <div class="pricing-card group bg-white border border-gray-200 rounded-3xl p-8 lg:p-10 transition-all duration-500 flex flex-col hover:border-black hover:shadow-xl">
+            <div class="mb-8">
+              <h3 class="text-2xl lg:text-3xl font-normal text-black mb-2">Free</h3>
+              <p class="text-gray-600 text-sm">Get started with essential features</p>
+            </div>
+
+            <div class="mb-8">
+              <div class="flex items-baseline gap-1">
+                <span class="text-4xl font-bold text-black">₹0</span>
+                <span class="text-gray-400 text-sm">/month</span>
+              </div>
+            </div>
+
+            <button class="w-full px-6 py-3 mb-8 border border-black text-black font-medium rounded-full hover:bg-black hover:text-white transition-all duration-300">
+              Get Started
+            </button>
+
+            <div class="space-y-4 flex-1">
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-black flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span class="text-gray-700">Browse loan options</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-black flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span class="text-gray-700">View interest rates</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-black flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span class="text-gray-700">Basic calculators</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pro Plan -->
+          <div class="pricing-card group bg-black rounded-3xl p-8 lg:p-10 transition-all duration-500 flex flex-col ring-2 ring-black relative">
+            <div class="plan-badge">POPULAR</div>
+            <div class="mb-8">
+              <h3 class="text-2xl lg:text-3xl font-normal text-white mb-2">Pro</h3>
+              <p class="text-gray-400 text-sm">For growing businesses</p>
+            </div>
+
+            <div class="mb-8">
+              <div class="flex items-baseline gap-1">
+                <span class="text-4xl font-bold text-white">₹999</span>
+                <span class="text-gray-500 text-sm">/month</span>
+              </div>
+            </div>
+
+            <button class="w-full px-6 py-3 mb-8 bg-white text-black font-medium rounded-full hover:bg-gray-100 transition-all duration-300">
+              Start Free Trial
+            </button>
+
+            <div class="space-y-4 flex-1">
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-white flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span class="text-gray-300">Everything in Free, plus:</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-white flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span class="text-gray-300">Loan application support</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-white flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span class="text-gray-300">Personalized recommendations</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-white flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span class="text-gray-300">Email support (24 hours)</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-white flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span class="text-gray-300">Document checklist</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pro Plus Plan -->
+          <div class="pricing-card group bg-white border border-gray-200 rounded-3xl p-8 lg:p-10 transition-all duration-500 flex flex-col hover:border-black hover:shadow-xl">
+            <div class="mb-8">
+              <h3 class="text-2xl lg:text-3xl font-normal text-black mb-2">Pro Plus</h3>
+              <p class="text-gray-600 text-sm">For serious entrepreneurs</p>
+            </div>
+
+            <div class="mb-8">
+              <div class="flex items-baseline gap-1">
+                <span class="text-4xl font-bold text-black">₹2,999</span>
+                <span class="text-gray-400 text-sm">/month</span>
+              </div>
+            </div>
+
+            <button class="w-full px-6 py-3 mb-8 border border-black text-black font-medium rounded-full hover:bg-black hover:text-white transition-all duration-300">
+              Schedule Demo
+            </button>
+
+            <div class="space-y-4 flex-1">
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-black flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span class="text-gray-700">Everything in Pro, plus:</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-black flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span class="text-gray-700">Dedicated account manager</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-black flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span class="text-gray-700">Priority loan processing</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-black flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span class="text-gray-700">Phone & chat support (24/7)</span>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-black flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                <span class="text-gray-700">Business growth consulting</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
     <!-- CTA Section -->
     <section class="py-14 bg-[#FBFBFB]">
       <div class="max-w-7xl mx-auto px-6">
