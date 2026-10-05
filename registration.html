@@ -3,318 +3,262 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Client Portal — RAVEN</title>
-  <meta name="description" content="Register with RAVEN and track your project from a single dashboard.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <title>Business Registration - RAVEN</title>
   <link rel="stylesheet" href="nexstudio.css">
-  <style>
-    #mobile-menu { display:none; position:fixed; inset:0; z-index:200; background:#fff; flex-direction:column; align-items:center; justify-content:center; gap:2rem; }
-    #mobile-menu.open { display:flex; }
-    #mobile-menu a { font-size:1.5rem; font-weight:400; text-transform:uppercase; letter-spacing:.05em; color:#000; }
-    .nav-svg-icon { display:inline-block; vertical-align:middle; }
-    input, select, textarea { font-family: 'Inter', sans-serif; }
-    #success { display:none; }
-  </style>
 </head>
-<body class="antialiased">
+<body class="font-sans bg-white text-black antialiased">
 
-  <!-- MOBILE MENU -->
-  <div id="mobile-menu">
-    <button id="menu-close" style="position:absolute;top:24px;right:24px;font-size:1.5rem;background:none;border:none;cursor:pointer;">✕</button>
-    <a href="index.html">Home</a>
-    <a href="index.html#services">Services</a>
-    <a href="index.html#about">About</a>
-    <a href="index.html#process">How It Works</a>
-    <a href="registration.html">Client Portal</a>
-    <a href="contact.html">Contact</a>
-  </div>
-
-  <!-- HEADER / NAV -->
+  <!-- Header -->
   <header class="sticky top-0 z-50 transition-all duration-300 bg-white/80 backdrop-blur-md shadow-sm">
     <nav>
       <div class="max-w-7xl mx-auto px-6">
         <div class="flex items-center justify-between py-4 lg:py-6">
-          <div>
-            <a href="index.html" class="flex items-center gap-3">
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="nav-svg-icon">
-                <path d="M16 2L28 8V16C28 22.627 22.627 28 16 28C9.373 28 4 22.627 4 16V8L16 2Z" fill="black"/>
-                <path d="M12 14H20M12 18H17" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
-              <span style="font-family:'Inter',sans-serif;font-weight:700;font-size:1.15rem;letter-spacing:.06em;color:#000;">RAVEN</span>
-            </a>
+          <a href="index.html">
+            <svg width="120" height="24" viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <text x="0" y="20" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="black" letter-spacing="-1">RAVEN</text>
+            </svg>
+          </a>
+          <div class="hidden lg:block">
+            <ul class="flex space-x-8">
+              <li>
+                <a class="group py-4 inline-block uppercase font-normal text-black hover:text-gray-500" href="funding-loans.html">
+                  <span class="relative inline-block overflow-hidden">
+                    <span class="block transition-transform duration-300 ease-in-out group-hover:-translate-y-full">Services</span>
+                    <span class="absolute top-0 left-0 block w-full transition-transform duration-300 ease-in-out translate-y-full group-hover:translate-y-0">Services</span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a class="group py-4 inline-block uppercase font-normal text-black hover:text-gray-500" href="index.html#about">
+                  <span class="relative inline-block overflow-hidden">
+                    <span class="block transition-transform duration-300 ease-in-out group-hover:-translate-y-full">About</span>
+                    <span class="absolute top-0 left-0 block w-full transition-transform duration-300 ease-in-out translate-y-full group-hover:translate-y-0">About</span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a class="group py-4 inline-block uppercase font-normal text-black hover:text-gray-500" href="registration.html">
+                  <span class="relative inline-block overflow-hidden">
+                    <span class="block transition-transform duration-300 ease-in-out group-hover:-translate-y-full">Register</span>
+                    <span class="absolute top-0 left-0 block w-full transition-transform duration-300 ease-in-out translate-y-full group-hover:translate-y-0">Register</span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a class="group py-4 inline-block uppercase font-normal text-black hover:text-gray-500" href="contact.html">
+                  <span class="relative inline-block overflow-hidden">
+                    <span class="block transition-transform duration-300 ease-in-out group-hover:-translate-y-full">Contact</span>
+                    <span class="absolute top-0 left-0 block w-full transition-transform duration-300 ease-in-out translate-y-full group-hover:translate-y-0">Contact</span>
+                  </span>
+                </a>
+              </li>
+            </ul>
           </div>
-
-          <div class="hidden lg:flex items-center gap-8">
-            <a href="index.html#services" class="group relative overflow-hidden inline-block text-xs uppercase tracking-widest text-black font-medium" style="font-family:'Inter',sans-serif;">
-              <span class="block transition-transform duration-300 group-hover:-translate-y-full">Services</span>
-              <span class="absolute inset-0 flex items-center justify-center transition-transform duration-300 translate-y-full group-hover:translate-y-0">Services</span>
+          <div class="flex gap-3 lg:gap-5 items-center">
+            <a class="group px-4 lg:px-6 py-2.5 lg:py-4.5 hidden sm:inline-flex items-center justify-center bg-black text-xs lg:text-sm font-medium -tracking-[0.2px] leading-5 text-white rounded-full hover:bg-gray-800 transition-all duration-300" href="contact.html">
+              <span class="relative inline-block overflow-hidden">
+                <span class="block transition-transform duration-300 ease-in-out group-hover:-translate-y-full">GET STARTED</span>
+                <span class="absolute top-0 left-0 block w-full transition-transform duration-300 ease-in-out translate-y-full group-hover:translate-y-0">GET STARTED</span>
+              </span>
             </a>
-            <a href="index.html#about" class="group relative overflow-hidden inline-block text-xs uppercase tracking-widest text-black font-medium" style="font-family:'Inter',sans-serif;">
-              <span class="block transition-transform duration-300 group-hover:-translate-y-full">About</span>
-              <span class="absolute inset-0 flex items-center justify-center transition-transform duration-300 translate-y-full group-hover:translate-y-0">About</span>
-            </a>
-            <a href="funding-loans.html" class="group relative overflow-hidden inline-block text-xs uppercase tracking-widest text-black font-medium" style="font-family:'Inter',sans-serif;">
-              <span class="block transition-transform duration-300 group-hover:-translate-y-full">Funding</span>
-              <span class="absolute inset-0 flex items-center justify-center transition-transform duration-300 translate-y-full group-hover:translate-y-0">Funding</span>
-            </a>
-            <a href="registration.html" class="group relative overflow-hidden inline-block text-xs uppercase tracking-widest text-black font-medium" style="font-family:'Inter',sans-serif;">
-              <span class="block transition-transform duration-300 group-hover:-translate-y-full">Client Portal</span>
-              <span class="absolute inset-0 flex items-center justify-center transition-transform duration-300 translate-y-full group-hover:translate-y-0">Client Portal</span>
-            </a>
-            <a href="contact.html" class="rounded-full bg-black text-white text-xs uppercase tracking-widest px-5 py-2.5 font-medium hover:bg-neutral-800 transition-colors" style="font-family:'Inter',sans-serif;">
-              Contact
-            </a>
+            <div class="block lg:hidden">
+              <button class="text-black font-medium text-sm uppercase hover:text-gray-500 transition">Menu</button>
+            </div>
           </div>
-
-          <button id="menu-open" class="lg:hidden p-2" aria-label="Open menu">
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect y="4" width="22" height="1.5" rx=".75" fill="black"/><rect y="10" width="22" height="1.5" rx=".75" fill="black"/><rect y="16" width="22" height="1.5" rx=".75" fill="black"/></svg>
-          </button>
         </div>
       </div>
     </nav>
   </header>
 
-  <!-- PAGE HERO -->
-  <section class="max-w-7xl mx-auto px-6 pt-20 pb-12 lg:pt-28 lg:pb-16">
-    <p class="text-xs uppercase tracking-widest text-gray-400 mb-6" style="font-family:'Anonymous Pro',monospace;">RAVEN Client Portal</p>
-    <h1 class="text-4xl lg:text-6xl font-normal -tracking-[2px] leading-tight text-black mb-6" style="font-family:'Inter',sans-serif;">
-      Register once.<br><em>Track everything.</em>
-    </h1>
-    <p class="text-base lg:text-lg text-gray-500 max-w-xl leading-relaxed">After a client finalizes a service, their RAVEN workspace becomes the single place to follow documents, tasks, milestones and updates.</p>
-  </section>
+  <main>
 
-  <!-- REGISTRATION LAYOUT -->
-  <section class="max-w-7xl mx-auto px-6 pb-20 lg:pb-28">
-    <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
-
-      <!-- Registration Form -->
-      <div class="lg:col-span-3">
-        <div class="bg-neutral-950 rounded-3xl p-8 lg:p-12">
-          <p class="text-xs uppercase tracking-widest text-white/40 mb-2" style="font-family:'Anonymous Pro',monospace;">New Client</p>
-          <h2 class="text-2xl lg:text-3xl font-normal text-white mb-2" style="font-family:'Inter',sans-serif;">Business Registration</h2>
-          <p class="text-sm text-white/40 mb-8" style="font-family:'Inter',sans-serif;">This front-end form is ready to connect to a secure database / CRM.</p>
-
-          <form id="reg-form" onsubmit="handleReg(event)" class="flex flex-col gap-5">
-            <div class="flex flex-col gap-2">
-              <label for="r-name" class="text-xs uppercase tracking-widest text-white/50" style="font-family:'Anonymous Pro',monospace;">Full Name *</label>
-              <input type="text" id="r-name" name="name" required placeholder="Your full name"
-                class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-white/40 transition-colors">
-            </div>
-            <div class="flex flex-col gap-2">
-              <label for="r-biz" class="text-xs uppercase tracking-widest text-white/50" style="font-family:'Anonymous Pro',monospace;">Business Name *</label>
-              <input type="text" id="r-biz" name="business" required placeholder="Your business name"
-                class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-white/40 transition-colors">
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div class="flex flex-col gap-2">
-                <label for="r-email" class="text-xs uppercase tracking-widest text-white/50" style="font-family:'Anonymous Pro',monospace;">Email *</label>
-                <input type="email" id="r-email" name="email" required placeholder="you@company.com"
-                  class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-white/40 transition-colors">
-              </div>
-              <div class="flex flex-col gap-2">
-                <label for="r-phone" class="text-xs uppercase tracking-widest text-white/50" style="font-family:'Anonymous Pro',monospace;">Phone *</label>
-                <input type="tel" id="r-phone" name="phone" required placeholder="+91 00000 00000"
-                  class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-white/40 transition-colors">
-              </div>
-            </div>
-            <div class="flex flex-col gap-2">
-              <label for="r-type" class="text-xs uppercase tracking-widest text-white/50" style="font-family:'Anonymous Pro',monospace;">Business Type</label>
-              <select id="r-type" name="business_type"
-                class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white/40 transition-colors appearance-none" style="background-color:rgba(255,255,255,0.05);">
-                <option value="startup" style="background:#1a1a1a;">Startup</option>
-                <option value="msme" style="background:#1a1a1a;">MSME / Existing Business</option>
-                <option value="ecommerce" style="background:#1a1a1a;">Product / E-commerce</option>
-                <option value="investor" style="background:#1a1a1a;">Investor</option>
-                <option value="other" style="background:#1a1a1a;">Other</option>
-              </select>
-            </div>
-            <div class="flex flex-col gap-2">
-              <label for="r-service" class="text-xs uppercase tracking-widest text-white/50" style="font-family:'Anonymous Pro',monospace;">Services Required</label>
-              <select id="r-service" name="service"
-                class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white/40 transition-colors appearance-none" style="background-color:rgba(255,255,255,0.05);">
-                <option value="funding" style="background:#1a1a1a;">Funding &amp; Loans</option>
-                <option value="realestate" style="background:#1a1a1a;">Real Estate</option>
-                <option value="multiple" style="background:#1a1a1a;">Multiple Services</option>
-              </select>
-            </div>
-            <div class="flex flex-col gap-2">
-              <label for="r-brief" class="text-xs uppercase tracking-widest text-white/50" style="font-family:'Anonymous Pro',monospace;">Project Brief</label>
-              <textarea id="r-brief" name="brief" rows="4" placeholder="Briefly tell us what you need..."
-                class="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder-white/20 focus:outline-none focus:border-white/40 transition-colors resize-none"></textarea>
-            </div>
-
-            <!-- Terms & Conditions -->
-            <div class="border border-white/10 rounded-2xl p-6">
-              <p class="text-xs uppercase tracking-widest text-white/40 mb-3" style="font-family:'Anonymous Pro',monospace;">Terms &amp; Conditions</p>
-              <p class="text-sm text-white/50 leading-relaxed mb-4" style="font-family:'Inter',sans-serif;">By registering with RAVEN, you confirm that the information provided is accurate and agree to work with RAVEN according to the scope, timelines, deliverables and communication process agreed for your project. Final terms, service scope and commercial conditions will be confirmed before work begins.</p>
-              <div class="flex items-start gap-3">
-                <input type="checkbox" id="r-terms" name="terms" required class="mt-1 accent-white w-4 h-4">
-                <label for="r-terms" class="text-sm text-white/60 leading-relaxed" style="font-family:'Inter',sans-serif;">I have read and agree to the RAVEN Terms &amp; Conditions.</label>
-              </div>
-            </div>
-
-            <!-- Payment Terms -->
-            <div class="border border-white/10 rounded-2xl p-6">
-              <p class="text-xs uppercase tracking-widest text-white/40 mb-3" style="font-family:'Anonymous Pro',monospace;">Payment Terms</p>
-              <p class="text-sm text-white/50 leading-relaxed mb-4" style="font-family:'Inter',sans-serif;"><span class="text-white">Provisional:</span> Payment amount, advance, milestones and final payment schedule will be discussed and finalized with the client before project commencement.</p>
-              <span class="text-xs uppercase tracking-widest border border-white/20 rounded-full px-4 py-2 text-white/50" style="font-family:'Anonymous Pro',monospace;">Payment Terms — To Be Finalized</span>
-            </div>
-
-            <button type="submit"
-              class="rounded-full bg-white text-black text-xs uppercase tracking-widest px-8 py-4 font-medium hover:bg-gray-100 transition-colors mt-2 w-full" style="font-family:'Inter',sans-serif;">
-              Submit Registration &rarr;
-            </button>
-            <div id="success" class="text-xs text-white/50 text-center" style="font-family:'Anonymous Pro',monospace;">
-              Registration submitted. Connect the form to your backend to create the client's dashboard record.
-            </div>
-          </form>
+    <!-- Page Hero -->
+    <section class="lg:pt-30 lg:pb-20 pt-20 pb-10">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="max-w-3xl text-center mx-auto">
+          <h1 class="text-5xl lg:text-7xl font-normal -tracking-[2.88px] mb-4 text-black">
+            Business <span class="italic">Registration</span>
+          </h1>
+          <p class="mb-8 lg:mb-12 text-gray-700 text-lg leading-6 -tracking-[0.2px] max-w-xl mx-auto">
+            Get your business legally established in India with fast, compliant, and hassle-free registration services from RAVEN.
+          </p>
+          <div class="flex flex-col sm:flex-row justify-center items-center gap-5">
+            <a class="group px-6 py-4.5 flex gap-2 items-center bg-black text-sm font-medium -tracking-[0.2px] leading-5 text-white rounded-full hover:bg-gray-800 transition-all duration-300" href="contact.html">
+              <span class="relative inline-block overflow-hidden">
+                <span class="block transition-transform duration-300 ease-in-out group-hover:-translate-y-full">START REGISTRATION</span>
+                <span class="absolute top-0 left-0 block w-full transition-transform duration-300 ease-in-out translate-y-full group-hover:translate-y-0">START REGISTRATION</span>
+              </span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a class="group px-6 py-4.5 flex gap-2 items-center bg-white border border-black text-sm font-medium -tracking-[0.2px] leading-5 text-black rounded-full hover:bg-gray-100 transition-all duration-300" href="contact.html">
+              <span class="relative inline-block overflow-hidden">
+                <span class="block transition-transform duration-300 ease-in-out group-hover:-translate-y-full">TALK TO US</span>
+                <span class="absolute top-0 left-0 block w-full transition-transform duration-300 ease-in-out translate-y-full group-hover:translate-y-0">TALK TO US</span>
+              </span>
+            </a>
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- Dashboard Preview -->
-      <div class="lg:col-span-2">
-        <div class="border border-gray-200 rounded-3xl overflow-hidden">
-          <div class="bg-black px-6 py-4 flex items-center justify-between">
-            <span class="text-xs uppercase tracking-widest text-white/60" style="font-family:'Anonymous Pro',monospace;">Client Dashboard</span>
-            <span class="text-xs font-bold text-white" style="font-family:'Inter',sans-serif;">RAVEN</span>
+    <!-- Dark Stats -->
+    <section class="bg-black py-20">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col lg:flex-row lg:items-center">
+          <div class="sm:mb-16 mb-8 lg:mb-0">
+            <h2 class="text-white text-5xl font-normal">Simple, Fast &amp; <span class="italic">Compliant</span></h2>
           </div>
-
-          <div class="p-6 flex flex-col gap-5">
-            <!-- Project ID -->
-            <div class="bg-neutral-950 rounded-2xl p-5">
-              <p class="text-xs uppercase tracking-widest text-white/40 mb-2" style="font-family:'Anonymous Pro',monospace;">Project ID</p>
-              <p class="text-2xl font-mono text-white mb-3">RVN-2026-001</p>
-              <span class="text-xs uppercase tracking-widest bg-white/10 rounded-full px-3 py-1 text-white/60" style="font-family:'Anonymous Pro',monospace;">In Progress</span>
-            </div>
-
-            <!-- Progress -->
-            <div class="border border-gray-200 rounded-2xl p-5">
-              <div class="flex items-center justify-between mb-3">
-                <span class="text-sm font-medium" style="font-family:'Inter',sans-serif;">Business Launch</span>
-                <span class="text-xs text-gray-400 font-mono">62%</span>
+          <div class="lg:w-6/12">
+            <p class="text-white text-xl mb-5 font-normal">We handle the paperwork so you can focus on your business.</p>
+            <p class="text-white/60"><span class="text-white">From sole proprietorship</span> to private limited companies, we register all business types quickly and correctly.</p>
+            <div class="mt-12 space-y-8 sm:space-y-0 columns-1 sm:columns-2">
+              <div>
+                <h3 class="text-white text-5xl mb-6 font-normal"><span class="">7 Days</span></h3>
+                <p class="text-lg text-white font-mono font-normal">Average Registration Time</p>
               </div>
-              <div class="h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                <div class="h-full bg-black rounded-full" style="width:62%"></div>
+              <div>
+                <h3 class="text-white text-5xl mb-6 font-normal"><span class="">100%</span></h3>
+                <p class="text-lg text-white font-mono font-normal">Compliance Guaranteed</p>
               </div>
-            </div>
-
-            <!-- Timeline -->
-            <div class="border border-gray-200 rounded-2xl p-5 flex flex-col gap-3">
-              <p class="text-xs uppercase tracking-widest text-gray-400 mb-1" style="font-family:'Anonymous Pro',monospace;">Milestones</p>
-              <div class="flex items-center gap-3">
-                <div class="w-6 h-6 rounded-full bg-black flex items-center justify-center flex-shrink-0">
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </div>
-                <span class="text-sm text-gray-500 line-through" style="font-family:'Inter',sans-serif;">Initial Consultation</span>
-                <span class="ml-auto text-xs text-gray-400 font-mono">Done</span>
-              </div>
-              <div class="flex items-center gap-3">
-                <div class="w-6 h-6 rounded-full bg-black flex items-center justify-center flex-shrink-0">
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </div>
-                <span class="text-sm text-gray-500 line-through" style="font-family:'Inter',sans-serif;">Business Strategy</span>
-                <span class="ml-auto text-xs text-gray-400 font-mono">Done</span>
-              </div>
-              <div class="flex items-center gap-3">
-                <div class="w-6 h-6 rounded-full border-2 border-black flex items-center justify-center flex-shrink-0">
-                  <span class="text-xs font-mono text-black">03</span>
-                </div>
-                <span class="text-sm font-medium" style="font-family:'Inter',sans-serif;">Documentation</span>
-                <span class="ml-auto text-xs font-mono text-black">Active</span>
-              </div>
-              <div class="flex items-center gap-3">
-                <div class="w-6 h-6 rounded-full border border-gray-200 flex items-center justify-center flex-shrink-0">
-                  <span class="text-xs font-mono text-gray-300">04</span>
-                </div>
-                <span class="text-sm text-gray-400" style="font-family:'Inter',sans-serif;">Execution</span>
-                <span class="ml-auto text-xs font-mono text-gray-300">Soon</span>
-              </div>
-              <div class="flex items-center gap-3">
-                <div class="w-6 h-6 rounded-full border border-gray-200 flex items-center justify-center flex-shrink-0">
-                  <span class="text-xs font-mono text-gray-300">05</span>
-                </div>
-                <span class="text-sm text-gray-400" style="font-family:'Inter',sans-serif;">Final Delivery</span>
-                <span class="ml-auto text-xs font-mono text-gray-300">Soon</span>
-              </div>
-            </div>
-
-            <!-- Latest Update -->
-            <div class="bg-neutral-950 rounded-2xl p-5">
-              <p class="text-xs uppercase tracking-widest text-white/40 mb-2" style="font-family:'Anonymous Pro',monospace;">Latest Update</p>
-              <p class="text-sm text-white/70 leading-relaxed" style="font-family:'Inter',sans-serif;">RAVEN team uploaded the required documents and moved the project to the next stage.</p>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOTER -->
-  <footer class="bg-[#070707] pt-16 pb-10">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="overflow-hidden mb-12">
-        <svg viewBox="0 0 900 160" xmlns="http://www.w3.org/2000/svg" class="w-full">
-          <defs>
-            <linearGradient id="fgf2" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.08"/>
-              <stop offset="100%" stop-color="#070707" stop-opacity="0"/>
-            </linearGradient>
-          </defs>
-          <text x="50%" y="85%" text-anchor="middle" font-family="Inter,sans-serif" font-size="160" font-weight="700" letter-spacing="-6" fill="url(#fgf2)">RAVEN</text>
-        </svg>
-      </div>
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+    <!-- Registration Types -->
+    <section class="py-12 lg:py-25">
+      <div class="max-w-7xl mx-auto px-6">
         <div>
-          <p class="text-xs uppercase tracking-widest text-white/30 mb-4" style="font-family:'Anonymous Pro',monospace;">Services</p>
-          <ul class="flex flex-col gap-3">
-            <li><a href="funding-loans.html" class="text-sm text-white/60 hover:text-white transition-colors" style="font-family:'Inter',sans-serif;">Funding &amp; Loans</a></li>
-            <li><a href="index.html#services" class="text-sm text-white/60 hover:text-white transition-colors" style="font-family:'Inter',sans-serif;">Real Estate</a></li>
-            <li><a href="index.html#services" class="text-sm text-white/60 hover:text-white transition-colors" style="font-family:'Inter',sans-serif;">Brand Building</a></li>
-          </ul>
-        </div>
-        <div>
-          <p class="text-xs uppercase tracking-widest text-white/30 mb-4" style="font-family:'Anonymous Pro',monospace;">Company</p>
-          <ul class="flex flex-col gap-3">
-            <li><a href="index.html#about" class="text-sm text-white/60 hover:text-white transition-colors" style="font-family:'Inter',sans-serif;">About</a></li>
-            <li><a href="index.html#process" class="text-sm text-white/60 hover:text-white transition-colors" style="font-family:'Inter',sans-serif;">How It Works</a></li>
-          </ul>
-        </div>
-        <div>
-          <p class="text-xs uppercase tracking-widest text-white/30 mb-4" style="font-family:'Anonymous Pro',monospace;">Client</p>
-          <ul class="flex flex-col gap-3">
-            <li><a href="registration.html" class="text-sm text-white/60 hover:text-white transition-colors" style="font-family:'Inter',sans-serif;">Client Portal</a></li>
-            <li><a href="contact.html" class="text-sm text-white/60 hover:text-white transition-colors" style="font-family:'Inter',sans-serif;">Contact</a></li>
-          </ul>
-        </div>
-        <div>
-          <p class="text-xs uppercase tracking-widest text-white/30 mb-4" style="font-family:'Anonymous Pro',monospace;">Contact</p>
-          <ul class="flex flex-col gap-3">
-            <li><a href="mailto:hello@raven.business" class="text-sm text-white/60 hover:text-white transition-colors" style="font-family:'Inter',sans-serif;">hello@raven.business</a></li>
-            <li><span class="text-sm text-white/60" style="font-family:'Inter',sans-serif;">Pune / Chh. Sambhajinagar</span></li>
-          </ul>
+          <h2 class="lg:w-4/12 mb-8 lg:mb-16 font-normal text-5xl text-black -tracking-[1.92px]">Registration <span class="italic">Types</span></h2>
+          <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+            <article>
+              <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none"><g clip-path="url(#clip0_reg1)"><path d="M56 0C56 7.73194 49.7319 14 42 14C49.7319 14 56 20.2681 56 28C56 35.7319 49.7319 42 42 42C49.7319 42 56 48.2681 56 56H0C0 48.2681 6.26806 42 14 42C6.26806 42 0 35.7319 0 28C0 20.2681 6.26806 14 14 14C6.26806 14 0 7.73194 0 0H56Z" fill="url(#paint0_reg1)"/></g><defs><linearGradient id="paint0_reg1" x1="28" y1="0" x2="28" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#545454"/><stop offset="1" stop-color="#BABABA"/></linearGradient><clipPath id="clip0_reg1"><rect width="56" height="56" fill="white"/></clipPath></defs></svg>
+              <h4 class="mb-5 mt-8 text-2xl font-normal text-black">Pvt. Limited</h4>
+              <p class="text-lg text-gray-700">Register a Private Limited Company with full compliance and investor-ready structure.</p>
+            </article>
+            <article>
+              <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none"><g clip-path="url(#clip0_reg2)"><path d="M28 14L35 7.21875L42.1094 0H56V14L42 28H41.8906L49 35.2188L56 42V56H42L28 42L21 48.7812L13.8906 56H0V42L14 28H14.1094L7 20.7812L0 14V0H14L28 14Z" fill="url(#paint0_reg2)"/></g><defs><linearGradient id="paint0_reg2" x1="28" y1="0" x2="28" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#545454"/><stop offset="1" stop-color="#BABABA"/></linearGradient><clipPath id="clip0_reg2"><rect width="56" height="56" fill="white"/></clipPath></defs></svg>
+              <h4 class="mb-5 mt-8 text-2xl font-normal text-black">LLP</h4>
+              <p class="text-lg text-gray-700">Limited Liability Partnership with flexible management and limited liability protection.</p>
+            </article>
+            <article>
+              <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none"><g clip-path="url(#clip0_reg3)"><path d="M56 56H38.9375C32.8969 56 28 51.1031 28 45.0625V56H0V42C0 34.2681 6.26806 28 14 28C21.7319 28 28 34.2681 28 42V28H56V56ZM17.0625 0C23.1031 0 28 4.89694 28 10.9375V0H56V14C56 21.7319 49.7319 28 42 28C34.2681 28 28 21.7319 28 14V28H0V0H17.0625Z" fill="url(#paint0_reg3)"/></g><defs><linearGradient id="paint0_reg3" x1="28" y1="0" x2="28" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#545454"/><stop offset="1" stop-color="#BABABA"/></linearGradient><clipPath id="clip0_reg3"><rect width="56" height="56" fill="white"/></clipPath></defs></svg>
+              <h4 class="mb-5 mt-8 text-2xl font-normal text-black">OPC</h4>
+              <p class="text-lg text-gray-700">One Person Company for solo entrepreneurs who want corporate structure and protection.</p>
+            </article>
+            <article>
+              <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none"><g clip-path="url(#clip0_reg4)"><path d="M35 19.25L42.4375 7.4375L47.25 0H56V8.75L48.4531 20.4531L43.75 28H56V56H21V36.75L14.0538 48.125L8.75 56H0V47.25L7.4375 35.4375L12.25 28H0V0H35V19.25Z" fill="url(#paint0_reg4)"/></g><defs><linearGradient id="paint0_reg4" x1="28" y1="0" x2="28" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#545454"/><stop offset="1" stop-color="#BABABA"/></linearGradient><clipPath id="clip0_reg4"><rect width="56" height="56" fill="white"/></clipPath></defs></svg>
+              <h4 class="mb-5 mt-8 text-2xl font-normal text-black">Proprietorship</h4>
+              <p class="text-lg text-gray-700">Simple sole proprietorship registration for small businesses and freelancers.</p>
+            </article>
+          </div>
         </div>
       </div>
-      <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <span class="text-xs text-white/30" style="font-family:'Anonymous Pro',monospace;">&copy; 2026 RAVEN. All rights reserved.</span>
-        <span class="text-xs text-white/30" style="font-family:'Anonymous Pro',monospace;">Build &middot; Fund &middot; Brand &middot; Grow</span>
+    </section>
+
+    <!-- Registration Process -->
+    <section class="py-12 lg:py-25">
+      <div class="max-w-7xl mx-auto px-6">
+        <div>
+          <h2 class="mb-16 font-normal text-5xl text-black -tracking-[1.92px]">How It <span class="italic">Works</span></h2>
+          <ul class="max-w-[1120px] mx-auto space-y-12">
+            <li class="flex flex-col gap-2 lg:grid lg:grid-cols-[auto_auto_370px] lg:items-center lg:gap-8">
+              <span class="text-black text-lg italic">#1</span>
+              <h3 class="font-normal whitespace-nowrap text-2xl text-black">Initial Consultation</h3>
+              <p class="text-gray-700 text-lg font-normal">Discuss your business type, structure, and goals with our registration experts.</p>
+            </li>
+            <li class="flex flex-col gap-2 lg:grid lg:grid-cols-[auto_auto_370px] lg:items-center lg:gap-8">
+              <span class="text-black text-lg italic">#2</span>
+              <h3 class="font-normal whitespace-nowrap text-2xl text-black">Document Collection</h3>
+              <p class="text-gray-700 text-lg font-normal">We guide you through the required documents and collect everything digitally.</p>
+            </li>
+            <li class="flex flex-col gap-2 lg:grid lg:grid-cols-[auto_auto_370px] lg:items-center lg:gap-8">
+              <span class="text-black text-lg italic">#3</span>
+              <h3 class="font-normal whitespace-nowrap text-2xl text-black">Filing &amp; Processing</h3>
+              <p class="text-gray-700 text-lg font-normal">Our team files all applications with the relevant government authorities on your behalf.</p>
+            </li>
+            <li class="flex flex-col gap-2 lg:grid lg:grid-cols-[auto_auto_370px] lg:items-center lg:gap-8">
+              <span class="text-black text-lg italic">#4</span>
+              <h3 class="font-normal whitespace-nowrap text-2xl text-black">Certificate &amp; Handover</h3>
+              <p class="text-gray-700 text-lg font-normal">Receive your incorporation certificate and all documents ready for business operations.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-14 bg-[#FBFBFB]">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex items-center flex-col sm:flex-row justify-between gap-6">
+          <div class="sm:w-1/2">
+            <h2 class="font-normal text-5xl text-center sm:text-left text-black -tracking-[1.92px]">Start your <br>business <span class="italic">today.</span></h2>
+          </div>
+          <div class="sm:w-1/2 flex sm:justify-end">
+            <a class="group px-6 py-4.5 inline-flex gap-2 items-center bg-white border border-black text-sm font-medium -tracking-[0.2px] leading-5 text-black rounded-full hover:bg-gray-100 transition-all duration-300" href="contact.html">
+              <span class="relative inline-block overflow-hidden">
+                <span class="block transition-transform duration-300 ease-in-out group-hover:-translate-y-full">CONTACT US</span>
+                <span class="absolute top-0 left-0 block w-full transition-transform duration-300 ease-in-out translate-y-full group-hover:translate-y-0">CONTACT US</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#070707] overflow-hidden">
+    <div class="pt-20">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="mb-16">
+          <a href="index.html">
+            <svg width="140" height="28" viewBox="0 0 140 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <text x="0" y="24" font-family="Inter, sans-serif" font-size="26" font-weight="700" fill="white" letter-spacing="-1">RAVEN</text>
+            </svg>
+          </a>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-16">
+          <div>
+            <p class="text-white/60 text-base leading-7">Build. Fund. Brand. Grow.<br>Your business partner in India.</p>
+            <p class="text-white/40 text-sm mt-4">Chhatrapati Sambhajinagar &amp; Pune, India</p>
+          </div>
+          <div>
+            <h4 class="text-white text-sm font-medium uppercase tracking-wider mb-6">Services</h4>
+            <ul class="space-y-4">
+              <li><a href="funding-loans.html" class="text-white/60 hover:text-white transition text-base">Funding &amp; Loans</a></li>
+              <li><a href="registration.html" class="text-white/60 hover:text-white transition text-base">Business Registration</a></li>
+              <li><a href="index.html" class="text-white/60 hover:text-white transition text-base">Real Estate</a></li>
+              <li><a href="index.html" class="text-white/60 hover:text-white transition text-base">Brand Strategy</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-white text-sm font-medium uppercase tracking-wider mb-6">Company</h4>
+            <ul class="space-y-4">
+              <li><a href="index.html#about" class="text-white/60 hover:text-white transition text-base">About Us</a></li>
+              <li><a href="contact.html" class="text-white/60 hover:text-white transition text-base">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-white text-sm font-medium uppercase tracking-wider mb-6">Contact</h4>
+            <ul class="space-y-4">
+              <li><a href="mailto:hello@raven.business" class="text-white/60 hover:text-white transition text-base">hello@raven.business</a></li>
+              <li><span class="text-white/60 text-base">Chhatrapati Sambhajinagar</span></li>
+              <li><span class="text-white/60 text-base">Pune, India</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p class="text-white/40 text-sm">&copy; 2025 RAVEN. All rights reserved.</p>
+          <p class="text-white/40 text-sm">Built for Indian Entrepreneurs.</p>
+        </div>
       </div>
     </div>
   </footer>
 
-  <script>
-    document.getElementById('menu-open').addEventListener('click', function() {
-      document.getElementById('mobile-menu').classList.add('open');
-    });
-    document.getElementById('menu-close').addEventListener('click', function() {
-      document.getElementById('mobile-menu').classList.remove('open');
-    });
-    function handleReg(e) {
-      e.preventDefault();
-      document.getElementById('success').style.display = 'block';
-      e.target.reset();
-    }
-  </script>
 </body>
 </html>
