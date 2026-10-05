@@ -3,3 +3,77 @@
 @source "./floating-dock.tsx";
 @source "./main.tsx";
 @source "../index.html";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* The dock lives at the top of the page, so the mobile menu opens downward */
+#floating-dock-root .absolute.bottom-full {
+  bottom: auto;
+  top: 100%;
+  margin-bottom: 0;
+  margin-top: 0.5rem;
+}
+#floating-dock-root > div { position: relative; }
+
+/* ---- Black glass look + animation ---- */
+#floating-dock-root { animation: dock-in .9s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes dock-in {
+  from { opacity: 0; transform: translateY(-24px) scale(.96); filter: blur(6px); }
+  to   { opacity: 1; transform: none; filter: none; }
+}
+@keyframes dock-sheen {
+  from { background-position: 200% 0; }
+  to   { background-position: -100% 0; }
+}
+
+#floating-dock-root .dock-glass {
+  position: relative;
+  background: linear-gradient(180deg, rgba(22,22,22,.94), rgba(0,0,0,.92));
+  -webkit-backdrop-filter: blur(22px) saturate(170%);
+  backdrop-filter: blur(22px) saturate(170%);
+  border: 1px solid rgba(255,255,255,.16);
+  box-shadow: 0 18px 50px rgba(0,0,0,.35), 0 2px 8px rgba(0,0,0,.25),
+              inset 0 1px 0 rgba(255,255,255,.28), inset 0 -1px 0 rgba(255,255,255,.04);
+}
+#floating-dock-root .dock-glass::before {
+  content: "";
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,.11) 50%, transparent 60%);
+  background-size: 250% 100%;
+  animation: dock-sheen 4.5s linear infinite;
+  pointer-events: none;
+}
+
+/* icon circles */
+#floating-dock-root .dock-glass a > div.rounded-full {
+  background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.03));
+  border: 1px solid rgba(255,255,255,.2);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 4px 14px rgba(0,0,0,.35);
+  transition: background .25s, box-shadow .25s, border-color .25s;
+}
+#floating-dock-root .dock-glass a:hover > div.rounded-full {
+  background: linear-gradient(180deg, rgba(255,255,255,.3), rgba(255,255,255,.1));
+  border-color: rgba(255,255,255,.4);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.45), 0 0 26px rgba(255,255,255,.28), 0 6px 18px rgba(0,0,0,.4);
+}
+
+/* tooltip */
+#floating-dock-root .dock-glass a > div > div.absolute {
+  background: rgba(10,10,10,.82);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,.2);
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(0,0,0,.35);
+}
+
+/* mobile: toggle + menu items */
+#floating-dock-root .dock-glass-mobile button,
+#floating-dock-root .dock-glass-mobile a {
+  background: linear-gradient(180deg, rgba(22,22,22,.94), rgba(0,0,0,.92));
+  -webkit-backdrop-filter: blur(18px) saturate(170%);
+  backdrop-filter: blur(18px) saturate(170%);
+  border: 1px solid rgba(255,255,255,.18);
+  box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.28);
+}
+#floating-dock-root .dock-glass-mobile button svg { color: #fff; }

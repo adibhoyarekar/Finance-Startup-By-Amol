@@ -7,7 +7,7 @@ import {
 } from "@tabler/icons-react";
 import { FloatingDock } from "./floating-dock";
 
-const cls = "h-full w-full text-neutral-500 dark:text-neutral-300";
+const cls = "h-full w-full text-white";
 const items = [
   { title: "Home", icon: <IconHome className={cls} />, href: "index.html" },
   { title: "Funding & Loans", icon: <IconCurrencyDollar className={cls} />, href: "funding-loans.html" },
@@ -16,4 +16,4 @@ const items = [
 ];
 
 const el = document.getElementById("floating-dock-root");
-if (el) createRoot(el).render(<FloatingDock items={items} />);
+if (el) createRoot(el).render(<FloatingDock items={items} desktopClassName="dock-glass" mobileClassName="dock-glass-mobile" />);
