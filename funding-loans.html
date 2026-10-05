@@ -3,524 +3,218 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Funding &amp; Loans — RAVEN</title>
-  <meta name="description" content="From home loans to government schemes — expert guidance across every category of financing for individuals and businesses.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <title>Funding &amp; Loans - RAVEN</title>
   <link rel="stylesheet" href="nexstudio.css">
-  <style>
-    #mobile-menu { display:none; position:fixed; inset:0; z-index:200; background:#fff; flex-direction:column; align-items:center; justify-content:center; gap:2rem; }
-    #mobile-menu.open { display:flex; }
-    #mobile-menu a { font-size:1.5rem; font-weight:400; text-transform:uppercase; letter-spacing:.05em; color:#000; }
-    .nav-svg-icon { display:inline-block; vertical-align:middle; }
-    .loan-category.hidden { display:none; }
-    .vehicle-sub-cards { display:none; }
-    .vehicle-sub-cards.open { display:grid; }
-  </style>
+  <link rel="stylesheet" href="floating-dock.css">
 </head>
-<body class="antialiased">
+<body class="font-sans bg-white text-black antialiased">
 
-  <!-- MOBILE MENU -->
-  <div id="mobile-menu">
-    <button id="menu-close" style="position:absolute;top:24px;right:24px;font-size:1.5rem;background:none;border:none;cursor:pointer;">✕</button>
-    <a href="index.html">Home</a>
-    <a href="index.html#services">Services</a>
-    <a href="index.html#about">About</a>
-    <a href="index.html#process">How It Works</a>
-    <a href="registration.html">Client Portal</a>
-    <a href="contact.html">Contact</a>
-  </div>
-
-  <!-- HEADER / NAV -->
+  <!-- Header -->
   <header class="sticky top-0 z-50 transition-all duration-300 bg-white/80 backdrop-blur-md shadow-sm">
     <nav>
       <div class="max-w-7xl mx-auto px-6">
         <div class="flex items-center justify-between py-4 lg:py-6">
-          <div>
-            <a href="index.html" class="flex items-center gap-3">
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="nav-svg-icon">
-                <path d="M16 2L28 8V16C28 22.627 22.627 28 16 28C9.373 28 4 22.627 4 16V8L16 2Z" fill="black"/>
-                <path d="M12 14H20M12 18H17" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
-              <span style="font-family:'Inter',sans-serif;font-weight:700;font-size:1.15rem;letter-spacing:.06em;color:#000;">RAVEN</span>
-            </a>
-          </div>
-
-          <div class="hidden lg:flex items-center gap-8">
-            <a href="index.html#services" class="group relative overflow-hidden inline-block text-xs uppercase tracking-widest text-black font-medium" style="font-family:'Inter',sans-serif;">
-              <span class="block transition-transform duration-300 group-hover:-translate-y-full">Services</span>
-              <span class="absolute inset-0 flex items-center justify-center transition-transform duration-300 translate-y-full group-hover:translate-y-0">Services</span>
-            </a>
-            <a href="index.html#about" class="group relative overflow-hidden inline-block text-xs uppercase tracking-widest text-black font-medium" style="font-family:'Inter',sans-serif;">
-              <span class="block transition-transform duration-300 group-hover:-translate-y-full">About</span>
-              <span class="absolute inset-0 flex items-center justify-center transition-transform duration-300 translate-y-full group-hover:translate-y-0">About</span>
-            </a>
-            <a href="funding-loans.html" class="group relative overflow-hidden inline-block text-xs uppercase tracking-widest text-black font-medium" style="font-family:'Inter',sans-serif;">
-              <span class="block transition-transform duration-300 group-hover:-translate-y-full">Funding</span>
-              <span class="absolute inset-0 flex items-center justify-center transition-transform duration-300 translate-y-full group-hover:translate-y-0">Funding</span>
-            </a>
-            <a href="registration.html" class="group relative overflow-hidden inline-block text-xs uppercase tracking-widest text-black font-medium" style="font-family:'Inter',sans-serif;">
-              <span class="block transition-transform duration-300 group-hover:-translate-y-full">Client Portal</span>
-              <span class="absolute inset-0 flex items-center justify-center transition-transform duration-300 translate-y-full group-hover:translate-y-0">Client Portal</span>
-            </a>
-            <a href="contact.html" class="rounded-full bg-black text-white text-xs uppercase tracking-widest px-5 py-2.5 font-medium hover:bg-neutral-800 transition-colors" style="font-family:'Inter',sans-serif;">
-              Contact
-            </a>
-          </div>
-
-          <button id="menu-open" class="lg:hidden p-2" aria-label="Open menu">
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect y="4" width="22" height="1.5" rx=".75" fill="black"/><rect y="10" width="22" height="1.5" rx=".75" fill="black"/><rect y="16" width="22" height="1.5" rx=".75" fill="black"/></svg>
-          </button>
+          <a href="index.html">
+            <svg width="120" height="24" viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <text x="0" y="20" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="black" letter-spacing="-1">RAVEN</text>
+            </svg>
+          </a>
+          <div id="floating-dock-root" class="flex items-center justify-end pt-8"></div>
         </div>
       </div>
     </nav>
   </header>
 
-  <!-- PAGE HERO -->
-  <section class="max-w-7xl mx-auto px-6 pt-20 pb-12 lg:pt-28 lg:pb-16">
-    <p class="text-xs uppercase tracking-widest text-gray-400 mb-6" style="font-family:'Anonymous Pro',monospace;">Funding &amp; Loans</p>
-    <h1 class="text-4xl lg:text-6xl font-normal -tracking-[2px] leading-tight text-black mb-6" style="font-family:'Inter',sans-serif;">
-      The right loan.<br><em>The right rate.</em>
-    </h1>
-    <p class="text-base lg:text-lg text-gray-500 max-w-xl leading-relaxed">From home loans to government schemes — expert guidance across every category of financing for individuals and businesses.</p>
-  </section>
+  <main>
 
-  <!-- STATS STRIP -->
-  <div class="bg-black py-8">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex flex-wrap items-center justify-center gap-8 lg:gap-16">
-        <div class="text-center">
-          <p class="text-2xl lg:text-3xl font-normal text-white" style="font-family:'Inter',sans-serif;">17</p>
-          <p class="text-xs uppercase tracking-widest text-white/40 mt-1" style="font-family:'Anonymous Pro',monospace;">Loan Products</p>
-        </div>
-        <div class="w-px h-8 bg-white/10 hidden lg:block"></div>
-        <div class="text-center">
-          <p class="text-2xl lg:text-3xl font-normal text-white" style="font-family:'Inter',sans-serif;">4</p>
-          <p class="text-xs uppercase tracking-widest text-white/40 mt-1" style="font-family:'Anonymous Pro',monospace;">Categories</p>
-        </div>
-        <div class="w-px h-8 bg-white/10 hidden lg:block"></div>
-        <div class="text-center">
-          <p class="text-2xl lg:text-3xl font-normal text-white" style="font-family:'Inter',sans-serif;">20+</p>
-          <p class="text-xs uppercase tracking-widest text-white/40 mt-1" style="font-family:'Anonymous Pro',monospace;">Bank Partners</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FILTER BAR -->
-  <div class="max-w-7xl mx-auto px-6 py-8">
-    <div class="flex items-center gap-4 flex-wrap">
-      <span class="text-xs uppercase tracking-widest text-gray-400 mr-2" style="font-family:'Anonymous Pro',monospace;">Filter</span>
-      <button class="filter-btn rounded-full border border-black bg-black text-white text-xs uppercase tracking-widest px-5 py-2 font-medium transition-all" data-filter="all" style="font-family:'Inter',sans-serif;">All Loans</button>
-      <button class="filter-btn rounded-full border border-gray-200 text-xs uppercase tracking-widest px-5 py-2 font-medium transition-all hover:border-black" data-filter="property" style="font-family:'Inter',sans-serif;">Property</button>
-      <button class="filter-btn rounded-full border border-gray-200 text-xs uppercase tracking-widest px-5 py-2 font-medium transition-all hover:border-black" data-filter="personal" style="font-family:'Inter',sans-serif;">Personal &amp; Education</button>
-      <button class="filter-btn rounded-full border border-gray-200 text-xs uppercase tracking-widest px-5 py-2 font-medium transition-all hover:border-black" data-filter="business" style="font-family:'Inter',sans-serif;">Asset &amp; Business</button>
-      <button class="filter-btn rounded-full border border-gray-200 text-xs uppercase tracking-widest px-5 py-2 font-medium transition-all hover:border-black" data-filter="government" style="font-family:'Inter',sans-serif;">Government Schemes</button>
-    </div>
-  </div>
-
-  <!-- CATEGORY 01: Property Loans -->
-  <section class="max-w-7xl mx-auto px-6 pb-16 loan-category" data-category="property" id="cat-property">
-    <div class="mb-10">
-      <p class="text-xs uppercase tracking-widest text-gray-400 mb-3" style="font-family:'Anonymous Pro',monospace;">Category 01</p>
-      <h2 class="text-3xl lg:text-4xl font-normal -tracking-[1.5px]" style="font-family:'Inter',sans-serif;">Property Loans</h2>
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-      <div class="bg-neutral-950 rounded-3xl p-8 flex flex-col gap-4">
-        <p class="text-xs uppercase tracking-widest text-white/40" style="font-family:'Anonymous Pro',monospace;">Home Loan</p>
-        <p class="text-sm text-white/60 leading-relaxed" style="font-family:'Inter',sans-serif;">Purchase a ready-to-move or under-construction residential property with long-tenure flexible financing.</p>
-        <ul class="flex flex-col gap-2 mt-2">
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Up to 90% of property value</li>
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Tenure up to 30 years</li>
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Salaried &amp; self-employed</li>
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Tax benefits Sec 80C &amp; 24B</li>
-        </ul>
-        <a href="contact.html" class="mt-auto rounded-full border border-white/20 text-xs uppercase tracking-widest px-5 py-3 text-white/70 hover:border-white hover:text-white transition-colors text-center" style="font-family:'Inter',sans-serif;">Check Eligibility &rarr;</a>
-      </div>
-
-      <div class="bg-neutral-950 rounded-3xl p-8 flex flex-col gap-4">
-        <p class="text-xs uppercase tracking-widest text-white/40" style="font-family:'Anonymous Pro',monospace;">Loan Against Property</p>
-        <p class="text-sm text-white/60 leading-relaxed" style="font-family:'Inter',sans-serif;">Unlock the equity in your existing residential or commercial property for any personal or business need.</p>
-        <ul class="flex flex-col gap-2 mt-2">
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Up to 70% of property market value</li>
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Lower ROI than personal loans</li>
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Business, medical &amp; education use</li>
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Tenure up to 15 years</li>
-        </ul>
-        <a href="contact.html" class="mt-auto rounded-full border border-white/20 text-xs uppercase tracking-widest px-5 py-3 text-white/70 hover:border-white hover:text-white transition-colors text-center" style="font-family:'Inter',sans-serif;">Check Eligibility &rarr;</a>
-      </div>
-
-      <div class="bg-neutral-950 rounded-3xl p-8 flex flex-col gap-4">
-        <p class="text-xs uppercase tracking-widest text-white/40" style="font-family:'Anonymous Pro',monospace;">Construction Loan</p>
-        <p class="text-sm text-white/60 leading-relaxed" style="font-family:'Inter',sans-serif;">Fund the construction of your home on an owned plot with stage-wise disbursals — pay interest only on what is released.</p>
-        <ul class="flex flex-col gap-2 mt-2">
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Disbursed in stages as work progresses</li>
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Interest only on disbursed amount</li>
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Tenure up to 20 years</li>
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>For plot owners building their own home</li>
-        </ul>
-        <a href="contact.html" class="mt-auto rounded-full border border-white/20 text-xs uppercase tracking-widest px-5 py-3 text-white/70 hover:border-white hover:text-white transition-colors text-center" style="font-family:'Inter',sans-serif;">Check Eligibility &rarr;</a>
-      </div>
-
-      <div class="bg-neutral-950 rounded-3xl p-8 flex flex-col gap-4">
-        <p class="text-xs uppercase tracking-widest text-white/40" style="font-family:'Anonymous Pro',monospace;">Plot / Land Loan</p>
-        <p class="text-sm text-white/60 leading-relaxed" style="font-family:'Inter',sans-serif;">Purchase a residential plot within municipal limits for future construction with dedicated land financing.</p>
-        <ul class="flex flex-col gap-2 mt-2">
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Up to 70–75% of plot value</li>
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Tenure up to 15 years</li>
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Must be within municipal limits</li>
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Future construction plan required</li>
-        </ul>
-        <a href="contact.html" class="mt-auto rounded-full border border-white/20 text-xs uppercase tracking-widest px-5 py-3 text-white/70 hover:border-white hover:text-white transition-colors text-center" style="font-family:'Inter',sans-serif;">Check Eligibility &rarr;</a>
-      </div>
-
-      <div class="bg-neutral-950 rounded-3xl p-8 flex flex-col gap-4">
-        <p class="text-xs uppercase tracking-widest text-white/40" style="font-family:'Anonymous Pro',monospace;">Mortgage Loan</p>
-        <p class="text-sm text-white/60 leading-relaxed" style="font-family:'Inter',sans-serif;">Long-term financing secured against owned property for any personal or business requirement.</p>
-        <ul class="flex flex-col gap-2 mt-2">
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Lower interest than unsecured loans</li>
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Flexible repayment options</li>
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Large loan amounts possible</li>
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Tenure up to 20 years</li>
-        </ul>
-        <a href="contact.html" class="mt-auto rounded-full border border-white/20 text-xs uppercase tracking-widest px-5 py-3 text-white/70 hover:border-white hover:text-white transition-colors text-center" style="font-family:'Inter',sans-serif;">Check Eligibility &rarr;</a>
-      </div>
-
-      <div class="bg-neutral-950 rounded-3xl p-8 flex flex-col gap-4">
-        <p class="text-xs uppercase tracking-widest text-white/40" style="font-family:'Anonymous Pro',monospace;">Home Renovation Loan</p>
-        <p class="text-sm text-white/60 leading-relaxed" style="font-family:'Inter',sans-serif;">Renovate, repair, or upgrade your existing home without dipping into savings.</p>
-        <ul class="flex flex-col gap-2 mt-2">
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Up to ₹25 lakhs</li>
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>No collateral for smaller amounts</li>
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Quick disbursal</li>
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Tenure up to 10 years</li>
-        </ul>
-        <a href="contact.html" class="mt-auto rounded-full border border-white/20 text-xs uppercase tracking-widest px-5 py-3 text-white/70 hover:border-white hover:text-white transition-colors text-center" style="font-family:'Inter',sans-serif;">Check Eligibility &rarr;</a>
-      </div>
-
-      <div class="bg-neutral-950/50 border border-white/5 rounded-3xl p-8 flex flex-col gap-4 relative overflow-hidden">
-        <span class="absolute top-6 right-6 text-xs uppercase tracking-widest border border-white/20 rounded-full px-3 py-1 text-white/40" style="font-family:'Anonymous Pro',monospace;">Coming Soon</span>
-        <p class="text-xs uppercase tracking-widest text-white/20" style="font-family:'Anonymous Pro',monospace;">Balance Transfer + Top-Up</p>
-        <p class="text-sm text-white/30 leading-relaxed" style="font-family:'Inter',sans-serif;">Transfer your existing home loan to a new bank at a lower rate, with an additional top-up amount.</p>
-        <ul class="flex flex-col gap-2 mt-2">
-          <li class="flex items-start gap-2 text-xs text-white/20 font-mono"><span class="mt-0.5">—</span>Save on total interest outgo</li>
-          <li class="flex items-start gap-2 text-xs text-white/20 font-mono"><span class="mt-0.5">—</span>Get extra funds as top-up</li>
-          <li class="flex items-start gap-2 text-xs text-white/20 font-mono"><span class="mt-0.5">—</span>Minimal documentation required</li>
-        </ul>
-        <div class="mt-auto rounded-full border border-white/10 text-xs uppercase tracking-widest px-5 py-3 text-white/20 text-center cursor-not-allowed" style="font-family:'Inter',sans-serif;">Coming Soon</div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- CATEGORY 02: Personal & Education Loans -->
-  <section class="max-w-7xl mx-auto px-6 pb-16 loan-category" data-category="personal" id="cat-personal">
-    <div class="mb-10">
-      <p class="text-xs uppercase tracking-widest text-gray-400 mb-3" style="font-family:'Anonymous Pro',monospace;">Category 02</p>
-      <h2 class="text-3xl lg:text-4xl font-normal -tracking-[1.5px]" style="font-family:'Inter',sans-serif;">Personal &amp; Education Loans</h2>
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-      <div class="bg-neutral-950 rounded-3xl p-8 flex flex-col gap-4">
-        <p class="text-xs uppercase tracking-widest text-white/40" style="font-family:'Anonymous Pro',monospace;">Personal Loan</p>
-        <p class="text-sm text-white/60 leading-relaxed" style="font-family:'Inter',sans-serif;">Unsecured funding for medical emergencies, weddings, travel, or any personal requirement — with fast approval.</p>
-        <ul class="flex flex-col gap-2 mt-2">
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>No collateral needed</li>
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Approval in 24–48 hours</li>
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Amount up to ₹40 lakhs</li>
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>ROI 10–24% · Tenure 1–5 years</li>
-        </ul>
-        <a href="contact.html" class="mt-auto rounded-full border border-white/20 text-xs uppercase tracking-widest px-5 py-3 text-white/70 hover:border-white hover:text-white transition-colors text-center" style="font-family:'Inter',sans-serif;">Apply Now &rarr;</a>
-      </div>
-
-      <div class="bg-neutral-950 rounded-3xl p-8 flex flex-col gap-4">
-        <p class="text-xs uppercase tracking-widest text-white/40" style="font-family:'Anonymous Pro',monospace;">Education Loan</p>
-        <p class="text-sm text-white/60 leading-relaxed" style="font-family:'Inter',sans-serif;">Finance tuition, living expenses, books, and equipment for higher education in India or abroad.</p>
-        <ul class="flex flex-col gap-2 mt-2">
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Up to ₹1.5 crore for abroad studies</li>
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Moratorium period (study + 6–12 months)</li>
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Tax benefit under Section 80E</li>
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>No collateral up to ₹7.5 lakhs</li>
-        </ul>
-        <a href="contact.html" class="mt-auto rounded-full border border-white/20 text-xs uppercase tracking-widest px-5 py-3 text-white/70 hover:border-white hover:text-white transition-colors text-center" style="font-family:'Inter',sans-serif;">Apply Now &rarr;</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- CATEGORY 03: Asset & Business Loans -->
-  <section class="max-w-7xl mx-auto px-6 pb-16 loan-category" data-category="business" id="cat-business">
-    <div class="mb-10">
-      <p class="text-xs uppercase tracking-widest text-gray-400 mb-3" style="font-family:'Anonymous Pro',monospace;">Category 03</p>
-      <h2 class="text-3xl lg:text-4xl font-normal -tracking-[1.5px]" style="font-family:'Inter',sans-serif;">Asset &amp; Business Loans</h2>
-    </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-      <div class="bg-neutral-950 rounded-3xl p-8 flex flex-col gap-4">
-        <p class="text-xs uppercase tracking-widest text-white/40" style="font-family:'Anonymous Pro',monospace;">Gold Loan</p>
-        <p class="text-sm text-white/60 leading-relaxed" style="font-family:'Inter',sans-serif;">Get instant funds the same day by pledging gold jewellery or ornaments as collateral.</p>
-        <ul class="flex flex-col gap-2 mt-2">
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Up to 75% of gold value</li>
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Same-day disbursal</li>
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Low ROI · Tenure 3 months–3 years</li>
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Gold returned after full repayment</li>
-        </ul>
-        <a href="contact.html" class="mt-auto rounded-full border border-white/20 text-xs uppercase tracking-widest px-5 py-3 text-white/70 hover:border-white hover:text-white transition-colors text-center" style="font-family:'Inter',sans-serif;">Apply Now &rarr;</a>
-      </div>
-
-      <div class="bg-neutral-950 rounded-3xl p-8 flex flex-col gap-4">
-        <p class="text-xs uppercase tracking-widest text-white/40" style="font-family:'Anonymous Pro',monospace;">Business Loan</p>
-        <p class="text-sm text-white/60 leading-relaxed" style="font-family:'Inter',sans-serif;">Working capital, equipment purchase, or expansion funding for MSMEs, startups, traders, and manufacturers.</p>
-        <ul class="flex flex-col gap-2 mt-2">
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Secured and unsecured options</li>
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Amount up to ₹5 crores</li>
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Tenure up to 7 years</li>
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Minimal documentation for small loans</li>
-        </ul>
-        <a href="contact.html" class="mt-auto rounded-full border border-white/20 text-xs uppercase tracking-widest px-5 py-3 text-white/70 hover:border-white hover:text-white transition-colors text-center" style="font-family:'Inter',sans-serif;">Apply Now &rarr;</a>
-      </div>
-
-      <div class="bg-neutral-950 rounded-3xl p-8 flex flex-col gap-4">
-        <p class="text-xs uppercase tracking-widest text-white/40" style="font-family:'Anonymous Pro',monospace;">Vehicle Loan</p>
-        <p class="text-sm text-white/60 leading-relaxed" style="font-family:'Inter',sans-serif;">Finance any type of vehicle — personal or commercial — with competitive rates and flexible repayment terms.</p>
-        <ul class="flex flex-col gap-2 mt-2">
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>New &amp; used vehicle options</li>
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Commercial vehicles included</li>
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Up to 100% on-road price (new)</li>
-          <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Instant approval available</li>
-        </ul>
-        <button onclick="toggleVehicle()" id="vehicle-toggle-btn" class="rounded-full border border-white/20 text-xs uppercase tracking-widest px-5 py-3 text-white/70 hover:border-white hover:text-white transition-colors text-center" style="font-family:'Inter',sans-serif;">
-          View 3 Sub-Types &darr;
-        </button>
-        <div class="vehicle-sub-cards grid-cols-1 gap-3 mt-2" id="vehicle-sub">
-          <div class="border border-white/10 rounded-2xl p-5">
-            <p class="text-xs uppercase tracking-widest text-white/40 mb-2" style="font-family:'Anonymous Pro',monospace;">New Vehicle Loan</p>
-            <ul class="flex flex-col gap-1 mb-3">
-              <li class="text-xs text-white/40 font-mono">— Up to 100% on-road price</li>
-              <li class="text-xs text-white/40 font-mono">— Tenure up to 7 years</li>
-              <li class="text-xs text-white/40 font-mono">— Instant approval</li>
-            </ul>
-            <a href="contact.html" class="text-xs text-white/60 hover:text-white transition-colors" style="font-family:'Inter',sans-serif;">Apply &rarr;</a>
-          </div>
-          <div class="border border-white/10 rounded-2xl p-5">
-            <p class="text-xs uppercase tracking-widest text-white/40 mb-2" style="font-family:'Anonymous Pro',monospace;">Used Car Loan</p>
-            <ul class="flex flex-col gap-1 mb-3">
-              <li class="text-xs text-white/40 font-mono">— Up to 80–85% of car value</li>
-              <li class="text-xs text-white/40 font-mono">— Car age max 10 years</li>
-              <li class="text-xs text-white/40 font-mono">— Tenure up to 5 years</li>
-            </ul>
-            <a href="contact.html" class="text-xs text-white/60 hover:text-white transition-colors" style="font-family:'Inter',sans-serif;">Apply &rarr;</a>
-          </div>
-          <div class="border border-white/10 rounded-2xl p-5">
-            <p class="text-xs uppercase tracking-widest text-white/40 mb-2" style="font-family:'Anonymous Pro',monospace;">Commercial Vehicle Loan</p>
-            <ul class="flex flex-col gap-1 mb-3">
-              <li class="text-xs text-white/40 font-mono">— Up to 90% of vehicle cost</li>
-              <li class="text-xs text-white/40 font-mono">— Flexible EMI options</li>
-              <li class="text-xs text-white/40 font-mono">— Tenure up to 5 years</li>
-            </ul>
-            <a href="contact.html" class="text-xs text-white/60 hover:text-white transition-colors" style="font-family:'Inter',sans-serif;">Apply &rarr;</a>
+    <!-- Page Hero -->
+    <section class="lg:pt-30 lg:pb-20 pt-20 pb-10">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="max-w-3xl text-center mx-auto">
+          <h1 class="text-5xl lg:text-7xl font-normal -tracking-[2.88px] mb-4 text-black">
+            Funding &amp; <span class="italic">Loans</span>
+          </h1>
+          <p class="mb-8 lg:mb-12 text-gray-700 text-lg leading-6 -tracking-[0.2px] max-w-xl mx-auto">
+            Access the capital your business needs to launch, expand, or scale. RAVEN connects you with the right funding at the right time.
+          </p>
+          <div class="flex flex-col sm:flex-row justify-center items-center gap-5">
+            <a class="group px-6 py-4.5 flex gap-2 items-center bg-black text-sm font-medium -tracking-[0.2px] leading-5 text-white rounded-full hover:bg-gray-800 transition-all duration-300" href="contact.html">
+              <span class="relative inline-block overflow-hidden">
+                <span class="block transition-transform duration-300 ease-in-out group-hover:-translate-y-full">APPLY NOW</span>
+                <span class="absolute top-0 left-0 block w-full transition-transform duration-300 ease-in-out translate-y-full group-hover:translate-y-0">APPLY NOW</span>
+              </span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a class="group px-6 py-4.5 flex gap-2 items-center bg-white border border-black text-sm font-medium -tracking-[0.2px] leading-5 text-black rounded-full hover:bg-gray-100 transition-all duration-300" href="contact.html">
+              <span class="relative inline-block overflow-hidden">
+                <span class="block transition-transform duration-300 ease-in-out group-hover:-translate-y-full">LEARN MORE</span>
+                <span class="absolute top-0 left-0 block w-full transition-transform duration-300 ease-in-out translate-y-full group-hover:translate-y-0">LEARN MORE</span>
+              </span>
+            </a>
           </div>
         </div>
       </div>
+    </section>
 
-    </div>
-  </section>
-
-  <!-- CATEGORY 04: Government Scheme Loans -->
-  <section class="bg-black py-16 mb-0 loan-category" data-category="government" id="cat-government">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="mb-2">
-        <span class="text-xs uppercase tracking-widest border border-white/20 rounded-full px-4 py-2 text-white/50" style="font-family:'Anonymous Pro',monospace;">Government Backed Schemes — Subsidized Interest Rates</span>
-      </div>
-      <div class="mb-10 mt-8">
-        <p class="text-xs uppercase tracking-widest text-white/40 mb-3" style="font-family:'Anonymous Pro',monospace;">Category 04</p>
-        <h2 class="text-3xl lg:text-4xl font-normal -tracking-[1.5px] text-white" style="font-family:'Inter',sans-serif;">Government Scheme Loans</h2>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        <div class="bg-white/5 border border-white/10 rounded-3xl p-8 flex flex-col gap-4">
-          <p class="text-xs uppercase tracking-widest text-white/40" style="font-family:'Anonymous Pro',monospace;">CGTMSE Loan</p>
-          <p class="text-sm text-white/60 leading-relaxed" style="font-family:'Inter',sans-serif;">Credit Guarantee Fund Trust for Micro and Small Enterprises — collateral-free loans for MSMEs backed by the Government.</p>
-          <ul class="flex flex-col gap-2 mt-2">
-            <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>No collateral or third-party guarantee</li>
-            <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Coverage up to ₹2 crores</li>
-            <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Backed by Ministry of MSME &amp; SIDBI</li>
-            <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Manufacturing and service businesses</li>
-          </ul>
-          <a href="contact.html" class="mt-auto rounded-full border border-white/20 text-xs uppercase tracking-widest px-5 py-3 text-white/70 hover:border-white hover:text-white transition-colors text-center" style="font-family:'Inter',sans-serif;">Check Eligibility &rarr;</a>
-        </div>
-
-        <div class="bg-white/5 border border-white/10 rounded-3xl p-8 flex flex-col gap-4">
-          <p class="text-xs uppercase tracking-widest text-white/40" style="font-family:'Anonymous Pro',monospace;">PMEGP Loan</p>
-          <p class="text-sm text-white/60 leading-relaxed" style="font-family:'Inter',sans-serif;">Prime Minister Employment Generation Programme — subsidy-linked loan to set up new micro enterprises and generate employment.</p>
-          <ul class="flex flex-col gap-2 mt-2">
-            <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>15–35% subsidy on project cost</li>
-            <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Up to ₹50L (manufacturing) / ₹20L (service)</li>
-            <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>For individuals 18+ starting new businesses</li>
-            <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Via KVIC, banks &amp; DIC</li>
-          </ul>
-          <a href="contact.html" class="mt-auto rounded-full border border-white/20 text-xs uppercase tracking-widest px-5 py-3 text-white/70 hover:border-white hover:text-white transition-colors text-center" style="font-family:'Inter',sans-serif;">Check Eligibility &rarr;</a>
-        </div>
-
-        <div class="bg-white/5 border border-white/10 rounded-3xl p-8 flex flex-col gap-4">
-          <p class="text-xs uppercase tracking-widest text-white/40" style="font-family:'Anonymous Pro',monospace;">MUDRA Loan</p>
-          <p class="text-sm text-white/60 leading-relaxed" style="font-family:'Inter',sans-serif;">Pradhan Mantri MUDRA Yojana — for small businesses, shopkeepers, artisans, and self-employed entrepreneurs.</p>
-          <div class="flex flex-col gap-3 mt-2">
-            <div class="border border-white/10 rounded-xl p-4">
-              <p class="text-xs font-mono text-white mb-1">Shishu</p>
-              <p class="text-xs text-white/40 font-mono">Up to ₹50,000 — For new businesses starting out</p>
-            </div>
-            <div class="border border-white/10 rounded-xl p-4">
-              <p class="text-xs font-mono text-white mb-1">Kishor</p>
-              <p class="text-xs text-white/40 font-mono">₹50,001 to ₹5 Lakhs — For growing businesses</p>
-            </div>
-            <div class="border border-white/10 rounded-xl p-4">
-              <p class="text-xs font-mono text-white mb-1">Tarun</p>
-              <p class="text-xs text-white/40 font-mono">₹5 to ₹10 Lakhs — For established businesses scaling up</p>
+    <!-- Dark Stats -->
+    <section class="bg-black py-20">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col lg:flex-row lg:items-center">
+          <div class="sm:mb-16 mb-8 lg:mb-0">
+            <h2 class="text-white text-5xl font-normal">Funding That <span class="italic">Works</span></h2>
+          </div>
+          <div class="lg:w-6/12">
+            <p class="text-white text-xl mb-5 font-normal">We have facilitated crores of rupees in funding for businesses across Maharashtra.</p>
+            <p class="text-white/60"><span class="text-white">From seed funding</span> to large-scale business loans, we connect entrepreneurs with the capital they need to succeed.</p>
+            <div class="mt-12 space-y-8 sm:space-y-0 columns-1 sm:columns-2">
+              <div>
+                <h3 class="text-white text-5xl mb-6 font-normal"><span class="">&#8377;5Cr+</span></h3>
+                <p class="text-lg text-white font-mono font-normal">Capital Facilitated</p>
+              </div>
+              <div>
+                <h3 class="text-white text-5xl mb-6 font-normal"><span class="">95%</span></h3>
+                <p class="text-lg text-white font-mono font-normal">Approval Rate</p>
+              </div>
             </div>
           </div>
-          <a href="contact.html" class="mt-auto rounded-full border border-white/20 text-xs uppercase tracking-widest px-5 py-3 text-white/70 hover:border-white hover:text-white transition-colors text-center" style="font-family:'Inter',sans-serif;">Check Eligibility &rarr;</a>
         </div>
-
-        <div class="bg-white/5 border border-white/10 rounded-3xl p-8 flex flex-col gap-4">
-          <p class="text-xs uppercase tracking-widest text-white/40" style="font-family:'Anonymous Pro',monospace;">OBC Handicraft Loan</p>
-          <p class="text-sm text-white/60 leading-relaxed" style="font-family:'Inter',sans-serif;">Special scheme for Other Backward Class artisans and handicraft workers to preserve and grow traditional craft businesses.</p>
-          <ul class="flex flex-col gap-2 mt-2">
-            <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Subsidized interest rates</li>
-            <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Government-backed scheme</li>
-            <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Small ticket loans for artisans</li>
-            <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Supports traditional craft livelihoods</li>
-          </ul>
-          <a href="contact.html" class="mt-auto rounded-full border border-white/20 text-xs uppercase tracking-widest px-5 py-3 text-white/70 hover:border-white hover:text-white transition-colors text-center" style="font-family:'Inter',sans-serif;">Check Eligibility &rarr;</a>
-        </div>
-
-        <div class="bg-white/5 border border-white/10 rounded-3xl p-8 flex flex-col gap-4">
-          <p class="text-xs uppercase tracking-widest text-white/40" style="font-family:'Anonymous Pro',monospace;">MSME / SME Loan</p>
-          <p class="text-sm text-white/60 leading-relaxed" style="font-family:'Inter',sans-serif;">Loans designed for registered Micro, Small, and Medium Enterprises to support business growth, working capital, and equipment purchase.</p>
-          <ul class="flex flex-col gap-2 mt-2">
-            <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Priority sector lending benefits</li>
-            <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Lower interest for registered MSMEs</li>
-            <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Government subsidies available</li>
-            <li class="flex items-start gap-2 text-xs text-white/50 font-mono"><span class="text-white/20 mt-0.5">—</span>Collateral-free under CGTMSE</li>
-          </ul>
-          <a href="contact.html" class="mt-auto rounded-full border border-white/20 text-xs uppercase tracking-widest px-5 py-3 text-white/70 hover:border-white hover:text-white transition-colors text-center" style="font-family:'Inter',sans-serif;">Check Eligibility &rarr;</a>
-        </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ELIGIBILITY CTA -->
-  <section class="bg-black py-16">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-      <p class="text-xs uppercase tracking-widest text-white/40 mb-6" style="font-family:'Anonymous Pro',monospace;">Not sure where to start?</p>
-      <h2 class="text-3xl lg:text-5xl font-normal -tracking-[2px] text-white mb-6" style="font-family:'Inter',sans-serif;">Let RAVEN find the<br><em>right loan.</em></h2>
-      <p class="text-base text-white/50 max-w-lg mx-auto mb-10 leading-relaxed" style="font-family:'Inter',sans-serif;">Tell us your financial goal and we will identify the best loan product, matching lenders, and guide you through the entire process.</p>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="contact.html" class="rounded-full bg-white text-black text-xs uppercase tracking-widest px-8 py-4 font-medium hover:bg-gray-100 transition-colors" style="font-family:'Inter',sans-serif;">Get a Free Consultation &rarr;</a>
-        <a href="registration.html" class="rounded-full border border-white/20 text-white text-xs uppercase tracking-widest px-8 py-4 font-medium hover:border-white transition-colors" style="font-family:'Inter',sans-serif;">Register as a Client</a>
+    <!-- Loan Types -->
+    <section class="py-12 lg:py-25">
+      <div class="max-w-7xl mx-auto px-6">
+        <div>
+          <h2 class="lg:w-4/12 mb-8 lg:mb-16 font-normal text-5xl text-black -tracking-[1.92px]">Funding <span class="italic">Options</span></h2>
+          <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+            <article>
+              <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none"><g clip-path="url(#clip0_fund1)"><path d="M56 0C56 7.73194 49.7319 14 42 14C49.7319 14 56 20.2681 56 28C56 35.7319 49.7319 42 42 42C49.7319 42 56 48.2681 56 56H0C0 48.2681 6.26806 42 14 42C6.26806 42 0 35.7319 0 28C0 20.2681 6.26806 14 14 14C6.26806 14 0 7.73194 0 0H56Z" fill="url(#paint0_fund1)"/></g><defs><linearGradient id="paint0_fund1" x1="28" y1="0" x2="28" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#545454"/><stop offset="1" stop-color="#BABABA"/></linearGradient><clipPath id="clip0_fund1"><rect width="56" height="56" fill="white"/></clipPath></defs></svg>
+              <h4 class="mb-5 mt-8 text-2xl font-normal text-black">Business Loans</h4>
+              <p class="text-lg text-gray-700">Term loans and working capital financing tailored to your business cashflow needs.</p>
+            </article>
+            <article>
+              <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none"><g clip-path="url(#clip0_fund2)"><path d="M28 14L35 7.21875L42.1094 0H56V14L42 28H41.8906L49 35.2188L56 42V56H42L28 42L21 48.7812L13.8906 56H0V42L14 28H14.1094L7 20.7812L0 14V0H14L28 14Z" fill="url(#paint0_fund2)"/></g><defs><linearGradient id="paint0_fund2" x1="28" y1="0" x2="28" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#545454"/><stop offset="1" stop-color="#BABABA"/></linearGradient><clipPath id="clip0_fund2"><rect width="56" height="56" fill="white"/></clipPath></defs></svg>
+              <h4 class="mb-5 mt-8 text-2xl font-normal text-black">Startup Funding</h4>
+              <p class="text-lg text-gray-700">Seed and early-stage funding solutions to help new ventures get off the ground quickly.</p>
+            </article>
+            <article>
+              <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none"><g clip-path="url(#clip0_fund3)"><path d="M56 56H38.9375C32.8969 56 28 51.1031 28 45.0625V56H0V42C0 34.2681 6.26806 28 14 28C21.7319 28 28 34.2681 28 42V28H56V56ZM17.0625 0C23.1031 0 28 4.89694 28 10.9375V0H56V14C56 21.7319 49.7319 28 42 28C34.2681 28 28 21.7319 28 14V28H0V0H17.0625Z" fill="url(#paint0_fund3)"/></g><defs><linearGradient id="paint0_fund3" x1="28" y1="0" x2="28" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#545454"/><stop offset="1" stop-color="#BABABA"/></linearGradient><clipPath id="clip0_fund3"><rect width="56" height="56" fill="white"/></clipPath></defs></svg>
+              <h4 class="mb-5 mt-8 text-2xl font-normal text-black">Property Loans</h4>
+              <p class="text-lg text-gray-700">Commercial and residential property financing with competitive rates and fast approval.</p>
+            </article>
+            <article>
+              <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none"><g clip-path="url(#clip0_fund4)"><path d="M35 19.25L42.4375 7.4375L47.25 0H56V8.75L48.4531 20.4531L43.75 28H56V56H21V36.75L14.0538 48.125L8.75 56H0V47.25L7.4375 35.4375L12.25 28H0V0H35V19.25Z" fill="url(#paint0_fund4)"/></g><defs><linearGradient id="paint0_fund4" x1="28" y1="0" x2="28" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#545454"/><stop offset="1" stop-color="#BABABA"/></linearGradient><clipPath id="clip0_fund4"><rect width="56" height="56" fill="white"/></clipPath></defs></svg>
+              <h4 class="mb-5 mt-8 text-2xl font-normal text-black">Government Schemes</h4>
+              <p class="text-lg text-gray-700">Navigate MUDRA, CGTMSE, and other government-backed schemes with our expert guidance.</p>
+            </article>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOTER -->
-  <footer class="bg-[#070707] pt-16 pb-10">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="overflow-hidden mb-12">
-        <svg viewBox="0 0 900 160" xmlns="http://www.w3.org/2000/svg" class="w-full">
-          <defs>
-            <linearGradient id="fgf3" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.08"/>
-              <stop offset="100%" stop-color="#070707" stop-opacity="0"/>
-            </linearGradient>
-          </defs>
-          <text x="50%" y="85%" text-anchor="middle" font-family="Inter,sans-serif" font-size="160" font-weight="700" letter-spacing="-6" fill="url(#fgf3)">RAVEN</text>
-        </svg>
-      </div>
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+    <!-- Process List -->
+    <section class="py-12 lg:py-25">
+      <div class="max-w-7xl mx-auto px-6">
         <div>
-          <p class="text-xs uppercase tracking-widest text-white/30 mb-4" style="font-family:'Anonymous Pro',monospace;">Services</p>
-          <ul class="flex flex-col gap-3">
-            <li><a href="funding-loans.html" class="text-sm text-white/60 hover:text-white transition-colors" style="font-family:'Inter',sans-serif;">Funding &amp; Loans</a></li>
-            <li><a href="index.html#services" class="text-sm text-white/60 hover:text-white transition-colors" style="font-family:'Inter',sans-serif;">Real Estate</a></li>
-            <li><a href="index.html#services" class="text-sm text-white/60 hover:text-white transition-colors" style="font-family:'Inter',sans-serif;">Brand Building</a></li>
-          </ul>
-        </div>
-        <div>
-          <p class="text-xs uppercase tracking-widest text-white/30 mb-4" style="font-family:'Anonymous Pro',monospace;">Company</p>
-          <ul class="flex flex-col gap-3">
-            <li><a href="index.html#about" class="text-sm text-white/60 hover:text-white transition-colors" style="font-family:'Inter',sans-serif;">About</a></li>
-            <li><a href="index.html#process" class="text-sm text-white/60 hover:text-white transition-colors" style="font-family:'Inter',sans-serif;">How It Works</a></li>
-          </ul>
-        </div>
-        <div>
-          <p class="text-xs uppercase tracking-widest text-white/30 mb-4" style="font-family:'Anonymous Pro',monospace;">Client</p>
-          <ul class="flex flex-col gap-3">
-            <li><a href="registration.html" class="text-sm text-white/60 hover:text-white transition-colors" style="font-family:'Inter',sans-serif;">Client Portal</a></li>
-            <li><a href="contact.html" class="text-sm text-white/60 hover:text-white transition-colors" style="font-family:'Inter',sans-serif;">Contact</a></li>
-          </ul>
-        </div>
-        <div>
-          <p class="text-xs uppercase tracking-widest text-white/30 mb-4" style="font-family:'Anonymous Pro',monospace;">Contact</p>
-          <ul class="flex flex-col gap-3">
-            <li><a href="mailto:hello@raven.business" class="text-sm text-white/60 hover:text-white transition-colors" style="font-family:'Inter',sans-serif;">hello@raven.business</a></li>
-            <li><span class="text-sm text-white/60" style="font-family:'Inter',sans-serif;">Pune / Chh. Sambhajinagar</span></li>
+          <h2 class="mb-16 font-normal text-5xl text-black -tracking-[1.92px]">Our <span class="italic">Process</span></h2>
+          <ul class="max-w-[1120px] mx-auto space-y-12">
+            <li class="flex flex-col gap-2 lg:grid lg:grid-cols-[auto_auto_370px] lg:items-center lg:gap-8">
+              <span class="text-black text-lg italic">#1</span>
+              <h3 class="font-normal whitespace-nowrap text-2xl text-black">Eligibility Assessment</h3>
+              <p class="text-gray-700 text-lg font-normal">We evaluate your business profile and identify the best funding options available to you.</p>
+            </li>
+            <li class="flex flex-col gap-2 lg:grid lg:grid-cols-[auto_auto_370px] lg:items-center lg:gap-8">
+              <span class="text-black text-lg italic">#2</span>
+              <h3 class="font-normal whitespace-nowrap text-2xl text-black">Application Preparation</h3>
+              <p class="text-gray-700 text-lg font-normal">Our team prepares a strong, complete application to maximise your approval chances.</p>
+            </li>
+            <li class="flex flex-col gap-2 lg:grid lg:grid-cols-[auto_auto_370px] lg:items-center lg:gap-8">
+              <span class="text-black text-lg italic">#3</span>
+              <h3 class="font-normal whitespace-nowrap text-2xl text-black">Lender Matching</h3>
+              <p class="text-gray-700 text-lg font-normal">We connect you with the right lenders from our extensive network for the best terms.</p>
+            </li>
+            <li class="flex flex-col gap-2 lg:grid lg:grid-cols-[auto_auto_370px] lg:items-center lg:gap-8">
+              <span class="text-black text-lg italic">#4</span>
+              <h3 class="font-normal whitespace-nowrap text-2xl text-black">Disbursement &amp; Support</h3>
+              <p class="text-gray-700 text-lg font-normal">We support you through disbursement and provide ongoing advisory for repayment planning.</p>
+            </li>
           </ul>
         </div>
       </div>
-      <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <span class="text-xs text-white/30" style="font-family:'Anonymous Pro',monospace;">&copy; 2026 RAVEN. All rights reserved.</span>
-        <span class="text-xs text-white/30" style="font-family:'Anonymous Pro',monospace;">Build &middot; Fund &middot; Brand &middot; Grow</span>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-14 bg-[#FBFBFB]">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex items-center flex-col sm:flex-row justify-between gap-6">
+          <div class="sm:w-1/2">
+            <h2 class="font-normal text-5xl text-center sm:text-left text-black -tracking-[1.92px]">Ready to fund <br>your next <span class="italic">big idea?</span></h2>
+          </div>
+          <div class="sm:w-1/2 flex sm:justify-end">
+            <a class="group px-6 py-4.5 inline-flex gap-2 items-center bg-white border border-black text-sm font-medium -tracking-[0.2px] leading-5 text-black rounded-full hover:bg-gray-100 transition-all duration-300" href="contact.html">
+              <span class="relative inline-block overflow-hidden">
+                <span class="block transition-transform duration-300 ease-in-out group-hover:-translate-y-full">CONTACT US</span>
+                <span class="absolute top-0 left-0 block w-full transition-transform duration-300 ease-in-out translate-y-full group-hover:translate-y-0">CONTACT US</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#070707] overflow-hidden">
+    <div class="pt-20">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="mb-16">
+          <a href="index.html">
+            <svg width="140" height="28" viewBox="0 0 140 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <text x="0" y="24" font-family="Inter, sans-serif" font-size="26" font-weight="700" fill="white" letter-spacing="-1">RAVEN</text>
+            </svg>
+          </a>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-16">
+          <div>
+            <p class="text-white/60 text-base leading-7">Build. Fund. Brand. Grow.<br>Your business partner in India.</p>
+            <p class="text-white/40 text-sm mt-4">Chhatrapati Sambhajinagar &amp; Pune, India</p>
+          </div>
+          <div>
+            <h4 class="text-white text-sm font-medium uppercase tracking-wider mb-6">Services</h4>
+            <ul class="space-y-4">
+              <li><a href="funding-loans.html" class="text-white/60 hover:text-white transition text-base">Funding &amp; Loans</a></li>
+              <li><a href="registration.html" class="text-white/60 hover:text-white transition text-base">Business Registration</a></li>
+              <li><a href="index.html" class="text-white/60 hover:text-white transition text-base">Real Estate</a></li>
+              <li><a href="index.html" class="text-white/60 hover:text-white transition text-base">Brand Strategy</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-white text-sm font-medium uppercase tracking-wider mb-6">Company</h4>
+            <ul class="space-y-4">
+              <li><a href="index.html#about" class="text-white/60 hover:text-white transition text-base">About Us</a></li>
+              <li><a href="contact.html" class="text-white/60 hover:text-white transition text-base">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-white text-sm font-medium uppercase tracking-wider mb-6">Contact</h4>
+            <ul class="space-y-4">
+              <li><a href="mailto:hello@raven.business" class="text-white/60 hover:text-white transition text-base">hello@raven.business</a></li>
+              <li><span class="text-white/60 text-base">Chhatrapati Sambhajinagar</span></li>
+              <li><span class="text-white/60 text-base">Pune, India</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p class="text-white/40 text-sm">&copy; 2025 RAVEN. All rights reserved.</p>
+          <p class="text-white/40 text-sm">Built for Indian Entrepreneurs.</p>
+        </div>
       </div>
     </div>
   </footer>
 
-  <script>
-    document.getElementById('menu-open').addEventListener('click', function() {
-      document.getElementById('mobile-menu').classList.add('open');
-    });
-    document.getElementById('menu-close').addEventListener('click', function() {
-      document.getElementById('mobile-menu').classList.remove('open');
-    });
-
-    // Filter logic
-    document.querySelectorAll('.filter-btn').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        document.querySelectorAll('.filter-btn').forEach(function(b) {
-          b.classList.remove('bg-black', 'text-white', 'border-black');
-          b.classList.add('border-gray-200');
-        });
-        btn.classList.add('bg-black', 'text-white', 'border-black');
-        btn.classList.remove('border-gray-200');
-        var filter = btn.getAttribute('data-filter');
-        document.querySelectorAll('.loan-category').forEach(function(cat) {
-          if (filter === 'all') {
-            cat.classList.remove('hidden');
-          } else {
-            if (cat.getAttribute('data-category') === filter) {
-              cat.classList.remove('hidden');
-            } else {
-              cat.classList.add('hidden');
-            }
-          }
-        });
-      });
-    });
-
-    // Vehicle toggle
-    function toggleVehicle() {
-      var sub = document.getElementById('vehicle-sub');
-      var btn = document.getElementById('vehicle-toggle-btn');
-      if (sub.classList.contains('open')) {
-        sub.classList.remove('open');
-        btn.innerHTML = 'View 3 Sub-Types &darr;';
-      } else {
-        sub.classList.add('open');
-        btn.innerHTML = 'Hide Sub-Types &uarr;';
-      }
-    }
-  </script>
+  <script src="floating-dock.js"></script>
 </body>
 </html>
