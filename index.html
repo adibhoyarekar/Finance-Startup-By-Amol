@@ -345,6 +345,11 @@
 
     <!-- Subscription Plans Section -->
     <style>
+      .plans-section{background:#fff;border-top:1px solid #e5e5e5;margin-top:2rem}
+      @media(min-width:1024px){.plans-section{margin-top:3rem}}
+      .plans-head{display:flex;flex-direction:column;gap:1rem;margin-bottom:4rem}
+      .plans-head p{margin:0;max-width:32rem;font-size:1.125rem;line-height:1.6;color:#404040}
+      @media(min-width:1024px){.plans-head{flex-direction:row;align-items:flex-end;justify-content:space-between}}
       .plans-grid{display:grid;grid-template-columns:1fr;gap:1.5rem}
       @media(min-width:768px){.plans-grid{grid-template-columns:repeat(3,1fr);gap:2rem}}
       .pricing-card{display:flex;flex-direction:column;position:relative;padding:2rem}
@@ -357,12 +362,12 @@
       .pricing-card button{cursor:pointer}
       .plan-badge{position:absolute;top:-.75rem;left:1.5rem;background:#fff;color:#000;border:1px solid #000;font-size:.75rem;font-weight:700;letter-spacing:.05em;padding:.25rem 1rem;border-radius:9999px}
     </style>
-    <section class="py-16 lg:py-28 bg-white">
+    <section class="plans-section py-12 lg:py-25">
       <div class="max-w-7xl mx-auto px-6">
 
-        <div class="mb-16">
-          <h2 class="font-normal text-5xl lg:text-6xl text-black -tracking-[2px]">Simple, Transparent <span class="italic">Pricing</span></h2>
-          <p class="text-gray-600 text-lg mt-4 max-w-2xl">Choose the plan that works best for your business. Scale as you grow.</p>
+        <div class="plans-head">
+          <h2 class="font-normal text-5xl text-black -tracking-[1.92px]">Subscription <span class="italic">Plans</span></h2>
+          <p>Choose the plan that fits your business and upgrade as you grow.</p>
         </div>
 
         <div class="plans-grid">
