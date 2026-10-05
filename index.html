@@ -10,7 +10,7 @@
     .wpu{display:grid;gap:3rem}
     @media(min-width:1024px){.wpu{grid-template-columns:4fr 8fr;gap:4rem;align-items:start}.wpu-head{position:sticky;top:7rem}}
     .wpu-grid{display:grid;grid-template-columns:1fr;gap:1px;background:#e5e5e5;border:1px solid #e5e5e5;border-radius:2rem;overflow:hidden}
-    @media(min-width:640px){.wpu-grid{grid-template-columns:1fr 1fr}}
+    .wpu-grid{grid-template-columns:1fr 1fr}
     .wpu-card{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:3rem;min-height:300px;padding:2rem;background:#fff;overflow:hidden;transition:background .45s ease}
     .wpu-card::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:0;background:#fff;transition:width .6s cubic-bezier(.2,.8,.2,1)}
     .wpu-top{display:flex;justify-content:space-between;align-items:flex-start}
@@ -23,6 +23,15 @@
     .wpu-card:hover svg{transform:rotate(90deg) scale(1.08)}
     .wpu-card:hover h4{color:#fff}
     .wpu-card:hover p,.wpu-card:hover .wpu-num{color:#a3a3a3}
+    @media(max-width:639px){
+      .wpu{gap:2rem}
+      .wpu-grid{border-radius:1.25rem}
+      .wpu-card{min-height:0;gap:1.5rem;padding:1rem}
+      .wpu-card svg{width:36px;height:36px}
+      .wpu-num{font-size:.875rem}
+      .wpu-card h4{font-size:1.125rem;margin-bottom:.5rem}
+      .wpu-card p{font-size:.875rem;line-height:1.5}
+    }
   </style>
 </head>
 <body class="font-sans bg-white text-black antialiased">
