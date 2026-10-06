@@ -9,22 +9,22 @@
   <style>
     .wpu{display:grid;gap:3rem}
     @media(min-width:1024px){.wpu{grid-template-columns:4fr 8fr;gap:4rem;align-items:start}.wpu-head{position:sticky;top:7rem}}
-    .wpu-head p{margin:1.25rem 0 0;font-size:1.125rem;line-height:1.6;color:#404040;max-width:26rem}
-    .wpu-updated{display:block;margin-top:1.5rem;font-family:"Anonymous Pro",ui-monospace,monospace;font-size:.875rem;color:#737373}
-    .wpu-grid{display:grid;grid-template-columns:1fr;gap:1px;background:#e5e5e5;border:1px solid #e5e5e5;border-radius:2rem;overflow:hidden}
+    .wpu-head p{margin:1.25rem 0 0;font-size:1.125rem;line-height:1.6;color:#33425E;max-width:26rem}
+    .wpu-updated{display:block;margin-top:1.5rem;font-family:"Anonymous Pro",ui-monospace,monospace;font-size:.875rem;color:#5F6F8C}
+    .wpu-grid{display:grid;grid-template-columns:1fr;gap:1px;background:#DCE3EF;border:1px solid #DCE3EF;border-radius:2rem;overflow:hidden}
     @media(min-width:768px){.wpu-grid{grid-template-columns:1fr 1fr}}
     .wpu-card{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:3rem;min-height:300px;padding:2rem;background:#fff;overflow:hidden;transition:background .45s ease}
     .wpu-card::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:0;background:#fff;transition:width .6s cubic-bezier(.2,.8,.2,1)}
     .wpu-top{display:flex;justify-content:space-between;align-items:flex-start}
-    .wpu-num{font-family:"Anonymous Pro",ui-monospace,monospace;font-size:1rem;color:#737373;transition:color .45s ease}
+    .wpu-num{font-family:"Anonymous Pro",ui-monospace,monospace;font-size:1rem;color:#5F6F8C;transition:color .45s ease}
     .wpu-card svg{flex-shrink:0;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
-    .wpu-card h4{margin:0 0 1rem;font-size:1.5rem;font-weight:400;color:#000;transition:color .45s ease}
-    .wpu-card p{margin:0;font-size:1.0625rem;line-height:1.6;color:#404040;transition:color .45s ease}
-    .wpu-card:hover{background:#000}
+    .wpu-card h4{margin:0 0 1rem;font-size:1.5rem;font-weight:400;color:#0B2A5B;transition:color .45s ease}
+    .wpu-card p{margin:0;font-size:1.0625rem;line-height:1.6;color:#33425E;transition:color .45s ease}
+    .wpu-card:hover{background:#0B2A5B}
     .wpu-card:hover::after{width:100%}
     .wpu-card:hover svg{transform:rotate(90deg) scale(1.08)}
     .wpu-card:hover h4{color:#fff}
-    .wpu-card:hover p,.wpu-card:hover .wpu-num{color:#a3a3a3}
+    .wpu-card:hover p,.wpu-card:hover .wpu-num{color:#AEBBD3}
     .wpu-card:hover a{color:#fff}
     @media(max-width:639px){
       .wpu{gap:2rem}
@@ -36,6 +36,7 @@
       .wpu-card p{font-size:1rem;line-height:1.55}
     }
   </style>
+  <link rel="stylesheet" href="theme.css?v=1">
 </head>
 <body class="font-sans bg-white text-black antialiased">
 
@@ -192,7 +193,7 @@
   </main>
 
   <!-- Footer -->
-  <footer class="bg-[#070707] overflow-hidden">
+  <footer class="bg-[#071B3D] overflow-hidden">
     <div class="pt-20">
       <div class="max-w-7xl mx-auto px-6">
         <div class="mb-16">

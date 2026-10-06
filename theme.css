@@ -1,0 +1,197 @@
+/* RAVEN institutional theme: navy + gold, banking / government / corporate look.
+   Loaded last on every page. Selectors are prefixed with `body` so they beat page-level styles. */
+:root{
+  --navy:#0B2A5B;
+  --navy-deep:#071B3D;
+  --navy-soft:#123566;
+  --gold:#C8962E;
+  --gold-soft:#F4E6C4;
+  --sky:#F6F9FD;
+  --sky-2:#EEF3FA;
+  --line:#DCE3EF;
+  --ink:#14213D;
+  --body:#33425E;
+  --muted:#5F6F8C;
+  --serif:Georgia,Cambria,"Times New Roman",serif;
+
+  --color-black:#0B2A5B;
+  --color-gray-50:#F6F9FD;
+  --color-gray-100:#EEF3FA;
+  --color-gray-200:#DCE3EF;
+  --color-gray-300:#CBD5E6;
+  --color-gray-400:#8794AD;
+  --color-gray-500:#5F6F8C;
+  --color-gray-600:#4A5B78;
+  --color-gray-700:#33425E;
+  --color-gray-800:#1E2B45;
+  --color-gray-900:#0F1B33;
+  --foreground:#0B2A5B;
+  --muted-foreground:#5F6F8C;
+  --accent:#EEF3FA;
+  --accent-foreground:#0B2A5B;
+  --border:#DCE3EF;
+}
+
+/* utilities that were renamed during the recolor */
+body .bg-\[\#071B3D\]{background-color:var(--navy-deep)}
+body .bg-\[\#F6F9FD\]{background-color:var(--sky)}
+
+body{background:#fff;color:var(--body);font-feature-settings:"tnum"}
+body ::selection{background:var(--gold-soft);color:var(--navy)}
+
+/* ---------- typography: serif headings for a formal, trustworthy tone ---------- */
+body h1,body h2,body h3,body h4,body .svc-title,body .lc-title,body .hw{font-family:var(--serif);color:var(--navy)}
+body h1[class],body h2[class]{letter-spacing:-.01em;font-weight:700}
+body h3[class],body h4[class]{letter-spacing:-.005em}
+body h1 .italic,body h2 .italic{font-style:italic;color:var(--gold)}
+body .hw{font-weight:700;letter-spacing:-.015em}
+body .svc-title{font-weight:700;letter-spacing:-.01em}
+body .lc-title,body .wpu-card h4,body .terms-sec h2{font-weight:700;letter-spacing:0}
+body .hw .italic{color:var(--gold)}
+
+/* ---------- header: white bar, navy/gold ribbon on top ---------- */
+body header{background:#fff!important;-webkit-backdrop-filter:none;backdrop-filter:none;border-bottom:1px solid var(--line);box-shadow:0 2px 14px rgba(11,42,91,.06)!important;position:sticky}
+body header::before{content:"";display:block;height:5px;background:linear-gradient(90deg,var(--navy) 0 70%,var(--gold) 70% 100%)}
+body header svg text{fill:var(--navy)}
+
+/* ---------- buttons: squarer, solid navy, gold hover line ---------- */
+body a[class*="rounded-full"],body button[class*="rounded-full"]{border-radius:8px}
+body a.bg-black,body a[class*="bg-black"],body button.bg-black{background:var(--navy);border-color:var(--navy);color:#fff}
+body a[class*="rounded-full"]:not([class*="bg-black"]):not(.bg-black){border-color:var(--navy)}
+body a[class*="bg-white"][class*="border-black"]:hover{background:var(--navy);color:#fff}
+body a[class*="bg-white"][class*="border-black"]:hover span{color:#fff}
+
+/* ---------- hero ---------- */
+body main>section:first-of-type{background:linear-gradient(180deg,var(--sky) 0%,#fff 100%)}
+body main>section:first-of-type::after{content:"";display:block;height:0}
+
+/* ---------- dark panels ---------- */
+body .bg-black{background:linear-gradient(135deg,var(--navy-deep) 0%,var(--navy) 100%)}
+body .bg-black .text-white\/60,body .bg-black [class*="text-gray-400"]{color:#AEBBD3}
+body .bg-black h2 .italic{color:var(--gold)}
+
+/* ---------- cards: soft corners, thin borders, navy hover ---------- */
+body .wpu-grid{border-radius:16px;background:var(--line);border-color:var(--line)}
+body .wpu-card{background:#fff}
+body .wpu-card:hover{background:var(--navy)}
+body .wpu-card:hover::after{background:var(--gold);height:4px}
+body .wpu-card::after{background:var(--gold);height:4px}
+body .wpu-card:hover h4{color:#fff}
+body .wpu-num{color:var(--gold);font-weight:700}
+body .wpu-card:hover .wpu-num{color:var(--gold)}
+body .wpu-card svg stop:first-child{stop-color:var(--navy)}
+body .wpu-card svg stop:last-child{stop-color:var(--gold)}
+
+body .svc-list{border-top:2px solid var(--navy)}
+body .svc-row{border-bottom-color:var(--line)}
+body .svc-num{color:var(--gold);font-weight:700}
+body .svc-row:hover{background:var(--navy)}
+body .svc-row:hover .svc-title{color:#fff}
+body .svc-row:hover .svc-num{color:var(--gold)}
+body .svc-arrow{border-color:var(--navy);border-radius:10px;color:var(--navy)}
+body .svc-row:hover .svc-arrow{background:var(--gold);border-color:var(--gold);color:var(--navy);transform:rotate(-45deg)}
+
+body .trev{background:#fff}
+body .trev:hover{background:var(--navy)}
+body .trev-q{color:var(--gold)}
+body .trev:hover .trev-txt{color:#DCE3EF}
+body .trev:hover .trev-name{color:#fff}
+body .trev:hover .trev-sub{color:#AEBBD3}
+body .rounded-\[28px\]{border-radius:16px}
+
+body .trev img{ring-color:var(--line)}
+
+/* ---------- pricing ---------- */
+body .plans-section{background:var(--sky);border-top:1px solid var(--line)}
+body .pricing-card{border-radius:16px;background:#fff;border:1px solid var(--line)}
+body .pricing-card:hover{border-color:var(--navy);box-shadow:0 18px 40px -22px rgba(11,42,91,.45)}
+body .pricing-card h3{color:var(--navy);font-weight:700}
+body .pricing-card.bg-black{background:linear-gradient(160deg,var(--navy-deep),var(--navy));border-color:var(--navy);box-shadow:0 24px 50px -24px rgba(11,42,91,.7)}
+body .pricing-card.bg-black h3{color:#fff}
+body .pricing-card.bg-black .text-gray-400,body .pricing-card.bg-black .text-gray-500{color:#AEBBD3}
+body .pricing-card.bg-black .text-gray-300{color:#E6ECF7}
+body .pricing-card.bg-black .text-white{color:#fff}
+body .pricing-card.bg-black svg{color:var(--gold)}
+body .pricing-card.bg-black button{background:var(--gold);color:var(--navy);font-weight:600;border-radius:8px}
+body .pricing-card.bg-black button:hover{background:#d9a93d}
+body .pricing-card button{border-radius:8px}
+body .pricing-card:not(.bg-black) svg{color:var(--navy)}
+body .pricing-card:not(.bg-black) button:hover{background:var(--navy);color:#fff}
+body .plan-badge{background:var(--gold);color:var(--navy);border:0;border-radius:6px}
+
+/* ---------- loans ---------- */
+body .lc{background:var(--sky-2);border:1px solid var(--line);border-radius:14px}
+body .lc:hover{background:var(--navy);border-color:var(--navy)}
+body .lc:hover .lc-title{color:#fff}
+body .lc-num{color:var(--gold);font-weight:700}
+body .lc:hover .lc-num{color:var(--gold)}
+body .lc-img{background:var(--line)}
+body .lc-img img{filter:sepia(1) hue-rotate(184deg) saturate(2.4) brightness(1.02)}
+body .lc-arrow{border-radius:10px;border-color:var(--navy);color:var(--navy)}
+body .lc:hover .lc-arrow{background:var(--gold);border-color:var(--gold);color:var(--navy)}
+body .lc-cta{background:var(--navy);border-color:var(--navy)}
+body .lc-cta .lc-title{color:#fff}
+body .lc-cta .lc-img{background:var(--navy-soft);color:var(--gold)}
+body .lc-cta .lc-arrow{background:var(--gold);border-color:var(--gold);color:var(--navy)}
+body .lc-cta:hover{background:var(--navy-soft)}
+
+body .ls{border-radius:10px;border-color:var(--line);background:#fff;color:var(--muted)}
+body .ls:focus-within{border-color:var(--navy);box-shadow:0 0 0 4px rgba(11,42,91,.1)}
+body .ls-empty{border-radius:14px;background:var(--sky)}
+body .ls-empty a{border-radius:8px;border-color:var(--navy);color:var(--navy)}
+body .ls-empty a:hover{background:var(--navy);color:#fff}
+
+/* ---------- forms (contact, registration) ---------- */
+body input:not([type=checkbox]):not([type=radio]),body select,body textarea{border-color:var(--line)}
+body input:focus,body select:focus,body textarea:focus{border-color:var(--navy);outline:none;box-shadow:0 0 0 3px rgba(11,42,91,.12)}
+body form button[type=submit]{border-radius:8px}
+
+/* ---------- CTA band ---------- */
+body main>section.bg-\[\#F6F9FD\]:last-of-type{background:linear-gradient(135deg,var(--sky-2),var(--sky));border-top:1px solid var(--line)}
+
+/* ---------- footer ---------- */
+body footer{background:var(--navy-deep)!important;border-top:5px solid var(--gold)}
+body footer h4{font-family:inherit;color:var(--gold)!important}
+body footer a:hover{color:#fff}
+
+/* ---------- chat button, consent, ask page, terms ---------- */
+body .rv-chat-btn{background:var(--navy);border-radius:10px;border-bottom:3px solid var(--gold)}
+body .rv-chat-btn:hover{background:var(--navy-soft)}
+body .rv-consent-card{border-radius:14px;border-top:5px solid var(--gold)}
+body .rv-consent-logo{color:var(--navy)}
+body .rv-consent-card li::before{background:var(--gold)}
+body .rv-consent-check,body .rv-consent-yes,body .rv-consent-no{border-radius:8px}
+body .rv-consent-yes{background:var(--navy)}
+body .rv-consent-yes:not(:disabled):hover{background:var(--navy-soft)}
+body .ask-main{background:var(--sky)}
+body .ask-chat{border-radius:14px;border-color:var(--line)}
+body .ask-msg{border-radius:12px}
+body .ask-msg.user{background:var(--navy)}
+body .ask-form input,body .ask-form button,body .ask-chip{border-radius:8px}
+body .ask-form button{background:var(--navy)}
+body .ask-chip{border-color:var(--navy);color:var(--navy)}
+body .ask-chip:hover{background:var(--navy);color:#fff}
+body .terms-updated,body .wpu-updated{color:var(--gold);font-weight:700}
+
+/* ---------- mobile menu (React/Radix popover) ---------- */
+body #mobile-nav-root button{color:var(--navy)}
+
+/* utility text colors live in a cascade layer, so restate the light-on-dark ones here */
+body .text-white{color:#fff}
+body .text-white\/60{color:rgba(255,255,255,.62)}
+body .text-white\/40{color:rgba(255,255,255,.55)}
+body .text-white\/50{color:rgba(255,255,255,.6)}
+body .text-white\/70{color:rgba(255,255,255,.75)}
+body .text-gray-300{color:#CBD5E6}
+body .bg-black .italic,body .text-white .italic{color:var(--gold)}
+body footer .text-white{color:var(--gold)}
+body footer .text-white\/60:hover,body footer a.text-white\/60:hover{color:#fff}
+
+/* ---------- finishing touches ---------- */
+body input.rounded-full,body select.rounded-full,body textarea,body input[class*="rounded"],body select[class*="rounded"]{border-radius:8px}
+body [class*="rounded-[2rem]"],body [class*="rounded-[2.5rem]"]{border-radius:18px}
+body .pr-num{color:var(--gold);opacity:.55;font-family:var(--serif)}
+body .pr-step:hover .pr-num{opacity:1}
+body .pr-title{color:#fff}
+body .lo-num{color:var(--gold);font-weight:700}
+body .lo-ico{color:var(--navy)}

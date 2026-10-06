@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="nexstudio.css">
   <link rel="stylesheet" href="mobile-nav.css?v=2">
   <link rel="stylesheet" href="loan-search.css?v=1">
+  <link rel="stylesheet" href="theme.css?v=1">
 </head>
 <body class="font-sans bg-white text-black antialiased">
 
@@ -62,24 +63,24 @@
       .ln{scroll-margin-top:6rem}
       .lc-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
       @media(min-width:1024px){.lc-grid{gap:1.25rem}}
-      .lc{display:flex;flex-direction:column;background:#f5f5f5;color:#000;border-radius:1.75rem;text-decoration:none;overflow:hidden;transition:background .45s ease,color .45s ease,transform .45s cubic-bezier(.2,.8,.2,1)}
-      .lc-img{aspect-ratio:16/10;overflow:hidden;background:#e5e5e5}
+      .lc{display:flex;flex-direction:column;background:#EEF3FA;color:#0B2A5B;border-radius:1.75rem;text-decoration:none;overflow:hidden;transition:background .45s ease,color .45s ease,transform .45s cubic-bezier(.2,.8,.2,1)}
+      .lc-img{aspect-ratio:16/10;overflow:hidden;background:#DCE3EF}
       .lc-img img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
       .lc-body{display:flex;flex-direction:column;justify-content:space-between;gap:1.5rem;flex:1;padding:1.5rem}
       .lc-top{display:flex;justify-content:space-between;align-items:center}
-      .lc-num{font-family:"Anonymous Pro",ui-monospace,monospace;font-size:.9375rem;color:#737373;transition:color .45s ease}
+      .lc-num{font-family:"Anonymous Pro",ui-monospace,monospace;font-size:.9375rem;color:#5F6F8C;transition:color .45s ease}
       .lc-title{margin:0 0 .5rem;font-size:1.5rem;font-weight:400;letter-spacing:-.02em}
-      .lc-desc{margin:0;font-size:1rem;line-height:1.55;color:#404040;transition:color .45s ease}
-      .lc-arrow{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid #000;border-radius:9999px;transition:transform .5s cubic-bezier(.2,.8,.2,1),background .45s ease,color .45s ease,border-color .45s ease}
-      .lc:hover{background:#000;color:#fff;transform:translateY(-4px)}
-      .lc:hover .lc-desc,.lc:hover .lc-num{color:#a3a3a3}
+      .lc-desc{margin:0;font-size:1rem;line-height:1.55;color:#33425E;transition:color .45s ease}
+      .lc-arrow{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid #0B2A5B;border-radius:9999px;transition:transform .5s cubic-bezier(.2,.8,.2,1),background .45s ease,color .45s ease,border-color .45s ease}
+      .lc:hover{background:#0B2A5B;color:#fff;transform:translateY(-4px)}
+      .lc:hover .lc-desc,.lc:hover .lc-num{color:#AEBBD3}
       .lc:hover .lc-img img{transform:scale(1.07)}
-      .lc:hover .lc-arrow{background:#fff;color:#000;border-color:#fff;transform:rotate(-45deg)}
-      .lc-cta{background:#000;color:#fff}
-      .lc-cta .lc-img{display:flex;align-items:center;justify-content:center;background:#141414;color:#fff}
-      .lc-cta .lc-desc,.lc-cta .lc-num{color:#a3a3a3}
-      .lc-cta .lc-arrow{background:#fff;color:#000;border-color:#fff}
-      .lc-cta:hover{background:#262626}
+      .lc:hover .lc-arrow{background:#fff;color:#0B2A5B;border-color:#fff;transform:rotate(-45deg)}
+      .lc-cta{background:#0B2A5B;color:#fff}
+      .lc-cta .lc-img{display:flex;align-items:center;justify-content:center;background:#0E2A55;color:#fff}
+      .lc-cta .lc-desc,.lc-cta .lc-num{color:#AEBBD3}
+      .lc-cta .lc-arrow{background:#fff;color:#0B2A5B;border-color:#fff}
+      .lc-cta:hover{background:#123566}
       @media(min-width:1024px){
         .lc{flex-direction:row}
         .lc-img{width:56%;flex-shrink:0;aspect-ratio:auto;min-height:240px}
@@ -229,17 +230,17 @@
     <style>
       .lo-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
       @media(min-width:1024px){.lo-grid{grid-template-columns:repeat(4,1fr);gap:1.25rem}}
-      .lo-card{display:flex;flex-direction:column;gap:2rem;min-height:340px;padding:1.75rem;background:#fff;color:#000;border:1px solid #e5e5e5;border-radius:1.75rem;text-decoration:none;transition:background .45s ease,color .45s ease,border-color .45s ease,transform .45s cubic-bezier(.2,.8,.2,1)}
+      .lo-card{display:flex;flex-direction:column;gap:2rem;min-height:340px;padding:1.75rem;background:#fff;color:#0B2A5B;border:1px solid #DCE3EF;border-radius:1.75rem;text-decoration:none;transition:background .45s ease,color .45s ease,border-color .45s ease,transform .45s cubic-bezier(.2,.8,.2,1)}
       .lo-top{display:flex;justify-content:space-between;align-items:flex-start}
-      .lo-ico{display:flex;align-items:center;justify-content:center;width:60px;height:60px;border:1px solid #000;border-radius:9999px;transition:background .45s ease,color .45s ease,border-color .45s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
-      .lo-num{font-family:"Anonymous Pro",ui-monospace,monospace;font-size:.9375rem;color:#737373;transition:color .45s ease}
+      .lo-ico{display:flex;align-items:center;justify-content:center;width:60px;height:60px;border:1px solid #0B2A5B;border-radius:9999px;transition:background .45s ease,color .45s ease,border-color .45s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
+      .lo-num{font-family:"Anonymous Pro",ui-monospace,monospace;font-size:.9375rem;color:#5F6F8C;transition:color .45s ease}
       .lo-title{margin:0 0 .6rem;font-size:1.5rem;font-weight:400;letter-spacing:-.02em}
-      .lo-desc{margin:0;font-size:1rem;line-height:1.55;color:#404040;transition:color .45s ease}
-      .lo-arrow{margin-top:auto;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid #000;border-radius:9999px;transition:transform .5s cubic-bezier(.2,.8,.2,1),background .45s ease,color .45s ease,border-color .45s ease}
-      .lo-card:hover{background:#000;color:#fff;border-color:#000;transform:translateY(-4px)}
-      .lo-card:hover .lo-desc,.lo-card:hover .lo-num{color:#a3a3a3}
-      .lo-card:hover .lo-ico{background:#fff;color:#000;border-color:#fff;transform:rotate(-8deg) scale(1.06)}
-      .lo-card:hover .lo-arrow{background:#fff;color:#000;border-color:#fff;transform:rotate(-45deg)}
+      .lo-desc{margin:0;font-size:1rem;line-height:1.55;color:#33425E;transition:color .45s ease}
+      .lo-arrow{margin-top:auto;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid #0B2A5B;border-radius:9999px;transition:transform .5s cubic-bezier(.2,.8,.2,1),background .45s ease,color .45s ease,border-color .45s ease}
+      .lo-card:hover{background:#0B2A5B;color:#fff;border-color:#0B2A5B;transform:translateY(-4px)}
+      .lo-card:hover .lo-desc,.lo-card:hover .lo-num{color:#AEBBD3}
+      .lo-card:hover .lo-ico{background:#fff;color:#0B2A5B;border-color:#fff;transform:rotate(-8deg) scale(1.06)}
+      .lo-card:hover .lo-arrow{background:#fff;color:#0B2A5B;border-color:#fff;transform:rotate(-45deg)}
       @media(max-width:639px){
         .lo-card{min-height:0;gap:1.25rem;padding:1rem;border-radius:1.25rem}
         .lo-ico{width:44px;height:44px}
@@ -300,8 +301,8 @@
       .pr-step{position:relative;padding:1.75rem 0 1.75rem 1.75rem;border-left:1px solid rgba(255,255,255,.2)}
       .pr-step::before{content:"";position:absolute;left:-5px;top:2.4rem;width:9px;height:9px;border-radius:9999px;background:#fff;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
       @media(min-width:1024px){.pr-step{padding:2.25rem 0 0;border-left:0;border-top:1px solid rgba(255,255,255,.2)}.pr-step::before{left:0;top:-5px}}
-      .pr-num{display:block;font-family:"Anonymous Pro",ui-monospace,monospace;font-size:1rem;color:#737373;margin-bottom:1.5rem;transition:color .45s ease}
-      @media(min-width:1024px){.pr-num{font-size:clamp(3rem,5vw,4.5rem);line-height:1;color:#404040;margin-bottom:2.5rem;letter-spacing:-.04em;font-family:inherit}}
+      .pr-num{display:block;font-family:"Anonymous Pro",ui-monospace,monospace;font-size:1rem;color:#5F6F8C;margin-bottom:1.5rem;transition:color .45s ease}
+      @media(min-width:1024px){.pr-num{font-size:clamp(3rem,5vw,4.5rem);line-height:1;color:#33425E;margin-bottom:2.5rem;letter-spacing:-.04em;font-family:inherit}}
       .pr-title{margin:0 0 .75rem;font-size:1.5rem;font-weight:400;color:#fff;letter-spacing:-.02em}
       .pr-desc{margin:0;font-size:1rem;line-height:1.65;color:rgba(255,255,255,.6)}
       .pr-step:hover::before{transform:scale(2.2)}
@@ -341,7 +342,7 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-14 bg-[#FBFBFB]">
+    <section class="py-14 bg-[#F6F9FD]">
       <div class="max-w-7xl mx-auto px-6">
         <div class="flex items-center flex-col sm:flex-row justify-between gap-6">
           <div class="sm:w-1/2">
@@ -362,7 +363,7 @@
   </main>
 
   <!-- Footer -->
-  <footer class="bg-[#070707] overflow-hidden">
+  <footer class="bg-[#071B3D] overflow-hidden">
     <div class="pt-20">
       <div class="max-w-7xl mx-auto px-6">
         <div class="mb-16">

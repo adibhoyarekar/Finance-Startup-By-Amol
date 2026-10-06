@@ -9,20 +9,20 @@
   <style>
     .wpu{display:grid;gap:3rem}
     @media(min-width:1024px){.wpu{grid-template-columns:4fr 8fr;gap:4rem;align-items:start}.wpu-head{position:sticky;top:7rem}}
-    .wpu-grid{display:grid;grid-template-columns:1fr;gap:1px;background:#e5e5e5;border:1px solid #e5e5e5;border-radius:2rem;overflow:hidden}
+    .wpu-grid{display:grid;grid-template-columns:1fr;gap:1px;background:#DCE3EF;border:1px solid #DCE3EF;border-radius:2rem;overflow:hidden}
     .wpu-grid{grid-template-columns:1fr 1fr}
     .wpu-card{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:3rem;min-height:300px;padding:2rem;background:#fff;overflow:hidden;transition:background .45s ease}
     .wpu-card::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:0;background:#fff;transition:width .6s cubic-bezier(.2,.8,.2,1)}
     .wpu-top{display:flex;justify-content:space-between;align-items:flex-start}
-    .wpu-num{font-family:"Anonymous Pro",ui-monospace,monospace;font-size:1rem;color:#737373;transition:color .45s ease}
+    .wpu-num{font-family:"Anonymous Pro",ui-monospace,monospace;font-size:1rem;color:#5F6F8C;transition:color .45s ease}
     .wpu-card svg{flex-shrink:0;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
-    .wpu-card h4{margin:0 0 1rem;font-size:1.5rem;font-weight:400;color:#000;transition:color .45s ease}
-    .wpu-card p{margin:0;font-size:1.125rem;line-height:1.6;color:#404040;transition:color .45s ease}
-    .wpu-card:hover{background:#000}
+    .wpu-card h4{margin:0 0 1rem;font-size:1.5rem;font-weight:400;color:#0B2A5B;transition:color .45s ease}
+    .wpu-card p{margin:0;font-size:1.125rem;line-height:1.6;color:#33425E;transition:color .45s ease}
+    .wpu-card:hover{background:#0B2A5B}
     .wpu-card:hover::after{width:100%}
     .wpu-card:hover svg{transform:rotate(90deg) scale(1.08)}
     .wpu-card:hover h4{color:#fff}
-    .wpu-card:hover p,.wpu-card:hover .wpu-num{color:#a3a3a3}
+    .wpu-card:hover p,.wpu-card:hover .wpu-num{color:#AEBBD3}
     @media(max-width:639px){
       .wpu{gap:2rem}
       .wpu-grid{border-radius:1.25rem}
@@ -34,17 +34,17 @@
     }
   </style>
   <style>
-    .svc-list{border-top:1px solid #e5e5e5}
-    .svc-row{position:relative;display:grid;grid-template-columns:1fr;gap:1rem;align-items:center;padding:2rem 1rem;border-bottom:1px solid #e5e5e5;color:#000;text-decoration:none;overflow:hidden;transition:background .45s ease,color .45s ease,padding .45s ease}
+    .svc-list{border-top:1px solid #DCE3EF}
+    .svc-row{position:relative;display:grid;grid-template-columns:1fr;gap:1rem;align-items:center;padding:2rem 1rem;border-bottom:1px solid #DCE3EF;color:#0B2A5B;text-decoration:none;overflow:hidden;transition:background .45s ease,color .45s ease,padding .45s ease}
     @media(min-width:1024px){.svc-row{grid-template-columns:72px minmax(0,1.1fr) minmax(0,1fr) 64px;gap:2rem;padding:3rem 2rem}}
-    .svc-num{font-family:"Anonymous Pro",ui-monospace,monospace;font-size:1rem;color:#737373;transition:color .45s ease}
+    .svc-num{font-family:"Anonymous Pro",ui-monospace,monospace;font-size:1rem;color:#5F6F8C;transition:color .45s ease}
     .svc-title{margin:0;font-size:2.5rem;line-height:1.1;font-weight:400;letter-spacing:-.04em}
     @media(min-width:1024px){.svc-title{font-size:3.5rem}}
-    .svc-desc{margin:0;font-size:1.125rem;line-height:1.6;color:#404040;transition:color .45s ease}
-    .svc-arrow{display:flex;align-items:center;justify-content:center;width:56px;height:56px;border:1px solid #000;border-radius:9999px;transition:transform .5s cubic-bezier(.2,.8,.2,1),background .45s ease,color .45s ease,border-color .45s ease}
-    .svc-row:hover{background:#000;color:#fff}
-    .svc-row:hover .svc-num,.svc-row:hover .svc-desc{color:#a3a3a3}
-    .svc-row:hover .svc-arrow{background:#fff;color:#000;border-color:#fff;transform:rotate(-45deg)}
+    .svc-desc{margin:0;font-size:1.125rem;line-height:1.6;color:#33425E;transition:color .45s ease}
+    .svc-arrow{display:flex;align-items:center;justify-content:center;width:56px;height:56px;border:1px solid #0B2A5B;border-radius:9999px;transition:transform .5s cubic-bezier(.2,.8,.2,1),background .45s ease,color .45s ease,border-color .45s ease}
+    .svc-row:hover{background:#0B2A5B;color:#fff}
+    .svc-row:hover .svc-num,.svc-row:hover .svc-desc{color:#AEBBD3}
+    .svc-row:hover .svc-arrow{background:#fff;color:#0B2A5B;border-color:#fff;transform:rotate(-45deg)}
     @media(min-width:1024px){.svc-row:hover{padding-left:3rem}}
     @media(max-width:1023px){
       .svc-row{gap:.5rem;padding:1.5rem 1rem}
@@ -75,6 +75,7 @@
       .hw-all{opacity:1;animation:none}
     }
   </style>
+  <link rel="stylesheet" href="theme.css?v=1">
 </head>
 <body class="font-sans bg-white text-black antialiased">
 
@@ -143,11 +144,11 @@
 
     <!-- Dark Stats / About Section -->
     <style>
-      .tm{position:relative;background:#000;color:#fff;overflow:hidden}
+      .tm{position:relative;background:#0B2A5B;color:#fff;overflow:hidden}
       .tm-grid{display:grid;gap:2.5rem}
       @media(min-width:1024px){.tm-grid{grid-template-columns:7fr 5fr;gap:5rem;align-items:end}}
-      .tm-eyebrow{display:inline-flex;align-items:center;gap:.75rem;font-family:"Anonymous Pro",ui-monospace,monospace;font-size:.875rem;letter-spacing:.14em;text-transform:uppercase;color:#a3a3a3;margin-bottom:1.5rem}
-      .tm-eyebrow::before{content:"";width:2.5rem;height:1px;background:#a3a3a3}
+      .tm-eyebrow{display:inline-flex;align-items:center;gap:.75rem;font-family:"Anonymous Pro",ui-monospace,monospace;font-size:.875rem;letter-spacing:.14em;text-transform:uppercase;color:#AEBBD3;margin-bottom:1.5rem}
+      .tm-eyebrow::before{content:"";width:2.5rem;height:1px;background:#AEBBD3}
       .tm-title{margin:0;font-weight:400;font-size:clamp(2.75rem,7vw,5.5rem);line-height:1;letter-spacing:-.045em;color:#fff}
       .tm-lead{margin:0 0 1.25rem;font-size:1.25rem;line-height:1.5;color:#fff}
       .tm-sub{margin:0;font-size:1rem;line-height:1.7;color:rgba(255,255,255,.6)}
@@ -157,15 +158,15 @@
       .tm-stat{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:3rem;padding:1.5rem 1rem 1.5rem 0;min-height:200px;transition:background .45s ease,color .45s ease,padding .45s ease}
       .tm-stat+.tm-stat{border-left:1px solid rgba(255,255,255,.2);padding-left:1.5rem}
       @media(min-width:1024px){.tm-stat{min-height:320px;padding:2.5rem 2rem 2.5rem 0}.tm-stat+.tm-stat{padding-left:3rem}}
-      .tm-top{display:flex;justify-content:space-between;align-items:flex-start;font-family:"Anonymous Pro",ui-monospace,monospace;font-size:.875rem;color:#737373;transition:color .45s ease}
+      .tm-top{display:flex;justify-content:space-between;align-items:flex-start;font-family:"Anonymous Pro",ui-monospace,monospace;font-size:.875rem;color:#5F6F8C;transition:color .45s ease}
       .tm-arrow{width:36px;height:36px;border:1px solid rgba(255,255,255,.4);border-radius:9999px;display:flex;align-items:center;justify-content:center;color:#fff;transition:transform .5s cubic-bezier(.2,.8,.2,1),background .45s ease,color .45s ease,border-color .45s ease}
       .tm-num{margin:0;font-weight:400;font-size:clamp(2.75rem,8vw,7.5rem);line-height:.95;letter-spacing:-.05em;color:#fff;transition:color .45s ease}
-      .tm-label{margin:1rem 0 0;font-family:"Anonymous Pro",ui-monospace,monospace;font-size:1rem;text-transform:uppercase;letter-spacing:.08em;color:#a3a3a3;transition:color .45s ease}
+      .tm-label{margin:1rem 0 0;font-family:"Anonymous Pro",ui-monospace,monospace;font-size:1rem;text-transform:uppercase;letter-spacing:.08em;color:#AEBBD3;transition:color .45s ease}
       .tm-stat:hover{background:#fff}
       @media(min-width:1024px){.tm-stat:hover{padding-left:2rem}.tm-stat+.tm-stat:hover{padding-left:3rem}}
-      .tm-stat:hover .tm-num{color:#000}
-      .tm-stat:hover .tm-label,.tm-stat:hover .tm-top{color:#525252}
-      .tm-stat:hover .tm-arrow{background:#000;color:#fff;border-color:#000;transform:rotate(-45deg)}
+      .tm-stat:hover .tm-num{color:#0B2A5B}
+      .tm-stat:hover .tm-label,.tm-stat:hover .tm-top{color:#4A5B78}
+      .tm-stat:hover .tm-arrow{background:#0B2A5B;color:#fff;border-color:#0B2A5B;transform:rotate(-45deg)}
       @media(max-width:639px){.tm-label{font-size:.8125rem;min-height:2.6em}.tm-arrow{width:30px;height:30px}.tm-lead{font-size:1.125rem}}
     </style>
     <section class="tm py-20 lg:py-28">
@@ -335,20 +336,20 @@
       </div>
     </section>
     <style>
-      .trev:hover{background:#000}
+      .trev:hover{background:#0B2A5B}
       .trev:hover .trev-q{color:#fff}
-      .trev:hover .trev-txt{color:#a3a3a3}
+      .trev:hover .trev-txt{color:#AEBBD3}
       .trev:hover .trev-name{color:#fff}
-      .trev:hover .trev-sub{color:#525252}
-      .trev:hover img{ring-color:#333}
+      .trev:hover .trev-sub{color:#4A5B78}
+      .trev:hover img{ring-color:#33425E}
     </style>
 
     <!-- Subscription Plans Section -->
     <style>
-      .plans-section{background:#fff;border-top:1px solid #e5e5e5;margin-top:2rem}
+      .plans-section{background:#fff;border-top:1px solid #DCE3EF;margin-top:2rem}
       @media(min-width:1024px){.plans-section{margin-top:3rem}}
       .plans-head{display:flex;flex-direction:column;gap:1rem;margin-bottom:4rem}
-      .plans-head p{margin:0;max-width:32rem;font-size:1.125rem;line-height:1.6;color:#404040}
+      .plans-head p{margin:0;max-width:32rem;font-size:1.125rem;line-height:1.6;color:#33425E}
       @media(min-width:1024px){.plans-head{flex-direction:row;align-items:flex-end;justify-content:space-between}}
       .plans-grid{display:grid;grid-template-columns:1fr;gap:1.5rem}
       @media(min-width:768px){.plans-grid{grid-template-columns:repeat(3,1fr);gap:2rem}}
@@ -360,7 +361,7 @@
       .pricing-card .font-bold{font-weight:700}
       .pricing-card [class*="space-y-4"]>*+*{margin-top:1rem}
       .pricing-card button{cursor:pointer}
-      .plan-badge{position:absolute;top:-.75rem;left:1.5rem;background:#fff;color:#000;border:1px solid #000;font-size:.75rem;font-weight:700;letter-spacing:.05em;padding:.25rem 1rem;border-radius:9999px}
+      .plan-badge{position:absolute;top:-.75rem;left:1.5rem;background:#fff;color:#0B2A5B;border:1px solid #0B2A5B;font-size:.75rem;font-weight:700;letter-spacing:.05em;padding:.25rem 1rem;border-radius:9999px}
     </style>
     <section class="plans-section py-12 lg:py-25">
       <div class="max-w-7xl mx-auto px-6">
@@ -496,7 +497,7 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-14 bg-[#FBFBFB]">
+    <section class="py-14 bg-[#F6F9FD]">
       <div class="max-w-7xl mx-auto px-6">
         <div class="flex items-center flex-col sm:flex-row justify-between gap-6">
           <div class="sm:w-1/2">
@@ -517,7 +518,7 @@
   </main>
 
   <!-- Footer -->
-  <footer class="bg-[#070707] overflow-hidden">
+  <footer class="bg-[#071B3D] overflow-hidden">
     <div class="pt-20">
       <div class="max-w-7xl mx-auto px-6">
         <div class="mb-16">
