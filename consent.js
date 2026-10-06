@@ -7,6 +7,8 @@
   // The terms page itself stays readable so people can review before agreeing.
   if (/(^|\/)terms(\.html)?$/.test(location.pathname)) return;
 
+  if (/[?&]embed=1/.test(location.search)) return;
+
   function accepted() {
     try { return !!localStorage.getItem(KEY); } catch (e) { return false; }
   }
