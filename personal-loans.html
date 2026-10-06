@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Loan Banks - RAVEN</title>
+  <meta name="description" content="Compare and enquire about personal loans from 25 leading Indian banks.">
+  <link rel="icon" type="image/svg+xml" href="images/logo-mark.svg">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="raven.css?v=4">
+</head>
+<body class="antialiased text-gray-900 bg-white">
+  <div id="top" class="min-h-screen">
+  <header class="left-0 w-full z-50 transition-all duration-300 absolute top-5 lg:top-8">
+    <nav>
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex items-center justify-between rounded-[18px] transition-all duration-300 bg-white backdrop-blur-md pl-6 py-3 pr-3 shadow-sm">
+          <a href="index.html" aria-label="RAVEN home"><img src="images/logo.svg" alt="RAVEN" width="116" height="30"></a>
+          <div class="hidden lg:block">
+            <ul class="flex">
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="index.html">Home</a></li>
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-indigo-500" href="funding-loans.html">Funding &amp; Loans</a></li>
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="registration.html">Registration</a></li>
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="hidden lg:flex gap-4">
+            <a class="border bg-gray-50 border-gray-200 rounded-lg text-gray-800 font-medium text-base py-2.5 px-4 hover:bg-gray-100 transition duration-300 ease-in-out" href="ask.html">Ask a Question</a>
+            <a class="text-white bg-gray-950 rounded-lg py-2.5 px-4 text-base font-medium hover:bg-gray-800 transition duration-300 ease-in-out" href="contact.html">Contact Us</a>
+          </div>
+          <div class="flex lg:hidden">
+            <button id="menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="rv-menu" class="cursor-pointer p-2">
+              <svg class="rv-ico-open" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h16M4 12h16M4 17h16" stroke="#101828" stroke-width="1.8" stroke-linecap="round"/></svg>
+              <svg class="rv-ico-close" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M6 6l12 12M18 6L6 18" stroke="#101828" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+        </div>
+        <div id="rv-menu" class="rv-menu" hidden>
+          <a class="rv-mlink" href="index.html">Home</a><a class="rv-mlink is-on" href="funding-loans.html">Funding &amp; Loans</a><a class="rv-mlink" href="registration.html">Registration</a><a class="rv-mlink" href="contact.html">Contact</a>
+          <a class="rv-mlink" href="ask.html">Ask a Question</a>
+          <a class="rv-mcta" href="contact.html">Contact Us</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="rv-hero relative pt-30 lg:pt-45 pb-10">
+      <div class="rv-fade-bottom"></div>
+      <div class="max-w-7xl mx-auto px-6 relative z-30">
+        <div class="max-w-xl lg:max-w-4xl lg:px-4 mx-auto text-center">
+          <a href="funding-loans.html#loan-types" class="rv-back reveal">&larr; All loans</a>
+          <h1 class="text-center text-4xl lg:text-6xl font-semibold mb-5 reveal">Personal Loan Banks</h1>
+          <p class="text-gray-500 text-base lg:px-10 reveal">Choose from 25 leading public and private sector banks, then let RAVEN help you apply.</p>
+        </div>
+      </div>
+    </section>
+    <section class="ln py-10 lg:py-20" id="personal-banks">
+      <div class="max-w-7xl mx-auto px-4 lg:px-6">
+        <div class="rv-search-wrap reveal">
+          <label class="rv-search" for="bank-search">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+            <input id="bank-search" type="search" placeholder="Search a bank - SBI, HDFC, Canara, PNB..." autocomplete="off" aria-label="Search banks">
+          </label>
+          <p class="rv-count" id="bank-count" aria-live="polite">25 banks</p>
+        </div>
+        <div class="bk-filters reveal">
+          <div class="bk-fgroup"><span class="bk-flabel">Bank type</span><button type="button" class="bk-chip is-on" data-group="type" data-value="all" aria-pressed="true">All</button><button type="button" class="bk-chip" data-group="type" data-value="public" aria-pressed="false">Public sector</button><button type="button" class="bk-chip" data-group="type" data-value="private" aria-pressed="false">Private sector</button></div>
+          <div class="bk-fgroup"><span class="bk-flabel">Region</span><button type="button" class="bk-chip is-on" data-group="region" data-value="all" aria-pressed="true">All</button><button type="button" class="bk-chip" data-group="region" data-value="north" aria-pressed="false">North</button><button type="button" class="bk-chip" data-group="region" data-value="south" aria-pressed="false">South</button><button type="button" class="bk-chip" data-group="region" data-value="east" aria-pressed="false">East</button><button type="button" class="bk-chip" data-group="region" data-value="west" aria-pressed="false">West</button></div>
+          <button type="button" class="bk-reset" id="bk-reset" hidden>Clear filters</button>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-5" id="bank-grid">
+          <a class="bk" href="contact.html" data-type="public" data-region="west" data-keywords="sbi sbi mumbai public sector west">
+            <img class="bk-logo" src="images/banks/state-bank-of-india.svg" alt="State Bank of India logo" width="56" height="56" loading="lazy">
+            <div class="bk-body"><h3 class="bk-name">State Bank of India</h3><p class="bk-meta">Mumbai</p><div class="bk-tags"><span class="bk-tag bk-public">Public sector</span><span class="bk-tag">West India</span></div></div>
+            <span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="bk" href="contact.html" data-type="private" data-region="west" data-keywords="hdfc hdfc mumbai private sector west">
+            <img class="bk-logo" src="images/banks/hdfc-bank.svg" alt="HDFC Bank logo" width="56" height="56" loading="lazy">
+            <div class="bk-body"><h3 class="bk-name">HDFC Bank</h3><p class="bk-meta">Mumbai</p><div class="bk-tags"><span class="bk-tag bk-private">Private sector</span><span class="bk-tag">West India</span></div></div>
+            <span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="bk" href="contact.html" data-type="private" data-region="west" data-keywords="icici icici mumbai private sector west">
+            <img class="bk-logo" src="images/banks/icici-bank.svg" alt="ICICI Bank logo" width="56" height="56" loading="lazy">
+            <div class="bk-body"><h3 class="bk-name">ICICI Bank</h3><p class="bk-meta">Mumbai</p><div class="bk-tags"><span class="bk-tag bk-private">Private sector</span><span class="bk-tag">West India</span></div></div>
+            <span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="bk" href="contact.html" data-type="private" data-region="west" data-keywords="axis axis mumbai private sector west">
+            <img class="bk-logo" src="images/banks/axis-bank.svg" alt="Axis Bank logo" width="56" height="56" loading="lazy">
+            <div class="bk-body"><h3 class="bk-name">Axis Bank</h3><p class="bk-meta">Mumbai</p><div class="bk-tags"><span class="bk-tag bk-private">Private sector</span><span class="bk-tag">West India</span></div></div>
+            <span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="bk" href="contact.html" data-type="private" data-region="west" data-keywords="kotak kotak mahindra mumbai private sector west">
+            <img class="bk-logo" src="images/banks/kotak-mahindra-bank.svg" alt="Kotak Mahindra Bank logo" width="56" height="56" loading="lazy">
+            <div class="bk-body"><h3 class="bk-name">Kotak Mahindra Bank</h3><p class="bk-meta">Mumbai</p><div class="bk-tags"><span class="bk-tag bk-private">Private sector</span><span class="bk-tag">West India</span></div></div>
+            <span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="bk" href="contact.html" data-type="private" data-region="south" data-keywords="idfc idfc first chennai private sector south">
+            <img class="bk-logo" src="images/banks/idfc-first-bank.svg" alt="IDFC FIRST Bank logo" width="56" height="56" loading="lazy">
+            <div class="bk-body"><h3 class="bk-name">IDFC FIRST Bank</h3><p class="bk-meta">Chennai</p><div class="bk-tags"><span class="bk-tag bk-private">Private sector</span><span class="bk-tag">South India</span></div></div>
+            <span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="bk" href="contact.html" data-type="private" data-region="west" data-keywords="indus indusind mumbai private sector west">
+            <img class="bk-logo" src="images/banks/indusind-bank.svg" alt="IndusInd Bank logo" width="56" height="56" loading="lazy">
+            <div class="bk-body"><h3 class="bk-name">IndusInd Bank</h3><p class="bk-meta">Mumbai</p><div class="bk-tags"><span class="bk-tag bk-private">Private sector</span><span class="bk-tag">West India</span></div></div>
+            <span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="bk" href="contact.html" data-type="private" data-region="west" data-keywords="yes yes mumbai private sector west">
+            <img class="bk-logo" src="images/banks/yes-bank.svg" alt="Yes Bank logo" width="56" height="56" loading="lazy">
+            <div class="bk-body"><h3 class="bk-name">Yes Bank</h3><p class="bk-meta">Mumbai</p><div class="bk-tags"><span class="bk-tag bk-private">Private sector</span><span class="bk-tag">West India</span></div></div>
+            <span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="bk" href="contact.html" data-type="private" data-region="south" data-keywords="fed federal aluva, kerala private sector south">
+            <img class="bk-logo" src="images/banks/federal-bank.svg" alt="Federal Bank logo" width="56" height="56" loading="lazy">
+            <div class="bk-body"><h3 class="bk-name">Federal Bank</h3><p class="bk-meta">Aluva, Kerala</p><div class="bk-tags"><span class="bk-tag bk-private">Private sector</span><span class="bk-tag">South India</span></div></div>
+            <span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="bk" href="contact.html" data-type="public" data-region="west" data-keywords="bob baroda bob vadodara public sector west">
+            <img class="bk-logo" src="images/banks/bank-of-baroda.svg" alt="Bank of Baroda logo" width="56" height="56" loading="lazy">
+            <div class="bk-body"><h3 class="bk-name">Bank of Baroda</h3><p class="bk-meta">Vadodara</p><div class="bk-tags"><span class="bk-tag bk-public">Public sector</span><span class="bk-tag">West India</span></div></div>
+            <span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="bk" href="contact.html" data-type="public" data-region="north" data-keywords="pnb pnb punjab national new delhi public sector north">
+            <img class="bk-logo" src="images/banks/punjab-national-bank.svg" alt="Punjab National Bank logo" width="56" height="56" loading="lazy">
+            <div class="bk-body"><h3 class="bk-name">Punjab National Bank</h3><p class="bk-meta">New Delhi</p><div class="bk-tags"><span class="bk-tag bk-public">Public sector</span><span class="bk-tag">North India</span></div></div>
+            <span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="bk" href="contact.html" data-type="public" data-region="south" data-keywords="can canara bengaluru public sector south">
+            <img class="bk-logo" src="images/banks/canara-bank.svg" alt="Canara Bank logo" width="56" height="56" loading="lazy">
+            <div class="bk-body"><h3 class="bk-name">Canara Bank</h3><p class="bk-meta">Bengaluru</p><div class="bk-tags"><span class="bk-tag bk-public">Public sector</span><span class="bk-tag">South India</span></div></div>
+            <span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="bk" href="contact.html" data-type="public" data-region="west" data-keywords="ubi union mumbai public sector west">
+            <img class="bk-logo" src="images/banks/union-bank-of-india.svg" alt="Union Bank of India logo" width="56" height="56" loading="lazy">
+            <div class="bk-body"><h3 class="bk-name">Union Bank of India</h3><p class="bk-meta">Mumbai</p><div class="bk-tags"><span class="bk-tag bk-public">Public sector</span><span class="bk-tag">West India</span></div></div>
+            <span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="bk" href="contact.html" data-type="public" data-region="west" data-keywords="boi boi mumbai public sector west">
+            <img class="bk-logo" src="images/banks/bank-of-india.svg" alt="Bank of India logo" width="56" height="56" loading="lazy">
+            <div class="bk-body"><h3 class="bk-name">Bank of India</h3><p class="bk-meta">Mumbai</p><div class="bk-tags"><span class="bk-tag bk-public">Public sector</span><span class="bk-tag">West India</span></div></div>
+            <span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="bk" href="contact.html" data-type="public" data-region="south" data-keywords="ib indian chennai public sector south">
+            <img class="bk-logo" src="images/banks/indian-bank.svg" alt="Indian Bank logo" width="56" height="56" loading="lazy">
+            <div class="bk-body"><h3 class="bk-name">Indian Bank</h3><p class="bk-meta">Chennai</p><div class="bk-tags"><span class="bk-tag bk-public">Public sector</span><span class="bk-tag">South India</span></div></div>
+            <span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="bk" href="contact.html" data-type="public" data-region="south" data-keywords="iob iob overseas chennai public sector south">
+            <img class="bk-logo" src="images/banks/indian-overseas-bank.svg" alt="Indian Overseas Bank logo" width="56" height="56" loading="lazy">
+            <div class="bk-body"><h3 class="bk-name">Indian Overseas Bank</h3><p class="bk-meta">Chennai</p><div class="bk-tags"><span class="bk-tag bk-public">Public sector</span><span class="bk-tag">South India</span></div></div>
+            <span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="bk" href="contact.html" data-type="public" data-region="west" data-keywords="cbi central mumbai public sector west">
+            <img class="bk-logo" src="images/banks/central-bank-of-india.svg" alt="Central Bank of India logo" width="56" height="56" loading="lazy">
+            <div class="bk-body"><h3 class="bk-name">Central Bank of India</h3><p class="bk-meta">Mumbai</p><div class="bk-tags"><span class="bk-tag bk-public">Public sector</span><span class="bk-tag">West India</span></div></div>
+            <span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="bk" href="contact.html" data-type="public" data-region="east" data-keywords="uco uco kolkata public sector east">
+            <img class="bk-logo" src="images/banks/uco-bank.svg" alt="UCO Bank logo" width="56" height="56" loading="lazy">
+            <div class="bk-body"><h3 class="bk-name">UCO Bank</h3><p class="bk-meta">Kolkata</p><div class="bk-tags"><span class="bk-tag bk-public">Public sector</span><span class="bk-tag">East India</span></div></div>
+            <span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="bk" href="contact.html" data-type="public" data-region="west" data-keywords="bom maharashtra bom pune public sector west">
+            <img class="bk-logo" src="images/banks/bank-of-maharashtra.svg" alt="Bank of Maharashtra logo" width="56" height="56" loading="lazy">
+            <div class="bk-body"><h3 class="bk-name">Bank of Maharashtra</h3><p class="bk-meta">Pune</p><div class="bk-tags"><span class="bk-tag bk-public">Public sector</span><span class="bk-tag">West India</span></div></div>
+            <span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="bk" href="contact.html" data-type="private" data-region="west" data-keywords="rbl rbl ratnakar mumbai private sector west">
+            <img class="bk-logo" src="images/banks/rbl-bank.svg" alt="RBL Bank logo" width="56" height="56" loading="lazy">
+            <div class="bk-body"><h3 class="bk-name">RBL Bank</h3><p class="bk-meta">Mumbai</p><div class="bk-tags"><span class="bk-tag bk-private">Private sector</span><span class="bk-tag">West India</span></div></div>
+            <span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="bk" href="contact.html" data-type="private" data-region="south" data-keywords="sib south indian sib thrissur, kerala private sector south">
+            <img class="bk-logo" src="images/banks/south-indian-bank.svg" alt="South Indian Bank logo" width="56" height="56" loading="lazy">
+            <div class="bk-body"><h3 class="bk-name">South Indian Bank</h3><p class="bk-meta">Thrissur, Kerala</p><div class="bk-tags"><span class="bk-tag bk-private">Private sector</span><span class="bk-tag">South India</span></div></div>
+            <span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="bk" href="contact.html" data-type="private" data-region="south" data-keywords="kbl karnataka mangaluru private sector south">
+            <img class="bk-logo" src="images/banks/karnataka-bank.svg" alt="Karnataka Bank logo" width="56" height="56" loading="lazy">
+            <div class="bk-body"><h3 class="bk-name">Karnataka Bank</h3><p class="bk-meta">Mangaluru</p><div class="bk-tags"><span class="bk-tag bk-private">Private sector</span><span class="bk-tag">South India</span></div></div>
+            <span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="bk" href="contact.html" data-type="private" data-region="west" data-keywords="dcb dcb development credit mumbai private sector west">
+            <img class="bk-logo" src="images/banks/dcb-bank.svg" alt="DCB Bank logo" width="56" height="56" loading="lazy">
+            <div class="bk-body"><h3 class="bk-name">DCB Bank</h3><p class="bk-meta">Mumbai</p><div class="bk-tags"><span class="bk-tag bk-private">Private sector</span><span class="bk-tag">West India</span></div></div>
+            <span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="bk" href="contact.html" data-type="private" data-region="south" data-keywords="cub city union cub kumbakonam private sector south">
+            <img class="bk-logo" src="images/banks/city-union-bank.svg" alt="City Union Bank logo" width="56" height="56" loading="lazy">
+            <div class="bk-body"><h3 class="bk-name">City Union Bank</h3><p class="bk-meta">Kumbakonam</p><div class="bk-tags"><span class="bk-tag bk-private">Private sector</span><span class="bk-tag">South India</span></div></div>
+            <span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="bk" href="contact.html" data-type="private" data-region="south" data-keywords="tmb tamilnad mercantile tmb tamil nadu thoothukudi private sector south">
+            <img class="bk-logo" src="images/banks/tamilnad-mercantile-bank.svg" alt="Tamilnad Mercantile Bank logo" width="56" height="56" loading="lazy">
+            <div class="bk-body"><h3 class="bk-name">Tamilnad Mercantile Bank</h3><p class="bk-meta">Thoothukudi</p><div class="bk-tags"><span class="bk-tag bk-private">Private sector</span><span class="bk-tag">South India</span></div></div>
+            <span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+        </div>
+        <div class="rv-empty" id="bank-empty" hidden>
+          <h3>No banks found</h3>
+          <p>Try another name or clear the filters, or let our team match you with the right bank.</p>
+          <a href="contact.html">Talk to our team</a>
+        </div>
+        <p class="bk-note">Bank names and marks belong to their respective owners. Offers, rates and approval are decided by each bank.</p>
+      </div>
+    </section>
+    <section class="pt-28 pb-10 rv-cta relative">
+      <div class="rv-fade-bottom"></div>
+      <div class="max-w-7xl mx-auto px-6 relative z-30">
+        <div class="max-w-2xl mx-auto text-center reveal">
+          <h2 class="text-4xl lg:text-5xl -tracking-[1.9px] mb-4 font-medium text-gray-900">Not sure which one?</h2>
+          <p class="text-base text-gray-500 mb-9">Talk to our team and we will match you with the right loan.</p>
+          <div class="flex gap-4 justify-center sm:items-center flex-col sm:flex-row">
+            <a class="py-2.5 px-4 bg-indigo-500 h-11 rounded-lg font-medium text-white text-base hover:bg-indigo-600 transition duration-300 ease-in-out inline-block" href="contact.html">Contact Us</a>
+            <a class="py-2.5 px-4 border h-11 border-gray-200 bg-white/70 text-base rounded-lg font-medium inline-block hover:bg-gray-100 transition duration-300 ease-in-out text-gray-800" href="funding-loans.html#loan-types">Back to all loans</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="pt-10 lg:pt-18">
+        <div class="flex flex-col lg:flex-row gap-10">
+          <div class="lg:w-4/12">
+            <a class="mb-10 lg:mb-20 inline-block" href="index.html" aria-label="RAVEN home"><img src="images/logo.svg" alt="RAVEN" width="136" height="35"></a>
+            <p class="lg:pr-10 text-gray-500 text-base">Build. Fund. Brand. Grow.<br>Your business partner in India.</p>
+            <p class="text-gray-400 text-sm mt-4">Chhatrapati Sambhajinagar &amp; Pune, India</p>
+          </div>
+          <div class="lg:w-6/12 lg:ml-auto">
+            <div class="grid grid-cols-2 gap-5 sm:gap-10 sm:grid-cols-3">
+              <div>
+                <h3 class="text-lg text-gray-800 font-medium mb-6">Services</h3>
+                <nav class="space-y-5">
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="funding-loans.html">Funding &amp; Loans</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="registration.html">Business Registration</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Real Estate</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Brand Strategy</a>
+                </nav>
+              </div>
+              <div>
+                <h3 class="text-lg text-gray-800 font-medium mb-6">Company</h3>
+                <nav class="space-y-5">
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="index.html#about">About Us</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Contact</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="terms.html">Terms &amp; Conditions</a>
+                </nav>
+              </div>
+              <div class="flex lg:justify-end">
+                <div>
+                  <h3 class="text-lg text-gray-800 font-medium mb-6">Contact</h3>
+                  <nav class="space-y-5">
+                    <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="mailto:hello@raven.business">hello@raven.business</a>
+                    <span class="text-gray-700 block text-base">Chhatrapati Sambhajinagar</span>
+                    <span class="text-gray-700 block text-base">Pune, India</span>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-between flex-col sm:flex-row gap-5 items-center pb-10 pt-10 lg:pt-20">
+        <p class="text-base text-gray-500">&copy; 2025 RAVEN. All rights reserved. <span class="rv-dot">Built for Indian Entrepreneurs.</span></p>
+        <a href="#top" class="flex gap-3 items-center text-gray-700">Back to top
+          <span class="size-7 rounded-full text-white bg-indigo-500 inline-flex items-center justify-center hover:bg-indigo-600 transition duration-300 ease-in-out"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </footer>
+  </div>
+  <script src="bank-search.js?v=1"></script>
+  <script src="site.js?v=2"></script>
+  <script src="ai-chat.js?v=3"></script>
+  <script src="consent.js?v=2"></script>
+</body>
+</html>
