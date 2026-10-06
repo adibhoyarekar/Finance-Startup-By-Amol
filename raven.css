@@ -435,3 +435,26 @@ header.z-50{position:fixed;top:1rem;left:0;right:0;width:100%}
   header.z-50 nav ul a{white-space:nowrap}
 }
 header.z-50 nav>div>div:first-child{box-shadow:0 10px 30px -14px rgba(16,24,40,.3);border:1px solid #eef0f6}
+
+/* ---------- personal loan banks ---------- */
+.bk[hidden]{display:none!important}
+.bk{display:flex;align-items:center;gap:1rem;padding:1rem 1.1rem;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 2px 20px rgba(98,95,255,.06);transition:transform .3s,box-shadow .3s,border-color .3s}
+.bk:hover{transform:translateY(-3px);border-color:#c7c9ff;box-shadow:0 18px 40px -18px rgba(49,46,129,.35)}
+.bk:hover .rv-go{background:var(--indigo);color:#fff}
+.bk-logo{flex:none;width:56px;height:56px;border-radius:14px}
+.bk-body{flex:1;min-width:0}
+.bk-name{font-size:1.05rem;font-weight:500;color:var(--ink);line-height:1.25}
+.bk-meta{font-size:.8125rem;color:var(--mute);margin:.15rem 0 .5rem}
+.bk-tags{display:flex;flex-wrap:wrap;gap:.35rem}
+.bk-tag{padding:.15rem .55rem;border-radius:9999px;background:#f3f4f6;color:var(--color-gray-700);font-size:.6875rem;font-weight:500}
+.bk-tag.bk-public{background:#eef0ff;color:#4338ca}
+.bk-tag.bk-private{background:#ecfdf5;color:#047857}
+.bk-filters{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:.75rem 1.75rem;margin:-1rem auto 2rem;max-width:56rem}
+.bk-fgroup{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem}
+.bk-flabel{font-size:.75rem;font-weight:500;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin-right:.25rem}
+.bk-chip{padding:.4rem .9rem;border-radius:9999px;border:1px solid var(--line);background:#fff;color:var(--color-gray-700);font-size:.875rem;cursor:pointer;transition:all .2s}
+.bk-chip:hover{border-color:var(--indigo);color:var(--indigo)}
+.bk-chip.is-on{background:var(--indigo);border-color:var(--indigo);color:#fff}
+.bk-reset{border:0;background:none;color:var(--indigo);font-size:.875rem;font-weight:500;text-decoration:underline;cursor:pointer}
+.bk-reset[hidden]{display:none}
+.bk-note{margin-top:2rem;text-align:center;font-size:.75rem;color:var(--mute)}
