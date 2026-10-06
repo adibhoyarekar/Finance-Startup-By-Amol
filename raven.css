@@ -70,7 +70,7 @@ img{max-width:100%}
 .rv-go{width:36px;height:36px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:#eef0ff;color:var(--indigo);transition:background .3s,color .3s,transform .3s}
 .rv-lift:hover .rv-go{background:var(--indigo);color:#fff;transform:translateX(2px)}
 .rv-chip{display:inline-flex;margin-inline:.4rem;padding:.5rem 1.1rem;border-radius:9999px;border:1px solid var(--line);background:#fff;color:var(--color-gray-700);font-size:.9375rem;white-space:nowrap}
-.rv-tile{display:flex;flex-direction:column;align-items:center;gap:.6rem;width:5.5rem;text-decoration:none}
+.rv-tile{display:flex;flex-direction:column;align-items:center;gap:.6rem;width:4.6rem;text-decoration:none}
 @media(min-width:64rem){.rv-tile{width:7.5rem}}
 .rv-tile-box{display:inline-flex;align-items:center;justify-content:center;width:3.5rem;height:3.5rem;border-radius:12px;border:1px solid #fff;background:rgba(255,255,255,.7);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);box-shadow:0 2px 20px rgba(98,95,255,.12);transition:transform .3s,background .3s}
 @media(min-width:64rem){.rv-tile-box{width:4.5rem;height:4.5rem;border-radius:16px}}
@@ -184,3 +184,12 @@ img{max-width:100%}
 .lc-cta{align-self:stretch}
 
 @media(max-width:639px){.rv-glass{height:auto;border-radius:18px;padding:.35rem .9rem .35rem .35rem;text-align:left}.rv-hero{padding-top:7rem}}
+
+/* ---------- animated (Lottie) loan icons ---------- */
+.rv-tile-lottie{width:4.25rem;height:4.25rem;padding:.2rem}
+@media(min-width:40rem) and (max-width:63.99rem){.rv-tile{width:5.5rem}}
+@media(min-width:64rem){.rv-tile-lottie{width:6rem;height:6rem;padding:.4rem;border-radius:20px}}
+@media(max-width:639px){.rv-tile-label{font-size:.75rem;text-align:center}}
+.rv-lottie{display:block;width:100%;height:100%}
+.rv-lottie svg{display:block;width:100%;height:100%}
+.rv-fallback{display:flex;width:100%;height:100%;align-items:center;justify-content:center}

@@ -60,6 +60,25 @@
     });
   });
 
+  // animated loan icons (Lottie)
+  if (window.lottie) {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.querySelectorAll('[data-lottie]').forEach(function (el) {
+      var anim = window.lottie.loadAnimation({
+        container: el,
+        renderer: 'svg',
+        loop: true,
+        autoplay: !reduce,
+        path: el.getAttribute('data-lottie'),
+        rendererSettings: { preserveAspectRatio: 'xMidYMid meet' }
+      });
+      anim.addEventListener('DOMLoaded', function () {
+        el.querySelectorAll('.rv-fallback').forEach(function (f) { f.remove(); });
+        if (reduce) anim.goToAndStop(20, true);
+      });
+    });
+  }
+
   // scroll reveal
   var items = document.querySelectorAll('.reveal');
   if (!('IntersectionObserver' in window)) { items.forEach(function (el) { el.classList.add('is-in'); }); return; }
