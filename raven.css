@@ -458,3 +458,11 @@ header.z-50 nav>div>div:first-child{box-shadow:0 10px 30px -14px rgba(16,24,40,.
 .bk-reset{border:0;background:none;color:var(--indigo);font-size:.875rem;font-weight:500;text-decoration:underline;cursor:pointer}
 .bk-reset[hidden]{display:none}
 .bk-note{margin-top:2rem;text-align:center;font-size:.75rem;color:var(--mute)}
+
+/* ---------- ask page when shown inside the desktop chat panel ---------- */
+html.embed header,html.embed footer,html.embed .rv-hero,html.embed .rv-cta{display:none!important}
+html.embed body{background:#fff}
+html.embed section{padding:0!important}
+html.embed section>div{max-width:none!important;padding:0!important}
+html.embed .reveal{opacity:1!important;transform:none!important}
+html.embed .rv-askbox{max-width:none;height:100vh;min-height:0;border:0;border-radius:0;box-shadow:none}
