@@ -423,3 +423,15 @@ img{max-width:100%}
 @media(max-width:767px){.ab-card{width:min(90%,21rem)}.ab-section{padding:4.5rem 0 5rem}.ab-stage{min-height:24rem}.ab-ring-a,.ab-ring-b,.ab-ring-c{width:12rem;height:12rem}.ab-chip-a{top:5%;left:3%}.ab-chip-b{bottom:5%;right:3%}.ab-stat h3{font-size:2rem}}
 @media(prefers-reduced-motion:reduce){.ab-ring,.ab-chip,.ab-steps,.ab-step i,.ab-tick{animation:none!important}.ab-step-main i{width:100%}.ab-tick{transform:scale(1);opacity:1}}
 @media(max-width:767px){.ab-chip{display:none}}
+
+/* ---------- header: always visible, pinned on every screen size ---------- */
+header.z-50{position:fixed;top:1rem;left:0;right:0;width:100%}
+@media(min-width:64rem){
+  header.z-50{top:1.25rem}
+  header.z-50 .hidden.lg\:block{display:block!important}
+  header.z-50 .hidden.lg\:flex{display:flex!important}
+  header.z-50 .flex.lg\:hidden{display:none!important}
+  header.z-50 nav ul{display:flex;align-items:center}
+  header.z-50 nav ul a{white-space:nowrap}
+}
+header.z-50 nav>div>div:first-child{box-shadow:0 10px 30px -14px rgba(16,24,40,.3);border:1px solid #eef0f6}
