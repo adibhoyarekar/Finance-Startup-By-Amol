@@ -62,8 +62,6 @@ body a[class*="bg-white"][class*="border-black"]:hover{background:var(--navy);co
 body a[class*="bg-white"][class*="border-black"]:hover span{color:#fff}
 
 /* ---------- hero ---------- */
-body main>section:first-of-type{background:linear-gradient(180deg,var(--sky) 0%,#fff 100%)}
-body main>section:first-of-type::after{content:"";display:block;height:0}
 
 /* ---------- dark panels ---------- */
 body .bg-black{background:linear-gradient(135deg,var(--navy-deep) 0%,var(--navy) 100%)}
@@ -195,3 +193,195 @@ body .pr-step:hover .pr-num{opacity:1}
 body .pr-title{color:#fff}
 body .lo-num{color:var(--gold);font-weight:700}
 body .lo-ico{color:var(--navy)}
+
+/* =====================================================================
+   LAYOUT REDESIGN (v2): contact strip, desktop nav bar, split hero,
+   card rows instead of lists, light about band, separated testimonials
+   ===================================================================== */
+
+/* ---------- contact strip + header with full nav ---------- */
+body .topbar{background:var(--navy-deep);color:#AEBBD3;font-size:.8125rem}
+body .topbar-in{max-width:80rem;margin:0 auto;padding:.5rem 1.5rem;display:flex;gap:1.5rem;justify-content:space-between;align-items:center}
+body .topbar a{color:#fff;text-decoration:none}
+body .topbar a:hover{color:var(--gold)}
+body .topbar-mid,body .topbar-end{display:none}
+@media(min-width:768px){body .topbar-mid{display:inline}}
+@media(min-width:1024px){body .topbar-end{display:inline;color:var(--gold);font-weight:600;letter-spacing:.04em}}
+body header::before{display:none}
+body header{border-bottom:3px solid var(--gold)}
+body .dnav{display:none}
+@media(min-width:1024px){
+  body .dnav{display:flex;align-items:center;gap:.25rem;margin-left:auto}
+  body .dnav a{padding:.65rem 1.1rem;font-size:.9375rem;font-weight:600;color:var(--navy);text-decoration:none;border-bottom:3px solid transparent;transition:color .2s,border-color .2s}
+  body .dnav a:hover{color:var(--gold)}
+  body .dnav a.on{border-bottom-color:var(--gold)}
+  body .dnav a.dcta{margin-left:1rem;background:var(--navy);color:#fff;border-radius:8px;border-bottom:0;padding:.7rem 1.4rem;font-size:.8125rem;letter-spacing:.06em;text-transform:uppercase}
+  body .dnav a.dcta:hover{background:var(--gold);color:var(--navy)}
+  body #mobile-nav-root{display:none}
+}
+
+/* ---------- home hero: copy left, quick-access card right ---------- */
+body .hero-home{position:relative;overflow:hidden;padding:4rem 0 4.5rem;background:
+  radial-gradient(900px 420px at 85% -10%,rgba(200,150,46,.22),transparent 60%),
+  radial-gradient(700px 500px at -10% 110%,rgba(255,255,255,.07),transparent 60%),
+  linear-gradient(135deg,var(--navy-deep) 0%,var(--navy) 100%)}
+body .hero-home::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:56px 56px;pointer-events:none;mask-image:linear-gradient(180deg,#000,transparent 85%);-webkit-mask-image:linear-gradient(180deg,#000,transparent 85%)}
+body .hero-grid{position:relative;z-index:1;display:grid;gap:2.5rem;align-items:center}
+@media(min-width:1024px){body .hero-home{padding:6.5rem 0 7rem}body .hero-grid{grid-template-columns:7fr 5fr;gap:4.5rem}}
+body .hero-home .hw{display:grid;place-items:start;color:#fff;font-size:clamp(2.75rem,6.4vw,5rem);line-height:1.04;margin-bottom:1.5rem;text-align:left}
+body .hero-home .hw-words{place-items:start}
+body .hero-home .hw-all{text-wrap:balance}
+body .hero-home .hw .italic{color:var(--gold)}
+body .hero-p{margin:0 0 2.25rem;max-width:34rem;font-size:1.125rem;line-height:1.65;color:#CBD5E6}
+body .hero-actions{display:flex;flex-wrap:wrap;gap:1rem}
+body .hero-btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 1.6rem;border-radius:8px;font-size:.8125rem;font-weight:700;letter-spacing:.08em;text-decoration:none;transition:background .25s,color .25s,border-color .25s}
+body .hero-btn-primary{background:var(--gold);color:var(--navy);border:1px solid var(--gold)}
+body .hero-btn-primary:hover{background:#fff;border-color:#fff}
+body .hero-btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.55)}
+body .hero-btn-ghost:hover{background:#fff;color:var(--navy);border-color:#fff}
+body .hero-btn span{color:inherit}
+
+body .hero-card{background:#fff;border-radius:16px;padding:1.75rem;box-shadow:0 30px 60px -28px rgba(0,0,0,.55);border-top:5px solid var(--gold)}
+body .hero-card-title{margin:0 0 1rem;font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--navy)}
+body .hero-card-title em{color:var(--gold)}
+body .hero-q{display:flex;align-items:center;gap:1rem;padding:1rem;margin-top:.75rem;border:1px solid var(--line);border-radius:12px;text-decoration:none;color:var(--navy);background:var(--sky);transition:background .25s,border-color .25s,transform .25s}
+body .hero-q:hover{background:var(--navy);border-color:var(--navy);color:#fff;transform:translateX(4px)}
+body .hero-q-ico{flex:none;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--navy);color:var(--gold)}
+body .hero-q:hover .hero-q-ico{background:var(--gold);color:var(--navy)}
+body .hero-q-txt{flex:1;font-family:var(--serif);font-size:1.25rem;font-weight:700}
+body .hero-q-txt small{display:block;font-family:"Anonymous Pro",ui-monospace,monospace;font-size:.75rem;font-weight:400;color:var(--muted);letter-spacing:.1em}
+body .hero-q:hover .hero-q-txt small{color:#AEBBD3}
+body .hero-q-go{flex:none;color:var(--gold)}
+
+/* trusted-by strip becomes a light band */
+body .hero-home+section{background:#fff;border-bottom:1px solid var(--line)}
+
+/* ---------- inner page heroes (funding, contact, registration) ---------- */
+body .page-hero{position:relative;overflow:hidden;text-align:left;padding-top:3.5rem!important;padding-bottom:3.5rem!important;background:
+  radial-gradient(700px 320px at 90% 0%,rgba(200,150,46,.2),transparent 60%),
+  linear-gradient(135deg,var(--navy-deep),var(--navy))}
+body .page-hero>div>div{margin-left:0!important;margin-right:0!important;text-align:left!important;max-width:44rem!important}
+body .page-hero h1{color:#fff!important;font-size:clamp(2.5rem,6vw,4.25rem)}
+body .page-hero h1 .italic{color:var(--gold)}
+body .page-hero p{color:#CBD5E6!important;margin-left:0!important;margin-right:0!important}
+body .page-hero .justify-center{justify-content:flex-start!important}
+body .page-hero a[class*="bg-black"]{background:var(--gold)!important;color:var(--navy)!important;border-color:var(--gold)!important}
+body .page-hero a[class*="bg-black"] span{color:var(--navy)}
+body .page-hero a[class*="border-black"]{background:transparent!important;border:1px solid rgba(255,255,255,.55)!important;color:#fff!important}
+body .page-hero a[class*="border-black"] span{color:#fff}
+body .page-hero a[class*="border-black"]:hover{background:#fff!important;color:var(--navy)!important}
+body .page-hero a[class*="border-black"]:hover span{color:var(--navy)}
+@media(min-width:1024px){body .page-hero{padding-top:5rem!important;padding-bottom:5rem!important}}
+
+/* ---------- about band: light, stats as bordered cards ---------- */
+body .tm{background:var(--sky);color:var(--body)}
+body .tm-eyebrow{color:var(--gold);font-weight:700}
+body .tm-eyebrow::before{background:var(--gold);height:3px}
+body .tm-title{font-family:var(--serif);color:var(--navy);font-weight:700;letter-spacing:-.02em;font-size:clamp(2.25rem,5vw,4rem)}
+body .tm-title .italic{color:var(--gold)}
+body .tm-lead{color:var(--navy);font-family:var(--serif);font-weight:700}
+body .tm-sub{color:var(--body)}
+body .tm-sub span{color:var(--navy);font-weight:700}
+body .tm-stats{gap:1.25rem;border:0;margin-top:3rem}
+body .tm-stat,body .tm-stat+.tm-stat{background:#fff;border:1px solid var(--line);border-top:5px solid var(--gold);border-radius:14px;padding:1.5rem;min-height:0;gap:1.5rem}
+@media(min-width:1024px){body .tm-stat,body .tm-stat+.tm-stat{padding:2.25rem;min-height:260px}}
+body .tm-num{color:var(--navy);font-family:var(--serif);font-weight:700;letter-spacing:-.03em}
+body .tm-label{color:var(--muted)}
+body .tm-top{color:var(--gold);font-weight:700;order:2;align-self:flex-end;width:100%;flex-direction:row-reverse}
+body .tm-stat{flex-direction:column}
+body .tm-stat>div:last-child{order:1}
+body .tm-arrow{border-color:var(--navy);color:var(--navy);border-radius:10px;width:40px;height:40px}
+body .tm-stat:hover,body .tm-stat+.tm-stat:hover{background:var(--navy)}
+body .tm-stat:hover .tm-num{color:#fff}
+body .tm-stat:hover .tm-label{color:#AEBBD3}
+body .tm-stat:hover .tm-arrow{background:var(--gold);border-color:var(--gold);color:var(--navy)}
+@media(min-width:1024px){body .tm-stat:hover,body .tm-stat+.tm-stat:hover{padding-left:2.25rem}}
+
+/* ---------- why partner: centered heading, four cards in a row ---------- */
+body .wpu{grid-template-columns:1fr!important;gap:2.5rem}
+body .wpu-head{position:static;text-align:center}
+body .wpu-grid{grid-template-columns:1fr 1fr;background:transparent;border:0;gap:1rem;border-radius:0;overflow:visible}
+@media(min-width:1024px){body .wpu-grid{grid-template-columns:repeat(4,1fr);gap:1.5rem}}
+body .wpu-card{border:1px solid var(--line);border-radius:14px;min-height:0;gap:1.25rem;padding:1.25rem;border-top:5px solid var(--gold);justify-content:flex-start}
+@media(min-width:1024px){body .wpu-card{padding:2rem;gap:2rem}}
+body .wpu-top{flex-direction:row-reverse;justify-content:space-between;align-items:center}
+body .wpu-card svg{width:44px;height:44px}
+body .wpu-card h4{font-size:1.25rem}
+@media(max-width:639px){body .wpu-card svg{width:34px;height:34px}body .wpu-card h4{font-size:1.05rem}}
+
+/* ---------- services: three cards instead of long rows ---------- */
+body .svc-list{display:grid;grid-template-columns:1fr;gap:1.25rem;border-top:0}
+@media(min-width:768px){body .svc-list{grid-template-columns:repeat(3,1fr);gap:1.5rem}}
+body .svc-row{display:flex;flex-direction:column;align-items:flex-start;gap:1rem;padding:2rem!important;min-height:300px;background:var(--sky);border:1px solid var(--line);border-radius:14px;border-bottom:1px solid var(--line);position:relative}
+body .svc-row:hover{padding-left:2rem!important}
+body .svc-num{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:var(--navy);color:var(--gold);font-size:.9375rem}
+body .svc-row:hover .svc-num{background:var(--gold);color:var(--navy)}
+body .svc-title{font-size:2.25rem!important;margin-top:1rem}
+body .svc-desc{max-width:none!important;flex:1}
+body .svc-arrow{position:static!important;margin-top:auto;align-self:flex-end;width:48px!important;height:48px!important}
+
+/* ---------- testimonials: separate cards, person first ---------- */
+body .trev{display:flex;flex-direction:column}
+body .trev>div:last-child{order:-1}
+body .trev-q{order:1;align-self:flex-end;margin-top:-.5rem}
+body .trev-txt{order:2}
+body section .grid.bg-gray-200{background:transparent;border:0;border-radius:0;gap:1.25rem;overflow:visible}
+body .trev{border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:14px;background:#fff}
+body .trev:hover{border-color:var(--navy);border-left-color:var(--gold)}
+
+/* ---------- pricing heading centered ---------- */
+body .plans-head{align-items:center;text-align:center}
+body .plans-head p{margin-left:auto;margin-right:auto}
+@media(min-width:1024px){body .plans-head{flex-direction:column;justify-content:center}}
+
+/* ---------- call-to-action band ---------- */
+body main>section.bg-\[\#F6F9FD\]:last-of-type{background:linear-gradient(135deg,var(--navy-deep),var(--navy));border-top:0}
+body main>section.bg-\[\#F6F9FD\]:last-of-type h2{color:#fff!important}
+body main>section.bg-\[\#F6F9FD\]:last-of-type h2 .italic{color:var(--gold)}
+body main>section.bg-\[\#F6F9FD\]:last-of-type a{background:var(--gold)!important;border-color:var(--gold)!important;color:var(--navy)!important}
+body main>section.bg-\[\#F6F9FD\]:last-of-type a span{color:var(--navy)}
+
+/* ---------- loan cards: image on top, three across on desktop ---------- */
+@media(min-width:1024px){
+  body .lc-grid{grid-template-columns:repeat(3,1fr)}
+  body .lc{flex-direction:column}
+  body .lc-img{width:auto;aspect-ratio:16/10;min-height:0}
+  body .lc-body{padding:1.5rem}
+  body .lc-cta{grid-column:span 2}
+  body .lc-title{font-size:1.5rem}
+}
+
+/* testimonials: the compiled utility sheet has no md:grid-cols-3, so set the columns here */
+@media(min-width:768px){body section .grid.bg-gray-200{grid-template-columns:repeat(3,1fr)}}
+
+/* left-align the buttons in inner page heroes and the stat panel */
+body .page-hero .flex,body .page-hero .flex-col{align-items:flex-start!important;justify-content:flex-start!important}
+body section.bg-black .flex{align-items:flex-start}
+body section.bg-black h2{text-align:left}
+
+body .page-hero .flex,body .page-hero .flex-col{flex-direction:row!important;flex-wrap:wrap;gap:1rem}
+/* a dark panel directly under a dark page hero becomes a light band */
+body .page-hero+section.bg-black{background:var(--sky);border-bottom:1px solid var(--line)}
+body .page-hero+section.bg-black .text-white{color:var(--navy)}
+body .page-hero+section.bg-black .text-white\/60{color:var(--body)}
+body .page-hero+section.bg-black h2 .italic{color:var(--gold)}
+body .page-hero+section.bg-black .font-mono{color:var(--muted)}
+
+/* ---------- registration page: type cards and step cards ---------- */
+body main linearGradient stop:first-child{stop-color:var(--navy)}
+body main linearGradient stop:last-child{stop-color:var(--gold)}
+body main .grid>article{background:#fff;border:1px solid var(--line);border-top:5px solid var(--gold);border-radius:14px;padding:1.75rem}
+body main .grid>article h4{margin-top:1.5rem;margin-bottom:.75rem;font-weight:700}
+body main .grid>article p{font-size:1rem}
+body main .grid>article svg{width:44px;height:44px}
+body main ul.space-y-12{display:grid;grid-template-columns:1fr;gap:1.25rem;max-width:none;margin:0}
+body main ul.space-y-12>li{display:flex!important;flex-direction:column;align-items:flex-start;text-align:left;gap:.75rem;padding:1.75rem;background:var(--sky);border:1px solid var(--line);border-radius:14px;margin:0!important}
+@media(min-width:768px){body main ul.space-y-12{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){body main ul.space-y-12{grid-template-columns:repeat(4,1fr)}}
+body main ul.space-y-12>li>span{display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:44px;padding:0 .75rem;border-radius:50%;background:var(--navy);color:var(--gold);font-style:normal;font-weight:700}
+body main ul.space-y-12>li h3{white-space:normal;font-weight:700;margin-top:.5rem}
+body main ul.space-y-12>li p{font-size:1rem}
+body main ul.space-y-12>li:hover{background:var(--navy)}
+body main ul.space-y-12>li:hover h3{color:#fff}
+body main ul.space-y-12>li:hover p{color:#CBD5E6}
+body main ul.space-y-12>li:hover>span{background:var(--gold);color:var(--navy)}
