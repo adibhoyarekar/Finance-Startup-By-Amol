@@ -244,3 +244,7 @@ img{max-width:100%}
 /* LottieFiles "medical insurance" shield is drawn small inside a big canvas, so show it larger */
 .sv-c1 .sv-lottie{width:16rem;height:16rem}
 @media(max-width:767px){.sv-c1 .sv-lottie{width:14rem;height:14rem}}
+
+/* LottieFiles "loan" scene is wide (360x160), so let it fill the card's picture area */
+.sv-c2 .sv-lottie{width:100%;height:100%;padding:.25rem}
+.sv-c2 .sv-glow{display:none}
