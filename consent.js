@@ -57,7 +57,7 @@
         '<li>We use the details you share only to respond to your enquiries and provide our services.</li>' +
       '</ul>' +
       '<label class="rv-consent-check"><input type="checkbox" id="rv-consent-box">' +
-        '<span>I have read and agree to the <a href="terms.html" target="_blank" rel="noopener">Terms &amp; Conditions</a> and consent to my information being used as described.</span></label>' +
+        '<span>I have read and agree to the <a href="terms.html" target="_blank" rel="noopener">Terms &amp; Conditions</a> and <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>, and consent to my information being used as described.</span></label>' +
       '<div class="rv-consent-actions">' +
         '<button type="button" class="rv-consent-yes" id="rv-consent-yes" disabled>Agree &amp; Continue</button>' +
         '<button type="button" class="rv-consent-no" id="rv-consent-no">I do not agree</button>' +
