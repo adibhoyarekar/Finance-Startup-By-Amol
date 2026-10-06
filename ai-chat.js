@@ -10,7 +10,7 @@
 .rv-chat-btn svg{width:20px;height:20px}\
 @media(max-width:639px){.rv-chat-btn{right:1rem;bottom:1rem;height:48px;padding:0 1.1rem}}\
 .rv-chat-btn[hidden]{display:none}\
-html{--chat-w:50vw}\
+html{--chat-w:max(25vw,340px)}\
 html.rv-split{overflow:hidden}\
 html.rv-split body{width:calc(100vw - var(--chat-w));height:100vh;overflow-x:hidden;overflow-y:auto}\
 body{transition:width .3s ease}\
