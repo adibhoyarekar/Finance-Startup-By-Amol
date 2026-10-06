@@ -4,196 +4,159 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact - RAVEN</title>
-  <link rel="stylesheet" href="nexstudio.css">
-  <link rel="stylesheet" href="mobile-nav.css?v=2">
+  <meta name="description" content="Contact the RAVEN team in Chhatrapati Sambhajinagar and Pune.">
+  <link rel="icon" type="image/svg+xml" href="images/logo-mark.svg">
+  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="stylesheet" href="raven.css?v=2">
 </head>
-<body class="font-sans bg-white text-black antialiased">
-
-  <!-- Header -->
-  <header class="sticky top-0 z-50 transition-all duration-300 bg-white/80 backdrop-blur-md shadow-sm">
+<body class="antialiased text-gray-900 bg-white">
+  <div id="top" class="min-h-screen">
+  <header class="left-0 w-full z-50 transition-all duration-300 absolute top-5 lg:top-8">
     <nav>
       <div class="max-w-7xl mx-auto px-6">
-        <div class="flex items-center justify-between py-4 lg:py-6">
-          <a href="index.html">
-            <svg width="120" height="24" viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <text x="0" y="20" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="black" letter-spacing="-1">RAVEN</text>
-            </svg>
-          </a>
-          <div id="mobile-nav-root" class="flex items-center justify-end"></div>
+        <div class="flex items-center justify-between rounded-[18px] transition-all duration-300 bg-white backdrop-blur-md pl-6 py-3 pr-3 shadow-sm">
+          <a href="index.html" aria-label="RAVEN home"><img src="images/logo.svg" alt="RAVEN" width="116" height="30"></a>
+          <div class="hidden lg:block">
+            <ul class="flex">
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="index.html">Home</a></li>
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="funding-loans.html">Funding &amp; Loans</a></li>
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="registration.html">Registration</a></li>
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-indigo-500" href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="hidden lg:flex gap-4">
+            <a class="border bg-gray-50 border-gray-200 rounded-lg text-gray-800 font-medium text-base py-2.5 px-4 hover:bg-gray-100 transition duration-300 ease-in-out" href="ask.html">Ask a Question</a>
+            <a class="text-white bg-gray-950 rounded-lg py-2.5 px-4 text-base font-medium hover:bg-gray-800 transition duration-300 ease-in-out" href="contact.html">Contact Us</a>
+          </div>
+          <div class="flex lg:hidden">
+            <button id="menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="rv-menu" class="cursor-pointer p-2">
+              <svg class="rv-ico-open" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h16M4 12h16M4 17h16" stroke="#101828" stroke-width="1.8" stroke-linecap="round"/></svg>
+              <svg class="rv-ico-close" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M6 6l12 12M18 6L6 18" stroke="#101828" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+        </div>
+        <div id="rv-menu" class="rv-menu" hidden>
+          <a class="rv-mlink" href="index.html">Home</a><a class="rv-mlink" href="funding-loans.html">Funding &amp; Loans</a><a class="rv-mlink" href="registration.html">Registration</a><a class="rv-mlink is-on" href="contact.html">Contact</a>
+          <a class="rv-mlink" href="ask.html">Ask a Question</a>
+          <a class="rv-mcta" href="contact.html">Contact Us</a>
         </div>
       </div>
     </nav>
   </header>
 
   <main>
-
-    <!-- Page Hero -->
-    <section class="lg:pt-30 lg:pb-20 pt-20 pb-10">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="max-w-3xl text-center mx-auto">
-          <h1 class="text-5xl lg:text-7xl font-normal -tracking-[2.88px] mb-4 text-black">
-            Get in <span class="italic">Touch</span>
-          </h1>
-          <p class="mb-8 lg:mb-12 text-gray-700 text-lg leading-6 -tracking-[0.2px] max-w-xl mx-auto">
-            Ready to take your business to the next level? Reach out to our team and let's start building your success story.
-          </p>
+    <section class="rv-hero relative pt-30 lg:pt-45 pb-10">
+      <div class="rv-fade-bottom"></div>
+      <div class="max-w-7xl mx-auto px-6 relative z-30">
+        <div class="max-w-xl lg:max-w-4xl lg:px-4 mx-auto text-center">
+          <h1 class="text-center text-4xl lg:text-6xl font-semibold mb-5 reveal">Get in Touch</h1>
+          <p class="text-gray-500 text-base mb-10 lg:px-10 reveal">Ready to take your business to the next level? Reach out to our team and let's start building your success story.</p>
+          
         </div>
       </div>
     </section>
-
-    <!-- Contact Form + Info -->
-    <section class="py-12 lg:py-25 bg-[#FBFBFB]">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          <!-- Contact Form -->
-          <div>
-            <h2 class="font-normal text-4xl text-black -tracking-[1.5px] mb-10">Send us a <span class="italic">message</span></h2>
-            <form class="space-y-6">
-              <div>
-                <label class="block text-sm font-medium text-black mb-2 uppercase tracking-wider">Full Name</label>
-                <input type="text" placeholder="Your full name" class="w-full px-6 py-4 border border-gray-200 rounded-full bg-white text-black placeholder-gray-400 focus:outline-none focus:border-black transition">
+    <section class="py-10 lg:py-20">
+      <div class="max-w-7xl mx-auto px-4 lg:px-6">
+        <div class="flex flex-col lg:flex-row gap-8 lg:gap-10">
+          <div class="lg:w-7/12 bg-white rounded-2xl p-6 lg:p-9 shadow-feature-card reveal">
+            <h2 class="text-3xl font-medium text-gray-900 mb-8 -tracking-[1px]">Send us a message</h2>
+            <form class="space-y-5">
+              <div><label class="block text-sm font-medium text-gray-700 mb-2" for="f-name">Full Name</label><input id="f-name" class="rv-input" type="text" placeholder="Your full name"></div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div><label class="block text-sm font-medium text-gray-700 mb-2" for="f-email">Email Address</label><input id="f-email" class="rv-input" type="email" placeholder="your@email.com"></div>
+                <div><label class="block text-sm font-medium text-gray-700 mb-2" for="f-phone">Phone Number</label><input id="f-phone" class="rv-input" type="tel" placeholder="+91 XXXXX XXXXX"></div>
               </div>
-              <div>
-                <label class="block text-sm font-medium text-black mb-2 uppercase tracking-wider">Email Address</label>
-                <input type="email" placeholder="your@email.com" class="w-full px-6 py-4 border border-gray-200 rounded-full bg-white text-black placeholder-gray-400 focus:outline-none focus:border-black transition">
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-black mb-2 uppercase tracking-wider">Phone Number</label>
-                <input type="tel" placeholder="+91 XXXXX XXXXX" class="w-full px-6 py-4 border border-gray-200 rounded-full bg-white text-black placeholder-gray-400 focus:outline-none focus:border-black transition">
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-black mb-2 uppercase tracking-wider">Service Interest</label>
-                <select class="w-full px-6 py-4 border border-gray-200 rounded-full bg-white text-black focus:outline-none focus:border-black transition appearance-none">
-                  <option value="">Select a service</option>
-                  <option>Funding &amp; Loans</option>
-                  <option>Business Registration</option>
-                  <option>Real Estate Advisory</option>
-                  <option>Brand Strategy</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-black mb-2 uppercase tracking-wider">Message</label>
-                <textarea rows="5" placeholder="Tell us about your business and goals..." class="w-full px-6 py-4 border border-gray-200 rounded-3xl bg-white text-black placeholder-gray-400 focus:outline-none focus:border-black transition resize-none"></textarea>
-              </div>
-              <button type="submit" class="group px-8 py-4.5 inline-flex gap-2 items-center bg-black text-sm font-medium -tracking-[0.2px] leading-5 text-white rounded-full hover:bg-gray-800 transition-all duration-300">
-                <span class="relative inline-block overflow-hidden">
-                  <span class="block transition-transform duration-300 ease-in-out group-hover:-translate-y-full">SEND MESSAGE</span>
-                  <span class="absolute top-0 left-0 block w-full transition-transform duration-300 ease-in-out translate-y-full group-hover:translate-y-0">SEND MESSAGE</span>
-                </span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </button>
+              <div><label class="block text-sm font-medium text-gray-700 mb-2" for="f-service">Service Interest</label>
+                <select id="f-service" class="rv-input"><option value="">Select a service</option><option>Funding &amp; Loans</option><option>Business Registration</option><option>Real Estate</option><option>Advisory</option><option>Brand Strategy</option></select></div>
+              <div><label class="block text-sm font-medium text-gray-700 mb-2" for="f-msg">Message</label><textarea id="f-msg" class="rv-input" rows="5" placeholder="Tell us about your business and goals..."></textarea></div>
+              <button type="submit" class="text-white bg-indigo-500 rounded-lg py-2.5 px-5 text-base font-medium hover:bg-indigo-600 transition duration-300 ease-in-out cursor-pointer">Send Message</button>
             </form>
           </div>
-          <!-- Contact Info -->
-          <div>
-            <h2 class="font-normal text-4xl text-black -tracking-[1.5px] mb-10">Contact <span class="italic">information</span></h2>
-            <div class="space-y-10">
-              <div>
-                <h4 class="text-sm font-medium text-black uppercase tracking-wider mb-3">Email</h4>
-                <a href="mailto:hello@raven.business" class="text-xl text-gray-700 hover:text-black transition">hello@raven.business</a>
-              </div>
-              <div>
-                <h4 class="text-sm font-medium text-black uppercase tracking-wider mb-3">Location</h4>
-                <p class="text-xl text-gray-700">Chhatrapati Sambhajinagar</p>
-                <p class="text-xl text-gray-700">Pune, Maharashtra, India</p>
-              </div>
-              <div>
-                <h4 class="text-sm font-medium text-black uppercase tracking-wider mb-3">Office Hours</h4>
-                <p class="text-xl text-gray-700">Monday – Saturday</p>
-                <p class="text-xl text-gray-700">10:00 AM – 7:00 PM IST</p>
+          <div class="lg:w-5/12 flex flex-col gap-6">
+            <div class="bg-gray-50 rounded-2xl p-6 lg:p-9 reveal">
+              <h2 class="text-3xl font-medium text-gray-900 mb-8 -tracking-[1px]">Contact information</h2>
+              <div class="space-y-6">
+                <div class="flex gap-4"><span class="rv-tile-box rv-tile-sm"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#625FFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><div><h4 class="text-sm text-gray-500 mb-1">Email</h4><a class="text-gray-900 font-medium hover:text-indigo-500" href="mailto:hello@raven.business">hello@raven.business</a></div></div>
+                <div class="flex gap-4"><span class="rv-tile-box rv-tile-sm"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#625FFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><div><h4 class="text-sm text-gray-500 mb-1">Location</h4><p class="text-gray-900 font-medium">Chhatrapati Sambhajinagar</p><p class="text-gray-900 font-medium">Pune, Maharashtra, India</p></div></div>
+                <div class="flex gap-4"><span class="rv-tile-box rv-tile-sm"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#625FFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><h4 class="text-sm text-gray-500 mb-1">Office Hours</h4><p class="text-gray-900 font-medium">Monday &ndash; Saturday</p><p class="text-gray-900 font-medium">10:00 AM &ndash; 7:00 PM IST</p></div></div>
               </div>
             </div>
-            <!-- Dark info card -->
-            <div class="mt-16 bg-black rounded-[20px] p-10">
-              <h3 class="text-white text-2xl font-normal mb-4">Ready to get <span class="italic">funded?</span></h3>
-              <p class="text-white/60 text-base mb-8">Our team typically responds within 24 hours. For urgent queries, call us directly.</p>
-              <a href="funding-loans.html" class="group px-6 py-4 inline-flex gap-2 items-center bg-white text-sm font-medium -tracking-[0.2px] leading-5 text-black rounded-full hover:bg-gray-100 transition-all duration-300">
-                <span class="relative inline-block overflow-hidden">
-                  <span class="block transition-transform duration-300 ease-in-out group-hover:-translate-y-full">VIEW SERVICES</span>
-                  <span class="absolute top-0 left-0 block w-full transition-transform duration-300 ease-in-out translate-y-full group-hover:translate-y-0">VIEW SERVICES</span>
-                </span>
-              </a>
+            <div class="rv-cta-card rounded-2xl p-6 lg:p-9 reveal">
+              <h3 class="text-2xl font-medium text-white mb-3">Ready to get funded?</h3>
+              <p class="text-indigo-100 mb-6">Our team typically responds within 24 hours. For urgent queries, call us directly.</p>
+              <a class="inline-block bg-white text-gray-900 rounded-lg py-2.5 px-4 font-medium hover:bg-gray-100 transition duration-300" href="funding-loans.html">View Services</a>
             </div>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- CTA Section -->
-    <section class="py-14 bg-white">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="flex items-center flex-col sm:flex-row justify-between gap-6">
-          <div class="sm:w-1/2">
-            <h2 class="font-normal text-5xl text-center sm:text-left text-black -tracking-[1.92px]">Ready to fund <br>your next <span class="italic">big idea?</span></h2>
-          </div>
-          <div class="sm:w-1/2 flex sm:justify-end">
-            <a class="group px-6 py-4.5 inline-flex gap-2 items-center bg-white border border-black text-sm font-medium -tracking-[0.2px] leading-5 text-black rounded-full hover:bg-gray-100 transition-all duration-300" href="funding-loans.html">
-              <span class="relative inline-block overflow-hidden">
-                <span class="block transition-transform duration-300 ease-in-out group-hover:-translate-y-full">OUR SERVICES</span>
-                <span class="absolute top-0 left-0 block w-full transition-transform duration-300 ease-in-out translate-y-full group-hover:translate-y-0">OUR SERVICES</span>
-              </span>
-            </a>
+    <section class="pt-28 pb-10 rv-cta relative">
+      <div class="rv-fade-bottom"></div>
+      <div class="max-w-7xl mx-auto px-6 relative z-30">
+        <div class="max-w-2xl mx-auto text-center reveal">
+          <h2 class="text-4xl lg:text-5xl -tracking-[1.9px] mb-4 font-medium text-gray-900">Ready to fund your next big idea?</h2>
+          <p class="text-base text-gray-500 mb-9">Talk to our team and we will match you with the right solution.</p>
+          <div class="flex gap-4 justify-center sm:items-center flex-col sm:flex-row">
+            <a class="py-2.5 px-4 bg-indigo-500 h-11 rounded-lg font-medium text-white text-base hover:bg-indigo-600 transition duration-300 ease-in-out inline-block" href="funding-loans.html">Our Services</a>
+            
           </div>
         </div>
       </div>
     </section>
-
   </main>
-
-  <!-- Footer -->
-  <footer class="bg-[#070707] overflow-hidden">
-    <div class="pt-20">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="mb-16">
-          <a href="index.html">
-            <svg width="140" height="28" viewBox="0 0 140 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <text x="0" y="24" font-family="Inter, sans-serif" font-size="26" font-weight="700" fill="white" letter-spacing="-1">RAVEN</text>
-            </svg>
-          </a>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-16">
-          <div>
-            <p class="text-white/60 text-base leading-7">Build. Fund. Brand. Grow.<br>Your business partner in India.</p>
-            <p class="text-white/40 text-sm mt-4">Chhatrapati Sambhajinagar &amp; Pune, India</p>
+  <footer>
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="pt-10 lg:pt-18">
+        <div class="flex flex-col lg:flex-row gap-10">
+          <div class="lg:w-4/12">
+            <a class="mb-10 lg:mb-20 inline-block" href="index.html" aria-label="RAVEN home"><img src="images/logo.svg" alt="RAVEN" width="136" height="35"></a>
+            <p class="lg:pr-10 text-gray-500 text-base">Build. Fund. Brand. Grow.<br>Your business partner in India.</p>
+            <p class="text-gray-400 text-sm mt-4">Chhatrapati Sambhajinagar &amp; Pune, India</p>
           </div>
-          <div>
-            <h4 class="text-white text-sm font-medium uppercase tracking-wider mb-6">Services</h4>
-            <ul class="space-y-4">
-              <li><a href="funding-loans.html" class="text-white/60 hover:text-white transition text-base">Funding &amp; Loans</a></li>
-              <li><a href="registration.html" class="text-white/60 hover:text-white transition text-base">Business Registration</a></li>
-              <li><a href="index.html" class="text-white/60 hover:text-white transition text-base">Real Estate</a></li>
-              <li><a href="index.html" class="text-white/60 hover:text-white transition text-base">Brand Strategy</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 class="text-white text-sm font-medium uppercase tracking-wider mb-6">Company</h4>
-            <ul class="space-y-4">
-              <li><a href="index.html#about" class="text-white/60 hover:text-white transition text-base">About Us</a></li>
-              <li><a href="contact.html" class="text-white/60 hover:text-white transition text-base">Contact</a></li>
-              <li><a href="terms.html" class="text-white/60 hover:text-white transition text-base">Terms &amp; Conditions</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 class="text-white text-sm font-medium uppercase tracking-wider mb-6">Contact</h4>
-            <ul class="space-y-4">
-              <li><a href="mailto:hello@raven.business" class="text-white/60 hover:text-white transition text-base">hello@raven.business</a></li>
-              <li><span class="text-white/60 text-base">Chhatrapati Sambhajinagar</span></li>
-              <li><span class="text-white/60 text-base">Pune, India</span></li>
-            </ul>
+          <div class="lg:w-6/12 lg:ml-auto">
+            <div class="grid grid-cols-2 gap-5 sm:gap-10 sm:grid-cols-3">
+              <div>
+                <h3 class="text-lg text-gray-800 font-medium mb-6">Services</h3>
+                <nav class="space-y-5">
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="funding-loans.html">Funding &amp; Loans</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="registration.html">Business Registration</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Real Estate</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Brand Strategy</a>
+                </nav>
+              </div>
+              <div>
+                <h3 class="text-lg text-gray-800 font-medium mb-6">Company</h3>
+                <nav class="space-y-5">
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="index.html#about">About Us</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Contact</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="terms.html">Terms &amp; Conditions</a>
+                </nav>
+              </div>
+              <div class="flex lg:justify-end">
+                <div>
+                  <h3 class="text-lg text-gray-800 font-medium mb-6">Contact</h3>
+                  <nav class="space-y-5">
+                    <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="mailto:hello@raven.business">hello@raven.business</a>
+                    <span class="text-gray-700 block text-base">Chhatrapati Sambhajinagar</span>
+                    <span class="text-gray-700 block text-base">Pune, India</span>
+                  </nav>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="border-t border-white/10">
-        <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p class="text-white/40 text-sm">&copy; 2025 RAVEN. All rights reserved.</p>
-          <p class="text-white/40 text-sm">Built for Indian Entrepreneurs.</p>
-        </div>
+      <div class="flex justify-between flex-col sm:flex-row gap-5 items-center pb-10 pt-10 lg:pt-20">
+        <p class="text-base text-gray-500">&copy; 2025 RAVEN. All rights reserved. <span class="rv-dot">Built for Indian Entrepreneurs.</span></p>
+        <a href="#top" class="flex gap-3 items-center text-gray-700">Back to top
+          <span class="size-7 rounded-full text-white bg-indigo-500 inline-flex items-center justify-center hover:bg-indigo-600 transition duration-300 ease-in-out"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
+        </a>
       </div>
     </div>
   </footer>
-
-  <script src="mobile-nav.js?v=2"></script>
-  <script src="ai-chat.js?v=2"></script>
-  <script src="consent.js?v=1"></script>
+  </div>
+  <script src="site.js?v=2"></script>
+  <script src="ai-chat.js?v=3"></script>
+  <script src="consent.js?v=2"></script>
 </body>
 </html>

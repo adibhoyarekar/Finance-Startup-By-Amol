@@ -3,247 +3,202 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terms &amp; Conditions - RAVEN</title>
-  <link rel="stylesheet" href="nexstudio.css">
-  <link rel="stylesheet" href="mobile-nav.css?v=2">
-  <style>
-    .wpu{display:grid;gap:3rem}
-    @media(min-width:1024px){.wpu{grid-template-columns:4fr 8fr;gap:4rem;align-items:start}.wpu-head{position:sticky;top:7rem}}
-    .wpu-head p{margin:1.25rem 0 0;font-size:1.125rem;line-height:1.6;color:#404040;max-width:26rem}
-    .wpu-updated{display:block;margin-top:1.5rem;font-family:"Anonymous Pro",ui-monospace,monospace;font-size:.875rem;color:#737373}
-    .wpu-grid{display:grid;grid-template-columns:1fr;gap:1px;background:#e5e5e5;border:1px solid #e5e5e5;border-radius:2rem;overflow:hidden}
-    @media(min-width:768px){.wpu-grid{grid-template-columns:1fr 1fr}}
-    .wpu-card{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:3rem;min-height:300px;padding:2rem;background:#fff;overflow:hidden;transition:background .45s ease}
-    .wpu-card::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:0;background:#fff;transition:width .6s cubic-bezier(.2,.8,.2,1)}
-    .wpu-top{display:flex;justify-content:space-between;align-items:flex-start}
-    .wpu-num{font-family:"Anonymous Pro",ui-monospace,monospace;font-size:1rem;color:#737373;transition:color .45s ease}
-    .wpu-card svg{flex-shrink:0;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
-    .wpu-card h4{margin:0 0 1rem;font-size:1.5rem;font-weight:400;color:#000;transition:color .45s ease}
-    .wpu-card p{margin:0;font-size:1.0625rem;line-height:1.6;color:#404040;transition:color .45s ease}
-    .wpu-card:hover{background:#000}
-    .wpu-card:hover::after{width:100%}
-    .wpu-card:hover svg{transform:rotate(90deg) scale(1.08)}
-    .wpu-card:hover h4{color:#fff}
-    .wpu-card:hover p,.wpu-card:hover .wpu-num{color:#a3a3a3}
-    .wpu-card:hover a{color:#fff}
-    @media(max-width:639px){
-      .wpu{gap:2rem}
-      .wpu-grid{border-radius:1.25rem}
-      .wpu-card{min-height:0;gap:1.5rem;padding:1.25rem}
-      .wpu-card svg{width:36px;height:36px}
-      .wpu-num{font-size:.875rem}
-      .wpu-card h4{font-size:1.25rem;margin-bottom:.5rem}
-      .wpu-card p{font-size:1rem;line-height:1.55}
-    }
-  </style>
+  <title>Terms & Conditions - RAVEN</title>
+  <meta name="description" content="Terms and conditions for using the RAVEN website.">
+  <link rel="icon" type="image/svg+xml" href="images/logo-mark.svg">
+  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="stylesheet" href="raven.css?v=2">
 </head>
-<body class="font-sans bg-white text-black antialiased">
-
-  <!-- Header -->
-  <header class="sticky top-0 z-50 transition-all duration-300 bg-white/80 backdrop-blur-md shadow-sm">
+<body class="antialiased text-gray-900 bg-white">
+  <div id="top" class="min-h-screen">
+  <header class="left-0 w-full z-50 transition-all duration-300 absolute top-5 lg:top-8">
     <nav>
       <div class="max-w-7xl mx-auto px-6">
-        <div class="flex items-center justify-between py-4 lg:py-6">
-          <a href="index.html">
-            <svg width="120" height="24" viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <text x="0" y="20" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="black" letter-spacing="-1">RAVEN</text>
-            </svg>
-          </a>
-          <div id="mobile-nav-root" class="flex items-center justify-end"></div>
+        <div class="flex items-center justify-between rounded-[18px] transition-all duration-300 bg-white backdrop-blur-md pl-6 py-3 pr-3 shadow-sm">
+          <a href="index.html" aria-label="RAVEN home"><img src="images/logo.svg" alt="RAVEN" width="116" height="30"></a>
+          <div class="hidden lg:block">
+            <ul class="flex">
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="index.html">Home</a></li>
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="funding-loans.html">Funding &amp; Loans</a></li>
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="registration.html">Registration</a></li>
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="hidden lg:flex gap-4">
+            <a class="border bg-gray-50 border-gray-200 rounded-lg text-gray-800 font-medium text-base py-2.5 px-4 hover:bg-gray-100 transition duration-300 ease-in-out" href="ask.html">Ask a Question</a>
+            <a class="text-white bg-gray-950 rounded-lg py-2.5 px-4 text-base font-medium hover:bg-gray-800 transition duration-300 ease-in-out" href="contact.html">Contact Us</a>
+          </div>
+          <div class="flex lg:hidden">
+            <button id="menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="rv-menu" class="cursor-pointer p-2">
+              <svg class="rv-ico-open" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h16M4 12h16M4 17h16" stroke="#101828" stroke-width="1.8" stroke-linecap="round"/></svg>
+              <svg class="rv-ico-close" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M6 6l12 12M18 6L6 18" stroke="#101828" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+        </div>
+        <div id="rv-menu" class="rv-menu" hidden>
+          <a class="rv-mlink" href="index.html">Home</a><a class="rv-mlink" href="funding-loans.html">Funding &amp; Loans</a><a class="rv-mlink" href="registration.html">Registration</a><a class="rv-mlink" href="contact.html">Contact</a>
+          <a class="rv-mlink" href="ask.html">Ask a Question</a>
+          <a class="rv-mcta" href="contact.html">Contact Us</a>
         </div>
       </div>
     </nav>
   </header>
 
   <main>
-    <section class="py-12 lg:py-25">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="wpu">
-          <div class="wpu-head">
-            <h1 class="font-normal text-5xl text-black -tracking-[1.92px]">Terms <span class="italic">&amp; Conditions</span></h1>
-            <p>Please read these terms carefully before using the RAVEN website.</p>
-            <span class="wpu-updated">LAST UPDATED: OCTOBER 2026</span>
-          </div>
-          <div class="wpu-grid">
-          <article class="wpu-card">
-            <div class="wpu-top">
-              <span class="wpu-num">01</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none"><g clip-path="url(#clip0_t1)"><path d="M56 0C56 7.73194 49.7319 14 42 14C49.7319 14 56 20.2681 56 28C56 35.7319 49.7319 42 42 42C49.7319 42 56 48.2681 56 56H0C0 48.2681 6.26806 42 14 42C6.26806 42 0 35.7319 0 28C0 20.2681 6.26806 14 14 14C6.26806 14 0 7.73194 0 0H56Z" fill="url(#paint0_t1)"/></g><defs><linearGradient id="paint0_t1" x1="28" y1="0" x2="28" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#545454"/><stop offset="1" stop-color="#BABABA"/></linearGradient><clipPath id="clip0_t1"><rect width="56" height="56" fill="white"/></clipPath></defs></svg>
+    <section class="rv-hero relative pt-30 lg:pt-45 pb-10">
+      <div class="rv-fade-bottom"></div>
+      <div class="max-w-7xl mx-auto px-6 relative z-30">
+        <div class="max-w-xl lg:max-w-4xl lg:px-4 mx-auto text-center">
+          <h1 class="text-center text-4xl lg:text-6xl font-semibold mb-5 reveal">Terms &amp; Conditions</h1>
+          <p class="text-gray-500 text-base mb-10 lg:px-10 reveal">Please read these terms carefully before using the RAVEN website. <span class="rv-updated">Last updated: October 2026</span></p>
+          
+        </div>
+      </div>
+    </section>
+    <section class="py-10 lg:py-20">
+      <div class="max-w-4xl mx-auto px-6 reveal" style="max-width:56rem">
+        <div class="bg-white rounded-2xl p-2 lg:p-6">
+            <div class="py-6 border-b border-gray-200 rv-acc is-open" data-acc>
+              <button class="flex w-full justify-between items-center cursor-pointer text-left" aria-expanded="true">
+                <h3 class="text-lg font-medium text-gray-900 -tracking-[0.18px]"><span class="rv-num mr-3">01</span>Acceptance of Terms</h3>
+                <span class="text-gray-950 shrink-0 ml-4"><svg class="rv-plus" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+              </button>
+              <div class="rv-acc-body"><p class="text-base text-gray-500 pt-4 pr-10">By accessing or using the RAVEN website, you agree to be bound by these Terms &amp; Conditions. If you do not agree, please do not use the website.</p></div>
             </div>
-            <div>
-              <h4>Acceptance of Terms</h4>
-              <p>By accessing or using the RAVEN website, you agree to be bound by these Terms &amp; Conditions. If you do not agree, please do not use the website.</p>
+            <div class="py-6 border-b border-gray-200 rv-acc" data-acc>
+              <button class="flex w-full justify-between items-center cursor-pointer text-left" aria-expanded="false">
+                <h3 class="text-lg font-medium text-gray-900 -tracking-[0.18px]"><span class="rv-num mr-3">02</span>About RAVEN</h3>
+                <span class="text-gray-950 shrink-0 ml-4"><svg class="rv-plus" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+              </button>
+              <div class="rv-acc-body"><p class="text-base text-gray-500 pt-4 pr-10">RAVEN is a business partner for entrepreneurs in India, offering support with funding and loans, business registration, insurance and real estate guidance. RAVEN acts as a facilitator and advisor, not as a bank, lender or insurer unless stated otherwise.</p></div>
             </div>
-          </article>
-          <article class="wpu-card">
-            <div class="wpu-top">
-              <span class="wpu-num">02</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none"><g clip-path="url(#clip0_t2)"><path d="M28 14L35 7.21875L42.1094 0H56V14L42 28H41.8906L49 35.2188L56 42V56H42L28 42L21 48.7812L13.8906 56H0V42L14 28H14.1094L7 20.7812L0 14V0H14L28 14Z" fill="url(#paint0_t2)"/></g><defs><linearGradient id="paint0_t2" x1="28" y1="0" x2="28" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#545454"/><stop offset="1" stop-color="#BABABA"/></linearGradient><clipPath id="clip0_t2"><rect width="56" height="56" fill="white"/></clipPath></defs></svg>
+            <div class="py-6 border-b border-gray-200 rv-acc" data-acc>
+              <button class="flex w-full justify-between items-center cursor-pointer text-left" aria-expanded="false">
+                <h3 class="text-lg font-medium text-gray-900 -tracking-[0.18px]"><span class="rv-num mr-3">03</span>Our Services</h3>
+                <span class="text-gray-950 shrink-0 ml-4"><svg class="rv-plus" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+              </button>
+              <div class="rv-acc-body"><p class="text-base text-gray-500 pt-4 pr-10">Information about loans, insurance, real estate and registration is general guidance only. Approval depends on the eligibility criteria and decisions of the relevant lender, insurer or authority. Rates, fees and timelines shown are indicative and may change without notice.</p></div>
             </div>
-            <div>
-              <h4>About RAVEN</h4>
-              <p>RAVEN is a business partner for entrepreneurs in India, offering support with funding and loans, business registration, insurance and real estate guidance. RAVEN acts as a facilitator and advisor, not as a bank, lender or insurer unless stated otherwise.</p>
+            <div class="py-6 border-b border-gray-200 rv-acc" data-acc>
+              <button class="flex w-full justify-between items-center cursor-pointer text-left" aria-expanded="false">
+                <h3 class="text-lg font-medium text-gray-900 -tracking-[0.18px]"><span class="rv-num mr-3">04</span>Plans &amp; Fees</h3>
+                <span class="text-gray-950 shrink-0 ml-4"><svg class="rv-plus" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+              </button>
+              <div class="rv-acc-body"><p class="text-base text-gray-500 pt-4 pr-10">RAVEN may offer Free, Pro and Pro Plus subscription plans. Plan features, prices, billing and refund terms will be published before any payment is taken. Third-party lenders, insurers and authorities may charge their own fees outside RAVEN's control.</p></div>
             </div>
-          </article>
-          <article class="wpu-card">
-            <div class="wpu-top">
-              <span class="wpu-num">03</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none"><g clip-path="url(#clip0_t3)"><path d="M56 56H38.9375C32.8969 56 28 51.1031 28 45.0625V56H0V42C0 34.2681 6.26806 28 14 28C21.7319 28 28 34.2681 28 42V28H56V56ZM17.0625 0C23.1031 0 28 4.89694 28 10.9375V0H56V14C56 21.7319 49.7319 28 42 28C34.2681 28 28 21.7319 28 14V28H0V0H17.0625Z" fill="url(#paint0_t3)"/></g><defs><linearGradient id="paint0_t3" x1="28" y1="0" x2="28" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#545454"/><stop offset="1" stop-color="#BABABA"/></linearGradient><clipPath id="clip0_t3"><rect width="56" height="56" fill="white"/></clipPath></defs></svg>
+            <div class="py-6 border-b border-gray-200 rv-acc" data-acc>
+              <button class="flex w-full justify-between items-center cursor-pointer text-left" aria-expanded="false">
+                <h3 class="text-lg font-medium text-gray-900 -tracking-[0.18px]"><span class="rv-num mr-3">05</span>Your Responsibilities</h3>
+                <span class="text-gray-950 shrink-0 ml-4"><svg class="rv-plus" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+              </button>
+              <div class="rv-acc-body"><p class="text-base text-gray-500 pt-4 pr-10">Provide accurate and complete information, keep your documents and account details confidential, and do not use the website for any unlawful, fraudulent or harmful purpose.</p></div>
             </div>
-            <div>
-              <h4>Our Services</h4>
-              <p>Information about loans, insurance, real estate and registration is general guidance only. Approval depends on the eligibility criteria and decisions of the relevant lender, insurer or authority. Rates, fees and timelines shown are indicative and may change without notice.</p>
+            <div class="py-6 border-b border-gray-200 rv-acc" data-acc>
+              <button class="flex w-full justify-between items-center cursor-pointer text-left" aria-expanded="false">
+                <h3 class="text-lg font-medium text-gray-900 -tracking-[0.18px]"><span class="rv-num mr-3">06</span>AI Assistant</h3>
+                <span class="text-gray-950 shrink-0 ml-4"><svg class="rv-plus" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+              </button>
+              <div class="rv-acc-body"><p class="text-base text-gray-500 pt-4 pr-10">The "Ask a question" assistant gives general information only. Its answers are not financial, legal, tax or insurance advice. Please verify important details with a RAVEN expert or a qualified professional.</p></div>
             </div>
-          </article>
-          <article class="wpu-card">
-            <div class="wpu-top">
-              <span class="wpu-num">04</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none"><g clip-path="url(#clip0_t4)"><path d="M35 19.25L42.4375 7.4375L47.25 0H56V8.75L48.4531 20.4531L43.75 28H56V56H21V36.75L14.0538 48.125L8.75 56H0V47.25L7.4375 35.4375L12.25 28H0V0H35V19.25Z" fill="url(#paint0_t4)"/></g><defs><linearGradient id="paint0_t4" x1="28" y1="0" x2="28" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#545454"/><stop offset="1" stop-color="#BABABA"/></linearGradient><clipPath id="clip0_t4"><rect width="56" height="56" fill="white"/></clipPath></defs></svg>
+            <div class="py-6 border-b border-gray-200 rv-acc" data-acc>
+              <button class="flex w-full justify-between items-center cursor-pointer text-left" aria-expanded="false">
+                <h3 class="text-lg font-medium text-gray-900 -tracking-[0.18px]"><span class="rv-num mr-3">07</span>Intellectual Property</h3>
+                <span class="text-gray-950 shrink-0 ml-4"><svg class="rv-plus" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+              </button>
+              <div class="rv-acc-body"><p class="text-base text-gray-500 pt-4 pr-10">All content on this website, including the RAVEN name, logo, text, graphics and design, belongs to RAVEN or its licensors and may not be copied or reused without written permission.</p></div>
             </div>
-            <div>
-              <h4>Plans &amp; Fees</h4>
-              <p>RAVEN may offer Free, Pro and Pro Plus subscription plans. Plan features, prices, billing and refund terms will be published before any payment is taken. Third-party lenders, insurers and authorities may charge their own fees outside RAVEN's control.</p>
+            <div class="py-6 border-b border-gray-200 rv-acc" data-acc>
+              <button class="flex w-full justify-between items-center cursor-pointer text-left" aria-expanded="false">
+                <h3 class="text-lg font-medium text-gray-900 -tracking-[0.18px]"><span class="rv-num mr-3">08</span>Limitation of Liability</h3>
+                <span class="text-gray-950 shrink-0 ml-4"><svg class="rv-plus" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+              </button>
+              <div class="rv-acc-body"><p class="text-base text-gray-500 pt-4 pr-10">To the extent permitted by law, RAVEN is not liable for loss arising from reliance on website information, delays or rejections by lenders, insurers or authorities, or interruptions in the website.</p></div>
             </div>
-          </article>
-          <article class="wpu-card">
-            <div class="wpu-top">
-              <span class="wpu-num">05</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none"><g clip-path="url(#clip0_t5)"><path d="M56 0C56 7.73194 49.7319 14 42 14C49.7319 14 56 20.2681 56 28C56 35.7319 49.7319 42 42 42C49.7319 42 56 48.2681 56 56H0C0 48.2681 6.26806 42 14 42C6.26806 42 0 35.7319 0 28C0 20.2681 6.26806 14 14 14C6.26806 14 0 7.73194 0 0H56Z" fill="url(#paint0_t5)"/></g><defs><linearGradient id="paint0_t5" x1="28" y1="0" x2="28" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#545454"/><stop offset="1" stop-color="#BABABA"/></linearGradient><clipPath id="clip0_t5"><rect width="56" height="56" fill="white"/></clipPath></defs></svg>
+            <div class="py-6 border-b border-gray-200 rv-acc" data-acc>
+              <button class="flex w-full justify-between items-center cursor-pointer text-left" aria-expanded="false">
+                <h3 class="text-lg font-medium text-gray-900 -tracking-[0.18px]"><span class="rv-num mr-3">09</span>Privacy &amp; Data</h3>
+                <span class="text-gray-950 shrink-0 ml-4"><svg class="rv-plus" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+              </button>
+              <div class="rv-acc-body"><p class="text-base text-gray-500 pt-4 pr-10">By using the website you consent to RAVEN using your information to respond to your enquiries and provide its services. Your details will not be sold to third parties. A detailed privacy policy will be published here.</p></div>
             </div>
-            <div>
-              <h4>Your Responsibilities</h4>
-              <p>Provide accurate and complete information, keep your documents and account details confidential, and do not use the website for any unlawful, fraudulent or harmful purpose.</p>
+            <div class="py-6 border-b border-gray-200 rv-acc" data-acc>
+              <button class="flex w-full justify-between items-center cursor-pointer text-left" aria-expanded="false">
+                <h3 class="text-lg font-medium text-gray-900 -tracking-[0.18px]"><span class="rv-num mr-3">10</span>Changes to Terms</h3>
+                <span class="text-gray-950 shrink-0 ml-4"><svg class="rv-plus" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+              </button>
+              <div class="rv-acc-body"><p class="text-base text-gray-500 pt-4 pr-10">RAVEN may update these Terms &amp; Conditions from time to time. Continued use of the website after changes means you accept the updated terms.</p></div>
             </div>
-          </article>
-          <article class="wpu-card">
-            <div class="wpu-top">
-              <span class="wpu-num">06</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none"><g clip-path="url(#clip0_t6)"><path d="M28 14L35 7.21875L42.1094 0H56V14L42 28H41.8906L49 35.2188L56 42V56H42L28 42L21 48.7812L13.8906 56H0V42L14 28H14.1094L7 20.7812L0 14V0H14L28 14Z" fill="url(#paint0_t6)"/></g><defs><linearGradient id="paint0_t6" x1="28" y1="0" x2="28" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#545454"/><stop offset="1" stop-color="#BABABA"/></linearGradient><clipPath id="clip0_t6"><rect width="56" height="56" fill="white"/></clipPath></defs></svg>
+            <div class="py-6 border-b border-gray-200 rv-acc" data-acc>
+              <button class="flex w-full justify-between items-center cursor-pointer text-left" aria-expanded="false">
+                <h3 class="text-lg font-medium text-gray-900 -tracking-[0.18px]"><span class="rv-num mr-3">11</span>Governing Law</h3>
+                <span class="text-gray-950 shrink-0 ml-4"><svg class="rv-plus" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+              </button>
+              <div class="rv-acc-body"><p class="text-base text-gray-500 pt-4 pr-10">These terms are governed by the laws of India. Any dispute is subject to the courts at Chhatrapati Sambhajinagar, Maharashtra.</p></div>
             </div>
-            <div>
-              <h4>AI Assistant</h4>
-              <p>The "Ask a question" assistant gives general information only. Its answers are not financial, legal, tax or insurance advice. Please verify important details with a RAVEN expert or a qualified professional.</p>
+            <div class="py-6 border-b border-gray-200 rv-acc" data-acc>
+              <button class="flex w-full justify-between items-center cursor-pointer text-left" aria-expanded="false">
+                <h3 class="text-lg font-medium text-gray-900 -tracking-[0.18px]"><span class="rv-num mr-3">12</span>Contact Us</h3>
+                <span class="text-gray-950 shrink-0 ml-4"><svg class="rv-plus" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+              </button>
+              <div class="rv-acc-body"><p class="text-base text-gray-500 pt-4 pr-10">Questions about these terms? Write to <a href="mailto:hello@raven.business" style="text-decoration:underline">hello@raven.business</a> or visit our <a href="contact.html" style="text-decoration:underline">Contact page</a>.</p></div>
             </div>
-          </article>
-          <article class="wpu-card">
-            <div class="wpu-top">
-              <span class="wpu-num">07</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none"><g clip-path="url(#clip0_t7)"><path d="M56 56H38.9375C32.8969 56 28 51.1031 28 45.0625V56H0V42C0 34.2681 6.26806 28 14 28C21.7319 28 28 34.2681 28 42V28H56V56ZM17.0625 0C23.1031 0 28 4.89694 28 10.9375V0H56V14C56 21.7319 49.7319 28 42 28C34.2681 28 28 21.7319 28 14V28H0V0H17.0625Z" fill="url(#paint0_t7)"/></g><defs><linearGradient id="paint0_t7" x1="28" y1="0" x2="28" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#545454"/><stop offset="1" stop-color="#BABABA"/></linearGradient><clipPath id="clip0_t7"><rect width="56" height="56" fill="white"/></clipPath></defs></svg>
-            </div>
-            <div>
-              <h4>Intellectual Property</h4>
-              <p>All content on this website, including the RAVEN name, logo, text, graphics and design, belongs to RAVEN or its licensors and may not be copied or reused without written permission.</p>
-            </div>
-          </article>
-          <article class="wpu-card">
-            <div class="wpu-top">
-              <span class="wpu-num">08</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none"><g clip-path="url(#clip0_t8)"><path d="M35 19.25L42.4375 7.4375L47.25 0H56V8.75L48.4531 20.4531L43.75 28H56V56H21V36.75L14.0538 48.125L8.75 56H0V47.25L7.4375 35.4375L12.25 28H0V0H35V19.25Z" fill="url(#paint0_t8)"/></g><defs><linearGradient id="paint0_t8" x1="28" y1="0" x2="28" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#545454"/><stop offset="1" stop-color="#BABABA"/></linearGradient><clipPath id="clip0_t8"><rect width="56" height="56" fill="white"/></clipPath></defs></svg>
-            </div>
-            <div>
-              <h4>Limitation of Liability</h4>
-              <p>To the extent permitted by law, RAVEN is not liable for loss arising from reliance on website information, delays or rejections by lenders, insurers or authorities, or interruptions in the website.</p>
-            </div>
-          </article>
-          <article class="wpu-card">
-            <div class="wpu-top">
-              <span class="wpu-num">09</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none"><g clip-path="url(#clip0_t9)"><path d="M56 0C56 7.73194 49.7319 14 42 14C49.7319 14 56 20.2681 56 28C56 35.7319 49.7319 42 42 42C49.7319 42 56 48.2681 56 56H0C0 48.2681 6.26806 42 14 42C6.26806 42 0 35.7319 0 28C0 20.2681 6.26806 14 14 14C6.26806 14 0 7.73194 0 0H56Z" fill="url(#paint0_t9)"/></g><defs><linearGradient id="paint0_t9" x1="28" y1="0" x2="28" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#545454"/><stop offset="1" stop-color="#BABABA"/></linearGradient><clipPath id="clip0_t9"><rect width="56" height="56" fill="white"/></clipPath></defs></svg>
-            </div>
-            <div>
-              <h4>Privacy &amp; Data</h4>
-              <p>By using the website you consent to RAVEN using your information to respond to your enquiries and provide its services. Your details will not be sold to third parties. A detailed privacy policy will be published here.</p>
-            </div>
-          </article>
-          <article class="wpu-card">
-            <div class="wpu-top">
-              <span class="wpu-num">10</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none"><g clip-path="url(#clip0_t10)"><path d="M28 14L35 7.21875L42.1094 0H56V14L42 28H41.8906L49 35.2188L56 42V56H42L28 42L21 48.7812L13.8906 56H0V42L14 28H14.1094L7 20.7812L0 14V0H14L28 14Z" fill="url(#paint0_t10)"/></g><defs><linearGradient id="paint0_t10" x1="28" y1="0" x2="28" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#545454"/><stop offset="1" stop-color="#BABABA"/></linearGradient><clipPath id="clip0_t10"><rect width="56" height="56" fill="white"/></clipPath></defs></svg>
-            </div>
-            <div>
-              <h4>Changes to Terms</h4>
-              <p>RAVEN may update these Terms &amp; Conditions from time to time. Continued use of the website after changes means you accept the updated terms.</p>
-            </div>
-          </article>
-          <article class="wpu-card">
-            <div class="wpu-top">
-              <span class="wpu-num">11</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none"><g clip-path="url(#clip0_t11)"><path d="M56 56H38.9375C32.8969 56 28 51.1031 28 45.0625V56H0V42C0 34.2681 6.26806 28 14 28C21.7319 28 28 34.2681 28 42V28H56V56ZM17.0625 0C23.1031 0 28 4.89694 28 10.9375V0H56V14C56 21.7319 49.7319 28 42 28C34.2681 28 28 21.7319 28 14V28H0V0H17.0625Z" fill="url(#paint0_t11)"/></g><defs><linearGradient id="paint0_t11" x1="28" y1="0" x2="28" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#545454"/><stop offset="1" stop-color="#BABABA"/></linearGradient><clipPath id="clip0_t11"><rect width="56" height="56" fill="white"/></clipPath></defs></svg>
-            </div>
-            <div>
-              <h4>Governing Law</h4>
-              <p>These terms are governed by the laws of India. Any dispute is subject to the courts at Chhatrapati Sambhajinagar, Maharashtra.</p>
-            </div>
-          </article>
-          <article class="wpu-card">
-            <div class="wpu-top">
-              <span class="wpu-num">12</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none"><g clip-path="url(#clip0_t12)"><path d="M35 19.25L42.4375 7.4375L47.25 0H56V8.75L48.4531 20.4531L43.75 28H56V56H21V36.75L14.0538 48.125L8.75 56H0V47.25L7.4375 35.4375L12.25 28H0V0H35V19.25Z" fill="url(#paint0_t12)"/></g><defs><linearGradient id="paint0_t12" x1="28" y1="0" x2="28" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#545454"/><stop offset="1" stop-color="#BABABA"/></linearGradient><clipPath id="clip0_t12"><rect width="56" height="56" fill="white"/></clipPath></defs></svg>
-            </div>
-            <div>
-              <h4>Contact Us</h4>
-              <p>Questions about these terms? Write to <a href="mailto:hello@raven.business" style="text-decoration:underline">hello@raven.business</a> or visit our <a href="contact.html" style="text-decoration:underline">Contact page</a>.</p>
-            </div>
-          </article>
-          </div>
         </div>
       </div>
     </section>
   </main>
-
-  <!-- Footer -->
-  <footer class="bg-[#070707] overflow-hidden">
-    <div class="pt-20">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="mb-16">
-          <a href="index.html">
-            <svg width="140" height="28" viewBox="0 0 140 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <text x="0" y="24" font-family="Inter, sans-serif" font-size="26" font-weight="700" fill="white" letter-spacing="-1">RAVEN</text>
-            </svg>
-          </a>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-16">
-          <div>
-            <p class="text-white/60 text-base leading-7">Build. Fund. Brand. Grow.<br>Your business partner in India.</p>
-            <p class="text-white/40 text-sm mt-4">Chhatrapati Sambhajinagar &amp; Pune, India</p>
+  <footer>
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="pt-10 lg:pt-18">
+        <div class="flex flex-col lg:flex-row gap-10">
+          <div class="lg:w-4/12">
+            <a class="mb-10 lg:mb-20 inline-block" href="index.html" aria-label="RAVEN home"><img src="images/logo.svg" alt="RAVEN" width="136" height="35"></a>
+            <p class="lg:pr-10 text-gray-500 text-base">Build. Fund. Brand. Grow.<br>Your business partner in India.</p>
+            <p class="text-gray-400 text-sm mt-4">Chhatrapati Sambhajinagar &amp; Pune, India</p>
           </div>
-          <div>
-            <h4 class="text-white text-sm font-medium uppercase tracking-wider mb-6">Services</h4>
-            <ul class="space-y-4">
-              <li><a href="funding-loans.html" class="text-white/60 hover:text-white transition text-base">Funding &amp; Loans</a></li>
-              <li><a href="registration.html" class="text-white/60 hover:text-white transition text-base">Business Registration</a></li>
-              <li><a href="index.html" class="text-white/60 hover:text-white transition text-base">Real Estate</a></li>
-              <li><a href="index.html" class="text-white/60 hover:text-white transition text-base">Brand Strategy</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 class="text-white text-sm font-medium uppercase tracking-wider mb-6">Company</h4>
-            <ul class="space-y-4">
-              <li><a href="index.html#about" class="text-white/60 hover:text-white transition text-base">About Us</a></li>
-              <li><a href="contact.html" class="text-white/60 hover:text-white transition text-base">Contact</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 class="text-white text-sm font-medium uppercase tracking-wider mb-6">Contact</h4>
-            <ul class="space-y-4">
-              <li><a href="mailto:hello@raven.business" class="text-white/60 hover:text-white transition text-base">hello@raven.business</a></li>
-              <li><span class="text-white/60 text-base">Chhatrapati Sambhajinagar</span></li>
-              <li><span class="text-white/60 text-base">Pune, India</span></li>
-            </ul>
+          <div class="lg:w-6/12 lg:ml-auto">
+            <div class="grid grid-cols-2 gap-5 sm:gap-10 sm:grid-cols-3">
+              <div>
+                <h3 class="text-lg text-gray-800 font-medium mb-6">Services</h3>
+                <nav class="space-y-5">
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="funding-loans.html">Funding &amp; Loans</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="registration.html">Business Registration</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Real Estate</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Brand Strategy</a>
+                </nav>
+              </div>
+              <div>
+                <h3 class="text-lg text-gray-800 font-medium mb-6">Company</h3>
+                <nav class="space-y-5">
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="index.html#about">About Us</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Contact</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="terms.html">Terms &amp; Conditions</a>
+                </nav>
+              </div>
+              <div class="flex lg:justify-end">
+                <div>
+                  <h3 class="text-lg text-gray-800 font-medium mb-6">Contact</h3>
+                  <nav class="space-y-5">
+                    <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="mailto:hello@raven.business">hello@raven.business</a>
+                    <span class="text-gray-700 block text-base">Chhatrapati Sambhajinagar</span>
+                    <span class="text-gray-700 block text-base">Pune, India</span>
+                  </nav>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="border-t border-white/10">
-        <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p class="text-white/40 text-sm">&copy; 2025 RAVEN. All rights reserved.</p>
-          <p class="text-white/40 text-sm">Built for Indian Entrepreneurs.</p>
-        </div>
+      <div class="flex justify-between flex-col sm:flex-row gap-5 items-center pb-10 pt-10 lg:pt-20">
+        <p class="text-base text-gray-500">&copy; 2025 RAVEN. All rights reserved. <span class="rv-dot">Built for Indian Entrepreneurs.</span></p>
+        <a href="#top" class="flex gap-3 items-center text-gray-700">Back to top
+          <span class="size-7 rounded-full text-white bg-indigo-500 inline-flex items-center justify-center hover:bg-indigo-600 transition duration-300 ease-in-out"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
+        </a>
       </div>
     </div>
   </footer>
-
-  <script src="mobile-nav.js?v=2"></script>
-  <script src="ai-chat.js?v=2"></script>
-  <script src="consent.js?v=1"></script>
+  </div>
+  <script src="site.js?v=2"></script>
+  <script src="ai-chat.js?v=3"></script>
+  <script src="consent.js?v=2"></script>
 </body>
 </html>
