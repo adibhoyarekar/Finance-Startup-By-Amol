@@ -117,5 +117,27 @@
     input.value = '';
     ask(q);
   });
-  input.focus();
+
+  /* Phones: size the chat to the visible area so the on-screen keyboard never covers the input. */
+  var vv = window.visualViewport;
+  var phone = window.matchMedia('(max-width:899px)');
+  function fit() {
+    var root = document.documentElement;
+    if (!vv || !phone.matches || root.classList.contains('embed')) {
+      root.style.removeProperty('--vvh');
+      root.style.removeProperty('--vvt');
+      return;
+    }
+    root.style.setProperty('--vvh', vv.height + 'px');
+    root.style.setProperty('--vvt', vv.offsetTop + 'px');
+    body.scrollTop = body.scrollHeight;
+  }
+  if (vv) {
+    vv.addEventListener('resize', fit);
+    vv.addEventListener('scroll', fit);
+  }
+  window.addEventListener('orientationchange', fit);
+  input.addEventListener('focus', function () { setTimeout(function () { window.scrollTo(0, 0); fit(); }, 250); });
+  fit();
+  if (!phone.matches) input.focus();
 })();
