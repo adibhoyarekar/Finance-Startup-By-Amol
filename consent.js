@@ -17,27 +17,26 @@
 
   var style = document.createElement('style');
   style.textContent = '\
-.rv-consent{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:1rem;background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);font-family:Inter,system-ui,sans-serif}\
-.rv-consent-card{width:100%;max-width:520px;max-height:calc(100vh - 2rem);overflow-y:auto;background:#fff;color:#000;border:1px solid #e5e5e5;border-radius:1.75rem;padding:2rem;box-shadow:0 40px 80px -30px rgba(0,0,0,.35)}\
-.rv-consent-logo{font-size:1.25rem;font-weight:700;letter-spacing:-.05em;margin-bottom:1.25rem}\
-.rv-consent-card h2{margin:0 0 .75rem;font-size:1.75rem;line-height:1.15;font-weight:400;letter-spacing:-.04em}\
-.rv-consent-card h2 i{font-style:italic}\
-.rv-consent-card p{margin:0 0 1rem;font-size:.95rem;line-height:1.6;color:#404040}\
-.rv-consent-card ul{margin:0 0 1.25rem;padding:0;list-style:none;display:grid;gap:.5rem}\
-.rv-consent-card li{position:relative;padding-left:1.4rem;font-size:.9rem;line-height:1.5;color:#404040}\
-.rv-consent-card li::before{content:"";position:absolute;left:0;top:.5rem;width:.5rem;height:.5rem;border-radius:9999px;background:#000}\
-.rv-consent-check{display:flex;gap:.75rem;align-items:flex-start;padding:1rem;border:1px solid #e5e5e5;border-radius:1rem;background:#fafafa;cursor:pointer;margin-bottom:1.25rem}\
-.rv-consent-check input{flex:none;width:1.25rem;height:1.25rem;margin-top:.15rem;accent-color:#000;cursor:pointer}\
-.rv-consent-check span{font-size:.9rem;line-height:1.5;color:#000}\
-.rv-consent-check a{color:#000;text-decoration:underline}\
+.rv-consent{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:1rem;background:rgba(238,240,255,.75);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);font-family:Geist,Inter,system-ui,sans-serif}\
+.rv-consent-card{width:100%;max-width:520px;max-height:calc(100vh - 2rem);overflow-y:auto;background:#fff;color:#101828;border:1px solid #e5e7eb;border-radius:20px;padding:2rem;box-shadow:0 40px 80px -30px rgba(49,46,129,.35)}\
+.rv-consent-logo{margin-bottom:1.25rem;line-height:0}\
+.rv-consent-card h2{margin:0 0 .75rem;font-size:1.75rem;line-height:1.15;font-weight:500;letter-spacing:-.04em}\
+.rv-consent-card p{margin:0 0 1rem;font-size:.95rem;line-height:1.6;color:#6a7282}\
+.rv-consent-card ul{margin:0 0 1.25rem;padding:0;list-style:none;display:grid;gap:.6rem}\
+.rv-consent-card li{position:relative;padding-left:1.4rem;font-size:.9rem;line-height:1.5;color:#364153}\
+.rv-consent-card li::before{content:"";position:absolute;left:0;top:.5rem;width:.5rem;height:.5rem;border-radius:9999px;background:#625fff}\
+.rv-consent-check{display:flex;gap:.75rem;align-items:flex-start;padding:1rem;border:1px solid #e5e7eb;border-radius:12px;background:#f9fafb;cursor:pointer;margin-bottom:1.25rem}\
+.rv-consent-check input{flex:none;width:1.25rem;height:1.25rem;margin-top:.15rem;accent-color:#625fff;cursor:pointer}\
+.rv-consent-check span{font-size:.9rem;line-height:1.5;color:#101828}\
+.rv-consent-check a{color:#625fff;text-decoration:underline}\
 .rv-consent-actions{display:flex;gap:.75rem;flex-wrap:wrap}\
-.rv-consent-yes{flex:1;min-width:10rem;height:52px;border:0;border-radius:9999px;background:#000;color:#fff;font:500 .95rem Inter,system-ui,sans-serif;cursor:pointer;transition:background .2s,opacity .2s}\
+.rv-consent-yes{flex:1;min-width:10rem;height:50px;border:0;border-radius:10px;background:#625fff;color:#fff;font:500 .95rem Geist,Inter,system-ui,sans-serif;cursor:pointer;transition:background .2s,opacity .2s}\
 .rv-consent-yes:disabled{opacity:.35;cursor:not-allowed}\
-.rv-consent-yes:not(:disabled):hover{background:#222}\
-.rv-consent-no{height:52px;padding:0 1.25rem;border:1px solid #000;border-radius:9999px;background:#fff;color:#000;font:500 .95rem Inter,system-ui,sans-serif;cursor:pointer}\
-.rv-consent-no:hover{background:#f5f5f5}\
+.rv-consent-yes:not(:disabled):hover{background:#4f46e5}\
+.rv-consent-no{height:50px;padding:0 1.25rem;border:1px solid #e5e7eb;border-radius:10px;background:#f9fafb;color:#101828;font:500 .95rem Geist,Inter,system-ui,sans-serif;cursor:pointer}\
+.rv-consent-no:hover{background:#f3f4f6}\
 .rv-consent-msg{display:none;margin:1rem 0 0;font-size:.85rem;color:#b91c1c}\
-@media(max-width:639px){.rv-consent-card{padding:1.5rem;border-radius:1.5rem}.rv-consent-card h2{font-size:1.5rem}.rv-consent-yes,.rv-consent-no{flex:1 1 100%}}';
+@media(max-width:639px){.rv-consent-card{padding:1.5rem}.rv-consent-card h2{font-size:1.5rem}.rv-consent-yes,.rv-consent-no{flex:1 1 100%}}';
   document.head.appendChild(style);
 
   var wrap = document.createElement('div');
@@ -47,8 +46,8 @@
   wrap.setAttribute('aria-labelledby', 'rv-consent-title');
   wrap.innerHTML =
     '<div class="rv-consent-card">' +
-      '<div class="rv-consent-logo">RAVEN</div>' +
-      '<h2 id="rv-consent-title">Before you <i>continue</i></h2>' +
+      '<div class="rv-consent-logo"><img src="images/logo.svg" alt="RAVEN" width="116" height="30"></div>' +
+      '<h2 id="rv-consent-title">Before you continue</h2>' +
       '<p>Please review and accept our terms to use the RAVEN website.</p>' +
       '<ul>' +
         '<li>RAVEN provides guidance on loans, insurance, real estate and business registration.</li>' +

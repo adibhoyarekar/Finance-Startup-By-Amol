@@ -4,208 +4,185 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home Loan Options - RAVEN</title>
-  <link rel="stylesheet" href="nexstudio.css">
-  <link rel="stylesheet" href="mobile-nav.css?v=2">
-  <link rel="stylesheet" href="loan-search.css?v=1">
+  <meta name="description" content="Loan against property, construction, plot, renovation, mortgage and balance transfer home loans.">
+  <link rel="icon" type="image/svg+xml" href="images/logo-mark.svg">
+  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="stylesheet" href="raven.css?v=2">
 </head>
-<body class="font-sans bg-white text-black antialiased">
-
-  <!-- Header -->
-  <header class="sticky top-0 z-50 transition-all duration-300 bg-white/80 backdrop-blur-md shadow-sm">
+<body class="antialiased text-gray-900 bg-white">
+  <div id="top" class="min-h-screen">
+  <header class="left-0 w-full z-50 transition-all duration-300 absolute top-5 lg:top-8">
     <nav>
       <div class="max-w-7xl mx-auto px-6">
-        <div class="flex items-center justify-between py-4 lg:py-6">
-          <a href="index.html">
-            <svg width="120" height="24" viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <text x="0" y="20" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="black" letter-spacing="-1">RAVEN</text>
-            </svg>
-          </a>
-          <div id="mobile-nav-root" class="flex items-center justify-end"></div>
+        <div class="flex items-center justify-between rounded-[18px] transition-all duration-300 bg-white backdrop-blur-md pl-6 py-3 pr-3 shadow-sm">
+          <a href="index.html" aria-label="RAVEN home"><img src="images/logo.svg" alt="RAVEN" width="116" height="30"></a>
+          <div class="hidden lg:block">
+            <ul class="flex">
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="index.html">Home</a></li>
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-indigo-500" href="funding-loans.html">Funding &amp; Loans</a></li>
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="registration.html">Registration</a></li>
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="hidden lg:flex gap-4">
+            <a class="border bg-gray-50 border-gray-200 rounded-lg text-gray-800 font-medium text-base py-2.5 px-4 hover:bg-gray-100 transition duration-300 ease-in-out" href="ask.html">Ask a Question</a>
+            <a class="text-white bg-gray-950 rounded-lg py-2.5 px-4 text-base font-medium hover:bg-gray-800 transition duration-300 ease-in-out" href="contact.html">Contact Us</a>
+          </div>
+          <div class="flex lg:hidden">
+            <button id="menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="rv-menu" class="cursor-pointer p-2">
+              <svg class="rv-ico-open" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h16M4 12h16M4 17h16" stroke="#101828" stroke-width="1.8" stroke-linecap="round"/></svg>
+              <svg class="rv-ico-close" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M6 6l12 12M18 6L6 18" stroke="#101828" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+        </div>
+        <div id="rv-menu" class="rv-menu" hidden>
+          <a class="rv-mlink" href="index.html">Home</a><a class="rv-mlink is-on" href="funding-loans.html">Funding &amp; Loans</a><a class="rv-mlink" href="registration.html">Registration</a><a class="rv-mlink" href="contact.html">Contact</a>
+          <a class="rv-mlink" href="ask.html">Ask a Question</a>
+          <a class="rv-mcta" href="contact.html">Contact Us</a>
         </div>
       </div>
     </nav>
   </header>
 
   <main>
-    <style>
-      .ln{scroll-margin-top:6rem}
-      .lc-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
-      @media(min-width:1024px){.lc-grid{gap:1.25rem}}
-      .lc{display:flex;flex-direction:column;background:#f5f5f5;color:#000;border-radius:1.75rem;text-decoration:none;overflow:hidden;transition:background .45s ease,color .45s ease,transform .45s cubic-bezier(.2,.8,.2,1)}
-      .lc-img{aspect-ratio:16/10;overflow:hidden;background:#e5e5e5}
-      .lc-img img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
-      .lc-body{display:flex;flex-direction:column;justify-content:space-between;gap:1.5rem;flex:1;padding:1.5rem}
-      .lc-top{display:flex;justify-content:space-between;align-items:center}
-      .lc-num{font-family:"Anonymous Pro",ui-monospace,monospace;font-size:.9375rem;color:#737373;transition:color .45s ease}
-      .lc-title{margin:0 0 .5rem;font-size:1.5rem;font-weight:400;letter-spacing:-.02em}
-      .lc-desc{margin:0;font-size:1rem;line-height:1.55;color:#404040;transition:color .45s ease}
-      .lc-arrow{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid #000;border-radius:9999px;transition:transform .5s cubic-bezier(.2,.8,.2,1),background .45s ease,color .45s ease,border-color .45s ease}
-      .lc:hover{background:#000;color:#fff;transform:translateY(-4px)}
-      .lc:hover .lc-desc,.lc:hover .lc-num{color:#a3a3a3}
-      .lc:hover .lc-img img{transform:scale(1.07)}
-      .lc:hover .lc-arrow{background:#fff;color:#000;border-color:#fff;transform:rotate(-45deg)}
-      .lc-cta{background:#000;color:#fff}
-      .lc-cta .lc-img{display:flex;align-items:center;justify-content:center;background:#141414;color:#fff}
-      .lc-cta .lc-desc,.lc-cta .lc-num{color:#a3a3a3}
-      .lc-cta .lc-arrow{background:#fff;color:#000;border-color:#fff}
-      .lc-cta:hover{background:#262626}
-      @media(min-width:1024px){
-        .lc{flex-direction:row}
-        .lc-img{width:56%;flex-shrink:0;aspect-ratio:auto;min-height:240px}
-        .lc-body{padding:1.75rem}
-        .lc-title{font-size:1.625rem}
-      }
-      @media(max-width:639px){
-        .lc{border-radius:1.25rem}
-        .lc-img{aspect-ratio:4/3}
-        .lc-body{padding:.875rem;gap:1rem}
-        .lc-num{font-size:.8125rem}
-        .lc-title{font-size:1rem;margin-bottom:.35rem}
-        .lc-desc{font-size:.75rem;line-height:1.45}
-        .lc-arrow{width:32px;height:32px}
-        .lc-arrow svg{width:14px;height:14px}
-      }
-    </style>
-    <section class="ln py-12 lg:py-25" id="home-loans">
-      <div class="max-w-7xl mx-auto px-6">
-        <a href="funding-loans.html#loan-types" class="ls-back">&larr; All loans</a>
-        <div class="mb-10 lg:mb-12 flex flex-col lg:flex-row lg:items-end justify-between gap-4">
-          <h1 class="font-normal text-5xl lg:text-6xl text-black -tracking-[1.92px]">Home Loan <span class="italic">Options</span></h1>
-          <p class="text-gray-500 text-lg max-w-sm">Whether you are buying, building or borrowing against property, pick the home loan that fits.</p>
+    <section class="rv-hero relative pt-30 lg:pt-45 pb-10">
+      <div class="rv-fade-bottom"></div>
+      <div class="max-w-7xl mx-auto px-6 relative z-30">
+        <div class="max-w-xl lg:max-w-4xl lg:px-4 mx-auto text-center">
+          <a href="funding-loans.html#loan-types" class="rv-back reveal">&larr; All loans</a>
+          <h1 class="text-center text-4xl lg:text-6xl font-semibold mb-5 reveal">Home Loan Options</h1>
+          <p class="text-gray-500 text-base lg:px-10 reveal">Whether you are buying, building or borrowing against property, pick the home loan that fits.</p>
         </div>
-        <div class="ls-wrap">
-          <label class="ls" for="loan-search">
+      </div>
+    </section>
+    <section class="ln py-10 lg:py-20" id="home-loans">
+      <div class="max-w-7xl mx-auto px-4 lg:px-6">
+        <div class="rv-search-wrap reveal">
+          <label class="rv-search" for="loan-search">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
             <input id="loan-search" type="search" placeholder="Search home loans - LAP, construction, plot, renovation..." autocomplete="off" aria-label="Search home loans">
           </label>
-          <p class="ls-count" id="loan-count" aria-live="polite"></p>
+          <p class="rv-count" id="loan-count" aria-live="polite"></p>
         </div>
-        <div class="lc-grid" id="loan-grid">
-          <a class="lc" href="contact.html">
-            <div class="lc-img"><img src="images/loan-home-lap.svg" alt="Loan Against Property (LAP) illustration" width="640" height="400" loading="lazy"></div>
-            <div class="lc-body">
-              <div class="lc-top"><span class="lc-num">01</span><span class="lc-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
-              <div>
-                <h3 class="lc-title">Loan Against Property (LAP)</h3>
-                <p class="lc-desc">Unlock funds against your residential or commercial property for business or personal needs.</p>
-              </div>
+        <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-6" id="loan-grid">
+          <a class="lc bg-white rounded-2xl p-2 lg:p-3 shadow-feature-card rv-lift flex flex-col" href="contact.html" data-keywords="lap property">
+            <div><img alt="Loan Against Property (LAP) illustration" class="rounded-xl w-full" src="images/loan-home-lap.svg" width="640" height="400" loading="lazy"></div>
+            <div class="p-3 lg:p-5 flex flex-col flex-1">
+              <div class="flex items-center justify-between gap-2 mb-2"><h3 class="lc-title text-base lg:text-xl font-medium text-gray-900">Loan Against Property (LAP)</h3><span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+              <p class="lc-desc text-xs lg:text-sm text-gray-500">Unlock funds against your residential or commercial property for business or personal needs.</p>
             </div>
           </a>
-          <a class="lc" href="contact.html">
-            <div class="lc-img"><img src="images/loan-home-construction.svg" alt="Construction Loan illustration" width="640" height="400" loading="lazy"></div>
-            <div class="lc-body">
-              <div class="lc-top"><span class="lc-num">02</span><span class="lc-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
-              <div>
-                <h3 class="lc-title">Construction Loan</h3>
-                <p class="lc-desc">Finance the construction of your dream home with stage-wise disbursal.</p>
-              </div>
+          <a class="lc bg-white rounded-2xl p-2 lg:p-3 shadow-feature-card rv-lift flex flex-col" href="contact.html" data-keywords="build">
+            <div><img alt="Construction Loan illustration" class="rounded-xl w-full" src="images/loan-home-construction.svg" width="640" height="400" loading="lazy"></div>
+            <div class="p-3 lg:p-5 flex flex-col flex-1">
+              <div class="flex items-center justify-between gap-2 mb-2"><h3 class="lc-title text-base lg:text-xl font-medium text-gray-900">Construction Loan</h3><span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+              <p class="lc-desc text-xs lg:text-sm text-gray-500">Finance the construction of your dream home with stage-wise disbursal.</p>
             </div>
           </a>
-          <a class="lc" href="contact.html">
-            <div class="lc-img"><img src="images/loan-home-plot.svg" alt="Plot / Land Loan illustration" width="640" height="400" loading="lazy"></div>
-            <div class="lc-body">
-              <div class="lc-top"><span class="lc-num">03</span><span class="lc-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
-              <div>
-                <h3 class="lc-title">Plot / Land Loan</h3>
-                <p class="lc-desc">Buy a plot or land for your future home or investment with flexible repayment.</p>
-              </div>
+          <a class="lc bg-white rounded-2xl p-2 lg:p-3 shadow-feature-card rv-lift flex flex-col" href="contact.html" data-keywords="land">
+            <div><img alt="Plot / Land Loan illustration" class="rounded-xl w-full" src="images/loan-home-plot.svg" width="640" height="400" loading="lazy"></div>
+            <div class="p-3 lg:p-5 flex flex-col flex-1">
+              <div class="flex items-center justify-between gap-2 mb-2"><h3 class="lc-title text-base lg:text-xl font-medium text-gray-900">Plot / Land Loan</h3><span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+              <p class="lc-desc text-xs lg:text-sm text-gray-500">Buy a plot or land for your future home or investment with flexible repayment.</p>
             </div>
           </a>
-          <a class="lc" href="contact.html">
-            <div class="lc-img"><img src="images/loan-home-renovation.svg" alt="Home Renovation Loan illustration" width="640" height="400" loading="lazy"></div>
-            <div class="lc-body">
-              <div class="lc-top"><span class="lc-num">04</span><span class="lc-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
-              <div>
-                <h3 class="lc-title">Home Renovation Loan</h3>
-                <p class="lc-desc">Repair, upgrade or remodel your home without draining your savings.</p>
-              </div>
+          <a class="lc bg-white rounded-2xl p-2 lg:p-3 shadow-feature-card rv-lift flex flex-col" href="contact.html" data-keywords="repair">
+            <div><img alt="Home Renovation Loan illustration" class="rounded-xl w-full" src="images/loan-home-renovation.svg" width="640" height="400" loading="lazy"></div>
+            <div class="p-3 lg:p-5 flex flex-col flex-1">
+              <div class="flex items-center justify-between gap-2 mb-2"><h3 class="lc-title text-base lg:text-xl font-medium text-gray-900">Home Renovation Loan</h3><span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+              <p class="lc-desc text-xs lg:text-sm text-gray-500">Repair, upgrade or remodel your home without draining your savings.</p>
             </div>
           </a>
-          <a class="lc" href="contact.html">
-            <div class="lc-img"><img src="images/loan-home-mortgage.svg" alt="Mortgage Loan illustration" width="640" height="400" loading="lazy"></div>
-            <div class="lc-body">
-              <div class="lc-top"><span class="lc-num">05</span><span class="lc-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
-              <div>
-                <h3 class="lc-title">Mortgage Loan</h3>
-                <p class="lc-desc">Raise a large loan by mortgaging your property at competitive interest rates.</p>
-              </div>
+          <a class="lc bg-white rounded-2xl p-2 lg:p-3 shadow-feature-card rv-lift flex flex-col" href="contact.html">
+            <div><img alt="Mortgage Loan illustration" class="rounded-xl w-full" src="images/loan-home-mortgage.svg" width="640" height="400" loading="lazy"></div>
+            <div class="p-3 lg:p-5 flex flex-col flex-1">
+              <div class="flex items-center justify-between gap-2 mb-2"><h3 class="lc-title text-base lg:text-xl font-medium text-gray-900">Mortgage Loan</h3><span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+              <p class="lc-desc text-xs lg:text-sm text-gray-500">Raise a large loan by mortgaging your property at competitive interest rates.</p>
             </div>
           </a>
-          <a class="lc" href="contact.html">
-            <div class="lc-img"><img src="images/loan-home-transfer.svg" alt="Balance Transfer + Top Up illustration" width="640" height="400" loading="lazy"></div>
-            <div class="lc-body">
-              <div class="lc-top"><span class="lc-num">06</span><span class="lc-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
-              <div>
-                <h3 class="lc-title">Balance Transfer + Top Up</h3>
-                <p class="lc-desc">Move your existing home loan to a lower rate and get extra funds on top.</p>
-              </div>
+          <a class="lc bg-white rounded-2xl p-2 lg:p-3 shadow-feature-card rv-lift flex flex-col" href="contact.html" data-keywords="balance transfer topup">
+            <div><img alt="Balance Transfer + Top Up illustration" class="rounded-xl w-full" src="images/loan-home-transfer.svg" width="640" height="400" loading="lazy"></div>
+            <div class="p-3 lg:p-5 flex flex-col flex-1">
+              <div class="flex items-center justify-between gap-2 mb-2"><h3 class="lc-title text-base lg:text-xl font-medium text-gray-900">Balance Transfer + Top Up</h3><span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+              <p class="lc-desc text-xs lg:text-sm text-gray-500">Move your existing home loan to a lower rate and get extra funds on top.</p>
             </div>
           </a>
         </div>
-        <div class="ls-empty" id="loan-empty" hidden>
+        <div class="rv-empty" id="loan-empty" hidden>
           <h3>No home loans found</h3>
           <p>Try another word, or let our team match you with the right loan.</p>
           <a href="contact.html">Talk to our team</a>
         </div>
       </div>
     </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="bg-[#070707] overflow-hidden">
-    <div class="pt-20">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="mb-16">
-          <a href="index.html">
-            <svg width="140" height="28" viewBox="0 0 140 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <text x="0" y="24" font-family="Inter, sans-serif" font-size="26" font-weight="700" fill="white" letter-spacing="-1">RAVEN</text>
-            </svg>
-          </a>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-16">
-          <div>
-            <p class="text-white/60 text-base leading-7">Build. Fund. Brand. Grow.<br>Your business partner in India.</p>
-            <p class="text-white/40 text-sm mt-4">Chhatrapati Sambhajinagar &amp; Pune, India</p>
-          </div>
-          <div>
-            <h4 class="text-white text-sm font-medium uppercase tracking-wider mb-6">Services</h4>
-            <ul class="space-y-4">
-              <li><a href="funding-loans.html" class="text-white/60 hover:text-white transition text-base">Funding &amp; Loans</a></li>
-              <li><a href="registration.html" class="text-white/60 hover:text-white transition text-base">Business Registration</a></li>
-              <li><a href="index.html" class="text-white/60 hover:text-white transition text-base">Real Estate</a></li>
-              <li><a href="index.html" class="text-white/60 hover:text-white transition text-base">Brand Strategy</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 class="text-white text-sm font-medium uppercase tracking-wider mb-6">Company</h4>
-            <ul class="space-y-4">
-              <li><a href="index.html#about" class="text-white/60 hover:text-white transition text-base">About Us</a></li>
-              <li><a href="contact.html" class="text-white/60 hover:text-white transition text-base">Contact</a></li>
-              <li><a href="terms.html" class="text-white/60 hover:text-white transition text-base">Terms &amp; Conditions</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 class="text-white text-sm font-medium uppercase tracking-wider mb-6">Contact</h4>
-            <ul class="space-y-4">
-              <li><a href="mailto:hello@raven.business" class="text-white/60 hover:text-white transition text-base">hello@raven.business</a></li>
-              <li><span class="text-white/60 text-base">Chhatrapati Sambhajinagar</span></li>
-              <li><span class="text-white/60 text-base">Pune, India</span></li>
-            </ul>
+    <section class="pt-28 pb-10 rv-cta relative">
+      <div class="rv-fade-bottom"></div>
+      <div class="max-w-7xl mx-auto px-6 relative z-30">
+        <div class="max-w-2xl mx-auto text-center reveal">
+          <h2 class="text-4xl lg:text-5xl -tracking-[1.9px] mb-4 font-medium text-gray-900">Not sure which one?</h2>
+          <p class="text-base text-gray-500 mb-9">Talk to our team and we will match you with the right loan.</p>
+          <div class="flex gap-4 justify-center sm:items-center flex-col sm:flex-row">
+            <a class="py-2.5 px-4 bg-indigo-500 h-11 rounded-lg font-medium text-white text-base hover:bg-indigo-600 transition duration-300 ease-in-out inline-block" href="contact.html">Contact Us</a>
+            <a class="py-2.5 px-4 border h-11 border-gray-200 bg-white/70 text-base rounded-lg font-medium inline-block hover:bg-gray-100 transition duration-300 ease-in-out text-gray-800" href="funding-loans.html#loan-types">Back to all loans</a>
           </div>
         </div>
       </div>
-      <div class="border-t border-white/10">
-        <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p class="text-white/40 text-sm">&copy; 2025 RAVEN. All rights reserved.</p>
-          <p class="text-white/40 text-sm">Built for Indian Entrepreneurs.</p>
+    </section>
+  </main>
+  <footer>
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="pt-10 lg:pt-18">
+        <div class="flex flex-col lg:flex-row gap-10">
+          <div class="lg:w-4/12">
+            <a class="mb-10 lg:mb-20 inline-block" href="index.html" aria-label="RAVEN home"><img src="images/logo.svg" alt="RAVEN" width="136" height="35"></a>
+            <p class="lg:pr-10 text-gray-500 text-base">Build. Fund. Brand. Grow.<br>Your business partner in India.</p>
+            <p class="text-gray-400 text-sm mt-4">Chhatrapati Sambhajinagar &amp; Pune, India</p>
+          </div>
+          <div class="lg:w-6/12 lg:ml-auto">
+            <div class="grid grid-cols-2 gap-5 sm:gap-10 sm:grid-cols-3">
+              <div>
+                <h3 class="text-lg text-gray-800 font-medium mb-6">Services</h3>
+                <nav class="space-y-5">
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="funding-loans.html">Funding &amp; Loans</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="registration.html">Business Registration</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Real Estate</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Brand Strategy</a>
+                </nav>
+              </div>
+              <div>
+                <h3 class="text-lg text-gray-800 font-medium mb-6">Company</h3>
+                <nav class="space-y-5">
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="index.html#about">About Us</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Contact</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="terms.html">Terms &amp; Conditions</a>
+                </nav>
+              </div>
+              <div class="flex lg:justify-end">
+                <div>
+                  <h3 class="text-lg text-gray-800 font-medium mb-6">Contact</h3>
+                  <nav class="space-y-5">
+                    <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="mailto:hello@raven.business">hello@raven.business</a>
+                    <span class="text-gray-700 block text-base">Chhatrapati Sambhajinagar</span>
+                    <span class="text-gray-700 block text-base">Pune, India</span>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="flex justify-between flex-col sm:flex-row gap-5 items-center pb-10 pt-10 lg:pt-20">
+        <p class="text-base text-gray-500">&copy; 2025 RAVEN. All rights reserved. <span class="rv-dot">Built for Indian Entrepreneurs.</span></p>
+        <a href="#top" class="flex gap-3 items-center text-gray-700">Back to top
+          <span class="size-7 rounded-full text-white bg-indigo-500 inline-flex items-center justify-center hover:bg-indigo-600 transition duration-300 ease-in-out"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
+        </a>
       </div>
     </div>
   </footer>
-
-  <script src="mobile-nav.js?v=2"></script>
-  <script src="ai-chat.js?v=2"></script>
-  <script src="loan-search.js?v=1"></script>
-  <script src="consent.js?v=1"></script>
+  </div>
+  <script src="loan-search.js?v=2"></script>
+  <script src="site.js?v=2"></script>
+  <script src="ai-chat.js?v=3"></script>
+  <script src="consent.js?v=2"></script>
 </body>
 </html>
