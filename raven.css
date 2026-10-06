@@ -486,7 +486,7 @@ html.rv-split header.z-50 img{flex-shrink:0}
 /* ---------- ask page on phones: full-screen chat that follows the on-screen keyboard ---------- */
 .ask-top{display:none}
 @media(max-width:899px){
-  html:not(.embed) body{overflow:hidden}
+  html:not(.embed) body.ask-page{overflow:hidden}
   html:not(.embed) .rv-askbox{position:fixed;left:0;right:0;top:var(--vvt,0px);height:var(--vvh,100dvh);max-width:none;min-height:0;margin:0;border:0;border-radius:0;box-shadow:none;z-index:60;opacity:1!important;transform:none!important}
   html:not(.embed) .ask-top{display:flex;align-items:center;gap:.75rem;flex:none;padding:.8rem 1rem;background:#101828;color:#fff;font-weight:500}
   html:not(.embed) .ask-top a{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;color:#fff}
