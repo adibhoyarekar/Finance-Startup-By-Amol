@@ -88,6 +88,31 @@
     });
   });
 
+  // count-up numbers
+  var counters = document.querySelectorAll('[data-count]');
+  function runCount(el) {
+    var end = parseFloat(el.getAttribute('data-count'));
+    var pre = el.getAttribute('data-prefix') || '';
+    var suf = el.getAttribute('data-suffix') || '';
+    var fmt = el.getAttribute('data-format') === 'in';
+    var dur = 1600, t0 = null;
+    function show(v) { el.textContent = pre + (fmt ? Math.round(v).toLocaleString('en-IN') : Math.round(v)) + suf; }
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { show(end); return; }
+    function step(t) {
+      if (t0 === null) t0 = t;
+      var p = Math.min(1, (t - t0) / dur);
+      show(end * (1 - Math.pow(1 - p, 3)));
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if ('IntersectionObserver' in window) {
+    var cio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { runCount(en.target); cio.unobserve(en.target); } });
+    }, { threshold: 0.4 });
+    counters.forEach(function (c) { cio.observe(c); });
+  } else { counters.forEach(runCount); }
+
   // scroll reveal
   var items = document.querySelectorAll('.reveal');
   if (!('IntersectionObserver' in window)) { items.forEach(function (el) { el.classList.add('is-in'); }); return; }
