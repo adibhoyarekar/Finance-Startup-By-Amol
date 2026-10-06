@@ -79,6 +79,15 @@
     });
   }
 
+  // spotlight that follows the pointer on service cards
+  document.querySelectorAll('.sv-card').forEach(function (card) {
+    card.addEventListener('pointermove', function (e) {
+      var r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+
   // scroll reveal
   var items = document.querySelectorAll('.reveal');
   if (!('IntersectionObserver' in window)) { items.forEach(function (el) { el.classList.add('is-in'); }); return; }
