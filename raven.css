@@ -477,7 +477,8 @@ html.embed .reveal{opacity:1!important;transform:none!important}
 html.embed .rv-askbox{max-width:none;height:100vh;min-height:0;border:0;border-radius:0;box-shadow:none}
 
 /* ---------- header while the chat is docked beside the page ---------- */
-html.rv-split header.z-50 .hidden.lg\:block,html.rv-split header.z-50 .hidden.lg\:flex{display:none!important}
+@media(max-width:1359px){html.rv-split header.z-50 .hidden.lg\:block,html.rv-split header.z-50 .hidden.lg\:flex{display:none!important}
 html.rv-split header.z-50 .flex.lg\:hidden{display:flex!important}
 html.rv-split .rv-menu:not([hidden]){display:flex!important}
 html.rv-split header.z-50 img{flex-shrink:0}
+}
