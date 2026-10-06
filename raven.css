@@ -240,3 +240,7 @@ img{max-width:100%}
 .js .sv-card.reveal.is-in:hover{transform:translateY(-8px)}
 @media(max-width:767px){.sv-section{padding:4.5rem 0 5rem}.sv-visual{height:10.5rem}.sv-lottie{width:8rem;height:8rem}.sv-title{font-size:1.25rem}}
 @media(prefers-reduced-motion:reduce){.sv-orb,.sv-glow,.sv-card::after{animation:none}}
+
+/* LottieFiles "medical insurance" shield is drawn small inside a big canvas, so show it larger */
+.sv-c1 .sv-lottie{width:16rem;height:16rem}
+@media(max-width:767px){.sv-c1 .sv-lottie{width:14rem;height:14rem}}
