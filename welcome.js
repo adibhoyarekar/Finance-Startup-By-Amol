@@ -112,7 +112,7 @@
   function preview() {
     var name = data.fullName || u.username;
     document.getElementById('ob-preview').innerHTML = (window.RavenUI ? RavenUI.avatar(name) : '') +
-      '<div style="min-width:0"><strong>' + esc(name) + '</strong><small>' + esc([agent ? (TYPE[data.agentType] || 'Agent') : 'Customer', data.city].filter(Boolean).join(' · ')) + '</small></div>';
+      '<div style="min-width:0"><em>Profile preview</em><strong>' + esc(name) + '</strong><small>' + esc([agent ? (TYPE[data.agentType] || 'Agent') : 'Customer', data.city].filter(Boolean).join(' · ')) + '</small></div>';
   }
 
   function render() {

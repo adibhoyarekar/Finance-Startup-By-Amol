@@ -88,59 +88,51 @@
     var active = list.filter(isActive), won = list.filter(function (c) { return c.status === 'disbursed'; });
     var due = active.filter(function (c) { return c.followUp && c.followUp <= t; });
     var h = new Date().getHours();
-    $('ov-date').textContent = new Date().toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long' });
+    var thisMonth = new Date().toISOString().slice(0, 7);
+    var newThisMonth = list.filter(function (c) { return (c.createdAt || '').slice(0, 7) === thisMonth; }).length;
     $('ov-h').textContent = (h < 12 ? 'Good morning, ' : h < 17 ? 'Good afternoon, ' : 'Good evening, ') + first;
-    $('ov-sub').textContent = !list.length
-      ? 'Your dashboard is ready. Add your first client to start building your pipeline.'
-      : 'You have ' + due.length + ' follow-up' + (due.length === 1 ? '' : 's') + ' due and ' + active.length + ' active case' + (active.length === 1 ? '' : 's') + ' worth ' + short(sum(active, function (c) { return +c.amount || 0; })) + '.';
+    $('ov-sub').textContent = new Date().toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long' }) + ' · ' +
+      (!list.length ? 'add your first client to start your pipeline' : due.length + ' follow-up' + (due.length === 1 ? '' : 's') + ' due today');
     var v = me.verification === 'verified';
-    $('ov-badge').className = 'ap-badge ' + (v ? 'is-ok' : 'is-warn');
+    $('ov-badge').className = 'ap-dpill ' + (v ? 'is-ok' : 'is-warn');
     $('ov-badge').textContent = v ? 'Verified agent' : 'Verification pending';
 
+    // stat cards: label, icon, value, formatter, sub-line, sub-line tone
+    var pipe = sum(active, function (c) { return +c.amount || 0; });
     var tiles = [
-      ['users', '', 'Clients', list.length, 'in your book', String],
-      ['briefcase', 'b', 'Active cases', active.length, 'not yet disbursed', String],
-      ['bell', 'w', 'Follow-ups due', due.length, due.length ? 'today or overdue' : 'all caught up', String, due.length > 0],
-      ['trend', '', 'Pipeline', sum(active, function (c) { return +c.amount || 0; }), 'loan amount in progress', short],
-      ['wallet', 'g', 'Expected payout', sum(active, payout), 'on active cases', short],
-      ['rupee', 'p', 'Earned', sum(won, payout), won.length + ' disbursed', short]
+      ['Active cases', 'briefcase', active.length, String, newThisMonth ? '+' + newThisMonth + ' new this month' : 'of ' + list.length + ' clients', newThisMonth ? '' : 'is-mute'],
+      ['Pipeline value', 'trend', pipe, short, 'across ' + active.length + ' active case' + (active.length === 1 ? '' : 's'), 'is-mute'],
+      ['Expected payout', 'wallet', sum(active, payout), short, short(sum(won, payout)) + ' earned so far', won.length ? '' : 'is-mute'],
+      ['Follow-ups due', 'bell', due.length, String, due.length ? 'today or overdue' : 'all caught up', due.length ? 'is-warn' : '']
     ];
     $('ov-kpis').innerHTML = tiles.map(function (k, i) {
-      return '<div class="ap-card ap-kpi' + (k[6] ? ' is-alert' : '') + '" style="animation:ap-rise .5s var(--ap-ease) both;animation-delay:' + (i * 60) + 'ms">' +
-        '<span class="ic ' + k[1] + '">' + ic(k[0], 18) + '</span><p class="l">' + k[2] + '</p><p class="v" data-kpi="' + i + '">' + k[5](k[3]) + '</p><p class="s">' + k[4] + '</p></div>';
+      return '<div class="ap-card ap-kpi"><div class="top"><p class="l">' + k[0] + '</p><span class="ic">' + ic(k[1], 16) + '</span></div>' +
+        '<p class="v" data-kpi="' + i + '">' + k[3](k[2]) + '</p><p class="s ' + k[5] + '">' + k[4] + '</p></div>';
     }).join('');
-    if (animate) tiles.forEach(function (k, i) { UI.countUp(document.querySelector('[data-kpi="' + i + '"]'), k[3], k[5] === String ? function (n) { return String(Math.round(n)); } : k[5]); });
+    if (animate) tiles.forEach(function (k, i) { UI.countUp(document.querySelector('[data-kpi="' + i + '"]'), k[2], k[3] === String ? function (n) { return String(Math.round(n)); } : k[3]); });
 
-    // cases by stage (ordered -> ordinal ramp, single series, value at tip)
+    renderLine(list);
+    renderRing(list);
+
+    // cases by stage (ordered -> validated ordinal ramp, single series, value at tip)
     var counts = STAGES.map(function (s) { var l = list.filter(function (c) { return c.status === s[0]; }); return { s: s, n: l.length, amt: sum(l, function (c) { return +c.amount || 0; }) }; });
     var closed = list.filter(function (c) { return c.status === 'closed'; }).length;
     var max = Math.max.apply(null, counts.map(function (x) { return x.n; }).concat(1));
     $('ov-funnel').innerHTML = list.length ? '<div class="ap-bars">' + counts.map(function (x, i) {
       return '<div class="ap-brow"><span>' + x.s[1] + '</span><div class="ap-btrack"><span class="ap-bar" tabindex="0" style="--c:' + x.s[2] + ';--i:' + i + ';width:' + Math.max(1.5, x.n / max * 86) + '%" data-tip="<strong>' + x.s[1] + '</strong>' + x.n + ' case' + (x.n === 1 ? '' : 's') + ' · ' + short(x.amt) + '" aria-label="' + x.s[1] + ': ' + x.n + ' cases"></span><span class="ap-bval">' + x.n + '</span></div></div>';
-    }).join('') + '</div>' + (closed ? '<p class="ap-muted" style="margin-top:.8rem;font-size:.8rem">+ ' + closed + ' rejected / closed</p>' : '') +
+    }).join('') + '</div>' + (closed ? '<p class="ap-muted" style="margin-top:.9rem;font-size:.8rem">+ ' + closed + ' rejected / closed</p>' : '') +
       dataTable(['Stage', 'Cases'], counts.map(function (x) { return [x.s[1], x.n]; }))
       : emptyChart('board', 'Stages fill in as you move clients through the pipeline.');
 
     // due soon
-    var soon = active.filter(function (c) { return c.followUp && c.followUp <= addDays(3); }).sort(function (a, b) { return a.followUp < b.followUp ? -1 : 1; }).slice(0, 6);
+    var soon = active.filter(function (c) { return c.followUp && c.followUp <= addDays(3); }).sort(function (a, b) { return a.followUp < b.followUp ? -1 : 1; }).slice(0, 5);
     $('ov-due').innerHTML = soon.length ? '<div class="ap-list">' + soon.map(function (c) {
-      return '<div class="ap-li is-click" data-open="' + c.id + '">' + UI.avatar(c.name, 'is-sm') + '<div class="tx"><strong>' + esc(c.name) + '</strong><small>' + plabel(c.product) + ' · ' + LABEL[c.status] + '</small></div>' +
-        '<small class="' + (late(c) ? 'ap-late' : 'ap-muted') + '" style="font-size:.75rem;white-space:nowrap">' + when(c.followUp) + '</small><div class="acts">' + contactBtns(c, true) + '</div></div>';
-    }).join('') + '</div>' : emptyChart('check', list.length ? 'Nothing due in the next 3 days. Nice work.' : 'Follow-ups you set on clients show up here.');
+      return '<div class="ap-li is-click" data-open="' + c.id + '" tabindex="0">' + UI.avatar(c.name, 'is-sm') + '<div class="tx"><strong>' + esc(c.name) + '</strong><small class="' + (late(c) ? 'ap-late' : '') + '">' + when(c.followUp) + ' · ' + plabel(c.product) + '</small></div>' +
+        '<div class="acts">' + contactBtns(c, true) + '</div></div>';
+    }).join('') + '</div>' : emptyChart('check', list.length ? 'Nothing due in the next 3 days.' : 'Follow-ups you set on clients show up here.');
 
-    // new clients per month (single series)
-    var months = [];
-    for (var m = 5; m >= 0; m--) { var d = new Date(); d.setDate(1); d.setMonth(d.getMonth() - m); months.push({ key: d.getFullYear() + '-' + d.getMonth(), label: d.toLocaleDateString('en-IN', { month: 'short' }), n: 0 }); }
-    list.forEach(function (c) { var d = new Date(c.createdAt || c.updatedAt); var k = d.getFullYear() + '-' + d.getMonth(); months.forEach(function (x) { if (x.key === k) x.n++; }); });
-    var mmax = Math.max.apply(null, months.map(function (x) { return x.n; }).concat(1));
-    $('ov-months').innerHTML = list.length ? '<div class="ap-cols">' + months.map(function (x, i) {
-      return '<div class="ap-col' + (i === 5 ? ' is-now' : '') + '"><span class="val">' + (x.n || '') + '</span><i tabindex="0" style="height:' + (x.n / mmax * 82) + '%;--i:' + i + '" data-tip="<strong>' + x.label + '</strong>' + x.n + ' new client' + (x.n === 1 ? '' : 's') + '" aria-label="' + x.label + ': ' + x.n + ' new clients"></i></div>';
-    }).join('') + '</div><div class="ap-xl">' + months.map(function (x) { return '<span>' + x.label + '</span>'; }).join('') + '</div>' +
-      dataTable(['Month', 'New clients'], months.map(function (x) { return [x.label, x.n]; }))
-      : emptyChart('users', 'Your monthly client growth will appear here.');
-
-    // pipeline by product (single series)
-    var prods = Object.keys(App.PRODUCTS).map(function (k) { return { k: k, amt: sum(active.filter(function (c) { return c.product === k; }), function (c) { return +c.amount || 0; }), n: active.filter(function (c) { return c.product === k; }).length }; })
+    // pipeline by product (single series, one colour)
+    var prods = Object.keys(App.PRODUCTS).map(function (k) { var l = active.filter(function (c) { return c.product === k; }); return { k: k, amt: sum(l, function (c) { return +c.amount || 0; }), n: l.length }; })
       .filter(function (x) { return x.amt > 0; }).sort(function (a, b) { return b.amt - a.amt; });
     var pmax = Math.max.apply(null, prods.map(function (x) { return x.amt; }).concat(1));
     $('ov-products').innerHTML = prods.length ? '<div class="ap-bars">' + prods.map(function (x, i) {
@@ -152,9 +144,68 @@
     var acts = [];
     list.forEach(function (c) { (c.activity || []).forEach(function (a) { acts.push({ c: c, a: a }); }); });
     acts.sort(function (x, y) { return x.a.at < y.a.at ? 1 : -1; });
-    $('ov-activity').innerHTML = acts.length ? '<ul class="ap-tl">' + acts.slice(0, 7).map(function (x) {
-      return '<li><strong>' + esc(x.c.name) + '</strong> – ' + esc(x.a.text) + '<small>' + ago(x.a.at) + '</small></li>';
-    }).join('') + '</ul>' : emptyChart('clock', 'Client updates, stage changes and saved searches will appear here.');
+    $('ov-activity').innerHTML = acts.length ? '<ul class="ap-tl">' + acts.slice(0, 6).map(function (x) {
+      return '<li><strong>' + esc(x.c.name) + '</strong> · ' + esc(x.a.text) + '<small>' + ago(x.a.at) + '</small></li>';
+    }).join('') + '</ul>' : emptyChart('clock', 'Client updates, stage changes and saved searches appear here.');
+  }
+
+  // line chart: loan amount of clients added per month (single series, 2px line, 10% wash, hover crosshair)
+  function niceMax(v) { if (v <= 0) return 1; var p = Math.pow(10, Math.floor(Math.log10(v))), n = v / p; return (n <= 1 ? 1 : n <= 2 ? 2 : n <= 5 ? 5 : 10) * p; }
+  function renderLine(list) {
+    var months = [];
+    for (var m = 5; m >= 0; m--) { var d = new Date(); d.setDate(1); d.setMonth(d.getMonth() - m); months.push({ key: d.getFullYear() + '-' + d.getMonth(), label: d.toLocaleDateString('en-IN', { month: 'short' }), amt: 0, n: 0 }); }
+    list.forEach(function (c) { var d = new Date(c.createdAt || c.updatedAt), k = d.getFullYear() + '-' + d.getMonth(); months.forEach(function (x) { if (x.key === k) { x.amt += +c.amount || 0; x.n++; } }); });
+    var total = sum(months, function (x) { return x.amt; });
+    $('ov-line-total').textContent = short(total) + ' total';
+    $('ov-line-total').hidden = !total;
+    if (!list.length) { $('ov-line').innerHTML = emptyChart('trend', 'Your monthly pipeline growth appears here once you add clients.'); return; }
+    var W = Math.max(300, Math.round($('ov-line').clientWidth) || 600), H = 210, L = 46, R = 14, T = 12, B = 28, top = niceMax(Math.max.apply(null, months.map(function (x) { return x.amt; }))), step = (W - L - R) / 5;
+    var pts = months.map(function (x, i) { return [L + i * step, T + (H - T - B) * (1 - x.amt / top)]; });
+    var d = 'M' + pts[0][0] + ' ' + pts[0][1];
+    for (var i = 1; i < pts.length; i++) { // smooth curve through the points
+      var p0 = pts[i - 2] || pts[i - 1], p1 = pts[i - 1], p2 = pts[i], p3 = pts[i + 1] || p2;
+      d += ' C' + (p1[0] + (p2[0] - p0[0]) / 6) + ' ' + (p1[1] + (p2[1] - p0[1]) / 6) + ' ' + (p2[0] - (p3[0] - p1[0]) / 6) + ' ' + (p2[1] - (p3[1] - p1[1]) / 6) + ' ' + p2[0] + ' ' + p2[1];
+    }
+    var base = H - B, grid = '', ylab = '';
+    [0, .5, 1].forEach(function (f) { var y = T + (H - T - B) * (1 - f); grid += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + y + '" y2="' + y + '"/>'; ylab += '<text class="yl" x="' + (L - 10) + '" y="' + (y + 4) + '" text-anchor="end">' + (f ? short(top * f) : '0') + '</text>'; });
+    $('ov-line').innerHTML = '<div class="ap-line"><svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Loan amount added per month" style="height:auto">' +
+      '<defs><linearGradient id="ov-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#625fff" stop-opacity=".16"/><stop offset="1" stop-color="#625fff" stop-opacity="0"/></linearGradient></defs>' +
+      '<g class="grid">' + grid + '</g>' + ylab +
+      '<path class="a" fill="url(#ov-area)" d="' + d + ' L' + pts[5][0] + ' ' + base + ' L' + pts[0][0] + ' ' + base + 'Z"/><path class="l" d="' + d + '"/>' +
+      '<line class="cross" x1="0" x2="0" y1="' + T + '" y2="' + base + '"/>' +
+      pts.map(function (p, i) { return '<circle class="pt' + (i === 5 ? ' is-end' : '') + '" cx="' + p[0] + '" cy="' + p[1] + '" r="5" data-pt="' + i + '"/>'; }).join('') +
+      months.map(function (x, i) { return '<text class="xl" x="' + pts[i][0] + '" y="' + (H - 6) + '" text-anchor="middle">' + x.label + '</text>'; }).join('') +
+      months.map(function (x, i) { return '<rect class="hit" tabindex="0" x="' + (pts[i][0] - step / 2) + '" y="0" width="' + step + '" height="' + base + '" data-hit="' + i + '" data-tip="<strong>' + x.label + '</strong>' + short(x.amt) + ' · ' + x.n + ' new client' + (x.n === 1 ? '' : 's') + '" aria-label="' + x.label + ': ' + short(x.amt) + '"/>'; }).join('') +
+      '</svg></div>' + dataTable(['Month', 'Amount added'], months.map(function (x) { return [x.label, short(x.amt)]; }));
+    var box = $('ov-line').querySelector('.ap-line'), line = box.querySelector('path.l'), cross = box.querySelector('.cross');
+    try { line.style.setProperty('--len', Math.ceil(line.getTotalLength())); } catch (e) {}
+    function on(i) {
+      box.classList.add('is-hover');
+      cross.setAttribute('x1', pts[i][0]); cross.setAttribute('x2', pts[i][0]);
+      box.querySelectorAll('.pt').forEach(function (c) { c.classList.toggle('is-on', +c.getAttribute('data-pt') === i); });
+    }
+    function off() { box.classList.remove('is-hover'); box.querySelectorAll('.pt').forEach(function (c) { c.classList.remove('is-on'); }); }
+    box.querySelectorAll('.hit').forEach(function (r) {
+      var i = +r.getAttribute('data-hit');
+      r.addEventListener('mouseenter', function () { on(i); }); r.addEventListener('focus', function () { on(i); });
+      r.addEventListener('mouseleave', off); r.addEventListener('blur', off);
+    });
+  }
+
+  // success ring: sanctioned + disbursed out of decided cases (those + closed)
+  function renderRing(list) {
+    var good = list.filter(function (c) { return c.status === 'sanctioned' || c.status === 'disbursed'; }).length;
+    var lost = list.filter(function (c) { return c.status === 'closed'; }).length;
+    var open = list.filter(function (c) { return c.status === 'new' || c.status === 'docs' || c.status === 'submitted'; }).length;
+    var decided = good + lost, pctv = decided ? good / decided : 0;
+    if (!list.length) { $('ov-ring').innerHTML = emptyChart('sparkle', 'Your approval rate shows here once cases are decided.'); return; }
+    var r = 52, c = 2 * Math.PI * r;
+    $('ov-ring').innerHTML = '<div class="ap-donut"><div class="ap-ring" role="img" aria-label="Success rate ' + (decided ? Math.round(pctv * 100) + '%' : 'not available yet') + '"><svg viewBox="0 0 128 128" aria-hidden="true"><circle class="bg" cx="64" cy="64" r="' + r + '"/><circle class="fg" cx="64" cy="64" r="' + r + '" stroke-dasharray="' + c + '" stroke-dashoffset="' + c + '"/></svg>' +
+      '<span>' + (decided ? '<em><b data-ring>0</b>%</em>' : '–') + '<small>' + (decided ? 'success rate' : 'no decisions yet') + '</small></span></div>' +
+      '<div class="ap-legend"><div><span>Sanctioned or disbursed</span><b>' + good + '</b></div><div><span>Rejected or closed</span><b>' + lost + '</b></div><div><span>Still in progress</span><b>' + open + '</b></div></div></div>';
+    var fg = $('ov-ring').querySelector('.fg'), num = $('ov-ring').querySelector('[data-ring]');
+    requestAnimationFrame(function () { requestAnimationFrame(function () { fg.style.strokeDashoffset = c * (1 - pctv); }); });
+    if (num) UI.countUp(num, Math.round(pctv * 100));
   }
   function emptyChart(i, text) { return '<div class="ap-empty-chart">' + ic(i, 26) + '<span>' + text + '</span></div>'; }
   function dataTable(head, rows) {
@@ -517,12 +568,15 @@
     currentView = view;
     UI.hideTip();
     if (view === 'overview' && !kpiAnimated) { kpiAnimated = true; renderOverview(true); }
+    else if (view === 'overview') renderLine(App.clients());
   });
   if (pending) setTimeout(function () { openClient(pending); }, 250);
   if (App.param('welcome')) {
     history.replaceState(null, '', location.pathname + location.hash);
     setTimeout(function () { UI.toast('Welcome to RAVEN, ' + first + '! Your agent dashboard is ready.'); }, 500);
   }
+  var rz;
+  window.addEventListener('resize', function () { clearTimeout(rz); rz = setTimeout(function () { if (currentView === 'overview') renderLine(App.clients()); }, 200); });
   // keep in sync if another tab changes the data
   window.addEventListener('storage', function (e) { if (e.key && e.key.indexOf('raven_clients_') === 0) renderAll(); });
 })();

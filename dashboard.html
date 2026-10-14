@@ -14,14 +14,15 @@
 <body class="ap-body">
   <div class="ap">
     <aside class="ap-side" aria-label="Dashboard">
-      <a class="ap-brand" href="index.html"><img src="images/logo-mark.svg" alt="" width="32" height="32">RAVEN<small>Agent</small></a>
+      <a class="ap-brand" href="index.html"><img src="images/logo.svg" alt="RAVEN" width="108" height="28"><small>Agent</small></a>
+      <p class="ap-navlabel first">Menu</p>
       <nav class="ap-nav" aria-label="Main">
         <a href="#overview" data-nav="overview" data-title="Overview"><span data-ico="grid"></span>Overview</a>
         <a href="#clients" data-nav="clients" data-title="Clients"><span data-ico="users"></span>Clients<span class="ap-count" id="n-clients">0</span></a>
         <a href="#pipeline" data-nav="pipeline" data-title="Pipeline"><span data-ico="board"></span>Pipeline</a>
         <a href="#followups" data-nav="followups" data-title="Follow-ups"><span data-ico="bell"></span>Follow-ups<span class="ap-count" id="n-follow" hidden>0</span></a>
       </nav>
-      <p class="ap-navlabel">Work</p>
+      <p class="ap-navlabel">Workspace</p>
       <nav class="ap-nav" aria-label="Tools">
         <a href="#tools" data-nav="tools" data-title="Search tools"><span data-ico="search"></span>Search tools</a>
         <a href="#settings" data-nav="settings" data-title="Settings"><span data-ico="gear"></span>Settings</a>
@@ -30,7 +31,7 @@
       <div class="ap-sidecard">
         <strong>Find the best lender</strong>
         <p>Open any client and tap <em>Find best option</em> to run the right search with their details.</p>
-        <button type="button" class="ap-btn is-primary is-sm" data-add style="width:100%">Add a client</button>
+        <button type="button" class="ap-btn is-sm" data-add>Add a client</button>
       </div>
       <div class="ap-me">
         <span id="me-avatar"></span>
@@ -41,8 +42,8 @@
 
     <div class="ap-main">
       <header class="ap-top">
-        <a class="ap-mlogo" href="index.html"><img src="images/logo-mark.svg" alt="" width="30" height="30">RAVEN</a>
-        <h1 class="ap-title" id="ap-title">Overview</h1>
+        <a class="ap-mlogo" href="index.html"><img src="images/logo.svg" alt="RAVEN" width="100" height="26"></a>
+        <p class="ap-title">Agent dashboard <span aria-hidden="true">&nbsp;/&nbsp;</span> <b id="ap-title">Overview</b></p>
         <label class="ap-search"><span data-ico="search"></span><input id="g-search" type="search" placeholder="Search clients by name, mobile, city" aria-label="Search clients" autocomplete="off"><kbd>/</kbd></label>
         <div class="ap-topact">
           <button type="button" class="ap-btn is-primary ap-hide-m" data-add><span data-ico="plus"></span>Add client</button>
@@ -54,46 +55,41 @@
       <main class="ap-content">
         <!-- OVERVIEW -->
         <section class="ap-view" data-view="overview" aria-labelledby="ov-h">
+          <div class="ap-h">
+            <div><h1 id="ov-h">Overview</h1><p id="ov-sub"></p></div>
+            <div class="acts"><span class="ap-dpill is-warn" id="ov-badge">Verification pending</span></div>
+          </div>
           <div class="ap-grid ap-stagger">
-            <div class="ap-hero" style="--i:0">
-              <div class="ap-hero-row">
-                <div>
-                  <p class="d" id="ov-date"></p>
-                  <h1 id="ov-h">Welcome back</h1>
-                  <p id="ov-sub"></p>
-                </div>
-                <span class="ap-badge is-warn" id="ov-badge">Verification pending</span>
+            <div class="ap-kpis" id="ov-kpis" style="--i:0"></div>
+            <div class="ap-grid ap-g2" style="--i:1">
+              <div class="ap-card pad">
+                <div class="ap-ch"><div><h2>Loan amount added</h2><p>Required amount of new clients, last 6 months</p></div><span class="ap-dpill" id="ov-line-total"></span></div>
+                <div id="ov-line"></div>
               </div>
-              <div class="ap-hero-act">
-                <button type="button" class="ap-btn is-white" data-add><span data-ico="plus"></span>Add client</button>
-                <a class="ap-btn" href="#followups"><span data-ico="bell"></span>Today’s follow-ups</a>
-                <a class="ap-btn" href="#tools"><span data-ico="search"></span>Run a search</a>
+              <div class="ap-card pad">
+                <div class="ap-ch"><div><h2>Success rate</h2><p>Sanctioned or disbursed, out of decided cases</p></div></div>
+                <div id="ov-ring"></div>
               </div>
             </div>
-            <div class="ap-kpis" id="ov-kpis" style="--i:1"></div>
             <div class="ap-grid ap-g2" style="--i:2">
               <div class="ap-card pad">
-                <div class="ap-ch"><div><h2>Cases by stage</h2><p>Active and completed cases in your book</p></div><a class="ap-link" href="#pipeline">Open pipeline</a></div>
+                <div class="ap-ch"><div><h2>Cases by stage</h2><p>Where every client in your book stands</p></div><a class="ap-link" href="#pipeline">Pipeline<span data-ico="arrow"></span></a></div>
                 <div id="ov-funnel"></div>
               </div>
               <div class="ap-card pad">
-                <div class="ap-ch"><div><h2>Due soon</h2><p>Overdue and next 3 days</p></div><a class="ap-link" href="#followups">See all</a></div>
+                <div class="ap-ch"><div><h2>Due soon</h2><p>Overdue and the next 3 days</p></div><a class="ap-link" href="#followups">All<span data-ico="arrow"></span></a></div>
                 <div id="ov-due"></div>
               </div>
             </div>
             <div class="ap-grid ap-g2e" style="--i:3">
               <div class="ap-card pad">
-                <div class="ap-ch"><div><h2>New clients</h2><p>Added in the last 6 months</p></div></div>
-                <div id="ov-months"></div>
-              </div>
-              <div class="ap-card pad">
                 <div class="ap-ch"><div><h2>Pipeline by product</h2><p>Loan amount in active cases</p></div></div>
                 <div id="ov-products"></div>
               </div>
-            </div>
-            <div class="ap-card pad" style="--i:4">
-              <div class="ap-ch"><div><h2>Recent activity</h2><p>Latest updates across your clients</p></div></div>
-              <div id="ov-activity"></div>
+              <div class="ap-card pad">
+                <div class="ap-ch"><div><h2>Recent activity</h2><p>Latest updates across your clients</p></div></div>
+                <div id="ov-activity"></div>
+              </div>
             </div>
           </div>
         </section>
