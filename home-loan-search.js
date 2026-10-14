@@ -214,6 +214,14 @@
     html += '<p class="hl-disc">Indicative only. Final eligibility, rate and amount depend on the lender\'s policy, CIBIL score, age, existing EMIs, property valuation and legal checks.</p>';
 
     out.innerHTML = html;
+    if (window.RavenApp) RavenApp.onResult({
+      kind: 'home', out: out,
+      values: { name: name, employment: empEl.value, income: incEl.value, property: propEl.value, amount: a },
+      labels: { employment: emp.label, property: prop.label },
+      headline: 'Eligibility ' + short(eligible) + ' · ' + prop.product,
+      details: ['Required ' + short(a) + ' · EMI ₹' + inr(reqEmi) + '/mo at ~' + trim(rate) + '%',
+        'Best fit: ' + (matches.filter(function (m) { return m.s === 2; }).map(function (m) { return m.l.name; }).join(', ') || 'our team to advise')]
+    });
     out.hidden = false;
     form.hidden = true;
     document.getElementById('hl-edit').addEventListener('click', function () {
@@ -241,4 +249,6 @@
     words.textContent = '';
     [nameEl, empEl, incEl, propEl, amtEl].forEach(function (el) { setErr(el, false); });
   });
+
+  if (window.RavenApp) RavenApp.prefill(form, 'home');
 })();

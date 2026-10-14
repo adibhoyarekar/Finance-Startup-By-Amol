@@ -66,6 +66,9 @@
         (g.note ? '<p class="hl-rate">' + g.note + '</p>' : '') + '</div>';
     }).join('') + '</div>';
   }
+  function top(groups) {
+    return 'Best fit: ' + (groups.filter(function (g) { return g.s === 2; }).map(function (g) { return g.name; }).join(', ') || 'our team to advise');
+  }
   function grid2(a, b) { return '<div class="hl-grid2">' + a + b + '</div>'; }
 
   var CIBIL_ORDER = ['lt650', '650to700', '700to750', 'gt750'];
@@ -123,6 +126,8 @@
     ];
 
     return {
+      headline: 'Eligibility ' + short(eligible) + ' · ' + prod,
+      details: ['Required ' + short(a) + ' · EMI ₹' + inr(emi(a, rate, months)) + '/mo at ~' + rate + '%', top(groups)],
       sub: L.btype + ' · ' + L.vintage + ' in business · ' + L.itype + ' · ' + L.income + '/month',
       html: stats([
         stat('Estimated eligibility', short(eligible), trim(months / 12) + ' yrs at ~' + rate + '% p.a.'),
@@ -185,6 +190,8 @@
     if (v.existing === 'yes') notes.push('Eligibility assumes existing EMIs take about 20% of income; closing small loans first increases it.');
 
     return {
+      headline: 'Eligibility ' + short(eligible) + ' · ' + (ok ? 'within limit' : 'short by ' + short(a - eligible)),
+      details: ['Required ' + short(a) + ' · EMI ₹' + inr(emi(a, rate, months)) + '/mo at ~' + trim(rate) + '%', top(groups)],
       sub: L.emp + ' · ' + L.income + '/month · ' + v.company + ' · ' + L.exp + ' experience',
       html: stats([
         stat('Estimated eligibility', short(eligible), months / 12 + ' yrs at ~' + trim(rate) + '% p.a.'),
@@ -236,6 +243,8 @@
     ];
 
     return {
+      headline: 'Max loan ' + short(maxLoan) + ' on ' + trim(v.weight) + ' g ' + L.gtype.toLowerCase(),
+      details: ['Required ' + short(a) + (ok ? ' – covered' : ' – short by ' + short(a - maxLoan)), 'Gold value ' + short(value) + ' at ₹' + inr(GOLD_RATE_24K) + '/g (24K)'],
       sub: L.gtype + ' · ' + trim(v.weight) + ' g · ' + L.purity + ' · ' + v.city,
       html: stats([
         stat('Estimated gold value', short(value), trim(grams * net) + ' g net at ' + carat + 'K'),
@@ -305,6 +314,8 @@
     });
 
     return {
+      headline: 'Recommended: ' + variant,
+      details: ['Banks: ' + pick.slice(0, 3).map(function (k) { return BANKS[k][0]; }).join(', ')].concat(notes.slice(0, 1)),
       sub: L.atype + ' · ' + L.occ + ' · ' + L.purpose + ' · ' + v.city,
       html: verdict(current || !entity, '<strong>Recommended: ' + esc(variant) + '.</strong> ' + why) +
         grid2(box('Things to know', bullets(notes.concat('Most banks open the account in a day with Aadhaar e-KYC and video KYC; a branch visit is needed for firms and companies.'))),
@@ -387,6 +398,7 @@
         '<p class="hl-disc">' + (kind === 'account'
           ? 'Suggestions only. Account features, charges and minimum balance are set by each bank and change from time to time.'
           : 'Indicative only. Final eligibility, rate and amount depend on the lender\'s policy, credit checks, documents and valuation.') + '</p>';
+      if (window.RavenApp) RavenApp.onResult({ kind: kind, values: v, labels: L, headline: r.headline, details: r.details, out: out });
       out.hidden = false;
       form.hidden = true;
       out.querySelector('.hl-edit').addEventListener('click', function () {
@@ -397,5 +409,7 @@
       out.focus({ preventScroll: true });
       out.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
+
+    if (window.RavenApp) RavenApp.prefill(form, kind);
   });
 })();

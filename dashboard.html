@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Dashboard - RAVEN</title>
+  <meta name="description" content="Manage your clients and find the best loan option for each case.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="images/logo-mark.svg">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="raven.css?v=17">
+</head>
+<body class="antialiased text-gray-900 bg-white">
+  <div id="top" class="min-h-screen">
+  <header class="left-0 w-full z-50 transition-all duration-300 absolute top-5 lg:top-8">
+    <nav>
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex items-center justify-between rounded-[18px] transition-all duration-300 bg-white backdrop-blur-md pl-6 py-3 pr-3 shadow-sm">
+          <a href="index.html" aria-label="RAVEN home"><img src="images/logo.svg" alt="RAVEN" width="116" height="30"></a>
+          <div class="hidden lg:block">
+            <ul class="flex">
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="index.html">Home</a></li>
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="funding-loans.html">Funding &amp; Loans</a></li>
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="registration.html">Business Registration</a></li>
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="hidden lg:flex gap-4">
+            <a class="border bg-gray-50 border-gray-200 rounded-lg text-gray-800 font-medium text-base py-2.5 px-4 hover:bg-gray-100 transition duration-300 ease-in-out" href="ask.html">Ask a Question</a>
+            <a class="text-white bg-gray-950 rounded-lg py-2.5 px-4 text-base font-medium hover:bg-gray-800 transition duration-300 ease-in-out" href="signup.html">Registration</a>
+          </div>
+          <div class="flex lg:hidden">
+            <button id="menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="rv-menu" class="cursor-pointer p-2">
+              <svg class="rv-ico-open" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h16M4 12h16M4 17h16" stroke="#101828" stroke-width="1.8" stroke-linecap="round"/></svg>
+              <svg class="rv-ico-close" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M6 6l12 12M18 6L6 18" stroke="#101828" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+        </div>
+        <div id="rv-menu" class="rv-menu" hidden>
+          <a class="rv-mlink" href="index.html">Home</a><a class="rv-mlink" href="funding-loans.html">Funding &amp; Loans</a><a class="rv-mlink" href="registration.html">Business Registration</a><a class="rv-mlink" href="contact.html">Contact</a>
+          <a class="rv-mlink" href="ask.html">Ask a Question</a>
+          <a class="rv-mcta" href="signup.html">Registration</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="db pt-30 lg:pt-40 pb-20">
+      <div class="max-w-7xl mx-auto px-4 lg:px-6">
+        <div class="db-top">
+          <div>
+            <p class="hl-kicker">Agent dashboard</p>
+            <h1 class="db-h1" id="db-hello">Welcome</h1>
+            <p class="db-sub" id="db-meta"></p>
+          </div>
+          <div class="db-top-actions">
+            <button type="button" class="hl-submit db-addbtn" id="db-add"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Add client</button>
+            <a class="hl-reset" href="welcome.html?edit=1">Edit profile</a>
+            <button type="button" class="hl-reset" id="db-out">Log out</button>
+          </div>
+        </div>
+        <p class="ra-banner" id="db-welcome" hidden></p>
+        <div class="db-stats" id="db-stats"></div>
+        <div class="db-grid">
+          <div class="db-panel db-clients">
+            <div class="db-panel-head">
+              <h2>Clients <span class="db-count" id="db-count"></span></h2>
+            </div>
+            <div class="db-filters">
+              <label class="rv-search db-q"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="db-q" type="search" placeholder="Search name, mobile, city, notes" aria-label="Search clients"></label>
+              <select id="db-fstatus" class="rv-input hl-select" aria-label="Filter by status"></select>
+              <select id="db-fproduct" class="rv-input hl-select" aria-label="Filter by product"></select>
+              <select id="db-sort" class="rv-input hl-select" aria-label="Sort clients"><option value="recent">Latest first</option><option value="follow">Follow-up date</option><option value="amount">Amount (high to low)</option><option value="name">Name (A–Z)</option></select>
+            </div>
+            <div id="db-list"></div>
+          </div>
+          <aside class="db-side">
+            <div class="db-panel">
+              <h2>Upcoming follow-ups</h2>
+              <div id="db-follow"></div>
+            </div>
+            <div class="db-panel">
+              <h2>Search tools</h2>
+              <p class="db-muted">Open a tool directly, or use <em>Find best option</em> on a client to pre-fill it.</p>
+              <div class="db-tools">
+                <a href="home-loans.html#home-loan-search">Home Loan</a><a href="personal-loans.html#personal-loan-search">Personal Loan</a><a href="business-loans.html#business-loan-search">Business Loan</a><a href="gold-loans.html#gold-loan-search">Gold Loan</a><a href="bank-account.html#bank-account-search">Bank Account</a>
+              </div>
+            </div>
+            <details class="db-panel db-details">
+              <summary><h2>Your payout rates</h2></summary>
+              <p class="db-muted">Your commission as % of the loan amount. Used for the expected payout figures.</p>
+              <div id="db-payout"></div>
+            </details>
+            <div class="db-panel">
+              <h2>Your data</h2>
+              <p class="db-muted">Client data is saved only in this browser. Back it up regularly.</p>
+              <div class="db-tools">
+                <button type="button" id="db-csv">Export to Excel (CSV)</button>
+                <button type="button" id="db-backup">Download backup</button>
+                <label class="db-file">Restore backup<input type="file" id="db-restore" accept="application/json,.json"></label>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+    <dialog class="db-dialog" id="db-dialog" aria-labelledby="db-dlg-title">
+      <form id="db-form" class="hl-form" novalidate>
+        <div class="hl-full db-dlg-head"><h2 id="db-dlg-title">Add client</h2><button type="button" class="db-x" id="db-cancel" aria-label="Close">&times;</button></div>
+        <div class="hl-field"><label for="cf-name">Client name</label><input id="cf-name" name="name" class="rv-input" type="text" placeholder="Full name"><p class="hl-err" data-for="name">Please enter the client name.</p></div>
+        <div class="hl-field"><label for="cf-mobile">Mobile number</label><input id="cf-mobile" name="mobile" class="rv-input" type="tel" inputmode="tel" maxlength="16" placeholder="10-digit mobile"><p class="hl-err" data-for="mobile">Enter a valid 10-digit mobile number.</p></div>
+        <div class="hl-field"><label for="cf-email">Email (optional)</label><input id="cf-email" name="email" class="rv-input" type="email" placeholder="client@example.com"><p class="hl-err" data-for="email">Enter a valid email address.</p></div>
+        <div class="hl-field"><label for="cf-city">City</label><input id="cf-city" name="city" class="rv-input" type="text" placeholder="e.g. Pune"></div>
+        <div class="hl-field"><label for="cf-product">Product needed</label><select id="cf-product" name="product" class="rv-input hl-select"></select><p class="hl-err" data-for="product">Please select a product.</p></div>
+        <div class="hl-field"><label for="cf-amount">Required amount</label><div class="hl-money"><span aria-hidden="true">₹</span><input id="cf-amount" name="amount" class="rv-input" type="text" inputmode="numeric" placeholder="Loan amount"></div></div>
+        <div class="hl-field"><label for="cf-employment">Employment</label><select id="cf-employment" name="employment" class="rv-input hl-select"><option value="">Select</option><option value="sal-bank">Salaried – Bank Salary</option><option value="sal-cash">Salaried – Cash Salary</option><option value="se-business">Self-Employed – Business</option><option value="se-professional">Self-Employed – Professional</option><option value="other">Other</option></select></div>
+        <div class="hl-field"><label for="cf-income">Monthly income</label><div class="hl-money"><span aria-hidden="true">₹</span><input id="cf-income" name="income" class="rv-input" type="text" inputmode="numeric" placeholder="Approximate"></div></div>
+        <div class="hl-field"><label for="cf-cibil">CIBIL score</label><select id="cf-cibil" name="cibil" class="rv-input hl-select"><option value="">Select</option><option value="lt650">Below 650</option><option value="650to700">650–700</option><option value="700to750">700–750</option><option value="gt750">Above 750</option><option value="unknown">Don’t Know</option></select></div>
+        <div class="hl-field"><label for="cf-status">Status</label><select id="cf-status" name="status" class="rv-input hl-select"></select></div>
+        <div class="hl-field"><label for="cf-follow">Next follow-up</label><input id="cf-follow" name="followUp" class="rv-input" type="date"></div>
+        <div class="hl-field"><label for="cf-source">Lead source</label><select id="cf-source" name="source" class="rv-input hl-select"><option value="">Select</option><option value="walkin">Walk-in</option><option value="referral">Referral</option><option value="call">Phone call</option><option value="website">RAVEN website</option><option value="social">Social media</option><option value="other">Other</option></select></div>
+        <div class="hl-field hl-full"><label for="cf-notes">Notes</label><textarea id="cf-notes" name="notes" class="rv-input" rows="3" placeholder="Documents received, bank feedback, next step..."></textarea></div>
+        <div class="hl-field hl-full"><label class="su-check"><input type="checkbox" name="consent"><span>The client has agreed to share these details with me.</span></label><p class="hl-err" data-for="consent">Please confirm the client’s consent.</p></div>
+        <div class="hl-full hl-actions"><button type="submit" class="hl-submit">Save client</button></div>
+      </form>
+    </dialog>
+  </main>
+  <footer>
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="pt-10 lg:pt-18">
+        <div class="flex flex-col lg:flex-row gap-10">
+          <div class="lg:w-4/12">
+            <a class="mb-10 lg:mb-20 inline-block" href="index.html" aria-label="RAVEN home"><img src="images/logo.svg" alt="RAVEN" width="136" height="35"></a>
+            <p class="lg:pr-10 text-gray-500 text-base">Build. Fund. Brand. Grow.<br>Your business partner in India.</p>
+            <p class="text-gray-400 text-sm mt-4">Chhatrapati Sambhajinagar &amp; Pune, India</p>
+          </div>
+          <div class="lg:w-6/12 lg:ml-auto">
+            <div class="grid grid-cols-2 gap-5 sm:gap-10 sm:grid-cols-3">
+              <div>
+                <h3 class="text-lg text-gray-800 font-medium mb-6">Services</h3>
+                <nav class="space-y-5">
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="funding-loans.html">Funding &amp; Loans</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="registration.html">Business Registration</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="bank-account.html">Bank Account Opening</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Real Estate</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Brand Strategy</a>
+                </nav>
+              </div>
+              <div>
+                <h3 class="text-lg text-gray-800 font-medium mb-6">Company</h3>
+                <nav class="space-y-5">
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="index.html#about">About Us</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Contact</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="terms.html">Terms &amp; Conditions</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="privacy.html">Privacy Policy</a>
+                </nav>
+              </div>
+              <div class="flex lg:justify-end">
+                <div>
+                  <h3 class="text-lg text-gray-800 font-medium mb-6">Contact</h3>
+                  <nav class="space-y-5">
+                    <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="mailto:hello@raven.business">hello@raven.business</a>
+                    <span class="text-gray-700 block text-base">Chhatrapati Sambhajinagar</span>
+                    <span class="text-gray-700 block text-base">Pune, India</span>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-between flex-col sm:flex-row gap-5 items-center pb-10 pt-10 lg:pt-20">
+        <p class="text-base text-gray-500">&copy; 2025 RAVEN. All rights reserved. <span class="rv-dot">Built for Indian Entrepreneurs.</span></p>
+        <a href="#top" class="flex gap-3 items-center text-gray-700">Back to top
+          <span class="size-7 rounded-full text-white bg-indigo-500 inline-flex items-center justify-center hover:bg-indigo-600 transition duration-300 ease-in-out"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </footer>
+  </div>
+  <script src="raven-app.js?v=1"></script>
+  <script src="dashboard.js?v=1"></script>
+  <script src="site.js?v=2"></script>
+  <script src="ai-chat.js?v=6"></script>
+  <script src="consent.js?v=4"></script>
+</body>
+</html>
