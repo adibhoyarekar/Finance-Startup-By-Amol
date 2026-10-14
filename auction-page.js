@@ -98,7 +98,7 @@
     var d = 'M' + x(t0) + ' ' + y(lo);
     bids.forEach(function (b) { d += ' H' + x(b.at).toFixed(1) + ' V' + y(b.amount).toFixed(1); });
     d += ' H' + x(t1);
-    return '<div class="ad-chart"><svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none" role="img" aria-label="Price over time"><defs><linearGradient id="ad-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#625fff" stop-opacity=".16"/><stop offset="1" stop-color="#625fff" stop-opacity="0"/></linearGradient></defs>' +
+    return '<div class="ad-chart"><svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none" role="img" aria-label="Price over time"><defs><linearGradient id="ad-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0284c7" stop-opacity=".16"/><stop offset="1" stop-color="#0284c7" stop-opacity="0"/></linearGradient></defs>' +
       '<g class="grid"><line x1="0" x2="' + W + '" y1="' + y(lo) + '" y2="' + y(lo) + '"/><line x1="0" x2="' + W + '" y1="' + y(hi) + '" y2="' + y(hi) + '"/></g>' +
       '<path class="a" d="' + d + ' V' + (H - B) + ' H' + x(t0) + 'Z"/><path class="l" vector-effect="non-scaling-stroke" d="' + d + '"/></svg>' +
       '<div style="display:flex;justify-content:space-between" class="ap-mini"><span>Reserve ' + U.short(lo) + '</span><span>Now ' + U.short(hi) + '</span></div></div>';

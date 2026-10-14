@@ -101,7 +101,7 @@
   }
 
   add("Hi! I'm the RAVEN assistant. How can I help you today?", 'bot');
-  ['Which loan is right for me?', 'How do I register my business?', 'Tell me about insurance', 'Talk to an expert'].forEach(function (t) {
+  ['Which loan is right for me?', 'How do bank auctions work?', 'Tell me about insurance', 'Talk to an expert'].forEach(function (t) {
     var c = document.createElement('button');
     c.type = 'button';
     c.className = 'ask-chip';

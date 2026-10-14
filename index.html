@@ -5,487 +5,351 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RAVEN - Build. Fund. Brand. Grow.</title>
   <meta name="description" content="RAVEN is your business partner in India for loans, insurance, real estate and bank auctions.">
+  <meta name="theme-color" content="#0369a1">
   <link rel="icon" type="image/svg+xml" href="images/logo-mark.svg">
-  <link rel="stylesheet" href="styles.css?v=3">
-  <link rel="stylesheet" href="raven.css?v=20">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="bank.css?v=1">
+  <script>document.documentElement.classList.add('js')</script>
 </head>
-<body class="antialiased text-gray-900 bg-white">
-  <div id="top" class="min-h-screen">
-  <header class="left-0 w-full z-50 transition-all duration-300 absolute top-5 lg:top-8">
-    <nav>
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="flex items-center justify-between rounded-[18px] transition-all duration-300 bg-white backdrop-blur-md pl-6 py-3 pr-3 shadow-sm">
-          <a href="index.html" aria-label="RAVEN home"><img src="images/logo.svg" alt="RAVEN" width="116" height="30"></a>
-          <div class="hidden lg:block">
-            <ul class="flex">
-          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-indigo-500" href="index.html">Home</a></li>
-          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="funding-loans.html">Funding &amp; Loans</a></li>
-          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="auctions.html">Auctions</a></li>
-          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="contact.html">Contact</a></li>
-            </ul>
-          </div>
-          <div class="hidden lg:flex gap-4">
-            <a class="border bg-gray-50 border-gray-200 rounded-lg text-gray-800 font-medium text-base py-2.5 px-4 hover:bg-gray-100 transition duration-300 ease-in-out" href="ask.html">Ask a Question</a>
-            <a class="text-white bg-gray-950 rounded-lg py-2.5 px-4 text-base font-medium hover:bg-gray-800 transition duration-300 ease-in-out" href="signup.html">Registration</a>
-          </div>
-          <div class="flex lg:hidden">
-            <button id="menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="rv-menu" class="cursor-pointer p-2">
-              <svg class="rv-ico-open" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h16M4 12h16M4 17h16" stroke="#101828" stroke-width="1.8" stroke-linecap="round"/></svg>
-              <svg class="rv-ico-close" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M6 6l12 12M18 6L6 18" stroke="#101828" stroke-width="1.8" stroke-linecap="round"/></svg>
-            </button>
-          </div>
-        </div>
-        <div id="rv-menu" class="rv-menu" hidden>
-          <a class="rv-mlink is-on" href="index.html">Home</a><a class="rv-mlink" href="funding-loans.html">Funding &amp; Loans</a><a class="rv-mlink" href="auctions.html">Auctions</a><a class="rv-mlink" href="contact.html">Contact</a>
-          <a class="rv-mlink" href="ask.html">Ask a Question</a>
-          <a class="rv-mcta" href="signup.html">Registration</a>
-        </div>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="b-progress" aria-hidden="true"></div>
+  <span id="top"></span>
+  <div class="b-util">
+    <div class="b-wrap">
+      <div class="b-util-l">
+        <a href="contact.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Chhatrapati Sambhajinagar &amp; Pune</a>
+        <a class="b-hide-m" href="mailto:hello@raven.business"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>hello@raven.business</a>
       </div>
-    </nav>
+      <div class="b-util-r">
+        <a class="b-hide-m" href="contact.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Mon – Sat, 10:00 AM – 7:00 PM IST</a>
+        <a href="dashboard.html">For agents</a>
+        <a href="auction-bank.html">For banks</a>
+        <a href="ask.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L3 21l1.9-5.4A8 8 0 1 1 21 12z"/></svg>Ask a question</a>
+      </div>
+    </div>
+  </div>
+  <header class="b-header">
+    <div class="b-wrap b-bar">
+      <a class="b-logo" href="index.html" aria-label="RAVEN home"><img src="images/logo.svg" alt="RAVEN" width="116" height="30"></a>
+      <ul class="b-nav" aria-label="Main">
+        <li class="has-mega"><button type="button" class="b-navlink" aria-expanded="false" aria-haspopup="true">Loans<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="b-mega"><div class="b-mega-in">
+            <div><h6>Loans</h6><div class="b-mlist"><a class="b-mitem" href="home-loans.html"><span class="b-mic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-5h4v5"/></svg></span><span><strong>Home Loan</strong><small>Buy, build or renovate your home</small></span></a><a class="b-mitem" href="personal-loans.html"><span class="b-mic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></span><span><strong>Personal Loan</strong><small>Weddings, travel, medical – no collateral</small></span></a><a class="b-mitem" href="business-loans.html"><span class="b-mic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></svg></span><span><strong>Business Loan</strong><small>Working capital and term loans</small></span></a><a class="b-mitem" href="gold-loans.html"><span class="b-mic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6.5" rx="7" ry="3"/><path d="M5 6.5v5c0 1.7 3.1 3 7 3s7-1.3 7-3v-5M5 11.5v5c0 1.7 3.1 3 7 3s7-1.3 7-3v-5"/></svg></span><span><strong>Gold Loan</strong><small>Quick funds against your gold</small></span></a><a class="b-mitem" href="car-loans.html"><span class="b-mic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17h14v-4.5l-1.8-4.6A2 2 0 0 0 15.3 6.6H8.7a2 2 0 0 0-1.9 1.3L5 12.5z"/><path d="M3 12.5h18M7.5 17v2M16.5 17v2"/><circle cx="8" cy="14.5" r=".9" fill="currentColor"/><circle cx="16" cy="14.5" r=".9" fill="currentColor"/></svg></span><span><strong>Car Loan</strong><small>New or used car, easy repayment</small></span></a></div></div>
+            <div><h6>More options</h6><div class="b-mlist"><a class="b-mitem" href="funding-loans.html#loan-types"><span class="b-mic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V10M19 21V10M9 21V10M15 21V10M12 3 3 8h18z"/></svg></span><span><strong>Government Loan</strong><small>MUDRA, CGTMSE and other schemes</small></span></a><a class="b-mitem" href="funding-loans.html#loan-types"><span class="b-mic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2.5 9 2.5 12 0v-5M22 10v6"/></svg></span><span><strong>Education Loan</strong><small>Study in India or abroad</small></span></a><a class="b-mitem" href="home-loans.html#home-loans"><span class="b-mic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 7h1.5M13.5 7H15M9 11h1.5M13.5 11H15M9 15h1.5M13.5 15H15M10 21v-3h4v3"/></svg></span><span><strong>Loan Against Property</strong><small>Unlock funds against your property</small></span></a><a class="b-mitem" href="home-loans.html#home-loans"><span class="b-mic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span><span><strong>Balance Transfer + Top Up</strong><small>Move to a lower rate, get extra funds</small></span></a><a class="b-mitem" href="funding-loans.html"><span class="b-mic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></span><span><strong>All loans</strong><small>Compare every loan we offer</small></span></a></div></div>
+            <div class="b-mpromo"><strong>Not sure which loan?</strong><p>Talk to our team and we will match you with the right loan.</p><a class="b-btn is-white is-sm" href="contact.html">Talk to our team<svg class="is-go" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+          </div></div></li>
+        <li class="has-mega"><button type="button" class="b-navlink" aria-expanded="false" aria-haspopup="true">Save &amp; Invest<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="b-mega"><div class="b-mega-in is-2">
+            <div><h6>Accounts &amp; investments</h6><div class="b-mlist is-2col"><a class="b-mitem" href="bank-account.html"><span class="b-mic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10 12 4l9 6M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 21h18"/></svg></span><span><strong>Bank Account Opening</strong><small>Savings or current account, documents ready</small></span></a><a class="b-mitem" href="mutual-funds.html"><span class="b-mic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span><span><strong>Mutual Funds &amp; SIP</strong><small>Start a SIP from ₹500 a month</small></span></a></div></div>
+            <div class="b-mpromo"><strong>Not sure where to start?</strong><p>Talk to our advisor and we will build a simple plan around your goal.</p><a class="b-btn is-white is-sm" href="mutual-funds.html">Start investing<svg class="is-go" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+          </div></div></li>
+        <li><a class="b-navlink" href="real-estate.html">Real Estate</a></li>
+        <li class="has-mega"><button type="button" class="b-navlink" aria-expanded="false" aria-haspopup="true">Auctions<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+          <div class="b-mega"><div class="b-mega-in is-2">
+            <div><h6>Bank auctions</h6><div class="b-mlist is-2col"><a class="b-mitem" href="auctions.html"><span class="b-mic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 13-7.5 7.5a2.1 2.1 0 0 1-3-3L11 10"/><path d="m16 16 6-6M8 8l6-6M9 7l8 8M21 11l-8-8"/></svg></span><span><strong>Live auctions</strong><small>Bid live on bank auctions</small></span></a><a class="b-mitem" href="auctions.html?tab=upcoming"><span class="b-mic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span><strong>Upcoming auctions</strong><small>Register before the EMD deadline</small></span></a><a class="b-mitem" href="auction-bidder.html"><span class="b-mic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12V8H6a2 2 0 0 1 0-4h12v4"/><path d="M4 6v12a2 2 0 0 0 2 2h14v-4"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/></svg></span><span><strong>My bids</strong><small>Your auctions, EMD and refunds</small></span></a><a class="b-mitem" href="auctions.html#alerts"><span class="b-mic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10.3 20a2 2 0 0 0 3.4 0"/></svg></span><span><strong>Auction alerts</strong><small>Hear when a matching auction is posted</small></span></a><a class="b-mitem" href="auction-bank.html"><span class="b-mic"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10 12 4l9 6M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 21h18"/></svg></span><span><strong>For banks</strong><small>Create, approve and run auctions</small></span></a></div></div>
+            <div class="b-mpromo"><strong>How bank auctions work</strong><p>Four steps, all online. The bank verifies your EMD before you can bid, and losing bidders get their EMD back.</p><a class="b-btn is-white is-sm" href="auctions.html">Browse auctions<svg class="is-go" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+          </div></div></li>
+        <li><a class="b-navlink" href="index.html#about">About</a></li>
+        <li><a class="b-navlink" href="contact.html">Contact</a></li>
+      </ul>
+      <div class="b-bar-r">
+        <a class="b-btn is-line is-sm b-login" href="signup.html?mode=login" data-auth="login"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>Log in</a>
+        <a class="b-btn is-primary is-sm b-reg" href="signup.html">Registration</a>
+        <button type="button" class="b-burger" id="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="rv-menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      </div>
+    </div>
   </header>
-
-  <main>
-    <section class="rv-hero relative pt-30 lg:pt-50">
-      <div class="rv-fade-bottom"></div>
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="max-w-xl lg:max-w-4xl lg:px-4 mx-auto text-center">
-          <div class="reveal">
-            <div class="inline-flex p-1 pr-3 mb-5 h-8 gap-2 items-center rv-glass rounded-full">
-              <div class="flex -space-x-3">
-                <img alt="" class="size-7 ring-white ring rounded-full" src="images/avatar-amit.svg" width="28" height="28">
-                <img alt="" class="size-7 ring-white ring rounded-full" src="images/avatar-priya.svg" width="28" height="28">
-                <img alt="" class="size-7 ring-white ring rounded-full" src="images/avatar-neha.svg" width="28" height="28">
-              </div>
-              <p class="text-gray-700 text-sm">Trusted by everyday people across Maharashtra</p>
+  <div class="b-scrim"></div>
+  <aside class="b-drawer" id="rv-menu" aria-label="Menu" hidden>
+    <div class="b-dtop"><a class="b-logo" href="index.html"><img src="images/logo.svg" alt="RAVEN" width="104" height="27"></a><button type="button" class="b-burger" data-dclose aria-label="Close menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+    <div class="b-dbody">
+      <div class="b-dgroup"><a href="index.html">Home</a></div>
+      <div class="b-dgroup"><button type="button" aria-expanded="false">Loans<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="b-dpanel"><div><a href="home-loans.html"><span class="b-mic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-5h4v5"/></svg></span>Home Loan</a><a href="personal-loans.html"><span class="b-mic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></span>Personal Loan</a><a href="business-loans.html"><span class="b-mic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></svg></span>Business Loan</a><a href="gold-loans.html"><span class="b-mic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6.5" rx="7" ry="3"/><path d="M5 6.5v5c0 1.7 3.1 3 7 3s7-1.3 7-3v-5M5 11.5v5c0 1.7 3.1 3 7 3s7-1.3 7-3v-5"/></svg></span>Gold Loan</a><a href="car-loans.html"><span class="b-mic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17h14v-4.5l-1.8-4.6A2 2 0 0 0 15.3 6.6H8.7a2 2 0 0 0-1.9 1.3L5 12.5z"/><path d="M3 12.5h18M7.5 17v2M16.5 17v2"/><circle cx="8" cy="14.5" r=".9" fill="currentColor"/><circle cx="16" cy="14.5" r=".9" fill="currentColor"/></svg></span>Car Loan</a><a href="funding-loans.html#loan-types"><span class="b-mic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V10M19 21V10M9 21V10M15 21V10M12 3 3 8h18z"/></svg></span>Government Loan</a><a href="funding-loans.html#loan-types"><span class="b-mic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2.5 9 2.5 12 0v-5M22 10v6"/></svg></span>Education Loan</a><a href="home-loans.html#home-loans"><span class="b-mic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 7h1.5M13.5 7H15M9 11h1.5M13.5 11H15M9 15h1.5M13.5 15H15M10 21v-3h4v3"/></svg></span>Loan Against Property</a><a href="home-loans.html#home-loans"><span class="b-mic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span>Balance Transfer + Top Up</a><a href="funding-loans.html"><span class="b-mic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></span>All loans</a></div></div></div>
+      <div class="b-dgroup"><button type="button" aria-expanded="false">Save &amp; Invest<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="b-dpanel"><div><a href="bank-account.html"><span class="b-mic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10 12 4l9 6M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 21h18"/></svg></span>Bank Account Opening</a><a href="mutual-funds.html"><span class="b-mic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span>Mutual Funds &amp; SIP</a></div></div></div>
+      <div class="b-dgroup"><a href="real-estate.html">Real Estate</a></div>
+      <div class="b-dgroup"><button type="button" aria-expanded="false">Bank Auctions<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button><div class="b-dpanel"><div><a href="auctions.html"><span class="b-mic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 13-7.5 7.5a2.1 2.1 0 0 1-3-3L11 10"/><path d="m16 16 6-6M8 8l6-6M9 7l8 8M21 11l-8-8"/></svg></span>Live auctions</a><a href="auctions.html?tab=upcoming"><span class="b-mic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>Upcoming auctions</a><a href="auction-bidder.html"><span class="b-mic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12V8H6a2 2 0 0 1 0-4h12v4"/><path d="M4 6v12a2 2 0 0 0 2 2h14v-4"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/></svg></span>My bids</a><a href="auctions.html#alerts"><span class="b-mic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10.3 20a2 2 0 0 0 3.4 0"/></svg></span>Auction alerts</a><a href="auction-bank.html"><span class="b-mic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10 12 4l9 6M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 21h18"/></svg></span>For banks</a></div></div></div>
+      <div class="b-dgroup"><a href="index.html#about">About us</a></div>
+      <div class="b-dgroup"><a href="contact.html">Contact</a></div>
+      <div class="b-dgroup"><a href="ask.html">Ask a Question</a></div>
+    </div>
+    <div class="b-dfoot">
+      <a class="b-btn is-primary is-block" href="signup.html">Registration</a>
+      <a class="b-btn is-line is-block" href="signup.html?mode=login" data-auth="login">Log in</a>
+      <p>hello@raven.business · Mon – Sat, 10 AM – 7 PM IST</p>
+    </div>
+  </aside>
+  <main id="main">
+    <section class="b-hero">
+      <div class="b-hero-bg" aria-hidden="true">
+        <span class="orb o1" data-parallax="0.12"></span><span class="orb o2" data-parallax="-0.08"></span><span class="grid"></span>
+        <svg class="waves" viewBox="0 0 1440 220" preserveAspectRatio="none"><path d="M0 140 C 240 90 420 190 720 140 S 1200 80 1440 130 V220 H0Z" fill="rgba(186,230,253,.28)"/><path d="M0 170 C 300 120 520 210 820 170 S 1260 120 1440 160 V220 H0Z" fill="rgba(224,242,254,.6)"/><path d="M0 198 C 320 170 640 220 960 196 S 1300 180 1440 192 V220 H0Z" fill="#fff"/></svg>
+      </div>
+      <div class="b-wrap">
+        <div class="b-hero-grid">
+          <div>
+            <span class="b-trust" data-anim="up"><span class="b-avs"><img alt="" src="images/avatar-amit.svg" width="28" height="28"><img alt="" src="images/avatar-priya.svg" width="28" height="28"><img alt="" src="images/avatar-neha.svg" width="28" height="28"></span>Trusted by everyday people across Maharashtra</span>
+            <h1 class="b-h1"><span class="b-words"><span>Build.</span><span class="hl">Fund.</span><span>Brand.</span><span>Grow.</span></span></h1>
+            <p class="b-hero-p" data-anim="up" style="--d:.5s">From startups to established enterprises — we fund and brand businesses across India to reach their full potential.</p>
+            <div class="b-actions" data-anim="up" style="--d:.65s"><a class="b-btn is-primary is-lg" href="funding-loans.html">Explore Services<svg class="is-go" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="b-btn is-line is-lg" href="contact.html">Contact Us</a></div>
+            <div class="b-hstats" data-anim="up" style="--d:.8s">
+              <div><b data-count="50" data-suffix="+">50+</b><span>Businesses Funded</span></div>
+              <div><b data-count="5" data-prefix="&#8377;" data-suffix="Cr+">&#8377;5Cr+</b><span>Capital Facilitated</span></div>
+              <div><b data-count="95" data-suffix="%">95%</b><span>Approval Rate</span></div>
             </div>
           </div>
-          <h1 class="hw text-center text-5xl lg:text-7xl font-semibold mb-5">
-            <span class="hw-all">Build. Fund. <span class="text-indigo-500">Brand.</span> Grow.</span>
-            <span class="hw-words" aria-hidden="true">
-              <span class="hw-w" style="--i:0">Build.</span>
-              <span class="hw-w" style="--i:1">Fund.</span>
-              <span class="hw-w text-indigo-500" style="--i:2">Brand.</span>
-              <span class="hw-w" style="--i:3">Grow.</span>
-            </span>
-          </h1>
-          <p class="text-gray-500 text-base mb-10 lg:px-10 reveal">From startups to established enterprises — we fund and brand businesses across India to reach their full potential.</p>
-          <div class="flex gap-4 pb-10 lg:pb-20 justify-center items-center flex-col sm:flex-row reveal">
-            <a class="py-2.5 px-4 bg-indigo-500 rounded-lg font-medium text-white text-base hover:bg-indigo-600 transition duration-300 ease-in-out inline-block" href="funding-loans.html">Explore Services</a>
-            <a class="py-2.5 px-4 flex gap-2 items-center text-base rounded-xl font-medium hover:bg-white/60 transition duration-300 ease-in-out text-gray-800" href="contact.html">
-              <svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#101828" stroke-width="1.6"/><path d="M10 8.8l5 3.2-5 3.2z" fill="#101828"/></svg>
-              Contact Us
-            </a>
-          </div>
-        </div>
-        <div class="reveal">
-          <div class="mx-auto max-w-275 border border-white p-3 rounded-t-[26px] rv-frame">
-            <div class="rv-dash rounded-t-[14px]">
-              <aside class="rv-dash-side">
-                <div class="rv-dash-brand"><img src="images/logo.svg" alt="RAVEN" width="92" height="24"></div>
-                <p class="rv-dash-label">Menu</p>
-                <span class="rv-dash-item is-on">Overview</span>
-                <span class="rv-dash-item">Loans</span>
-                <span class="rv-dash-item">Insurance</span>
-                <span class="rv-dash-item">Real Estate</span>
-                <span class="rv-dash-item">Auctions</span>
-              </aside>
-              <div class="rv-dash-main">
-                <div class="rv-dash-top"><h3>Overview</h3><span class="rv-dash-pill">Build. Fund. Brand. Grow.</span></div>
-                <div class="rv-dash-stats">
-                  <div><p>Businesses Funded</p><b>50+</b><i>+ growing</i></div>
-                  <div><p>Capital Facilitated</p><b>&#8377;5Cr+</b><i>+ crores</i></div>
-                  <div class="rv-hide-sm"><p>Approval Rate</p><b>95%</b><i>+ high</i></div>
-                  <div class="rv-hide-sm"><p>Loan Products</p><b>8+</b><i>in one place</i></div>
-                </div>
-                <div class="rv-dash-row">
-                  <div class="rv-dash-chart">
-                    <div class="rv-dash-chart-top"><h4>Capital Facilitated</h4><span><u class="on">Monthly</u><u>Annually</u></span></div>
-                    <svg viewBox="0 0 520 170" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="dg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#625FFF" stop-opacity=".28"/><stop offset="1" stop-color="#625FFF" stop-opacity="0"/></linearGradient></defs><path d="M0 140 C60 130 90 90 140 100 S230 60 280 70 S380 30 430 40 S500 20 520 16 V170 H0z" fill="url(#dg)"/><path d="M0 140 C60 130 90 90 140 100 S230 60 280 70 S380 30 430 40 S500 20 520 16" fill="none" stroke="#625FFF" stroke-width="3" stroke-linecap="round"/></svg>
-                  </div>
-                  <div class="rv-dash-donut">
-                    <h4>Approval Rate</h4>
-                    <div class="rv-donut"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="48" fill="none" stroke="#E5E7EB" stroke-width="12"/><circle cx="60" cy="60" r="48" fill="none" stroke="#625FFF" stroke-width="12" stroke-linecap="round" stroke-dasharray="287 302" transform="rotate(-90 60 60)"/></svg><b>95%</b></div>
-                    <p>Loans &amp; schemes</p>
-                  </div>
-                </div>
+          <div class="b-hvis" data-anim="right" style="--d:.3s">
+            <div class="b-float f2"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg></span><span><b>Quick response</b>typically within 24 hours</span></div>
+            <form class="b-calc" id="emi-calc" onsubmit="return false" aria-labelledby="calc-h">
+              <div class="b-calc-h"><span class="b-calc-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="2.5"/><path d="M8 7h8M8 12h.01M12 12h.01M16 12h.01M8 16h.01M12 16h.01M16 16h.01"/></svg></span><div><h2 id="calc-h">Plan your loan</h2><p>See your monthly EMI before you apply</p></div></div>
+              <div class="b-seg" role="group" aria-label="Loan type">
+                <button type="button" data-kind="home" aria-pressed="true">Home</button><button type="button" data-kind="personal" aria-pressed="false">Personal</button><button type="button" data-kind="business" aria-pressed="false">Business</button><button type="button" data-kind="car" aria-pressed="false">Car</button>
               </div>
-            </div>
+              <div class="b-range"><div class="b-range-top"><label for="c-amt">Loan amount</label><output id="o-amt" for="c-amt">₹30 L</output></div><input id="c-amt" type="range" min="500000" max="20000000" step="100000" value="3000000"></div>
+              <div class="b-range"><div class="b-range-top"><label for="c-rate">Interest rate (p.a.)</label><output id="o-rate" for="c-rate">8.5%</output></div><input id="c-rate" type="range" min="6" max="24" step="0.1" value="8.5"></div>
+              <div class="b-range"><div class="b-range-top"><label for="c-yrs">Tenure</label><output id="o-yrs" for="c-yrs">20 years</output></div><input id="c-yrs" type="range" min="1" max="30" step="1" value="20"></div>
+              <div class="b-calc-out">
+                <div class="b-donut"><svg viewBox="0 0 112 112" aria-hidden="true"><circle class="bg" cx="56" cy="56" r="49"/><circle class="fg" cx="56" cy="56" r="49" stroke-dasharray="0 308"/></svg><span><b id="o-share">–</b>principal</span></div>
+                <div class="b-emi" aria-live="polite"><small>Monthly EMI</small><strong id="o-emi">–</strong>
+                  <ul><li><i style="background:var(--brand)"></i>Principal<b id="o-p">–</b></li><li><i style="background:var(--sky-200)"></i>Total interest<b id="o-i">–</b></li></ul></div>
+              </div>
+              <a class="b-btn is-primary is-block" id="c-go" href="home-loans.html#home-loan-search"><span>Check Home Loan eligibility</span><svg class="is-go" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              <p class="b-calc-note">Indicative only. Rates and approval are decided by each lender.</p>
+            </form>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="py-10 lg:py-20">
-      <div class="max-w-7xl mx-auto px-6 reveal">
-        <div class="max-w-2xl mx-auto text-center">
-          <p class="mb-10 text-base text-gray-700">Loans, insurance, real estate and bank auctions — all in one place</p>
-          <div class="w-full inline-flex flex-nowrap overflow-hidden mask-[linear-gradient(to_right,transparent_0,black_128px,black_calc(100%-200px),transparent_100%)]">
-            <ul class="flex items-center justify-center md:justify-start animate-infinite-scroll"><li><span class="rv-chip">Home Loan</span></li><li><span class="rv-chip">Gold Loan</span></li><li><span class="rv-chip">Personal Loan</span></li><li><span class="rv-chip">Business Loan</span></li><li><span class="rv-chip">Vehicle Loan</span></li><li><span class="rv-chip">Government Loan</span></li><li><span class="rv-chip">Education Loan</span></li><li><span class="rv-chip">Insurance</span></li><li><span class="rv-chip">Real Estate</span></li><li><span class="rv-chip">Bank Auctions</span></li></ul>
-            <ul class="flex items-center justify-center md:justify-start animate-infinite-scroll" aria-hidden="true"><li><span class="rv-chip">Home Loan</span></li><li><span class="rv-chip">Gold Loan</span></li><li><span class="rv-chip">Personal Loan</span></li><li><span class="rv-chip">Business Loan</span></li><li><span class="rv-chip">Vehicle Loan</span></li><li><span class="rv-chip">Government Loan</span></li><li><span class="rv-chip">Education Loan</span></li><li><span class="rv-chip">Insurance</span></li><li><span class="rv-chip">Real Estate</span></li><li><span class="rv-chip">Bank Auctions</span></li></ul>
+    <section class="b-quick">
+      <div class="b-wrap">
+        <div class="b-quick-card" data-anim="up">
+          <div class="b-quick-h"><h2>What are you looking for?</h2><a class="b-link" href="funding-loans.html">See all loans<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+          <nav class="b-tiles" aria-label="Products" data-stagger=".04"><a class="b-tile" href="home-loans.html"><span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-5h4v5"/></svg></span>Home Loan</a><a class="b-tile" href="personal-loans.html"><span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></span>Personal Loan</a><a class="b-tile" href="business-loans.html"><span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></svg></span>Business Loan</a><a class="b-tile" href="gold-loans.html"><span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6.5" rx="7" ry="3"/><path d="M5 6.5v5c0 1.7 3.1 3 7 3s7-1.3 7-3v-5M5 11.5v5c0 1.7 3.1 3 7 3s7-1.3 7-3v-5"/></svg></span>Gold Loan</a><a class="b-tile" href="car-loans.html"><span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17h14v-4.5l-1.8-4.6A2 2 0 0 0 15.3 6.6H8.7a2 2 0 0 0-1.9 1.3L5 12.5z"/><path d="M3 12.5h18M7.5 17v2M16.5 17v2"/><circle cx="8" cy="14.5" r=".9" fill="currentColor"/><circle cx="16" cy="14.5" r=".9" fill="currentColor"/></svg></span>Car Loan</a><a class="b-tile" href="bank-account.html"><span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10 12 4l9 6M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 21h18"/></svg></span>Bank Account</a><a class="b-tile" href="mutual-funds.html"><span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span>Mutual Funds &amp; SIP</a><a class="b-tile" href="real-estate.html"><span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 7h1.5M13.5 7H15M9 11h1.5M13.5 11H15M9 15h1.5M13.5 15H15M10 21v-3h4v3"/></svg></span>Real Estate</a><a class="b-tile" href="auctions.html"><span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14 13-7.5 7.5a2.1 2.1 0 0 1-3-3L11 10"/><path d="m16 16 6-6M8 8l6-6M9 7l8 8M21 11l-8-8"/></svg></span>Bank Auctions</a></nav>
+        </div>
+      </div>
+    </section>
+
+    <section class="b-sec is-tight" aria-label="Everything we do">
+      <p class="b-ticker-cap" data-anim="fade">Loans, insurance, real estate and bank auctions — all in one place</p>
+      <div class="b-ticker"><div class="b-ticker-row"><span>Home Loan</span><span>Gold Loan</span><span>Personal Loan</span><span>Business Loan</span><span>Vehicle Loan</span><span>Government Loan</span><span>Education Loan</span><span>Insurance</span><span>Real Estate</span><span>Bank Auctions</span><span>Home Loan</span><span>Gold Loan</span><span>Personal Loan</span><span>Business Loan</span><span>Vehicle Loan</span><span>Government Loan</span><span>Education Loan</span><span>Insurance</span><span>Real Estate</span><span>Bank Auctions</span></div></div>
+    </section>
+
+    <section class="b-sec" id="about">
+      <div class="b-wrap">
+        <div class="b-split">
+          <div data-anim="left">
+            <span class="b-eyebrow">About RAVEN</span>
+            <h2 class="b-h2">A Team of <em>Funders &amp; Builders</em></h2>
+            <div class="b-prose" style="margin-top:18px"><p>We combine financial expertise with business strategy to help Indian enterprises grow and thrive.</p><p>From early-stage startups to established businesses, we help our clients transform their vision into funded and branded realities.</p></div>
+            <div class="b-about-stats">
+              <div><b data-count="50" data-suffix="+">50+</b><span>Businesses Funded</span></div>
+              <div><b data-count="5" data-prefix="&#8377;" data-suffix="Cr+">&#8377;5Cr+</b><span>Capital Facilitated</span></div>
+            </div>
+            <div class="b-pills"><span class="b-pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>Funders</span><span class="b-pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 7h1.5M13.5 7H15M9 11h1.5M13.5 11H15M9 15h1.5M13.5 15H15M10 21v-3h4v3"/></svg>Builders</span></div>
+          </div>
+          <div class="b-about-vis" data-anim="right">
+            <div class="b-quick-h" style="margin:0 0 18px"><h3 style="font-size:1rem">RAVEN team at work</h3><span class="b-calc-badge"><i></i>Live</span></div>
+            <div class="b-journey"><div class="b-jstep"><span class="dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg></span><span><strong>Your vision</strong><small>Where every business starts</small></span><span class="tag">Vision</span></div><div class="b-jstep"><span class="dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg></span><span><strong>Funded</strong><small>The right loan at the right time</small></span><span class="tag">Funded</span></div><div class="b-jstep"><span class="dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg></span><span><strong>Insured</strong><small>Business, assets and people protected</small></span><span class="tag">Insured</span></div><div class="b-jstep"><span class="dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg></span><span><strong>Branded</strong><small>A brand that helps you grow</small></span><span class="tag">Branded</span></div><div class="b-jstep"><span class="dot"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg></span><span><strong>Reality</strong><small>Your vision, funded and branded</small></span><span class="tag">Live</span></div></div>
           </div>
         </div>
       </div>
     </section>
-    <section id="about" class="ab-section">
-      <div class="max-w-7xl mx-auto px-4 lg:px-6">
-        <div class="ab-wrap">
-          <div class="ab-left reveal">
-            <span class="rv-eyebrow">About RAVEN</span>
-            <h2 class="mb-6 text-4xl lg:text-5xl font-medium -tracking-[1.9px] text-gray-900">A Team of Funders &amp; Builders</h2>
-            <p class="text-lg text-gray-900 mb-4">We combine financial expertise with business strategy to help Indian enterprises grow and thrive.</p>
-            <p class="text-base text-gray-500"><span class="text-gray-900 font-medium">From early-stage</span> startups to established businesses, we help our clients transform their vision into funded and branded realities.</p>
-            <div class="ab-stats">
-              <div class="ab-stat"><span class="rv-stat-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#625FFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2"/></svg></span><h3><b data-count="50" data-suffix="+">0</b></h3><p class="rv-stat-label">Businesses Funded</p></div>
-              <div class="ab-stat"><span class="rv-stat-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#625FFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="7" rx="7" ry="3"/><path d="M5 7v5c0 1.7 3.1 3 7 3s7-1.3 7-3V7M5 12v5c0 1.7 3.1 3 7 3s7-1.3 7-3v-5"/></svg></span><h3><b data-count="5" data-prefix="&#8377;" data-suffix="Cr+">0</b></h3><p class="rv-stat-label">Capital Facilitated</p></div>
-            </div>
-          </div>
-          <div class="ab-right reveal">
-            <div class="ab-stage">
-              <span class="ab-ring ab-ring-a"></span><span class="ab-ring ab-ring-b"></span><span class="ab-ring ab-ring-c"></span>
-              <div class="ab-card">
-                <div class="ab-card-top">
-                  <div class="ab-team"><svg class="ab-ava" width="34" height="34" viewBox="0 0 56 56" aria-hidden="true"><defs><linearGradient id="ab0" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#625FFF"/><stop offset="1" stop-color="#8B8AFF"/></linearGradient></defs><circle cx="28" cy="28" r="28" fill="url(#ab0)"/><circle cx="28" cy="22" r="9" fill="#fff" fill-opacity=".92"/><path d="M10 50c1-10 9-16 18-16s17 6 18 16a28 28 0 0 1-36 0z" fill="#fff" fill-opacity=".92"/></svg><svg class="ab-ava" width="34" height="34" viewBox="0 0 56 56" aria-hidden="true"><defs><linearGradient id="ab1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F59E0B"/><stop offset="1" stop-color="#FBBF24"/></linearGradient></defs><circle cx="28" cy="28" r="28" fill="url(#ab1)"/><circle cx="28" cy="22" r="9" fill="#fff" fill-opacity=".92"/><path d="M10 50c1-10 9-16 18-16s17 6 18 16a28 28 0 0 1-36 0z" fill="#fff" fill-opacity=".92"/></svg><svg class="ab-ava" width="34" height="34" viewBox="0 0 56 56" aria-hidden="true"><defs><linearGradient id="ab2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#10B981"/><stop offset="1" stop-color="#34D399"/></linearGradient></defs><circle cx="28" cy="28" r="28" fill="url(#ab2)"/><circle cx="28" cy="22" r="9" fill="#fff" fill-opacity=".92"/><path d="M10 50c1-10 9-16 18-16s17 6 18 16a28 28 0 0 1-36 0z" fill="#fff" fill-opacity=".92"/></svg></div>
-                  <div><b>Your vision</b><small>RAVEN team at work</small></div>
-                  <span class="ab-live"><i></i>Live</span>
-                </div>
-                <ul class="ab-steps"><li class="ab-step ab-s0"><span class="ab-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#625FFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="7" rx="7" ry="3"/><path d="M5 7v5c0 1.7 3.1 3 7 3s7-1.3 7-3V7M5 12v5c0 1.7 3.1 3 7 3s7-1.3 7-3v-5"/></svg></span><div class="ab-step-main"><b>Funded</b><em><i></i></em></div><span class="ab-tick"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5l2.5 2.5 4.5-5.5"/></svg></span></li><li class="ab-step ab-s1"><span class="ab-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#625FFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg></span><div class="ab-step-main"><b>Insured</b><em><i></i></em></div><span class="ab-tick"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5l2.5 2.5 4.5-5.5"/></svg></span></li><li class="ab-step ab-s2"><span class="ab-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#625FFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg></span><div class="ab-step-main"><b>Branded</b><em><i></i></em></div><span class="ab-tick"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5l2.5 2.5 4.5-5.5"/></svg></span></li></ul>
-                <div class="ab-foot"><span>Vision</span><svg width="28" height="10" viewBox="0 0 28 10" fill="none" stroke="#625FFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 5h25M21 1l5 4-5 4"/></svg><span class="ab-real">Reality</span></div>
-              </div>
-              <span class="ab-chip ab-chip-a"><i><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#625FFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="7" rx="7" ry="3"/><path d="M5 7v5c0 1.7 3.1 3 7 3s7-1.3 7-3V7M5 12v5c0 1.7 3.1 3 7 3s7-1.3 7-3v-5"/></svg></i>Funders</span>
-              <span class="ab-chip ab-chip-b"><i><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#625FFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="12" width="8" height="8" rx="1.5"/><rect x="13" y="12" width="8" height="8" rx="1.5"/><rect x="8" y="3" width="8" height="8" rx="1.5"/></svg></i>Builders</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="sv-section relative bg-gray-50">
-      <span class="sv-orb sv-orb-a"></span><span class="sv-orb sv-orb-b"></span><span class="sv-orb sv-orb-c"></span>
-      <div class="max-w-7xl mx-auto px-4 lg:px-6 relative z-10">
-        <div class="max-w-2xl mx-auto text-center mb-16 reveal">
-          <span class="rv-eyebrow">What we do</span>
-          <h2 class="text-4xl lg:text-6xl -tracking-[1.9px] mb-4 font-medium text-gray-900">Our Services</h2>
-          <p class="text-base text-gray-500">Insurance, loans and real estate — guidance and funding built around your business.</p>
-        </div>
-        <div class="sv-grid">
-          <a class="sv-card sv-c1 reveal" style="--d:0ms" href="contact.html">
-            <span class="sv-num">01</span>
-            <div class="sv-visual">
-              <span class="sv-glow"></span>
-              <span class="sv-lottie" data-lottie="animations/svc-insurance.json" role="img" aria-label="Insurance animation"></span>
-            </div>
-            <div class="sv-body">
-              <h3 class="sv-title">Insurance</h3>
-              <p class="sv-desc">Protect your business, assets and people with coverage built around the risks you actually face.</p>
-              <ul class="sv-tags"><li>Business</li><li>Assets</li><li>People</li></ul>
-              <span class="sv-link">Learn more <span class="sv-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
-            </div>
-          </a>
-          <a class="sv-card sv-c2 reveal" style="--d:120ms" href="funding-loans.html#loan-types">
-            <span class="sv-num">02</span>
-            <div class="sv-visual">
-              <span class="sv-glow"></span>
-              <span class="sv-lottie" data-lottie="animations/svc-loans.json" role="img" aria-label="Loans animation"></span>
-            </div>
-            <div class="sv-body">
-              <h3 class="sv-title">Loans</h3>
-              <p class="sv-desc">Business, startup and property loans with tailored terms to fuel your growth at every stage.</p>
-              <ul class="sv-tags"><li>Business</li><li>Startup</li><li>Property</li></ul>
-              <span class="sv-link">Learn more <span class="sv-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
-            </div>
-          </a>
-          <a class="sv-card sv-c3 reveal" style="--d:240ms" href="real-estate.html">
-            <span class="sv-num">03</span>
-            <div class="sv-visual">
-              <span class="sv-glow"></span>
-              <span class="sv-lottie" data-lottie="animations/svc-estate.json" role="img" aria-label="Real Estate animation"></span>
-            </div>
-            <div class="sv-body">
-              <h3 class="sv-title">Real Estate</h3>
-              <p class="sv-desc">Expert guidance on commercial and residential property investment and acquisition strategies.</p>
-              <ul class="sv-tags"><li>Commercial</li><li>Residential</li></ul>
-              <span class="sv-link">Learn more <span class="sv-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
-    <section class="wy-section relative">
-      <span class="wy-blob wy-blob-a"></span><span class="wy-blob wy-blob-b"></span>
-      <div class="max-w-7xl mx-auto px-4 lg:px-6 relative z-10">
-        <div class="max-w-3xl mx-auto text-center mb-12 reveal">
-          <span class="rv-eyebrow">Why RAVEN</span>
-          <h2 class="text-4xl lg:text-6xl -tracking-[1.9px] mb-4 font-medium text-gray-900">Why Partner With Us</h2>
-          <p class="text-base text-gray-500">Everything your business needs to get funded, insured and growing — with one team beside you.</p>
-          <div class="wy-pills">
-            <span class="wy-pill"><b data-count="50" data-suffix="+">0</b><small>Businesses Funded</small></span>
-            <span class="wy-pill"><b data-count="5" data-prefix="&#8377;" data-suffix="Cr+">0</b><small>Capital Facilitated</small></span>
-            <span class="wy-pill"><b data-count="95" data-suffix="%">0</b><small>Approval Rate</small></span>
-          </div>
-        </div>
-        <div class="wy-grid">
-          <article class="wy-card wy-c1 reveal" style="--d:0ms">
-            <div class="wy-vis wy-vis-fund">
-              <div class="wy-calc">
-                <div class="wy-calc-top"><span>Loan amount</span><span class="wy-badge">Approved</span></div>
-                <div class="wy-amount">&#8377;<b data-count="500000" data-format="in">0</b></div>
-                <div class="wy-slider"><i></i><u></u></div>
-                <svg class="wy-chart" viewBox="0 0 320 84" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="wyg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#625FFF" stop-opacity=".25"/><stop offset="1" stop-color="#625FFF" stop-opacity="0"/></linearGradient></defs><path class="wy-area" d="M0 70 C40 66 60 44 100 50 S170 24 210 30 S280 10 320 6 V84 H0z" fill="url(#wyg)"/><path class="wy-line" pathLength="1" d="M0 70 C40 66 60 44 100 50 S170 24 210 30 S280 10 320 6" fill="none" stroke="#625FFF" stroke-width="3.5" stroke-linecap="round"/></svg>
-              </div>
-              <span class="wy-float wy-float-a">&#8377;5Cr+ facilitated</span>
-            </div>
-            <div class="wy-text"><span class="wy-num">01</span><h3>Tailored Funding</h3><p>Customised financial solutions crafted to meet your unique business goals and growth stage.</p></div>
+
+    <section class="b-sec is-soft">
+      <div class="b-wrap">
+        <div class="b-head" data-anim="up"><span class="b-eyebrow">What we do</span><h2 class="b-h2">Our Services</h2><p class="b-lead">Insurance, loans and real estate — guidance and funding built around your business.</p></div>
+        <div class="b-grid b-g3" data-stagger=".12">
+          <article class="b-svc">
+            <div class="b-svc-art"><span class="b-svc-num">01</span><div class="lt is-big" data-lottie="animations/svc-insurance.json" aria-hidden="true"></div></div>
+            <div class="b-svc-body"><h3>Insurance</h3><p>Protect your business, assets and people with coverage built around the risks you actually face.</p><div class="b-tags"><span class="b-tag">Business</span><span class="b-tag">Assets</span><span class="b-tag">People</span></div><a class="b-link" href="contact.html">Learn more<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
           </article>
-          <article class="wy-card wy-c2 reveal" style="--d:120ms">
-            <div class="wy-vis wy-vis-chat">
-              <div class="wy-chat"><div class="wy-chat-head"><span class="wy-chat-ava">R</span><div><b>RAVEN Support</b><small><i class="wy-dot"></i> Online</small></div></div>
-                <div class="wy-msgs">
-                  <p class="wy-msg wy-me wy-m1">I need a loan for my business</p>
-                  <p class="wy-msg wy-them wy-m2">Of course! Let&rsquo;s find the right option for you.</p>
-                  <div class="wy-slot"><p class="wy-typing wy-m3"><i></i><i></i><i></i></p><p class="wy-msg wy-them wy-m4">Your documents are ready. We&rsquo;ll guide you every step.</p></div>
-                </div>
-              </div>
-            </div>
-            <div class="wy-text"><span class="wy-num">02</span><h3>Dedicated Support</h3><p>Reliable guidance and ongoing assistance to keep your business running and scaling smoothly.</p></div>
+          <article class="b-svc">
+            <div class="b-svc-art"><span class="b-svc-num">02</span><div class="lt is-wide" data-lottie="animations/svc-loans.json" aria-hidden="true"></div></div>
+            <div class="b-svc-body"><h3>Loans</h3><p>Business, startup and property loans with tailored terms to fuel your growth at every stage.</p><div class="b-tags"><span class="b-tag">Business</span><span class="b-tag">Startup</span><span class="b-tag">Property</span></div><a class="b-link" href="funding-loans.html#loan-types">Learn more<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
           </article>
-          <article class="wy-card wy-c3 reveal" style="--d:0ms">
-            <div class="wy-vis wy-vis-net">
-              <svg viewBox="0 0 400 220" class="wy-netsvg" aria-hidden="true">
-                <line x1="200" y1="110" x2="70" y2="60" class="wy-wire"/><line x1="200" y1="110" x2="330" y2="52" class="wy-wire"/><line x1="200" y1="110" x2="52" y2="150" class="wy-wire"/><line x1="200" y1="110" x2="350" y2="150" class="wy-wire"/><line x1="200" y1="110" x2="200" y2="28" class="wy-wire"/><line x1="200" y1="110" x2="205" y2="196" class="wy-wire"/>
-                <circle cx="200" cy="110" r="30" fill="none" stroke="#625FFF" stroke-width="2"><animate attributeName="r" values="32;78" dur="3s" repeatCount="indefinite"/><animate attributeName="opacity" values=".5;0" dur="3s" repeatCount="indefinite"/></circle>
-                <circle cx="200" cy="110" r="30" fill="none" stroke="#625FFF" stroke-width="2"><animate attributeName="r" values="32;78" dur="3s" begin="1.5s" repeatCount="indefinite"/><animate attributeName="opacity" values=".5;0" dur="3s" begin="1.5s" repeatCount="indefinite"/></circle>
-                <circle r="3.5" fill="#625FFF"><animateMotion dur="2.4s" begin="0.0s" repeatCount="indefinite" path="M200,110 L70,60"/></circle><circle r="3.5" fill="#625FFF"><animateMotion dur="2.75s" begin="0.4s" repeatCount="indefinite" path="M200,110 L330,52"/></circle><circle r="3.5" fill="#625FFF"><animateMotion dur="3.0999999999999996s" begin="0.8s" repeatCount="indefinite" path="M200,110 L52,150"/></circle><circle r="3.5" fill="#625FFF"><animateMotion dur="3.4499999999999997s" begin="1.2000000000000002s" repeatCount="indefinite" path="M200,110 L350,150"/></circle><circle r="3.5" fill="#625FFF"><animateMotion dur="3.8s" begin="1.6s" repeatCount="indefinite" path="M200,110 L200,28"/></circle><circle r="3.5" fill="#625FFF"><animateMotion dur="4.15s" begin="2.0s" repeatCount="indefinite" path="M200,110 L205,196"/></circle>
-                <g class="wy-node" style="animation-delay:0s"><circle cx="70" cy="60" r="20" fill="#E0E7FF" stroke="#fff" stroke-width="3"/><path d="M62 62l8-8 8 8M64 62v7h12v-7" fill="none" stroke="#625FFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(0 -1)"/></g><text x="70" y="96" text-anchor="middle" class="wy-nlabel">Lenders</text><g class="wy-node" style="animation-delay:0.4s"><circle cx="330" cy="52" r="20" fill="#DCFCE7" stroke="#fff" stroke-width="3"/><path d="M322 60l6-6 4 4 8-8M334 50h6v6" fill="none" stroke="#16A34A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g><text x="330" y="88" text-anchor="middle" class="wy-nlabel">Investors</text><g class="wy-node" style="animation-delay:0.8s"><circle cx="52" cy="150" r="16" fill="#FDE7C8" stroke="#fff" stroke-width="3"/><circle cx="52" cy="150" r="5" fill="#F59E0B"/></g><g class="wy-node" style="animation-delay:1.2s"><circle cx="350" cy="150" r="20" fill="#FCE7F3" stroke="#fff" stroke-width="3"/><circle cx="345" cy="148" r="5" fill="none" stroke="#DB2777" stroke-width="2"/><circle cx="356" cy="148" r="5" fill="none" stroke="#DB2777" stroke-width="2"/></g><text x="350" y="186" text-anchor="middle" class="wy-nlabel">Partners</text><g class="wy-node" style="animation-delay:1.6s"><circle cx="200" cy="28" r="14" fill="#E4EFFD" stroke="#fff" stroke-width="3"/><circle cx="200" cy="28" r="4" fill="#625FFF"/></g><g class="wy-node" style="animation-delay:2.0s"><circle cx="205" cy="196" r="14" fill="#EDE9FE" stroke="#fff" stroke-width="3"/><circle cx="205" cy="196" r="4" fill="#7C3AED"/></g>
-                <circle cx="200" cy="110" r="30" fill="#625FFF" stroke="#fff" stroke-width="4"/>
-                <text x="200" y="115" text-anchor="middle" class="wy-hub">RAVEN</text>
-              </svg>
-            </div>
-            <div class="wy-text"><span class="wy-num">03</span><h3>Proven Network</h3><p>Access to lenders, investors, and partners who drive efficiency and competitive advantage.</p></div>
-          </article>
-          <article class="wy-card wy-c4 reveal" style="--d:120ms">
-            <div class="wy-vis wy-vis-team">
-              <div class="wy-team">
-                <div class="wy-avas">
-                  <span class="wy-ava-wrap" style="--i:0"><svg class="wy-ava" width="56" height="56" viewBox="0 0 56 56" aria-hidden="true"><defs><linearGradient id="av625FFF" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#625FFF"/><stop offset="1" stop-color="#8B8AFF"/></linearGradient></defs><circle cx="28" cy="28" r="28" fill="url(#av625FFF)"/><circle cx="28" cy="22" r="9" fill="#fff" fill-opacity=".92"/><path d="M10 50c1-10 9-16 18-16s17 6 18 16a28 28 0 0 1-36 0z" fill="#fff" fill-opacity=".92"/></svg><i class="wy-check"><svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.5l2.5 2.5 4.5-5.5"/></svg></i></span>
-                  <span class="wy-ava-wrap" style="--i:1"><svg class="wy-ava" width="56" height="56" viewBox="0 0 56 56" aria-hidden="true"><defs><linearGradient id="avF59E0B" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F59E0B"/><stop offset="1" stop-color="#FBBF24"/></linearGradient></defs><circle cx="28" cy="28" r="28" fill="url(#avF59E0B)"/><circle cx="28" cy="22" r="9" fill="#fff" fill-opacity=".92"/><path d="M10 50c1-10 9-16 18-16s17 6 18 16a28 28 0 0 1-36 0z" fill="#fff" fill-opacity=".92"/></svg></span>
-                  <span class="wy-ava-wrap" style="--i:2"><svg class="wy-ava" width="56" height="56" viewBox="0 0 56 56" aria-hidden="true"><defs><linearGradient id="av10B981" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#10B981"/><stop offset="1" stop-color="#34D399"/></linearGradient></defs><circle cx="28" cy="28" r="28" fill="url(#av10B981)"/><circle cx="28" cy="22" r="9" fill="#fff" fill-opacity=".92"/><path d="M10 50c1-10 9-16 18-16s17 6 18 16a28 28 0 0 1-36 0z" fill="#fff" fill-opacity=".92"/></svg></span>
-                  <span class="wy-ava-wrap" style="--i:3"><svg class="wy-ava" width="56" height="56" viewBox="0 0 56 56" aria-hidden="true"><defs><linearGradient id="avEC4899" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#EC4899"/><stop offset="1" stop-color="#F472B6"/></linearGradient></defs><circle cx="28" cy="28" r="28" fill="url(#avEC4899)"/><circle cx="28" cy="22" r="9" fill="#fff" fill-opacity=".92"/><path d="M10 50c1-10 9-16 18-16s17 6 18 16a28 28 0 0 1-36 0z" fill="#fff" fill-opacity=".92"/></svg></span>
-                  <span class="wy-ava-more" style="--i:4">+</span>
-                </div>
-                <div class="wy-bars">
-                  <div class="wy-bar" style="--p:92"><span>Finance</span><em><i></i></em><b data-count="92" data-suffix="%">0</b></div>
-                  <div class="wy-bar" style="--p:88"><span>Business</span><em><i></i></em><b data-count="88" data-suffix="%">0</b></div>
-                  <div class="wy-bar" style="--p:96"><span>Strategy</span><em><i></i></em><b data-count="96" data-suffix="%">0</b></div>
-                </div>
-              </div>
-            </div>
-            <div class="wy-text"><span class="wy-num">04</span><h3>Expert Team</h3><p>Seasoned finance and business professionals committed to delivering excellence in every engagement.</p></div>
+          <article class="b-svc">
+            <div class="b-svc-art"><span class="b-svc-num">03</span><div class="lt" data-lottie="animations/svc-estate.json" aria-hidden="true"></div></div>
+            <div class="b-svc-body"><h3>Real Estate</h3><p>Expert guidance on commercial and residential property investment and acquisition strategies.</p><div class="b-tags"><span class="b-tag">Commercial</span><span class="b-tag">Residential</span></div><a class="b-link" href="real-estate.html">Learn more<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
           </article>
         </div>
       </div>
     </section>
-    <section class="pt-10 lg:pt-28 pb-10 lg:pb-20 relative rv-mesh">
-      <div class="rv-fade-bottom"></div>
-      <div class="max-w-7xl mx-auto px-6 relative z-30">
-        <div class="max-w-2xl mx-auto text-center mb-16 reveal lg:mb-16">
-        <h2 class="text-3xl lg:text-5xl -tracking-[1.9px] mb-4 font-medium text-gray-900">Choose Your Loan</h2>
-        <p class="text-base text-gray-500">Pick the loan that fits your goal and our team will take care of the rest.</p>
-      </div>
-        <div class="max-w-full lg:max-w-258 mx-auto text-center space-y-4 lg:space-y-6">
-          <div class="flex flex-wrap justify-center gap-3 lg:gap-8 reveal"><a href="home-loans.html" class="rv-tile "><span class="rv-tile-box rv-tile-lottie"><span class="rv-lottie" data-lottie="animations/home.json" role="img" aria-label="Home Loan animation"><span class="rv-fallback"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#625FFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/></svg></span></span></span><span class="rv-tile-label">Home Loan</span></a><a href="gold-loans.html" class="rv-tile "><span class="rv-tile-box rv-tile-lottie"><span class="rv-lottie" data-lottie="animations/gold.json" role="img" aria-label="Gold Loan animation"><span class="rv-fallback"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#625FFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="7" rx="7" ry="3"/><path d="M5 7v5c0 1.7 3.1 3 7 3s7-1.3 7-3V7M5 12v5c0 1.7 3.1 3 7 3s7-1.3 7-3v-5"/></svg></span></span></span><span class="rv-tile-label">Gold Loan</span></a><a href="personal-loans.html" class="rv-tile "><span class="rv-tile-box rv-tile-lottie"><span class="rv-lottie" data-lottie="animations/personal.json" role="img" aria-label="Personal Loan animation"><span class="rv-fallback"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#625FFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></span></span></span><span class="rv-tile-label">Personal Loan</span></a><a href="business-loans.html" class="rv-tile "><span class="rv-tile-box rv-tile-lottie"><span class="rv-lottie" data-lottie="animations/business.json" role="img" aria-label="Business Loan animation"><span class="rv-fallback"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#625FFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M3 13h18"/></svg></span></span></span><span class="rv-tile-label">Business Loan</span></a></div>
-          <div class="flex flex-wrap justify-center gap-3 lg:gap-8 reveal"><a href="car-loans.html" class="rv-tile "><span class="rv-tile-box rv-tile-lottie"><span class="rv-lottie" data-lottie="animations/vehicle.json" role="img" aria-label="Vehicle Loan animation"><span class="rv-fallback"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#625FFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 16l1.5-5a2 2 0 011.9-1.4h7.2a2 2 0 011.9 1.4L19 16M3 16h18v3H3z"/><circle cx="7.5" cy="19" r="1.5"/><circle cx="16.5" cy="19" r="1.5"/></svg></span></span></span><span class="rv-tile-label">Vehicle Loan</span></a><a href="funding-loans.html#loan-types" class="rv-tile "><span class="rv-tile-box rv-tile-lottie"><span class="rv-lottie" data-lottie="animations/government.json" role="img" aria-label="Government Loan animation"><span class="rv-fallback"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#625FFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10l9-6 9 6M5 10v8M9 10v8M15 10v8M19 10v8M3 21h18"/></svg></span></span></span><span class="rv-tile-label">Government Loan</span></a><a href="funding-loans.html#loan-types" class="rv-tile "><span class="rv-tile-box rv-tile-lottie"><span class="rv-lottie" data-lottie="animations/education.json" role="img" aria-label="Education Loan animation"><span class="rv-fallback"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#625FFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/></svg></span></span></span><span class="rv-tile-label">Education Loan</span></a></div>
-          <a class="py-2.5 mt-10 px-4 bg-indigo-500 rounded-lg font-medium text-white text-base hover:bg-indigo-600 transition duration-300 inline-block" href="funding-loans.html">See All Loans</a>
-        </div>
-      </div>
-    </section>
-    <section class="py-10 lg:py-20">
-      <div class="max-w-7xl mx-auto">
-        <div class="max-w-2xl mx-auto text-center mb-16 px-6">
-          <h2 class="text-4xl lg:text-5xl -tracking-[1.9px] mb-4 font-medium text-gray-900 reveal">What our clients say</h2>
-          <p class="text-base text-gray-500 reveal">Trusted by everyday people across Maharashtra.</p>
-        </div>
-        <div class="bg-gray-50 rounded-2xl p-5 grid grid-cols-12 gap-5 mx-4 lg:mx-6">
-          <div class="col-span-12 lg:col-span-6 reveal">
-            <div class="bg-white p-6 rounded-xl h-full">
-              <div class="flex flex-col sm:flex-row gap-6">
-                <div class="flex-1"><img alt="Amit Patil" class="w-full h-72 rounded-lg object-cover rv-photo" src="https://i.pravatar.cc/400?img=12" data-fallback="images/avatar-amit.svg" width="400" height="288" loading="lazy"></div>
-                <div class="sm:w-5/12 flex flex-col justify-between">
-                  <div><div class="flex gap-1 mb-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="#FACC15" aria-hidden="true"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5 7.5-.7z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#FACC15" aria-hidden="true"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5 7.5-.7z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#FACC15" aria-hidden="true"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5 7.5-.7z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#FACC15" aria-hidden="true"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5 7.5-.7z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#FACC15" aria-hidden="true"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5 7.5-.7z"/></svg></div><p class="text-gray-700 text-base">&ldquo;I never thought getting a business loan would be this easy. RAVEN sorted everything out and I had the money in my account within a week.&rdquo;</p></div>
-                  <div class="mt-6"><h4 class="text-gray-900 text-base font-medium">Amit Patil</h4><span class="text-sm text-gray-500">Kirana shop owner, Nashik</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-span-12 lg:col-span-6 reveal">
-            <div class="bg-white p-6 rounded-xl flex flex-col justify-between h-full">
-              <div><div class="flex gap-1 mb-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="#FACC15" aria-hidden="true"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5 7.5-.7z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#FACC15" aria-hidden="true"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5 7.5-.7z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#FACC15" aria-hidden="true"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5 7.5-.7z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#FACC15" aria-hidden="true"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5 7.5-.7z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#FACC15" aria-hidden="true"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5 7.5-.7z"/></svg></div><p class="text-gray-700 text-base">&ldquo;I started selling homemade food from my kitchen and wanted to register it properly. RAVEN took care of everything in just a few days.&rdquo;</p></div>
-              <div class="mt-6 flex gap-3 items-center"><img alt="Priya Kulkarni" class="size-11 rounded-lg rv-photo" src="https://i.pravatar.cc/120?img=47" data-fallback="images/avatar-priya.svg" width="44" height="44" loading="lazy"><div><h4 class="text-gray-900 text-base font-medium">Priya Kulkarni</h4><span class="text-sm text-gray-500">Home food business, Pune</span></div></div>
-            </div>
-          </div>
-          <div class="col-span-12 reveal">
-            <div class="bg-white p-6 rounded-xl flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-              <div class="lg:w-8/12"><div class="flex gap-1 mb-3"><svg width="16" height="16" viewBox="0 0 24 24" fill="#FACC15" aria-hidden="true"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5 7.5-.7z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#FACC15" aria-hidden="true"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5 7.5-.7z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#FACC15" aria-hidden="true"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5 7.5-.7z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#FACC15" aria-hidden="true"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5 7.5-.7z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="#FACC15" aria-hidden="true"><path d="M12 2l3 6.9 7.5.7-5.7 5 1.7 7.4L12 18l-6.5 4 1.7-7.4-5.7-5 7.5-.7z"/></svg></div><p class="text-gray-700 text-base">&ldquo;Opening my beauty parlour felt like a far dream. RAVEN helped me get the loan and handle all the paperwork. Now I have my own place.&rdquo;</p></div>
-              <div class="flex gap-3 items-center"><img alt="Neha Bhosale" class="size-11 rounded-lg rv-photo" src="https://i.pravatar.cc/120?img=56" data-fallback="images/avatar-neha.svg" width="44" height="44" loading="lazy"><div><h4 class="text-gray-900 text-base font-medium">Neha Bhosale</h4><span class="text-sm text-gray-500">Beauty parlour owner, Aurangabad</span></div></div>
-            </div>
+
+    <section class="b-sec is-tight">
+      <div class="b-wrap">
+        <div class="b-band" data-anim="zoom">
+          <div class="b-band-grid">
+            <div><b data-count="50" data-suffix="+">50+</b><span>Businesses Funded</span></div>
+            <div><b data-count="5" data-prefix="&#8377;" data-suffix="Cr+">&#8377;5Cr+</b><span>Capital Facilitated</span></div>
+            <div><b data-count="95" data-suffix="%">95%</b><span>Approval Rate</span></div>
+            <div><b data-count="8" data-suffix="+">8+</b><span>Loan Products</span></div>
           </div>
         </div>
       </div>
     </section>
-    <section class="bg-gray-50 py-28">
-      <div class="max-w-7xl mx-auto px-4 lg:px-6">
-        <div class="max-w-2xl mx-auto text-center mb-16 reveal ">
-        <h2 class="text-3xl lg:text-5xl -tracking-[1.9px] mb-4 font-medium text-gray-900">Subscription Plans</h2>
-        <p class="text-base text-gray-500">Choose the plan that fits your business and upgrade as you grow.</p>
-      </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:max-w-4xl mx-auto">
-          <div class="bg-white p-5 rounded-2xl relative  reveal">
-            
-            <span class="inline-flex items-center h-6 rounded-full px-2 py-1 bg-gray-100 text-gray-800 text-sm font-medium mb-3">Free</span>
-            <p class="text-sm text-gray-900 font-mono mb-8">Get started with essential features</p>
-            <h3 class="text-5xl items-end font-medium mb-7">&#8377;0<span class="text-base text-gray-500">/month</span></h3>
-            <ul class="py-7 border-t border-dashed border-gray-200 space-y-4"><li class="flex gap-2.5 items-center text-sm text-gray-700"><span class="w-3.5 h-3.5 rounded-full inline-flex items-center justify-center shrink-0 bg-indigo-500"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5l2.5 2.5 4.5-5.5"/></svg></span>Browse loan options</li><li class="flex gap-2.5 items-center text-sm text-gray-700"><span class="w-3.5 h-3.5 rounded-full inline-flex items-center justify-center shrink-0 bg-indigo-500"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5l2.5 2.5 4.5-5.5"/></svg></span>View interest rates</li><li class="flex gap-2.5 items-center text-sm text-gray-700"><span class="w-3.5 h-3.5 rounded-full inline-flex items-center justify-center shrink-0 bg-indigo-500"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5l2.5 2.5 4.5-5.5"/></svg></span>Basic calculators</li></ul>
-            <a class="w-full inline-block text-center rounded-lg font-medium text-base py-2.5 px-4 transition-colors duration-300 ease-in-out border bg-gray-50 hover:bg-gray-100 border-gray-200 text-gray-800" href="contact.html">Get Started</a>
+
+    <section class="b-sec">
+      <div class="b-wrap">
+        <div class="b-split is-wide-left">
+          <div>
+            <div class="b-head is-left" data-anim="up" style="margin-bottom:28px"><span class="b-eyebrow">Why RAVEN</span><h2 class="b-h2">Why Partner <em>With Us</em></h2><p class="b-lead">Everything your business needs to get funded, insured and growing — with one team beside you.</p></div>
+            <div class="b-feats" data-stagger=".1"><div class="b-feat"><span class="n">01</span><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg></span><h3>Tailored Funding</h3><p>Customised financial solutions crafted to meet your unique business goals and growth stage.</p></div><div class="b-feat"><span class="n">02</span><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/><path d="M19 20a3 3 0 0 1-3 2h-2"/></svg></span><h3>Dedicated Support</h3><p>Reliable guidance and ongoing assistance to keep your business running and scaling smoothly.</p></div><div class="b-feat"><span class="n">03</span><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="18" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="M12 7.5v4M12 11.5 6.5 16M12 11.5l5.5 4.5"/></svg></span><h3>Proven Network</h3><p>Access to lenders, investors, and partners who drive efficiency and competitive advantage.</p></div><div class="b-feat"><span class="n">04</span><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/></svg></span><h3>Expert Team</h3><p>Seasoned finance and business professionals committed to delivering excellence in every engagement.</p></div></div>
           </div>
-          <div class="bg-white p-5 rounded-2xl relative ring-2 ring-indigo-500 reveal">
-            <span class="inline-flex absolute top-5 text-xs bg-linear-to-br from-[#EDF0FF] to-white shadow-inner shadow-indigo-200/50 text-indigo-500 right-5 items-center h-6 rounded-full px-2 py-1 font-medium">Popular</span>
-            <span class="inline-flex items-center h-6 rounded-full px-2 py-1 bg-gray-100 text-gray-800 text-sm font-medium mb-3">Pro</span>
-            <p class="text-sm text-gray-900 font-mono mb-8">For growing businesses</p>
-            <h3 class="text-5xl items-end font-medium mb-7">&#8377;999<span class="text-base text-gray-500">/month</span></h3>
-            <ul class="py-7 border-t border-dashed border-gray-200 space-y-4"><li class="flex gap-2.5 items-center text-sm text-gray-700"><span class="w-3.5 h-3.5 rounded-full inline-flex items-center justify-center shrink-0 bg-indigo-500"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5l2.5 2.5 4.5-5.5"/></svg></span>Everything in Free, plus:</li><li class="flex gap-2.5 items-center text-sm text-gray-700"><span class="w-3.5 h-3.5 rounded-full inline-flex items-center justify-center shrink-0 bg-indigo-500"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5l2.5 2.5 4.5-5.5"/></svg></span>Loan application support</li><li class="flex gap-2.5 items-center text-sm text-gray-700"><span class="w-3.5 h-3.5 rounded-full inline-flex items-center justify-center shrink-0 bg-indigo-500"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5l2.5 2.5 4.5-5.5"/></svg></span>Personalized recommendations</li><li class="flex gap-2.5 items-center text-sm text-gray-700"><span class="w-3.5 h-3.5 rounded-full inline-flex items-center justify-center shrink-0 bg-indigo-500"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5l2.5 2.5 4.5-5.5"/></svg></span>Email support (24 hours)</li><li class="flex gap-2.5 items-center text-sm text-gray-700"><span class="w-3.5 h-3.5 rounded-full inline-flex items-center justify-center shrink-0 bg-indigo-500"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5l2.5 2.5 4.5-5.5"/></svg></span>Document checklist</li></ul>
-            <a class="w-full inline-block text-center rounded-lg font-medium text-base py-2.5 px-4 transition-colors duration-300 ease-in-out border bg-indigo-500 hover:bg-indigo-600 border-indigo-500 text-white" href="contact.html">Start Free Trial</a>
-          </div>
-          <div class="bg-white p-5 rounded-2xl relative  reveal">
-            
-            <span class="inline-flex items-center h-6 rounded-full px-2 py-1 bg-gray-100 text-gray-800 text-sm font-medium mb-3">Pro Plus</span>
-            <p class="text-sm text-gray-900 font-mono mb-8">For serious entrepreneurs</p>
-            <h3 class="text-5xl items-end font-medium mb-7">&#8377;2,999<span class="text-base text-gray-500">/month</span></h3>
-            <ul class="py-7 border-t border-dashed border-gray-200 space-y-4"><li class="flex gap-2.5 items-center text-sm text-gray-700"><span class="w-3.5 h-3.5 rounded-full inline-flex items-center justify-center shrink-0 bg-indigo-500"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5l2.5 2.5 4.5-5.5"/></svg></span>Everything in Pro, plus:</li><li class="flex gap-2.5 items-center text-sm text-gray-700"><span class="w-3.5 h-3.5 rounded-full inline-flex items-center justify-center shrink-0 bg-indigo-500"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5l2.5 2.5 4.5-5.5"/></svg></span>Dedicated account manager</li><li class="flex gap-2.5 items-center text-sm text-gray-700"><span class="w-3.5 h-3.5 rounded-full inline-flex items-center justify-center shrink-0 bg-indigo-500"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5l2.5 2.5 4.5-5.5"/></svg></span>Priority loan processing</li><li class="flex gap-2.5 items-center text-sm text-gray-700"><span class="w-3.5 h-3.5 rounded-full inline-flex items-center justify-center shrink-0 bg-indigo-500"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5l2.5 2.5 4.5-5.5"/></svg></span>Phone &amp; chat support (24/7)</li><li class="flex gap-2.5 items-center text-sm text-gray-700"><span class="w-3.5 h-3.5 rounded-full inline-flex items-center justify-center shrink-0 bg-indigo-500"><svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5l2.5 2.5 4.5-5.5"/></svg></span>Business growth consulting</li></ul>
-            <a class="w-full inline-block text-center rounded-lg font-medium text-base py-2.5 px-4 transition-colors duration-300 ease-in-out border bg-gray-50 hover:bg-gray-100 border-gray-200 text-gray-800" href="contact.html">Schedule Demo</a>
+          <div class="b-chat" data-anim="right">
+            <div class="b-chat-top"><span class="b-chat-ava">R</span><span><strong>RAVEN Support</strong><small><i></i>Online</small></span></div>
+            <div class="b-msgs">
+              <div class="b-msg me">I need a loan for my business</div>
+              <span class="b-typing" aria-hidden="true"><i></i><i></i><i></i></span>
+              <div class="b-msg bot">Of course! Let&rsquo;s find the right option for you.</div>
+              <div class="b-msg bot">Your documents are ready. We&rsquo;ll guide you every step.</div>
+            </div>
+            <div class="b-approved b-msg" style="max-width:none"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg></span><span><small>Loan amount · Approved</small><b>&#8377;5Cr+ facilitated</b></span></div>
           </div>
         </div>
       </div>
     </section>
-    <section class="py-10 lg:py-28">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="flex flex-col gap-10 lg:flex-row justify-between">
-          <div class="lg:w-5/12 reveal">
-            <h2 class="text-4xl lg:text-5xl mb-10 lg:mb-20 -tracking-[1.9px] font-medium text-gray-900">Frequently Asked Questions</h2>
-            <div class="p-5 sm:max-w-xs rounded-2xl bg-gray-50">
-              <div class="flex mb-2 -space-x-3 items-center">
-                <img alt="" class="size-9 rounded-full ring-2 ring-white" src="images/avatar-amit.svg" width="36" height="36">
-                <img alt="" class="size-9 rounded-full ring-2 ring-white" src="images/avatar-priya.svg" width="36" height="36">
-                <img alt="" class="size-9 rounded-full ring-2 ring-white" src="images/avatar-neha.svg" width="36" height="36">
-              </div>
-              <p class="mb-6 text-gray-700">Have more questions? Reach out to our friendly team</p>
-              <a class="py-2.5 px-4 bg-indigo-500 rounded-lg font-medium text-white text-base hover:bg-indigo-600 transition duration-300 ease-in-out inline-block" href="contact.html">Contact Us</a>
-            </div>
+
+    <section class="b-sec is-soft" id="loans">
+      <div class="b-wrap">
+        <div class="b-head" data-anim="up"><span class="b-eyebrow">Loans</span><h2 class="b-h2">Choose Your <em>Loan</em></h2><p class="b-lead">Pick the loan that fits your goal and our team will take care of the rest.</p></div>
+        <div class="b-loans is-4" data-stagger=".06"><a class="b-loan" href="home-loans.html">
+            <div class="pic is-lottie"><div class="lt" data-lottie="animations/home.json" aria-hidden="true"></div></div>
+            <div class="bd"><h3>Home Loan<span class="rv-go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></h3><p>Buy, build or renovate your home with long tenures and affordable EMIs.</p></div>
+          </a><a class="b-loan" href="gold-loans.html">
+            <div class="pic is-lottie"><div class="lt" data-lottie="animations/gold.json" aria-hidden="true"></div></div>
+            <div class="bd"><h3>Gold Loan<span class="rv-go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></h3><p>Quick funds against your gold with minimal paperwork and fast disbursal.</p></div>
+          </a><a class="b-loan" href="personal-loans.html">
+            <div class="pic is-lottie"><div class="lt" data-lottie="animations/personal.json" aria-hidden="true"></div></div>
+            <div class="bd"><h3>Personal Loan<span class="rv-go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></h3><p>Cover weddings, travel, medical or any personal need without collateral.</p></div>
+          </a><a class="b-loan" href="business-loans.html">
+            <div class="pic is-lottie"><div class="lt" data-lottie="animations/business.json" aria-hidden="true"></div></div>
+            <div class="bd"><h3>Business Loan<span class="rv-go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></h3><p>Working capital and term loans to start, run and scale your business.</p></div>
+          </a><a class="b-loan" href="car-loans.html">
+            <div class="pic is-lottie"><div class="lt" data-lottie="animations/vehicle.json" aria-hidden="true"></div></div>
+            <div class="bd"><h3>Vehicle Loan<span class="rv-go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></h3><p>Finance a new or used car, bike or commercial vehicle with easy repayment.</p></div>
+          </a><a class="b-loan" href="funding-loans.html#loan-types">
+            <div class="pic is-lottie"><div class="lt" data-lottie="animations/government.json" aria-hidden="true"></div></div>
+            <div class="bd"><h3>Government Loan<span class="rv-go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></h3><p>Get guided through MUDRA, CGTMSE and other government-backed schemes.</p></div>
+          </a><a class="b-loan" href="funding-loans.html#loan-types">
+            <div class="pic is-lottie"><div class="lt" data-lottie="animations/education.json" aria-hidden="true"></div></div>
+            <div class="bd"><h3>Education Loan<span class="rv-go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></h3><p>Fund your studies in India or abroad, from tuition to living costs.</p></div>
+          </a><a class="b-loan is-cta" href="funding-loans.html"><span class="rv-cta-ico" style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:14px;background:rgba(255,255,255,.15)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></span><h3>See All Loans</h3><p>Pick the loan that fits your goal and our team will take care of the rest.</p><span class="b-btn is-white is-sm">See All Loans<svg class="is-go" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
+      </div>
+    </section>
+
+    <section class="b-sec">
+      <div class="b-wrap">
+        <div class="b-head" data-anim="up"><span class="b-eyebrow">How it works</span><h2 class="b-h2">Our <em>Process</em></h2><p class="b-lead">Four simple steps from first call to funds in your account.</p></div>
+        <div class="b-steps"><span class="b-steps-line" aria-hidden="true"><i></i></span><div class="b-step"><span class="num">1</span><div><h3>Eligibility Assessment</h3><p>We evaluate your business profile and identify the best funding options available to you.</p></div></div><div class="b-step"><span class="num">2</span><div><h3>Application Preparation</h3><p>Our team prepares a strong, complete application to maximise your approval chances.</p></div></div><div class="b-step"><span class="num">3</span><div><h3>Lender Matching</h3><p>We connect you with the right lenders from our extensive network for the best terms.</p></div></div><div class="b-step"><span class="num">4</span><div><h3>Disbursement &amp; Support</h3><p>We support you through disbursement and provide ongoing advisory for repayment planning.</p></div></div></div>
+      </div>
+    </section>
+
+    <section class="b-sec is-tight">
+      <div class="b-wrap">
+        <div class="b-promo" data-anim="up">
+          <div class="b-promo-tx">
+            <span class="b-live"><i></i>Live now</span>
+            <h2 class="b-h2" style="margin-top:16px">Bank <em>Auctions</em></h2>
+            <p class="b-lead">Flats, shops, plots, vehicles and gold sold by banks under SARFAESI – watch prices move live and bid from your phone with a verified EMD.</p>
+            <ul class="b-checks"><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span><b style="color:var(--ink)">Complete KYC</b> – PAN, Aadhaar e-KYC and the bank account for your EMD refund.</span></li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span><b style="color:var(--ink)">Pay EMD &amp; apply</b> – Usually 10% of the reserve price, paid before the last date.</span></li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span><b style="color:var(--ink)">Bid live</b> – Bid in fixed steps or set a maximum and let auto-bid work for you.</span></li><li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg><span><b style="color:var(--ink)">Win &amp; pay</b> – Pay 25% by the next working day and the balance in 15 days.</span></li></ul>
+            <div class="b-actions"><a class="b-btn is-primary" href="auctions.html">Browse auctions<svg class="is-go" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="b-btn is-line" href="auction-bank.html">For banks</a></div>
           </div>
-          <div class="lg:w-6/12 reveal">
-            <div>
-            <div class="py-6 border-b border-gray-200 rv-acc is-open" data-acc>
-              <button class="flex w-full justify-between items-center cursor-pointer text-left" aria-expanded="true">
-                <h3 class="text-lg font-medium text-gray-900 -tracking-[0.18px]">Which services does RAVEN offer?</h3>
-                <span class="text-gray-950 shrink-0 ml-4"><svg class="rv-plus" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
-              </button>
-              <div class="rv-acc-body"><p class="text-base text-gray-500 pt-4 pr-10">RAVEN helps businesses and individuals with loans, insurance, real estate guidance, bank auctions and brand strategy — all from one team.</p></div>
-            </div>
-            <div class="py-6 border-b border-gray-200 rv-acc" data-acc>
-              <button class="flex w-full justify-between items-center cursor-pointer text-left" aria-expanded="false">
-                <h3 class="text-lg font-medium text-gray-900 -tracking-[0.18px]">Which types of loans can I apply for?</h3>
-                <span class="text-gray-950 shrink-0 ml-4"><svg class="rv-plus" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
-              </button>
-              <div class="rv-acc-body"><p class="text-base text-gray-500 pt-4 pr-10">Home, gold, personal, business, vehicle, government-scheme and education loans. Home loans include loan against property, construction, plot / land, renovation, mortgage and balance transfer + top up options.</p></div>
-            </div>
-            <div class="py-6 border-b border-gray-200 rv-acc" data-acc>
-              <button class="flex w-full justify-between items-center cursor-pointer text-left" aria-expanded="false">
-                <h3 class="text-lg font-medium text-gray-900 -tracking-[0.18px]">How does the funding process work?</h3>
-                <span class="text-gray-950 shrink-0 ml-4"><svg class="rv-plus" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
-              </button>
-              <div class="rv-acc-body"><p class="text-base text-gray-500 pt-4 pr-10">Four simple steps: eligibility assessment, application preparation, lender matching, and disbursement with ongoing support for repayment planning.</p></div>
-            </div>
-            <div class="py-6 border-b border-gray-200 rv-acc" data-acc>
-              <button class="flex w-full justify-between items-center cursor-pointer text-left" aria-expanded="false">
-                <h3 class="text-lg font-medium text-gray-900 -tracking-[0.18px]">Where is RAVEN located and how can I reach you?</h3>
-                <span class="text-gray-950 shrink-0 ml-4"><svg class="rv-plus" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
-              </button>
-              <div class="rv-acc-body"><p class="text-base text-gray-500 pt-4 pr-10">We are based in Chhatrapati Sambhajinagar and Pune, Maharashtra. Write to hello@raven.business or use the Contact page, and our team typically responds within 24 hours.</p></div>
-            </div>
-            </div>
-          </div>
+          <div class="b-promo-pic"><img src="images/bank-auction.svg" alt="Bank auction illustration" width="640" height="400" loading="lazy"></div>
         </div>
       </div>
     </section>
-    <section class="pt-28 pb-10 rv-cta relative">
-      <div class="rv-fade-bottom"></div>
-      <div class="max-w-7xl mx-auto px-6 relative z-30">
-        <div class="max-w-2xl mx-auto text-center reveal">
-          <h2 class="text-4xl lg:text-5xl -tracking-[1.9px] mb-4 font-medium text-gray-900">Ready to fund your next big idea?</h2>
-          <p class="text-base text-gray-500 mb-9">Talk to our team and we will match you with the right solution.</p>
-          <div class="flex gap-4 justify-center sm:items-center flex-col sm:flex-row">
-            <a class="py-2.5 px-4 bg-indigo-500 h-11 rounded-lg font-medium text-white text-base hover:bg-indigo-600 transition duration-300 ease-in-out inline-block" href="contact.html">Contact Us</a>
-            <a class="py-2.5 px-4 border h-11 border-gray-200 bg-white/70 text-base rounded-lg font-medium inline-block hover:bg-gray-100 transition duration-300 ease-in-out text-gray-800" href="funding-loans.html">Explore Services</a>
+
+    <section class="b-sec is-soft">
+      <div class="b-wrap">
+        <div class="b-head" data-anim="up"><span class="b-eyebrow">Testimonials</span><h2 class="b-h2">What our clients say</h2><p class="b-lead">Trusted by everyday people across Maharashtra.</p></div>
+        <div class="b-quotes" data-stagger=".12"><figure class="b-quote"><span class="b-qmark" aria-hidden="true">&ldquo;</span><div class="b-stars" aria-label="5 out of 5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.4l-5.9 3.2 1.3-6.6L2.5 9.4l6.6-.8z" fill="currentColor" stroke="none"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.4l-5.9 3.2 1.3-6.6L2.5 9.4l6.6-.8z" fill="currentColor" stroke="none"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.4l-5.9 3.2 1.3-6.6L2.5 9.4l6.6-.8z" fill="currentColor" stroke="none"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.4l-5.9 3.2 1.3-6.6L2.5 9.4l6.6-.8z" fill="currentColor" stroke="none"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.4l-5.9 3.2 1.3-6.6L2.5 9.4l6.6-.8z" fill="currentColor" stroke="none"/></svg></div><blockquote>&ldquo;I never thought getting a business loan would be this easy. RAVEN sorted everything out and I had the money in my account within a week.&rdquo;</blockquote>
+            <figcaption><img alt="Amit Patil" src="https://i.pravatar.cc/120?img=12" data-fallback="images/avatar-amit.svg" width="44" height="44" loading="lazy"><span><strong>Amit Patil</strong><small>Kirana shop owner, Nashik</small></span></figcaption></figure><figure class="b-quote"><span class="b-qmark" aria-hidden="true">&ldquo;</span><div class="b-stars" aria-label="5 out of 5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.4l-5.9 3.2 1.3-6.6L2.5 9.4l6.6-.8z" fill="currentColor" stroke="none"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.4l-5.9 3.2 1.3-6.6L2.5 9.4l6.6-.8z" fill="currentColor" stroke="none"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.4l-5.9 3.2 1.3-6.6L2.5 9.4l6.6-.8z" fill="currentColor" stroke="none"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.4l-5.9 3.2 1.3-6.6L2.5 9.4l6.6-.8z" fill="currentColor" stroke="none"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.4l-5.9 3.2 1.3-6.6L2.5 9.4l6.6-.8z" fill="currentColor" stroke="none"/></svg></div><blockquote>&ldquo;I started selling homemade food from my kitchen and wanted to register it properly. RAVEN took care of everything in just a few days.&rdquo;</blockquote>
+            <figcaption><img alt="Priya Kulkarni" src="https://i.pravatar.cc/120?img=47" data-fallback="images/avatar-priya.svg" width="44" height="44" loading="lazy"><span><strong>Priya Kulkarni</strong><small>Home food business, Pune</small></span></figcaption></figure><figure class="b-quote"><span class="b-qmark" aria-hidden="true">&ldquo;</span><div class="b-stars" aria-label="5 out of 5"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.4l-5.9 3.2 1.3-6.6L2.5 9.4l6.6-.8z" fill="currentColor" stroke="none"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.4l-5.9 3.2 1.3-6.6L2.5 9.4l6.6-.8z" fill="currentColor" stroke="none"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.4l-5.9 3.2 1.3-6.6L2.5 9.4l6.6-.8z" fill="currentColor" stroke="none"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.4l-5.9 3.2 1.3-6.6L2.5 9.4l6.6-.8z" fill="currentColor" stroke="none"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.4l-5.9 3.2 1.3-6.6L2.5 9.4l6.6-.8z" fill="currentColor" stroke="none"/></svg></div><blockquote>&ldquo;Opening my beauty parlour felt like a far dream. RAVEN helped me get the loan and handle all the paperwork. Now I have my own place.&rdquo;</blockquote>
+            <figcaption><img alt="Neha Bhosale" src="https://i.pravatar.cc/120?img=56" data-fallback="images/avatar-neha.svg" width="44" height="44" loading="lazy"><span><strong>Neha Bhosale</strong><small>Beauty parlour owner, Aurangabad</small></span></figcaption></figure></div>
+      </div>
+    </section>
+
+    <section class="b-sec" id="plans">
+      <div class="b-wrap">
+        <div class="b-head" data-anim="up"><span class="b-eyebrow">Pricing</span><h2 class="b-h2">Subscription <em>Plans</em></h2><p class="b-lead">Choose the plan that fits your business and upgrade as you grow.</p></div>
+        <div class="b-plans" data-stagger=".12"><div class="b-plan">
+            <h3>Free</h3><p>Get started with essential features</p>
+            <div class="b-price"><b>&#8377;0</b><span>/month</span></div>
+            <ul><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Browse loan options</li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>View interest rates</li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Basic calculators</li></ul>
+            <a class="b-btn is-line is-block" href="contact.html">Get Started</a>
+          </div><div class="b-plan is-pop"><span class="b-plan-badge">Popular</span>
+            <h3>Pro</h3><p>For growing businesses</p>
+            <div class="b-price"><b>&#8377;999</b><span>/month</span></div>
+            <p class="b-plan-lbl">Everything in Free, plus:</p><ul><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Loan application support</li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Personalized recommendations</li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Email support (24 hours)</li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Document checklist</li></ul>
+            <a class="b-btn is-primary is-block" href="contact.html">Start Free Trial</a>
+          </div><div class="b-plan">
+            <h3>Pro Plus</h3><p>For serious entrepreneurs</p>
+            <div class="b-price"><b>&#8377;2,999</b><span>/month</span></div>
+            <p class="b-plan-lbl">Everything in Pro, plus:</p><ul><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Dedicated account manager</li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Priority loan processing</li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Phone &amp; chat support (24/7)</li><li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Business growth consulting</li></ul>
+            <a class="b-btn is-line is-block" href="contact.html">Schedule Demo</a>
+          </div></div>
+      </div>
+    </section>
+
+    <section class="b-sec is-soft" id="faq">
+      <div class="b-wrap">
+        <div class="b-faq">
+          <div class="b-faq-side" data-anim="left">
+            <span class="b-eyebrow">FAQ</span>
+            <h2 class="b-h2">Frequently Asked <em>Questions</em></h2>
+            <p class="b-lead">Have more questions? Reach out to our friendly team</p>
+            <div class="b-actions" style="margin-top:24px"><a class="b-btn is-primary" href="contact.html">Contact Us<svg class="is-go" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+            <a class="b-faq-help" href="mailto:hello@raven.business"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span><strong>hello@raven.business</strong><small>Our team typically responds within 24 hours</small></span></a>
           </div>
+          <div data-acc-group><div class="b-acc" data-acc data-anim="up"><button type="button" aria-expanded="false">Which services does RAVEN offer?<span class="pm" aria-hidden="true"></span></button><div class="b-acc-body"><div><p>RAVEN helps businesses and individuals with loans, insurance, real estate guidance, bank auctions and brand strategy — all from one team.</p></div></div></div><div class="b-acc" data-acc data-anim="up"><button type="button" aria-expanded="false">Which types of loans can I apply for?<span class="pm" aria-hidden="true"></span></button><div class="b-acc-body"><div><p>Home, gold, personal, business, vehicle, government-scheme and education loans. Home loans include loan against property, construction, plot / land, renovation, mortgage and balance transfer + top up options.</p></div></div></div><div class="b-acc" data-acc data-anim="up"><button type="button" aria-expanded="false">How does the funding process work?<span class="pm" aria-hidden="true"></span></button><div class="b-acc-body"><div><p>Four simple steps: eligibility assessment, application preparation, lender matching, and disbursement with ongoing support for repayment planning.</p></div></div></div><div class="b-acc" data-acc data-anim="up"><button type="button" aria-expanded="false">Where is RAVEN located and how can I reach you?<span class="pm" aria-hidden="true"></span></button><div class="b-acc-body"><div><p>We are based in Chhatrapati Sambhajinagar and Pune, Maharashtra. Write to <a href="mailto:hello@raven.business">hello@raven.business</a> or use the <a href="contact.html">Contact</a> page, and our team typically responds within 24 hours.</p></div></div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="b-sec is-tight b-cta-sec">
+      <div class="b-wrap">
+        <div class="b-cta" data-anim="zoom">
+          <h2>Ready to fund your next big idea?</h2>
+          <p>Talk to our team and we will match you with the right solution.</p>
+          <div class="b-actions"><a class="b-btn is-white is-lg" href="contact.html">Contact Us<svg class="is-go" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="b-btn is-glass is-lg" href="funding-loans.html">Explore Services</a></div>
         </div>
       </div>
     </section>
   </main>
-  <footer>
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="pt-10 lg:pt-18">
-        <div class="flex flex-col lg:flex-row gap-10">
-          <div class="lg:w-4/12">
-            <a class="mb-10 lg:mb-20 inline-block" href="index.html" aria-label="RAVEN home"><img src="images/logo.svg" alt="RAVEN" width="136" height="35"></a>
-            <p class="lg:pr-10 text-gray-500 text-base">Build. Fund. Brand. Grow.<br>Your business partner in India.</p>
-            <p class="text-gray-400 text-sm mt-4">Chhatrapati Sambhajinagar &amp; Pune, India</p>
-          </div>
-          <div class="lg:w-6/12 lg:ml-auto">
-            <div class="grid grid-cols-2 gap-5 sm:gap-10 sm:grid-cols-3">
-              <div>
-                <h3 class="text-lg text-gray-800 font-medium mb-6">Services</h3>
-                <nav class="space-y-5">
-                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="funding-loans.html">Funding &amp; Loans</a>
-                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="bank-account.html">Bank Account Opening</a>
-                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="mutual-funds.html">Mutual Funds &amp; SIP</a>
-                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="real-estate.html">Real Estate</a>
-                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="auctions.html">Bank Auctions</a>
-                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Brand Strategy</a>
-                </nav>
-              </div>
-              <div>
-                <h3 class="text-lg text-gray-800 font-medium mb-6">Company</h3>
-                <nav class="space-y-5">
-                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="index.html#about">About Us</a>
-                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Contact</a>
-                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="terms.html">Terms &amp; Conditions</a>
-                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="privacy.html">Privacy Policy</a>
-                </nav>
-              </div>
-              <div class="flex lg:justify-end">
-                <div>
-                  <h3 class="text-lg text-gray-800 font-medium mb-6">Contact</h3>
-                  <nav class="space-y-5">
-                    <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="mailto:hello@raven.business">hello@raven.business</a>
-                    <span class="text-gray-700 block text-base">Chhatrapati Sambhajinagar</span>
-                    <span class="text-gray-700 block text-base">Pune, India</span>
-                  </nav>
-                </div>
-              </div>
-            </div>
-          </div>
+  <footer class="b-footer">
+    <div class="b-wrap">
+      <div class="b-ftop">
+        <div>
+          <a class="b-flogo" href="index.html" aria-label="RAVEN home"><img src="images/logo-white.svg" alt="RAVEN" width="124" height="32"></a>
+          <p class="b-ftag">Build. Fund. Brand. Grow.</p>
+          <p class="b-fabout">Your business partner in India.</p>
+          <ul class="b-fcol b-fcontact" style="display:grid;gap:.75rem;margin-top:1.5rem;font-size:.9375rem">
+            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><a href="mailto:hello@raven.business">hello@raven.business</a></li>
+            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>Chhatrapati Sambhajinagar &amp; Pune, India</span></li>
+            <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Monday – Saturday, 10:00 AM – 7:00 PM IST</span></li>
+          </ul>
+        </div>
+        <div class="b-fcols">
+          <div class="b-fcol"><h4>Services</h4><ul><li><a href="funding-loans.html">Funding &amp; Loans</a></li><li><a href="bank-account.html">Bank Account Opening</a></li><li><a href="mutual-funds.html">Mutual Funds &amp; SIP</a></li><li><a href="real-estate.html">Real Estate</a></li><li><a href="auctions.html">Bank Auctions</a></li><li><a href="contact.html">Brand Strategy</a></li></ul></div>
+          <div class="b-fcol"><h4>Loans</h4><ul><li><a href="home-loans.html">Home Loan</a></li><li><a href="personal-loans.html">Personal Loan</a></li><li><a href="business-loans.html">Business Loan</a></li><li><a href="gold-loans.html">Gold Loan</a></li><li><a href="car-loans.html">Car Loan</a></li></ul></div>
+          <div class="b-fcol"><h4>Company</h4><ul><li><a href="index.html#about">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="ask.html">Ask a Question</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div>
         </div>
       </div>
-      <div class="flex justify-between flex-col sm:flex-row gap-5 items-center pb-10 pt-10 lg:pt-20">
-        <p class="text-base text-gray-500">&copy; 2025 RAVEN. All rights reserved. <span class="rv-dot">Built for Indian Entrepreneurs.</span></p>
-        <a href="#top" class="flex gap-3 items-center text-gray-700">Back to top
-          <span class="size-7 rounded-full text-white bg-indigo-500 inline-flex items-center justify-center hover:bg-indigo-600 transition duration-300 ease-in-out"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
-        </a>
+      <p class="b-fdisc">RAVEN acts as a facilitator and advisor, not as a bank, lender or insurer unless stated otherwise. Approval depends on the eligibility criteria and decisions of the relevant lender, insurer or authority. Rates, fees and timelines shown are indicative and may change without notice. Bank names and marks belong to their respective owners.</p>
+      <div class="b-fbottom">
+        <p>&copy; 2025 RAVEN. All rights reserved. Built for Indian Entrepreneurs.</p>
+        <div class="b-flinks"><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a><a href="contact.html">Contact</a></div>
+        <a class="b-totop" href="#top">Back to top<span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span></a>
       </div>
     </div>
   </footer>
-  </div>
-  <script src="raven-app.js?v=4"></script>
+  <script src="raven-app.js?v=5"></script>
   <script src="lottie.min.js?v=1"></script>
-  <script src="site.js?v=2"></script>
-  <script src="ai-chat.js?v=6"></script>
-  <script src="consent.js?v=5"></script>
+  <script src="bank.js?v=1"></script>
+  <script src="ai-chat.js?v=7"></script>
+  <script src="consent.js?v=6"></script>
 </body>
 </html>

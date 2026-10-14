@@ -151,6 +151,8 @@
       a.textContent = label;
       a.setAttribute('href', App.home(u));
     });
+    // already signed in: no need for the "Log in" links
+    document.querySelectorAll('[data-auth="login"]').forEach(function (a) { a.hidden = true; });
   }
 
   /* ---------- search tools: pre-fill + save results ---------- */
