@@ -12,7 +12,7 @@
 
   var LANG = [['en', 'English'], ['mr', 'मराठी (Marathi)'], ['hi', 'हिंदी (Hindi)']];
   var PRODUCTS = [['home', 'Home Loan'], ['personal', 'Personal Loan'], ['business', 'Business Loan'], ['gold', 'Gold Loan'],
-    ['vehicle', 'Vehicle Loan'], ['education', 'Education Loan'], ['account', 'Bank Account'], ['registration', 'Business Registration'],
+    ['vehicle', 'Vehicle Loan'], ['education', 'Education Loan'], ['account', 'Bank Account'],
     ['mf', 'Mutual Funds & SIP'], ['insurance', 'Insurance'], ['realestate', 'Real Estate']];
   var CONTACT = [['call', 'Phone call'], ['whatsapp', 'WhatsApp'], ['email', 'Email']];
 

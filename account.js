@@ -14,7 +14,6 @@
     business: ['briefcase', 'Business Loan', 'business-loans.html#business-loan-search', 'MUDRA, unsecured and secured options for your business.', '#eff8ff', '#175cd3', 'images/loan-business.svg'],
     gold: ['coins', 'Gold Loan', 'gold-loans.html#gold-loan-search', 'Value your gold and see the maximum loan under RBI limits.', '#fffaeb', '#b54708', 'images/loan-gold.svg'],
     account: ['bank', 'Bank Account', 'bank-account.html#bank-account-search', 'Pick the right savings or current account and documents.', '#ecfdf3', '#067647', 'images/bank-account.svg'],
-    registration: ['file', 'Business Registration', 'registration.html', 'GST, Udyam, company and firm registration.', '#f4f3ff', '#5925dc'],
     vehicle: ['sparkle', 'Car Loan', 'car-loans.html#car-loan-search', 'Eligibility, EMI and lenders for a new or used car.', '#f0f9ff', '#026aa2', 'images/loan-vehicle.svg'],
     education: ['sparkle', 'Education Loan', 'contact.html', 'Fund studies in India or abroad.', '#f0f9ff', '#026aa2', 'images/loan-education.svg'],
     insurance: ['shield', 'Insurance', 'contact.html', 'Health, life and business cover.', '#fef3f2', '#b42318'],
@@ -42,7 +41,7 @@
   document.addEventListener('click', function (e) {
     if (e.target.closest('[data-logout]')) { App.logout(); location.href = 'index.html'; }
   });
-  var interests = (p.interests || []).map(function (k) { return TOOLS[k] ? TOOLS[k][1] : k; }).join(', ');
+  var interests = (p.interests || []).filter(function (k) { return TOOLS[k]; }).map(function (k) { return TOOLS[k][1]; }).join(', ');
   var body = 'Please call me back.\n\nName: ' + name + '\nMobile: ' + (p.mobile || '') + '\nCity: ' + (p.city || '') +
     '\nInterested in: ' + interests + '\nBest time: ' + (p.bestTime || '') + '\nPreferred contact: ' + (p.contactVia || '');
   document.querySelectorAll('[data-callback]').forEach(function (a) {
@@ -52,7 +51,7 @@
   function tool(k, i, forYou) {
     var t = TOOLS[k];
     return UI.toolCard({ i: i, href: t[2], img: t[6], icon: t[0], title: t[1], text: t[3], badge: forYou ? 'For you' : '',
-      go: t[2].indexOf('auctions') === 0 ? 'Browse auctions' : t[2].indexOf('contact') === 0 ? 'Talk to our team' : t[2].indexOf('registration') === 0 ? 'View services' : t[2].indexOf('real-estate') === 0 || t[2].indexOf('mutual') === 0 ? 'Start application' : 'Start search' });
+      go: t[2].indexOf('auctions') === 0 ? 'Browse auctions' : t[2].indexOf('contact') === 0 ? 'Talk to our team' : t[2].indexOf('real-estate') === 0 || t[2].indexOf('mutual') === 0 ? 'Start application' : 'Start search' });
   }
   function ring(el, n, total, light) {
     var r = 46, c = 2 * Math.PI * r, pct = total ? n / total : 0;
