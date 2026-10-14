@@ -450,8 +450,52 @@
     };
   }
 
-  var RENDER = { business: business, personal: personal, gold: gold, account: account, realestate: realestate, vehicle: car };
-  var KICKER = { business: 'Business loan', personal: 'Personal loan', gold: 'Gold loan', account: 'Bank account', realestate: 'Real estate', vehicle: 'Car loan' };
+  /* ---------- mutual fund & SIP ---------- */
+  // assumed long-run returns by category for illustration only (% p.a.) - not guaranteed
+  var MF_RET = { equity: 11, debt: 7, hybrid: 9, index: 11, elss: 12, large: 11, mid: 13, small: 14, flexi: 12, liquid: 6.5, other: 10 };
+  var MF_EQUITY = ['equity', 'index', 'elss', 'large', 'mid', 'small', 'flexi'];
+  function sipFv(p, ratePa, years) { var r = ratePa / 1200, n = years * 12; return p * ((Math.pow(1 + r, n) - 1) / r) * (1 + r); }
+  function mf(v, L) {
+    var ref = refNo('MF'), years = { '1to3': 3, '3to5': 5, '5to10': 10, gt10: 15 }[v.duration], rate = MF_RET[v.category] || 10;
+    var sip = v.type === 'lump' ? 0 : v.sipamt === 'other' ? v.sipother : +v.sipamt;
+    var lump = v.type === 'sip' ? 0 : v.lump;
+    var invested = sip * 12 * years + lump, value = sipFv(sip, rate, years) + lump * Math.pow(1 + rate / 100, years);
+    var notes = [], equity = MF_EQUITY.indexOf(v.category) !== -1;
+    if (equity && years <= 3) notes.push('Equity funds can fall in the short term. For 1–3 years, debt, hybrid or liquid funds are usually a better fit.');
+    if (v.risk === 'low' && (v.category === 'small' || v.category === 'mid')) notes.push(L.category + 's are high risk – with a low-risk profile, consider large cap, hybrid or debt funds instead.');
+    if (v.goal === 'emergency' && v.category !== 'liquid' && v.category !== 'debt') notes.push('For an emergency fund, liquid or short-duration debt funds keep money safe and easy to withdraw.');
+    if (v.category === 'elss' || v.goal === 'tax') notes.push('ELSS funds have a 3-year lock-in and qualify for tax deduction under Section 80C (old tax regime).');
+    if (v.goal === 'retirement' || v.goal === 'education' || v.goal === 'marriage') notes.push('For long goals, increase the SIP every year (step-up) and move to safer funds 2–3 years before you need the money.');
+    var mix = { low: [20, 80], moderate: [50, 50], high: [80, 20], unsure: [50, 50] }[v.risk];
+    var kyc = [];
+    if (v.pan === 'no') kyc.push('Apply for a PAN card first – it is required for all mutual fund investments.');
+    if (v.kyc !== 'completed') kyc.push('Complete KYC once (Aadhaar e-KYC or in person) – we help you check and update the status.');
+    kyc.push('Keep PAN, Aadhaar, a cancelled cheque or bank statement, and a nominee’s details ready.');
+    var start = v.start ? new Date(v.start + 'T00:00').toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) : '';
+    return {
+      kicker: 'Application ' + ref, title: 'Investment options for ' + v.name, send: 'Send application to RAVEN', subject: 'Mutual fund & SIP application ' + ref,
+      disc: 'Mutual fund investments are subject to market risks; read all scheme-related documents carefully. Projections use assumed returns for illustration only and are not guaranteed.',
+      headline: (sip ? 'SIP ₹' + inr(sip) + '/mo' : '') + (sip && lump ? ' + ' : '') + (lump ? 'lump sum ' + short(lump) : '') + ' · ' + L.category + ' · ' + years + ' yrs',
+      details: ['Could grow to about ' + short(value) + ' (invested ' + short(invested) + ' at ~' + rate + '% p.a.)', L.goal + ' · ' + L.risk],
+      sub: L.type + ' · ' + L.category + ' · ' + L.goal + ' · ' + L.risk,
+      html: stats([
+        stat('You invest', short(invested), (sip ? '₹' + inr(sip) + '/mo' : '') + (sip && lump ? ' + ' : '') + (lump ? short(lump) + ' once' : '') + ' · ' + years + ' yrs'),
+        stat('Could grow to', short(value), 'at an assumed ~' + rate + '% p.a.'),
+        stat('Estimated gain', short(value - invested), invested ? '≈ ' + Math.round((value / invested - 1) * 100) + '% over ' + years + ' yrs' : '')
+      ]) +
+        verdict(!notes.length || notes.every(function (n) { return n.indexOf('ELSS') === 0 || n.indexOf('For long') === 0; }),
+          '<strong>Suggested mix for a ' + L.risk.toLowerCase() + ' profile:</strong> about ' + mix[0] + '% equity and ' + mix[1] + '% debt' + (v.risk === 'unsure' ? ' to start – our advisor will fine-tune it after a short risk check.' : '.')) +
+        grid2(box('Things to know', bullets((notes.length ? notes : ['Your fund choice fits your goal and time frame.']).map(esc))), box('KYC and documents', bullets(kyc.map(esc)))) +
+        '<div style="margin-top:.75rem">' + box('What happens next', '<ol class="hl-steps">' + ['Our advisor calls you' + (v.time ? ' in the ' + L.time.toLowerCase() : '') + ' on ' + v.mobile + '.', 'We shortlist 2–3 funds in the ' + L.category.toLowerCase() + ' category that match your goal.', (sip ? 'We set up the SIP' : 'We place the investment') + (start ? ' from ' + start : '') + ' with auto-debit from your bank.', 'You get a yearly review to keep the plan on track.'].map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ol>') + '</div>',
+      email: ['Reference: ' + ref, 'Mobile: ' + v.mobile, 'WhatsApp: ' + (v.whatsapp || v.mobile), 'Email: ' + (v.email || '-'), 'Date of birth: ' + v.dob, 'City: ' + v.city,
+        'Investment: ' + L.type, 'Monthly SIP: ' + (sip ? 'Rs ' + inr(sip) : '-'), 'Lump sum: ' + (lump ? 'Rs ' + inr(lump) : '-'), 'Duration: ' + L.duration, 'Category: ' + L.category,
+        'Goal: ' + L.goal, 'Risk profile: ' + L.risk, 'Existing MF: ' + L.existing + (v.existing === 'yes' ? ' (SIP Rs ' + inr(v.existsip || 0) + ', ' + (v.platform || '-') + ')' : ''),
+        'PAN available: ' + L.pan, 'KYC: ' + L.kyc, 'Start date: ' + (v.start || '-'), 'Contact time: ' + (L.time || '-'), 'Requirements: ' + (v.notes || '-')]
+    };
+  }
+
+  var RENDER = { mf: mf, business: business, personal: personal, gold: gold, account: account, realestate: realestate, vehicle: car };
+  var KICKER = { mf: 'Mutual fund', business: 'Business loan', personal: 'Personal loan', gold: 'Gold loan', account: 'Bank account', realestate: 'Real estate', vehicle: 'Car loan' };
 
   /* ---------- form wiring ---------- */
   Array.prototype.forEach.call(forms, function (form) {
@@ -473,7 +517,8 @@
       });
     }
     function todayIso() { var d = new Date(); d.setMinutes(d.getMinutes() - d.getTimezoneOffset()); return d.toISOString().slice(0, 10); }
-    Array.prototype.forEach.call(form.querySelectorAll('input[type="date"]'), function (el) { el.min = todayIso(); });
+    Array.prototype.forEach.call(form.querySelectorAll('input[data-check="date"]'), function (el) { el.min = todayIso(); });
+    Array.prototype.forEach.call(form.querySelectorAll('input[data-check="dob"]'), function (el) { el.max = todayIso(); });
 
     function num(el) { return parseFloat(el.value.replace(/[^\d.]/g, '')) || 0; }
     function invalid(el) {
@@ -484,6 +529,7 @@
       if (t === 'email') return !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
       if (t === 'regno') return !/^[A-Z]{2}[ -]?\d{1,2}[ -]?[A-Z]{0,3}[ -]?\d{1,4}$/i.test(val);
       if (t === 'date') return !val || val < todayIso();
+      if (t === 'dob') { var age = (new Date() - new Date(val + 'T00:00')) / 31557600000; return !val || age < 18 || age > 100; }
       if (t === 'number') { var x = num(el); return !val || x < +el.getAttribute('data-min') || x > +el.getAttribute('data-max'); }
       if (t === 'mobile') return !/^[6-9]\d{9}$/.test(val.replace(/\D/g, '').replace(/^91(?=\d{10}$)/, ''));
       if (t === 'money' || t === 'grams') {

@@ -339,7 +339,8 @@
     ['gold', 'coins', 'Gold Loan', 'Gold value and maximum loan under RBI limits, with lenders nearby.', 'images/loan-gold.svg'],
     ['account', 'bank', 'Bank Account', 'The right savings or current account, documents and banks.', 'images/bank-account.svg'],
     ['vehicle', 'sparkle', 'Car Loan', 'New or used car – eligibility, EMI, tenure and lenders that fit.', 'images/loan-vehicle.svg'],
-    ['realestate', 'home', 'Real Estate', 'Buy, sell, rent or lease – a complete application with next steps.', 'images/real-estate.svg']];
+    ['realestate', 'home', 'Real Estate', 'Buy, sell, rent or lease – a complete application with next steps.', 'images/real-estate.svg'],
+    ['mf', 'trend', 'Mutual Fund & SIP', 'SIP or lump sum – growth projection, fund mix by risk and KYC steps.', 'images/mutual-fund.svg']];
   function renderTools() {
     var sel = $('tl-client'), cur = sel.value, list = App.clients();
     sel.innerHTML = '<option value="">No client – just explore</option>' + list.map(function (c) { return '<option value="' + c.id + '">' + esc(c.name) + ' · ' + plabel(c.product) + '</option>'; }).join('');
