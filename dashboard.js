@@ -333,11 +333,11 @@
   });
 
   /* ---------- tools ---------- */
-  var TOOLS = [['home', 'home', 'Home Loan', 'Eligibility, EMI and the lenders that fit – purchase, plot, construction, LAP.', '#eef0ff', '#4f46e5'],
-    ['personal', 'user', 'Personal Loan', 'Salary-based eligibility, EMI and banks, NBFCs and apps that fit.', '#fdf2fa', '#c11574'],
-    ['business', 'briefcase', 'Business Loan', 'MUDRA, unsecured and secured options by vintage, ITR and CIBIL.', '#eff8ff', '#175cd3'],
-    ['gold', 'coins', 'Gold Loan', 'Gold value and maximum loan under RBI limits, with lenders nearby.', '#fffaeb', '#b54708'],
-    ['account', 'bank', 'Bank Account', 'The right savings or current account, documents and banks.', '#ecfdf3', '#067647']];
+  var TOOLS = [['home', 'home', 'Home Loan', 'Eligibility, EMI and the lenders that fit – purchase, plot, construction, LAP.', 'images/loan-home.svg'],
+    ['personal', 'user', 'Personal Loan', 'Salary-based eligibility, EMI and banks, NBFCs and apps that fit.', 'images/loan-personal.svg'],
+    ['business', 'briefcase', 'Business Loan', 'MUDRA, unsecured and secured options by vintage, ITR and CIBIL.', 'images/loan-business.svg'],
+    ['gold', 'coins', 'Gold Loan', 'Gold value and maximum loan under RBI limits, with lenders nearby.', 'images/loan-gold.svg'],
+    ['account', 'bank', 'Bank Account', 'The right savings or current account, documents and banks.', 'images/bank-account.svg']];
   function renderTools() {
     var sel = $('tl-client'), cur = sel.value, list = App.clients();
     sel.innerHTML = '<option value="">No client – just explore</option>' + list.map(function (c) { return '<option value="' + c.id + '">' + esc(c.name) + ' · ' + plabel(c.product) + '</option>'; }).join('');
@@ -345,8 +345,8 @@
     var c = sel.value && App.getClient(sel.value);
     $('tl-grid').innerHTML = TOOLS.map(function (t, i) {
       var p = App.PRODUCTS[t[0]];
-      return '<a class="ap-card ap-tool" style="--i:' + i + ';--bg:' + t[4] + ';--fg:' + t[5] + '" href="' + p.page + (c ? '?client=' + c.id : '') + '#' + p.section + '">' +
-        (c && c.product === t[0] ? '<span class="for">For ' + esc(c.name.split(' ')[0]) + '</span>' : '') + '<span class="ic">' + ic(t[1], 22) + '</span><strong>' + t[2] + '</strong><p>' + t[3] + '</p><span class="go">' + (c ? 'Search for ' + esc(c.name.split(' ')[0]) : 'Open tool') + ic('arrow', 16) + '</span></a>';
+      return UI.toolCard({ i: i, href: p.page + (c ? '?client=' + c.id : '') + '#' + p.section, img: t[4], icon: t[1], title: t[2], text: t[3],
+        badge: c && c.product === t[0] ? 'For ' + c.name.split(' ')[0] : '', go: c ? 'Search for ' + c.name.split(' ')[0] : 'Open tool' });
     }).join('');
   }
   $('tl-client').addEventListener('change', renderTools);

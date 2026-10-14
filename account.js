@@ -9,14 +9,14 @@
   var name = p.fullName || me.username, first = name.split(' ')[0];
 
   var TOOLS = {
-    home: ['home', 'Home Loan', 'home-loans.html#home-loan-search', 'Eligibility, EMI and lenders for buying or building a home.', '#eef0ff', '#4f46e5'],
-    personal: ['user', 'Personal Loan', 'personal-loans.html#personal-loan-search', 'See how much you can borrow without collateral.', '#fdf2fa', '#c11574'],
-    business: ['briefcase', 'Business Loan', 'business-loans.html#business-loan-search', 'MUDRA, unsecured and secured options for your business.', '#eff8ff', '#175cd3'],
-    gold: ['coins', 'Gold Loan', 'gold-loans.html#gold-loan-search', 'Value your gold and see the maximum loan under RBI limits.', '#fffaeb', '#b54708'],
-    account: ['bank', 'Bank Account', 'bank-account.html#bank-account-search', 'Pick the right savings or current account and documents.', '#ecfdf3', '#067647'],
+    home: ['home', 'Home Loan', 'home-loans.html#home-loan-search', 'Eligibility, EMI and lenders for buying or building a home.', '#eef0ff', '#4f46e5', 'images/loan-home.svg'],
+    personal: ['user', 'Personal Loan', 'personal-loans.html#personal-loan-search', 'See how much you can borrow without collateral.', '#fdf2fa', '#c11574', 'images/loan-personal.svg'],
+    business: ['briefcase', 'Business Loan', 'business-loans.html#business-loan-search', 'MUDRA, unsecured and secured options for your business.', '#eff8ff', '#175cd3', 'images/loan-business.svg'],
+    gold: ['coins', 'Gold Loan', 'gold-loans.html#gold-loan-search', 'Value your gold and see the maximum loan under RBI limits.', '#fffaeb', '#b54708', 'images/loan-gold.svg'],
+    account: ['bank', 'Bank Account', 'bank-account.html#bank-account-search', 'Pick the right savings or current account and documents.', '#ecfdf3', '#067647', 'images/bank-account.svg'],
     registration: ['file', 'Business Registration', 'registration.html', 'GST, Udyam, company and firm registration.', '#f4f3ff', '#5925dc'],
-    vehicle: ['sparkle', 'Vehicle Loan', 'contact.html', 'New or used car, bike or commercial vehicle.', '#f0f9ff', '#026aa2'],
-    education: ['sparkle', 'Education Loan', 'contact.html', 'Fund studies in India or abroad.', '#f0f9ff', '#026aa2'],
+    vehicle: ['sparkle', 'Vehicle Loan', 'contact.html', 'New or used car, bike or commercial vehicle.', '#f0f9ff', '#026aa2', 'images/loan-vehicle.svg'],
+    education: ['sparkle', 'Education Loan', 'contact.html', 'Fund studies in India or abroad.', '#f0f9ff', '#026aa2', 'images/loan-education.svg'],
     insurance: ['shield', 'Insurance', 'contact.html', 'Health, life and business cover.', '#fef3f2', '#b42318'],
     realestate: ['home', 'Real Estate', 'contact.html', 'Buy, sell or rent property with our team.', '#f0fdf9', '#107569']
   };
@@ -49,8 +49,8 @@
 
   function tool(k, i, forYou) {
     var t = TOOLS[k];
-    return '<a class="ap-card ap-tool" style="--i:' + i + ';--bg:' + t[4] + ';--fg:' + t[5] + '" href="' + t[2] + '">' + (forYou ? '<span class="for">For you</span>' : '') +
-      '<span class="ic">' + ic(t[0], 22) + '</span><strong>' + t[1] + '</strong><p>' + t[3] + '</p><span class="go">' + (t[2].indexOf('contact') === 0 ? 'Talk to our team' : 'Start search') + ic('arrow', 16) + '</span></a>';
+    return UI.toolCard({ i: i, href: t[2], img: t[6], icon: t[0], title: t[1], text: t[3], badge: forYou ? 'For you' : '',
+      go: t[2].indexOf('contact') === 0 ? 'Talk to our team' : t[2].indexOf('registration') === 0 ? 'View services' : 'Start search' });
   }
   function ring(el, n, total, light) {
     var r = 46, c = 2 * Math.PI * r, pct = total ? n / total : 0;
@@ -63,7 +63,7 @@
   function savedCard(s, i) {
     var prod = App.PRODUCTS[s.kind] || App.PRODUCTS.other, t = TOOLS[s.kind] || TOOLS.home;
     return '<article class="ap-card pad" style="animation:ap-rise .45s var(--ap-ease) both;animation-delay:' + i * 60 + 'ms"><div style="display:flex;gap:.8rem;align-items:flex-start">' +
-      '<span class="ap-tool" style="padding:0;border:0;box-shadow:none;--bg:' + t[4] + ';--fg:' + t[5] + '"><span class="ic">' + ic(t[0], 20) + '</span></span><div style="flex:1;min-width:0">' +
+      '<span class="ap-thumb is-lg">' + (t[6] ? '<img src="' + t[6] + '" alt="" loading="lazy">' : '') + '</span><div style="flex:1;min-width:0">' +
       '<span class="ap-tag">' + prod.label + '</span><h3 style="font-size:1rem;font-weight:600;margin-top:.4rem">' + esc(s.headline) + '</h3>' +
       (s.details ? '<p class="ap-muted" style="font-size:.825rem;margin-top:.3rem;line-height:1.5">' + s.details.map(esc).join('<br>') + '</p>' : '') +
       '<p class="ap-muted" style="font-size:.75rem;margin-top:.4rem">Saved ' + new Date(s.at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) + '</p></div></div>' +
@@ -93,7 +93,7 @@
     $('hm-tools').innerHTML = top.map(function (k, i) { return tool(k, i, picks.indexOf(k) !== -1); }).join('');
     $('hm-saved').innerHTML = saved.length ? '<div class="ap-list">' + saved.slice(0, 3).map(function (s) {
       var prod = App.PRODUCTS[s.kind] || App.PRODUCTS.other;
-      return '<a class="ap-li is-click" style="text-decoration:none;color:inherit" href="' + prod.page + '?saved=' + s.id + '#' + prod.section + '"><span class="ap-avatar is-sm" style="--a1:#a5a8ff;--a2:#625fff">' + ic((TOOLS[s.kind] || TOOLS.home)[0], 16) + '</span><div class="tx"><strong>' + esc(s.headline) + '</strong><small>' + prod.label + ' · ' + new Date(s.at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }) + '</small></div>' + ic('arrow', 16) + '</a>';
+      return '<a class="ap-li is-click" style="text-decoration:none;color:inherit" href="' + prod.page + '?saved=' + s.id + '#' + prod.section + '"><span class="ap-thumb">' + ((TOOLS[s.kind] || TOOLS.home)[6] ? '<img src="' + (TOOLS[s.kind] || TOOLS.home)[6] + '" alt="" loading="lazy">' : '') + '</span><div class="tx"><strong>' + esc(s.headline) + '</strong><small>' + prod.label + ' · ' + new Date(s.at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }) + '</small></div>' + ic('arrow', 16) + '</a>';
     }).join('') + '</div>' : '<div class="ap-empty-chart">' + ic('bookmark', 26) + '<span>Run a search and tap <b>Save this result</b> to keep it here.</span></div>';
 
     // search

@@ -626,3 +626,35 @@ select.ap-input{appearance:none;-webkit-appearance:none;padding-right:2.4rem;cur
 .au-g1{top:-3.75rem;right:-1.25rem}
 .ap-kpi .top{align-items:flex-start}
 @media(max-width:1023px){.au-pitch p,.au-eyebrow{display:none}.au-pitch{margin-top:1rem}.au-pitch h2{font-size:1.6rem}}
+/* search-tool cards with the website's loan illustrations */
+.ap-tool.has-img{padding:.6rem;gap:0}
+.ap-tool .pic{position:relative;display:flex;align-items:center;justify-content:center;aspect-ratio:16/10;border-radius:12px;overflow:hidden;background:linear-gradient(135deg,#f6f6ff,#eef0ff)}
+.ap-tool .pic img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ap-ease)}
+.ap-tool:hover .pic img{transform:scale(1.05)}
+.ap-tool .pic.is-icon{color:var(--ap-ind)}
+.ap-tool .pic.is-icon .ap-icon{width:44px;height:44px;padding:10px;box-sizing:content-box;border-radius:16px;background:#fff;box-shadow:0 10px 24px -14px rgba(49,46,129,.45);transition:transform .5s var(--ap-ease)}
+.ap-tool:hover .pic.is-icon .ap-icon{transform:translateY(-4px) scale(1.05)}
+.ap-tool .body{display:flex;flex-direction:column;gap:.35rem;flex:1;padding:.85rem .65rem .55rem}
+.ap-tool .row{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+.ap-tool .row strong{margin:0}
+.ap-tool .arrow{flex:none;display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:9px;background:var(--ap-tint);color:var(--ap-ind);transition:background .3s,color .3s,transform .3s var(--ap-ease)}
+.ap-tool .arrow .ap-icon{width:16px;height:16px}
+.ap-tool:hover .arrow{background:var(--ap-ind);color:#fff;transform:translateX(2px)}
+.ap-tool.has-img .go{margin-top:auto;padding-top:.2rem}
+.ap-tool.has-img .for{top:1.1rem;right:1.1rem;background:#fff;box-shadow:0 4px 12px -6px rgba(16,24,40,.3)}
+.ap-thumb{flex:none;width:64px;height:40px;border-radius:9px;overflow:hidden;background:var(--ap-tint)}
+.ap-thumb img{width:100%;height:100%;object-fit:cover}
+.ap-thumb.is-lg{width:96px;height:60px;border-radius:10px}
+@media(max-width:639px){
+  .ap-g3{grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem}
+  .ap-tool.has-img{padding:.4rem;border-radius:14px}
+  .ap-tool .pic{border-radius:10px}
+  .ap-tool .body{padding:.6rem .35rem .4rem;gap:.25rem}
+  .ap-tool .row strong{font-size:.875rem}
+  .ap-tool .arrow{width:26px;height:26px;border-radius:8px}
+  .ap-tool .arrow .ap-icon{width:14px;height:14px}
+  .ap-tool p{font-size:.75rem;line-height:1.4}
+  .ap-tool.has-img .go{display:none}
+  .ap-tool.has-img .for{top:.7rem;right:.7rem;font-size:.62rem;padding:.1rem .45rem}
+  .ap-tool .pic.is-icon .ap-icon{width:30px;height:30px;padding:8px}
+}

@@ -185,5 +185,15 @@
   }
   hydrate();
 
-  window.RavenUI = { hydrate: hydrate, icon: icon, avatar: avatar, initials: initials, toast: toast, countUp: countUp, openDrawer: openDrawer, closeDrawer: closeDrawer, router: router, hideTip: hideTip };
+  // search-tool card in the website's loan-card style: illustration on top, title with arrow, description
+  function toolCard(o) {
+    var e = RavenApp.esc;
+    return '<a class="ap-card ap-tool has-img" style="--i:' + (o.i || 0) + '" href="' + o.href + '">' +
+      '<span class="pic' + (o.img ? '' : ' is-icon') + '">' + (o.img ? '<img src="' + o.img + '" alt="" width="640" height="400" loading="lazy">' : icon(o.icon, 40)) + '</span>' +
+      (o.badge ? '<span class="for">' + e(o.badge) + '</span>' : '') +
+      '<span class="body"><span class="row"><strong>' + e(o.title) + '</strong><span class="arrow">' + icon('arrow', 16) + '</span></span>' +
+      '<p>' + e(o.text) + '</p><span class="go">' + e(o.go) + '</span></span></a>';
+  }
+
+  window.RavenUI = { toolCard: toolCard, hydrate: hydrate, icon: icon, avatar: avatar, initials: initials, toast: toast, countUp: countUp, openDrawer: openDrawer, closeDrawer: closeDrawer, router: router, hideTip: hideTip };
 })();
