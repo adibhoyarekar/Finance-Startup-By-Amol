@@ -45,13 +45,15 @@
     personal: { label: 'Personal Loan',        page: 'personal-loans.html', section: 'personal-loan-search' },
     gold:     { label: 'Gold Loan',            page: 'gold-loans.html',     section: 'gold-loan-search' },
     account:  { label: 'Bank Account Opening', page: 'bank-account.html',   section: 'bank-account-search' },
+    vehicle:  { label: 'Car Loan',             page: 'car-loans.html',      section: 'car-loan-search' },
+    realestate: { label: 'Real Estate',        page: 'real-estate.html',    section: 'real-estate-form' },
     other:    { label: 'Other',                page: 'contact.html',        section: '' }
   };
   var STATUSES = [
     ['new', 'New lead'], ['docs', 'Documents pending'], ['submitted', 'Submitted to bank'],
     ['sanctioned', 'Sanctioned'], ['disbursed', 'Disbursed'], ['closed', 'Rejected / Closed']
   ];
-  var DEFAULT_PAYOUT = { home: 0.5, business: 1, personal: 1.5, gold: 0.3, account: 0, other: 0.5 };
+  var DEFAULT_PAYOUT = { home: 0.5, business: 1, personal: 1.5, gold: 0.3, account: 0, vehicle: 1, realestate: 1, other: 0.5 };
 
   var App = {
     PRODUCTS: PRODUCTS, STATUSES: STATUSES, DEFAULT_PAYOUT: DEFAULT_PAYOUT,
@@ -197,13 +199,13 @@
       box.querySelector('button').addEventListener('click', function () {
         var v = info.values, client = c ? App.getClient(c.id) : {
           name: v.name, mobile: v.mobile || '', city: v.city || '', product: info.kind,
-          amount: v.amount || 0, cibil: v.cibil || '', status: 'new', notes: '', followUp: ''
+          amount: v.amount || v.budget || 0, cibil: v.cibil || '', status: 'new', notes: '', followUp: ''
         };
         client.searches = client.searches || {};
         client.searches[info.kind] = { values: v, headline: info.headline, details: info.details, at: new Date().toISOString() };
         client.lastSearch = { kind: info.kind, headline: info.headline, at: new Date().toISOString() };
         client.activity = [{ at: new Date().toISOString(), text: (c ? '' : 'added from a search · ') + PRODUCTS[info.kind].label + ' search saved – ' + info.headline }].concat(client.activity || []).slice(0, 40);
-        if (!client.amount && v.amount) client.amount = v.amount;
+        if (!client.amount && (v.amount || v.budget)) client.amount = v.amount || v.budget;
         if (!client.product) client.product = info.kind;
         client = App.saveClient(client);
         if (!c) { c = client; history.replaceState(null, '', page + '?client=' + client.id); }

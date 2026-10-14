@@ -674,3 +674,21 @@ html.rv-split header.z-50 img{flex-shrink:0}
 
 
 
+
+/* ---------- multi-section application forms (real estate, car loan) ---------- */
+.hl-sec-h{display:flex;align-items:center;gap:.6rem;margin:.75rem 0 -.25rem;padding-top:1rem;border-top:1px solid #f1f2f4;font-size:.95rem;font-weight:600;color:var(--ink)}
+.hl-form>.hl-sec-h:first-child{margin-top:0;padding-top:0;border-top:0}
+.hl-sec-h span{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:8px;background:#eef0ff;color:var(--indigo);font-size:.8rem;font-weight:600}
+.hl-cond{animation:hl-in .35s ease both}
+.hl-cond[hidden]{display:none!important}
+@keyframes hl-in{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.hl-subgrid{display:grid;grid-template-columns:1fr;gap:1rem 1.25rem}
+@media(min-width:640px){.hl-subgrid{grid-template-columns:1fr 1fr}}
+.hl-subgrid>.hl-sec-h:first-child{margin-top:.75rem;padding-top:1rem;border-top:1px solid #f1f2f4}
+textarea.rv-input{min-height:5.5rem;resize:vertical}
+input[type="date"].rv-input{height:50px}
+.hl-spacer{display:none}
+@media(min-width:640px){.hl-spacer{display:block}}
+.hl-steps{margin:0;padding-left:1.15rem;display:grid;gap:.5rem;font-size:.875rem;color:var(--color-gray-700)}
+.hl-steps li::marker{color:var(--indigo);font-weight:600}
+.hl-steps{list-style:decimal}

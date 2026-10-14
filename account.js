@@ -15,10 +15,10 @@
     gold: ['coins', 'Gold Loan', 'gold-loans.html#gold-loan-search', 'Value your gold and see the maximum loan under RBI limits.', '#fffaeb', '#b54708', 'images/loan-gold.svg'],
     account: ['bank', 'Bank Account', 'bank-account.html#bank-account-search', 'Pick the right savings or current account and documents.', '#ecfdf3', '#067647', 'images/bank-account.svg'],
     registration: ['file', 'Business Registration', 'registration.html', 'GST, Udyam, company and firm registration.', '#f4f3ff', '#5925dc'],
-    vehicle: ['sparkle', 'Vehicle Loan', 'contact.html', 'New or used car, bike or commercial vehicle.', '#f0f9ff', '#026aa2', 'images/loan-vehicle.svg'],
+    vehicle: ['sparkle', 'Car Loan', 'car-loans.html#car-loan-search', 'Eligibility, EMI and lenders for a new or used car.', '#f0f9ff', '#026aa2', 'images/loan-vehicle.svg'],
     education: ['sparkle', 'Education Loan', 'contact.html', 'Fund studies in India or abroad.', '#f0f9ff', '#026aa2', 'images/loan-education.svg'],
     insurance: ['shield', 'Insurance', 'contact.html', 'Health, life and business cover.', '#fef3f2', '#b42318'],
-    realestate: ['home', 'Real Estate', 'contact.html', 'Buy, sell or rent property with our team.', '#f0fdf9', '#107569']
+    realestate: ['home', 'Real Estate', 'real-estate.html#real-estate-form', 'Buy, sell, rent or lease property – apply in minutes.', '#f0fdf9', '#107569', 'images/real-estate.svg']
   };
   var LANG = { en: 'English', mr: 'मराठी', hi: 'हिंदी' };
   var EMP = { 'sal-bank': 'Salaried – Bank Salary', 'sal-cash': 'Salaried – Cash Salary', 'se-business': 'Self-Employed – Business', 'se-professional': 'Self-Employed – Professional', student: 'Student', retired: 'Retired / Pensioner', homemaker: 'Homemaker', other: 'Other' };
@@ -50,7 +50,7 @@
   function tool(k, i, forYou) {
     var t = TOOLS[k];
     return UI.toolCard({ i: i, href: t[2], img: t[6], icon: t[0], title: t[1], text: t[3], badge: forYou ? 'For you' : '',
-      go: t[2].indexOf('contact') === 0 ? 'Talk to our team' : t[2].indexOf('registration') === 0 ? 'View services' : 'Start search' });
+      go: t[2].indexOf('contact') === 0 ? 'Talk to our team' : t[2].indexOf('registration') === 0 ? 'View services' : t[2].indexOf('real-estate') === 0 ? 'Start application' : 'Start search' });
   }
   function ring(el, n, total, light) {
     var r = 46, c = 2 * Math.PI * r, pct = total ? n / total : 0;

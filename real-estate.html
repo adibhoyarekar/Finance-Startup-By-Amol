@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real Estate - RAVEN</title>
+  <meta name="description" content="Buy, sell, rent or lease residential, commercial and agricultural property in Maharashtra with RAVEN.">
+  <link rel="icon" type="image/svg+xml" href="images/logo-mark.svg">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="raven.css?v=19">
+</head>
+<body class="antialiased text-gray-900 bg-white">
+  <div id="top" class="min-h-screen">
+  <header class="left-0 w-full z-50 transition-all duration-300 absolute top-5 lg:top-8">
+    <nav>
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex items-center justify-between rounded-[18px] transition-all duration-300 bg-white backdrop-blur-md pl-6 py-3 pr-3 shadow-sm">
+          <a href="index.html" aria-label="RAVEN home"><img src="images/logo.svg" alt="RAVEN" width="116" height="30"></a>
+          <div class="hidden lg:block">
+            <ul class="flex">
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="index.html">Home</a></li>
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="funding-loans.html">Funding &amp; Loans</a></li>
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="registration.html">Business Registration</a></li>
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="hidden lg:flex gap-4">
+            <a class="border bg-gray-50 border-gray-200 rounded-lg text-gray-800 font-medium text-base py-2.5 px-4 hover:bg-gray-100 transition duration-300 ease-in-out" href="ask.html">Ask a Question</a>
+            <a class="text-white bg-gray-950 rounded-lg py-2.5 px-4 text-base font-medium hover:bg-gray-800 transition duration-300 ease-in-out" href="signup.html">Registration</a>
+          </div>
+          <div class="flex lg:hidden">
+            <button id="menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="rv-menu" class="cursor-pointer p-2">
+              <svg class="rv-ico-open" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h16M4 12h16M4 17h16" stroke="#101828" stroke-width="1.8" stroke-linecap="round"/></svg>
+              <svg class="rv-ico-close" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M6 6l12 12M18 6L6 18" stroke="#101828" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+        </div>
+        <div id="rv-menu" class="rv-menu" hidden>
+          <a class="rv-mlink" href="index.html">Home</a><a class="rv-mlink" href="funding-loans.html">Funding &amp; Loans</a><a class="rv-mlink" href="registration.html">Business Registration</a><a class="rv-mlink" href="contact.html">Contact</a>
+          <a class="rv-mlink" href="ask.html">Ask a Question</a>
+          <a class="rv-mcta" href="signup.html">Registration</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="rv-hero relative pt-30 lg:pt-45 pb-10">
+      <div class="rv-fade-bottom"></div>
+      <div class="max-w-7xl mx-auto px-6 relative z-30">
+        <div class="max-w-xl lg:max-w-4xl lg:px-4 mx-auto text-center">
+          <a href="index.html" class="rv-back reveal">&larr; Home</a>
+          <h1 class="text-center text-4xl lg:text-6xl font-semibold mb-5 reveal">Real Estate Services</h1>
+          <p class="text-gray-500 text-base lg:px-10 reveal">Buy, sell, rent or lease property – our team shortlists options, plans site visits and handles the paperwork.</p>
+        </div>
+      </div>
+    </section>
+    <section class="ln pt-4 pb-6 lg:pb-10" id="real-estate-form">
+      <div class="max-w-7xl mx-auto px-4 lg:px-6">
+        <div class="hl-card reveal">
+          <div class="hl-head">
+            <span class="hl-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/><path d="M10 10h4"/></svg></span>
+            <div>
+              <h2 class="hl-title">Real Estate Application Form</h2>
+              <p class="hl-sub">Tell us what you are looking for. We prepare your application, documents list and next steps, and our team takes it from there.</p>
+            </div>
+          </div>
+          <form class="hl-form" data-search="realestate" data-result="realestate-result" novalidate>
+            <p class="hl-sec-h hl-full"><span>1</span>Customer Details</p>
+            <div class="hl-field hl-full">
+              <label for="re-name">Customer Name</label>
+              <input id="re-name" name="name" class="rv-input" type="text" placeholder="Enter Customer Name" data-check="name" autocomplete="name" required>
+              <p class="hl-err" data-for="re-name">Please enter the customer name.</p>
+            </div>
+            <div class="hl-field">
+              <label for="re-mobile">Mobile Number</label>
+              <input id="re-mobile" name="mobile" class="rv-input" type="tel" placeholder="Enter Mobile Number" data-check="mobile" inputmode="tel" autocomplete="tel" maxlength="16" required>
+              <p class="hl-err" data-for="re-mobile">Enter a valid 10-digit mobile number.</p>
+            </div>
+            <div class="hl-field">
+              <label for="re-whatsapp">WhatsApp Number (if different)</label>
+              <input id="re-whatsapp" name="whatsapp" class="rv-input" type="tel" placeholder="Enter WhatsApp Number" data-check="mobile" inputmode="tel" maxlength="16">
+              <p class="hl-err" data-for="re-whatsapp">Enter a valid 10-digit WhatsApp number.</p>
+            </div>
+            <div class="hl-field">
+              <label for="re-email">Email ID (optional)</label>
+              <input id="re-email" name="email" class="rv-input" type="email" placeholder="Enter Email ID" data-check="email" autocomplete="email">
+              <p class="hl-err" data-for="re-email">Enter a valid email address.</p>
+            </div>
+            <div class="hl-field">
+              <label for="re-city">City / Location</label>
+              <input id="re-city" name="city" class="rv-input" type="text" placeholder="Enter City / Location" autocomplete="address-level2" required>
+              <p class="hl-err" data-for="re-city">Please enter the city or location.</p>
+            </div>
+            <p class="hl-sec-h hl-full"><span>2</span>Property Requirement</p>
+            <div class="hl-field hl-full">
+              <label for="re-service">Select Property Service</label>
+              <select id="re-service" name="service" class="rv-input hl-select" required>
+                <option value="">Select Property Service</option>
+                <option value="buy">Buy Property</option>
+                <option value="sell">Sell Property</option>
+                <option value="rent">Rent Property</option>
+                <option value="lease">Lease Property</option>
+                <option value="commercial">Commercial Property</option>
+                <option value="residential">Residential Property</option>
+                <option value="plot">Plot / Land</option>
+                <option value="agri">Agricultural Land</option>
+              </select>
+              <p class="hl-err" data-for="re-service">Please select the property service.</p>
+            </div>
+            <p class="hl-sec-h hl-full"><span>3</span>Property Details</p>
+            <div class="hl-field">
+              <label for="re-ptype">Property Type</label>
+              <select id="re-ptype" name="ptype" class="rv-input hl-select" required>
+                <option value="">Select Property Type</option>
+                <option value="flat">Flat / Apartment</option>
+                <option value="rowhouse">Row House / Bungalow</option>
+                <option value="plot">Plot</option>
+                <option value="shop">Commercial Shop</option>
+                <option value="office">Office</option>
+                <option value="agri">Agricultural Land</option>
+                <option value="na">NA Plot</option>
+                <option value="other">Other</option>
+              </select>
+              <p class="hl-err" data-for="re-ptype">Please select the property type.</p>
+            </div>
+            <div class="hl-field">
+              <label for="re-location">Preferred Location</label>
+              <input id="re-location" name="location" class="rv-input" type="text" placeholder="e.g. Baner, Pune" required>
+              <p class="hl-err" data-for="re-location">Please enter the preferred location.</p>
+            </div>
+            <div class="hl-field">
+              <label for="re-area">Property Area (Sq. Ft.)</label>
+              <input id="re-area" name="area" class="rv-input" type="text" placeholder="e.g. 1050" data-check="number" inputmode="numeric" data-min="50" data-max="10000000" autocomplete="off" required>
+              <p class="hl-err" data-for="re-area">Enter an area between 50 and 1,00,00,000 sq ft.</p>
+            </div>
+            <div class="hl-field">
+              <label for="re-budget">Budget (₹)</label>
+              <div class="hl-money">
+                <span aria-hidden="true">₹</span>
+                <input id="re-budget" name="budget" class="rv-input" type="text" inputmode="numeric" placeholder="Enter Budget" autocomplete="off" data-check="money" data-min="10000" data-max="5000000000" aria-describedby="re-budget-words" required>
+              </div>
+              <p class="hl-hint" id="re-budget-words" data-words-for="re-budget" aria-live="polite"></p>
+              <p class="hl-err" data-for="re-budget">Enter a budget between ₹10,000 and ₹500,00,00,000.</p>
+            </div>
+            <div class="hl-field hl-full">
+              <label for="re-pstatus">Property Status</label>
+              <select id="re-pstatus" name="pstatus" class="rv-input hl-select" required>
+                <option value="">Select Property Status</option>
+                <option value="ready">Ready to Move</option>
+                <option value="under">Under Construction</option>
+                <option value="resale">Resale Property</option>
+              </select>
+              <p class="hl-err" data-for="re-pstatus">Please select the property status.</p>
+            </div>
+            <div class="hl-cond hl-full" data-show="service:buy|commercial|residential|plot|agri"><div class="hl-subgrid">
+            <p class="hl-sec-h hl-full"><span>4</span>Payment Details</p>
+            <div class="hl-field hl-full">
+              <label for="re-payment">Payment Type</label>
+              <select id="re-payment" name="payment" class="rv-input hl-select" required>
+                <option value="">Select Payment Type</option>
+                <option value="self">Self-Funding</option>
+                <option value="loan">Home Loan Required</option>
+                <option value="both">Loan + Self-Funding</option>
+              </select>
+              <p class="hl-err" data-for="re-payment">Please select the payment type.</p>
+            </div>
+            <div class="hl-cond hl-full" data-show="payment:loan|both"><div class="hl-subgrid">
+            <div class="hl-field">
+              <label for="re-loan">Loan Amount Required (₹)</label>
+              <div class="hl-money">
+                <span aria-hidden="true">₹</span>
+                <input id="re-loan" name="loan" class="rv-input" type="text" inputmode="numeric" placeholder="Enter Loan Amount" autocomplete="off" data-check="money" data-min="100000" data-max="500000000" aria-describedby="re-loan-words" required>
+              </div>
+              <p class="hl-hint" id="re-loan-words" data-words-for="re-loan" aria-live="polite"></p>
+              <p class="hl-err" data-for="re-loan">Enter a loan amount between ₹1,00,000 and ₹50,00,00,000.</p>
+            </div>
+            <div class="hl-field">
+              <label for="re-approval">Bank Loan Approval</label>
+              <select id="re-approval" name="approval" class="rv-input hl-select" required>
+                <option value="">Yes / No / Applied</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+                <option value="applied">Applied</option>
+              </select>
+              <p class="hl-err" data-for="re-approval">Please choose an option.</p>
+            </div>
+            </div></div>
+            </div></div>
+            <p class="hl-sec-h hl-full"><span>+</span>Additional Information</p>
+            <div class="hl-field">
+              <label for="re-visit">Preferred Visit Date (optional)</label>
+              <input id="re-visit" name="visit" class="rv-input" type="date" placeholder="" data-check="date">
+              <p class="hl-err" data-for="re-visit">Choose today or a later date.</p>
+            </div>
+            <div class="hl-field hl-spacer" aria-hidden="true"></div>
+            <div class="hl-field hl-full">
+              <label for="re-notes">Additional Requirements (optional)</label>
+              <textarea id="re-notes" name="notes" class="rv-input" rows="3" placeholder="e.g. 2 BHK, near school, east facing, parking needed…"></textarea>
+            </div>
+            <div class="hl-full hl-actions">
+              <button type="submit" class="hl-submit">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg>
+                Submit Application
+              </button>
+              <button type="reset" class="hl-reset">Clear</button>
+            </div>
+          </form>
+          <div id="realestate-result" class="hl-result" hidden tabindex="-1" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+    <section class="pt-28 pb-10 rv-cta relative">
+      <div class="rv-fade-bottom"></div>
+      <div class="max-w-7xl mx-auto px-6 relative z-30">
+        <div class="max-w-2xl mx-auto text-center reveal">
+          <h2 class="text-4xl lg:text-5xl -tracking-[1.9px] mb-4 font-medium text-gray-900">Have a property in mind?</h2>
+          <p class="text-base text-gray-500 mb-9">Talk to our team and we will plan the visit, the loan and the registration.</p>
+          <div class="flex gap-4 justify-center sm:items-center flex-col sm:flex-row">
+            <a class="py-2.5 px-4 bg-indigo-500 h-11 rounded-lg font-medium text-white text-base hover:bg-indigo-600 transition duration-300 ease-in-out inline-block" href="contact.html">Contact Us</a>
+            <a class="py-2.5 px-4 border h-11 border-gray-200 bg-white/70 text-base rounded-lg font-medium inline-block hover:bg-gray-100 transition duration-300 ease-in-out text-gray-800" href="index.html">Back to home</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="pt-10 lg:pt-18">
+        <div class="flex flex-col lg:flex-row gap-10">
+          <div class="lg:w-4/12">
+            <a class="mb-10 lg:mb-20 inline-block" href="index.html" aria-label="RAVEN home"><img src="images/logo.svg" alt="RAVEN" width="136" height="35"></a>
+            <p class="lg:pr-10 text-gray-500 text-base">Build. Fund. Brand. Grow.<br>Your business partner in India.</p>
+            <p class="text-gray-400 text-sm mt-4">Chhatrapati Sambhajinagar &amp; Pune, India</p>
+          </div>
+          <div class="lg:w-6/12 lg:ml-auto">
+            <div class="grid grid-cols-2 gap-5 sm:gap-10 sm:grid-cols-3">
+              <div>
+                <h3 class="text-lg text-gray-800 font-medium mb-6">Services</h3>
+                <nav class="space-y-5">
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="funding-loans.html">Funding &amp; Loans</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="registration.html">Business Registration</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="bank-account.html">Bank Account Opening</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="real-estate.html">Real Estate</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Brand Strategy</a>
+                </nav>
+              </div>
+              <div>
+                <h3 class="text-lg text-gray-800 font-medium mb-6">Company</h3>
+                <nav class="space-y-5">
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="index.html#about">About Us</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Contact</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="terms.html">Terms &amp; Conditions</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="privacy.html">Privacy Policy</a>
+                </nav>
+              </div>
+              <div class="flex lg:justify-end">
+                <div>
+                  <h3 class="text-lg text-gray-800 font-medium mb-6">Contact</h3>
+                  <nav class="space-y-5">
+                    <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="mailto:hello@raven.business">hello@raven.business</a>
+                    <span class="text-gray-700 block text-base">Chhatrapati Sambhajinagar</span>
+                    <span class="text-gray-700 block text-base">Pune, India</span>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-between flex-col sm:flex-row gap-5 items-center pb-10 pt-10 lg:pt-20">
+        <p class="text-base text-gray-500">&copy; 2025 RAVEN. All rights reserved. <span class="rv-dot">Built for Indian Entrepreneurs.</span></p>
+        <a href="#top" class="flex gap-3 items-center text-gray-700">Back to top
+          <span class="size-7 rounded-full text-white bg-indigo-500 inline-flex items-center justify-center hover:bg-indigo-600 transition duration-300 ease-in-out"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </footer>
+  </div>
+  <script src="raven-app.js?v=3"></script>
+  <script src="search-forms.js?v=3"></script>
+  <script src="site.js?v=2"></script>
+  <script src="ai-chat.js?v=6"></script>
+  <script src="consent.js?v=4"></script>
+</body>
+</html>

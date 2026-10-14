@@ -337,7 +337,9 @@
     ['personal', 'user', 'Personal Loan', 'Salary-based eligibility, EMI and banks, NBFCs and apps that fit.', 'images/loan-personal.svg'],
     ['business', 'briefcase', 'Business Loan', 'MUDRA, unsecured and secured options by vintage, ITR and CIBIL.', 'images/loan-business.svg'],
     ['gold', 'coins', 'Gold Loan', 'Gold value and maximum loan under RBI limits, with lenders nearby.', 'images/loan-gold.svg'],
-    ['account', 'bank', 'Bank Account', 'The right savings or current account, documents and banks.', 'images/bank-account.svg']];
+    ['account', 'bank', 'Bank Account', 'The right savings or current account, documents and banks.', 'images/bank-account.svg'],
+    ['vehicle', 'sparkle', 'Car Loan', 'New or used car – eligibility, EMI, tenure and lenders that fit.', 'images/loan-vehicle.svg'],
+    ['realestate', 'home', 'Real Estate', 'Buy, sell, rent or lease – a complete application with next steps.', 'images/real-estate.svg']];
   function renderTools() {
     var sel = $('tl-client'), cur = sel.value, list = App.clients();
     sel.innerHTML = '<option value="">No client – just explore</option>' + list.map(function (c) { return '<option value="' + c.id + '">' + esc(c.name) + ' · ' + plabel(c.product) + '</option>'; }).join('');

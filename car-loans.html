@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Loan - RAVEN</title>
+  <meta name="description" content="Check car loan eligibility, EMI and lenders for new and used cars.">
+  <link rel="icon" type="image/svg+xml" href="images/logo-mark.svg">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="raven.css?v=19">
+</head>
+<body class="antialiased text-gray-900 bg-white">
+  <div id="top" class="min-h-screen">
+  <header class="left-0 w-full z-50 transition-all duration-300 absolute top-5 lg:top-8">
+    <nav>
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex items-center justify-between rounded-[18px] transition-all duration-300 bg-white backdrop-blur-md pl-6 py-3 pr-3 shadow-sm">
+          <a href="index.html" aria-label="RAVEN home"><img src="images/logo.svg" alt="RAVEN" width="116" height="30"></a>
+          <div class="hidden lg:block">
+            <ul class="flex">
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="index.html">Home</a></li>
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-indigo-500" href="funding-loans.html">Funding &amp; Loans</a></li>
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="registration.html">Business Registration</a></li>
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="hidden lg:flex gap-4">
+            <a class="border bg-gray-50 border-gray-200 rounded-lg text-gray-800 font-medium text-base py-2.5 px-4 hover:bg-gray-100 transition duration-300 ease-in-out" href="ask.html">Ask a Question</a>
+            <a class="text-white bg-gray-950 rounded-lg py-2.5 px-4 text-base font-medium hover:bg-gray-800 transition duration-300 ease-in-out" href="signup.html">Registration</a>
+          </div>
+          <div class="flex lg:hidden">
+            <button id="menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="rv-menu" class="cursor-pointer p-2">
+              <svg class="rv-ico-open" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h16M4 12h16M4 17h16" stroke="#101828" stroke-width="1.8" stroke-linecap="round"/></svg>
+              <svg class="rv-ico-close" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M6 6l12 12M18 6L6 18" stroke="#101828" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+        </div>
+        <div id="rv-menu" class="rv-menu" hidden>
+          <a class="rv-mlink" href="index.html">Home</a><a class="rv-mlink is-on" href="funding-loans.html">Funding &amp; Loans</a><a class="rv-mlink" href="registration.html">Business Registration</a><a class="rv-mlink" href="contact.html">Contact</a>
+          <a class="rv-mlink" href="ask.html">Ask a Question</a>
+          <a class="rv-mcta" href="signup.html">Registration</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="rv-hero relative pt-30 lg:pt-45 pb-10">
+      <div class="rv-fade-bottom"></div>
+      <div class="max-w-7xl mx-auto px-6 relative z-30">
+        <div class="max-w-xl lg:max-w-4xl lg:px-4 mx-auto text-center">
+          <a href="funding-loans.html#loan-types" class="rv-back reveal">&larr; All loans</a>
+          <h1 class="text-center text-4xl lg:text-6xl font-semibold mb-5 reveal">Car Loan Options</h1>
+          <p class="text-gray-500 text-base lg:px-10 reveal">New or used car – see how much you can borrow, your EMI and the lenders that usually fit.</p>
+        </div>
+      </div>
+    </section>
+    <section class="ln pt-4 pb-6 lg:pb-10" id="car-loan-search">
+      <div class="max-w-7xl mx-auto px-4 lg:px-6">
+        <div class="hl-card reveal">
+          <div class="hl-head">
+            <span class="hl-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 16l1.5-5a2 2 0 011.9-1.4h7.2a2 2 0 011.9 1.4L19 16M3 16h18v3H3z"/><circle cx="7.5" cy="19" r="1.5"/><circle cx="16.5" cy="19" r="1.5"/></svg></span>
+            <div>
+              <h2 class="hl-title">Car Loan Application Form</h2>
+              <p class="hl-sub">Share the car and income details. We show your eligibility, EMI and the lenders that usually fit.</p>
+            </div>
+          </div>
+          <form class="hl-form" data-search="vehicle" data-result="vehicle-result" novalidate>
+            <p class="hl-sec-h hl-full"><span>1</span>Customer Details</p>
+            <div class="hl-field hl-full">
+              <label for="cl-name">Customer Name</label>
+              <input id="cl-name" name="name" class="rv-input" type="text" placeholder="Enter Customer Name" data-check="name" autocomplete="name" required>
+              <p class="hl-err" data-for="cl-name">Please enter the customer name.</p>
+            </div>
+            <div class="hl-field">
+              <label for="cl-mobile">Mobile Number</label>
+              <input id="cl-mobile" name="mobile" class="rv-input" type="tel" placeholder="Enter Mobile Number" data-check="mobile" inputmode="tel" autocomplete="tel" maxlength="16" required>
+              <p class="hl-err" data-for="cl-mobile">Enter a valid 10-digit mobile number.</p>
+            </div>
+            <div class="hl-field">
+              <label for="cl-city">City / Location</label>
+              <input id="cl-city" name="city" class="rv-input" type="text" placeholder="Enter City / Location" autocomplete="address-level2" required>
+              <p class="hl-err" data-for="cl-city">Please enter the city or location.</p>
+            </div>
+            <p class="hl-sec-h hl-full"><span>2</span>Loan Requirement</p>
+            <div class="hl-field">
+              <label for="cl-ltype">Car Loan Type</label>
+              <select id="cl-ltype" name="ltype" class="rv-input hl-select" required>
+                <option value="">Select Car Loan Type</option>
+                <option value="new">New Car Loan</option>
+                <option value="used">Used Car Loan</option>
+              </select>
+              <p class="hl-err" data-for="cl-ltype">Please select the loan type.</p>
+            </div>
+            <div class="hl-field">
+              <label for="cl-emp">Customer Employment Type</label>
+              <select id="cl-emp" name="emp" class="rv-input hl-select" required>
+                <option value="">Select Employment Type</option>
+                <option value="salaried">Salaried</option>
+                <option value="self">Self-Employed</option>
+                <option value="business">Business Owner</option>
+                <option value="cash">Cash Salary</option>
+              </select>
+              <p class="hl-err" data-for="cl-emp">Please select the employment type.</p>
+            </div>
+            <p class="hl-sec-h hl-full"><span>3</span>Car Details</p>
+            <div class="hl-field">
+              <label for="cl-ctype">Car Type</label>
+              <select id="cl-ctype" name="ctype" class="rv-input hl-select" required>
+                <option value="">Select Car Type</option>
+                <option value="hatch">Hatchback</option>
+                <option value="sedan">Sedan</option>
+                <option value="suv">SUV</option>
+                <option value="muv">MUV</option>
+                <option value="luxury">Luxury Car</option>
+              </select>
+              <p class="hl-err" data-for="cl-ctype">Please select the car type.</p>
+            </div>
+            <div class="hl-field">
+              <label for="cl-brand">Car Brand</label>
+              <input id="cl-brand" name="brand" class="rv-input" type="text" placeholder="e.g. Maruti Suzuki" list="cl-brands" autocomplete="off" required>
+              <p class="hl-err" data-for="cl-brand">Please enter the car brand.</p>
+            </div>
+            <datalist id="cl-brands"><option value="Maruti Suzuki"><option value="Hyundai"><option value="Tata Motors"><option value="Mahindra"><option value="Toyota"><option value="Kia"><option value="Honda"><option value="MG"><option value="Skoda"><option value="Volkswagen"><option value="Renault"><option value="Nissan"><option value="Citroen"><option value="BMW"><option value="Mercedes-Benz"><option value="Audi"></datalist>
+            <div class="hl-field">
+              <label for="cl-model">Car Model</label>
+              <input id="cl-model" name="model" class="rv-input" type="text" placeholder="e.g. Swift VXi" autocomplete="off" required>
+              <p class="hl-err" data-for="cl-model">Please enter the car model.</p>
+            </div>
+            <div class="hl-field">
+              <label for="cl-price">Car Price (₹)</label>
+              <div class="hl-money">
+                <span aria-hidden="true">₹</span>
+                <input id="cl-price" name="price" class="rv-input" type="text" inputmode="numeric" placeholder="Enter Car Price" autocomplete="off" data-check="money" data-min="50000" data-max="50000000" aria-describedby="cl-price-words" required>
+              </div>
+              <p class="hl-hint" id="cl-price-words" data-words-for="cl-price" aria-live="polite"></p>
+              <p class="hl-err" data-for="cl-price">Enter a price between ₹50,000 and ₹5,00,00,000.</p>
+            </div>
+            <div class="hl-cond hl-full" data-show="ltype:used"><div class="hl-subgrid">
+            <div class="hl-field">
+              <label for="cl-year">Manufacturing Year (Used Car)</label>
+              <select id="cl-year" name="year" class="rv-input hl-select" required>
+                <option value="">Select Year</option>
+                <option value="2026">2026</option>
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+                <option value="2017">2017</option>
+                <option value="2016">2016</option>
+                <option value="2015">2015</option>
+                <option value="2014">2014</option>
+                <option value="2013">2013</option>
+                <option value="2012">2012</option>
+                <option value="2011">2011</option>
+              </select>
+              <p class="hl-err" data-for="cl-year">Please select the manufacturing year.</p>
+            </div>
+            <div class="hl-field">
+              <label for="cl-regno">Registration Number (Used Car, optional)</label>
+              <input id="cl-regno" name="regno" class="rv-input" type="text" placeholder="e.g. MH12AB1234" data-check="regno" autocomplete="off" autocapitalize="characters" maxlength="13">
+              <p class="hl-err" data-for="cl-regno">Enter a valid registration number, e.g. MH12AB1234.</p>
+            </div>
+            </div></div>
+            <p class="hl-sec-h hl-full"><span>4</span>Loan Details</p>
+            <div class="hl-field">
+              <label for="cl-amount">Loan Amount Required (₹)</label>
+              <div class="hl-money">
+                <span aria-hidden="true">₹</span>
+                <input id="cl-amount" name="amount" class="rv-input" type="text" inputmode="numeric" placeholder="Enter Loan Amount" autocomplete="off" data-check="money" data-min="50000" data-max="50000000" aria-describedby="cl-amount-words" required>
+              </div>
+              <p class="hl-hint" id="cl-amount-words" data-words-for="cl-amount" aria-live="polite"></p>
+              <p class="hl-err" data-for="cl-amount">Enter a loan amount between ₹50,000 and ₹5,00,00,000.</p>
+            </div>
+            <div class="hl-field">
+              <label for="cl-down">Down Payment (₹)</label>
+              <div class="hl-money">
+                <span aria-hidden="true">₹</span>
+                <input id="cl-down" name="down" class="rv-input" type="text" inputmode="numeric" placeholder="Enter Down Payment" autocomplete="off" data-check="money" data-min="0" data-max="50000000" aria-describedby="cl-down-words">
+              </div>
+              <p class="hl-hint" id="cl-down-words" data-words-for="cl-down" aria-live="polite"></p>
+              <p class="hl-err" data-for="cl-down">Enter a down payment up to ₹5,00,00,000.</p>
+            </div>
+            <div class="hl-field hl-full">
+              <label for="cl-tenure">Loan Tenure</label>
+              <select id="cl-tenure" name="tenure" class="rv-input hl-select" required>
+                <option value="">Select Loan Tenure</option>
+                <option value="1">1 Year</option>
+                <option value="2">2 Years</option>
+                <option value="3">3 Years</option>
+                <option value="4">4 Years</option>
+                <option value="5">5 Years</option>
+                <option value="6">6 Years</option>
+                <option value="7">7 Years</option>
+              </select>
+              <p class="hl-err" data-for="cl-tenure">Please select the loan tenure.</p>
+            </div>
+            <p class="hl-sec-h hl-full"><span>5</span>Income Details</p>
+            <div class="hl-cond hl-full" data-show="emp:"><div class="hl-subgrid">
+            <p class="hl-note hl-full" style="margin:0">Choose the employment type above to see the income questions.</p>
+            </div></div>
+            <div class="hl-cond hl-full" data-show="emp:salaried"><div class="hl-subgrid">
+            <div class="hl-field">
+              <label for="cl-salary">Monthly Salary (₹)</label>
+              <div class="hl-money">
+                <span aria-hidden="true">₹</span>
+                <input id="cl-salary" name="salary" class="rv-input" type="text" inputmode="numeric" placeholder="Enter Monthly Salary" autocomplete="off" data-check="money" data-min="5000" data-max="10000000" aria-describedby="cl-salary-words" required>
+              </div>
+              <p class="hl-hint" id="cl-salary-words" data-words-for="cl-salary" aria-live="polite"></p>
+              <p class="hl-err" data-for="cl-salary">Enter a monthly salary between ₹5,000 and ₹1,00,00,000.</p>
+            </div>
+            <div class="hl-field">
+              <label for="cl-company">Company Name</label>
+              <input id="cl-company" name="company" class="rv-input" type="text" placeholder="Enter Company Name" autocomplete="organization" required>
+              <p class="hl-err" data-for="cl-company">Please enter the company name.</p>
+            </div>
+            <div class="hl-field hl-full">
+              <label for="cl-jobexp">Job Experience</label>
+              <select id="cl-jobexp" name="jobexp" class="rv-input hl-select" required>
+                <option value="">Select Experience</option>
+                <option value="lt1">Less than 1 Year</option>
+                <option value="1to3">1–3 Years</option>
+                <option value="3to5">3–5 Years</option>
+                <option value="gt5">More than 5 Years</option>
+              </select>
+              <p class="hl-err" data-for="cl-jobexp">Please select the job experience.</p>
+            </div>
+            </div></div>
+            <div class="hl-cond hl-full" data-show="emp:self|business"><div class="hl-subgrid">
+            <div class="hl-field">
+              <label for="cl-bizname">Business Name</label>
+              <input id="cl-bizname" name="bizname" class="rv-input" type="text" placeholder="Enter Business Name" autocomplete="organization" required>
+              <p class="hl-err" data-for="cl-bizname">Please enter the business name.</p>
+            </div>
+            <div class="hl-field">
+              <label for="cl-bizincome">Monthly Income (₹)</label>
+              <div class="hl-money">
+                <span aria-hidden="true">₹</span>
+                <input id="cl-bizincome" name="bizincome" class="rv-input" type="text" inputmode="numeric" placeholder="Enter Monthly Income" autocomplete="off" data-check="money" data-min="5000" data-max="10000000" aria-describedby="cl-bizincome-words" required>
+              </div>
+              <p class="hl-hint" id="cl-bizincome-words" data-words-for="cl-bizincome" aria-live="polite"></p>
+              <p class="hl-err" data-for="cl-bizincome">Enter a monthly income between ₹5,000 and ₹1,00,00,000.</p>
+            </div>
+            <div class="hl-field hl-full">
+              <label for="cl-vintage">Business Vintage</label>
+              <select id="cl-vintage" name="vintage" class="rv-input hl-select" required>
+                <option value="">Select Business Age</option>
+                <option value="lt1">Less than 1 Year</option>
+                <option value="1to3">1–3 Years</option>
+                <option value="3to5">3–5 Years</option>
+                <option value="gt5">More than 5 Years</option>
+              </select>
+              <p class="hl-err" data-for="cl-vintage">Please select the business vintage.</p>
+            </div>
+            </div></div>
+            <div class="hl-cond hl-full" data-show="emp:cash"><div class="hl-subgrid">
+            <div class="hl-field">
+              <label for="cl-cashsalary">Monthly Cash Salary (₹)</label>
+              <div class="hl-money">
+                <span aria-hidden="true">₹</span>
+                <input id="cl-cashsalary" name="cashsalary" class="rv-input" type="text" inputmode="numeric" placeholder="Enter Monthly Cash Salary" autocomplete="off" data-check="money" data-min="5000" data-max="10000000" aria-describedby="cl-cashsalary-words" required>
+              </div>
+              <p class="hl-hint" id="cl-cashsalary-words" data-words-for="cl-cashsalary" aria-live="polite"></p>
+              <p class="hl-err" data-for="cl-cashsalary">Enter a monthly salary between ₹5,000 and ₹1,00,00,000.</p>
+            </div>
+            <div class="hl-field">
+              <label for="cl-workexp">Work Experience</label>
+              <select id="cl-workexp" name="workexp" class="rv-input hl-select" required>
+                <option value="">Select Experience</option>
+                <option value="lt1">Less than 1 Year</option>
+                <option value="1to3">1–3 Years</option>
+                <option value="3to5">3–5 Years</option>
+                <option value="gt5">More than 5 Years</option>
+              </select>
+              <p class="hl-err" data-for="cl-workexp">Please select the work experience.</p>
+            </div>
+            </div></div>
+            <div class="hl-full hl-actions">
+              <button type="submit" class="hl-submit">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                Search Loan Offers
+              </button>
+              <button type="reset" class="hl-reset">Clear</button>
+            </div>
+          </form>
+          <div id="vehicle-result" class="hl-result" hidden tabindex="-1" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+    <section class="pt-28 pb-10 rv-cta relative">
+      <div class="rv-fade-bottom"></div>
+      <div class="max-w-7xl mx-auto px-6 relative z-30">
+        <div class="max-w-2xl mx-auto text-center reveal">
+          <h2 class="text-4xl lg:text-5xl -tracking-[1.9px] mb-4 font-medium text-gray-900">Want the best car loan rate?</h2>
+          <p class="text-base text-gray-500 mb-9">Talk to our team and we will compare banks and NBFCs for you.</p>
+          <div class="flex gap-4 justify-center sm:items-center flex-col sm:flex-row">
+            <a class="py-2.5 px-4 bg-indigo-500 h-11 rounded-lg font-medium text-white text-base hover:bg-indigo-600 transition duration-300 ease-in-out inline-block" href="contact.html">Contact Us</a>
+            <a class="py-2.5 px-4 border h-11 border-gray-200 bg-white/70 text-base rounded-lg font-medium inline-block hover:bg-gray-100 transition duration-300 ease-in-out text-gray-800" href="funding-loans.html#loan-types">Back to all loans</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="pt-10 lg:pt-18">
+        <div class="flex flex-col lg:flex-row gap-10">
+          <div class="lg:w-4/12">
+            <a class="mb-10 lg:mb-20 inline-block" href="index.html" aria-label="RAVEN home"><img src="images/logo.svg" alt="RAVEN" width="136" height="35"></a>
+            <p class="lg:pr-10 text-gray-500 text-base">Build. Fund. Brand. Grow.<br>Your business partner in India.</p>
+            <p class="text-gray-400 text-sm mt-4">Chhatrapati Sambhajinagar &amp; Pune, India</p>
+          </div>
+          <div class="lg:w-6/12 lg:ml-auto">
+            <div class="grid grid-cols-2 gap-5 sm:gap-10 sm:grid-cols-3">
+              <div>
+                <h3 class="text-lg text-gray-800 font-medium mb-6">Services</h3>
+                <nav class="space-y-5">
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="funding-loans.html">Funding &amp; Loans</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="registration.html">Business Registration</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="bank-account.html">Bank Account Opening</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="real-estate.html">Real Estate</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Brand Strategy</a>
+                </nav>
+              </div>
+              <div>
+                <h3 class="text-lg text-gray-800 font-medium mb-6">Company</h3>
+                <nav class="space-y-5">
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="index.html#about">About Us</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Contact</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="terms.html">Terms &amp; Conditions</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="privacy.html">Privacy Policy</a>
+                </nav>
+              </div>
+              <div class="flex lg:justify-end">
+                <div>
+                  <h3 class="text-lg text-gray-800 font-medium mb-6">Contact</h3>
+                  <nav class="space-y-5">
+                    <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="mailto:hello@raven.business">hello@raven.business</a>
+                    <span class="text-gray-700 block text-base">Chhatrapati Sambhajinagar</span>
+                    <span class="text-gray-700 block text-base">Pune, India</span>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-between flex-col sm:flex-row gap-5 items-center pb-10 pt-10 lg:pt-20">
+        <p class="text-base text-gray-500">&copy; 2025 RAVEN. All rights reserved. <span class="rv-dot">Built for Indian Entrepreneurs.</span></p>
+        <a href="#top" class="flex gap-3 items-center text-gray-700">Back to top
+          <span class="size-7 rounded-full text-white bg-indigo-500 inline-flex items-center justify-center hover:bg-indigo-600 transition duration-300 ease-in-out"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </footer>
+  </div>
+  <script src="raven-app.js?v=3"></script>
+  <script src="search-forms.js?v=3"></script>
+  <script src="site.js?v=2"></script>
+  <script src="ai-chat.js?v=6"></script>
+  <script src="consent.js?v=4"></script>
+</body>
+</html>

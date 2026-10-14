@@ -326,19 +326,165 @@
     };
   }
 
-  var RENDER = { business: business, personal: personal, gold: gold, account: account };
-  var KICKER = { business: 'Business loan', personal: 'Personal loan', gold: 'Gold loan', account: 'Bank account' };
+  /* ---------- real estate application ---------- */
+  var BUY_SERVICES = ['buy', 'commercial', 'residential', 'plot', 'agri'];
+  function refNo(prefix) {
+    var d = new Date();
+    return prefix + '-' + String(d.getFullYear()).slice(2) + ('0' + (d.getMonth() + 1)).slice(-2) + ('0' + d.getDate()).slice(-2) + '-' + String(Math.floor(1000 + Math.random() * 9000));
+  }
+  function realestate(v, L) {
+    var ref = refNo('RE'), buying = BUY_SERVICES.indexOf(v.service) !== -1;
+    var selling = v.service === 'sell', renting = v.service === 'rent' || v.service === 'lease';
+    var budget = v.budget, area = v.area, loan = v.loan || 0;
+    var perSqft = area ? budget / area : 0;
+    var notes = [], docs = ['KYC – PAN card and Aadhaar card', 'Passport-size photographs'];
+    var tiles = [stat(selling ? 'Expected price' : renting ? 'Rent / budget' : 'Budget', short(budget), '₹' + inr(budget))];
+    tiles.push(stat('Area', area ? inr(area) + ' sq ft' : '–', perSqft ? 'about ₹' + inr(perSqft) + ' per sq ft' : 'add area for a rate check'));
+
+    var loanBox = '';
+    if (buying && v.payment && v.payment !== 'self') {
+      var ltv = maxLtvHome(budget), maxLoan = budget * ltv / 100, okLoan = loan <= maxLoan;
+      var rate = 8.5, months = 240;
+      tiles.push(stat('Approx. EMI', '₹' + inr(emi(loan, rate, months)) + '/mo', short(loan) + ' at ~' + rate + '% for 20 yrs'));
+      loanBox = verdict(okLoan, okLoan
+        ? '<strong>Loan of ' + short(loan) + ' is within the usual limit.</strong> Banks fund up to ' + ltv + '% of the property value, so keep at least ' + short(budget - loan) + ' as your own contribution.'
+        : '<strong>Loan is above the usual limit.</strong> For a ' + short(budget) + ' property, banks usually fund up to ' + ltv + '% (' + short(maxLoan) + '). Plan an own contribution of at least ' + short(budget - maxLoan) + '.') +
+        '<p class="hl-note" style="margin:-.25rem 0 1rem"><a href="home-loans.html#home-loan-search">Check home loan eligibility and lenders →</a>' +
+        (v.approval === 'yes' ? ' · Loan approval: ready' : v.approval === 'applied' ? ' · Loan approval: applied' : ' · Getting a pre-approval first makes negotiation easier.') + '</p>';
+    } else {
+      tiles.push(stat('Payment', buying ? 'Self-funding' : selling ? 'Sale' : 'Rent / lease', buying ? 'no loan needed' : 'we help with the paperwork'));
+    }
+
+    if (buying) {
+      notes.push('Keep about 5–6% of the property value for stamp duty, plus a registration fee of up to ₹30,000, in most Maharashtra cities (women buyers get a 1% stamp duty concession).');
+      notes.push(v.pstatus === 'under' ? 'For under-construction property, check the project’s MahaRERA registration and the builder’s payment plan.' : v.pstatus === 'resale' ? 'For resale property, check the title chain, society NOC and that property tax and maintenance are paid up.' : 'Ready-to-move property: ask for the occupancy certificate (OC) and completion certificate (CC).');
+      if (v.ptype === 'agri' || v.service === 'agri') notes.push('Agricultural land can usually be bought only by a registered agriculturist in Maharashtra – our team will check eligibility.');
+      if (v.ptype === 'na' || v.ptype === 'plot') notes.push('For plots, verify NA order, layout approval and the 7/12 extract before paying any token amount.');
+      docs.push('Address proof', v.payment && v.payment !== 'self' ? 'Income documents for the home loan' : 'Proof of funds / bank statement');
+    } else if (selling) {
+      notes.push('Properties priced in line with the local rate per sq ft sell faster – our team shares recent deals in ' + v.location + '.');
+      docs.push('Sale deed and Index II', '7/12 extract or property card', 'Latest property tax and electricity bill', 'Society NOC / share certificate (for flats)', 'OC / CC from the builder (if available)');
+    } else {
+      notes.push('In Maharashtra, rent and lease agreements (leave and licence) must be registered – we help you register online.');
+      notes.push('Tenant police verification is needed after the agreement is signed.');
+      docs.push('Ownership proof (for owners) or employer / college ID (for tenants)', 'Address proof');
+    }
+
+    var visit = v.visit ? new Date(v.visit + 'T00:00').toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short' }) : '';
+    var steps = ['Our team calls you on ' + v.mobile + (v.whatsapp ? ' (WhatsApp ' + v.whatsapp + ')' : '') + ' within one working day.',
+      selling ? 'We list and market your property and screen genuine buyers.' : renting ? 'We shortlist matching ' + L.ptype.toLowerCase() + ' options in ' + v.location + '.' : 'We shortlist matching ' + L.ptype.toLowerCase() + ' options in ' + v.location + '.',
+      visit ? 'Site visit planned for ' + visit + '.' : 'We fix a site visit at a time that suits you.',
+      buying && v.payment !== 'self' ? 'We help with the home loan and documentation till registration.' : 'We help with the agreement and registration.'];
+
+    return {
+      kicker: 'Application ' + ref, title: 'Real estate application – ' + v.name, send: 'Send application to RAVEN', subject: 'Real estate application ' + ref,
+      disc: 'Application summary only – your request reaches RAVEN when you send it. Stamp duty, loan limits and timelines are indicative; our team confirms them for your property.',
+      headline: L.service + ' · ' + L.ptype + ' in ' + v.location + ' · ' + short(budget),
+      details: ['Ref ' + ref + (visit ? ' · visit ' + visit : ''), buying ? L.payment + (loan ? ' · loan ' + short(loan) : '') : L.pstatus],
+      sub: L.service + ' · ' + L.ptype + ' · ' + L.pstatus + ' · ' + v.location,
+      html: stats(tiles) + loanBox +
+        grid2(box('What happens next', '<ol class="hl-steps">' + steps.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ol>'),
+          box('Documents to keep ready', bullets(docs.map(esc)))) +
+        '<div style="margin-top:.75rem">' + box('Things to know', bullets(notes.map(esc))) + '</div>',
+      email: ['Reference: ' + ref, 'Mobile: ' + v.mobile, 'WhatsApp: ' + (v.whatsapp || v.mobile), 'Email: ' + (v.email || '-'), 'City: ' + v.city,
+        'Service: ' + L.service, 'Property type: ' + L.ptype, 'Preferred location: ' + v.location, 'Area: ' + (area ? inr(area) + ' sq ft' : '-'),
+        'Budget: Rs ' + inr(budget), 'Status: ' + L.pstatus].concat(buying ? ['Payment: ' + (L.payment || '-'), 'Loan required: ' + (loan ? 'Rs ' + inr(loan) : '-'), 'Loan approval: ' + (L.approval || '-')] : [])
+        .concat(['Preferred visit: ' + (v.visit || '-'), 'Additional requirements: ' + (v.notes || '-')])
+    };
+  }
+  // RBI loan-to-value caps for housing loans
+  function maxLtvHome(a) { return a <= 3000000 ? 90 : a <= 7500000 ? 80 : 75; }
+
+  /* ---------- car loan ---------- */
+  function car(v, L) {
+    var used = v.ltype === 'used', yearNow = new Date().getFullYear();
+    var income = { salaried: v.salary, self: v.bizincome, business: v.bizincome, cash: v.cashsalary }[v.emp] || 0;
+    var rate = { salaried: 9, self: 9.5, business: 9.5, cash: 12 }[v.emp] + (used ? 3.5 : 0);
+    var foir = v.emp === 'cash' ? 0.35 : 0.5;
+    var age = used && v.year ? yearNow - +v.year : 0;
+    var maxTenure = used ? Math.max(1, Math.min(5, 10 - age)) : 7;
+    var tenure = Math.min(+v.tenure, maxTenure), months = tenure * 12;
+    var ltv = used ? 80 : 90, ltvCap = v.price * ltv / 100;
+    var byIncome = principalFor(income * foir, rate, months);
+    var eligible = floor10k(Math.min(ltvCap, byIncome));
+    var a = v.amount, ok = a <= eligible;
+    var notes = [];
+    if (+v.tenure > maxTenure) notes.push('A ' + (used ? age + '-year-old car' : 'new car') + ' can usually be financed for up to ' + maxTenure + ' year' + (maxTenure === 1 ? '' : 's') + ' (car age plus loan tenure is normally capped at 10 years), so ' + maxTenure + ' years is used here.');
+    var gap = v.price - a - (v.down || 0);
+    if (gap > 1000) notes.push('Loan plus down payment is ' + short(gap) + ' short of the car price – increase the down payment or the loan.');
+    if (gap < -1000) notes.push('Loan plus down payment is ' + short(-gap) + ' more than the car price – you can borrow less.');
+    notes.push(used ? 'Used car loans are based on the lender’s valuation (usually up to 80% of it), not the asking price.' : 'Banks fund up to about 90% of the on-road price; some offer 100% to salaried customers with a good CIBIL score.');
+    if ((v.emp === 'salaried' && v.jobexp === 'lt1') || (v.emp === 'cash' && v.workexp === 'lt1')) notes.push('Most lenders want at least 1 year of work experience – a co-applicant helps.');
+    if ((v.emp === 'self' || v.emp === 'business') && v.vintage === 'lt1') notes.push('Most lenders want 2+ years of business vintage with ITR – a co-applicant or higher down payment helps.');
+    if (v.emp === 'cash') notes.push('With cash salary, banks rarely lend – NBFCs may, usually with a guarantor and a higher down payment.');
+
+    var cash = v.emp === 'cash', se = v.emp === 'self' || v.emp === 'business';
+    var groups = [
+      { name: 'Banks', eg: 'SBI, HDFC Bank, ICICI Bank, Axis Bank, Bank of Baroda, Kotak', from: used ? 11.5 : 8.75, s: cash ? 0 : used ? 1 : 2, note: 'Lowest rates, longer tenure for new cars' },
+      { name: 'NBFCs & captive financiers', eg: 'Mahindra Finance, Cholamandalam, Sundaram Finance, Toyota Financial Services', from: used ? 12.5 : 9.5, s: cash ? 1 : 2, note: 'Faster approvals, flexible on income proof' + (se ? ' for self-employed' : '') },
+      { name: 'Used car specialists', eg: 'Shriram Finance, Cholamandalam, Mahindra Finance', from: 13, s: used ? 2 : 0, note: 'Finance older cars and private-seller deals' }
+    ];
+    var docs = ['KYC – PAN, Aadhaar, photo', 'Address proof'];
+    if (v.emp === 'salaried') docs.push('Last 3 months salary slips', '6 months salary bank statement', 'Form 16 / ITR');
+    else if (se) docs.push('ITR with computation for 2 years', 'Business proof – GST / Udyam / Shop Act', '12 months bank statement');
+    else docs.push('Salary certificate from employer', '6–12 months bank statement', 'Guarantor KYC (often required)');
+    docs.push(used ? 'RC copy, insurance and valuation report of the car' : 'Proforma invoice / quotation from the dealer');
+
+    return {
+      headline: 'Eligibility ' + short(eligible) + ' · EMI ₹' + inr(emi(a, rate, months)) + '/mo',
+      details: [L.ltype + ' · ' + [v.brand, v.model].filter(Boolean).join(' ') + ' · price ' + short(v.price), 'Loan ' + short(a) + ' for ' + tenure + ' yrs at ~' + trim(rate) + '%'],
+      sub: L.ltype + ' · ' + L.ctype + ' · ' + [v.brand, v.model].filter(Boolean).join(' ') + ' · ' + L.emp,
+      title: 'Car loan offers for ' + v.name,
+      html: stats([
+        stat('Estimated eligibility', short(eligible), 'up to ' + ltv + '% of price · ' + tenure + ' yrs'),
+        stat('Loan required', short(a), '₹' + inr(a) + (v.down ? ' · down ' + short(v.down) : '')),
+        stat('Approx. EMI', '₹' + inr(emi(a, rate, months)) + '/mo', tenure + ' yrs at ~' + trim(rate) + '% p.a.')
+      ]) +
+        verdict(ok, ok ? '<strong>Within estimated eligibility.</strong> The loan fits the car price and the income on a ' + tenure + '-year tenure.'
+          : '<strong>Above estimated eligibility by ' + short(a - eligible) + '.</strong> Increase the down payment, choose a longer tenure or add a co-applicant.') +
+        grid2(box('Things to know', bullets(notes.map(esc))), box('Documents to keep ready', bullets(docs.map(esc)))) +
+        lenders('Lenders that usually fit', groups, 'No standard lender fits this profile directly – our team can still help.'),
+      email: ['Mobile: ' + v.mobile, 'City: ' + v.city, 'Loan type: ' + L.ltype, 'Employment: ' + L.emp, 'Car: ' + L.ctype + ' · ' + [v.brand, v.model].filter(Boolean).join(' '),
+        'Car price: Rs ' + inr(v.price)].concat(used ? ['Year: ' + v.year, 'Registration: ' + (v.regno || '-')] : [])
+        .concat(['Loan required: Rs ' + inr(a), 'Down payment: Rs ' + inr(v.down || 0), 'Tenure: ' + L.tenure, 'Monthly income: Rs ' + inr(income), 'Estimated eligibility: Rs ' + inr(eligible)])
+    };
+  }
+
+  var RENDER = { business: business, personal: personal, gold: gold, account: account, realestate: realestate, vehicle: car };
+  var KICKER = { business: 'Business loan', personal: 'Personal loan', gold: 'Gold loan', account: 'Bank account', realestate: 'Real estate', vehicle: 'Car loan' };
 
   /* ---------- form wiring ---------- */
   Array.prototype.forEach.call(forms, function (form) {
     var kind = form.getAttribute('data-search');
     var out = document.getElementById(form.getAttribute('data-result'));
-    var fields = Array.prototype.slice.call(form.querySelectorAll('input, select'));
+    var fields = Array.prototype.slice.call(form.querySelectorAll('input, select, textarea'));
+    var conds = Array.prototype.slice.call(form.querySelectorAll('[data-show]'));
+
+    // show a field group only when another answer matches, e.g. data-show="payment:loan|both"
+    function sync() {
+      conds.forEach(function (box) {
+        var rule = box.getAttribute('data-show').split(':'), src = form.querySelector('[name="' + rule[0] + '"]');
+        var on = !!src && rule[1].split('|').indexOf(src.value) !== -1 && !box.parentElement.closest('[data-show][hidden]');
+        box.hidden = !on;
+        Array.prototype.forEach.call(box.querySelectorAll('input, select, textarea'), function (el) {
+          el.disabled = !on;
+          if (!on) setErr(el, false);
+        });
+      });
+    }
+    function todayIso() { var d = new Date(); d.setMinutes(d.getMinutes() - d.getTimezoneOffset()); return d.toISOString().slice(0, 10); }
+    Array.prototype.forEach.call(form.querySelectorAll('input[type="date"]'), function (el) { el.min = todayIso(); });
 
     function num(el) { return parseFloat(el.value.replace(/[^\d.]/g, '')) || 0; }
     function invalid(el) {
       var t = el.getAttribute('data-check'), val = el.value.trim();
+      if (el.disabled) return false;
+      if (!val && !el.required) return false;
       if (t === 'name') return val.length < 2;
+      if (t === 'email') return !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+      if (t === 'regno') return !/^[A-Z]{2}[ -]?\d{1,2}[ -]?[A-Z]{0,3}[ -]?\d{1,4}$/i.test(val);
+      if (t === 'date') return !val || val < todayIso();
+      if (t === 'number') { var x = num(el); return !val || x < +el.getAttribute('data-min') || x > +el.getAttribute('data-max'); }
       if (t === 'mobile') return !/^[6-9]\d{9}$/.test(val.replace(/\D/g, '').replace(/^91(?=\d{10}$)/, ''));
       if (t === 'money' || t === 'grams') {
         var n = num(el);
@@ -363,14 +509,17 @@
           el.value = digits ? inr(+digits) : '';
           if (words) words.textContent = digits ? short(+digits) : '';
         }
+        if (conds.length) sync();
         if (form.classList.contains('was-checked')) setErr(el, invalid(el));
       });
     });
+    sync();
 
     form.addEventListener('reset', function () {
       form.classList.remove('was-checked');
       fields.forEach(function (el) { setErr(el, false); });
       Array.prototype.forEach.call(form.querySelectorAll('[data-words-for]'), function (w) { w.textContent = ''; });
+      setTimeout(sync, 0);
     });
 
     form.addEventListener('submit', function (e) {
@@ -381,23 +530,25 @@
 
       var v = {}, L = {};
       fields.forEach(function (el) {
+        if (el.disabled) return;
         var t = el.getAttribute('data-check');
-        v[el.name] = t === 'money' || t === 'grams' ? num(el) : el.value.trim();
+        v[el.name] = t === 'money' || t === 'grams' || t === 'number' ? num(el) : el.value.trim();
         L[el.name] = el.tagName === 'SELECT' ? el.options[el.selectedIndex].text : el.value.trim();
       });
       var r = RENDER[kind](v, L);
       var name = v.name;
-      var body = KICKER[kind] + ' enquiry\n\nCustomer: ' + name + '\n' + r.email.join('\n');
+      var subject = (r.subject || KICKER[kind] + ' enquiry') + ' – ' + name;
+      var body = (r.subject || KICKER[kind] + ' enquiry') + '\n\nCustomer: ' + name + '\n' + r.email.join('\n');
 
-      out.innerHTML = '<div class="hl-rhead"><div><p class="hl-kicker">' + (kind === 'account' ? 'Recommendation' : 'Indicative result') + '</p>' +
-        '<h3>' + KICKER[kind] + ' options for ' + esc(name) + '</h3><p class="hl-rsub">' + esc(r.sub) + '</p></div>' +
+      out.innerHTML = '<div class="hl-rhead"><div><p class="hl-kicker">' + (r.kicker || (kind === 'account' ? 'Recommendation' : 'Indicative result')) + '</p>' +
+        '<h3>' + (r.title ? esc(r.title) : KICKER[kind] + ' options for ' + esc(name)) + '</h3><p class="hl-rsub">' + esc(r.sub) + '</p></div>' +
         '<button type="button" class="hl-edit">Edit details</button></div>' + r.html +
         '<div class="hl-cta"><a class="hl-submit" href="mailto:hello@raven.business?subject=' +
-        encodeURIComponent(KICKER[kind] + ' enquiry – ' + name) + '&body=' + encodeURIComponent(body) + '">Send to RAVEN team</a>' +
+        encodeURIComponent(subject) + '&body=' + encodeURIComponent(body) + '">' + (r.send || 'Send to RAVEN team') + '</a>' +
         '<a class="hl-reset" href="contact.html">Talk to our team</a></div>' +
-        '<p class="hl-disc">' + (kind === 'account'
+        '<p class="hl-disc">' + (r.disc || (kind === 'account'
           ? 'Suggestions only. Account features, charges and minimum balance are set by each bank and change from time to time.'
-          : 'Indicative only. Final eligibility, rate and amount depend on the lender\'s policy, credit checks, documents and valuation.') + '</p>';
+          : 'Indicative only. Final eligibility, rate and amount depend on the lender\'s policy, credit checks, documents and valuation.')) + '</p>';
       if (window.RavenApp) RavenApp.onResult({ kind: kind, values: v, labels: L, headline: r.headline, details: r.details, out: out });
       out.hidden = false;
       form.hidden = true;
@@ -411,5 +562,6 @@
     });
 
     if (window.RavenApp) RavenApp.prefill(form, kind);
+    sync();
   });
 })();
