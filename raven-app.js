@@ -202,6 +202,7 @@
         client.searches = client.searches || {};
         client.searches[info.kind] = { values: v, headline: info.headline, details: info.details, at: new Date().toISOString() };
         client.lastSearch = { kind: info.kind, headline: info.headline, at: new Date().toISOString() };
+        client.activity = [{ at: new Date().toISOString(), text: (c ? '' : 'added from a search · ') + PRODUCTS[info.kind].label + ' search saved – ' + info.headline }].concat(client.activity || []).slice(0, 40);
         if (!client.amount && v.amount) client.amount = v.amount;
         if (!client.product) client.product = info.kind;
         client = App.saveClient(client);

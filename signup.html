@@ -2,145 +2,88 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Registration - RAVEN</title>
-  <meta name="description" content="Create your RAVEN account with a username and password, or continue with Google.">
+  <meta name="description" content="Create your RAVEN account as a customer or an agent, or log in.">
+  <meta name="theme-color" content="#4f46e5">
   <link rel="icon" type="image/svg+xml" href="images/logo-mark.svg">
   <link rel="stylesheet" href="styles.css?v=3">
-  <link rel="stylesheet" href="raven.css?v=17">
+  <link rel="stylesheet" href="app.css?v=1">
 </head>
-<body class="antialiased text-gray-900 bg-white">
-  <div id="top" class="min-h-screen">
-  <header class="left-0 w-full z-50 transition-all duration-300 absolute top-5 lg:top-8">
-    <nav>
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="flex items-center justify-between rounded-[18px] transition-all duration-300 bg-white backdrop-blur-md pl-6 py-3 pr-3 shadow-sm">
-          <a href="index.html" aria-label="RAVEN home"><img src="images/logo.svg" alt="RAVEN" width="116" height="30"></a>
-          <div class="hidden lg:block">
-            <ul class="flex">
-          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="index.html">Home</a></li>
-          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="funding-loans.html">Funding &amp; Loans</a></li>
-          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="registration.html">Business Registration</a></li>
-          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="contact.html">Contact</a></li>
-            </ul>
-          </div>
-          <div class="hidden lg:flex gap-4">
-            <a class="border bg-gray-50 border-gray-200 rounded-lg text-gray-800 font-medium text-base py-2.5 px-4 hover:bg-gray-100 transition duration-300 ease-in-out" href="ask.html">Ask a Question</a>
-            <a class="text-white bg-gray-950 rounded-lg py-2.5 px-4 text-base font-medium hover:bg-gray-800 transition duration-300 ease-in-out" href="signup.html">Registration</a>
-          </div>
-          <div class="flex lg:hidden">
-            <button id="menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="rv-menu" class="cursor-pointer p-2">
-              <svg class="rv-ico-open" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h16M4 12h16M4 17h16" stroke="#101828" stroke-width="1.8" stroke-linecap="round"/></svg>
-              <svg class="rv-ico-close" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M6 6l12 12M18 6L6 18" stroke="#101828" stroke-width="1.8" stroke-linecap="round"/></svg>
-            </button>
-          </div>
-        </div>
-        <div id="rv-menu" class="rv-menu" hidden>
-          <a class="rv-mlink" href="index.html">Home</a><a class="rv-mlink" href="funding-loans.html">Funding &amp; Loans</a><a class="rv-mlink" href="registration.html">Business Registration</a><a class="rv-mlink" href="contact.html">Contact</a>
-          <a class="rv-mlink" href="ask.html">Ask a Question</a>
-          <a class="rv-mcta" href="signup.html">Registration</a>
-        </div>
-      </div>
-    </nav>
-  </header>
+<body class="au-body">
+  <div class="au">
+    <aside class="au-brand">
+      <span class="au-orb a"></span><span class="au-orb b"></span><span class="au-grid"></span>
+      <a class="au-logo" href="index.html"><img src="images/logo-mark.svg" alt="" width="34" height="34">RAVEN</a>
 
-  <main>
-    <section class="rv-hero relative pt-30 lg:pt-45 pb-10">
-      <div class="rv-fade-bottom"></div>
-      <div class="max-w-7xl mx-auto px-6 relative z-30">
-        <div class="max-w-xl lg:max-w-4xl lg:px-4 mx-auto text-center">
-          <h1 class="text-center text-4xl lg:text-6xl font-semibold mb-5 reveal">Registration</h1>
-          <p class="text-gray-500 text-base lg:px-10 reveal">Customers save their searches and get matched faster. Agents get a dashboard to manage clients and find the best lender for each case.</p>
+      <div class="au-float" aria-hidden="true">
+        <div class="au-glass au-g1"><small>Home loan eligibility</small><strong>₹28.8 Lakh</strong><span class="au-ok">✓ Within limit</span></div>
+        <div class="au-glass au-g2"><small>New clients</small><div class="au-bars"><i style="height:35%;animation-delay:.1s"></i><i style="height:55%;animation-delay:.2s"></i><i style="height:45%;animation-delay:.3s"></i><i style="height:75%;animation-delay:.4s"></i><i style="height:65%;animation-delay:.5s"></i><i style="height:95%;animation-delay:.6s"></i></div></div>
+        <div class="au-glass au-g3"><small>Pipeline update</small><div class="au-row"><span class="ap-avatar">RP</span><span>Rahul Patil<br><b>Sanctioned · ₹35 L</b></span></div></div>
+      </div>
+
+      <div class="au-pitch" id="au-pitch-customer">
+        <h2>Find the right loan in minutes.</h2>
+        <p>Check eligibility, compare lenders and save every search – all in one place.</p>
+        <ul class="au-points">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Searches pre-filled with your details</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Save results and compare later</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>A loan-ready checklist and callback in one tap</li>
+        </ul>
+      </div>
+      <div class="au-pitch" id="au-pitch-agent" hidden>
+        <h2>Your clients, pipeline and payouts – one dashboard.</h2>
+        <p>Built for DSAs and loan advisors who want to close more cases with less chasing.</p>
+        <ul class="au-points">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Client book with stages, follow-ups and WhatsApp</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Find the best lender for each client in one click</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Track expected and earned payout</li>
+        </ul>
+      </div>
+      <p class="au-foot">Built for Indian entrepreneurs and loan agents · Chhatrapati Sambhajinagar &amp; Pune</p>
+    </aside>
+
+    <main class="au-main">
+      <div class="au-back"><a href="index.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>Back to website</a></div>
+      <div class="au-card" id="au-card">
+        <h1 id="au-h">Create your account</h1>
+        <p class="au-sub" id="au-sub">Join as a customer or an agent – it takes under a minute.</p>
+        <div class="au-tabs" role="tablist" data-on="register">
+          <button type="button" class="au-tab is-on" role="tab" aria-selected="true" data-mode="register">Register</button>
+          <button type="button" class="au-tab" role="tab" aria-selected="false" data-mode="login">Log in</button>
         </div>
-      </div>
-    </section>
-    <section class="pb-20 lg:pb-28">
-      <div class="max-w-7xl mx-auto px-4 lg:px-6">
-        <div class="su-card reveal">
-          <div class="su-tabs" role="tablist">
-            <button type="button" class="su-tab is-on" role="tab" aria-selected="true" data-mode="register">Register</button>
-            <button type="button" class="su-tab" role="tab" aria-selected="false" data-mode="login">Log in</button>
+        <form class="au-form" id="su-form" novalidate>
+          <fieldset class="au-roles" id="su-roles">
+            <legend>I am a</legend>
+            <label class="au-role"><input type="radio" name="role" value="customer" checked><span class="tick"></span><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></span><span><strong>Customer</strong><small>Search loans and accounts, save results</small></span></label>
+            <label class="au-role"><input type="radio" name="role" value="agent"><span class="tick"></span><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M3 13h18"/></svg></span><span><strong>Agent / DSA</strong><small>Manage clients, find the best lender</small></span></label>
+          </fieldset>
+          <button type="button" class="au-google" id="su-google"><svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.9 6.1C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4.1 7.1-10.1 7.1-17.5z"/><path fill="#FBBC05" d="M10.5 28.7a14.5 14.5 0 0 1 0-9.4l-7.9-6.1a24 24 0 0 0 0 21.6l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.5-5.8c-2.1 1.4-4.9 2.3-8.4 2.3-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg><span>Continue with Google</span></button>
+          <div class="au-or"><span>or use a username</span></div>
+          <div class="ap-field">
+            <label for="su-user">Username</label>
+            <div class="au-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg><input class="ap-input" type="text" id="su-user" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="e.g. amol.patil" required minlength="3"></div>
           </div>
-          <button type="button" class="su-google" id="su-google"><svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.8 2.4 30.3 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.9 6.1C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4.1 7.1-10.1 7.1-17.5z"/><path fill="#FBBC05" d="M10.5 28.7a14.5 14.5 0 0 1 0-9.4l-7.9-6.1a24 24 0 0 0 0 21.6l7.9-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.5-5.8c-2.1 1.4-4.9 2.3-8.4 2.3-6.3 0-11.6-4.1-13.5-9.8l-7.9 6.1C6.5 42.6 14.6 48 24 48z"/></svg><span>Continue with Google</span></button>
-          <div class="su-or"><span>or use a username</span></div>
-          <form class="su-form" id="su-form" novalidate>
-            <fieldset class="su-roles" id="su-roles">
-              <legend>I am a</legend>
-              <label class="su-role"><input type="radio" name="role" value="customer" checked><span class="su-role-ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></span><span class="su-role-txt"><strong>Customer</strong><small>Search loans and accounts, save results</small></span></label>
-              <label class="su-role"><input type="radio" name="role" value="agent"><span class="su-role-ico" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M3 13h18"/></svg></span><span class="su-role-txt"><strong>Agent / DSA</strong><small>Manage clients, find the best lender</small></span></label>
-            </fieldset>
-            <label class="su-field"><span>Username</span><input type="text" id="su-user" autocomplete="username" placeholder="Choose a username" required minlength="3"></label>
-            <label class="su-field"><span>Password</span>
-              <span class="su-pw"><input type="password" id="su-pass" autocomplete="new-password" placeholder="At least 8 characters" required minlength="8"><button type="button" class="su-eye" id="su-eye" aria-label="Show password"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></button></span>
-            </label>
-            <label class="su-field" id="su-confirm-wrap"><span>Confirm password</span><input type="password" id="su-pass2" autocomplete="new-password" placeholder="Repeat your password" required></label>
-            <label class="su-check" id="su-terms-wrap"><input type="checkbox" id="su-terms"><span>I agree to the <a href="terms.html" target="_blank" rel="noopener">Terms &amp; Conditions</a>.</span></label>
-            <p class="su-msg" id="su-msg" role="alert" hidden></p>
-            <button type="submit" class="su-submit" id="su-submit">Create account</button>
-          </form>
-          <p class="su-foot" id="su-foot">Already registered? <a href="#" id="su-switch">Log in</a></p>
-          <p class="su-demo">Demo version: your account and data are saved only in this browser on this device. Nothing is sent to RAVEN yet.</p>
-        </div>
-      </div>
-    </section>
-  </main>
-  <footer>
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="pt-10 lg:pt-18">
-        <div class="flex flex-col lg:flex-row gap-10">
-          <div class="lg:w-4/12">
-            <a class="mb-10 lg:mb-20 inline-block" href="index.html" aria-label="RAVEN home"><img src="images/logo.svg" alt="RAVEN" width="136" height="35"></a>
-            <p class="lg:pr-10 text-gray-500 text-base">Build. Fund. Brand. Grow.<br>Your business partner in India.</p>
-            <p class="text-gray-400 text-sm mt-4">Chhatrapati Sambhajinagar &amp; Pune, India</p>
+          <div class="ap-field">
+            <label for="su-pass">Password</label>
+            <div class="au-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg><input class="ap-input" type="password" id="su-pass" autocomplete="new-password" placeholder="At least 8 characters" required minlength="8"><button type="button" class="au-eye" id="su-eye" aria-label="Show password"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+            <div id="su-strength"><div class="au-meter" id="su-meter" data-s="0" aria-hidden="true"><i></i><i></i><i></i><i></i></div><p class="au-mtxt" id="su-mtxt" aria-live="polite"></p></div>
           </div>
-          <div class="lg:w-6/12 lg:ml-auto">
-            <div class="grid grid-cols-2 gap-5 sm:gap-10 sm:grid-cols-3">
-              <div>
-                <h3 class="text-lg text-gray-800 font-medium mb-6">Services</h3>
-                <nav class="space-y-5">
-                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="funding-loans.html">Funding &amp; Loans</a>
-                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="registration.html">Business Registration</a>
-                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="bank-account.html">Bank Account Opening</a>
-                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Real Estate</a>
-                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Brand Strategy</a>
-                </nav>
-              </div>
-              <div>
-                <h3 class="text-lg text-gray-800 font-medium mb-6">Company</h3>
-                <nav class="space-y-5">
-                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="index.html#about">About Us</a>
-                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Contact</a>
-                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="terms.html">Terms &amp; Conditions</a>
-                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="privacy.html">Privacy Policy</a>
-                </nav>
-              </div>
-              <div class="flex lg:justify-end">
-                <div>
-                  <h3 class="text-lg text-gray-800 font-medium mb-6">Contact</h3>
-                  <nav class="space-y-5">
-                    <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="mailto:hello@raven.business">hello@raven.business</a>
-                    <span class="text-gray-700 block text-base">Chhatrapati Sambhajinagar</span>
-                    <span class="text-gray-700 block text-base">Pune, India</span>
-                  </nav>
-                </div>
-              </div>
-            </div>
+          <div class="ap-field" id="su-confirm-wrap">
+            <label for="su-pass2">Confirm password</label>
+            <div class="au-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg><input class="ap-input" type="password" id="su-pass2" autocomplete="new-password" placeholder="Repeat your password" required></div>
           </div>
-        </div>
+          <label class="ap-check" id="su-terms-wrap"><input type="checkbox" id="su-terms"><span>I agree to the <a href="terms.html" target="_blank" rel="noopener">Terms &amp; Conditions</a> and <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</span></label>
+          <p class="au-msg" id="su-msg" role="alert" hidden></p>
+          <button type="submit" class="au-submit" id="su-submit"><span class="lbl">Create account</span><span class="spin" aria-hidden="true"></span></button>
+        </form>
+        <p class="au-foot2" id="su-foot">Already registered? <a href="#" id="su-switch">Log in</a></p>
       </div>
-      <div class="flex justify-between flex-col sm:flex-row gap-5 items-center pb-10 pt-10 lg:pt-20">
-        <p class="text-base text-gray-500">&copy; 2025 RAVEN. All rights reserved. <span class="rv-dot">Built for Indian Entrepreneurs.</span></p>
-        <a href="#top" class="flex gap-3 items-center text-gray-700">Back to top
-          <span class="size-7 rounded-full text-white bg-indigo-500 inline-flex items-center justify-center hover:bg-indigo-600 transition duration-300 ease-in-out"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
-        </a>
-      </div>
-    </div>
-  </footer>
+      <p class="au-demo"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>Demo version: your account and data are saved only in this browser on this device. Nothing is sent to RAVEN yet.</span></p>
+    </main>
   </div>
-  <script src="raven-app.js?v=1"></script>
-  <script src="signup.js?v=2"></script>
-  <script src="site.js?v=2"></script>
-  <script src="ai-chat.js?v=6"></script>
+  <script src="raven-app.js?v=2"></script>
+  <script src="signup.js?v=3"></script>
   <script src="consent.js?v=4"></script>
 </body>
 </html>

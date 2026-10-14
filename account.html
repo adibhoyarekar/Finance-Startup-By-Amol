@@ -2,148 +2,141 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>My Account - RAVEN</title>
   <meta name="description" content="Your RAVEN profile, saved searches and recommended tools.">
   <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0e1124">
   <link rel="icon" type="image/svg+xml" href="images/logo-mark.svg">
   <link rel="stylesheet" href="styles.css?v=3">
-  <link rel="stylesheet" href="raven.css?v=17">
+  <link rel="stylesheet" href="app.css?v=1">
 </head>
-<body class="antialiased text-gray-900 bg-white">
-  <div id="top" class="min-h-screen">
-  <header class="left-0 w-full z-50 transition-all duration-300 absolute top-5 lg:top-8">
-    <nav>
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="flex items-center justify-between rounded-[18px] transition-all duration-300 bg-white backdrop-blur-md pl-6 py-3 pr-3 shadow-sm">
-          <a href="index.html" aria-label="RAVEN home"><img src="images/logo.svg" alt="RAVEN" width="116" height="30"></a>
-          <div class="hidden lg:block">
-            <ul class="flex">
-          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="index.html">Home</a></li>
-          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="funding-loans.html">Funding &amp; Loans</a></li>
-          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="registration.html">Business Registration</a></li>
-          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="contact.html">Contact</a></li>
-            </ul>
-          </div>
-          <div class="hidden lg:flex gap-4">
-            <a class="border bg-gray-50 border-gray-200 rounded-lg text-gray-800 font-medium text-base py-2.5 px-4 hover:bg-gray-100 transition duration-300 ease-in-out" href="ask.html">Ask a Question</a>
-            <a class="text-white bg-gray-950 rounded-lg py-2.5 px-4 text-base font-medium hover:bg-gray-800 transition duration-300 ease-in-out" href="signup.html">Registration</a>
-          </div>
-          <div class="flex lg:hidden">
-            <button id="menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="rv-menu" class="cursor-pointer p-2">
-              <svg class="rv-ico-open" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h16M4 12h16M4 17h16" stroke="#101828" stroke-width="1.8" stroke-linecap="round"/></svg>
-              <svg class="rv-ico-close" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M6 6l12 12M18 6L6 18" stroke="#101828" stroke-width="1.8" stroke-linecap="round"/></svg>
-            </button>
-          </div>
-        </div>
-        <div id="rv-menu" class="rv-menu" hidden>
-          <a class="rv-mlink" href="index.html">Home</a><a class="rv-mlink" href="funding-loans.html">Funding &amp; Loans</a><a class="rv-mlink" href="registration.html">Business Registration</a><a class="rv-mlink" href="contact.html">Contact</a>
-          <a class="rv-mlink" href="ask.html">Ask a Question</a>
-          <a class="rv-mcta" href="signup.html">Registration</a>
-        </div>
+<body class="ap-body">
+  <div class="ap">
+    <aside class="ap-side" aria-label="My account">
+      <a class="ap-brand" href="index.html"><img src="images/logo-mark.svg" alt="" width="32" height="32">RAVEN<small>Customer</small></a>
+      <nav class="ap-nav" aria-label="Main">
+        <a href="#home" data-nav="home" data-title="Home"><span data-ico="grid"></span>Home</a>
+        <a href="#search" data-nav="search" data-title="Search tools"><span data-ico="search"></span>Search tools</a>
+        <a href="#saved" data-nav="saved" data-title="Saved searches"><span data-ico="bookmark"></span>Saved searches<span class="ap-count" id="n-saved">0</span></a>
+        <a href="#ready" data-nav="ready" data-title="Get loan-ready"><span data-ico="listcheck"></span>Get loan-ready</a>
+        <a href="#profile" data-nav="profile" data-title="Profile"><span data-ico="user"></span>Profile</a>
+      </nav>
+      <p class="ap-navlabel">More</p>
+      <nav class="ap-nav" aria-label="More">
+        <a href="ask.html"><span data-ico="chat"></span>Ask a question</a>
+        <a href="index.html"><span data-ico="globe"></span>RAVEN website</a>
+      </nav>
+      <div class="ap-sidecard">
+        <strong>Talk to an expert</strong>
+        <p>Our team can check your case and match you with the right lender.</p>
+        <a class="ap-btn is-primary is-sm" data-callback href="contact.html" style="width:100%">Request a callback</a>
       </div>
-    </nav>
-  </header>
+      <div class="ap-me">
+        <span id="me-avatar"></span>
+        <div style="min-width:0"><strong id="me-name"></strong><small>Customer</small></div>
+        <button type="button" data-logout aria-label="Log out" data-tip="Log out"><span data-ico="logout"></span></button>
+      </div>
+    </aside>
 
-  <main>
-    <section class="db pt-30 lg:pt-40 pb-20">
-      <div class="max-w-7xl mx-auto px-4 lg:px-6">
-        <div class="db-top">
-          <div>
-            <p class="hl-kicker">My account</p>
-            <h1 class="db-h1" id="ac-hello">Hello</h1>
-            <p class="db-sub" id="ac-meta"></p>
-          </div>
-          <div class="db-top-actions">
-            <a class="hl-submit" id="ac-callback" href="contact.html">Request a callback</a>
-            <a class="hl-reset" href="welcome.html?edit=1">Edit profile</a>
-            <button type="button" class="hl-reset" id="ac-out">Log out</button>
-          </div>
+    <div class="ap-main">
+      <header class="ap-top">
+        <a class="ap-mlogo" href="index.html"><img src="images/logo-mark.svg" alt="" width="30" height="30">RAVEN</a>
+        <h1 class="ap-title" id="ap-title">Home</h1>
+        <div class="ap-topact" style="margin-left:auto">
+          <a class="ap-btn is-primary ap-hide-m" data-callback href="contact.html"><span data-ico="phone"></span>Request a callback</a>
+          <a class="ap-btn is-icon" href="#profile" aria-label="Profile" id="top-me"></a>
         </div>
-        <p class="ra-banner" id="ac-welcome" hidden></p>
-        <div class="db-panel">
-          <h2>Recommended for you</h2>
-          <div class="ac-tools" id="ac-tools"></div>
-        </div>
-        <div class="db-grid">
-          <div class="db-panel" id="saved">
-            <h2>Saved searches</h2>
-            <div id="ac-saved"></div>
-          </div>
-          <aside class="db-side">
-            <div class="db-panel">
-              <h2>Get loan-ready</h2>
-              <p class="db-muted" id="ac-check-n"></p>
-              <div class="ac-bar"><span id="ac-bar"></span></div>
-              <div class="ac-check" id="ac-check"></div>
-            </div>
-            <div class="db-panel">
-              <h2>Need help?</h2>
-              <p class="db-muted">Ask anything about loans, accounts or registration, or talk to our team.</p>
-              <div class="db-tools"><a href="ask.html">Ask a question</a><a href="contact.html">Contact our team</a></div>
-            </div>
-          </aside>
-        </div>
-      </div>
-    </section>
-  </main>
-  <footer>
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="pt-10 lg:pt-18">
-        <div class="flex flex-col lg:flex-row gap-10">
-          <div class="lg:w-4/12">
-            <a class="mb-10 lg:mb-20 inline-block" href="index.html" aria-label="RAVEN home"><img src="images/logo.svg" alt="RAVEN" width="136" height="35"></a>
-            <p class="lg:pr-10 text-gray-500 text-base">Build. Fund. Brand. Grow.<br>Your business partner in India.</p>
-            <p class="text-gray-400 text-sm mt-4">Chhatrapati Sambhajinagar &amp; Pune, India</p>
-          </div>
-          <div class="lg:w-6/12 lg:ml-auto">
-            <div class="grid grid-cols-2 gap-5 sm:gap-10 sm:grid-cols-3">
-              <div>
-                <h3 class="text-lg text-gray-800 font-medium mb-6">Services</h3>
-                <nav class="space-y-5">
-                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="funding-loans.html">Funding &amp; Loans</a>
-                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="registration.html">Business Registration</a>
-                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="bank-account.html">Bank Account Opening</a>
-                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Real Estate</a>
-                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Brand Strategy</a>
-                </nav>
+      </header>
+
+      <main class="ap-content">
+        <section class="ap-view" data-view="home" aria-labelledby="hm-h">
+          <div class="ap-grid ap-stagger">
+            <div class="ap-hero" style="--i:0">
+              <div class="ap-hero-row" style="align-items:center">
+                <div style="flex:1;min-width:14rem">
+                  <p class="d" id="hm-date"></p>
+                  <h1 id="hm-h">Hello</h1>
+                  <p id="hm-sub"></p>
+                  <div class="ap-hero-act">
+                    <a class="ap-btn is-white" id="hm-next" href="#search"><span data-ico="search"></span>Start a search</a>
+                    <a class="ap-btn" href="#ready"><span data-ico="listcheck"></span>Loan-ready checklist</a>
+                  </div>
+                </div>
+                <div class="ap-ring" id="hm-ring"></div>
               </div>
-              <div>
-                <h3 class="text-lg text-gray-800 font-medium mb-6">Company</h3>
-                <nav class="space-y-5">
-                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="index.html#about">About Us</a>
-                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Contact</a>
-                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="terms.html">Terms &amp; Conditions</a>
-                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="privacy.html">Privacy Policy</a>
-                </nav>
+            </div>
+            <div style="--i:1">
+              <div class="ap-h" style="margin-bottom:.75rem"><div><h2 style="font-size:1.15rem;font-weight:600">Recommended for you</h2><p>Based on what you told us</p></div><a class="ap-link" href="#search">All tools</a></div>
+              <div class="ap-grid ap-g3" id="hm-tools"></div>
+            </div>
+            <div class="ap-grid ap-g2" style="--i:2">
+              <div class="ap-card pad">
+                <div class="ap-ch"><div><h2>Recent saved searches</h2><p>Pick up where you left off</p></div><a class="ap-link" href="#saved">See all</a></div>
+                <div id="hm-saved"></div>
               </div>
-              <div class="flex lg:justify-end">
-                <div>
-                  <h3 class="text-lg text-gray-800 font-medium mb-6">Contact</h3>
-                  <nav class="space-y-5">
-                    <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="mailto:hello@raven.business">hello@raven.business</a>
-                    <span class="text-gray-700 block text-base">Chhatrapati Sambhajinagar</span>
-                    <span class="text-gray-700 block text-base">Pune, India</span>
-                  </nav>
+              <div class="ap-card pad">
+                <div class="ap-ch"><div><h2>Need help?</h2><p>We usually reply within a working day</p></div></div>
+                <div class="ap-actions-list">
+                  <a class="ap-btn" data-callback href="contact.html"><span data-ico="phone"></span>Request a callback</a>
+                  <a class="ap-btn" href="ask.html"><span data-ico="chat"></span>Ask a question</a>
+                  <a class="ap-btn" href="contact.html"><span data-ico="mail"></span>Contact our team</a>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="flex justify-between flex-col sm:flex-row gap-5 items-center pb-10 pt-10 lg:pt-20">
-        <p class="text-base text-gray-500">&copy; 2025 RAVEN. All rights reserved. <span class="rv-dot">Built for Indian Entrepreneurs.</span></p>
-        <a href="#top" class="flex gap-3 items-center text-gray-700">Back to top
-          <span class="size-7 rounded-full text-white bg-indigo-500 inline-flex items-center justify-center hover:bg-indigo-600 transition duration-300 ease-in-out"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
-        </a>
-      </div>
+        </section>
+
+        <section class="ap-view" data-view="search" aria-labelledby="sr-h">
+          <div class="ap-h"><div><h1 id="sr-h">Search tools</h1><p>Your details are filled in automatically. Save any result to compare later.</p></div></div>
+          <div class="ap-grid ap-g3 ap-stagger" id="sr-tools"></div>
+        </section>
+
+        <section class="ap-view" data-view="saved" aria-labelledby="sv-h">
+          <div class="ap-h"><div><h1 id="sv-h">Saved searches</h1><p id="sv-sub"></p></div></div>
+          <div class="ap-grid ap-g2e" id="sv-list"></div>
+        </section>
+
+        <section class="ap-view" data-view="ready" aria-labelledby="rd-h">
+          <div class="ap-h"><div><h1 id="rd-h">Get loan-ready</h1><p>Lenders move faster when these are ready. Tick them off as you go.</p></div></div>
+          <div class="ap-grid ap-g2">
+            <div class="ap-card pad"><div class="ap-steps" id="rd-steps"></div></div>
+            <div class="ap-card pad ap-first-m" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:.75rem">
+              <div class="ap-ring is-light" id="rd-ring"></div>
+              <h2 id="rd-msg"></h2>
+              <p class="ap-muted" id="rd-tip"></p>
+            </div>
+          </div>
+        </section>
+
+        <section class="ap-view" data-view="profile" aria-labelledby="pf-h">
+          <div class="ap-h"><div><h1 id="pf-h">Profile</h1><p>Used to pre-fill your searches.</p></div></div>
+          <div class="ap-grid ap-g2e">
+            <div class="ap-card pad">
+              <div class="ap-prof" id="pf-prof"></div>
+              <div class="ap-kv" id="pf-kv" style="margin-top:1rem"></div>
+              <div style="display:flex;gap:.5rem;margin-top:1rem;flex-wrap:wrap"><a class="ap-btn" href="welcome.html?edit=1"><span data-ico="edit"></span>Edit profile</a><button type="button" class="ap-btn is-danger" data-logout><span data-ico="logout"></span>Log out</button></div>
+            </div>
+            <div class="ap-card pad">
+              <div class="ap-ch"><div><h2>About this version</h2></div></div>
+              <p class="ap-muted">This is a demo. Your account, saved searches and checklist live only in this browser on this device – nothing is sent to RAVEN unless you request a callback or send a result by email.</p>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
-  </footer>
   </div>
-  <script src="raven-app.js?v=1"></script>
-  <script src="account.js?v=1"></script>
-  <script src="site.js?v=2"></script>
-  <script src="ai-chat.js?v=6"></script>
-  <script src="consent.js?v=4"></script>
+
+  <nav class="ap-tabbar" aria-label="Main">
+    <a class="ap-tab" href="#home" data-nav="home"><span data-ico="grid"></span>Home</a>
+    <a class="ap-tab" href="#search" data-nav="search"><span data-ico="search"></span>Search</a>
+    <a class="ap-tab" href="#saved" data-nav="saved"><span data-ico="bookmark"></span>Saved</a>
+    <a class="ap-tab" href="#ready" data-nav="ready"><span data-ico="listcheck"></span>Ready</a>
+    <a class="ap-tab" href="#profile" data-nav="profile"><span data-ico="user"></span>Profile</a>
+  </nav>
+
+  <script src="raven-app.js?v=2"></script>
+  <script src="app-shell.js?v=1"></script>
+  <script src="account.js?v=2"></script>
 </body>
 </html>
