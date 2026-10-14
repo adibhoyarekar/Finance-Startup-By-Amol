@@ -7,7 +7,7 @@
   <meta name="description" content="Loan against property, construction, plot, renovation, mortgage and balance transfer home loans.">
   <link rel="icon" type="image/svg+xml" href="images/logo-mark.svg">
   <link rel="stylesheet" href="styles.css?v=3">
-  <link rel="stylesheet" href="raven.css?v=14">
+  <link rel="stylesheet" href="raven.css?v=15">
 </head>
 <body class="antialiased text-gray-900 bg-white">
   <div id="top" class="min-h-screen">
@@ -52,6 +52,106 @@
           <a href="funding-loans.html#loan-types" class="rv-back reveal">&larr; All loans</a>
           <h1 class="text-center text-4xl lg:text-6xl font-semibold mb-5 reveal">Home Loan Options</h1>
           <p class="text-gray-500 text-base lg:px-10 reveal">Whether you are buying, building or borrowing against property, pick the home loan that fits.</p>
+        </div>
+      </div>
+    </section>
+    <section class="ln pt-4 pb-6 lg:pb-10" id="home-loan-search">
+      <div class="max-w-7xl mx-auto px-4 lg:px-6">
+        <div class="hl-card reveal">
+          <div class="hl-head">
+            <span class="hl-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-5h4v5"/></svg></span>
+            <div>
+              <h2 class="hl-title">Home Loan Search</h2>
+              <p class="hl-sub">Tell us about the customer and property. We will show an indicative eligibility and the lenders that usually fit.</p>
+            </div>
+          </div>
+          <form id="hl-form" class="hl-form" novalidate>
+            <div class="hl-field hl-full">
+              <label for="hl-name">Customer Name</label>
+              <input id="hl-name" name="name" class="rv-input" type="text" placeholder="Enter Customer Name" autocomplete="name" required>
+              <p class="hl-err" data-for="hl-name">Please enter the customer name.</p>
+            </div>
+            <div class="hl-field">
+              <label for="hl-emp">Employment Type</label>
+              <select id="hl-emp" name="employment" class="rv-input hl-select" required>
+                <option value="">Select Employment Type</option>
+                <optgroup label="Salaried">
+                  <option value="sal-bank">Salaried – Bank Salary</option>
+                  <option value="sal-cash">Salaried – Cash Salary</option>
+                  <option value="sal-govt">Salaried – Government / PSU</option>
+                  <option value="sal-cheque">Salaried – Cheque Salary</option>
+                </optgroup>
+                <optgroup label="Self-Employed">
+                  <option value="se-business">Self-Employed – Business</option>
+                  <option value="se-professional">Self-Employed – Professional</option>
+                  <option value="se-agri">Self-Employed – Agriculture / Farmer</option>
+                </optgroup>
+                <optgroup label="Others">
+                  <option value="nri">NRI – Salaried / Business Abroad</option>
+                  <option value="pension">Pensioner / Retired</option>
+                </optgroup>
+              </select>
+              <p class="hl-err" data-for="hl-emp">Please select the employment type.</p>
+            </div>
+            <div class="hl-field">
+              <label for="hl-income">Minimum Monthly Income</label>
+              <select id="hl-income" name="income" class="rv-input hl-select" required>
+                <option value="">Select Monthly Income</option>
+                <option value="10000">₹10,000 – ₹15,000</option>
+                <option value="15000">₹15,000 – ₹20,000</option>
+                <option value="20000">₹20,000 – ₹25,000</option>
+                <option value="25000">₹25,000 – ₹30,000</option>
+                <option value="30000">₹30,000 – ₹40,000</option>
+                <option value="40000">₹40,000 – ₹50,000</option>
+                <option value="50000">₹50,000 – ₹75,000</option>
+                <option value="75000">₹75,000 – ₹1,00,000</option>
+                <option value="100000">₹1,00,000 – ₹1,50,000</option>
+                <option value="150000">₹1,50,000 – ₹2,00,000</option>
+                <option value="200000">₹2,00,000 – ₹3,00,000</option>
+                <option value="300000">₹3,00,000 – ₹5,00,000</option>
+                <option value="500000">Above ₹5,00,000</option>
+              </select>
+              <p class="hl-err" data-for="hl-income">Please select the monthly income.</p>
+            </div>
+            <div class="hl-field">
+              <label for="hl-prop">Property Type</label>
+              <select id="hl-prop" name="property" class="rv-input hl-select" required>
+                <option value="">Select Property Type</option>
+                <option value="flat">Flat / Apartment</option>
+                <option value="rowhouse">Row House / Bungalow</option>
+                <option value="plot">Plot</option>
+                <option value="resale">Resale Property</option>
+                <option value="na">NA-44 / NA-45 Property</option>
+                <option value="gaothan">Gaothan Property</option>
+                <option value="underconst">Under-Construction (Builder Project)</option>
+                <option value="selfconst">Self-Construction on Own Plot</option>
+                <option value="plotconst">Plot + Construction</option>
+                <option value="gunthewari">Gunthewari / Regularised Property</option>
+                <option value="authority">MHADA / CIDCO / SRA Property</option>
+                <option value="grampanchayat">Gram Panchayat Property</option>
+                <option value="commercial">Commercial Shop / Office</option>
+                <option value="other">Other</option>
+              </select>
+              <p class="hl-err" data-for="hl-prop">Please select the property type.</p>
+            </div>
+            <div class="hl-field">
+              <label for="hl-amount">Required Loan Amount</label>
+              <div class="hl-money">
+                <span aria-hidden="true">₹</span>
+                <input id="hl-amount" name="amount" class="rv-input" type="text" inputmode="numeric" placeholder="Enter Loan Amount" autocomplete="off" required aria-describedby="hl-amount-words">
+              </div>
+              <p class="hl-hint" id="hl-amount-words" aria-live="polite"></p>
+              <p class="hl-err" data-for="hl-amount">Enter an amount between ₹1,00,000 and ₹50,00,00,000.</p>
+            </div>
+            <div class="hl-full hl-actions">
+              <button type="submit" class="hl-submit">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                Search Home Loan
+              </button>
+              <button type="reset" class="hl-reset">Clear</button>
+            </div>
+          </form>
+          <div id="hl-result" class="hl-result" hidden tabindex="-1" aria-live="polite"></div>
         </div>
       </div>
     </section>
@@ -182,6 +282,7 @@
   </footer>
   </div>
   <script src="loan-search.js?v=2"></script>
+  <script src="home-loan-search.js?v=1"></script>
   <script src="site.js?v=2"></script>
   <script src="ai-chat.js?v=6"></script>
   <script src="consent.js?v=4"></script>
