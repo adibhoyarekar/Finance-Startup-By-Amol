@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Bank console – Auctions - RAVEN</title>
+  <meta name="description" content="Create, approve and run live bank auctions: EMD verification, live monitor, post-auction and reports.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0e1124">
+  <link rel="icon" type="image/svg+xml" href="images/logo-mark.svg">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="app.css?v=3">
+  <link rel="stylesheet" href="auction.css?v=1">
+</head>
+<body class="ap-body">
+  <div class="ap">
+    <aside class="ap-side" aria-label="Bank">
+      <a class="ap-brand" href="index.html"><img src="images/logo.svg" alt="RAVEN" width="108" height="28"><small>Bank</small></a>
+      <p class="ap-navlabel first">Auctions</p>
+      <nav class="ap-nav" aria-label="Auctions">
+        <a href="#overview" data-nav="overview" data-title="Overview"><span data-ico="grid"></span>Overview<span class="ap-count" id="n-overview" hidden>0</span></a>
+        <a href="#auctions" data-nav="auctions" data-title="All auctions"><span data-ico="board"></span>All auctions<span class="ap-count" id="n-auctions" hidden>0</span></a>
+        <a href="#create" data-nav="create" data-title="Create auction"><span data-ico="plus"></span>Create auction<span class="ap-count" id="n-create" hidden>0</span></a>
+        <a href="#approvals" data-nav="approvals" data-title="Approvals"><span data-ico="listcheck"></span>Approvals<span class="ap-count" id="n-approvals" hidden>0</span></a>
+        <a href="#bidders" data-nav="bidders" data-title="Bidders & EMD"><span data-ico="users"></span>Bidders & EMD<span class="ap-count" id="n-bidders" hidden>0</span></a>
+        <a href="#live" data-nav="live" data-title="Live monitor"><span data-ico="trend"></span>Live monitor<span class="ap-count" id="n-live" hidden>0</span></a>
+        <a href="#post" data-nav="post" data-title="Post-auction"><span data-ico="check"></span>Post-auction<span class="ap-count" id="n-post" hidden>0</span></a>
+      </nav>
+      <p class="ap-navlabel">Service</p>
+      <nav class="ap-nav" aria-label="Service">
+        <a href="#queries" data-nav="queries" data-title="Questions"><span data-ico="chat"></span>Questions<span class="ap-count" id="n-queries" hidden>0</span></a>
+        <a href="#inspections" data-nav="inspections" data-title="Inspections"><span data-ico="calendar"></span>Inspections<span class="ap-count" id="n-inspections" hidden>0</span></a>
+        <a href="#reports" data-nav="reports" data-title="Reports"><span data-ico="file"></span>Reports<span class="ap-count" id="n-reports" hidden>0</span></a>
+      </nav>
+      <p class="ap-navlabel">Settings</p>
+      <nav class="ap-nav" aria-label="Settings">
+        <a href="#team" data-nav="team" data-title="Team & roles"><span data-ico="user"></span>Team & roles<span class="ap-count" id="n-team" hidden>0</span></a>
+        <a href="#profile" data-nav="profile" data-title="Bank profile"><span data-ico="bank"></span>Bank profile<span class="ap-count" id="n-profile" hidden>0</span></a>
+      </nav>
+      <p class="ap-navlabel">Website</p>
+      <nav class="ap-nav" aria-label="Website">
+        <a href="auctions.html"><span data-ico="globe"></span>Public auctions</a>
+      </nav>
+      <div class="ap-me">
+        <span id="me-avatar"></span>
+        <div style="min-width:0"><strong id="me-name"></strong><small id="me-role"></small></div>
+        <button type="button" data-logout aria-label="Leave" data-tip="Leave"><span data-ico="logout"></span></button>
+      </div>
+    </aside>
+
+    <div class="ap-main">
+      <header class="ap-top">
+        <a class="ap-mlogo" href="index.html"><img src="images/logo.svg" alt="RAVEN" width="100" height="26"></a>
+        <p class="ap-title">Bank console <span aria-hidden="true">&nbsp;/&nbsp;</span> <b id="ap-title"></b></p>
+        <div class="ap-topact"><div class="ap-rolebar"><select class="ap-input" id="bk-bank" aria-label="Bank"></select><select class="ap-input" id="bk-role" aria-label="Your role"><option value="maker">Maker</option><option value="checker">Checker</option><option value="ao">Authorised Officer</option></select></div></div>
+      </header>
+      <main class="ap-content">
+        <p class="ac-demo" role="note" style="max-width:none"><span data-ico="info"></span><span id="demo-note"><b>Demo mode:</b> everything here is saved only in this browser and syncs live with the public auction pages open in other tabs.</span></p>
+        <section class="ap-view" data-view="overview" id="v-overview"></section>
+        <section class="ap-view" data-view="auctions" id="v-auctions"></section>
+        <section class="ap-view" data-view="create" id="v-create"></section>
+        <section class="ap-view" data-view="approvals" id="v-approvals"></section>
+        <section class="ap-view" data-view="bidders" id="v-bidders"></section>
+        <section class="ap-view" data-view="live" id="v-live"></section>
+        <section class="ap-view" data-view="post" id="v-post"></section>
+        <section class="ap-view" data-view="queries" id="v-queries"></section>
+        <section class="ap-view" data-view="inspections" id="v-inspections"></section>
+        <section class="ap-view" data-view="reports" id="v-reports"></section>
+        <section class="ap-view" data-view="team" id="v-team"></section>
+        <section class="ap-view" data-view="profile" id="v-profile"></section>
+      </main>
+    </div>
+  </div>
+
+  <nav class="ap-tabbar" aria-label="Main">
+    <a class="ap-tab" href="#overview" data-nav="overview"><span data-ico="grid"></span>Home</a>
+    <a class="ap-tab" href="#auctions" data-nav="auctions"><span data-ico="board"></span>Auctions</a>
+    <a class="ap-tab" href="#live" data-nav="live"><span data-ico="trend"></span>Live</a>
+    <a class="ap-tab" href="#bidders" data-nav="bidders"><span data-ico="users"></span>Bidders</a>
+    <button type="button" class="ap-tab" data-more><span data-ico="more"></span>More</button>
+  </nav>
+
+  <script src="raven-app.js?v=4"></script>
+  <script src="app-shell.js?v=5"></script>
+  <script src="auction-store.js?v=1"></script>
+  <script src="auction-ui.js?v=1"></script>
+  <script src="auction-portal.js?v=1"></script>
+  <script src="auction-bank.js?v=1"></script>
+</body>
+</html>

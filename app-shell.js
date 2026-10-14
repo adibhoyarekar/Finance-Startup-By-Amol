@@ -47,7 +47,8 @@
     return '<svg class="ap-icon' + (cls ? ' ' + cls : '') + '" width="' + s + '" height="' + s + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + (P[name] || '') + '</svg>';
   }
   function initials(name) {
-    var parts = String(name || '?').trim().split(/\s+/);
+    var parts = String(name || '?').trim().split(/\s+/).filter(function (w) { return /^[\p{L}\d]/u.test(w); });
+    if (!parts.length) parts = ['?'];
     return ((parts[0] || '?')[0] + (parts.length > 1 ? parts[parts.length - 1][0] : '')).toUpperCase();
   }
   var HUES = [['#7c79ff', '#4f46e5'], ['#f472b6', '#db2777'], ['#34d399', '#059669'], ['#fbbf24', '#ea580c'], ['#60a5fa', '#2563eb'], ['#a78bfa', '#7c3aed'], ['#2dd4bf', '#0d9488']];

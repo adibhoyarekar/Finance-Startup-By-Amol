@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bank Auctions – Live property, vehicle &amp; gold auctions - RAVEN</title>
+  <meta name="description" content="Bid live on bank auctions of flats, shops, plots, vehicles and gold – SARFAESI sales from leading Indian banks with verified EMD, real-time bidding and auto-extension.">
+  <link rel="icon" type="image/svg+xml" href="images/logo-mark.svg">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="raven.css?v=20">
+  <link rel="stylesheet" href="app.css?v=3">
+  <link rel="stylesheet" href="auction.css?v=1">
+</head>
+<body class="antialiased text-gray-900 bg-white">
+  <div id="top" class="min-h-screen">
+  <header class="left-0 w-full z-50 transition-all duration-300 absolute top-5 lg:top-8">
+    <nav>
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex items-center justify-between rounded-[18px] transition-all duration-300 bg-white backdrop-blur-md pl-6 py-3 pr-3 shadow-sm">
+          <a href="index.html" aria-label="RAVEN home"><img src="images/logo.svg" alt="RAVEN" width="116" height="30"></a>
+          <div class="hidden lg:block">
+            <ul class="flex">
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="index.html">Home</a></li>
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="funding-loans.html">Funding &amp; Loans</a></li>
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="registration.html">Business Registration</a></li>
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-indigo-500" href="auctions.html">Auctions</a></li>
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="hidden lg:flex gap-4">
+            <a class="border bg-gray-50 border-gray-200 rounded-lg text-gray-800 font-medium text-base py-2.5 px-4 hover:bg-gray-100 transition duration-300 ease-in-out" href="ask.html">Ask a Question</a>
+            <a class="text-white bg-gray-950 rounded-lg py-2.5 px-4 text-base font-medium hover:bg-gray-800 transition duration-300 ease-in-out" href="signup.html">Registration</a>
+          </div>
+          <div class="flex lg:hidden">
+            <button id="menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="rv-menu" class="cursor-pointer p-2">
+              <svg class="rv-ico-open" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h16M4 12h16M4 17h16" stroke="#101828" stroke-width="1.8" stroke-linecap="round"/></svg>
+              <svg class="rv-ico-close" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M6 6l12 12M18 6L6 18" stroke="#101828" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+        </div>
+        <div id="rv-menu" class="rv-menu" hidden>
+          <a class="rv-mlink" href="index.html">Home</a><a class="rv-mlink" href="funding-loans.html">Funding &amp; Loans</a><a class="rv-mlink" href="registration.html">Business Registration</a><a class="rv-mlink is-on" href="auctions.html">Auctions</a><a class="rv-mlink" href="contact.html">Contact</a>
+          <a class="rv-mlink" href="ask.html">Ask a Question</a>
+          <a class="rv-mcta" href="signup.html">Registration</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="rv-hero relative pt-30 lg:pt-45 pb-8">
+      <div class="rv-fade-bottom"></div>
+      <div class="max-w-7xl mx-auto px-6 relative z-30">
+        <div class="max-w-xl lg:max-w-4xl lg:px-4 mx-auto text-center">
+          <a href="funding-loans.html" class="rv-back reveal">&larr; Funding &amp; Loans</a>
+          <h1 class="text-center text-4xl lg:text-6xl font-semibold mb-5 reveal">Bank Auctions</h1>
+          <p class="text-gray-500 text-base lg:px-10 reveal">Flats, shops, plots, vehicles and gold sold by banks under SARFAESI – watch prices move live and bid from your phone with a verified EMD.</p>
+          <div class="flex gap-3 justify-center flex-wrap reveal" style="margin-top:1.75rem">
+            <a class="ap-btn is-primary" href="#ac-list">Browse auctions</a>
+            <a class="ap-btn" href="auction-bidder.html">My bids</a>
+            <a class="ap-btn" href="auction-bank.html">For banks</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-10" id="ac-list">
+      <div class="ac-wrap">
+        <p class="ac-demo" role="note"><span data-ico="info"></span><span><b>Demo mode:</b> auctions, bids and other bidders are simulated and saved only in this browser. Open this page in two tabs to watch bids sync live. No real money moves.</span></p>
+        <div class="ac-strip" id="ac-strip" aria-live="polite"></div>
+        <div class="ac-tabs" id="ac-tabs" role="toolbar" aria-label="Auction status"></div>
+        <div class="ac-filters">
+          <label class="ac-q"><span data-ico="search" data-size="18"></span><input class="ap-input" id="f-q" type="search" placeholder="Search city, locality, bank or reference" aria-label="Search auctions"></label>
+          <select class="ap-input" id="f-city" aria-label="City"></select>
+          <select class="ap-input" id="f-type" aria-label="Asset type"></select>
+          <select class="ap-input" id="f-bank" aria-label="Bank"></select>
+          <select class="ap-input" id="f-price" aria-label="Price">
+            <option value="">Any price</option>
+            <option value="a">Up to ₹25 L</option>
+            <option value="b">₹25 L – ₹1 Cr</option>
+            <option value="c">₹1 Cr – ₹5 Cr</option>
+            <option value="d">Above ₹5 Cr</option>
+          </select>
+          <select class="ap-input" id="f-sort" aria-label="Sort">
+            <option value="ending">Ending / starting soonest</option>
+            <option value="low">Price: low to high</option>
+            <option value="high">Price: high to low</option>
+            <option value="bids">Most bids</option>
+          </select>
+        </div>
+        <p class="ac-count" id="ac-count"></p>
+        <div class="ac-grid" id="ac-grid"></div>
+      </div>
+    </section>
+
+    <section class="py-10 lg:py-14">
+      <div class="ac-wrap">
+        <div class="text-center max-w-2xl mx-auto mb-8">
+          <h2 class="text-3xl lg:text-4xl font-semibold mb-3 reveal">How bank auctions work</h2>
+          <p class="text-gray-500 reveal">Four steps, all online. The bank verifies your EMD before you can bid, and losing bidders get their EMD back.</p>
+        </div>
+        <div class="ac-steps">
+          <div class="ac-step reveal"><span>1</span><strong>Complete KYC</strong><p>PAN, Aadhaar e-KYC and the bank account where your EMD refund should go.</p></div>
+          <div class="ac-step reveal"><span>2</span><strong>Pay EMD &amp; apply</strong><p>Usually 10% of the reserve price, paid by NEFT/RTGS before the last date. Book a site visit if you like.</p></div>
+          <div class="ac-step reveal"><span>3</span><strong>Bid live</strong><p>Bid in fixed steps or set a maximum and let auto-bid work for you. Late bids extend the clock by 5 minutes.</p></div>
+          <div class="ac-step reveal"><span>4</span><strong>Win &amp; pay</strong><p>Pay 25% by the next working day and the balance in 15 days. The bank then issues the sale certificate.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pb-12 lg:pb-16" id="alerts">
+      <div class="ac-wrap">
+        <div class="ap-card pad" style="max-width:56rem;margin:0 auto">
+          <div class="ap-ch"><div><h2>Get auction alerts</h2><p>Tell us what you are looking for and we will message you when a bank posts a matching auction.</p></div></div>
+          <form id="al-form" novalidate>
+            <div class="ap-fgrid3">
+              <div class="ap-field"><label for="al-type">Asset type</label><select class="ap-input" id="al-type"></select></div>
+              <div class="ap-field"><label for="al-city">City</label><select class="ap-input" id="al-city"></select></div>
+              <div class="ap-field"><label for="al-max">Budget up to</label><select class="ap-input" id="al-max"><option value="">Any budget</option><option value="2500000">₹25 L</option><option value="5000000">₹50 L</option><option value="10000000">₹1 Cr</option><option value="50000000">₹5 Cr</option></select></div>
+              <div class="ap-field"><label for="al-contact">Mobile or email</label><input class="ap-input" id="al-contact" placeholder="98xxxxxxxx or you@email.com" autocomplete="email"><p class="ap-err" id="al-err">Enter a valid 10-digit mobile number or email.</p></div>
+              <div class="ap-field"><label for="al-channel">Send by</label><select class="ap-input" id="al-channel"><option>WhatsApp</option><option>SMS</option><option>Email</option></select></div>
+              <div class="ap-field"><label for="al-freq">How often</label><select class="ap-input" id="al-freq"><option>Instantly</option><option>Daily summary</option><option>Weekly summary</option></select></div>
+            </div>
+            <button class="ap-btn is-primary" type="submit" style="margin-top:1rem">Save alert</button>
+          </form>
+          <div id="al-list"></div>
+        </div>
+        <p class="ac-note">RAVEN lists auctions published by banks. Always read the bank’s sale notice and check title and dues before you bid.</p>
+      </div>
+    </section>
+  </main>
+</main>
+  <footer>
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="pt-10 lg:pt-18">
+        <div class="flex flex-col lg:flex-row gap-10">
+          <div class="lg:w-4/12">
+            <a class="mb-10 lg:mb-20 inline-block" href="index.html" aria-label="RAVEN home"><img src="images/logo.svg" alt="RAVEN" width="136" height="35"></a>
+            <p class="lg:pr-10 text-gray-500 text-base">Build. Fund. Brand. Grow.<br>Your business partner in India.</p>
+            <p class="text-gray-400 text-sm mt-4">Chhatrapati Sambhajinagar &amp; Pune, India</p>
+          </div>
+          <div class="lg:w-6/12 lg:ml-auto">
+            <div class="grid grid-cols-2 gap-5 sm:gap-10 sm:grid-cols-3">
+              <div>
+                <h3 class="text-lg text-gray-800 font-medium mb-6">Services</h3>
+                <nav class="space-y-5">
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="funding-loans.html">Funding &amp; Loans</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="registration.html">Business Registration</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="bank-account.html">Bank Account Opening</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="mutual-funds.html">Mutual Funds &amp; SIP</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="real-estate.html">Real Estate</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="auctions.html">Bank Auctions</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Brand Strategy</a>
+                </nav>
+              </div>
+              <div>
+                <h3 class="text-lg text-gray-800 font-medium mb-6">Company</h3>
+                <nav class="space-y-5">
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="index.html#about">About Us</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Contact</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="terms.html">Terms &amp; Conditions</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="privacy.html">Privacy Policy</a>
+                </nav>
+              </div>
+              <div class="flex lg:justify-end">
+                <div>
+                  <h3 class="text-lg text-gray-800 font-medium mb-6">Contact</h3>
+                  <nav class="space-y-5">
+                    <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="mailto:hello@raven.business">hello@raven.business</a>
+                    <span class="text-gray-700 block text-base">Chhatrapati Sambhajinagar</span>
+                    <span class="text-gray-700 block text-base">Pune, India</span>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-between flex-col sm:flex-row gap-5 items-center pb-10 pt-10 lg:pt-20">
+        <p class="text-base text-gray-500">&copy; 2025 RAVEN. All rights reserved. <span class="rv-dot">Built for Indian Entrepreneurs.</span></p>
+        <a href="#top" class="flex gap-3 items-center text-gray-700">Back to top
+          <span class="size-7 rounded-full text-white bg-indigo-500 inline-flex items-center justify-center hover:bg-indigo-600 transition duration-300 ease-in-out"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </footer>
+  </div>
+  <script src="raven-app.js?v=4"></script>
+  <script src="app-shell.js?v=5"></script>
+  <script src="auction-store.js?v=1"></script>
+  <script src="auction-ui.js?v=1"></script>
+  <script src="auctions-page.js?v=1"></script>
+  <script src="site.js?v=2"></script>
+  <script src="ai-chat.js?v=6"></script>
+  <script src="consent.js?v=4"></script>
+</body>
+</html>

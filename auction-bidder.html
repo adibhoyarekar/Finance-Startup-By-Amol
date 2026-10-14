@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>My bids – Bank auctions - RAVEN</title>
+  <meta name="description" content="Your bank auction bids, EMD payments, refunds, KYC and alerts.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0e1124">
+  <link rel="icon" type="image/svg+xml" href="images/logo-mark.svg">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="app.css?v=3">
+  <link rel="stylesheet" href="auction.css?v=1">
+</head>
+<body class="ap-body">
+  <div class="ap">
+    <aside class="ap-side" aria-label="Bidder">
+      <a class="ap-brand" href="index.html"><img src="images/logo.svg" alt="RAVEN" width="108" height="28"><small>Bidder</small></a>
+      <p class="ap-navlabel first">Menu</p>
+      <nav class="ap-nav" aria-label="Menu">
+        <a href="#overview" data-nav="overview" data-title="Overview"><span data-ico="grid"></span>Overview<span class="ap-count" id="n-overview" hidden>0</span></a>
+        <a href="#auctions" data-nav="auctions" data-title="My auctions"><span data-ico="board"></span>My auctions<span class="ap-count" id="n-auctions" hidden>0</span></a>
+        <a href="#payments" data-nav="payments" data-title="Payments & refunds"><span data-ico="wallet"></span>Payments & refunds<span class="ap-count" id="n-payments" hidden>0</span></a>
+        <a href="#watchlist" data-nav="watchlist" data-title="Watchlist"><span data-ico="bookmark"></span>Watchlist<span class="ap-count" id="n-watchlist" hidden>0</span></a>
+      </nav>
+      <p class="ap-navlabel">Account</p>
+      <nav class="ap-nav" aria-label="Account">
+        <a href="#kyc" data-nav="kyc" data-title="KYC profile"><span data-ico="shield"></span>KYC profile<span class="ap-count" id="n-kyc" hidden>0</span></a>
+        <a href="#alerts" data-nav="alerts" data-title="Alerts"><span data-ico="bell"></span>Alerts<span class="ap-count" id="n-alerts" hidden>0</span></a>
+        <a href="#disputes" data-nav="disputes" data-title="Help & disputes"><span data-ico="info"></span>Help & disputes<span class="ap-count" id="n-disputes" hidden>0</span></a>
+      </nav>
+      <p class="ap-navlabel">Website</p>
+      <nav class="ap-nav" aria-label="Website">
+        <a href="auctions.html"><span data-ico="globe"></span>Public auctions</a>
+      </nav>
+      <div class="ap-me">
+        <span id="me-avatar"></span>
+        <div style="min-width:0"><strong id="me-name"></strong><small id="me-role"></small></div>
+        <button type="button" data-logout aria-label="Leave" data-tip="Leave"><span data-ico="logout"></span></button>
+      </div>
+    </aside>
+
+    <div class="ap-main">
+      <header class="ap-top">
+        <a class="ap-mlogo" href="index.html"><img src="images/logo.svg" alt="RAVEN" width="100" height="26"></a>
+        <p class="ap-title">My bids <span aria-hidden="true">&nbsp;/&nbsp;</span> <b id="ap-title"></b></p>
+        <div class="ap-topact"><a class="ap-btn is-primary ap-hide-m" href="auctions.html"><span data-ico="search"></span>Find auctions</a></div>
+      </header>
+      <main class="ap-content">
+        <p class="ac-demo" role="note" style="max-width:none"><span data-ico="info"></span><span id="demo-note"><b>Demo mode:</b> everything here is saved only in this browser and syncs live with the public auction pages open in other tabs.</span></p>
+        <section class="ap-view" data-view="overview" id="v-overview"></section>
+        <section class="ap-view" data-view="auctions" id="v-auctions"></section>
+        <section class="ap-view" data-view="payments" id="v-payments"></section>
+        <section class="ap-view" data-view="watchlist" id="v-watchlist"></section>
+        <section class="ap-view" data-view="kyc" id="v-kyc"></section>
+        <section class="ap-view" data-view="alerts" id="v-alerts"></section>
+        <section class="ap-view" data-view="disputes" id="v-disputes"></section>
+      </main>
+    </div>
+  </div>
+
+  <nav class="ap-tabbar" aria-label="Main">
+    <a class="ap-tab" href="#overview" data-nav="overview"><span data-ico="grid"></span>Home</a>
+    <a class="ap-tab" href="#auctions" data-nav="auctions"><span data-ico="board"></span>Auctions</a>
+    <a class="ap-tab" href="#payments" data-nav="payments"><span data-ico="wallet"></span>Payments</a>
+    <a class="ap-tab" href="#kyc" data-nav="kyc"><span data-ico="shield"></span>KYC</a>
+    <button type="button" class="ap-tab" data-more><span data-ico="more"></span>More</button>
+  </nav>
+
+  <script src="raven-app.js?v=4"></script>
+  <script src="app-shell.js?v=5"></script>
+  <script src="auction-store.js?v=1"></script>
+  <script src="auction-ui.js?v=1"></script>
+  <script src="auction-portal.js?v=1"></script>
+  <script src="auction-bidder.js?v=1"></script>
+</body>
+</html>

@@ -350,7 +350,7 @@
       var p = App.PRODUCTS[t[0]];
       return UI.toolCard({ i: i, href: p.page + (c ? '?client=' + c.id : '') + '#' + p.section, img: t[4], icon: t[1], title: t[2], text: t[3],
         badge: c && c.product === t[0] ? 'For ' + c.name.split(' ')[0] : '', go: c ? 'Search for ' + c.name.split(' ')[0] : 'Open tool' });
-    }).join('');
+    }).join('') + UI.toolCard({ i: TOOLS.length, href: 'auctions.html', img: 'images/bank-auction.svg', icon: 'board', title: 'Bank Auctions', text: 'Live SARFAESI auctions – flats, shops, plots and vehicles below market for your clients.', go: 'Browse auctions' });
   }
   $('tl-client').addEventListener('change', renderTools);
 

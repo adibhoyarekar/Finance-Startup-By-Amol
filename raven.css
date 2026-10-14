@@ -692,3 +692,6 @@ input[type="date"].rv-input{height:50px}
 .hl-steps{margin:0;padding-left:1.15rem;display:grid;gap:.5rem;font-size:.875rem;color:var(--color-gray-700)}
 .hl-steps li::marker{color:var(--indigo);font-weight:600}
 .hl-steps{list-style:decimal}
+/* keep the header on one line on small laptops */
+@media (min-width:1024px) and (max-width:1199px){header nav ul a{padding-left:.55rem!important;padding-right:.55rem!important}header nav .lg\:flex{gap:.5rem}}
+header nav .lg\:flex a{white-space:nowrap}

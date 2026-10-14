@@ -19,7 +19,8 @@
     education: ['sparkle', 'Education Loan', 'contact.html', 'Fund studies in India or abroad.', '#f0f9ff', '#026aa2', 'images/loan-education.svg'],
     insurance: ['shield', 'Insurance', 'contact.html', 'Health, life and business cover.', '#fef3f2', '#b42318'],
     mf: ['trend', 'Mutual Funds & SIP', 'mutual-funds.html#mf-form', 'Start a SIP from ₹500 – see what it could grow to.', '#ecfdf3', '#067647', 'images/mutual-fund.svg'],
-    realestate: ['home', 'Real Estate', 'real-estate.html#real-estate-form', 'Buy, sell, rent or lease property – apply in minutes.', '#f0fdf9', '#107569', 'images/real-estate.svg']
+    realestate: ['home', 'Real Estate', 'real-estate.html#real-estate-form', 'Buy, sell, rent or lease property – apply in minutes.', '#f0fdf9', '#107569', 'images/real-estate.svg'],
+    auction: ['board', 'Bank Auctions', 'auctions.html', 'Bid live on flats, shops, plots, vehicles and gold sold by banks.', '#fef3f2', '#b42318', 'images/bank-auction.svg']
   };
   var LANG = { en: 'English', mr: 'मराठी', hi: 'हिंदी' };
   var EMP = { 'sal-bank': 'Salaried – Bank Salary', 'sal-cash': 'Salaried – Cash Salary', 'se-business': 'Self-Employed – Business', 'se-professional': 'Self-Employed – Professional', student: 'Student', retired: 'Retired / Pensioner', homemaker: 'Homemaker', other: 'Other' };
@@ -51,7 +52,7 @@
   function tool(k, i, forYou) {
     var t = TOOLS[k];
     return UI.toolCard({ i: i, href: t[2], img: t[6], icon: t[0], title: t[1], text: t[3], badge: forYou ? 'For you' : '',
-      go: t[2].indexOf('contact') === 0 ? 'Talk to our team' : t[2].indexOf('registration') === 0 ? 'View services' : t[2].indexOf('real-estate') === 0 || t[2].indexOf('mutual') === 0 ? 'Start application' : 'Start search' });
+      go: t[2].indexOf('auctions') === 0 ? 'Browse auctions' : t[2].indexOf('contact') === 0 ? 'Talk to our team' : t[2].indexOf('registration') === 0 ? 'View services' : t[2].indexOf('real-estate') === 0 || t[2].indexOf('mutual') === 0 ? 'Start application' : 'Start search' });
   }
   function ring(el, n, total, light) {
     var r = 46, c = 2 * Math.PI * r, pct = total ? n / total : 0;
