@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Loan Search - RAVEN</title>
+  <meta name="description" content="Check business loan eligibility, the right product and lenders for your business – MUDRA, unsecured and secured business loans.">
+  <link rel="icon" type="image/svg+xml" href="images/logo-mark.svg">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="raven.css?v=16">
+</head>
+<body class="antialiased text-gray-900 bg-white">
+  <div id="top" class="min-h-screen">
+  <header class="left-0 w-full z-50 transition-all duration-300 absolute top-5 lg:top-8">
+    <nav>
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex items-center justify-between rounded-[18px] transition-all duration-300 bg-white backdrop-blur-md pl-6 py-3 pr-3 shadow-sm">
+          <a href="index.html" aria-label="RAVEN home"><img src="images/logo.svg" alt="RAVEN" width="116" height="30"></a>
+          <div class="hidden lg:block">
+            <ul class="flex">
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="index.html">Home</a></li>
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-indigo-500" href="funding-loans.html">Funding &amp; Loans</a></li>
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="registration.html">Business Registration</a></li>
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="hidden lg:flex gap-4">
+            <a class="border bg-gray-50 border-gray-200 rounded-lg text-gray-800 font-medium text-base py-2.5 px-4 hover:bg-gray-100 transition duration-300 ease-in-out" href="ask.html">Ask a Question</a>
+            <a class="text-white bg-gray-950 rounded-lg py-2.5 px-4 text-base font-medium hover:bg-gray-800 transition duration-300 ease-in-out" href="signup.html">Registration</a>
+          </div>
+          <div class="flex lg:hidden">
+            <button id="menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="rv-menu" class="cursor-pointer p-2">
+              <svg class="rv-ico-open" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h16M4 12h16M4 17h16" stroke="#101828" stroke-width="1.8" stroke-linecap="round"/></svg>
+              <svg class="rv-ico-close" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M6 6l12 12M18 6L6 18" stroke="#101828" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+        </div>
+        <div id="rv-menu" class="rv-menu" hidden>
+          <a class="rv-mlink" href="index.html">Home</a><a class="rv-mlink is-on" href="funding-loans.html">Funding &amp; Loans</a><a class="rv-mlink" href="registration.html">Business Registration</a><a class="rv-mlink" href="contact.html">Contact</a>
+          <a class="rv-mlink" href="ask.html">Ask a Question</a>
+          <a class="rv-mcta" href="signup.html">Registration</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="rv-hero relative pt-30 lg:pt-45 pb-10">
+      <div class="rv-fade-bottom"></div>
+      <div class="max-w-7xl mx-auto px-6 relative z-30">
+        <div class="max-w-xl lg:max-w-4xl lg:px-4 mx-auto text-center">
+          <a href="funding-loans.html#loan-types" class="rv-back reveal">&larr; All loans</a>
+          <h1 class="text-center text-4xl lg:text-6xl font-semibold mb-5 reveal">Business Loan Options</h1>
+          <p class="text-gray-500 text-base lg:px-10 reveal">Working capital, term loans and government schemes – find what your business qualifies for.</p>
+        </div>
+      </div>
+    </section>
+    <section class="ln pt-4 pb-6 lg:pb-10" id="business-loan-search">
+      <div class="max-w-7xl mx-auto px-4 lg:px-6">
+        <div class="hl-card reveal">
+          <div class="hl-head">
+            <span class="hl-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M3 13h18"/></svg></span>
+            <div>
+              <h2 class="hl-title">Business Loan Search</h2>
+              <p class="hl-sub">Share the business details. We will show an indicative eligibility, the right product and the lenders that usually fit.</p>
+            </div>
+          </div>
+          <form class="hl-form" data-search="business" data-result="business-result" novalidate>
+            <div class="hl-field hl-full">
+              <label for="bl-name">Customer Name</label>
+              <input id="bl-name" name="name" class="rv-input" type="text" placeholder="Enter Customer Name" data-check="name" autocomplete="name" required>
+              <p class="hl-err" data-for="bl-name">Please enter the customer name.</p>
+            </div>
+            <div class="hl-field">
+              <label for="bl-btype">Business Type</label>
+              <select id="bl-btype" name="btype" class="rv-input hl-select" required>
+                <option value="">Select Business Type</option>
+                <option value="prop">Proprietorship</option>
+                <option value="partnership">Partnership</option>
+                <option value="pvtltd">Private Limited Company</option>
+                <option value="llp">LLP</option>
+                <option value="other">Other</option>
+              </select>
+              <p class="hl-err" data-for="bl-btype">Please select the business type.</p>
+            </div>
+            <div class="hl-field">
+              <label for="bl-vintage">Business Vintage</label>
+              <select id="bl-vintage" name="vintage" class="rv-input hl-select" required>
+                <option value="">Select Business Age</option>
+                <option value="lt1">Less than 1 Year</option>
+                <option value="1to3">1–3 Years</option>
+                <option value="3to5">3–5 Years</option>
+                <option value="gt5">More than 5 Years</option>
+              </select>
+              <p class="hl-err" data-for="bl-vintage">Please select the business age.</p>
+            </div>
+            <div class="hl-field">
+              <label for="bl-itype">Employment / Income Type</label>
+              <select id="bl-itype" name="itype" class="rv-input hl-select" required>
+                <option value="">Select Income Type</option>
+                <option value="self">Self-Employed</option>
+                <option value="cash">Cash Income</option>
+                <option value="bank">Bank Transaction</option>
+                <option value="salbiz">Salaried + Business Income</option>
+              </select>
+              <p class="hl-err" data-for="bl-itype">Please select the income type.</p>
+            </div>
+            <div class="hl-field">
+              <label for="bl-income">Monthly Income</label>
+              <select id="bl-income" name="income" class="rv-input hl-select" required>
+                <option value="">Select Monthly Income</option>
+                <option value="lt25">Below ₹25,000</option>
+                <option value="25to50">₹25,000–₹50,000</option>
+                <option value="50to100">₹50,000–₹1,00,000</option>
+                <option value="gt100">Above ₹1,00,000</option>
+              </select>
+              <p class="hl-err" data-for="bl-income">Please select the monthly income.</p>
+            </div>
+            <div class="hl-field">
+              <label for="bl-itr">ITR Available</label>
+              <select id="bl-itr" name="itr" class="rv-input hl-select" required>
+                <option value="">Yes / No</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+              <p class="hl-err" data-for="bl-itr">Please choose Yes or No.</p>
+            </div>
+            <div class="hl-field">
+              <label for="bl-cibil">CIBIL Score</label>
+              <select id="bl-cibil" name="cibil" class="rv-input hl-select" required>
+                <option value="">Select CIBIL Score</option>
+                <option value="lt650">Below 650</option>
+                <option value="650to700">650–700</option>
+                <option value="700to750">700–750</option>
+                <option value="gt750">Above 750</option>
+                <option value="unknown">Don’t Know</option>
+              </select>
+              <p class="hl-err" data-for="bl-cibil">Please select the CIBIL score.</p>
+            </div>
+            <div class="hl-field">
+              <label for="bl-amount">Required Loan Amount</label>
+              <div class="hl-money">
+                <span aria-hidden="true">₹</span>
+                <input id="bl-amount" name="amount" class="rv-input" type="text" inputmode="numeric" placeholder="Enter Loan Amount" autocomplete="off" data-check="money" data-min="10000" data-max="500000000" aria-describedby="bl-amount-words" required>
+              </div>
+              <p class="hl-hint" id="bl-amount-words" data-words-for="bl-amount" aria-live="polite"></p>
+              <p class="hl-err" data-for="bl-amount">Enter an amount between ₹10,000 and ₹50,00,00,000.</p>
+            </div>
+            <div class="hl-full hl-actions">
+              <button type="submit" class="hl-submit">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                Search Business Loan
+              </button>
+              <button type="reset" class="hl-reset">Clear</button>
+            </div>
+          </form>
+          <div id="business-result" class="hl-result" hidden tabindex="-1" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+    <section class="pt-28 pb-10 rv-cta relative">
+      <div class="rv-fade-bottom"></div>
+      <div class="max-w-7xl mx-auto px-6 relative z-30">
+        <div class="max-w-2xl mx-auto text-center reveal">
+          <h2 class="text-4xl lg:text-5xl -tracking-[1.9px] mb-4 font-medium text-gray-900">Need help with the file?</h2>
+          <p class="text-base text-gray-500 mb-9">Our team prepares the documents and takes the loan to the lenders most likely to approve it.</p>
+          <div class="flex gap-4 justify-center sm:items-center flex-col sm:flex-row">
+            <a class="py-2.5 px-4 bg-indigo-500 h-11 rounded-lg font-medium text-white text-base hover:bg-indigo-600 transition duration-300 ease-in-out inline-block" href="contact.html">Contact Us</a>
+            <a class="py-2.5 px-4 border h-11 border-gray-200 bg-white/70 text-base rounded-lg font-medium inline-block hover:bg-gray-100 transition duration-300 ease-in-out text-gray-800" href="funding-loans.html#loan-types">Back to all loans</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="pt-10 lg:pt-18">
+        <div class="flex flex-col lg:flex-row gap-10">
+          <div class="lg:w-4/12">
+            <a class="mb-10 lg:mb-20 inline-block" href="index.html" aria-label="RAVEN home"><img src="images/logo.svg" alt="RAVEN" width="136" height="35"></a>
+            <p class="lg:pr-10 text-gray-500 text-base">Build. Fund. Brand. Grow.<br>Your business partner in India.</p>
+            <p class="text-gray-400 text-sm mt-4">Chhatrapati Sambhajinagar &amp; Pune, India</p>
+          </div>
+          <div class="lg:w-6/12 lg:ml-auto">
+            <div class="grid grid-cols-2 gap-5 sm:gap-10 sm:grid-cols-3">
+              <div>
+                <h3 class="text-lg text-gray-800 font-medium mb-6">Services</h3>
+                <nav class="space-y-5">
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="funding-loans.html">Funding &amp; Loans</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="registration.html">Business Registration</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="bank-account.html">Bank Account Opening</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Real Estate</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Brand Strategy</a>
+                </nav>
+              </div>
+              <div>
+                <h3 class="text-lg text-gray-800 font-medium mb-6">Company</h3>
+                <nav class="space-y-5">
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="index.html#about">About Us</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Contact</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="terms.html">Terms &amp; Conditions</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="privacy.html">Privacy Policy</a>
+                </nav>
+              </div>
+              <div class="flex lg:justify-end">
+                <div>
+                  <h3 class="text-lg text-gray-800 font-medium mb-6">Contact</h3>
+                  <nav class="space-y-5">
+                    <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="mailto:hello@raven.business">hello@raven.business</a>
+                    <span class="text-gray-700 block text-base">Chhatrapati Sambhajinagar</span>
+                    <span class="text-gray-700 block text-base">Pune, India</span>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-between flex-col sm:flex-row gap-5 items-center pb-10 pt-10 lg:pt-20">
+        <p class="text-base text-gray-500">&copy; 2025 RAVEN. All rights reserved. <span class="rv-dot">Built for Indian Entrepreneurs.</span></p>
+        <a href="#top" class="flex gap-3 items-center text-gray-700">Back to top
+          <span class="size-7 rounded-full text-white bg-indigo-500 inline-flex items-center justify-center hover:bg-indigo-600 transition duration-300 ease-in-out"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </footer>
+  </div>
+  <script src="search-forms.js?v=1"></script>
+  <script src="site.js?v=2"></script>
+  <script src="ai-chat.js?v=6"></script>
+  <script src="consent.js?v=4"></script>
+</body>
+</html>

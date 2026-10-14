@@ -684,3 +684,8 @@ html.rv-split header.z-50 img{flex-shrink:0}
 .hl-cta{margin-top:1.5rem}
 .hl-cta .hl-submit{text-transform:none;letter-spacing:0}
 .hl-disc{margin-top:1rem;font-size:.75rem;color:var(--mute)}
+.hl-logo{flex:none;width:36px;height:36px;border-radius:10px;margin-right:.25rem}
+.hl-lender-top h5{flex:1;min-width:0}
+.hl-lender a,.hl-note a{color:var(--indigo);font-weight:500;text-decoration:underline}
+.hl-box .hl-docs{gap:.5rem}
+.lc-cta.lc-cta-1{grid-column:span 2}@media(min-width:64rem){.lc-cta.lc-cta-1{grid-column:auto}}

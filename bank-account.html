@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bank Account Opening - RAVEN</title>
+  <meta name="description" content="Find the right savings or current account, the documents needed and the banks to consider.">
+  <link rel="icon" type="image/svg+xml" href="images/logo-mark.svg">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="raven.css?v=16">
+</head>
+<body class="antialiased text-gray-900 bg-white">
+  <div id="top" class="min-h-screen">
+  <header class="left-0 w-full z-50 transition-all duration-300 absolute top-5 lg:top-8">
+    <nav>
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex items-center justify-between rounded-[18px] transition-all duration-300 bg-white backdrop-blur-md pl-6 py-3 pr-3 shadow-sm">
+          <a href="index.html" aria-label="RAVEN home"><img src="images/logo.svg" alt="RAVEN" width="116" height="30"></a>
+          <div class="hidden lg:block">
+            <ul class="flex">
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="index.html">Home</a></li>
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-indigo-500" href="funding-loans.html">Funding &amp; Loans</a></li>
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="registration.html">Business Registration</a></li>
+          <li><a class="inline-block px-3 py-3 transition-colors duration-300 ease-in-out text-gray-800 hover:text-indigo-500" href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="hidden lg:flex gap-4">
+            <a class="border bg-gray-50 border-gray-200 rounded-lg text-gray-800 font-medium text-base py-2.5 px-4 hover:bg-gray-100 transition duration-300 ease-in-out" href="ask.html">Ask a Question</a>
+            <a class="text-white bg-gray-950 rounded-lg py-2.5 px-4 text-base font-medium hover:bg-gray-800 transition duration-300 ease-in-out" href="signup.html">Registration</a>
+          </div>
+          <div class="flex lg:hidden">
+            <button id="menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="rv-menu" class="cursor-pointer p-2">
+              <svg class="rv-ico-open" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h16M4 12h16M4 17h16" stroke="#101828" stroke-width="1.8" stroke-linecap="round"/></svg>
+              <svg class="rv-ico-close" fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M6 6l12 12M18 6L6 18" stroke="#101828" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+        </div>
+        <div id="rv-menu" class="rv-menu" hidden>
+          <a class="rv-mlink" href="index.html">Home</a><a class="rv-mlink is-on" href="funding-loans.html">Funding &amp; Loans</a><a class="rv-mlink" href="registration.html">Business Registration</a><a class="rv-mlink" href="contact.html">Contact</a>
+          <a class="rv-mlink" href="ask.html">Ask a Question</a>
+          <a class="rv-mcta" href="signup.html">Registration</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="rv-hero relative pt-30 lg:pt-45 pb-10">
+      <div class="rv-fade-bottom"></div>
+      <div class="max-w-7xl mx-auto px-6 relative z-30">
+        <div class="max-w-xl lg:max-w-4xl lg:px-4 mx-auto text-center">
+          <a href="funding-loans.html" class="rv-back reveal">&larr; Funding &amp; Loans</a>
+          <h1 class="text-center text-4xl lg:text-6xl font-semibold mb-5 reveal">Bank Account Opening</h1>
+          <p class="text-gray-500 text-base lg:px-10 reveal">Open a savings or current account for yourself or your business, with the right documents ready.</p>
+        </div>
+      </div>
+    </section>
+    <section class="ln pt-4 pb-6 lg:pb-10" id="bank-account-search">
+      <div class="max-w-7xl mx-auto px-4 lg:px-6">
+        <div class="hl-card reveal">
+          <div class="hl-head">
+            <span class="hl-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-6 9 6M5 10v8M9 10v8M15 10v8M19 10v8M3 21h18"/></svg></span>
+            <div>
+              <h2 class="hl-title">Bank Account Opening</h2>
+              <p class="hl-sub">Tell us what the account is for. We will recommend the right account, the documents and the banks to consider.</p>
+            </div>
+          </div>
+          <form class="hl-form" data-search="account" data-result="account-result" novalidate>
+            <div class="hl-field hl-full">
+              <label for="ba-atype">Account Type</label>
+              <select id="ba-atype" name="atype" class="rv-input hl-select" required>
+                <option value="">Select Account Type</option>
+                <option value="savings">Savings Account</option>
+                <option value="current">Current Account</option>
+              </select>
+              <p class="hl-err" data-for="ba-atype">Please select the account type.</p>
+            </div>
+            <div class="hl-field">
+              <label for="ba-name">Customer Name</label>
+              <input id="ba-name" name="name" class="rv-input" type="text" placeholder="Enter Customer Name" data-check="name" autocomplete="name" required>
+              <p class="hl-err" data-for="ba-name">Please enter the customer name.</p>
+            </div>
+            <div class="hl-field">
+              <label for="ba-mobile">Mobile Number</label>
+              <input id="ba-mobile" name="mobile" class="rv-input" type="tel" placeholder="Enter Mobile Number" data-check="mobile" inputmode="tel" autocomplete="tel" maxlength="16" required>
+              <p class="hl-err" data-for="ba-mobile">Enter a valid 10-digit mobile number.</p>
+            </div>
+            <div class="hl-field">
+              <label for="ba-occ">Occupation Type</label>
+              <select id="ba-occ" name="occ" class="rv-input hl-select" required>
+                <option value="">Select Occupation</option>
+                <option value="salaried">Salaried</option>
+                <option value="self">Self-Employed</option>
+                <option value="business">Business Owner</option>
+                <option value="professional">Professional</option>
+                <option value="student">Student</option>
+                <option value="other">Other</option>
+              </select>
+              <p class="hl-err" data-for="ba-occ">Please select the occupation.</p>
+            </div>
+            <div class="hl-field">
+              <label for="ba-btype">Business Type</label>
+              <select id="ba-btype" name="btype" class="rv-input hl-select" required>
+                <option value="">Select Business Type</option>
+                <option value="prop">Proprietorship</option>
+                <option value="partnership">Partnership</option>
+                <option value="llp">LLP</option>
+                <option value="pvtltd">Private Limited Company</option>
+                <option value="na">Not Applicable</option>
+              </select>
+              <p class="hl-err" data-for="ba-btype">Please select the business type (or Not Applicable).</p>
+            </div>
+            <div class="hl-field">
+              <label for="ba-purpose">Account Purpose</label>
+              <select id="ba-purpose" name="purpose" class="rv-input hl-select" required>
+                <option value="">Select Account Purpose</option>
+                <option value="personal">Personal Use</option>
+                <option value="business">Business Transactions</option>
+                <option value="salary">Salary Account</option>
+                <option value="savings">Savings &amp; Investment</option>
+                <option value="other">Other</option>
+              </select>
+              <p class="hl-err" data-for="ba-purpose">Please select the account purpose.</p>
+            </div>
+            <div class="hl-field">
+              <label for="ba-city">City / Location</label>
+              <input id="ba-city" name="city" class="rv-input" type="text" placeholder="Enter City / Location" autocomplete="address-level2" required>
+              <p class="hl-err" data-for="ba-city">Please enter the city or location.</p>
+            </div>
+            <div class="hl-full hl-actions">
+              <button type="submit" class="hl-submit">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+                Search Bank Account
+              </button>
+              <button type="reset" class="hl-reset">Clear</button>
+            </div>
+          </form>
+          <div id="account-result" class="hl-result" hidden tabindex="-1" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+    <section class="pt-28 pb-10 rv-cta relative">
+      <div class="rv-fade-bottom"></div>
+      <div class="max-w-7xl mx-auto px-6 relative z-30">
+        <div class="max-w-2xl mx-auto text-center reveal">
+          <h2 class="text-4xl lg:text-5xl -tracking-[1.9px] mb-4 font-medium text-gray-900">Need help opening the account?</h2>
+          <p class="text-base text-gray-500 mb-9">Our team will help you pick the bank and get the paperwork right.</p>
+          <div class="flex gap-4 justify-center sm:items-center flex-col sm:flex-row">
+            <a class="py-2.5 px-4 bg-indigo-500 h-11 rounded-lg font-medium text-white text-base hover:bg-indigo-600 transition duration-300 ease-in-out inline-block" href="contact.html">Contact Us</a>
+            <a class="py-2.5 px-4 border h-11 border-gray-200 bg-white/70 text-base rounded-lg font-medium inline-block hover:bg-gray-100 transition duration-300 ease-in-out text-gray-800" href="funding-loans.html#loan-types">Back to all services</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="pt-10 lg:pt-18">
+        <div class="flex flex-col lg:flex-row gap-10">
+          <div class="lg:w-4/12">
+            <a class="mb-10 lg:mb-20 inline-block" href="index.html" aria-label="RAVEN home"><img src="images/logo.svg" alt="RAVEN" width="136" height="35"></a>
+            <p class="lg:pr-10 text-gray-500 text-base">Build. Fund. Brand. Grow.<br>Your business partner in India.</p>
+            <p class="text-gray-400 text-sm mt-4">Chhatrapati Sambhajinagar &amp; Pune, India</p>
+          </div>
+          <div class="lg:w-6/12 lg:ml-auto">
+            <div class="grid grid-cols-2 gap-5 sm:gap-10 sm:grid-cols-3">
+              <div>
+                <h3 class="text-lg text-gray-800 font-medium mb-6">Services</h3>
+                <nav class="space-y-5">
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="funding-loans.html">Funding &amp; Loans</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="registration.html">Business Registration</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="bank-account.html">Bank Account Opening</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Real Estate</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Brand Strategy</a>
+                </nav>
+              </div>
+              <div>
+                <h3 class="text-lg text-gray-800 font-medium mb-6">Company</h3>
+                <nav class="space-y-5">
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="index.html#about">About Us</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="contact.html">Contact</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="terms.html">Terms &amp; Conditions</a>
+                  <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="privacy.html">Privacy Policy</a>
+                </nav>
+              </div>
+              <div class="flex lg:justify-end">
+                <div>
+                  <h3 class="text-lg text-gray-800 font-medium mb-6">Contact</h3>
+                  <nav class="space-y-5">
+                    <a class="text-gray-700 block text-base hover:text-indigo-500 transition-colors duration-300 ease-in-out" href="mailto:hello@raven.business">hello@raven.business</a>
+                    <span class="text-gray-700 block text-base">Chhatrapati Sambhajinagar</span>
+                    <span class="text-gray-700 block text-base">Pune, India</span>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-between flex-col sm:flex-row gap-5 items-center pb-10 pt-10 lg:pt-20">
+        <p class="text-base text-gray-500">&copy; 2025 RAVEN. All rights reserved. <span class="rv-dot">Built for Indian Entrepreneurs.</span></p>
+        <a href="#top" class="flex gap-3 items-center text-gray-700">Back to top
+          <span class="size-7 rounded-full text-white bg-indigo-500 inline-flex items-center justify-center hover:bg-indigo-600 transition duration-300 ease-in-out"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </footer>
+  </div>
+  <script src="search-forms.js?v=1"></script>
+  <script src="site.js?v=2"></script>
+  <script src="ai-chat.js?v=6"></script>
+  <script src="consent.js?v=4"></script>
+</body>
+</html>
