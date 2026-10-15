@@ -736,3 +736,12 @@ header nav .lg\:flex a{white-space:nowrap}
 .aio-chip:hover .aio-ic,.aio-chip:focus-visible .aio-ic{background:var(--c);color:#fff}
 @media(max-width:639px){.aio-chip{font-size:.85rem;padding:.45rem .9rem .45rem .45rem;gap:.55rem}.aio-ic{width:32px;height:32px}.aio-ic svg{width:17px;height:17px}.aio-sub{margin-bottom:1.5rem}}
 @media(prefers-reduced-motion:reduce){.aio-track{animation:none}.aio-row{overflow-x:auto;scrollbar-width:none}.aio-set[aria-hidden]{display:none}}
+
+/* services strip: one row with animated icons */
+.aio-track{animation-duration:60s}
+.aio-chip{padding:.45rem 1.2rem .45rem .45rem}
+.aio-ic{width:52px;height:52px;border-radius:14px}
+.aio-lot{display:block;width:48px;height:48px}
+.aio-lot svg{display:block;width:100%!important;height:100%!important}
+.aio-chip:hover .aio-ic,.aio-chip:focus-visible .aio-ic{background:var(--bg);box-shadow:inset 0 0 0 2px var(--c)}
+@media(max-width:639px){.aio-ic{width:44px;height:44px}.aio-lot{width:40px;height:40px}.aio-track{animation-duration:48s}}
