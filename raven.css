@@ -695,3 +695,5 @@ input[type="date"].rv-input{height:50px}
 /* keep the header on one line on small laptops */
 @media (min-width:1024px) and (max-width:1199px){header nav ul a{padding-left:.55rem!important;padding-right:.55rem!important}header nav .lg\:flex{gap:.5rem}}
 header nav .lg\:flex a{white-space:nowrap}
+
+.sv-grid .sv-visual .sv-lottie{width:100%;height:100%;padding:.5rem 0}.sv-grid .sv-glow{display:none}
