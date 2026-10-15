@@ -312,5 +312,17 @@
     });
   }
 
+  // Loan category tabs
+  document.querySelectorAll('.b-ltab').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.b-ltab').forEach(function (b) { b.classList.remove('is-on'); });
+      btn.classList.add('is-on');
+      var cat = btn.dataset.cat;
+      document.querySelectorAll('.b-lcard:not(.is-cta)').forEach(function (card) {
+        card.hidden = !!(cat && card.dataset.cat !== cat);
+      });
+    });
+  });
+
   onScroll();
 })();

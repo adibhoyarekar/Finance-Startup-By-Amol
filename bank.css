@@ -437,6 +437,36 @@ html.b-lock{overflow:hidden}
 @media(min-width:768px){.b-loans .lc-cta{grid-column:span 1}}
 @media(max-width:767px){.b-loans .lc-cta,.b-loans .b-loan.is-cta{grid-column:1/-1}}
 .lc[hidden],.bk[hidden]{display:none!important}
+/* Loan category tabs */
+.b-ltabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 28px}
+.b-ltab{padding:8px 20px;border-radius:100px;border:1.5px solid var(--line);background:#fff;font-family:inherit;font-size:.875rem;font-weight:600;color:var(--body);cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.b-ltab.is-on,.b-ltab:hover{background:var(--brand);border-color:var(--brand);color:#fff}
+/* New loan card grid */
+.b-lnew{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media(max-width:359px){.b-lnew{grid-template-columns:minmax(0,1fr)}}
+@media(min-width:640px){.b-lnew{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}}
+@media(min-width:1100px){.b-lnew{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.b-lcard{position:relative;display:flex;flex-direction:column;border-radius:20px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 1px 6px rgba(0,0,0,.05),0 4px 16px rgba(0,0,0,.04);transition:transform .35s var(--ease),box-shadow .35s,border-color .35s;text-decoration:none;color:inherit}
+.b-lcard:hover{transform:translateY(-6px);box-shadow:0 12px 36px rgba(3,105,161,.15);border-color:transparent}
+.b-lcard-top{display:flex;align-items:center;justify-content:space-between;padding:16px 16px 14px;background:var(--lc-bg,linear-gradient(135deg,#e0f2fe,#bae6fd))}
+.b-lcard-ic{display:flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:13px;background:#fff;color:var(--lc-col,var(--brand));box-shadow:0 2px 10px rgba(0,0,0,.1);flex-shrink:0}
+.b-lcard-rate{font-size:1.25rem;font-weight:800;color:var(--lc-col,var(--brand));text-align:right;line-height:1;font-feature-settings:"tnum"}
+.b-lcard-rate small{display:block;font-size:.65rem;font-weight:500;color:var(--body);opacity:.75;margin-top:3px;line-height:1}
+.b-lcard-cat{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--mute);text-align:right;margin-top:4px}
+.b-lcard-body{flex:1;padding:14px 16px 10px}
+.b-lcard-body h3{font-size:.9375rem;font-weight:700;color:var(--ink);line-height:1.2}
+.b-lcard-body p{margin-top:5px;font-size:.78125rem;color:var(--mute);line-height:1.55}
+.b-lcard-feats{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
+.b-lcard-feats span{font-size:.6875rem;font-weight:600;padding:3px 9px;border-radius:100px;background:var(--sky-50);color:var(--sky-700);border:1px solid var(--sky-100)}
+.b-lcard-foot{padding:10px 16px 14px;border-top:1px solid var(--line)}
+.b-lcard-cta{display:inline-flex;align-items:center;gap:5px;font-size:.8125rem;font-weight:600;color:var(--brand);transition:gap .2s}
+.b-lcard:hover .b-lcard-cta{gap:9px}
+.b-lcard[hidden]{display:none}
+.b-lcard.is-cta{background:linear-gradient(140deg,var(--sky-700),var(--sky-950));border:0;color:#fff;justify-content:center;align-items:flex-start;padding:24px}
+.b-lcard.is-cta h3{color:#fff;font-size:1.1rem}
+.b-lcard.is-cta p{color:rgba(255,255,255,.75);font-size:.875rem;margin-top:6px}
+.b-lcard.is-cta:hover{box-shadow:0 12px 36px rgba(3,105,161,.3)}
+@media(max-width:639px){.b-lcard.is-cta{grid-column:1/-1}}
 
 /* process steps */
 .b-steps{position:relative;display:grid;grid-template-columns:1fr;gap:16px}
