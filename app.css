@@ -658,3 +658,17 @@ select.ap-input{appearance:none;-webkit-appearance:none;padding-right:2.4rem;cur
   .ap-tool.has-img .for{top:.7rem;right:.7rem;font-size:.62rem;padding:.1rem .45rem}
   .ap-tool .pic.is-icon .ap-icon{width:30px;height:30px;padding:8px}
 }
+
+/* pipeline on phones: every stage visible, two per row; press-and-hold to drag */
+.td-dragging,.td-dragging *{-webkit-user-select:none;user-select:none}
+.ap-kcard{-webkit-touch-callout:none}
+@media(max-width:767px){
+  .ap-board{grid-auto-flow:row;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-columns:auto;overflow:visible;scroll-snap-type:none;gap:.55rem}
+  .ap-colm{min-height:8rem;padding:.5rem}
+  .ap-colm header{flex-direction:column;align-items:flex-start;gap:.15rem;padding:.15rem .2rem .5rem}
+  .ap-colm header strong{font-size:.78rem;line-height:1.2}
+  .ap-colm header small{font-size:.66rem}
+  .ap-kcard{padding:.55rem;-webkit-user-select:none;user-select:none}
+  .ap-kcard strong{font-size:.78rem}
+  .ap-kcard small{font-size:.66rem}
+}

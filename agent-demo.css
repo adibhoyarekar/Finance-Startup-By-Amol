@@ -181,3 +181,28 @@
 .rvd .rvd-sel select{width:auto;height:auto;min-height:0;margin:0;padding:0 .1rem;border:0;border-radius:0;box-shadow:none;line-height:1.5;-webkit-appearance:auto;appearance:auto}
 .rvd-who>div{min-width:0}
 @media(max-width:519px){.rvd-add{padding:.6rem}.rvd-add span{display:none}.rvd-sub{display:none}}
+
+/* phones: show the whole dashboard, no inner scrolling, all stages visible */
+.td-dragging,.td-dragging *{-webkit-user-select:none;user-select:none}
+.rvd-pc{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
+.td-ghost{list-style:none}
+@media(max-width:767px){
+  .rvd-frame{margin-left:-14px;margin-right:-14px;padding:6px!important;border-radius:22px!important}
+  .rvd{height:auto;overflow:visible}
+  .rvd-main{padding:.9rem .8rem 1rem}
+  .rvd-view{overflow:visible;margin:0;padding:0}
+  .rvd-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;overflow:visible}
+  .rvd-tabs button{padding:.45rem .1rem;font-size:.72rem;text-align:center;white-space:nowrap}
+  .rvd-board{grid-auto-flow:row;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-columns:auto;overflow:visible;gap:.5rem}
+  .rvd-col{padding:.5rem;min-height:7rem}
+  .rvd-col-h b{font-size:.68rem;line-height:1.2}
+  .rvd-pc{padding:.5rem .45rem}
+  .rvd-pc .rvd-ava{width:26px;height:26px;font-size:.58rem}
+  .rvd-pc .rvd-who{gap:.4rem}
+  .rvd-pc .rvd-who b{font-size:.7rem}
+  .rvd-pc .rvd-who small{font-size:.6rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .rvd-pc-f{flex-wrap:wrap;gap:.3rem}
+  .rvd-modal{position:fixed;z-index:90}
+  .rvd-toast{position:fixed;bottom:5.5rem;z-index:95}
+  .rvd-bars{height:8rem}
+}

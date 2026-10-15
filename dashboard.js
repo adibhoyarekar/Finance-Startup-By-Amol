@@ -287,6 +287,10 @@
     e.preventDefault(); setStage(dragId, col.getAttribute('data-drop')); dragId = null;
   });
 
+  if (window.TouchDrag) TouchDrag($('pl-board'), { card: '[data-drag]', col: '[data-drop]',
+    cardId: function (c) { return c.getAttribute('data-drag'); }, colId: function (c) { return c.getAttribute('data-drop'); },
+    onDrop: function (id, st) { setStage(id, st); } });
+
   function setStage(id, st) {
     var c = App.getClient(id);
     if (!c || c.status === st) return;

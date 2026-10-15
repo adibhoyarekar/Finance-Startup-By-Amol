@@ -155,7 +155,7 @@
   }
 
   function pipeline() {
-    return '<p class="rvd-hint">Drag a card to another column, or use the arrows. Closed cases stay under Clients.</p><div class="rvd-board">' + STAGES.slice(0, 5).map(function (s) {
+    return '<p class="rvd-hint">Drag a card to another stage (on a phone, press and hold it first), or use the arrows. Closed cases stay under Clients.</p><div class="rvd-board">' + STAGES.slice(0, 5).map(function (s) {
       var items = S.clients.filter(function (c) { return c.status === s[0]; });
       return '<div class="rvd-col" data-col="' + s[0] + '" style="--c:' + s[2] + '"><div class="rvd-col-h"><i></i><b>' + s[1] + '</b><em>' + items.length + '</em></div>' +
         '<p class="rvd-col-sum">' + money(sum(items, function (c) { return c.amount; })) + '</p>' +
@@ -265,6 +265,9 @@
     var col = e.target.closest && e.target.closest('[data-col]'); if (!col || !dragId) return;
     e.preventDefault(); var id = dragId; dragId = null; setStage(id, col.getAttribute('data-col'));
   });
+
+    if (window.TouchDrag) TouchDrag(root, { card: '[data-drag]', col: '[data-col]',
+    cardId: function (c) { return c.getAttribute('data-drag'); }, colId: function (c) { return c.getAttribute('data-col'); }, onDrop: setStage });
 
   render();
 })();

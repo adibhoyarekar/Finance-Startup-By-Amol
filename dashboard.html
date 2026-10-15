@@ -9,7 +9,7 @@
   <meta name="theme-color" content="#0e1124">
   <link rel="icon" type="image/svg+xml" href="images/logo-mark.svg">
   <link rel="stylesheet" href="styles.css?v=3">
-  <link rel="stylesheet" href="app.css?v=3">
+  <link rel="stylesheet" href="app.css?v=4">
 </head>
 <body class="ap-body">
   <div class="ap">
@@ -113,7 +113,7 @@
 
         <!-- PIPELINE -->
         <section class="ap-view" data-view="pipeline" aria-labelledby="pl-h">
-          <div class="ap-h"><div><h1 id="pl-h">Pipeline</h1><p>Drag a card to move it to the next stage. On a phone, tap a card to change its stage.</p></div><button type="button" class="ap-btn is-primary ap-only-d" data-add><span data-ico="plus"></span>Add client</button></div>
+          <div class="ap-h"><div><h1 id="pl-h">Pipeline</h1><p>Drag a card to another stage. On a phone, press and hold a card, then drag it – or tap it to change its stage.</p></div><button type="button" class="ap-btn is-primary ap-only-d" data-add><span data-ico="plus"></span>Add client</button></div>
           <div class="ap-board" id="pl-board"></div>
         </section>
 
@@ -171,6 +171,7 @@
 
   <script src="raven-app.js?v=4"></script>
   <script src="app-shell.js?v=5"></script>
-  <script src="dashboard.js?v=6"></script>
+  <script src="touch-dnd.js?v=1"></script>
+  <script src="dashboard.js?v=7"></script>
 </body>
 </html>
