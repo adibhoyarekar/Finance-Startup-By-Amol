@@ -16,6 +16,59 @@
     });
   }
 
+  // desktop top bar: dock-style magnification on hover; neighbours slide aside
+  var dockMq = window.matchMedia && window.matchMedia('(min-width: 1024px) and (hover: hover) and (pointer: fine)');
+  var dockCalm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var dockBar = document.querySelector('header nav .rounded-\\[18px\\]');
+  if (dockBar && dockMq && !dockCalm) {
+    var q = function (sel) { return [].slice.call(dockBar.querySelectorAll(sel)); };
+    var dockGroups = [
+      { items: q(':scope > a'), anchor: 'left' },
+      { items: q(':scope > .lg\\:block a'), anchor: 'center' },
+      { items: q(':scope > .lg\\:flex a'), anchor: 'right' }
+    ].filter(function (g) { return g.items.length; });
+    var dockAll = [];
+    dockGroups.forEach(function (g) { g.items.forEach(function (a) { a.classList.add('rv-dk'); dockAll.push(a); }); });
+    dockBar.classList.add('rv-dock');
+    var dockBase = null, dockX = null, dockRaf = 0;
+    var dockMeasure = function () {
+      dockBar.classList.add('rv-dk-measure');
+      dockBase = dockAll.map(function (a) { var r = a.getBoundingClientRect(); return { c: r.left + r.width / 2, w: r.width }; });
+      dockBar.classList.remove('rv-dk-measure');
+    };
+    var dockPaint = function () {
+      dockRaf = 0;
+      var k = 0;
+      dockGroups.forEach(function (g) {
+        var sc = g.items.map(function (a, i) {
+          var b = dockBase && dockBase[k + i];
+          if (dockX === null || !b || !dockMq.matches) return 1;
+          var d = dockX - b.c, sp = Math.max(70, b.w * 0.75);
+          return 1 + 0.24 * Math.exp(-(d * d) / (2 * sp * sp));
+        });
+        var ex = sc.map(function (s, i) { var b = dockBase && dockBase[k + i]; return b ? (s - 1) * b.w : 0; });
+        var total = ex.reduce(function (t, e) { return t + e; }, 0), before = 0;
+        g.items.forEach(function (a, i) {
+          var shift;
+          if (g.anchor === 'left') shift = before + ex[i] / 2;
+          else if (g.anchor === 'right') shift = before + ex[i] / 2 - total;
+          else shift = before + ex[i] / 2 - total / 2;
+          before += ex[i];
+          a.style.setProperty('--dk-s', sc[i].toFixed(3));
+          a.style.setProperty('--dk-x', shift.toFixed(2) + 'px');
+          a.style.setProperty('--dk-y', (-(sc[i] - 1) * 12).toFixed(2) + 'px');
+        });
+        k += g.items.length;
+      });
+    };
+    var dockQueue = function () { if (!dockRaf) dockRaf = requestAnimationFrame(dockPaint); };
+    dockBar.addEventListener('mouseenter', function () { dockMeasure(); });
+    dockBar.addEventListener('mousemove', function (e) { if (!dockBase) dockMeasure(); dockX = e.clientX; dockQueue(); });
+    dockBar.addEventListener('mouseleave', function () { dockX = null; dockQueue(); });
+    window.addEventListener('resize', function () { dockBase = null; });
+    window.addEventListener('scroll', function () { dockBase = null; }, { passive: true });
+  }
+
   // accordions (FAQ, terms)
   document.querySelectorAll('[data-acc] > button').forEach(function (b) {
     b.addEventListener('click', function () {
