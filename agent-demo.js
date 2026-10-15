@@ -49,8 +49,8 @@
     return d === 0 ? 'Today' : d === 1 ? 'Tomorrow' : 'In ' + d + ' days';
   }
   function initials(n) { return n.split(/\s+/).map(function (p) { return p[0]; }).join('').slice(0, 2).toUpperCase(); }
-  function avatar(c) { return '<span class="ad-ava" style="background:' + AVA[c.id % AVA.length] + '">' + esc(initials(c.name)) + '</span>'; }
-  function pill(st) { return '<span class="ad-pill" style="--c:' + COLOR[st] + '"><i></i>' + LABEL[st] + '</span>'; }
+  function avatar(c) { return '<span class="rvd-ava" style="background:' + AVA[c.id % AVA.length] + '">' + esc(initials(c.name)) + '</span>'; }
+  function pill(st) { return '<span class="rvd-pill" style="--c:' + COLOR[st] + '"><i></i>' + LABEL[st] + '</span>'; }
   function byId(id) { return S.clients.filter(function (c) { return c.id === +id; })[0]; }
   function icon(p, s) { return '<svg width="' + (s || 18) + '" height="' + (s || 18) + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + p + '</svg>'; }
   var I = {
@@ -70,25 +70,25 @@
   // shell -------------------------------------------------------------------
   var VIEWS = [['overview', 'Overview', I.grid], ['clients', 'Clients', I.users], ['pipeline', 'Pipeline', I.flow], ['followups', 'Follow-ups', I.bell]];
   root.innerHTML =
-    '<aside class="ad-side"><div class="ad-brand"><img src="images/logo.svg" alt="RAVEN" width="92" height="24"><span>Agent</span></div>' +
-    '<p class="ad-label">Menu</p><nav class="ad-nav">' + VIEWS.map(function (v) {
+    '<aside class="rvd-side"><div class="rvd-brand"><img src="images/logo.svg" alt="RAVEN" width="92" height="24"><span>Agent</span></div>' +
+    '<p class="rvd-label">Menu</p><nav class="rvd-nav">' + VIEWS.map(function (v) {
       return '<button type="button" data-view="' + v[0] + '">' + icon(v[2], 17) + '<span>' + v[1] + '</span><em data-badge="' + v[0] + '"></em></button>';
     }).join('') + '</nav>' +
-    '<div class="ad-demo"><b>Demo mode</b><p>Try anything. Refresh to restore the sample data.</p><button type="button" data-act="reset">' + icon(I.reset, 14) + 'Reset demo</button></div></aside>' +
-    '<div class="ad-main"><div class="ad-top"><div><h3 class="ad-title"></h3><p class="ad-sub">Sample agent dashboard &middot; no login needed</p></div>' +
-    '<div class="ad-top-r"><span class="ad-tag">Live demo</span><button type="button" class="ad-btn ad-add" data-act="add" aria-label="Add client">' + icon(I.plus, 16) + '<span>Add client</span></button></div></div>' +
-    '<div class="ad-tabs">' + VIEWS.map(function (v) { return '<button type="button" data-view="' + v[0] + '">' + v[1] + '</button>'; }).join('') + '</div>' +
-    '<div class="ad-view" aria-live="polite"></div></div>' +
-    '<div class="ad-modal" hidden><form class="ad-form" novalidate><div class="ad-form-h"><b>Add a client</b><button type="button" class="ad-x" data-act="close" aria-label="Close">' + icon(I.x, 16) + '</button></div>' +
+    '<div class="rvd-demo"><b>Demo mode</b><p>Try anything. Refresh to restore the sample data.</p><button type="button" data-act="reset">' + icon(I.reset, 14) + 'Reset demo</button></div></aside>' +
+    '<div class="rvd-main"><div class="rvd-top"><div><h3 class="rvd-title"></h3><p class="rvd-sub">Sample agent dashboard &middot; no login needed</p></div>' +
+    '<div class="rvd-top-r"><span class="rvd-tag">Live demo</span><button type="button" class="rvd-btn rvd-add" data-act="add" aria-label="Add client">' + icon(I.plus, 16) + '<span>Add client</span></button></div></div>' +
+    '<div class="rvd-tabs">' + VIEWS.map(function (v) { return '<button type="button" data-view="' + v[0] + '">' + v[1] + '</button>'; }).join('') + '</div>' +
+    '<div class="rvd-view" aria-live="polite"></div></div>' +
+    '<div class="rvd-modal" hidden><form class="rvd-form" novalidate><div class="rvd-form-h"><b>Add a client</b><button type="button" class="rvd-x" data-act="close" aria-label="Close">' + icon(I.x, 16) + '</button></div>' +
     '<label>Full name<input name="name" maxlength="40" placeholder="e.g. Arjun Mehta" autocomplete="off"></label>' +
-    '<div class="ad-2"><label>City<input name="city" maxlength="24" placeholder="e.g. Pune" autocomplete="off"></label>' +
+    '<div class="rvd-2"><label>City<input name="city" maxlength="24" placeholder="e.g. Pune" autocomplete="off"></label>' +
     '<label>Product<select name="product">' + Object.keys(PRODUCTS).map(function (k) { return '<option value="' + k + '">' + PRODUCTS[k][0] + '</option>'; }).join('') + '</select></label></div>' +
-    '<div class="ad-2"><label>Loan amount (₹)<input name="amount" type="number" min="0" step="10000" inputmode="numeric" placeholder="e.g. 500000"></label>' +
+    '<div class="rvd-2"><label>Loan amount (₹)<input name="amount" type="number" min="0" step="10000" inputmode="numeric" placeholder="e.g. 500000"></label>' +
     '<label>Follow up<select name="follow"><option value="0">Today</option><option value="1">Tomorrow</option><option value="3">In 3 days</option><option value="7">Next week</option></select></label></div>' +
-    '<p class="ad-err" hidden></p><button type="submit" class="ad-btn ad-full">' + icon(I.plus, 16) + 'Add as new lead</button></form></div>' +
-    '<div class="ad-toast" role="status"></div>';
+    '<p class="rvd-err" hidden></p><button type="submit" class="rvd-btn rvd-full">' + icon(I.plus, 16) + 'Add as new lead</button></form></div>' +
+    '<div class="rvd-toast" role="status"></div>';
 
-  var view = root.querySelector('.ad-view'), modal = root.querySelector('.ad-modal'), form = root.querySelector('.ad-form'), toastEl = root.querySelector('.ad-toast'), toastT;
+  var view = root.querySelector('.rvd-view'), modal = root.querySelector('.rvd-modal'), form = root.querySelector('.rvd-form'), toastEl = root.querySelector('.rvd-toast'), toastT;
   function toast(msg) {
     toastEl.innerHTML = icon(I.check, 15) + '<span>' + esc(msg) + '</span>';
     toastEl.classList.add('is-on'); clearTimeout(toastT);
@@ -102,7 +102,7 @@
     var rate = won.length + sanc.length + lost.length ? Math.round((won.length + sanc.length) * 100 / (won.length + sanc.length + lost.length)) : 0;
     var pay = function (l) { return sum(l, function (c) { return c.amount * PRODUCTS[c.product][1] / 100; }); };
     var kpi = function (cls, ic, label, val, sub, go) {
-      return '<button type="button" class="ad-kpi ' + cls + '" data-go="' + go + '"><span class="ad-kic">' + icon(ic, 18) + '</span><p>' + label + '</p><b>' + val + '</b><i>' + sub + '</i></button>';
+      return '<button type="button" class="rvd-kpi ' + cls + '" data-go="' + go + '"><span class="rvd-kic">' + icon(ic, 18) + '</span><p>' + label + '</p><b>' + val + '</b><i>' + sub + '</i></button>';
     };
     var months = [], d = new Date();
     for (var k = 5; k >= 0; k--) months.push(new Date(d.getFullYear(), d.getMonth() - k, 1).toLocaleString('en-IN', { month: 'short' }));
@@ -112,20 +112,20 @@
     var max = Math.max.apply(null, series.map(function (s) { return s[1]; })) * 1.15;
     var bars = series.map(function (s, i) {
       var h = Math.max(4, s[1] / max * 100), last = i === series.length - 1;
-      return '<div class="ad-bar' + (last ? ' is-now' : '') + '" style="--h:' + h.toFixed(1) + '%;--i:' + i + '"><em>₹' + (Math.round(s[1] * 10) / 10) + 'L</em><span></span><small>' + s[0] + '</small></div>';
+      return '<div class="rvd-bar' + (last ? ' is-now' : '') + '" style="--h:' + h.toFixed(1) + '%;--i:' + i + '"><em>₹' + (Math.round(s[1] * 10) / 10) + 'L</em><span></span><small>' + s[0] + '</small></div>';
     }).join('');
     var stages = STAGES.map(function (s) {
       var n = all.filter(function (c) { return c.status === s[0]; }).length;
-      return '<button type="button" class="ad-srow" data-stagego="' + s[0] + '"><span>' + s[1] + '</span><em><i style="width:' + (all.length ? n / all.length * 100 : 0) + '%;background:' + s[2] + '"></i></em><b>' + n + '</b></button>';
+      return '<button type="button" class="rvd-srow" data-stagego="' + s[0] + '"><span>' + s[1] + '</span><em><i style="width:' + (all.length ? n / all.length * 100 : 0) + '%;background:' + s[2] + '"></i></em><b>' + n + '</b></button>';
     }).join('');
-    return '<div class="ad-kpis">' +
+    return '<div class="rvd-kpis">' +
       kpi('k1', I.case, 'Active cases', act.length, money(sum(act, function (c) { return c.amount; })) + ' in pipeline', 'active') +
       kpi('k2', I.coin, 'Disbursed', money(sum(won, function (c) { return c.amount; })), won.length + (won.length === 1 ? ' case' : ' cases') + ' paid out', 'disbursed') +
       kpi('k3', I.target, 'Success rate', rate + '%', 'sanctioned + disbursed', 'all') +
       kpi('k4', I.wallet, 'Payout earned', money(pay(won)), '+ ' + money(pay(sanc)) + ' expected', 'sanctioned') +
-      '</div><div class="ad-row"><div class="ad-card"><div class="ad-card-h"><h4>Loan amount added</h4><span class="ad-seg"><button type="button" data-range="m" class="' + (S.range === 'm' ? 'on' : '') + '">Monthly</button><button type="button" data-range="y" class="' + (S.range === 'y' ? 'on' : '') + '">Annually</button></span></div>' +
-      '<div class="ad-bars">' + bars + '</div></div>' +
-      '<div class="ad-card"><div class="ad-card-h"><h4>Cases by stage</h4><button type="button" class="ad-link" data-view="pipeline">Open pipeline</button></div><div class="ad-stages">' + stages + '</div></div></div>';
+      '</div><div class="rvd-row"><div class="rvd-card"><div class="rvd-card-h"><h4>Loan amount added</h4><span class="rvd-seg"><button type="button" data-range="m" class="' + (S.range === 'm' ? 'on' : '') + '">Monthly</button><button type="button" data-range="y" class="' + (S.range === 'y' ? 'on' : '') + '">Annually</button></span></div>' +
+      '<div class="rvd-bars">' + bars + '</div></div>' +
+      '<div class="rvd-card"><div class="rvd-card-h"><h4>Cases by stage</h4><button type="button" class="rvd-link" data-view="pipeline">Open pipeline</button></div><div class="rvd-stages">' + stages + '</div></div></div>';
   }
 
   function filtered() {
@@ -141,29 +141,29 @@
       return [s[0], s[1], S.clients.filter(function (c) { return c.status === s[0]; }).length];
     }));
     var rows = list.map(function (c) {
-      return '<div class="ad-tr" data-id="' + c.id + '"><div class="ad-who">' + avatar(c) + '<div><b>' + esc(c.name) + '</b><small>' + esc(c.city || '—') + '</small></div></div>' +
-        '<span class="ad-prod">' + PRODUCTS[c.product][0] + '</span><span class="ad-amt">' + (c.amount ? money(c.amount) : '—') + '</span>' +
-        '<label class="ad-sel" style="--c:' + COLOR[c.status] + '"><i></i><select data-stage="' + c.id + '" aria-label="Stage for ' + esc(c.name) + '">' +
+      return '<div class="rvd-tr" data-id="' + c.id + '"><div class="rvd-who">' + avatar(c) + '<div><b>' + esc(c.name) + '</b><small>' + esc(c.city || '—') + '</small></div></div>' +
+        '<span class="rvd-prod">' + PRODUCTS[c.product][0] + '</span><span class="rvd-amt">' + (c.amount ? money(c.amount) : '—') + '</span>' +
+        '<label class="rvd-sel" style="--c:' + COLOR[c.status] + '"><i></i><select data-stage="' + c.id + '" aria-label="Stage for ' + esc(c.name) + '">' +
         STAGES.map(function (s) { return '<option value="' + s[0] + '"' + (s[0] === c.status ? ' selected' : '') + '>' + s[1] + '</option>'; }).join('') + '</select></label>' +
-        '<span class="ad-when' + (c.follow < 0 && isActive(c) ? ' is-late' : '') + '">' + (isActive(c) ? when(c.follow) || '—' : '—') + '</span>' +
-        '<button type="button" class="ad-del" data-del="' + c.id + '" aria-label="Remove ' + esc(c.name) + '">' + icon(I.x, 14) + '</button></div>';
+        '<span class="rvd-when' + (c.follow < 0 && isActive(c) ? ' is-late' : '') + '">' + (isActive(c) ? when(c.follow) || '—' : '—') + '</span>' +
+        '<button type="button" class="rvd-del" data-del="' + c.id + '" aria-label="Remove ' + esc(c.name) + '">' + icon(I.x, 14) + '</button></div>';
     }).join('');
-    return '<div class="ad-tools"><label class="ad-search">' + icon(I.search, 16) + '<input type="search" placeholder="Search name, city or product" value="' + esc(S.q) + '" data-q></label></div>' +
-      '<div class="ad-chips">' + chips.map(function (c) { return '<button type="button" data-chip="' + c[0] + '" class="' + (S.stage === c[0] ? 'on' : '') + '">' + c[1] + ' <em>' + c[2] + '</em></button>'; }).join('') + '</div>' +
-      '<div class="ad-table"><div class="ad-th"><span>Client</span><span>Product</span><span>Amount</span><span>Stage</span><span>Follow-up</span><span></span></div>' +
-      (rows || '<p class="ad-empty">No clients match. Try another filter or add a client.</p>') + '</div>';
+    return '<div class="rvd-tools"><label class="rvd-search">' + icon(I.search, 16) + '<input type="search" placeholder="Search name, city or product" value="' + esc(S.q) + '" data-q></label></div>' +
+      '<div class="rvd-chips">' + chips.map(function (c) { return '<button type="button" data-chip="' + c[0] + '" class="' + (S.stage === c[0] ? 'on' : '') + '">' + c[1] + ' <em>' + c[2] + '</em></button>'; }).join('') + '</div>' +
+      '<div class="rvd-table"><div class="rvd-th"><span>Client</span><span>Product</span><span>Amount</span><span>Stage</span><span>Follow-up</span><span></span></div>' +
+      (rows || '<p class="rvd-empty">No clients match. Try another filter or add a client.</p>') + '</div>';
   }
 
   function pipeline() {
-    return '<p class="ad-hint">Drag a card to another column, or use the arrows. Closed cases stay under Clients.</p><div class="ad-board">' + STAGES.slice(0, 5).map(function (s) {
+    return '<p class="rvd-hint">Drag a card to another column, or use the arrows. Closed cases stay under Clients.</p><div class="rvd-board">' + STAGES.slice(0, 5).map(function (s) {
       var items = S.clients.filter(function (c) { return c.status === s[0]; });
-      return '<div class="ad-col" data-col="' + s[0] + '" style="--c:' + s[2] + '"><div class="ad-col-h"><i></i><b>' + s[1] + '</b><em>' + items.length + '</em></div>' +
-        '<p class="ad-col-sum">' + money(sum(items, function (c) { return c.amount; })) + '</p>' +
+      return '<div class="rvd-col" data-col="' + s[0] + '" style="--c:' + s[2] + '"><div class="rvd-col-h"><i></i><b>' + s[1] + '</b><em>' + items.length + '</em></div>' +
+        '<p class="rvd-col-sum">' + money(sum(items, function (c) { return c.amount; })) + '</p>' +
         items.map(function (c) {
           var i = ORDER[c.status];
-          return '<div class="ad-pc" draggable="true" data-drag="' + c.id + '"><div class="ad-who">' + avatar(c) + '<div><b>' + esc(c.name) + '</b><small>' + PRODUCTS[c.product][0] + (c.amount ? ' · ' + money(c.amount) : '') + '</small></div></div>' +
-            '<div class="ad-pc-f"><span class="ad-when' + (c.follow < 0 && isActive(c) ? ' is-late' : '') + '">' + (isActive(c) ? when(c.follow) : '') + '</span>' +
-            '<span class="ad-arw"><button type="button" data-move="' + c.id + '" data-dir="-1" aria-label="Move back"' + (i === 0 ? ' disabled' : '') + '>' + icon(I.left, 14) + '</button>' +
+          return '<div class="rvd-pc" draggable="true" data-drag="' + c.id + '"><div class="rvd-who">' + avatar(c) + '<div><b>' + esc(c.name) + '</b><small>' + PRODUCTS[c.product][0] + (c.amount ? ' · ' + money(c.amount) : '') + '</small></div></div>' +
+            '<div class="rvd-pc-f"><span class="rvd-when' + (c.follow < 0 && isActive(c) ? ' is-late' : '') + '">' + (isActive(c) ? when(c.follow) : '') + '</span>' +
+            '<span class="rvd-arw"><button type="button" data-move="' + c.id + '" data-dir="-1" aria-label="Move back"' + (i === 0 ? ' disabled' : '') + '>' + icon(I.left, 14) + '</button>' +
             '<button type="button" data-move="' + c.id + '" data-dir="1" aria-label="Move forward"' + (i >= 4 ? ' disabled' : '') + '>' + icon(I.right, 14) + '</button></span></div></div>';
         }).join('') + '</div>';
     }).join('') + '</div>';
@@ -171,29 +171,29 @@
 
   function followups() {
     var list = S.clients.filter(function (c) { return isActive(c) && c.follow !== null; }).sort(function (a, b) { return a.follow - b.follow; });
-    if (!list.length) return '<div class="ad-done">' + icon(I.check, 28) + '<b>All caught up</b><p>No follow-ups pending. Add a client to create one.</p></div>';
-    return '<div class="ad-fu">' + list.map(function (c) {
-      return '<div class="ad-fi' + (c.follow < 0 ? ' is-late' : c.follow === 0 ? ' is-today' : '') + '">' + avatar(c) +
-        '<div class="ad-fi-t"><b>' + esc(c.name) + '</b><small>' + PRODUCTS[c.product][0] + ' &middot; ' + LABEL[c.status] + '</small></div>' +
-        '<span class="ad-when">' + when(c.follow) + '</span>' +
-        '<button type="button" class="ad-mini" data-snooze="' + c.id + '">+1 day</button><button type="button" class="ad-mini is-ok" data-done="' + c.id + '">' + icon(I.check, 14) + 'Done</button></div>';
+    if (!list.length) return '<div class="rvd-done">' + icon(I.check, 28) + '<b>All caught up</b><p>No follow-ups pending. Add a client to create one.</p></div>';
+    return '<div class="rvd-fu">' + list.map(function (c) {
+      return '<div class="rvd-fi' + (c.follow < 0 ? ' is-late' : c.follow === 0 ? ' is-today' : '') + '">' + avatar(c) +
+        '<div class="rvd-fi-t"><b>' + esc(c.name) + '</b><small>' + PRODUCTS[c.product][0] + ' &middot; ' + LABEL[c.status] + '</small></div>' +
+        '<span class="rvd-when">' + when(c.follow) + '</span>' +
+        '<button type="button" class="rvd-mini" data-snooze="' + c.id + '">+1 day</button><button type="button" class="rvd-mini is-ok" data-done="' + c.id + '">' + icon(I.check, 14) + 'Done</button></div>';
     }).join('') + '</div>';
   }
 
   var TITLES = { overview: 'Overview', clients: 'Clients', pipeline: 'Pipeline', followups: 'Follow-ups' };
   function render(keepFocus) {
     root.querySelectorAll('[data-view]').forEach(function (b) {
-      if (b.closest('.ad-nav') || b.closest('.ad-tabs')) {
+      if (b.closest('.rvd-nav') || b.closest('.rvd-tabs')) {
         var on = b.getAttribute('data-view') === S.view;
         b.classList.toggle('is-on', on);
         if (on) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current');
       }
     });
-    root.querySelector('.ad-title').textContent = TITLES[S.view];
+    root.querySelector('.rvd-title').textContent = TITLES[S.view];
     var due = S.clients.filter(function (c) { return isActive(c) && c.follow !== null && c.follow <= 0; }).length;
     root.querySelector('[data-badge="clients"]').textContent = S.clients.length;
     var fc = root.querySelector('[data-badge="followups"]'); fc.textContent = due || ''; fc.classList.toggle('is-alert', due > 0);
-    view.innerHTML = '<div class="ad-in">' + { overview: overview, clients: clients, pipeline: pipeline, followups: followups }[S.view]() + '</div>';
+    view.innerHTML = '<div class="rvd-in">' + { overview: overview, clients: clients, pipeline: pipeline, followups: followups }[S.view]() + '</div>';
     if (keepFocus) { var q = view.querySelector('[data-q]'); if (q) { q.focus(); q.setSelectionRange(q.value.length, q.value.length); } }
   }
 
@@ -210,7 +210,7 @@
     var t = e.target.closest('button'); if (!t || !root.contains(t)) return;
     var v = t.getAttribute('data-view'), act = t.getAttribute('data-act');
     if (v) { S.view = v; render(); return; }
-    if (act === 'add') { form.reset(); form.querySelector('.ad-err').hidden = true; modal.hidden = false; setTimeout(function () { form.querySelector('[name=name]').focus(); }, 30); return; }
+    if (act === 'add') { form.reset(); form.querySelector('.rvd-err').hidden = true; modal.hidden = false; setTimeout(function () { form.querySelector('[name=name]').focus(); }, 30); return; }
     if (act === 'close') { modal.hidden = true; return; }
     if (act === 'reset') { reset(); render(); toast('Demo reset to sample data'); return; }
     if (t.hasAttribute('data-range')) { S.range = t.getAttribute('data-range'); render(); return; }
@@ -236,11 +236,11 @@
     if (e.target.hasAttribute && e.target.hasAttribute('data-q')) { S.q = e.target.value; render(true); }
   });
   modal.addEventListener('click', function (e) { if (e.target === modal) modal.hidden = true; });
-  form.addEventListener('input', function () { form.querySelector('.ad-err').hidden = true; });
+  form.addEventListener('input', function () { form.querySelector('.rvd-err').hidden = true; });
   root.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modal.hidden) modal.hidden = true; });
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var name = form.querySelector('[name=name]').value.trim(), amt = Math.max(0, Math.round(+form.amount.value || 0)), prod = form.product.value, err = form.querySelector('.ad-err');
+    var name = form.querySelector('[name=name]').value.trim(), amt = Math.max(0, Math.round(+form.amount.value || 0)), prod = form.product.value, err = form.querySelector('.rvd-err');
     var msg = name.length < 2 ? 'Please enter the client’s name.' : prod !== 'account' && !amt ? 'Please enter a loan amount.' : amt > 1e9 ? 'Please enter an amount under ₹100 Cr.' : '';
     if (msg) { err.textContent = msg; err.hidden = false; return; }
     S.clients.push({ id: S.nextId++, name: name, city: form.city.value.trim(), product: prod, amount: amt, status: 'new', follow: +form.follow.value });
