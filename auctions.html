@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="styles.css?v=3">
   <link rel="stylesheet" href="raven.css?v=25">
   <link rel="stylesheet" href="app.css?v=3">
-  <link rel="stylesheet" href="auction.css?v=1">
+  <link rel="stylesheet" href="auction.css?v=3">
 </head>
 <body class="antialiased text-gray-900 bg-white">
   <div id="top" class="min-h-screen">
@@ -71,25 +71,17 @@
         <p class="ac-demo" role="note"><span data-ico="info"></span><span><b>Demo mode:</b> auctions, bids and other bidders are simulated and saved only in this browser. Open this page in two tabs to watch bids sync live. No real money moves.</span></p>
         <div class="ac-strip" id="ac-strip" aria-live="polite"></div>
         <div class="ac-tabs" id="ac-tabs" role="toolbar" aria-label="Auction status"></div>
-        <div class="ac-filters">
+        <div class="ac-tools" id="ac-tools">
           <label class="ac-q"><span data-ico="search" data-size="18"></span><input class="ap-input" id="f-q" type="search" placeholder="Search city, locality, bank or reference" aria-label="Search auctions"></label>
-          <select class="ap-input" id="f-city" aria-label="City"></select>
-          <select class="ap-input" id="f-type" aria-label="Asset type"></select>
-          <select class="ap-input" id="f-bank" aria-label="Bank"></select>
-          <select class="ap-input" id="f-price" aria-label="Price">
-            <option value="">Any price</option>
-            <option value="a">Up to ₹25 L</option>
-            <option value="b">₹25 L – ₹1 Cr</option>
-            <option value="c">₹1 Cr – ₹5 Cr</option>
-            <option value="d">Above ₹5 Cr</option>
-          </select>
-          <select class="ap-input" id="f-sort" aria-label="Sort">
-            <option value="ending">Ending / starting soonest</option>
-            <option value="low">Price: low to high</option>
-            <option value="high">Price: high to low</option>
-            <option value="bids">Most bids</option>
-          </select>
+          <button type="button" class="ac-fbtn" id="f-open" aria-expanded="false" aria-controls="f-panel"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg><span>Filters</span><b id="f-badge" hidden></b></button>
+          <div class="ac-fback" id="f-back" hidden></div>
+          <div class="ac-fpanel" id="f-panel" role="dialog" aria-modal="false" aria-labelledby="f-title" hidden>
+            <div class="ac-fp-h"><b id="f-title">Filters</b><button type="button" class="ac-fp-x" id="f-close" aria-label="Close filters"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+            <div class="ac-fp-body" id="f-groups"></div>
+            <div class="ac-fp-f"><button type="button" class="ac-fp-clear" id="f-clear">Clear all</button><button type="button" class="ap-btn is-primary" id="f-apply">Apply filters</button></div>
+          </div>
         </div>
+        <div class="ac-active" id="f-active"></div>
         <p class="ac-count" id="ac-count"></p>
         <div class="ac-grid" id="ac-grid"></div>
       </div>
@@ -189,7 +181,7 @@
   <script src="app-shell.js?v=5"></script>
   <script src="auction-store.js?v=1"></script>
   <script src="auction-ui.js?v=1"></script>
-  <script src="auctions-page.js?v=1"></script>
+  <script src="auctions-page.js?v=3"></script>
   <script src="site.js?v=3"></script>
   <script src="ai-chat.js?v=6"></script>
   <script src="consent.js?v=5"></script>
