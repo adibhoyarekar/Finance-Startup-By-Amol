@@ -8,6 +8,7 @@
   <link rel="icon" type="image/svg+xml" href="images/logo-mark.svg">
   <link rel="stylesheet" href="styles.css?v=3">
   <link rel="stylesheet" href="raven.css?v=24">
+  <link rel="stylesheet" href="agent-demo.css?v=1">
 </head>
 <body class="antialiased text-gray-900 bg-white">
   <div id="top" class="min-h-screen">
@@ -78,38 +79,8 @@
           </div>
         </div>
         <div class="reveal">
-          <div class="mx-auto max-w-275 border border-white p-3 rounded-t-[26px] rv-frame">
-            <div class="rv-dash rounded-t-[14px]">
-              <aside class="rv-dash-side">
-                <div class="rv-dash-brand"><img src="images/logo.svg" alt="RAVEN" width="92" height="24"></div>
-                <p class="rv-dash-label">Menu</p>
-                <span class="rv-dash-item is-on">Overview</span>
-                <span class="rv-dash-item">Loans</span>
-                <span class="rv-dash-item">Insurance</span>
-                <span class="rv-dash-item">Real Estate</span>
-                <span class="rv-dash-item">Auctions</span>
-              </aside>
-              <div class="rv-dash-main">
-                <div class="rv-dash-top"><h3>Overview</h3><span class="rv-dash-pill">Build. Fund. Brand. Grow.</span></div>
-                <div class="rv-dash-stats">
-                  <div><p>Businesses Funded</p><b>50+</b><i>+ growing</i></div>
-                  <div><p>Capital Facilitated</p><b>&#8377;5Cr+</b><i>+ crores</i></div>
-                  <div class="rv-hide-sm"><p>Approval Rate</p><b>95%</b><i>+ high</i></div>
-                  <div class="rv-hide-sm"><p>Loan Products</p><b>8+</b><i>in one place</i></div>
-                </div>
-                <div class="rv-dash-row">
-                  <div class="rv-dash-chart">
-                    <div class="rv-dash-chart-top"><h4>Capital Facilitated</h4><span><u class="on">Monthly</u><u>Annually</u></span></div>
-                    <svg viewBox="0 0 520 170" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="dg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#625FFF" stop-opacity=".28"/><stop offset="1" stop-color="#625FFF" stop-opacity="0"/></linearGradient></defs><path d="M0 140 C60 130 90 90 140 100 S230 60 280 70 S380 30 430 40 S500 20 520 16 V170 H0z" fill="url(#dg)"/><path d="M0 140 C60 130 90 90 140 100 S230 60 280 70 S380 30 430 40 S500 20 520 16" fill="none" stroke="#625FFF" stroke-width="3" stroke-linecap="round"/></svg>
-                  </div>
-                  <div class="rv-dash-donut">
-                    <h4>Approval Rate</h4>
-                    <div class="rv-donut"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="48" fill="none" stroke="#E5E7EB" stroke-width="12"/><circle cx="60" cy="60" r="48" fill="none" stroke="#625FFF" stroke-width="12" stroke-linecap="round" stroke-dasharray="287 302" transform="rotate(-90 60 60)"/></svg><b>95%</b></div>
-                    <p>Loans &amp; schemes</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="mx-auto max-w-275 border border-white p-3 rounded-t-[26px] rv-frame ad-frame">
+            <div class="ad" id="agent-demo" aria-label="Try the RAVEN agent dashboard with sample data"><noscript><p style="padding:2rem;color:#6b7280">Turn on JavaScript to try the agent dashboard demo.</p></noscript></div>
           </div>
         </div>
       </div>
@@ -514,6 +485,7 @@
   </div>
   <script src="raven-app.js?v=4"></script>
   <script src="lottie.min.js?v=1"></script>
+  <script src="agent-demo.js?v=1"></script>
   <script src="site.js?v=3"></script>
   <script src="ai-chat.js?v=6"></script>
   <script src="consent.js?v=5"></script>
