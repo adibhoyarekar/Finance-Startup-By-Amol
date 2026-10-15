@@ -35,7 +35,7 @@
 @media(min-width:640px){.ac-grid{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1024px){.ac-grid{grid-template-columns:repeat(3,1fr);gap:1.25rem}}
 .ac-card{position:relative;display:flex;flex-direction:column;padding:.55rem;background:#fff;border:1px solid var(--ap-line2);border-radius:18px;box-shadow:var(--ap-shadow);text-decoration:none;color:inherit;transition:transform .3s ease,box-shadow .3s ease,border-color .3s;animation:ap-rise .5s var(--ap-ease) both;animation-delay:calc(var(--i,0)*50ms)}
-.ac-card:hover{transform:translateY(-4px);box-shadow:var(--ap-lift);border-color:#e3e6ff}
+.ac-card:hover{transform:translateY(-4px);box-shadow:var(--ap-lift);border-color:#e0f2fe}
 .ac-pic{position:relative;aspect-ratio:16/10;border-radius:13px;overflow:hidden;background:var(--ap-tint)}
 .ac-pic img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ap-ease)}
 .ac-card:hover .ac-pic img{transform:scale(1.05)}
@@ -98,7 +98,7 @@
 .ad-p{color:var(--ap-ink2);font-size:.92rem;line-height:1.65}
 .ad-docs{display:grid;gap:.5rem}
 .ad-doc{display:flex;align-items:center;gap:.75rem;padding:.75rem .9rem;border:1px solid var(--ap-line);border-radius:12px;background:#fff;cursor:pointer;transition:border-color .2s,background .2s;font-size:.9rem;text-align:left;width:100%}
-.ad-doc:hover{border-color:#c7c9ff;background:var(--ap-tint2)}
+.ad-doc:hover{border-color:#bae6fd;background:var(--ap-tint2)}
 .ad-doc .ap-icon{color:var(--ap-ind)}
 .ad-doc small{margin-left:auto;color:var(--ap-mute);font-size:.75rem}
 .ad-tl{list-style:none;padding:0;margin:0;display:grid}
@@ -158,7 +158,7 @@
 .ad-feed small{display:block;color:var(--ap-mute);font-size:.72rem}
 .ad-feed .tag{font-size:.65rem;padding:.05rem .4rem;border-radius:9999px;background:#f3f4f6;color:var(--ap-mute);margin-left:.3rem}
 .ad-chart svg{display:block;width:100%;height:160px}
-.ad-chart path.l{fill:none;stroke:#625fff;stroke-width:2;stroke-linejoin:round}
+.ad-chart path.l{fill:none;stroke:#0284c7;stroke-width:2;stroke-linejoin:round}
 .ad-chart path.a{fill:url(#ad-area)}
 .ad-chart .grid line{stroke:#f1f2f4}
 .ad-chart text{font-size:10.5px;fill:var(--ap-faint)}

@@ -51,7 +51,7 @@
     if (!parts.length) parts = ['?'];
     return ((parts[0] || '?')[0] + (parts.length > 1 ? parts[parts.length - 1][0] : '')).toUpperCase();
   }
-  var HUES = [['#7c79ff', '#4f46e5'], ['#f472b6', '#db2777'], ['#34d399', '#059669'], ['#fbbf24', '#ea580c'], ['#60a5fa', '#2563eb'], ['#a78bfa', '#7c3aed'], ['#2dd4bf', '#0d9488']];
+  var HUES = [['#0ea5e9', '#0369a1'], ['#f472b6', '#db2777'], ['#34d399', '#059669'], ['#fbbf24', '#ea580c'], ['#60a5fa', '#2563eb'], ['#a78bfa', '#7c3aed'], ['#2dd4bf', '#0d9488']];
   function avatar(name, cls) {
     var h = 0, s = String(name || '');
     for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;

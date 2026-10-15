@@ -8,8 +8,8 @@
   var $ = function (id) { return document.getElementById(id); };
 
   // funnel stages, coloured with a validated single-hue ordinal ramp (light -> dark)
-  var STAGES = [['new', 'New lead', '#9d9aff'], ['docs', 'Documents pending', '#7d7aff'], ['submitted', 'Submitted to bank', '#625fff'],
-    ['sanctioned', 'Sanctioned', '#4f46e5'], ['disbursed', 'Disbursed', '#3730a3']];
+  var STAGES = [['new', 'New lead', '#38bdf8'], ['docs', 'Documents pending', '#0ea5e9'], ['submitted', 'Submitted to bank', '#0284c7'],
+    ['sanctioned', 'Sanctioned', '#0369a1'], ['disbursed', 'Disbursed', '#075985']];
   var ALL_STAGES = STAGES.concat([['closed', 'Rejected / Closed', '#98a2b3']]);
   var LABEL = {}; ALL_STAGES.forEach(function (s) { LABEL[s[0]] = s[1]; });
   var ACTIVE = ['new', 'docs', 'submitted', 'sanctioned'];
@@ -169,7 +169,7 @@
     var base = H - B, grid = '', ylab = '';
     [0, .5, 1].forEach(function (f) { var y = T + (H - T - B) * (1 - f); grid += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + y + '" y2="' + y + '"/>'; ylab += '<text class="yl" x="' + (L - 10) + '" y="' + (y + 4) + '" text-anchor="end">' + (f ? short(top * f) : '0') + '</text>'; });
     $('ov-line').innerHTML = '<div class="ap-line"><svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Loan amount added per month" style="height:auto">' +
-      '<defs><linearGradient id="ov-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#625fff" stop-opacity=".16"/><stop offset="1" stop-color="#625fff" stop-opacity="0"/></linearGradient></defs>' +
+      '<defs><linearGradient id="ov-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0284c7" stop-opacity=".16"/><stop offset="1" stop-color="#0284c7" stop-opacity="0"/></linearGradient></defs>' +
       '<g class="grid">' + grid + '</g>' + ylab +
       '<path class="a" fill="url(#ov-area)" d="' + d + ' L' + pts[5][0] + ' ' + base + ' L' + pts[0][0] + ' ' + base + 'Z"/><path class="l" d="' + d + '"/>' +
       '<line class="cross" x1="0" x2="0" y1="' + T + '" y2="' + base + '"/>' +

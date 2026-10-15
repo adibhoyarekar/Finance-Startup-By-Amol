@@ -5,8 +5,8 @@
 
   var style = document.createElement('style');
   style.textContent = '\
-.rv-chat-btn{position:fixed;right:1.25rem;bottom:1.25rem;z-index:60;display:flex;align-items:center;gap:.6rem;height:52px;padding:0 1.25rem;border-radius:14px;border:1px solid rgba(255,255,255,.22);background:#101828;color:#fff;font:500 .95rem/1 Geist,Inter,system-ui,sans-serif;text-decoration:none;box-shadow:0 14px 34px -12px rgba(16,24,40,.55);transition:transform .3s ease,background .3s ease}\
-.rv-chat-btn:hover{transform:translateY(-2px);background:#625fff}\
+.rv-chat-btn{position:fixed;right:1.25rem;bottom:1.25rem;z-index:60;display:flex;align-items:center;gap:.6rem;height:52px;padding:0 1.25rem;border-radius:14px;border:1px solid rgba(255,255,255,.22);background:#0369a1;color:#fff;font:600 .95rem/1 Inter,system-ui,sans-serif;text-decoration:none;box-shadow:0 14px 34px -12px rgba(3,105,161,.65);transition:transform .3s ease,background .3s ease}\
+.rv-chat-btn:hover{transform:translateY(-2px);background:#075985}\
 .rv-chat-btn svg{width:20px;height:20px}\
 @media(max-width:639px){.rv-chat-btn{right:1rem;bottom:1rem;height:48px;padding:0 1.1rem}}\
 .rv-chat-btn[hidden]{display:none}\
@@ -14,10 +14,9 @@ html{--chat-w:max(25vw,340px)}\
 html.rv-split{overflow:hidden}\
 html.rv-split body{width:calc(100vw - var(--chat-w));height:100vh;overflow-x:hidden;overflow-y:auto}\
 body{transition:width .3s ease}\
-html.rv-split header.z-50{right:var(--chat-w);width:auto}\
 .rv-chat-panel{position:fixed;top:0;right:0;bottom:0;z-index:70;width:var(--chat-w);display:flex;flex-direction:column;background:#fff;border-left:1px solid #e5e7eb;transform:translateX(100%);transition:transform .3s ease;pointer-events:none}\
 .rv-chat-panel.is-open{transform:none;pointer-events:auto}\
-.rv-chat-top{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.7rem .9rem .7rem 1.1rem;background:#101828;color:#fff;font:500 .95rem/1 Geist,Inter,system-ui,sans-serif}\
+.rv-chat-top{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.7rem .9rem .7rem 1.1rem;background:#0c4a6e;color:#fff;font:600 .95rem/1 Inter,system-ui,sans-serif}\
 .rv-chat-top a,.rv-chat-top button{color:#fff;opacity:.8;font:inherit;font-size:.8rem;background:none;border:0;cursor:pointer;text-decoration:none}\
 .rv-chat-top a:hover,.rv-chat-top button:hover{opacity:1}\
 .rv-chat-x{width:28px;height:28px;border-radius:8px;font-size:1.1rem!important;line-height:1}\

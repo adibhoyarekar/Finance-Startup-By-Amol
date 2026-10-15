@@ -9,7 +9,7 @@
   var name = p.fullName || me.username, first = name.split(' ')[0];
 
   var TOOLS = {
-    home: ['home', 'Home Loan', 'home-loans.html#home-loan-search', 'Eligibility, EMI and lenders for buying or building a home.', '#eef0ff', '#4f46e5', 'images/loan-home.svg'],
+    home: ['home', 'Home Loan', 'home-loans.html#home-loan-search', 'Eligibility, EMI and lenders for buying or building a home.', '#eaf6fe', '#0369a1', 'images/loan-home.svg'],
     personal: ['user', 'Personal Loan', 'personal-loans.html#personal-loan-search', 'See how much you can borrow without collateral.', '#fdf2fa', '#c11574', 'images/loan-personal.svg'],
     business: ['briefcase', 'Business Loan', 'business-loans.html#business-loan-search', 'MUDRA, unsecured and secured options for your business.', '#eff8ff', '#175cd3', 'images/loan-business.svg'],
     gold: ['coins', 'Gold Loan', 'gold-loans.html#gold-loan-search', 'Value your gold and see the maximum loan under RBI limits.', '#fffaeb', '#b54708', 'images/loan-gold.svg'],
