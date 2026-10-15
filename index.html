@@ -284,18 +284,92 @@
       </div>
     </section>
     <section class="pt-10 lg:pt-28 pb-10 lg:pb-20 relative rv-mesh">
+      <style>
+        .rv-ltabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 28px;justify-content:center}
+        .rv-ltab{padding:8px 20px;border-radius:100px;border:1.5px solid #e5e7eb;background:#fff;font-size:.875rem;font-weight:600;color:#374151;cursor:pointer;transition:background .2s,border-color .2s,color .2s;font-family:inherit}
+        .rv-ltab.is-on,.rv-ltab:hover{background:#625fff;border-color:#625fff;color:#fff}
+        .rv-lnew{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;max-width:80rem;margin:0 auto}
+        @media(max-width:359px){.rv-lnew{grid-template-columns:minmax(0,1fr)}}
+        @media(min-width:640px){.rv-lnew{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}}
+        @media(min-width:1100px){.rv-lnew{grid-template-columns:repeat(4,minmax(0,1fr))}}
+        .rv-lcard{position:relative;display:flex;flex-direction:column;border-radius:20px;overflow:hidden;background:#fff;border:1px solid #e5e7eb;box-shadow:0 1px 6px rgba(0,0,0,.05),0 4px 16px rgba(0,0,0,.04);transition:transform .35s cubic-bezier(.4,0,.2,1),box-shadow .35s,border-color .35s;text-decoration:none;color:inherit}
+        .rv-lcard:hover{transform:translateY(-6px);box-shadow:0 12px 36px rgba(98,95,255,.16);border-color:transparent}
+        .rv-lcard-top{display:flex;align-items:center;justify-content:space-between;padding:16px 16px 14px;background:var(--rv-lc-bg,linear-gradient(135deg,#ede9fe,#ddd6fe))}
+        .rv-lcard-ic{display:flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:13px;background:#fff;color:var(--rv-lc-col,#625fff);box-shadow:0 2px 10px rgba(0,0,0,.1);flex-shrink:0}
+        .rv-lcard-rate{font-size:1.25rem;font-weight:800;color:var(--rv-lc-col,#625fff);text-align:right;line-height:1}
+        .rv-lcard-rate small{display:block;font-size:.65rem;font-weight:500;color:#6b7280;margin-top:3px;line-height:1}
+        .rv-lcard-cat{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:#9ca3af;text-align:right;margin-top:4px}
+        .rv-lcard-body{flex:1;padding:14px 16px 10px}
+        .rv-lcard-body h3{font-size:.9375rem;font-weight:700;color:#111827;line-height:1.2;margin:0}
+        .rv-lcard-body p{margin:5px 0 0;font-size:.78125rem;color:#6b7280;line-height:1.55}
+        .rv-lcard-feats{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
+        .rv-lcard-feats span{font-size:.6875rem;font-weight:600;padding:3px 9px;border-radius:100px;background:#f5f3ff;color:#5b21b6;border:1px solid #ede9fe}
+        .rv-lcard-foot{padding:10px 16px 14px;border-top:1px solid #f3f4f6}
+        .rv-lcard-cta{display:inline-flex;align-items:center;gap:5px;font-size:.8125rem;font-weight:600;color:#625fff;transition:gap .2s}
+        .rv-lcard:hover .rv-lcard-cta{gap:9px}
+        .rv-lcard[hidden]{display:none}
+        .rv-lcard.is-cta{background:linear-gradient(140deg,#4f46e5,#312e81);border:0;color:#fff;justify-content:center;align-items:flex-start;padding:24px;text-decoration:none}
+        .rv-lcard.is-cta h3{color:#fff;font-size:1.1rem;margin:12px 0 0}
+        .rv-lcard.is-cta p{color:rgba(255,255,255,.75);font-size:.875rem;margin:6px 0 0}
+        .rv-lcard.is-cta:hover{box-shadow:0 12px 36px rgba(79,70,229,.35)}
+        .rv-lcard-cta-btn{display:inline-flex;align-items:center;gap:6px;margin-top:16px;padding:8px 16px;border-radius:8px;background:rgba(255,255,255,.15);color:#fff;font-size:.8125rem;font-weight:600;border:1px solid rgba(255,255,255,.25)}
+        @media(max-width:639px){.rv-lcard.is-cta{grid-column:1/-1}}
+      </style>
       <div class="rv-fade-bottom"></div>
       <div class="max-w-7xl mx-auto px-6 relative z-30">
-        <div class="max-w-2xl mx-auto text-center mb-16 reveal lg:mb-16">
-        <h2 class="text-3xl lg:text-5xl -tracking-[1.9px] mb-4 font-medium text-gray-900">Choose Your Loan</h2>
-        <p class="text-base text-gray-500">Pick the loan that fits your goal and our team will take care of the rest.</p>
-      </div>
-        <div class="max-w-full lg:max-w-258 mx-auto text-center space-y-4 lg:space-y-6">
-          <div class="flex flex-wrap justify-center gap-3 lg:gap-8 reveal"><a href="home-loans.html" class="rv-tile "><span class="rv-tile-box rv-tile-lottie"><span class="rv-lottie" data-lottie="animations/home.json" role="img" aria-label="Home Loan animation"><span class="rv-fallback"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#625FFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/></svg></span></span></span><span class="rv-tile-label">Home Loan</span></a><a href="gold-loans.html" class="rv-tile "><span class="rv-tile-box rv-tile-lottie"><span class="rv-lottie" data-lottie="animations/gold.json" role="img" aria-label="Gold Loan animation"><span class="rv-fallback"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#625FFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="7" rx="7" ry="3"/><path d="M5 7v5c0 1.7 3.1 3 7 3s7-1.3 7-3V7M5 12v5c0 1.7 3.1 3 7 3s7-1.3 7-3v-5"/></svg></span></span></span><span class="rv-tile-label">Gold Loan</span></a><a href="personal-loans.html" class="rv-tile "><span class="rv-tile-box rv-tile-lottie"><span class="rv-lottie" data-lottie="animations/personal.json" role="img" aria-label="Personal Loan animation"><span class="rv-fallback"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#625FFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></span></span></span><span class="rv-tile-label">Personal Loan</span></a><a href="business-loans.html" class="rv-tile "><span class="rv-tile-box rv-tile-lottie"><span class="rv-lottie" data-lottie="animations/business.json" role="img" aria-label="Business Loan animation"><span class="rv-fallback"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#625FFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M3 13h18"/></svg></span></span></span><span class="rv-tile-label">Business Loan</span></a></div>
-          <div class="flex flex-wrap justify-center gap-3 lg:gap-8 reveal"><a href="car-loans.html" class="rv-tile "><span class="rv-tile-box rv-tile-lottie"><span class="rv-lottie" data-lottie="animations/vehicle.json" role="img" aria-label="Vehicle Loan animation"><span class="rv-fallback"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#625FFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 16l1.5-5a2 2 0 011.9-1.4h7.2a2 2 0 011.9 1.4L19 16M3 16h18v3H3z"/><circle cx="7.5" cy="19" r="1.5"/><circle cx="16.5" cy="19" r="1.5"/></svg></span></span></span><span class="rv-tile-label">Vehicle Loan</span></a><a href="funding-loans.html#loan-types" class="rv-tile "><span class="rv-tile-box rv-tile-lottie"><span class="rv-lottie" data-lottie="animations/government.json" role="img" aria-label="Government Loan animation"><span class="rv-fallback"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#625FFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10l9-6 9 6M5 10v8M9 10v8M15 10v8M19 10v8M3 21h18"/></svg></span></span></span><span class="rv-tile-label">Government Loan</span></a><a href="funding-loans.html#loan-types" class="rv-tile "><span class="rv-tile-box rv-tile-lottie"><span class="rv-lottie" data-lottie="animations/education.json" role="img" aria-label="Education Loan animation"><span class="rv-fallback"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#625FFF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/></svg></span></span></span><span class="rv-tile-label">Education Loan</span></a></div>
-          <a class="py-2.5 mt-10 px-4 bg-indigo-500 rounded-lg font-medium text-white text-base hover:bg-indigo-600 transition duration-300 inline-block" href="funding-loans.html">See All Loans</a>
+        <div class="max-w-2xl mx-auto text-center mb-10 reveal">
+          <h2 class="text-3xl lg:text-5xl -tracking-[1.9px] mb-4 font-medium text-gray-900">Choose Your Loan</h2>
+          <p class="text-base text-gray-500">Pick the loan that fits your goal and our team will take care of the rest.</p>
+        </div>
+        <div class="rv-ltabs reveal">
+          <button class="rv-ltab is-on" data-cat="">All</button>
+          <button class="rv-ltab" data-cat="personal">Personal</button>
+          <button class="rv-ltab" data-cat="business">Business</button>
+          <button class="rv-ltab" data-cat="property">Property</button>
+          <button class="rv-ltab" data-cat="special">Special</button>
+        </div>
+        <div class="rv-lnew reveal">
+          <a class="rv-lcard" href="home-loans.html" data-cat="property" style="--rv-lc-bg:linear-gradient(135deg,#e0f2fe,#bae6fd);--rv-lc-col:#0284c7">
+            <div class="rv-lcard-top"><span class="rv-lcard-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-5h4v5"/></svg></span><div><div class="rv-lcard-rate" style="color:#0284c7">8.5%<small>from &middot; p.a.</small></div><div class="rv-lcard-cat">Property</div></div></div>
+            <div class="rv-lcard-body"><h3>Home Loan</h3><p>Buy, build or renovate your home with long tenures and affordable EMIs.</p><div class="rv-lcard-feats" style="--rv-feat-bg:#eff6ff;--rv-feat-c:#1d4ed8;--rv-feat-b:#dbeafe"><span style="background:#eff6ff;color:#1d4ed8;border-color:#dbeafe">Up to &#8377;10 Cr</span><span style="background:#eff6ff;color:#1d4ed8;border-color:#dbeafe">30 yr tenure</span></div></div>
+            <div class="rv-lcard-foot"><span class="rv-lcard-cta" style="color:#0284c7">Get Started <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+          </a>
+          <a class="rv-lcard" href="gold-loans.html" data-cat="special" style="--rv-lc-bg:linear-gradient(135deg,#fef9c3,#fde68a);--rv-lc-col:#b45309">
+            <div class="rv-lcard-top"><span class="rv-lcard-ic" style="color:#b45309"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6.5" rx="7" ry="3"/><path d="M5 6.5v5c0 1.7 3.1 3 7 3s7-1.3 7-3v-5M5 11.5v5c0 1.7 3.1 3 7 3s7-1.3 7-3v-5"/></svg></span><div><div class="rv-lcard-rate" style="color:#b45309">9.0%<small>from &middot; p.a.</small></div><div class="rv-lcard-cat">Special</div></div></div>
+            <div class="rv-lcard-body"><h3>Gold Loan</h3><p>Quick funds against your gold with minimal paperwork and fast disbursal.</p><div class="rv-lcard-feats"><span style="background:#fffbeb;color:#92400e;border-color:#fde68a">Quick disbursal</span><span style="background:#fffbeb;color:#92400e;border-color:#fde68a">No income proof</span></div></div>
+            <div class="rv-lcard-foot"><span class="rv-lcard-cta" style="color:#b45309">Get Started <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+          </a>
+          <a class="rv-lcard" href="personal-loans.html" data-cat="personal" style="--rv-lc-bg:linear-gradient(135deg,#ede9fe,#ddd6fe);--rv-lc-col:#7c3aed">
+            <div class="rv-lcard-top"><span class="rv-lcard-ic" style="color:#7c3aed"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></span><div><div class="rv-lcard-rate" style="color:#7c3aed">10.5%<small>from &middot; p.a.</small></div><div class="rv-lcard-cat">Personal</div></div></div>
+            <div class="rv-lcard-body"><h3>Personal Loan</h3><p>Cover weddings, travel, medical or any personal need without collateral.</p><div class="rv-lcard-feats"><span>No collateral</span><span>Instant approval</span></div></div>
+            <div class="rv-lcard-foot"><span class="rv-lcard-cta">Get Started <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+          </a>
+          <a class="rv-lcard" href="business-loans.html" data-cat="business" style="--rv-lc-bg:linear-gradient(135deg,#dcfce7,#bbf7d0);--rv-lc-col:#059669">
+            <div class="rv-lcard-top"><span class="rv-lcard-ic" style="color:#059669"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></svg></span><div><div class="rv-lcard-rate" style="color:#059669">12.0%<small>from &middot; p.a.</small></div><div class="rv-lcard-cat">Business</div></div></div>
+            <div class="rv-lcard-body"><h3>Business Loan</h3><p>Working capital and term loans to start, run and scale your business.</p><div class="rv-lcard-feats"><span style="background:#f0fdf4;color:#166534;border-color:#bbf7d0">Working capital</span><span style="background:#f0fdf4;color:#166534;border-color:#bbf7d0">Term loans</span></div></div>
+            <div class="rv-lcard-foot"><span class="rv-lcard-cta" style="color:#059669">Get Started <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+          </a>
+          <a class="rv-lcard" href="car-loans.html" data-cat="personal" style="--rv-lc-bg:linear-gradient(135deg,#cffafe,#a5f3fc);--rv-lc-col:#0891b2">
+            <div class="rv-lcard-top"><span class="rv-lcard-ic" style="color:#0891b2"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17h14v-4.5l-1.8-4.6A2 2 0 0 0 15.3 6.6H8.7a2 2 0 0 0-1.9 1.3L5 12.5z"/><path d="M3 12.5h18M7.5 17v2M16.5 17v2"/><circle cx="8" cy="14.5" r=".9" fill="currentColor"/><circle cx="16" cy="14.5" r=".9" fill="currentColor"/></svg></span><div><div class="rv-lcard-rate" style="color:#0891b2">9.0%<small>from &middot; p.a.</small></div><div class="rv-lcard-cat">Personal</div></div></div>
+            <div class="rv-lcard-body"><h3>Vehicle Loan</h3><p>Finance a new or used car, bike or commercial vehicle with easy repayment.</p><div class="rv-lcard-feats"><span style="background:#ecfeff;color:#155e75;border-color:#a5f3fc">New &amp; used</span><span style="background:#ecfeff;color:#155e75;border-color:#a5f3fc">Easy EMI</span></div></div>
+            <div class="rv-lcard-foot"><span class="rv-lcard-cta" style="color:#0891b2">Get Started <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+          </a>
+          <a class="rv-lcard" href="funding-loans.html#loan-types" data-cat="special" style="--rv-lc-bg:linear-gradient(135deg,#e0e7ff,#c7d2fe);--rv-lc-col:#4f46e5">
+            <div class="rv-lcard-top"><span class="rv-lcard-ic" style="color:#4f46e5"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V10M19 21V10M9 21V10M15 21V10M12 3 3 8h18z"/></svg></span><div><div class="rv-lcard-rate" style="color:#4f46e5">7.5%<small>from &middot; p.a.</small></div><div class="rv-lcard-cat">Special</div></div></div>
+            <div class="rv-lcard-body"><h3>Government Loan</h3><p>Get guided through MUDRA, CGTMSE and other government-backed schemes.</p><div class="rv-lcard-feats"><span style="background:#eef2ff;color:#3730a3;border-color:#c7d2fe">MUDRA &amp; CGTMSE</span><span style="background:#eef2ff;color:#3730a3;border-color:#c7d2fe">Low rates</span></div></div>
+            <div class="rv-lcard-foot"><span class="rv-lcard-cta" style="color:#4f46e5">Get Started <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+          </a>
+          <a class="rv-lcard" href="funding-loans.html#loan-types" data-cat="special" style="--rv-lc-bg:linear-gradient(135deg,#ffe4e6,#fecdd3);--rv-lc-col:#e11d48">
+            <div class="rv-lcard-top"><span class="rv-lcard-ic" style="color:#e11d48"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2.5 9 2.5 12 0v-5M22 10v6"/></svg></span><div><div class="rv-lcard-rate" style="color:#e11d48">9.5%<small>from &middot; p.a.</small></div><div class="rv-lcard-cat">Special</div></div></div>
+            <div class="rv-lcard-body"><h3>Education Loan</h3><p>Fund your studies in India or abroad, from tuition to living costs.</p><div class="rv-lcard-feats"><span style="background:#fff1f2;color:#9f1239;border-color:#fecdd3">India &amp; abroad</span><span style="background:#fff1f2;color:#9f1239;border-color:#fecdd3">Moratorium</span></div></div>
+            <div class="rv-lcard-foot"><span class="rv-lcard-cta" style="color:#e11d48">Get Started <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+          </a>
+          <a class="rv-lcard is-cta" href="funding-loans.html"><span style="display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:16px;background:rgba(255,255,255,.15)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></span><h3>See All Loans</h3><p>Compare every loan we offer and find the one built for you.</p><span class="rv-lcard-cta-btn">Explore all <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
         </div>
       </div>
+      <script>
+        (function(){document.querySelectorAll('.rv-ltab').forEach(function(btn){btn.addEventListener('click',function(){document.querySelectorAll('.rv-ltab').forEach(function(b){b.classList.remove('is-on');});btn.classList.add('is-on');var cat=btn.dataset.cat;document.querySelectorAll('.rv-lcard:not(.is-cta)').forEach(function(card){card.hidden=!!(cat&&card.dataset.cat!==cat);});});});})();
+      </script>
     </section>
     <section class="py-10 lg:py-20">
       <div class="max-w-7xl mx-auto">
