@@ -3,7 +3,7 @@
   var S = window.RavenAuctions, U = window.AUI, App = window.RavenApp, UI = window.RavenUI;
   var $ = function (id) { return document.getElementById(id); };
   var esc = App.esc, state = { tab: 'live', q: '', city: '', type: '', bank: '', price: '', sort: 'ending' };
-  var TABS = [['live', 'Live now'], ['soon', 'Starting in 24 h'], ['upcoming', 'Upcoming'], ['closed', 'Closed']];
+  var TABS = [['live', 'Live now', 'Live'], ['soon', 'Starting in 24 h', 'Next 24 h'], ['upcoming', 'Upcoming', 'Upcoming'], ['closed', 'Closed', 'Closed']];
 
   function bucket(a) {
     var p = S.phase(a), t = Date.now();
@@ -80,7 +80,7 @@
     if (!render.live) $('ac-grid').classList.remove('is-static');
     var all = list(), counts = { live: 0, soon: 0, upcoming: 0, closed: 0 };
     all.forEach(function (a) { counts[bucket(a)]++; if (bucket(a) === 'soon') counts.upcoming++; });
-    $('ac-tabs').innerHTML = TABS.map(function (t) { return '<button type="button" class="ac-tab' + (state.tab === t[0] ? ' is-on' : '') + '" data-tab="' + t[0] + '" aria-pressed="' + (state.tab === t[0]) + '">' + (t[0] === 'live' ? '<i class="ac-live-dot"></i>' : '') + t[1] + ' <b>' + counts[t[0]] + '</b></button>'; }).join('');
+    $('ac-tabs').innerHTML = TABS.map(function (t) { return '<button type="button" class="ac-tab' + (state.tab === t[0] ? ' is-on' : '') + '" data-tab="' + t[0] + '" aria-pressed="' + (state.tab === t[0]) + '">' + (t[0] === 'live' ? '<i class="ac-live-dot"></i>' : '') + '<span class="ac-tl">' + t[1] + '</span><span class="ac-ts">' + t[2] + '</span> <b>' + counts[t[0]] + '</b></button>'; }).join('');
     var liveVal = all.filter(function (a) { return bucket(a) === 'live'; }).reduce(function (s, a) { return s + (a.currentHigh || a.reserve); }, 0);
     var bids = all.reduce(function (s, a) { return s + a.bidCount; }, 0);
     $('ac-strip').innerHTML = '<div><b>' + counts.live + '</b><span>live now</span></div><div><b>' + (counts.upcoming) + '</b><span>upcoming</span></div><div><b>' + U.short(liveVal) + '</b><span>value in live auctions</span></div><div><b>' + bids + '</b><span>bids placed</span></div>';
