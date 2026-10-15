@@ -292,3 +292,7 @@
   .ac-tab .ac-live-dot{position:absolute;top:7px;right:7px;width:6px;height:6px}
   .ac-tl{display:none}.ac-ts{display:block;overflow:hidden;max-width:100%;text-overflow:ellipsis}
 }
+
+.ac-after{margin-top:2rem}
+.ac-after .ac-strip{margin-bottom:1rem}
+.ac-list{padding-top:.5rem}

@@ -702,3 +702,17 @@ header nav .lg\:flex a{white-space:nowrap}
 .rv-eyebrow{display:inline-flex;align-items:center;gap:.5rem;margin-bottom:1.1rem;padding:.5rem 1rem;border-radius:9999px;background:#625fff;color:#fff;font-family:inherit;font-size:.8125rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;line-height:1;box-shadow:0 10px 22px -10px rgba(98,95,255,.75)}.rv-eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:#fde047;box-shadow:0 0 0 3px rgba(253,224,71,.3)}
 @media(min-width:1024px) and (max-width:1279px){header nav .lg\:block ul a{padding-left:.5rem;padding-right:.5rem;font-size:.9375rem}header nav .lg\:flex a[href="ask.html"]{display:none}}
 @media(min-width:1024px){header nav .lg\:block ul a{white-space:nowrap}}
+
+/* compact page headers on inner pages: the feature starts near the top */
+.rv-hero.rv-hero-sm{padding-top:6.25rem;padding-bottom:.75rem}
+@media(min-width:1024px){.rv-hero.rv-hero-sm{padding-top:8rem;padding-bottom:1rem}}
+.rv-hero-sm .rv-fade-bottom{display:none}
+.rv-hero-sm h1{margin-bottom:.4rem!important;font-size:clamp(1.75rem,4.5vw,2.75rem)!important;line-height:1.15;letter-spacing:-.03em}
+.rv-hero-sm p{margin-bottom:0!important;font-size:.95rem}
+.rv-hero-sm .rv-back{margin-bottom:.4rem}
+.rv-hero-links{display:flex;justify-content:center;gap:1rem;margin-top:.6rem!important}
+.rv-hero-links a{font-size:.875rem;font-weight:600;color:#625fff;text-decoration:underline;text-underline-offset:3px}
+.rv-first{padding-top:6.25rem}
+@media(min-width:1024px){.rv-first{padding-top:8rem}}
+.rv-first .rv-search-wrap{margin-bottom:1.25rem}
+.rv-first .rv-count:empty{display:none}

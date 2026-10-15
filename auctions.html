@@ -7,9 +7,9 @@
   <meta name="description" content="Bid live on bank auctions of flats, shops, plots, vehicles and gold – SARFAESI sales from leading Indian banks with verified EMD, real-time bidding and auto-extension.">
   <link rel="icon" type="image/svg+xml" href="images/logo-mark.svg">
   <link rel="stylesheet" href="styles.css?v=3">
-  <link rel="stylesheet" href="raven.css?v=25">
+  <link rel="stylesheet" href="raven.css?v=26">
   <link rel="stylesheet" href="app.css?v=3">
-  <link rel="stylesheet" href="auction.css?v=5">
+  <link rel="stylesheet" href="auction.css?v=6">
 </head>
 <body class="antialiased text-gray-900 bg-white">
   <div id="top" class="min-h-screen">
@@ -50,26 +50,20 @@
   </header>
 
   <main>
-    <section class="rv-hero relative pt-30 lg:pt-45 pb-8">
+    <section class="rv-hero rv-hero-sm relative">
       <div class="rv-fade-bottom"></div>
       <div class="max-w-7xl mx-auto px-6 relative z-30">
         <div class="max-w-xl lg:max-w-4xl lg:px-4 mx-auto text-center">
           <a href="funding-loans.html" class="rv-back reveal">&larr; Loans</a>
           <h1 class="text-center text-4xl lg:text-6xl font-semibold mb-5 reveal">Bank Auctions</h1>
           <p class="text-gray-500 text-base lg:px-10 reveal">Flats, shops, plots, vehicles and gold sold by banks under SARFAESI – watch prices move live and bid from your phone with a verified EMD.</p>
-          <div class="flex gap-3 justify-center flex-wrap reveal" style="margin-top:1.75rem">
-            <a class="ap-btn is-primary" href="#ac-list">Browse auctions</a>
-            <a class="ap-btn" href="auction-bidder.html">My bids</a>
-            <a class="ap-btn" href="auction-bank.html">For banks</a>
-          </div>
+          <p class="rv-hero-links"><a href="auction-bidder.html">My bids</a><a href="auction-bank.html">For banks</a></p>
         </div>
       </div>
     </section>
 
-    <section class="pb-10" id="ac-list">
+    <section class="pb-10 ac-list" id="ac-list">
       <div class="ac-wrap">
-        <p class="ac-demo" role="note"><span data-ico="info"></span><span><b>Demo mode:</b> auctions, bids and other bidders are simulated and saved only in this browser. Open this page in two tabs to watch bids sync live. No real money moves.</span></p>
-        <div class="ac-strip" id="ac-strip" aria-live="polite"></div>
         <div class="ac-tabs" id="ac-tabs" role="toolbar" aria-label="Auction status"></div>
         <div class="ac-tools" id="ac-tools">
           <label class="ac-q"><span data-ico="search" data-size="18"></span><input class="ap-input" id="f-q" type="search" placeholder="Search city, locality, bank or reference" aria-label="Search auctions"></label>
@@ -84,6 +78,10 @@
         <div class="ac-active" id="f-active"></div>
         <p class="ac-count" id="ac-count"></p>
         <div class="ac-grid" id="ac-grid"></div>
+        <div class="ac-after">
+        <div class="ac-strip" id="ac-strip" aria-live="polite"></div>
+        <p class="ac-demo" role="note"><span data-ico="info"></span><span><b>Demo mode:</b> auctions, bids and other bidders are simulated and saved only in this browser. Open this page in two tabs to watch bids sync live. No real money moves.</span></p>
+        </div>
       </div>
     </section>
 
