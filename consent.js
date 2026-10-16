@@ -1,11 +1,11 @@
 /* RAVEN user consent gate: first-time visitors must accept the Terms & Conditions to view the site.
    Bump CONSENT_VERSION when the terms change to ask everyone again. */
 (function () {
-  var CONSENT_VERSION = '1';
+  var CONSENT_VERSION = '2';
   var KEY = 'raven_consent_v' + CONSENT_VERSION;
 
-  // The terms page itself stays readable so people can review before agreeing.
-  if (/(^|\/)terms(\.html)?$/.test(location.pathname)) return;
+  // The terms and privacy pages stay readable so people can review before agreeing.
+  if (/(^|\/)(terms|privacy)(\.html)?$/.test(location.pathname)) return;
 
   if (/[?&]embed=1/.test(location.search)) return;
 
