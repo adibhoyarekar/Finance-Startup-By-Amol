@@ -515,3 +515,5 @@ body.rx{font-family:var(--rx-font);color:var(--rx-text);background:#fff}
 
 .lc > div:has(img[src*="gold-loan-chatgpt"]){display:flex;align-items:stretch;height:100%}
 .lc img[src*="gold-loan-chatgpt"]{flex:1 1 auto;object-fit:cover;height:100%;min-height:200px}
+.rx-fp:nth-child(3) .rx-fp-img img,.rx-qt-img img[src*="life-insurance-chatgpt"]{object-fit:cover;object-position:50% 50%}
+.rx-qt-img img[src*="life-insurance-chatgpt"]{transform:none}
