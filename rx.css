@@ -465,3 +465,22 @@ body.rx{font-family:var(--rx-font);color:var(--rx-text);background:#fff}
   .rx-hero-copy{padding-bottom:330px}
   .rx-quote{bottom:200px;font-size:clamp(18px,3vw,26px)}
 }
+.rx-fp-img img{filter:saturate(1.04)}
+.rx-qt-img img{transform:scale(1.5)}
+@media(max-width:599px){
+  .rx-quote{bottom:auto;top:auto;right:10px;bottom:236px;font-size:clamp(12px,3.6vw,18px)}
+  .rx-quote svg{width:48%;margin-left:auto}
+  .rx-hero-copy{padding-bottom:235px}
+}
+@media(max-width:599px){
+  .rx-quote{right:8px;bottom:128px;font-size:clamp(11px,3.3vw,16px)}
+  .rx-quote svg{width:46%}
+}
+@media(max-width:599px){
+  .rx-quote{right:6px;bottom:195px;font-size:clamp(11px,3.4vw,16px)}
+  .rx-quote svg{width:78px;margin:0 0 0 auto}
+}
+@media(max-width:599px){
+  .rx-quote{right:14px;bottom:158px;font-size:clamp(11px,3.2vw,15px);transform:rotate(-4deg)}
+  .rx-quote svg{display:none}
+}
