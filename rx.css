@@ -494,3 +494,16 @@ body.rx{font-family:var(--rx-font);color:var(--rx-text);background:#fff}
 @media(min-width:600px) and (max-width:1023px){.rx-hero-copy{padding-bottom:calc(52vw)}.rx-poster img{left:0;right:auto;width:100%}}
 .rx-fp-img img{filter:none}
 .rx-qt-img img{transform:none;object-fit:cover}
+.rx-fp:first-child .rx-fp-img img{object-fit:cover;object-position:50% 45%}
+.rx-poster img{object-fit:cover!important;object-position:70% 40%!important;transform:none!important;-webkit-mask-image:none!important;mask-image:none!important}
+@media(max-width:1023px){.rx-poster img{object-position:58% 45%!important}}
+@media(min-width:1024px){.rx-poster::after{display:block!important;background:linear-gradient(90deg,rgba(241,248,255,.92) 0,rgba(241,248,255,.75) 30%,rgba(241,248,255,.2) 48%,rgba(241,248,255,0) 60%)!important}}
+@media(max-width:1023px){
+  .rx-hero-copy{padding-bottom:0!important}
+  .rx-hero .rx-wrap{display:flex;flex-direction:column}
+  .rx-hero-art{position:relative!important;inset:auto!important;order:2;height:auto;margin:14px -20px 0!important;overflow:hidden}
+  .rx-poster{position:relative!important;inset:auto!important;height:auto;aspect-ratio:1536/1024;width:100%}
+  .rx-poster img{position:relative!important;inset:auto!important;width:100%!important;height:auto!important;aspect-ratio:1536/1024}
+  .rx-quote{position:absolute!important;left:auto!important;right:12px!important;top:12px!important;bottom:auto!important;font-size:clamp(14px,4.2vw,22px)}
+  .rx-quote svg{display:none}
+}
