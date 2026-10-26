@@ -448,3 +448,20 @@ body.rx{font-family:var(--rx-font);color:var(--rx-text);background:#fff}
 @media(min-width:1500px){:root{--rx-wrap:1440px}.rx-hero .rx-wrap{min-height:470px}.rx-hero-copy{padding:56px 0 50px}}
 @media(min-width:1800px){:root{--rx-wrap:1680px}.rx-hero .rx-wrap{min-height:520px;grid-template-columns:minmax(0,640px) 1fr}.rx .rx-hero h1{font-size:40px}.rx-kicker{font-size:21px}.rx-sst{font-size:22px}.rx-hsearch{max-width:600px;height:60px}.rx-trust div{font-size:14px}.rx-hero-copy{padding:64px 0 56px}}
 @media(min-width:1500px){.rx .max-w-7xl{max-width:var(--rx-wrap)}}
+
+/* ===== phones/tablets: text sits on top of the poster, same as desktop ===== */
+@media(max-width:1023px){
+  .rx-hero .rx-wrap{position:relative;display:grid;grid-template-columns:minmax(0,1fr);padding:0 20px;min-height:0}
+  .rx-hero-art{position:absolute;inset:0;order:0;display:block;width:auto;height:auto;margin:0;overflow:hidden}
+  .rx-poster{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;margin:0;background:linear-gradient(180deg,#eef6ff 0,#d6e8fa 100%)}
+  .rx-poster::after{display:none}
+  .rx-poster img{position:absolute;inset:auto;left:-12%;bottom:0;right:auto;top:auto;width:135%;height:auto;aspect-ratio:auto;max-width:none;object-fit:fill;object-position:center;transform:none;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 34%);mask-image:linear-gradient(180deg,transparent 0,#000 34%)}
+  .rx-hero-copy{position:relative;z-index:3;padding:24px 0 215px}
+  .rx-quote{left:auto;right:12px;top:auto;bottom:128px;font-size:clamp(13px,4vw,20px)}
+  .rx-quote svg{width:60%}
+}
+@media(min-width:600px) and (max-width:1023px){
+  .rx-poster img{left:auto;right:0;width:100%;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 30%);mask-image:linear-gradient(180deg,transparent 0,#000 30%)}
+  .rx-hero-copy{padding-bottom:330px}
+  .rx-quote{bottom:200px;font-size:clamp(18px,3vw,26px)}
+}
