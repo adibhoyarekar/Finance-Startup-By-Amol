@@ -443,3 +443,8 @@ body.rx{font-family:var(--rx-font);color:var(--rx-text);background:#fff}
 .rx-hero-copy{min-width:0;box-sizing:border-box}
 @media(max-width:1023px){.rx-hero-copy{width:100%;max-width:100%}.rx-poster img{transform:none}}
 @media(max-width:1023px){.rx-quote svg{width:55%}.rx-quote{top:7%}}
+
+/* ===== wide screens: widen the page column so the sides are not empty ===== */
+@media(min-width:1500px){:root{--rx-wrap:1440px}.rx-hero .rx-wrap{min-height:470px}.rx-hero-copy{padding:56px 0 50px}}
+@media(min-width:1800px){:root{--rx-wrap:1680px}.rx-hero .rx-wrap{min-height:520px;grid-template-columns:minmax(0,640px) 1fr}.rx .rx-hero h1{font-size:40px}.rx-kicker{font-size:21px}.rx-sst{font-size:22px}.rx-hsearch{max-width:600px;height:60px}.rx-trust div{font-size:14px}.rx-hero-copy{padding:64px 0 56px}}
+@media(min-width:1500px){.rx .max-w-7xl{max-width:var(--rx-wrap)}}
