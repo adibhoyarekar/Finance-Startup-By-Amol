@@ -208,7 +208,11 @@
     },
     get: get, bank: bank, phase: phase, bidsOf: bidsOf, partsOf: partsOf, partOf: partOf, nextMin: nextMin, snap: snap,
     isLiveish: function (a) { var p = phase(a); return p === 'live' || p === 'paused'; },
-    img: function (a) { return (ASSET[a.assetType] || ASSET.residential).img; },
+    img: function (a) {
+      if (a.assetType === 'residential' && /\b(flat|apartment|bhk)\b/i.test(a.title || '') && !/row house|bungalow/i.test(a.title || '')) return 'images/real-estate.svg';
+      if (a.assetType === 'agri') return 'images/loan-home-plot.svg';
+      return (ASSET[a.assetType] || ASSET.residential).img;
+    },
 
     /* bidder profile (KYC) */
     profile: function (userId) { return db.profiles[userId] || null; },
