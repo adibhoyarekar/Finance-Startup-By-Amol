@@ -517,3 +517,4 @@ body.rx{font-family:var(--rx-font);color:var(--rx-text);background:#fff}
 .lc img[src*="gold-loan-chatgpt"]{flex:1 1 auto;object-fit:cover;height:100%;min-height:200px}
 .rx-fp:nth-child(3) .rx-fp-img img,.rx-qt-img img[src*="life-insurance-chatgpt"]{object-fit:cover;object-position:50% 50%}
 .rx-qt-img img[src*="life-insurance-chatgpt"]{transform:none}
+.rx-fp:nth-child(4) .rx-fp-img img,.rx-qt-img img[src*="health-insurance-chatgpt"]{object-fit:cover;object-position:50% 40%}
