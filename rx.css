@@ -393,3 +393,26 @@ body.rx{font-family:var(--rx-font);color:var(--rx-text);background:#fff}
   .rx-poster img{height:auto;aspect-ratio:862/412}
   .rx-quote{left:56%;top:6%;font-size:clamp(13px,4.2vw,22px)}
 }
+
+/* mobile hero: the photo is the background of the whole intro block */
+@media(max-width:1023px){
+  .rx-hero::before{display:none}
+  .rx-hero .rx-wrap{position:relative;min-height:0}
+  .rx-hero-copy{position:relative;z-index:2;padding:26px 0 190px}
+  .rx-hero-art{position:absolute;inset:0;z-index:0;height:auto;margin:0;overflow:hidden}
+  .rx-poster{position:absolute;inset:0;width:100%;height:100%;margin:0;border-radius:0;box-shadow:none}
+  .rx-poster img{width:100%;height:100%;aspect-ratio:auto;object-fit:cover;object-position:60% 100%}
+  .rx-hero-art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(244,249,255,.96) 0,rgba(244,249,255,.9) 46%,rgba(244,249,255,.35) 72%,rgba(244,249,255,0) 100%);pointer-events:none}
+  .rx-quote{left:auto;right:16px;top:auto;bottom:18px;z-index:3;font-size:clamp(13px,4vw,20px)}
+}
+@media(max-width:1023px){
+  .rx-hero-copy{padding-bottom:235px}
+  .rx-poster{background:linear-gradient(180deg,#eef6ff 0,#d9eafa 100%)}
+  .rx-poster img{position:absolute;left:-14%;bottom:0;width:150%;height:auto;aspect-ratio:862/412;max-width:none;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 38%);mask-image:linear-gradient(180deg,transparent 0,#000 38%)}
+  .rx-hero-art::after{display:none}
+  .rx-quote{bottom:auto;top:auto;right:14px;bottom:150px}
+}
+@media(min-width:600px) and (max-width:1023px){.rx-poster img{left:auto;right:0;width:84%}.rx-hero-copy{padding-bottom:300px}}
+@media(max-width:1023px){.rx-quote{bottom:190px}.rx-quote svg{width:70%}}
+@media(min-width:600px) and (max-width:1023px){.rx-quote{bottom:230px}.rx-poster img{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 38%),linear-gradient(90deg,transparent 0,#000 16%);-webkit-mask-composite:source-in;mask-image:linear-gradient(180deg,transparent 0,#000 38%),linear-gradient(90deg,transparent 0,#000 16%);mask-composite:intersect}}
+@media(max-width:599px){.rx-quote{bottom:158px;right:12px}}
