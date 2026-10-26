@@ -147,8 +147,10 @@
     var u = App.current();
     if (!u) return;
     var label = !u.onboarded ? 'Finish setup' : u.role === 'agent' ? 'Dashboard' : 'My Account';
-    document.querySelectorAll('header a[href="signup.html"], #rv-menu a[href="signup.html"]').forEach(function (a) {
-      a.textContent = label;
+    document.querySelectorAll('header a[href="signup.html"], #rv-menu a[href="signup.html"], .rx-drawer a[href="signup.html"]').forEach(function (a) {
+      var t = a.querySelector('[data-rx-label]') || a;
+      t.textContent = label;
+      a.setAttribute('aria-label', label);
       a.setAttribute('href', App.home(u));
     });
   }

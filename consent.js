@@ -26,15 +26,15 @@
 .rv-consent-card p{margin:0 0 1rem;font-size:.95rem;line-height:1.6;color:#6a7282}\
 .rv-consent-card ul{margin:0 0 1.25rem;padding:0;list-style:none;display:grid;gap:.6rem}\
 .rv-consent-card li{position:relative;padding-left:1.4rem;font-size:.9rem;line-height:1.5;color:#364153}\
-.rv-consent-card li::before{content:"";position:absolute;left:0;top:.5rem;width:.5rem;height:.5rem;border-radius:9999px;background:#625fff}\
+.rv-consent-card li::before{content:"";position:absolute;left:0;top:.5rem;width:.5rem;height:.5rem;border-radius:9999px;background:#2563eb}\
 .rv-consent-check{display:flex;gap:.75rem;align-items:flex-start;padding:1rem;border:1px solid #e5e7eb;border-radius:12px;background:#f9fafb;cursor:pointer;margin-bottom:1.25rem}\
-.rv-consent-check input{flex:none;width:1.25rem;height:1.25rem;margin-top:.15rem;accent-color:#625fff;cursor:pointer}\
+.rv-consent-check input{flex:none;width:1.25rem;height:1.25rem;margin-top:.15rem;accent-color:#2563eb;cursor:pointer}\
 .rv-consent-check span{font-size:.9rem;line-height:1.5;color:#101828}\
-.rv-consent-check a{color:#625fff;text-decoration:underline}\
+.rv-consent-check a{color:#2563eb;text-decoration:underline}\
 .rv-consent-actions{display:flex;gap:.75rem;flex-wrap:wrap}\
-.rv-consent-yes{flex:1;min-width:10rem;height:50px;border:0;border-radius:10px;background:#625fff;color:#fff;font:500 .95rem Geist,Inter,system-ui,sans-serif;cursor:pointer;transition:background .2s,opacity .2s}\
+.rv-consent-yes{flex:1;min-width:10rem;height:50px;border:0;border-radius:10px;background:#2563eb;color:#fff;font:500 .95rem Geist,Inter,system-ui,sans-serif;cursor:pointer;transition:background .2s,opacity .2s}\
 .rv-consent-yes:disabled{opacity:.35;cursor:not-allowed}\
-.rv-consent-yes:not(:disabled):hover{background:#4f46e5}\
+.rv-consent-yes:not(:disabled):hover{background:#1d4ed8}\
 .rv-consent-no{height:50px;padding:0 1.25rem;border:1px solid #e5e7eb;border-radius:10px;background:#f9fafb;color:#101828;font:500 .95rem Geist,Inter,system-ui,sans-serif;cursor:pointer}\
 .rv-consent-no:hover{background:#f3f4f6}\
 .rv-consent-msg{display:none;margin:1rem 0 0;font-size:.85rem;color:#b91c1c}\

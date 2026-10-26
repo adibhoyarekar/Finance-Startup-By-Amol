@@ -64,7 +64,7 @@
   function bars(list, fmt) {
     var max = Math.max.apply(null, list.map(function (x) { return x[1]; }).concat([1]));
     return '<div class="ap-hbars">' + list.map(function (x, i) {
-      return '<div class="ap-hbar" style="--i:' + i + '"><span class="lb">' + esc(x[0]) + '</span><span class="tr"><i style="width:' + Math.max(2, x[1] / max * 100) + '%;background:' + (x[2] || '#625fff') + '"></i></span><b>' + (fmt ? fmt(x[1]) : x[1]) + '</b></div>';
+      return '<div class="ap-hbar" style="--i:' + i + '"><span class="lb">' + esc(x[0]) + '</span><span class="tr"><i style="width:' + Math.max(2, x[1] / max * 100) + '%;background:' + (x[2] || '#2563eb') + '"></i></span><b>' + (fmt ? fmt(x[1]) : x[1]) + '</b></div>';
     }).join('') + '</div>';
   }
   function count(id, n, alert) { var el = $('n-' + id); if (!el) return; el.hidden = !n; el.textContent = n; el.classList.toggle('is-alert', !!alert); }

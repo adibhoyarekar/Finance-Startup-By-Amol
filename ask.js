@@ -118,6 +118,9 @@
     ask(q);
   });
 
+  var fromSearch = new URLSearchParams(location.search).get('q');
+  if (fromSearch && fromSearch.trim()) ask(fromSearch.trim().slice(0, 300));
+
   /* Phones: size the chat to the visible area so the on-screen keyboard never covers the input. */
   var vv = window.visualViewport;
   var phone = window.matchMedia('(max-width:899px)');

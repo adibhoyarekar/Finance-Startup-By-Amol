@@ -9,7 +9,7 @@
   STAGES.forEach(function (s, i) { LABEL[s[0]] = s[1]; COLOR[s[0]] = s[2]; ORDER[s[0]] = i; });
   var ACTIVE = ['new', 'docs', 'submitted', 'sanctioned'];
   var PRODUCTS = { business: ['Business Loan', 1], home: ['Home Loan', 0.5], personal: ['Personal Loan', 1.5], gold: ['Gold Loan', 0.3], vehicle: ['Car Loan', 1], account: ['Bank Account', 0] };
-  var AVA = ['#625fff', '#f59e0b', '#10b981', '#ec4899', '#0ea5e9', '#f97316', '#8b5cf6'];
+  var AVA = ['#2563eb', '#f59e0b', '#10b981', '#ec4899', '#0ea5e9', '#f97316', '#8b5cf6'];
 
   var DEFAULTS = [
     { name: 'Rahul Deshmukh', city: 'Mumbai', product: 'home', amount: 4500000, status: 'submitted', follow: 2 },
