@@ -507,3 +507,11 @@ body.rx{font-family:var(--rx-font);color:var(--rx-text);background:#fff}
   .rx-quote{position:absolute!important;left:auto!important;right:12px!important;top:12px!important;bottom:auto!important;font-size:clamp(14px,4.2vw,22px)}
   .rx-quote svg{display:none}
 }
+.lc img[src*="gold-loan-chatgpt"],.lc img[src*="home-loan-chatgpt"]{aspect-ratio:16/10;height:auto;object-fit:cover;width:100%}
+.lc img[src*="gold-loan-chatgpt"]{aspect-ratio:auto;height:auto}
+.lc:has(img[src*="gold-loan-chatgpt"]) > div:first-of-type{aspect-ratio:auto}
+.lc img[src*="gold-loan-chatgpt"]{position:relative;aspect-ratio:auto;height:auto;width:100%;min-height:0}
+.lc:has(img[src*="gold-loan-chatgpt"]){min-height:100%}
+
+.lc > div:has(img[src*="gold-loan-chatgpt"]){display:flex;align-items:stretch;height:100%}
+.lc img[src*="gold-loan-chatgpt"]{flex:1 1 auto;object-fit:cover;height:100%;min-height:200px}

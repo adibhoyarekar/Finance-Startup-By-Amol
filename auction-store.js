@@ -25,7 +25,7 @@
     industrial: { label: 'Industrial', img: 'images/loan-home-construction.svg' },
     agri: { label: 'Agricultural land', img: 'images/real-estate.svg' },
     vehicle: { label: 'Vehicle', img: 'images/loan-vehicle.svg' },
-    gold: { label: 'Gold', img: 'images/loan-gold.svg' },
+    gold: { label: 'Gold', img: 'images/rx/gold-loan-chatgpt.jpg' },
     machinery: { label: 'Plant & machinery', img: 'images/loan-business.svg' }
   };
   var KIND = { sarfaesi: 'SARFAESI sale', drt: 'DRT sale', ibc: 'IBC liquidation', gold: 'Gold auction', vehicle: 'Vehicle auction', other: 'Other' };
