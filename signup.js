@@ -42,12 +42,13 @@
     var reg = m === 'register';
     tabsBox.setAttribute('data-on', m);
     tabs.forEach(function (t) { var on = t.getAttribute('data-mode') === m; t.classList.toggle('is-on', on); t.setAttribute('aria-selected', on ? 'true' : 'false'); });
+    card.classList.toggle('is-register', reg);
     $('su-roles').hidden = !reg;
     $('su-confirm-wrap').hidden = !reg;
     $('su-terms-wrap').hidden = !reg;
     $('su-strength').hidden = !reg;
     $('au-h').textContent = reg ? 'Create your account' : 'Welcome back';
-    $('au-sub').textContent = reg ? 'Join as a customer or an agent – it takes under a minute.' : 'Log in to continue to your dashboard.';
+    $('au-sub').textContent = reg ? 'Join as a customer or an agent.' : 'Log in to continue to your dashboard.';
     label.textContent = reg ? 'Create account' : 'Log in';
     pass.setAttribute('autocomplete', reg ? 'new-password' : 'current-password');
     pass.placeholder = reg ? 'At least 8 characters' : 'Your password';
@@ -103,5 +104,5 @@
     setTimeout(function () { location.href = href; }, 900);
   }
 
-  setMode(App.param('mode') === 'login' ? 'login' : 'register');
+  setMode(App.param('mode') === 'register' ? 'register' : 'login');
 })();

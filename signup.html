@@ -56,14 +56,14 @@
     <main class="au-main">
       <div class="au-back"><a href="index.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>Back to website</a></div>
       <div class="au-card" id="au-card">
-        <h1 id="au-h">Create your account</h1>
-        <p class="au-sub" id="au-sub">Join as a customer or an agent – it takes under a minute.</p>
-        <div class="au-tabs" role="tablist" data-on="register">
-          <button type="button" class="au-tab is-on" role="tab" aria-selected="true" data-mode="register">Register</button>
-          <button type="button" class="au-tab" role="tab" aria-selected="false" data-mode="login">Log in</button>
+        <h1 id="au-h">Welcome back</h1>
+        <p class="au-sub" id="au-sub">Log in to continue to your dashboard.</p>
+        <div class="au-tabs" role="tablist" data-on="login">
+          <button type="button" class="au-tab is-on" role="tab" aria-selected="true" data-mode="login">Log in</button>
+          <button type="button" class="au-tab" role="tab" aria-selected="false" data-mode="register">Register</button>
         </div>
         <form class="au-form" id="su-form" novalidate>
-          <fieldset class="au-roles" id="su-roles">
+          <fieldset class="au-roles" id="su-roles" hidden>
             <legend>I am a</legend>
             <label class="au-role"><input type="radio" name="role" value="customer" checked><span class="tick"></span><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></span><span><strong>Customer</strong><small>Search loans and accounts, save results</small></span></label>
             <label class="au-role"><input type="radio" name="role" value="agent"><span class="tick"></span><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M3 13h18"/></svg></span><span><strong>Agent / DSA</strong><small>Manage clients, find the best lender</small></span></label>
@@ -74,20 +74,20 @@
             <label for="su-user">Username</label>
             <div class="au-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg><input class="ap-input" type="text" id="su-user" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="e.g. amol.patil" required minlength="3"></div>
           </div>
-          <div class="ap-field">
+          <div class="ap-field" id="su-pass-wrap">
             <label for="su-pass">Password</label>
-            <div class="au-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg><input class="ap-input" type="password" id="su-pass" autocomplete="new-password" placeholder="At least 8 characters" required minlength="8"><button type="button" class="au-eye" id="su-eye" aria-label="Show password"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
-            <div id="su-strength"><div class="au-meter" id="su-meter" data-s="0" aria-hidden="true"><i></i><i></i><i></i><i></i></div><p class="au-mtxt" id="su-mtxt" aria-live="polite"></p></div>
+            <div class="au-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg><input class="ap-input" type="password" id="su-pass" autocomplete="current-password" placeholder="Your password" required minlength="8"><button type="button" class="au-eye" id="su-eye" aria-label="Show password"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+            <div id="su-strength" hidden><div class="au-meter" id="su-meter" data-s="0" aria-hidden="true"><i></i><i></i><i></i><i></i></div><p class="au-mtxt" id="su-mtxt" aria-live="polite"></p></div>
           </div>
-          <div class="ap-field" id="su-confirm-wrap">
+          <div class="ap-field" id="su-confirm-wrap" hidden>
             <label for="su-pass2">Confirm password</label>
-            <div class="au-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg><input class="ap-input" type="password" id="su-pass2" autocomplete="new-password" placeholder="Repeat your password" required></div>
+            <div class="au-in"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg><input class="ap-input" type="password" id="su-pass2" autocomplete="new-password" placeholder="Repeat password" required></div>
           </div>
-          <label class="ap-check" id="su-terms-wrap"><input type="checkbox" id="su-terms"><span>I agree to the <a href="terms.html" target="_blank" rel="noopener">Terms &amp; Conditions</a> and <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</span></label>
+          <label class="ap-check" id="su-terms-wrap" hidden><input type="checkbox" id="su-terms"><span>I agree to the <a href="terms.html" target="_blank" rel="noopener">Terms &amp; Conditions</a> and <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</span></label>
           <p class="au-msg" id="su-msg" role="alert" hidden></p>
-          <button type="submit" class="au-submit" id="su-submit"><span class="lbl">Create account</span><span class="spin" aria-hidden="true"></span></button>
+          <button type="submit" class="au-submit" id="su-submit"><span class="lbl">Log in</span><span class="spin" aria-hidden="true"></span></button>
         </form>
-        <p class="au-foot2" id="su-foot">Already registered? <a href="#" id="su-switch">Log in</a></p>
+        <p class="au-foot2" id="su-foot">New to RAVEN? <a href="#" id="su-switch">Create an account</a></p>
       </div>
       <p class="au-demo"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span>Demo version: your account and data are saved only in this browser on this device. Nothing is sent to RAVEN yet.</span></p>
     </main>
