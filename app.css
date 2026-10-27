@@ -784,3 +784,14 @@ select.ap-input{appearance:none;-webkit-appearance:none;padding-right:2.4rem;cur
   .au-google{height:38px}
   .au-submit{height:40px}
 }
+
+/* register: the two password columns are equal-height grid items, and the
+   shorter one used to stretch its label row, dropping its input out of line */
+.ap-field{align-content:start}
+#su-strength{display:grid;gap:.3rem}
+.au-mtxt{min-height:1em;margin-top:0}
+/* short screens: let the strength caption collapse until it has text */
+@media(max-height:789px){
+  #su-strength{gap:.2rem}
+  .au-mtxt{min-height:0}
+}
