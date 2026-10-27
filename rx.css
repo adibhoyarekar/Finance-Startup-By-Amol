@@ -364,20 +364,41 @@ body.rx{font-family:var(--rx-font);color:var(--rx-text);background:#fff}
 .rx-qt-t{display:block;font-size:14px;font-weight:600;color:var(--rx-ink);line-height:1.3}
 .rx-qt-s{display:block;margin:2px 0 8px;font-size:12px;color:var(--rx-mute);line-height:1.35}
 .rx-rev{margin:0}
-.rx-emi{width:min(460px,calc(100vw - 32px));padding:26px 24px 20px;border:0;border-radius:14px;box-shadow:0 40px 80px -30px rgba(11,43,94,.6);color:var(--rx-text);font-family:var(--rx-font)}
-.rx-emi::backdrop{background:rgba(11,24,51,.55)}
-.rx-emi h2{margin:0;font-size:22px;font-weight:700;color:var(--rx-ink)}
-.rx-emi>p{margin:2px 0 16px;font-size:13.5px;color:var(--rx-mute)}
-.rx-emi label{display:block;margin-bottom:14px;font-size:13.5px;font-weight:600;color:var(--rx-ink)}
-.rx-emi output{float:right;color:var(--rx-blue)}
-.rx-emi input[type=range]{display:block;width:100%;margin-top:8px;accent-color:var(--rx-blue)}
-.rx-emi-out{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:4px 0 16px;padding:12px;border-radius:10px;background:#f1f6ff}
-.rx-emi-out small{display:block;font-size:11.5px;color:var(--rx-mute)}
-.rx-emi-out b{display:block;font-size:16px;color:var(--rx-ink)}
-.rx-emi-out div:first-child b{color:var(--rx-blue);font-size:19px}
-.rx-emi .rx-btn{width:100%}
-.rx-emi-x{position:absolute;top:10px;right:10px;margin:0}
-.rx-emi-x button{width:36px;height:36px;border:0;border-radius:9px;background:#f1f5f9;font-size:22px;line-height:1;cursor:pointer;color:var(--rx-ink)}
+/* ---------- EMI calculator dialog ---------- */
+/* margin:auto restores the centring that the Tailwind preflight margin reset removes */
+.rx-emi{width:min(470px,calc(100vw - 28px));max-height:calc(100dvh - 32px);margin:auto;inset:0;padding:0;border:0;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 40px 90px -30px rgba(11,43,94,.65);color:var(--rx-text);font-family:var(--rx-font)}
+.rx-emi::backdrop{background:rgba(11,24,51,.6)}
+.rx-emi-hd{display:flex;align-items:flex-start;gap:12px;padding:18px 18px 16px;background:linear-gradient(135deg,#0a2552,#143f86);color:#fff}
+.rx-emi-ic{flex:none;display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;background:rgba(250,204,21,.18);color:var(--rx-yellow)}
+.rx-emi-ht{flex:1;min-width:0}
+.rx .rx-emi-ht h2{margin:0;font-size:19px;font-weight:700;color:#fff;line-height:1.2}
+.rx-emi-ht p{margin:3px 0 0;font-size:12.5px;color:#c3d4ee}
+.rx-emi-x{flex:none;margin:0}
+.rx-emi-x button{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:0;border-radius:9px;background:rgba(255,255,255,.14);color:#fff;cursor:pointer}
+.rx-emi-x button:hover{background:rgba(255,255,255,.26)}
+.rx-emi-bd{padding:18px;overflow-y:auto;max-height:calc(100dvh - 140px)}
+.rx-emi-f{display:block;margin-bottom:16px}
+.rx-emi-l{display:flex;align-items:baseline;justify-content:space-between;gap:10px;font-size:13.5px;font-weight:600;color:var(--rx-ink)}
+.rx-emi-l output{font-size:15px;font-weight:700;color:var(--rx-blue)}
+.rx-emi input[type=range]{display:block;width:100%;height:22px;margin:6px 0 2px;accent-color:var(--rx-blue);cursor:pointer}
+.rx-emi-mm{display:flex;justify-content:space-between;font-size:11px;color:var(--rx-mute)}
+.rx-emi-mm i{font-style:normal}
+.rx-emi-res{margin:4px 0 16px;padding:16px;border-radius:12px;background:#f1f6ff;border:1px solid #dde8fa}
+.rx-emi-hero{text-align:center;padding-bottom:14px;border-bottom:1px solid #dde8fa}
+.rx-emi-hero small{display:block;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--rx-mute)}
+.rx-emi-hero b{display:block;margin-top:2px;font-size:34px;font-weight:800;line-height:1.1;letter-spacing:-.02em;color:var(--rx-blue)}
+.rx-emi-bar{display:flex;height:9px;margin:14px 0 12px;border-radius:999px;overflow:hidden;background:var(--rx-orange)}
+.rx-emi-bar span{width:var(--pc,67%);background:var(--rx-blue)}
+.rx-emi-keys{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0;padding:0}
+.rx-emi-keys li{display:flex;align-items:center;flex-wrap:wrap;gap:6px;font-size:12px;color:var(--rx-mute)}
+.rx-emi-keys i{flex:none;width:9px;height:9px;border-radius:50%;background:var(--rx-blue)}
+.rx-emi-keys li:last-child i{background:var(--rx-orange)}
+.rx-emi-keys b{flex-basis:100%;padding-left:15px;font-size:14px;font-weight:700;color:var(--rx-ink)}
+.rx-emi-tot{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-top:14px;padding-top:12px;border-top:1px solid #dde8fa;font-size:13px;color:var(--rx-mute)}
+.rx-emi-tot b{font-size:17px;font-weight:700;color:var(--rx-ink)}
+.rx-emi-cta{width:100%}
+.rx-emi .rx-note{margin:10px 0 0;text-align:center}
+@media(max-width:400px){.rx-emi-hero b{font-size:29px}.rx-emi-keys{grid-template-columns:1fr}.rx-emi-bd{padding:15px}}
 .rx-four{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
 .rx-ic{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;margin-bottom:12px;border-radius:14px;background:#fff;color:var(--c);box-shadow:0 8px 20px -14px rgba(11,43,94,.6)}
 @media(max-width:1023px){.rx-four{grid-template-columns:1fr 1fr}}
