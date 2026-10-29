@@ -265,25 +265,28 @@
   <dialog class="rx-emi" id="rx-emi" aria-labelledby="rx-emi-t">
     <div class="rx-emi-hd">
       <span class="rx-emi-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="2.5"/><path d="M8 6.5h8M8 11h2M12 11h2M16 11h0M8 15h2M12 15h2M16 15v3M8 19h6"/></svg></span>
-      <div class="rx-emi-ht"><h2 id="rx-emi-t">EMI Calculator</h2><p>Move the sliders to see your monthly EMI</p></div>
+      <div class="rx-emi-ht"><h2 id="rx-emi-t">EMI Calculator</h2><p>Type a value or drag the slider</p></div>
       <form method="dialog" class="rx-emi-x"><button aria-label="Close calculator"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></form>
     </div>
     <div class="rx-emi-bd">
-      <label class="rx-emi-f">
-        <span class="rx-emi-l">Loan amount<output data-o="p">₹10,00,000</output></span>
+      <div class="rx-emi-f">
+        <span class="rx-emi-l">Loan amount</span>
+        <div class="rx-emi-inp"><span class="rx-emi-pre">₹</span><input type="text" inputmode="numeric" data-num="p" value="10,00,000"><span class="rx-emi-suf"></span></div>
         <input type="range" data-k="p" min="50000" max="10000000" step="50000" value="1000000">
         <span class="rx-emi-mm"><i>₹50 K</i><i>₹1 Cr</i></span>
-      </label>
-      <label class="rx-emi-f">
-        <span class="rx-emi-l">Interest rate (p.a.)<output data-o="r">8.5%</output></span>
+      </div>
+      <div class="rx-emi-f">
+        <span class="rx-emi-l">Interest rate (p.a.)</span>
+        <div class="rx-emi-inp"><span class="rx-emi-pre"></span><input type="text" inputmode="decimal" data-num="r" value="8.5"><span class="rx-emi-suf">%</span></div>
         <input type="range" data-k="r" min="6" max="24" step="0.05" value="8.5">
         <span class="rx-emi-mm"><i>6%</i><i>24%</i></span>
-      </label>
-      <label class="rx-emi-f">
-        <span class="rx-emi-l">Tenure<output data-o="n">10 years</output></span>
+      </div>
+      <div class="rx-emi-f">
+        <span class="rx-emi-l">Tenure</span>
+        <div class="rx-emi-inp"><span class="rx-emi-pre"></span><input type="text" inputmode="numeric" data-num="n" value="10"><span class="rx-emi-suf">Years</span></div>
         <input type="range" data-k="n" min="1" max="30" step="1" value="10">
         <span class="rx-emi-mm"><i>1 year</i><i>30 years</i></span>
-      </label>
+      </div>
 
       <div class="rx-emi-res">
         <div class="rx-emi-hero"><small>Monthly EMI</small><b data-o="emi">₹12,399</b></div>
