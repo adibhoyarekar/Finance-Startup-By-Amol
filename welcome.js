@@ -8,7 +8,8 @@
   var u = App.current();
   if (!u) { location.replace('signup.html'); return; }
   var editing = App.param('edit') === '1';
-  if (u.onboarded && !editing) { location.replace(App.home(u)); return; }
+  var back = /^[a-z0-9-]+\.html(\?id=[a-z0-9_-]+)?$/i.test(App.param('next')) ? App.param('next') : '';
+  if (u.onboarded && !editing) { location.replace(back || App.home(u)); return; }
 
   var LANG = [['en', 'English'], ['mr', 'मराठी (Marathi)'], ['hi', 'हिंदी (Hindi)']];
   var PRODUCTS = [['home', 'Home Loan'], ['personal', 'Personal Loan'], ['business', 'Business Loan'], ['gold', 'Gold Loan'],
@@ -175,9 +176,9 @@
     renderSteps();
     var first = (data.fullName || u.username).split(' ')[0];
     root.innerHTML = '<div class="au-done"><span class="ring"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></span>' +
-      '<h2>' + (editing ? 'Profile saved' : 'You’re all set, ' + esc(first) + '!') + '</h2><p>' + (agent ? 'Opening your agent dashboard…' : 'Opening your account…') + '</p>' +
-      '<a class="ap-btn is-primary" href="' + App.home(u) + (fresh ? '?welcome=1' : '') + '">Continue</a></div>';
-    setTimeout(function () { location.href = App.home(u) + (fresh ? '?welcome=1' : ''); }, 1400);
+      '<h2>' + (editing ? 'Profile saved' : 'You’re all set, ' + esc(first) + '!') + '</h2><p>' + (back ? 'Taking you back where you left off…' : agent ? 'Opening your agent dashboard…' : 'Opening your account…') + '</p>' +
+      '<a class="ap-btn is-primary" href="' + (back || App.home(u) + (fresh ? '?welcome=1' : '')) + '">Continue</a></div>';
+    setTimeout(function () { location.href = back || App.home(u) + (fresh ? '?welcome=1' : ''); }, 1400);
   }
 
   render();

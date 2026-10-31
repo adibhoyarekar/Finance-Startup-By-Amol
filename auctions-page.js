@@ -158,8 +158,15 @@
   $('al-list').addEventListener('click', function (e) { var b = e.target.closest('[data-rm]'); if (b) { S.removeAlert(b.getAttribute('data-rm')); renderAlerts(); } });
 
   // live updates: re-render on every change from any tab; refresh timers every second
-  var pending;
-  S.on(function () { clearTimeout(pending); pending = setTimeout(function () { $('ac-grid').classList.add('is-static'); render.live = true; render(); render.live = false; }, 120); });
+  // a live re-render swaps the card nodes, so hold it while a finger or mouse is pressing a card or the tap is lost
+  var pending, pressing = false, grid = $('ac-grid');
+  function liveRender() {
+    clearTimeout(pending);
+    pending = setTimeout(function () { if (pressing) return liveRender(); grid.classList.add('is-static'); render.live = true; render(); render.live = false; }, 120);
+  }
+  grid.addEventListener('pointerdown', function () { pressing = true; });
+  ['pointerup', 'pointercancel'].forEach(function (ev) { document.addEventListener(ev, function () { setTimeout(function () { pressing = false; }, 400); }); });
+  S.on(liveRender);
   setInterval(function () { U.tick(); }, 1000);
   var url = new URLSearchParams(location.search);
   if (url.get('tab')) state.tab = url.get('tab');

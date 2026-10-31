@@ -8,10 +8,8 @@
   var mode = 'register';
 
   // only follow ?next= to our own pages
-  function next(u) {
-    var n = App.param('next');
-    return /^[a-z0-9-]+\.html$/i.test(n) && u.onboarded ? n : App.home(u);
-  }
+  function safeNext() { var n = App.param('next'); return /^[a-z0-9-]+\.html(\?id=[a-z0-9_-]+)?$/i.test(n) ? n : ''; }
+  function next(u) { return safeNext() && u.onboarded ? safeNext() : App.home(u); }
   function pitch(role) {
     $('au-pitch-customer').hidden = role !== 'customer';
     $('au-pitch-agent').hidden = role !== 'agent';
@@ -91,7 +89,7 @@
       if (!terms.checked) return say('Please accept the Terms & Conditions to continue.');
       var role = form.querySelector('input[name="role"]:checked').value;
       busy(true);
-      done = App.register(role, u, pass.value).then(function () { success('Account created', 'Let’s set up your profile…', 'welcome.html'); });
+      done = App.register(role, u, pass.value).then(function () { success('Account created', 'Let’s set up your profile…', 'welcome.html' + (safeNext() ? '?next=' + encodeURIComponent(safeNext()) : '')); });
     } else {
       busy(true);
       done = App.login(u, pass.value).then(function (acc) { success('Welcome back, ' + App.displayName(acc).split(' ')[0], 'Taking you to your ' + (acc.role === 'agent' ? 'dashboard' : 'account') + '…', next(acc)); });
