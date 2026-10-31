@@ -386,15 +386,24 @@
     el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     el.classList.remove('is-flash'); void el.offsetWidth; el.classList.add('is-flash');
   }
-  renderStatic(); renderAll();
+  // never leave a half-blank page: if the first render throws (unexpected saved data, old browser), show a clear fallback
+  try { renderStatic(); renderAll(); }
+  catch (e) {
+    try { if (window.console) console.error('auction render failed', e); } catch (x) {}
+    $('ad-root').innerHTML = '<div class="ap-card ap-empty" style="margin-top:2rem"><span class="art">' + ic('info', 28) + '</span><h3>Could not load this auction</h3><p>Please refresh the page. If it keeps happening, your saved demo data may be out of date.</p>' +
+      '<div style="display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center"><button type="button" class="ap-btn is-primary" onclick="location.reload()">Refresh</button><a class="ap-btn" href="auctions.html">All auctions</a></div></div>';
+    return;
+  }
   S.on(function (msg) {
-    var before = { high: a.currentHigh, leader: a.highPart, ext: a.extCount };
-    a = S.get(id) || a;
-    var part = myPart();
-    if (part && before.leader === part.id && a.highPart !== part.id) UI.toast('You have been outbid – the price is now ' + U.inr(a.currentHigh));
-    if (a.extCount > before.ext) UI.toast('Late bid – auction extended by ' + a.extMin + ' minutes');
-    renderAll(a.currentHigh !== before.high);
-    if (msg && msg.type !== 'bid') renderStatic();
+    try {
+      var before = { high: a.currentHigh, leader: a.highPart, ext: a.extCount };
+      a = S.get(id) || a;
+      var part = myPart();
+      if (part && before.leader === part.id && a.highPart !== part.id) UI.toast('You have been outbid – the price is now ' + U.inr(a.currentHigh));
+      if (a.extCount > before.ext) UI.toast('Late bid – auction extended by ' + a.extMin + ' minutes');
+      renderAll(a.currentHigh !== before.high);
+      if (msg && msg.type !== 'bid') renderStatic();
+    } catch (e) { try { if (window.console) console.error('auction live update failed', e); } catch (x) {} }
   });
   var lastPhase = S.phase(a);
   setInterval(function () {
