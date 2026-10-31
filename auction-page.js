@@ -9,8 +9,10 @@
     $('ad-root').innerHTML = '<div class="ap-card ap-empty" style="margin-top:2rem"><span class="art">' + ic('search', 28) + '</span><h3>Auction not found</h3><p>It may have been removed or is not public yet.</p><a class="ap-btn is-primary" href="auctions.html">See all auctions</a></div>';
     return;
   }
-  var me = App.current(), last = { high: a.currentHigh, leader: null, ext: a.extCount, bids: a.bidCount };
+  var me = App.current();
   var bank = S.bank(a.bankId) || {}, asset = S.ASSET[a.assetType] || {};
+  var here = 'auction.html?id=' + encodeURIComponent(a.id);
+  var loginUrl = 'signup.html?mode=login&next=' + encodeURIComponent(here), joinUrl = 'signup.html?mode=register&next=' + encodeURIComponent(here);
   document.title = a.title + ' – Bank auction – RAVEN';
 
   function myPart() { return me ? S.partOf(a.id, me.id) : null; }
@@ -24,12 +26,14 @@
     '<div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;align-items:flex-start"><div style="min-width:0;flex:1 1 18rem"><h1 class="ad-title">' + esc(a.title) + '</h1>' +
     '<div class="ad-sub"><span>' + (bank.logo ? '<img src="' + bank.logo + '" alt="">' : '') + esc(bank.name || '') + '</span><span>' + esc(a.ref) + '</span><span>' + esc(S.KIND[a.kind] || '') + '</span><span>' + ic('home', 14) + ' ' + esc(a.address) + '</span></div></div>' +
     '<div class="ad-share"><button type="button" class="ap-btn" id="ad-watch"></button><a class="ap-btn" target="_blank" rel="noopener" href="https://wa.me/?text=' + encodeURIComponent(a.title + ' – bank auction on RAVEN: ' + location.href) + '">' + ic('chat', 17) + 'Share</a></div></div>' +
-    '<div class="ad-grid"><div style="min-width:0">' +
+    '<div class="ad-grid"><div class="ad-main">' +
     '<div class="ad-gal"><img src="' + S.img(a) + '" alt="' + esc(asset.label) + ' illustration"><span id="ad-badge"></span></div>' +
-    '<div class="ap-card pad" id="ad-livecard" style="margin-top:1rem"></div>' +
+    '<div class="ap-card ad-room" id="live"><div id="ad-livecard"></div></div>' +
     '<div class="ad-tabs" role="tablist">' + [['ov', 'Overview'], ['docs', 'Documents'], ['sched', 'Schedule'], ['qa', 'Questions'], ['case', 'Bank & case'], ['terms', 'Terms']].map(function (t, i) { return '<button type="button" role="tab" class="' + (i ? '' : 'is-on') + '" data-tab="' + t[0] + '">' + t[1] + '</button>'; }).join('') + '</div>' +
     '<div class="ad-pane is-on" data-pane="ov"></div><div class="ad-pane" data-pane="docs"></div><div class="ad-pane" data-pane="sched"></div><div class="ad-pane" data-pane="qa"></div><div class="ad-pane" data-pane="case"></div><div class="ad-pane" data-pane="terms"></div>' +
-    '</div><aside class="ad-side"><div class="ap-card ad-price" id="ad-price"></div><div class="ap-card ad-console" id="ad-console"></div><div class="ap-card pad" id="ad-more"></div></aside></div>';
+    '</div><aside class="ad-side"><div class="ap-card ad-price" id="ad-price"></div><div class="ap-card ad-console" id="ad-console"></div><div class="ap-card pad" id="ad-more"></div></aside></div>' +
+    '<div class="ad-bar" id="ad-bar" role="region" aria-label="Bid quickly"></div>';
+  document.body.classList.add('ad-has-bar');
 
   document.querySelector('.ad-tabs').addEventListener('click', function (e) {
     var b = e.target.closest('[data-tab]'); if (!b) return;
@@ -103,14 +107,61 @@
       '<path class="a" d="' + d + ' V' + (H - B) + ' H' + x(t0) + 'Z"/><path class="l" vector-effect="non-scaling-stroke" d="' + d + '"/></svg>' +
       '<div style="display:flex;justify-content:space-between" class="ap-mini"><span>Reserve ' + U.short(lo) + '</span><span>Now ' + U.short(hi) + '</span></div></div>';
   }
+  function ago(t) {
+    var s = Math.max(0, Math.round((Date.now() - t) / 1000));
+    return s < 60 ? s + 's ago' : s < 3600 ? Math.floor(s / 60) + ' min ago' : U.dt(t, true);
+  }
   function renderLive() {
-    var bids = S.bidsOf(a.id), mine = myPart(), p = S.phase(a);
-    if (!bids.length) { $('ad-livecard').innerHTML = '<div class="ap-ch" style="margin:0"><div><h2>Live bidding</h2><p>' + (p === 'registration' || p === 'upcoming' ? 'Bids appear here in real time when the auction starts.' : 'No bids were placed.') + '</p></div></div>'; return; }
-    $('ad-livecard').innerHTML = '<div class="ap-ch"><div><h2>' + (p === 'live' ? '<i class="ac-live-dot"></i> Live bidding' : 'Bid history') + '</h2><p>Bidder identities stay hidden until the bank confirms the result.</p></div><span class="ap-dpill">' + bids.length + ' bids</span></div>' + chartHtml(bids) + feedHtml(bids, mine);
+    var bids = S.bidsOf(a.id), mine = myPart(), p = S.phase(a), live = p === 'live', before = p === 'registration' || p === 'upcoming';
+    var head = '<div class="ad-room-h"><div><p class="ad-room-k">' + (live ? '<i class="ac-live-dot"></i>Live now' : p === 'paused' ? 'Paused' : before ? 'Bidding room' : 'Auction ended') + '</p>' +
+      '<h2>' + (live || p === 'paused' ? 'Watch the bidding live' : before ? 'Bidding opens soon' : 'Bid history') + '</h2>' +
+      '<p>' + (live ? 'Every bid shows up here the moment it is placed. No refresh needed.' : 'Bidder identities stay hidden until the bank confirms the result.') + '</p></div>' +
+      (bids.length ? '<span class="ap-dpill">' + bids.length + ' bid' + (bids.length === 1 ? '' : 's') + '</span>' : '') + '</div>';
+    if (!bids.length) {
+      $('ad-livecard').innerHTML = head + '<div class="ad-room-empty">' + ic(before ? 'clock' : 'info', 26) +
+        '<b>' + (before ? 'Bids will stream here live' : 'No bids were placed') + '</b><p>' + (before ? 'The auction opens on ' + U.dt(a.startAt, true) + '. Keep this page open, or get a reminder before it starts.' : 'The bank may re-auction this asset at a revised price.') + '</p>' +
+        (before ? '<button type="button" class="ap-btn" data-act="remind">' + ic('bell', 17) + 'Remind me before it starts</button>' : '<a class="ap-btn" href="auctions.html#alerts">' + ic('bell', 17) + 'Set an alert</a>') + '</div>';
+      return;
+    }
+    var top = bids[bids.length - 1], isMe = mine && top.partId === mine.id;
+    $('ad-livecard').innerHTML = head +
+      '<div class="ad-latest' + (top.at > Date.now() - 6000 ? ' is-new' : '') + '"><span class="who">' + esc(top.alias) + '</span><div><small>' + (live ? 'Latest bid' : 'Final bid') + ' · ' + (isMe ? 'You' : 'Bidder #' + esc(top.alias)) + ' · <span data-ago="' + top.at + '">' + ago(top.at) + '</span></small><b>' + U.inr(top.amount) + '</b></div>' +
+      (a.reserve ? '<span class="ad-latest-up">+' + ((top.amount / a.reserve - 1) * 100).toFixed(1) + '%<small>over reserve</small></span>' : '') + '</div>' +
+      chartHtml(bids) + feedHtml(bids, mine);
   }
 
   /* ---------- console: what this visitor can do now ---------- */
   var draftAmt = '', proxyOpen = false, proxyDraft = '';
+  // 0 sign up, 1 KYC, 2 EMD (apply or in review), 3 bid
+  function stepOf() {
+    var prof = profile(), part = myPart();
+    if (!me) return 0;
+    if (!prof || prof.kyc !== 'verified') return 1;
+    if (!part || part.status !== 'approved') return 2;
+    return 3;
+  }
+  function stepsHtml(cur, waiting) {
+    return '<ol class="ad-steps" aria-label="Your progress">' + ['Sign up', 'KYC', 'Pay EMD', 'Bid live'].map(function (s, i) {
+      var st = i < cur ? 'is-done' : i === cur ? (waiting ? 'is-wait' : 'is-now') : '';
+      return '<li class="' + st + '"' + (i === cur ? ' aria-current="step"' : '') + '><i>' + (i < cur ? ic('check', 13) : i + 1) + '</i><span>' + s + '</span></li>';
+    }).join('') + '</ol>';
+  }
+  // mobile sticky bar: price, clock and the one next action
+  function renderBar() {
+    var p = S.phase(a), part = myPart(), live = p === 'live' || p === 'paused', step = stepOf();
+    var sold = ['h1', 'confirmed', 'paid25', 'paid75', 'certificate'].indexOf(p) !== -1, ended = !live && p !== 'registration' && p !== 'upcoming';
+    var price = a.bidCount ? a.currentHigh : a.reserve, tm = U.timer(a), cta;
+    if (ended) cta = part && part.status === 'approved' && a.highPart === part.id ? '<a class="ap-btn is-primary" href="#ad-console" data-go-console>Next steps</a>' : '<a class="ap-btn is-primary" href="auctions.html">More auctions</a>';
+    else if (step === 0) cta = '<a class="ap-btn is-primary" href="' + joinUrl + '">Start bidding</a>';
+    else if (step === 1) cta = '<button type="button" class="ap-btn is-primary" data-act="kyc">Complete KYC</button>';
+    else if (step === 2 && (!part || part.status === 'rejected')) cta = p === 'upcoming' ? '<button type="button" class="ap-btn is-primary" data-act="remind">Remind me</button>' : '<button type="button" class="ap-btn is-primary" data-act="apply">Pay EMD</button>';
+    else if (step === 2) cta = '<a class="ap-btn" href="#live" data-go-live>EMD in review</a>';
+    else if (p === 'live' && a.highPart === part.id) cta = '<span class="ad-bar-lead">' + ic('check', 16) + 'You lead</span>';
+    else if (p === 'live') cta = '<button type="button" class="ap-btn is-primary" data-quick="' + S.nextMin(a) + '">Bid ' + U.short(S.nextMin(a)) + '</button>';
+    else cta = '<a class="ap-btn" href="#ad-console" data-go-console>Auto-bid</a>';
+    $('ad-bar').innerHTML = '<a class="ad-bar-info" href="#live" data-go-live><small>' + (live ? '<i class="ac-live-dot"></i>Current bid' : sold ? 'Sold at' : 'Reserve price') + '</small><b>' + U.short(price) + '</b>' +
+      '<span class="ac-timer' + (tm.urgent ? ' is-urgent' : '') + '" data-timer="' + esc(a.id) + '">' + ic('clock', 13) + tm.text + '</span></a>' + cta;
+  }
   function renderConsole() {
     var p = S.phase(a), part = myPart(), prof = profile(), html = '', live = p === 'live';
     var inp = $('bid-amt'); if (inp) draftAmt = inp.value;
@@ -118,28 +169,37 @@
     var det = document.querySelector('.ad-proxy'), pin = $('proxy-amt'), act = document.activeElement;
     if (det) proxyOpen = det.open; if (pin) proxyDraft = pin.value;
     var focusId = act && (act.id === 'bid-amt' || act.id === 'proxy-amt') ? act.id : '';
-    var regOpen = p === 'registration' || p === 'live';
-    if (!me) {
-      html = '<h3>Want to bid?</h3><p class="ap-muted">Create a free account, complete KYC and pay the EMD to take part.</p><div class="ad-status is-info">' + ic('lock', 18) + 'Only verified bidders with an approved EMD can bid.</div>' +
-        '<a class="ap-btn is-primary" style="width:100%;height:46px" href="signup.html?mode=login&next=auctions.html">Log in to bid</a><a class="ap-btn" style="width:100%;margin-top:.5rem" href="signup.html">Create an account</a>';
+    var regOpen = p === 'registration' || p === 'live', open = regOpen || p === 'upcoming' || p === 'paused';
+    var step = stepOf();
+    if (!me && open) {
+      html = '<h3>Start bidding in 4 simple steps</h3><p class="ap-muted">Free to join. Your EMD is fully refunded if you don’t win.</p>' + stepsHtml(0) +
+        '<ol class="ad-how"><li><b>Create a free account</b><span>Mobile number and a password · 1 min</span></li><li><b>Verify your KYC</b><span>PAN, Aadhaar e-KYC and refund bank account · 3 min</span></li>' +
+        '<li><b>Pay the EMD of ' + U.short(a.emd) + '</b><span>NEFT / RTGS to the bank · last date ' + U.dt(a.emdDeadline) + '</span></li><li><b>Bid live from any device</b><span>Quick-bid buttons or set an automatic maximum</span></li></ol>' +
+        '<a class="ap-btn is-primary ad-cta" href="' + joinUrl + '">' + ic('sparkle', 18) + 'Start bidding</a>' +
+        '<a class="ap-btn ad-cta2" href="#live" data-go-live>' + '<i class="ac-live-dot"></i>' + (p === 'live' ? 'Just watch it live' : 'See the bidding room') + '</a>' +
+        '<p class="ad-hint" style="text-align:center">Already registered? <a href="' + loginUrl + '">Log in</a></p>';
+    } else if (!me) {
+      html = postHtml(p, null);
     } else if (!prof || prof.kyc !== 'verified') {
-      html = '<h3>Step 1 – Bidder KYC</h3><p class="ap-muted">PAN, Aadhaar e-KYC and the bank account for EMD refunds. Takes about 3 minutes.</p>' +
+      html = '<h3>Step 2 of 4 – Verify your KYC</h3>' + stepsHtml(step) + '<p class="ap-muted">PAN, Aadhaar e-KYC and the bank account for EMD refunds. Takes about 3 minutes.</p>' +
         (prof && prof.kyc === 'review' ? '<div class="ad-status is-warn">' + ic('clock', 18) + 'Your KYC is under review: ' + esc(prof.flag || '') + '</div>' : '') +
-        '<button type="button" class="ap-btn is-primary" style="width:100%;height:46px;margin-top:.75rem" data-act="kyc">' + ic('shield', 18) + (prof ? 'Update KYC' : 'Complete KYC') + '</button>';
+        '<button type="button" class="ap-btn is-primary ad-cta" data-act="kyc">' + ic('shield', 18) + (prof ? 'Update KYC' : 'Complete KYC') + '</button>';
     } else if (!part || part.status === 'rejected') {
-      html = '<h3>Step 2 – Apply to bid</h3>' + (part ? '<div class="ad-status is-out">Your EMD was rejected: ' + esc(part.reason || 'please contact the bank') + '</div>' : '<p class="ap-muted">Pay the EMD of <b>' + U.inr(a.emd) + '</b> and submit the bid form.</p>') +
-        (regOpen ? '<button type="button" class="ap-btn is-primary" style="width:100%;height:46px;margin-top:.75rem" data-act="apply">' + ic('rupee', 18) + 'Pay EMD & apply</button><p class="ad-hint">Last date: ' + U.dt(a.emdDeadline, true) + '</p>'
+      html = '<h3>Step 3 of 4 – Pay EMD & apply</h3>' + stepsHtml(step) + (part ? '<div class="ad-status is-out">Your EMD was rejected: ' + esc(part.reason || 'please contact the bank') + '</div>' : '<p class="ap-muted">Pay the refundable EMD of <b>' + U.inr(a.emd) + '</b> and submit the bid form. The bank approves you, then you can bid.</p>') +
+        (regOpen ? '<button type="button" class="ap-btn is-primary ad-cta" data-act="apply">' + ic('rupee', 18) + 'Pay EMD & apply</button><p class="ad-hint">Last date: ' + U.dt(a.emdDeadline, true) + '</p>'
+          : p === 'upcoming' ? '<div class="ad-status is-info">' + ic('clock', 18) + 'EMD registration opens soon. We will remind you.</div><button type="button" class="ap-btn ad-cta" data-act="remind">' + ic('bell', 18) + 'Remind me</button>'
           : '<div class="ad-status is-info">Registration for this auction is closed.</div>');
     } else if (part.status === 'pending') {
-      html = '<h3>EMD under verification</h3><div class="ad-status is-info">' + ic('clock', 18) + 'The bank is checking your EMD (UTR ' + esc(part.emd.utr) + '). You will be notified once approved.</div>';
+      html = '<h3>Almost there – EMD in review</h3>' + stepsHtml(step, true) + '<div class="ad-status is-info">' + ic('clock', 18) + 'The bank is checking your EMD (UTR ' + esc(part.emd.utr) + '). You can bid as soon as it is approved.</div>' +
+        '<a class="ap-btn ad-cta2" href="#live" data-go-live><i class="ac-live-dot"></i>Watch the bidding meanwhile</a>';
     } else if (live) {
       var lead = a.highPart === part.id, min = S.nextMin(a);
-      html = '<h3>Your bid</h3>' + (lead ? '<div class="ad-status is-lead">' + ic('check', 18) + 'You are the highest bidder</div>' : a.bidCount && S.bidsOf(a.id).some(function (b) { return b.partId === part.id; }) ? '<div class="ad-status is-out">' + ic('bell', 18) + 'You have been outbid</div>' : '<div class="ad-status is-info">You are approved as Bidder #' + esc(part.alias) + '</div>') +
+      html = '<h3>Place your bid</h3>' + stepsHtml(3) + (lead ? '<div class="ad-status is-lead">' + ic('check', 18) + 'You are the highest bidder</div>' : a.bidCount && S.bidsOf(a.id).some(function (b) { return b.partId === part.id; }) ? '<div class="ad-status is-out">' + ic('bell', 18) + 'You have been outbid</div>' : '<div class="ad-status is-info">You are approved as Bidder #' + esc(part.alias) + '</div>') +
         '<div class="ad-quick">' + [1, 2, 5].map(function (k) { var v = min + (k - 1) * a.increment; return '<button type="button" data-quick="' + v + '">+' + (k === 1 ? '1 step' : k + ' steps') + '<br><b>' + U.short(v) + '</b></button>'; }).join('') + '</div>' +
         '<div class="ad-amt"><div class="ap-money"><span>₹</span><input class="ap-input" id="bid-amt" inputmode="numeric" aria-label="Bid amount" placeholder="' + App.inr(min) + '"></div><button type="button" class="ap-btn is-primary" data-act="bid"' + (lead ? ' disabled' : '') + '>Place bid</button></div>' +
         '<p class="ad-hint">Minimum next bid ' + U.inr(min) + ' · steps of ' + U.inr(a.increment) + '</p><p class="ap-err" id="bid-err"></p>' + proxyHtml(part);
     } else if (p === 'registration' || p === 'upcoming') {
-      html = '<h3>You are approved</h3><div class="ad-status is-lead">' + ic('check', 18) + 'Bidder #' + esc(part.alias) + ' · EMD verified</div><p class="ap-muted">Bidding opens ' + U.dt(a.startAt, true) + '. You can set an automatic maximum bid now.</p>' + proxyHtml(part);
+      html = '<h3>You are ready to bid</h3>' + stepsHtml(3) + '<div class="ad-status is-lead">' + ic('check', 18) + 'Bidder #' + esc(part.alias) + ' · EMD verified</div><p class="ap-muted">Bidding opens ' + U.dt(a.startAt, true) + '. You can set an automatic maximum bid now.</p>' + proxyHtml(part);
     } else if (p === 'paused') {
       html = '<h3>Auction paused</h3><div class="ad-status is-warn">The bank has paused this auction. Bidding resumes shortly.</div>';
     } else {
@@ -187,7 +247,7 @@
   }
 
   /* ---------- actions ---------- */
-  function need(fn) { return function () { if (!me) { location.href = 'signup.html?mode=login&next=auctions.html'; return; } fn.apply(null, arguments); }; }
+  function need(fn) { return function () { if (!me) { location.href = loginUrl; return; } fn.apply(null, arguments); }; }
   var ACT = {
     kyc: need(kycForm), apply: need(applyForm), inspect: need(inspectForm), ask: need(askForm),
     remind: function () { S.toggleWatch(U.userKey(), a.id); if (!S.isWatched(U.userKey(), a.id)) S.toggleWatch(U.userKey(), a.id); UI.toast('We will remind you 1 hour and 15 minutes before the auction starts'); renderMore(); },
@@ -199,7 +259,8 @@
     cert: function () { window.open('auction-bank.html#cert/' + encodeURIComponent(a.id), '_blank'); }
   };
   document.addEventListener('click', function (e) {
-    var q = e.target.closest('[data-quick]'); if (q) { var v = +q.getAttribute('data-quick'); $('bid-amt').value = App.inr(v); confirmBid(v); return; }
+    var q = e.target.closest('[data-quick]'); if (q) { var v = +q.getAttribute('data-quick'), bi = $('bid-amt'); if (bi) bi.value = App.inr(v); confirmBid(v); return; }
+    var g = e.target.closest('[data-go-live],[data-go-console]'); if (g) { e.preventDefault(); goTo(g.hasAttribute('data-go-live') ? 'live' : 'ad-console'); return; }
     var b = e.target.closest('[data-act]'); if (b && ACT[b.getAttribute('data-act')]) { e.preventDefault(); ACT[b.getAttribute('data-act')](); }
     if (e.target.closest('#ad-watch')) { var on = S.toggleWatch(U.userKey(), a.id); UI.toast(on ? 'Added to your watchlist' : 'Removed from watchlist'); renderMore(); }
   });
@@ -300,7 +361,12 @@
   }
 
   /* ---------- live loop ---------- */
-  function renderAll(bump) { a = S.get(id) || a; renderPrice(bump); renderLive(); renderConsole(); renderMore(); }
+  function renderAll(bump) { a = S.get(id) || a; renderPrice(bump); renderLive(); renderConsole(); renderMore(); renderBar(); }
+  function goTo(elId) {
+    var el = $(elId); if (!el) return;
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    el.classList.remove('is-flash'); void el.offsetWidth; el.classList.add('is-flash');
+  }
   renderStatic(); renderAll();
   S.on(function (msg) {
     var before = { high: a.currentHigh, leader: a.highPart, ext: a.extCount };
@@ -315,6 +381,8 @@
   setInterval(function () {
     var ph = S.phase(a);
     if (ph !== lastPhase) { lastPhase = ph; renderAll(); renderStatic(); return; }
+    U.tick($('ad-bar'));
+    document.querySelectorAll('[data-ago]').forEach(function (el) { el.textContent = ago(+el.getAttribute('data-ago')); });
     var c = $('ad-clock'); if (!c) return;
     var t = Date.now(), ms = ph === 'live' ? a.endAt - t : a.startAt - t, p = U.parts(ms), b = c.querySelectorAll('b');
     b[0].textContent = p.d; b[1].textContent = U.pad(p.h); b[2].textContent = U.pad(p.m); b[3].textContent = U.pad(p.s);
