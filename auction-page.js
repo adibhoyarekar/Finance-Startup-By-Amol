@@ -94,18 +94,37 @@
         '<small>' + new Date(b.at).toLocaleTimeString('en-IN', { hour: 'numeric', minute: '2-digit', second: '2-digit' }) + '</small></span><span class="amt">' + U.inr(b.amount) + '</span></li>';
     }).join('') + '</ul>';
   }
+  // proper line chart: one point per bid, sloped segments, hover a point for its exact price and time
+  var PX = 4, PY = 8; // percent padding inside the plot so edge dots and tooltips are not clipped
   function chartHtml(bids) {
-    if (bids.length < 2) return '';
-    var W = 600, H = 160, L = 8, R = 8, T = 10, B = 18, t0 = a.startAt, t1 = Math.max(Date.now(), bids[bids.length - 1].at) , lo = a.reserve, hi = Math.max(bids[bids.length - 1].amount, a.reserve + a.increment);
-    function x(t) { return L + (W - L - R) * (t - t0) / Math.max(1, t1 - t0); }
-    function y(v) { return T + (H - T - B) * (1 - (v - lo) / Math.max(1, hi - lo)); }
-    var d = 'M' + x(t0) + ' ' + y(lo);
-    bids.forEach(function (b) { d += ' H' + x(b.at).toFixed(1) + ' V' + y(b.amount).toFixed(1); });
-    d += ' H' + x(t1);
-    return '<div class="ad-chart"><svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none" role="img" aria-label="Price over time"><defs><linearGradient id="ad-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2563eb" stop-opacity=".16"/><stop offset="1" stop-color="#2563eb" stop-opacity="0"/></linearGradient></defs>' +
-      '<g class="grid"><line x1="0" x2="' + W + '" y1="' + y(lo) + '" y2="' + y(lo) + '"/><line x1="0" x2="' + W + '" y1="' + y(hi) + '" y2="' + y(hi) + '"/></g>' +
-      '<path class="a" d="' + d + ' V' + (H - B) + ' H' + x(t0) + 'Z"/><path class="l" vector-effect="non-scaling-stroke" d="' + d + '"/></svg>' +
-      '<div style="display:flex;justify-content:space-between" class="ap-mini"><span>Reserve ' + U.short(lo) + '</span><span>Now ' + U.short(hi) + '</span></div></div>';
+    if (!bids.length) return '';
+    var lo = a.reserve, lastV = bids[bids.length - 1].amount, hi = Math.max(lastV, lo + a.increment);
+    var live = S.phase(a) === 'live' || S.phase(a) === 'paused';
+    var tFirst = bids[0].at, tLast = bids[bids.length - 1].at;
+    // span the real bidding window; for a live auction keep reaching to "now" so the current hold shows
+    var t0 = Math.min(a.startAt, tFirst), t1 = live ? Math.max(Date.now(), tLast) : tLast;
+    if (t1 <= t0) t1 = t0 + 1;
+    function fx(t) { return t1 > t0 ? (t - t0) / (t1 - t0) : 0; }
+    function fy(v) { return hi > lo ? (v - lo) / (hi - lo) : 0; }
+    function X(t) { return (PX + fx(t) * (100 - 2 * PX)); }
+    function Y(v) { return (PY + (1 - fy(v)) * (100 - 2 * PY)); }
+    // line goes from the reserve at the start, up through every bid, then holds flat to "now"
+    var path = [[t0, lo]].concat(bids.map(function (b) { return [b.at, b.amount]; }));
+    if (t1 > tLast) path.push([t1, lastV]);
+    var line = path.map(function (pt, i) { return (i ? 'L' : 'M') + X(pt[0]).toFixed(2) + ' ' + Y(pt[1]).toFixed(2); }).join(' ');
+    var area = line + ' L' + X(t1).toFixed(2) + ' ' + (100 - PY).toFixed(2) + ' L' + X(t0).toFixed(2) + ' ' + (100 - PY).toFixed(2) + ' Z';
+    var baseY = Y(lo).toFixed(2);
+    var dots = bids.map(function (b, i) {
+      var last = i === bids.length - 1, up = Math.round((b.amount / lo - 1) * 100), yy = Y(b.amount);
+      return '<button type="button" class="ad-dot' + (last ? ' is-last' : '') + (yy < 42 ? ' is-low' : '') + '" style="left:' + X(b.at).toFixed(2) + '%;top:' + yy.toFixed(2) + '%" aria-label="Bid ' + U.inr(b.amount) + ' at ' + U.dt(b.at, true) + '">' +
+        '<span class="ad-tip"><b>' + U.inr(b.amount) + '</b><small>' + (up > 0 ? '+' + up + '% over reserve · ' : '') + new Date(b.at).toLocaleTimeString('en-IN', { hour: 'numeric', minute: '2-digit' }) + '</small></span></button>';
+    }).join('');
+    return '<div class="ad-chart"><div class="ad-plot">' +
+      '<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="ad-area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2563eb" stop-opacity=".18"/><stop offset="1" stop-color="#2563eb" stop-opacity="0"/></linearGradient></defs>' +
+      '<line class="ad-base" x1="0" x2="100" y1="' + baseY + '" y2="' + baseY + '"/>' +
+      '<path class="a" d="' + area + '"/><path class="l" vector-effect="non-scaling-stroke" d="' + line + '"/></svg>' +
+      '<span class="ad-start" style="top:' + baseY + '%">Reserve</span>' + dots + '</div>' +
+      '<div class="ad-chart-ax"><span>' + U.dt(t0) + '</span><span>Reserve ' + U.short(lo) + ' → Now <b>' + U.short(hi) + '</b></span></div></div>';
   }
   function ago(t) {
     var s = Math.max(0, Math.round((Date.now() - t) / 1000));
