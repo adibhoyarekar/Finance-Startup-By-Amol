@@ -138,11 +138,55 @@
       </div>
     </section>
 
-    <section class="rx-wrap rx-sec">
-      <div class="rx-sh"><h2><span aria-hidden="true">🔥</span> Quick Tools &amp; Calculators</h2></div>
+    <section class="rx-wrap rx-sec rx-tools-sec">
+      <div class="rx-sh rx-sh-c reveal">
+        <div>
+          <h2><span aria-hidden="true">🔥</span> Quick Tools &amp; Calculators</h2>
+          <p>Free, instant tools to calculate loan EMIs and check your credit health</p>
+        </div>
+      </div>
       <div class="rx-tools">
-        <button type="button" class="rx-qt reveal" data-rx-emi><span class="rx-qt-img"><img src="images/rx/emi-calculator-chatgpt.jpg" alt="" loading="lazy" width="140" height="140"></span><span><strong class="rx-qt-t">EMI Calculator</strong><span class="rx-qt-s">Calculate your EMI</span><span class="rx-go">Apply Now &rarr;</span></span></button>
-        <button type="button" class="rx-qt reveal" id="rx-cibil-btn"><span class="rx-qt-img"><img src="images/rx/cibil-score-chatgpt.jpg" alt="" loading="lazy" width="140" height="140"></span><span><strong class="rx-qt-t">CIBIL Score</strong><span class="rx-qt-s">Check your CIBIL Score</span><span class="rx-go">Check Now &rarr;</span></span></button>
+        <!-- EMI Calculator Card -->
+        <article class="rx-tool-card reveal" style="--tc-accent:#1d4ed8;--tc-bg:#eef4ff">
+          <div class="rx-tc-header">
+            <span class="rx-tc-badge">Instant Calculator</span>
+            <span class="rx-tc-img"><img src="images/rx/emi-calculator-chatgpt.jpg" alt="EMI Calculator" loading="lazy" width="140" height="140"></span>
+          </div>
+          <div class="rx-tc-body">
+            <h3>Loan EMI Calculator</h3>
+            <p>Calculate your monthly installments, total interest payable, and loan repayment schedule in seconds.</p>
+            <div class="rx-tc-tags">
+              <span>Home Loans</span>
+              <span>Personal Loans</span>
+              <span>Car Loans</span>
+              <span>Business Loans</span>
+            </div>
+          </div>
+          <div class="rx-tc-footer">
+            <button type="button" class="rx-btn rx-tc-btn" data-rx-emi>Calculate EMI Now <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </article>
+
+        <!-- CIBIL Score Card -->
+        <article class="rx-tool-card rx-tc-cibil reveal" style="--tc-accent:#16a34a;--tc-bg:#eaf8ee">
+          <div class="rx-tc-header">
+            <span class="rx-tc-badge rx-tc-badge-green">100% Free Report</span>
+            <span class="rx-tc-img"><img src="images/rx/cibil-score-chatgpt.jpg" alt="CIBIL Score" loading="lazy" width="140" height="140"></span>
+          </div>
+          <div class="rx-tc-body">
+            <h3>Check Free CIBIL Score</h3>
+            <p>Generate your official credit score report with CRIF High Mark or TransUnion. Zero impact on your credit rating.</p>
+            <div class="rx-tc-tags">
+              <span>CRIF CIBIL</span>
+              <span>TransUnion</span>
+              <span>Both Reports</span>
+              <span>No Score Impact</span>
+            </div>
+          </div>
+          <div class="rx-tc-footer">
+            <a href="cibil-score.html" class="rx-btn rx-tc-btn rx-tc-btn-cibil" id="rx-cibil-btn">Check CIBIL Score <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -270,6 +314,7 @@
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.2 8.3-8 9-4.8-.7-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
         </span>
         <h2 id="rx-cibil-modal-t">Check Your CIBIL Score</h2>
+        <a href="cibil-score.html" class="rx-cibil-fullscreen" title="Open in dedicated page">Full Page &nearr;</a>
         <button type="button" class="rx-cibil-x" aria-label="Close" data-rx-cibil-close>&times;</button>
       </div>
       <p class="rx-cibil-desc">Select your preferred credit bureau to generate your CIBIL score</p>
