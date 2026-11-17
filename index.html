@@ -142,7 +142,7 @@
       <div class="rx-sh"><h2><span aria-hidden="true">🔥</span> Quick Tools &amp; Calculators</h2></div>
       <div class="rx-tools">
         <button type="button" class="rx-qt reveal" data-rx-emi><span class="rx-qt-img"><img src="images/rx/emi-calculator-chatgpt.jpg" alt="" loading="lazy" width="140" height="140"></span><span><strong class="rx-qt-t">EMI Calculator</strong><span class="rx-qt-s">Calculate your EMI</span><span class="rx-go">Apply Now &rarr;</span></span></button>
-        <a class="rx-qt reveal" href="contact.html?f-service=CIBIL%20Score"><span class="rx-qt-img"><img src="images/rx/cibil-score-chatgpt.jpg" alt="" loading="lazy" width="140" height="140"></span><span><strong class="rx-qt-t">CIBIL Score</strong><span class="rx-qt-s">Calculate your CIBIL Score</span><span class="rx-go">Check Now &rarr;</span></span></a>
+        <button type="button" class="rx-qt reveal" id="rx-cibil-btn"><span class="rx-qt-img"><img src="images/rx/cibil-score-chatgpt.jpg" alt="" loading="lazy" width="140" height="140"></span><span><strong class="rx-qt-t">CIBIL Score</strong><span class="rx-qt-s">Check your CIBIL Score</span><span class="rx-go">Check Now &rarr;</span></span></button>
       </div>
     </section>
 
@@ -261,6 +261,109 @@
     </section>
   </main>
 
+  <!-- ===== CIBIL Score Modal ===== -->
+  <dialog class="rx-cibil-modal" id="rx-cibil-modal" aria-labelledby="rx-cibil-modal-t">
+    <!-- Step 1: Choose Bureau -->
+    <div class="rx-cibil-step" id="rx-cibil-step1">
+      <div class="rx-cibil-hd">
+        <span class="rx-cibil-ic">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.2 8.3-8 9-4.8-.7-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+        </span>
+        <h2 id="rx-cibil-modal-t">Check Your CIBIL Score</h2>
+        <button type="button" class="rx-cibil-x" aria-label="Close" data-rx-cibil-close>&times;</button>
+      </div>
+      <p class="rx-cibil-desc">Select your preferred credit bureau to generate your CIBIL score</p>
+      <div class="rx-cibil-options">
+        <button type="button" class="rx-cibil-opt" data-bureau="crif">
+          <span class="rx-cibil-opt-ico" style="--opt-c:#1d4ed8;--opt-bg:#e8efff">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 8h10M7 12h6M7 16h8"/></svg>
+          </span>
+          <span class="rx-cibil-opt-txt">
+            <strong>CRIF CIBIL</strong>
+            <small>Credit report by CRIF High Mark</small>
+          </span>
+          <svg class="rx-cibil-arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+        <button type="button" class="rx-cibil-opt" data-bureau="transunion">
+          <span class="rx-cibil-opt-ico" style="--opt-c:#16a34a;--opt-bg:#e6f7ec">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8"/></svg>
+          </span>
+          <span class="rx-cibil-opt-txt">
+            <strong>TransUnion CIBIL</strong>
+            <small>Credit report by TransUnion</small>
+          </span>
+          <svg class="rx-cibil-arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+        <button type="button" class="rx-cibil-opt" data-bureau="both">
+          <span class="rx-cibil-opt-ico" style="--opt-c:#7c3aed;--opt-bg:#f1ebff">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="18" height="8" rx="2"/></svg>
+          </span>
+          <span class="rx-cibil-opt-txt">
+            <strong>Both Reports</strong>
+            <small>Get CRIF + TransUnion combined</small>
+          </span>
+          <svg class="rx-cibil-arr" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 2: Details Form -->
+    <div class="rx-cibil-step" id="rx-cibil-step2" style="display:none">
+      <div class="rx-cibil-hd">
+        <button type="button" class="rx-cibil-back" aria-label="Go back" id="rx-cibil-back">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <h2 id="rx-cibil-form-title">Enter Your Details</h2>
+        <button type="button" class="rx-cibil-x" aria-label="Close" data-rx-cibil-close>&times;</button>
+      </div>
+      <div class="rx-cibil-bureau-tag" id="rx-cibil-bureau-tag"></div>
+      <form class="rx-cibil-form" id="rx-cibil-form" novalidate>
+        <input type="hidden" name="bureau" id="rx-cibil-bureau-val">
+        <div class="rx-cibil-field">
+          <label for="rx-cibil-name">Full Name <span class="rx-cibil-req">*</span></label>
+          <input type="text" id="rx-cibil-name" name="fullName" placeholder="Enter your full name" required autocomplete="name">
+          <span class="rx-cibil-err" id="rx-cibil-name-err"></span>
+        </div>
+        <div class="rx-cibil-field">
+          <label for="rx-cibil-pan">PAN Number <span class="rx-cibil-req">*</span></label>
+          <input type="text" id="rx-cibil-pan" name="pan" placeholder="ABCDE1234F" required maxlength="10" autocomplete="off" style="text-transform:uppercase">
+          <span class="rx-cibil-err" id="rx-cibil-pan-err"></span>
+        </div>
+        <div class="rx-cibil-field">
+          <label for="rx-cibil-phone">Phone Number <span class="rx-cibil-req">*</span></label>
+          <div class="rx-cibil-phone-wrap">
+            <span class="rx-cibil-prefix">+91</span>
+            <input type="tel" id="rx-cibil-phone" name="phone" placeholder="9876543210" required maxlength="10" autocomplete="tel">
+          </div>
+          <span class="rx-cibil-err" id="rx-cibil-phone-err"></span>
+        </div>
+        <button type="submit" class="rx-btn rx-cibil-submit">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.2 8.3-8 9-4.8-.7-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+          Generate CIBIL Score
+        </button>
+      </form>
+    </div>
+
+    <!-- Step 3: Success -->
+    <div class="rx-cibil-step" id="rx-cibil-step3" style="display:none">
+      <div class="rx-cibil-hd">
+        <span class="rx-cibil-ic">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
+        </span>
+        <h2>Request Submitted!</h2>
+        <button type="button" class="rx-cibil-x" aria-label="Close" data-rx-cibil-close>&times;</button>
+      </div>
+      <div class="rx-cibil-success">
+        <div class="rx-cibil-check">
+          <svg width="56" height="56" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="#e6f7ec"/><path d="M8 12l3 3 5-5" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <p class="rx-cibil-s-msg">Thank you! Your CIBIL score request has been submitted successfully.</p>
+        <p class="rx-cibil-s-sub">Our team will get back to you shortly with your credit report.</p>
+        <button type="button" class="rx-btn rx-cibil-done" data-rx-cibil-close>Done</button>
+      </div>
+    </div>
+  </dialog>
+
   <dialog class="rx-emi" id="rx-emi" aria-labelledby="rx-emi-t">
     <div class="rx-emi-hd">
       <span class="rx-emi-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="2.5"/><path d="M8 6.5h8M8 11h2M12 11h2M16 11h0M8 15h2M12 15h2M16 15v3M8 19h6"/></svg></span>
@@ -322,5 +425,6 @@
   <script src="site.js?v=3"></script>
   <script src="ai-chat.js?v=7"></script>
   <script src="consent.js?v=7"></script>
+  <script src="cibil-score.js?v=1"></script>
 </body>
 </html>
