@@ -392,22 +392,38 @@
   }
   if (Screen) Screen.preload();
 
-  /* ---------- Coming back from Cashfree (or reopening the page mid-payment) ---------- */
+  /* ---------- Coming back from Cashfree ---------- */
+  // A plain visit never opens a status screen by itself. An earlier order is checked quietly and
+  // only surfaced if money is involved (paid, being confirmed or refunded); unpaid ones are dropped.
+  function quietCheck(id) {
+    Pay.status(id).then(function (v) {
+      if (v.state === 'AWAITING_PAYMENT' || v.state === 'EXPIRED') { Pay.forget(id); return; }
+      if (!Screen.isOpen()) onView(v);
+    }, function (e) {
+      if (e && e.code === 'not_found') Pay.forget(id);
+    });
+  }
+
   function boot() {
+    if (!Pay || !Screen) return false;
     var params = new URLSearchParams(location.search);
     var q = params.get('order_id');
     if (params.has('order_id')) history.replaceState(null, '', location.pathname);
-    var id = q && Pay && Pay.hasToken(q) ? q : (Pay ? Pay.lastOpen(RESUME_WINDOW_MS) : null);
-    if (id && Screen) {
+    if (q && Pay.hasToken(q)) {
       restoreDraft();
-      checkOrder(id);
+      checkOrder(q);
       return true;
     }
+    var open = Pay.lastOpen(RESUME_WINDOW_MS);
+    if (open) quietCheck(open);
     return false;
   }
 
   window.addEventListener('pageshow', function (e) {
-    if (e.persisted) { setBusy(false); if (!boot() && Screen) Screen.hide(); }
+    if (!e.persisted) return;
+    setBusy(false);
+    if (Screen) Screen.hide();
+    boot();
   });
 
   if (!boot()) {

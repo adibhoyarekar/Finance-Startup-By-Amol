@@ -19,11 +19,11 @@
     refund: '<circle cx="12" cy="12" r="9"/><path d="M15 9a4 4 0 1 0 1 4"/>'
   };
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var root = null, card = null, anim = null, lottiePromise = null, animCache = {}, lastFocus = null;
+  var root = null, card = null, anim = null, lottiePromise = null, animCache = {}, lastFocus = null, opening = 0, swapTimer = 0;
 
   var css = '' +
-    '.cms{position:fixed;inset:0;z-index:10000;display:flex;flex-direction:column;background:var(--cms-bg,#f8fafc);overflow-y:auto;-webkit-overflow-scrolling:touch;opacity:0;transition:opacity .35s ease,background-color .5s ease;font-family:inherit}' +
-    '.cms.is-on{opacity:1}' +
+    '.cms{position:fixed;inset:0;z-index:10000;display:flex;flex-direction:column;background:var(--cms-bg,#f8fafc);overflow-y:auto;-webkit-overflow-scrolling:touch;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .35s ease,background-color .5s ease,visibility 0s linear .35s;font-family:inherit}' +
+    '.cms.is-on{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .35s ease,background-color .5s ease,visibility 0s}' +
     '.cms::before{content:"";position:fixed;inset:-20% -10% auto;height:70%;background:radial-gradient(closest-side,var(--cms-glow,rgba(29,78,216,.14)),transparent);pointer-events:none;transition:background .5s ease}' +
     '.cms-bar{position:sticky;top:0;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px clamp(16px,4vw,40px);background:rgba(255,255,255,.75);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(15,23,42,.06);z-index:1}' +
     '.cms-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#0b2b5e;font-weight:800;font-size:17px}' +
@@ -169,23 +169,27 @@
   }
 
   function show(o) {
-    var fresh = !root || !root.classList.contains('is-on');
+    var fresh = !isOpen();
     build();
+    clearTimeout(swapTimer);
     if (fresh) {
       lastFocus = document.activeElement;
       document.documentElement.classList.add('cms-lock');
       render(o);
-      requestAnimationFrame(function () { root.classList.add('is-on'); });
+      opening = requestAnimationFrame(function () { opening = 0; root.classList.add('is-on'); });
       return;
     }
     if (reduce) return render(o);
     card.classList.remove('is-in');
     card.classList.add('is-out');
-    setTimeout(function () { render(o); }, 200);
+    swapTimer = setTimeout(function () { render(o); }, 200);
   }
 
   function hide() {
-    if (!root || !root.classList.contains('is-on')) return;
+    if (!root) return;
+    clearTimeout(swapTimer);
+    if (opening) { cancelAnimationFrame(opening); opening = 0; }
+    else if (!root.classList.contains('is-on')) return;
     root.classList.remove('is-on');
     document.documentElement.classList.remove('cms-lock');
     setTimeout(function () {
@@ -197,7 +201,7 @@
     if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
   }
 
-  function isOpen() { return !!(root && root.classList.contains('is-on')); }
+  function isOpen() { return !!(root && (opening || root.classList.contains('is-on'))); }
 
   window.CMScreen = { show: show, hide: hide, isOpen: isOpen, esc: esc, preload: function () { loadLottie().catch(function () {}); Object.keys(KINDS).forEach(function (k) { animData(KINDS[k].anim).catch(function () {}); }); } };
 })();
