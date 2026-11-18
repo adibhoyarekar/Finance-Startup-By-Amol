@@ -257,8 +257,17 @@
 
         if (modalResName) modalResName.textContent = currentName;
         if (modalResAmount) modalResAmount.textContent = '₹' + currentPrice + ' via ' + payLabel();
-        if (modalRef) {
-          modalRef.textContent = 'CM-CIBIL-' + Math.floor(10000 + Math.random() * 90000);
+        var refNo = 'CM-CIBIL-' + Math.floor(10000 + Math.random() * 90000);
+        if (modalRef) modalRef.textContent = refNo;
+        var paidAt = new Date();
+        var paidOn = document.getElementById('rx-cibil-modal-paid-on');
+        if (window.CMReport) {
+          if (paidOn) paidOn.textContent = CMReport.fmtDateTime(paidAt);
+          var panEl = document.getElementById('rx-cibil-pan');
+          CMReport.mount(step3, CMReport.build({
+            bureau: currentBureau, name: currentName, pan: panEl ? panEl.value.toUpperCase() : '', phone: currentPhone,
+            refId: refNo, amount: currentPrice, method: payLabel(), paidAt: paidAt
+          }));
         }
 
         showStep(step3);
