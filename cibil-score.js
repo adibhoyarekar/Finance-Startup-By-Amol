@@ -54,10 +54,12 @@
   var currentName = '';
   var currentPhone = '';
   var selectedApp = 'Google Pay';
+  var payMethod = 'upi';
+  function payLabel() { return payMethod === 'card' ? 'Card' : (selectedApp || 'UPI'); }
 
   function updateModalPayBtn() {
     if (!payBtnText) return;
-    payBtnText.textContent = 'Pay ₹' + currentPrice + ' via ' + (selectedApp || 'UPI') + ' →';
+    payBtnText.textContent = 'Pay ₹' + currentPrice + ' via ' + payLabel() + ' →';
   }
 
   /* ---- helpers ---- */
@@ -142,6 +144,7 @@
       if (appType === 'gpay') selectedApp = 'Google Pay';
       else if (appType === 'phonepe') selectedApp = 'PhonePe';
       else if (appType === 'paytm') selectedApp = 'Paytm';
+      else if (appType === 'qr') selectedApp = 'UPI QR';
       else selectedApp = 'UPI';
 
       if (customUpiField) {
@@ -151,6 +154,8 @@
           if (inp) inp.focus();
         }
       }
+      var qrNote = document.getElementById('rx-cibil-qr-note');
+      if (qrNote) qrNote.hidden = appType !== 'qr';
       updateModalPayBtn();
     });
   });
@@ -224,18 +229,34 @@
     showStep(stepPay);
   });
 
+  /* Payment method tabs: UPI / Card */
+  var payTabs = modal.querySelectorAll('.rx-pay-method');
+  var payPanels = modal.querySelectorAll('.rx-pay-panel');
+  payTabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      payMethod = tab.getAttribute('data-method');
+      payTabs.forEach(function (t) {
+        var on = t === tab;
+        t.classList.toggle('is-active', on);
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      payPanels.forEach(function (p) { p.hidden = p.getAttribute('data-panel') !== payMethod; });
+      updateModalPayBtn();
+    });
+  });
+
   /* ---- pay button click ---- */
   if (payBtn) {
     payBtn.addEventListener('click', function () {
       payBtn.disabled = true;
-      if (payBtnText) payBtnText.textContent = 'Connecting to ' + (selectedApp || 'UPI') + '...';
+      if (payBtnText) payBtnText.textContent = 'Connecting to ' + payLabel() + '...';
 
       setTimeout(function () {
         payBtn.disabled = false;
         updateModalPayBtn();
 
         if (modalResName) modalResName.textContent = currentName;
-        if (modalResAmount) modalResAmount.textContent = '₹' + currentPrice + ' via ' + (selectedApp || 'UPI');
+        if (modalResAmount) modalResAmount.textContent = '₹' + currentPrice + ' via ' + payLabel();
         if (modalRef) {
           modalRef.textContent = 'CM-CIBIL-' + Math.floor(10000 + Math.random() * 90000);
         }
