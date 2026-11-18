@@ -693,6 +693,9 @@ body.rx{font-family:var(--rx-font);color:var(--rx-text);background:#fff}
 .rx-cibil-opt-txt{flex:1;display:flex;flex-direction:column;gap:3px}
 .rx-cibil-opt-txt strong{font-size:15px;font-weight:700;color:var(--rx-ink)}
 .rx-cibil-opt-txt small{font-size:12.5px;color:var(--rx-mute);font-weight:400}
+.rx-cibil-opt-price{font-size:14px;font-weight:800;color:var(--opt-c,var(--rx-blue));background:var(--opt-bg,#e8efff);padding:4px 10px;border-radius:8px;flex:none}
+.rx-cibil-price-combo{display:inline-flex;align-items:center;gap:4px}
+.rx-cibil-price-combo del{font-size:11px;color:var(--rx-mute);font-weight:400}
 .rx-cibil-arr{flex:none;color:var(--rx-mute);transition:transform .2s}
 .rx-cibil-opt:hover .rx-cibil-arr{color:var(--rx-blue);transform:translateX(3px)}
 
@@ -731,6 +734,27 @@ body.rx{font-family:var(--rx-font);color:var(--rx-text);background:#fff}
 .rx-cibil-s-sub{font-size:13.5px;color:var(--rx-mute);margin:0 0 20px;line-height:1.5}
 .rx-cibil-done{width:100%;height:46px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:var(--rx-green);color:#fff;font-weight:700;border:0;cursor:pointer}
 .rx-cibil-done:hover{background:#15803d}
+
+/* desktop modal payment step */
+.rx-cibil-pay-content{padding:14px 24px 28px;display:flex;flex-direction:column;gap:14px}
+.rx-cibil-lottie-wrap{display:flex;justify-content:center;align-items:center;padding:4px 0}
+.rx-cibil-order-summary{background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.rx-cibil-order-row{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--rx-mute)}
+.rx-cibil-order-row strong{color:var(--rx-ink);font-weight:700}
+.rx-cibil-order-total{border-top:1px dashed #cbd5e1;padding-top:8px;margin-top:2px;font-size:14.5px;font-weight:800;color:var(--rx-ink)}
+.rx-cibil-order-total strong{font-size:16px;color:var(--rx-blue)}
+.rx-cibil-pm-selector{display:flex;flex-direction:column;gap:6px}
+.rx-cibil-pm-label{font-size:12.5px;font-weight:700;color:var(--rx-ink)}
+.rx-cibil-pm-options{display:flex;flex-direction:column;gap:6px}
+.rx-cibil-pm-card{display:flex;align-items:center;gap:10px;padding:9px 12px;border:1.5px solid var(--rx-line);border-radius:8px;background:#fff;cursor:pointer;font-size:12.5px;font-weight:600;color:var(--rx-ink);transition:all .2s}
+.rx-cibil-pm-card:hover,.rx-cibil-pm-card.is-active{border-color:var(--rx-blue);background:#f0f7ff}
+.rx-cibil-pm-card input{accent-color:var(--rx-blue)}
+.rx-cibil-pm-icon{font-size:16px}
+.rx-cibil-pay-now-btn{width:100%;height:48px;border:0;border-radius:10px;background:linear-gradient(135deg,#16a34a,#15803d);color:#fff;font:inherit;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s;box-shadow:0 4px 12px rgba(22,163,74,.25)}
+.rx-cibil-pay-now-btn:hover{filter:brightness(1.1);transform:translateY(-1px);box-shadow:0 8px 20px -6px rgba(22,163,74,.4)}
+.rx-cibil-pay-note{font-size:11.5px;color:var(--rx-mute);text-align:center;margin:0}
+.rx-cibil-success-details{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:12px 16px;margin:12px 0 16px;display:flex;flex-direction:column;gap:6px;text-align:left;font-size:13px}
+.rx-cibil-success-details div{display:flex;justify-content:space-between}
 
 /* ===== DEDICATED FULL-PAGE CIBIL FLOW (cibil-score.html) ===== */
 .rx-cibil-page{background:linear-gradient(180deg,#f8fafc 0%,#f0f4f9 100%);min-height:85vh;padding:32px 0 64px}
@@ -774,6 +798,10 @@ body.rx{font-family:var(--rx-font);color:var(--rx-text);background:#fff}
 .rx-cp-bureau-body strong{display:block;font-size:16px;font-weight:700;color:var(--rx-ink);margin-bottom:2px}
 .rx-cp-bureau-body p{margin:0;font-size:13px;color:var(--rx-mute);line-height:1.4}
 .rx-cp-bureau-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--opt-c,#1d4ed8);background:var(--opt-bg,#e8efff);padding:8px 14px;border-radius:8px;flex:none}
+.rx-cp-bureau-title-row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:4px}
+.rx-cp-price-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:8px;font-size:14px;font-weight:800;color:var(--opt-c,var(--rx-blue));background:var(--opt-bg,#e8efff);flex:none}
+.rx-cp-price-badge.is-combo{color:#7c3aed;background:#f1ebff}
+.rx-cp-price-badge.is-combo del{font-size:11.5px;color:var(--rx-mute);font-weight:400;margin-left:2px}
 
 /* Step 2 Form in Page */
 .rx-cp-back-btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--rx-blue);background:none;border:0;cursor:pointer;padding:0;margin-bottom:14px;font-family:inherit}
@@ -800,6 +828,29 @@ body.rx{font-family:var(--rx-font);color:var(--rx-text);background:#fff}
 
 .rx-cp-submit-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:52px;background:linear-gradient(135deg,var(--rx-navy),var(--rx-blue));color:#fff;font:inherit;font-size:16px;font-weight:700;border:0;border-radius:12px;cursor:pointer;transition:all .2s ease;margin-top:8px}
 .rx-cp-submit-btn:hover{filter:brightness(1.1);box-shadow:0 10px 24px -8px rgba(29,86,184,.5);transform:translateY(-1px)}
+
+/* Step 3 Payment in Page */
+.rx-cp-pay-wrap{display:flex;flex-direction:column;gap:18px}
+.rx-cp-lottie-container{display:flex;justify-content:center;align-items:center;padding:4px 0}
+.rx-cp-order-card{background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:14px;padding:18px 20px}
+.rx-cp-order-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid #eef2f7}
+.rx-cp-order-header h3{font-size:15px;font-weight:700;color:var(--rx-ink);margin:0}
+.rx-cp-order-badge{font-size:12px;font-weight:700;color:var(--rx-blue);background:#e8efff;padding:4px 10px;border-radius:6px}
+.rx-cp-total-row{border-top:1px dashed #cbd5e1!important;margin-top:6px;padding-top:12px!important;font-size:15px!important;font-weight:800!important;color:var(--rx-ink)!important}
+.rx-cp-total-row strong{font-size:18px;color:var(--rx-blue)}
+.rx-cp-methods{display:flex;flex-direction:column;gap:10px}
+.rx-cp-methods-title{font-size:13.5px;font-weight:700;color:var(--rx-ink)}
+.rx-cp-pm-grid{display:flex;flex-direction:column;gap:8px}
+.rx-cp-pm-option{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1.5px solid #e2e8f0;border-radius:12px;background:#fff;cursor:pointer;transition:all .2s}
+.rx-cp-pm-option:hover,.rx-cp-pm-option.is-selected{border-color:var(--rx-blue);background:#f0f7ff}
+.rx-cp-pm-option input{accent-color:var(--rx-blue);margin-right:2px}
+.rx-cp-pm-icon{font-size:20px;flex:none;width:36px;height:36px;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.rx-cp-pm-info{display:flex;flex-direction:column;gap:2px}
+.rx-cp-pm-info strong{font-size:13.5px;color:var(--rx-ink)}
+.rx-cp-pm-info small{font-size:11.5px;color:var(--rx-mute)}
+.rx-cp-pay-btn{background:linear-gradient(135deg,#16a34a,#15803d);box-shadow:0 4px 14px rgba(22,163,74,.3)}
+.rx-cp-pay-btn:hover{filter:brightness(1.08);box-shadow:0 10px 24px -6px rgba(22,163,74,.45)}
+.rx-cp-pay-trust{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;font-size:12px;font-weight:600;color:var(--rx-mute);margin-top:2px}
 
 /* Step 3 Success in Page */
 .rx-cp-success{text-align:center;padding:12px 8px 16px}
