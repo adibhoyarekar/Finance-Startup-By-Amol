@@ -1,4 +1,4 @@
-/* CIBIL checkout via Cashfree – CredMates. The browser never decides that a payment succeeded; the server confirms it with Cashfree. */
+/* CIBIL checkout via Cashfree's hosted payment page – CredMates. The browser never decides that a payment succeeded; the server confirms it with Cashfree. */
 (function () {
   'use strict';
 
@@ -63,12 +63,16 @@
     return all;
   }
   function writeSaved(all) { try { localStorage.setItem(STORE_KEY, JSON.stringify(all)); } catch (e) { /* storage full or blocked */ } }
-  function remember(id, token) { var all = readSaved(); all[id] = { token: token, at: Date.now() }; writeSaved(all); }
+  function remember(id, token, session, mode) { var all = readSaved(); all[id] = { token: token, session: session, mode: mode, at: Date.now() }; writeSaved(all); }
   function settle(id) { var all = readSaved(); if (all[id]) { all[id].done = true; writeSaved(all); } }
   function tokenFor(id) { var e = readSaved()[id]; return e ? e.token : null; }
-  function lastOpen() {
-    var all = readSaved(), best = null;
-    Object.keys(all).forEach(function (id) { if (!all[id].done && (!best || all[id].at > all[best].at)) best = id; });
+  function lastOpen(maxAgeMs) {
+    var all = readSaved(), best = null, now = Date.now();
+    Object.keys(all).forEach(function (id) {
+      var e = all[id];
+      if (e.done || (maxAgeMs && now - e.at > maxAgeMs)) return;
+      if (!best || e.at > all[best].at) best = id;
+    });
     return best;
   }
 
@@ -114,7 +118,7 @@
             if (opts.onUpdate) opts.onUpdate(v);
             var unpaid = v.state === 'AWAITING_PAYMENT';
             if (FINAL[v.state] || (unpaid && opts.stopIfUnpaid) || Date.now() - started > maxMs) return resolve(v);
-            if (unpaid && Date.now() - started > 20000) return resolve(v);
+            if (unpaid && (v.attempt || Date.now() - started > (opts.unpaidWaitMs || 20000))) return resolve(v);
             tick(v.state === 'PROCESSING' ? 2000 : 3000);
           }, function (e) {
             var retryable = e.code === 'network' || e.status === 429 || (e.status >= 500);
@@ -127,52 +131,49 @@
     });
   }
 
-  function guardInflight() {
-    if (!inflight) return Promise.resolve(null);
-    return status(inflight).then(function (v) {
-      if (v.state === 'PENDING' || v.state === 'PROCESSING') return v;
-      inflight = null;
-      return null;
-    }, function () { return null; });
+  function openCheckout(session, mode) {
+    return loadScript(SDK_URL).then(function () {
+      if (typeof window.Cashfree !== 'function') throw fail('sdk', 'Could not load the secure payment page. Please try again.');
+      var cashfree = window.Cashfree({ mode: mode === 'production' ? 'production' : 'sandbox' });
+      return cashfree.checkout({ paymentSessionId: session, redirectTarget: '_self' });
+    }).then(function (res) {
+      if (res && res.error) throw fail('checkout', res.error.message || 'Could not open the payment page. Please try again.');
+      return { redirecting: true };
+    });
   }
 
-  /* details: { bureau, name, phone, pan, consent }
-     ui: { guardEl, beforeCheckout(), afterCheckout(), onUpdate(view) } */
+  /* details: { bureau, name, phone, pan, consent }; ui: { guardEl, beforeRedirect(order) }
+     Creates the order on the server, then sends the browser to Cashfree's payment page.
+     Cashfree brings the customer back to cibil-score.html?order_id=… when they finish. */
   function pay(details, ui) {
     ui = ui || {};
     return config().then(function (c) {
       if (!c.enabled) throw fail('payments_unavailable', 'Online payment is not available right now. Please try again later or call us.');
-      return guardInflight().then(function (existing) {
-        if (existing) return existing;
-        var token = null;
-        if (c.turnstileSiteKey) {
-          token = ui.guardEl && ui.guardEl._cmToken;
-          if (!token) throw fail('security_check', 'Please complete the security check above, then tap Pay.');
-        }
-        var body = { bureau: details.bureau, name: details.name, phone: details.phone, pan: details.pan, consent: details.consent === true, turnstileToken: token };
-        return api('/api/cibil/order', body).then(function (o) {
-          resetGuard(ui.guardEl);
-          remember(o.orderId, o.accessToken);
-          inflight = o.orderId;
-          return loadScript(SDK_URL).then(function () {
-            if (typeof window.Cashfree !== 'function') throw fail('sdk', 'Could not load the secure payment page. Please try again.');
-            var cashfree = window.Cashfree({ mode: o.mode === 'production' ? 'production' : 'sandbox' });
-            if (ui.beforeCheckout) ui.beforeCheckout();
-            return cashfree.checkout({ paymentSessionId: o.paymentSessionId, redirectTarget: '_modal' });
-          }).then(function (res) {
-            if (ui.afterCheckout) ui.afterCheckout();
-            var closed = !!(res && res.error);
-            return poll(o.orderId, { onUpdate: ui.onUpdate, stopIfUnpaid: closed });
-          }, function (e) {
-            if (ui.afterCheckout) ui.afterCheckout();
-            throw e;
-          });
-        }, function (e) {
-          resetGuard(ui.guardEl);
-          throw e;
-        });
+      var token = null;
+      if (c.turnstileSiteKey) {
+        token = ui.guardEl && ui.guardEl._cmToken;
+        if (!token) throw fail('security_check', 'Please complete the security check, then tap Pay.');
+      }
+      var body = { bureau: details.bureau, name: details.name, phone: details.phone, pan: details.pan, consent: details.consent === true, turnstileToken: token };
+      return api('/api/cibil/order', body).then(function (o) {
+        resetGuard(ui.guardEl);
+        remember(o.orderId, o.accessToken, o.paymentSessionId, o.mode);
+        inflight = o.orderId;
+        if (ui.beforeRedirect) ui.beforeRedirect(o);
+        return openCheckout(o.paymentSessionId, o.mode);
+      }, function (e) {
+        resetGuard(ui.guardEl);
+        throw e;
       });
     });
+  }
+
+  /* Reopen Cashfree's page for an order that was not paid yet (same order, no double charge). */
+  function retry(id) {
+    var e = readSaved()[id];
+    if (!e || !e.session) return Promise.reject(fail('not_found', 'This payment can no longer be retried. Please start again.'));
+    inflight = id;
+    return openCheckout(e.session, e.mode);
   }
 
   function resume(id, opts) {
@@ -180,32 +181,8 @@
     return poll(id, opts);
   }
 
-  function rupees(n) { return '₹' + n; }
-
-  /* Customer-facing message for every state other than READY. tone: info | warn | error */
-  function message(v) {
-    switch (v.state) {
-      case 'PENDING':
-        return { tone: 'info', recheck: true, text: 'Your bank is still confirming the payment. Please do not pay again – this page updates automatically.' };
-      case 'PROCESSING':
-        return { tone: 'info', recheck: true, text: 'Payment received (ID ' + (v.payment ? v.payment.id : '') + '). We are preparing your report – this can take a minute.' };
-      case 'AWAITING_PAYMENT':
-        if (v.attempt === 'FAILED') return { tone: 'error', text: 'The payment failed. If money was debited, your bank returns it automatically in 5–7 working days. You can try again.' };
-        return { tone: 'warn', text: 'Payment was not completed and you have not been charged. Tap Pay to try again.' };
-      case 'EXPIRED':
-        return { tone: 'warn', text: 'This payment session expired. Tap Pay to start again.' };
-      case 'REFUND_PENDING':
-        return { tone: 'error', text: 'We could not generate your report, so we have started a full refund of ' + rupees(v.amount) + '. It reaches your account in 5–7 working days. Order ID ' + v.orderId + '.' };
-      case 'REFUNDED':
-        return { tone: 'error', text: 'Your payment of ' + rupees(v.amount) + ' has been refunded. Order ID ' + v.orderId + '.' };
-      case 'REVIEW':
-        return { tone: 'error', text: 'We are verifying this payment. Please contact us with Order ID ' + v.orderId + ' and we will sort it out.' };
-      default:
-        return { tone: 'info', text: '' };
-    }
-  }
-
   function clear() { inflight = null; }
+  function forget(id) { settle(id); if (inflight === id) inflight = null; }
 
-  window.CMPay = { pay: pay, resume: resume, status: status, poll: poll, config: config, mountGuard: mountGuard, lastOpen: lastOpen, message: message, clear: clear, hasToken: function (id) { return !!tokenFor(id); } };
+  window.CMPay = { pay: pay, retry: retry, resume: resume, status: status, poll: poll, config: config, mountGuard: mountGuard, lastOpen: lastOpen, clear: clear, forget: forget, hasToken: function (id) { return !!tokenFor(id); } };
 })();
