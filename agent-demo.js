@@ -70,7 +70,7 @@
   // shell -------------------------------------------------------------------
   var VIEWS = [['overview', 'Overview', I.grid], ['clients', 'Clients', I.users], ['pipeline', 'Pipeline', I.flow], ['followups', 'Follow-ups', I.bell]];
   root.innerHTML =
-    '<aside class="rvd-side"><div class="rvd-brand"><img src="images/logo.svg" alt="RAVEN" width="92" height="24"><span>Agent</span></div>' +
+    '<aside class="rvd-side"><div class="rvd-brand"><img src="images/logo.svg" alt="CredMates" width="92" height="24"><span>Agent</span></div>' +
     '<p class="rvd-label">Menu</p><nav class="rvd-nav">' + VIEWS.map(function (v) {
       return '<button type="button" data-view="' + v[0] + '">' + icon(v[2], 17) + '<span>' + v[1] + '</span><em data-badge="' + v[0] + '"></em></button>';
     }).join('') + '</nav>' +

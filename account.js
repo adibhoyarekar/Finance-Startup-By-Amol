@@ -45,7 +45,7 @@
   var body = 'Please call me back.\n\nName: ' + name + '\nMobile: ' + (p.mobile || '') + '\nCity: ' + (p.city || '') +
     '\nInterested in: ' + interests + '\nBest time: ' + (p.bestTime || '') + '\nPreferred contact: ' + (p.contactVia || '');
   document.querySelectorAll('[data-callback]').forEach(function (a) {
-    a.href = 'mailto:hello@raven.business?subject=' + encodeURIComponent('Callback request – ' + name) + '&body=' + encodeURIComponent(body);
+    a.href = 'mailto:hello@credmates.business?subject=' + encodeURIComponent('Callback request – ' + name) + '&body=' + encodeURIComponent(body);
   });
 
   function tool(k, i, forYou) {
@@ -148,6 +148,6 @@
   UI.router('home', function (view) { UI.hideTip(); if (view === 'home' || view === 'ready') render(); });
   if (App.param('welcome')) {
     history.replaceState(null, '', location.pathname + location.hash);
-    setTimeout(function () { UI.toast('Welcome to RAVEN, ' + first + '! Your searches are now pre-filled.'); }, 500);
+    setTimeout(function () { UI.toast('Welcome to CredMates, ' + first + '! Your searches are now pre-filled.'); }, 500);
   }
 })();

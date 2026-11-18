@@ -1,4 +1,4 @@
-/* RAVEN full-page "Ask a question" chat (design only - no backend yet).
+/* CredMates full-page "Ask a question" chat (design only - no backend yet).
    Layout: avatar above each message, assistant messages carry Retry / Like / Dislike / Copy / Share actions. */
 (function () {
   var body = document.getElementById('ask-body');
@@ -7,7 +7,7 @@
   var input = document.getElementById('ask-input');
 
   var AVATAR = { user: 'images/avatar-amit.svg', bot: 'images/logo-mark.svg' };
-  var NAME = { user: 'You', bot: 'RAVEN Assistant' };
+  var NAME = { user: 'You', bot: 'CredMates Assistant' };
   var REPLY = 'Thanks for your question! Our AI assistant is coming soon. Meanwhile, our team will be happy to help - please reach us via the Contact page.';
   var lastQuestion = '';
 
@@ -49,7 +49,7 @@
     } else if (id === 'copy') {
       copyText(text, btn);
     } else if (id === 'share') {
-      if (navigator.share) { navigator.share({ title: 'RAVEN', text: text, url: location.href }).catch(function () {}); }
+      if (navigator.share) { navigator.share({ title: 'CredMates', text: text, url: location.href }).catch(function () {}); }
       else { copyText(text, btn); flash(btn, 'Copied'); }
     } else if (id === 'retry') {
       row.remove();
@@ -100,7 +100,7 @@
     reply();
   }
 
-  add("Hi! I'm the RAVEN assistant. How can I help you today?", 'bot');
+  add("Hi! I'm the CredMates assistant. How can I help you today?", 'bot');
   ['Which loan is right for me?', 'How do I register my business?', 'Tell me about insurance', 'Talk to an expert'].forEach(function (t) {
     var c = document.createElement('button');
     c.type = 'button';

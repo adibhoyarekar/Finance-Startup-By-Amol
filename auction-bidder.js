@@ -123,7 +123,7 @@
   function disputes() {
     var list = S.db().disputes.filter(function (d) { return d.userId === me.id; }), parts = mine();
     var o = U.opts;
-    $('v-disputes').innerHTML = P.head('Help & disputes', 'Raise an issue about an auction. The bank and RAVEN reply within 2 working days.') +
+    $('v-disputes').innerHTML = P.head('Help & disputes', 'Raise an issue about an auction. The bank and CredMates reply within 2 working days.') +
       '<div class="ap-grid ap-g2e ap-stagger"><div class="ap-card pad"><div class="ap-ch"><div><h2>Raise an issue</h2><p>Bid times and logs are kept tamper-proof, so we can check exactly what happened.</p></div></div>' +
       '<form id="dj" novalidate><div class="ap-fgrid">' +
       U.fld('Auction', '<select class="ap-input" name="auction"><option value="">Not about a specific auction</option>' + parts.map(function (x) { return '<option value="' + esc(x.a.id) + '">' + esc(x.a.ref + ' – ' + x.a.title) + '</option>'; }).join('') + '</select>', '', true) +

@@ -415,7 +415,7 @@
         if (data.payout && typeof data.payout === 'object') { me.payout = data.payout; App.saveUser(me); }
         UI.toast('Backup restored – ' + added + ' new client' + (added === 1 ? '' : 's'));
         renderAll();
-      } catch (err) { UI.toast('That file is not a RAVEN backup'); }
+      } catch (err) { UI.toast('That file is not a CredMates backup'); }
       input.value = '';
     };
     r.readAsText(file);
@@ -442,7 +442,7 @@
     var si = STAGES.findIndex(function (s) { return s[0] === c.status; }), m = mob(c);
     var searches = Object.keys(c.searches || {}).map(function (k) { return { k: k, s: c.searches[k] }; }).sort(function (a, b) { return a.s.at < b.s.at ? 1 : -1; });
     var kv = [['Mobile', c.mobile], ['Email', c.email], ['City', c.city], ['Monthly income', c.income ? '₹' + inr(c.income) : ''], ['CIBIL', { lt650: 'Below 650', '650to700': '650–700', '700to750': '700–750', gt750: 'Above 750', unknown: 'Don’t know' }[c.cibil]],
-      ['Lead source', { walkin: 'Walk-in', referral: 'Referral', call: 'Phone call', website: 'RAVEN website', social: 'Social media', other: 'Other' }[c.source]], ['Expected payout', payout(c) ? short(payout(c)) + ' (' + pct(c.product) + '%)' : ''], ['Added', c.createdAt ? new Date(c.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) : '']];
+      ['Lead source', { walkin: 'Walk-in', referral: 'Referral', call: 'Phone call', website: 'CredMates website', social: 'Social media', other: 'Other' }[c.source]], ['Expected payout', payout(c) ? short(payout(c)) + ' (' + pct(c.product) + '%)' : ''], ['Added', c.createdAt ? new Date(c.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) : '']];
     var body =
       '<div class="ap-prof">' + UI.avatar(c.name, 'is-lg') + '<div style="min-width:0"><h3>' + esc(c.name) + '</h3><p>' + plabel(c.product) + (c.amount ? ' · ' + short(+c.amount) : '') + '</p><div style="margin-top:.35rem">' + pill(c.status) + '</div></div></div>' +
       '<div class="ap-quick">' + (m ? '<a href="tel:+91' + m + '">' + ic('phone') + 'Call</a><a href="https://wa.me/91' + m + '" target="_blank" rel="noopener" class="ap-wa">' + ic('chat') + 'WhatsApp</a>' : '') +
@@ -513,7 +513,7 @@
       '<div class="ap-fsec"><h3>' + ic('board', 15) + 'Case</h3><div class="ap-fgrid">' +
       f('status', 'Stage', '<select class="ap-input" name="status">' + opt(ALL_STAGES, x.status) + '</select>') +
       f('followUp', 'Next follow-up', '<input class="ap-input" name="followUp" type="date" value="' + (x.followUp || '') + '">') +
-      f('source', 'Lead source', '<select class="ap-input" name="source"><option value="">Select</option>' + opt([['walkin', 'Walk-in'], ['referral', 'Referral'], ['call', 'Phone call'], ['website', 'RAVEN website'], ['social', 'Social media'], ['other', 'Other']], x.source) + '</select>') +
+      f('source', 'Lead source', '<select class="ap-input" name="source"><option value="">Select</option>' + opt([['walkin', 'Walk-in'], ['referral', 'Referral'], ['call', 'Phone call'], ['website', 'CredMates website'], ['social', 'Social media'], ['other', 'Other']], x.source) + '</select>') +
       '<div class="ap-field full"><label for="cf-notes">Notes</label><textarea id="cf-notes" class="ap-input" name="notes" rows="3" placeholder="Documents received, bank feedback, next step…">' + esc(x.notes || '') + '</textarea></div>' +
       '<div class="ap-field full"><label class="ap-check"><input type="checkbox" name="consent"' + (c ? ' checked' : '') + '><span>The client has agreed to share these details with me.</span></label><p class="ap-err" data-for="consent">Please confirm the client’s consent.</p></div>' +
       '</div></div><button type="submit" hidden></button></form>';
@@ -580,7 +580,7 @@
   if (pending) setTimeout(function () { openClient(pending); }, 250);
   if (App.param('welcome')) {
     history.replaceState(null, '', location.pathname + location.hash);
-    setTimeout(function () { UI.toast('Welcome to RAVEN, ' + first + '! Your agent dashboard is ready.'); }, 500);
+    setTimeout(function () { UI.toast('Welcome to CredMates, ' + first + '! Your agent dashboard is ready.'); }, 500);
   }
   var rz;
   window.addEventListener('resize', function () { clearTimeout(rz); rz = setTimeout(function () { if (currentView === 'overview') renderLine(App.clients()); }, 200); });

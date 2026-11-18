@@ -13,7 +13,7 @@
   var bank = S.bank(a.bankId) || {}, asset = S.ASSET[a.assetType] || {};
   var here = 'auction.html?id=' + encodeURIComponent(a.id);
   var loginUrl = 'signup.html?mode=login&next=' + encodeURIComponent(here), joinUrl = 'signup.html?mode=register&next=' + encodeURIComponent(here);
-  document.title = a.title + ' – Bank auction – RAVEN';
+  document.title = a.title + ' – Bank auction – CredMates';
 
   function myPart() { return me ? S.partOf(a.id, me.id) : null; }
   function profile() { return me ? S.profile(me.id) : null; }
@@ -25,7 +25,7 @@
     '<div class="ad-top"><a href="auctions.html">Bank auctions</a><span>/</span><span>' + esc(asset.label) + '</span><span>/</span><span>' + esc(a.city) + '</span></div>' +
     '<div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;align-items:flex-start"><div style="min-width:0;flex:1 1 18rem"><h1 class="ad-title">' + esc(a.title) + '</h1>' +
     '<div class="ad-sub"><span>' + (bank.logo ? '<img src="' + bank.logo + '" alt="">' : '') + esc(bank.name || '') + '</span><span>' + esc(a.ref) + '</span><span>' + esc(S.KIND[a.kind] || '') + '</span><span>' + ic('home', 14) + ' ' + esc(a.address) + '</span></div></div>' +
-    '<div class="ad-share"><button type="button" class="ap-btn" id="ad-watch"></button><a class="ap-btn" target="_blank" rel="noopener" href="https://wa.me/?text=' + encodeURIComponent(a.title + ' – bank auction on RAVEN: ' + location.href) + '">' + ic('chat', 17) + 'Share</a></div></div>' +
+    '<div class="ad-share"><button type="button" class="ap-btn" id="ad-watch"></button><a class="ap-btn" target="_blank" rel="noopener" href="https://wa.me/?text=' + encodeURIComponent(a.title + ' – bank auction on CredMates: ' + location.href) + '">' + ic('chat', 17) + 'Share</a></div></div>' +
     '<div class="ad-grid"><div class="ad-main">' +
     '<div class="ad-gal"><img src="' + S.img(a) + '" alt="' + esc(asset.label) + ' illustration"><span id="ad-badge"></span></div>' +
     '<div class="ap-card ad-room" id="live"><div id="ad-livecard"></div></div>' +

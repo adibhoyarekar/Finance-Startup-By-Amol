@@ -4,7 +4,7 @@
   var App = window.RavenApp, UI = window.RavenUI, S = window.RavenAuctions, U = window.AUI, P = window.AP;
   if (!S || !P) return;
   var esc = App.esc, ic = UI.icon, $ = P.$, inr = U.inr, short = U.short, fld = U.fld, opts = U.opts, bad = U.bad;
-  var ACTOR = 'RAVEN admin';
+  var ACTOR = 'CredMates admin';
   var SOLD = ['h1', 'confirmed', 'paid25', 'paid75', 'certificate'];
   var st = { view: 'overview', kyc: 'review', dis: 'open', q: '', bank: '' };
 
@@ -168,6 +168,6 @@
     else if (el.hasAttribute('data-export')) P.csv('raven-audit-log.csv', [['Time', 'Action', 'Detail', 'By']].concat(S.auditLog().map(function (l) { return [new Date(l.at).toISOString(), l.action, l.detail, l.actor]; })));
     else if (el.hasAttribute('data-reset')) P.ask({ title: 'Reset demo auctions?', text: 'Demo auctions, their bids and registrations start again with fresh times.', ok: 'Reset', danger: true }, function () { S.resetDemo(); UI.toast('Demo auctions reset'); });
   });
-  P.init({ name: 'RAVEN admin (demo)', role: 'Platform admin', onShow: function (v) { st.view = v; render(); } });
+  P.init({ name: 'CredMates admin (demo)', role: 'Platform admin', onShow: function (v) { st.view = v; render(); } });
   P.live(function () { var a = document.activeElement; if (a && (a.id === 'ad-q' || a.id === 'au-q')) return; render(); });
 })();

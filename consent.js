@@ -48,11 +48,11 @@
   wrap.setAttribute('aria-labelledby', 'rv-consent-title');
   wrap.innerHTML =
     '<div class="rv-consent-card">' +
-      '<div class="rv-consent-logo"><img src="images/logo.svg" alt="RAVEN" width="116" height="30"></div>' +
+      '<div class="rv-consent-logo"><img src="images/logo.svg" alt="CredMates" width="116" height="30"></div>' +
       '<h2 id="rv-consent-title">Before you continue</h2>' +
-      '<p>Please review and accept our terms to use the RAVEN website.</p>' +
+      '<p>Please review and accept our terms to use the CredMates website.</p>' +
       '<ul>' +
-        '<li>RAVEN provides guidance on loans, insurance, real estate and bank auctions.</li>' +
+        '<li>CredMates provides guidance on loans, insurance, real estate and bank auctions.</li>' +
         '<li>Information on this site is general and not a guarantee of approval by any lender, insurer or authority.</li>' +
         '<li>We use the details you share only to respond to your enquiries and provide our services.</li>' +
       '</ul>' +

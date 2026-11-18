@@ -37,7 +37,7 @@
         { n: 'contactVia', l: 'Preferred contact', t: 'radio', req: 1, full: 1, o: CONTACT },
         { n: 'bestTime', l: 'Best time to call', t: 'select', req: 1, o: [['morning', 'Morning (9–12)'], ['afternoon', 'Afternoon (12–4)'], ['evening', 'Evening (4–8)'], ['any', 'Any time']] },
         { n: 'source', l: 'How did you hear about us? (optional)', t: 'select', o: [['google', 'Google search'], ['friend', 'Friend / family'], ['social', 'Social media'], ['agent', 'An agent referred me'], ['other', 'Other']] },
-        { n: 'consent', l: 'I agree that RAVEN may contact me about my enquiries on the number above.', t: 'check', req: 1, full: 1 }
+        { n: 'consent', l: 'I agree that CredMates may contact me about my enquiries on the number above.', t: 'check', req: 1, full: 1 }
       ] }
     ],
     agent: [
@@ -61,7 +61,7 @@
       ] },
       { title: 'Preferences', short: 'Language and consent', sub: 'Almost done.', fields: [
         { n: 'language', l: 'Preferred language', t: 'select', req: 1, o: LANG },
-        { n: 'contactVia', l: 'How should RAVEN reach you?', t: 'radio', req: 1, full: 1, o: CONTACT },
+        { n: 'contactVia', l: 'How should CredMates reach you?', t: 'radio', req: 1, full: 1, o: CONTACT },
         { n: 'consent', l: 'I confirm my details are correct, and I will only add client information with the client’s consent.', t: 'check', req: 1, full: 1 }
       ] }
     ]
@@ -72,7 +72,7 @@
   var at = 0, dir = 1;
   var esc = App.esc, agent = u.role === 'agent';
   var TYPE = { dsa: 'DSA / Loan Connector', ifa: 'Financial Advisor', bank: 'Bank / NBFC Sales', posp: 'Insurance Agent', ca: 'CA / Tax Consultant', broker: 'Real Estate Broker', other: 'Agent' };
-  document.getElementById('ob-pitch').textContent = editing ? 'Update your profile' : agent ? 'Set up your agent workspace' : 'Let’s personalise RAVEN for you';
+  document.getElementById('ob-pitch').textContent = editing ? 'Update your profile' : agent ? 'Set up your agent workspace' : 'Let’s personalise CredMates for you';
   document.getElementById('ob-pitch-sub').textContent = editing ? 'Change anything and save – your dashboard updates instantly.' : agent ? 'Three quick steps and your client dashboard is ready.' : 'Three quick steps so your searches are pre-filled and easy to save.';
   document.getElementById('ob-out').addEventListener('click', function (e) { e.preventDefault(); App.logout(); location.href = 'index.html'; });
 

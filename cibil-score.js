@@ -1,4 +1,4 @@
-/* CIBIL Score Modal – RAVEN */
+/* CIBIL Score Modal – CredMates */
 (function () {
   'use strict';
 
@@ -237,7 +237,7 @@
         if (modalResName) modalResName.textContent = currentName;
         if (modalResAmount) modalResAmount.textContent = '₹' + currentPrice + ' via ' + (selectedApp || 'UPI');
         if (modalRef) {
-          modalRef.textContent = 'RAV-CIBIL-' + Math.floor(10000 + Math.random() * 90000);
+          modalRef.textContent = 'CM-CIBIL-' + Math.floor(10000 + Math.random() * 90000);
         }
 
         showStep(step3);

@@ -1,4 +1,4 @@
-/* CIBIL Score Dedicated Page Script – RAVEN */
+/* CIBIL Score Dedicated Page Script – CredMates */
 (function () {
   'use strict';
 
@@ -291,7 +291,7 @@
         }
         if (refId) {
           var randomRef = Math.floor(10000 + Math.random() * 90000);
-          refId.textContent = 'RAV-CIBIL-' + randomRef;
+          refId.textContent = 'CM-CIBIL-' + randomRef;
         }
 
         goToStep(4);
