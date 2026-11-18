@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <rect width="48" height="48" rx="12" fill="#ffffff"/>
+  <g transform="translate(4, 11)">
+    <path d="M30 3 L39 13 L30 23 Z" fill="#097939"/>
+    <path d="M22 3 L31 13 L22 23 Z" fill="#ed7524"/>
+    <text x="1" y="18" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="14" fill="#0f172a" letter-spacing="-0.3">UPI</text>
+  </g>
+</svg>
