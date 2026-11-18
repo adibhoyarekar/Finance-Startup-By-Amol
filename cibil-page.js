@@ -310,9 +310,16 @@
         if (resPhone) {
           resPhone.textContent = '+91 ' + currentPhone.substring(0, 2) + '•••• ••' + currentPhone.substring(8);
         }
-        if (refId) {
-          var randomRef = Math.floor(10000 + Math.random() * 90000);
-          refId.textContent = 'CM-CIBIL-' + randomRef;
+        var refNo = 'CM-CIBIL-' + Math.floor(10000 + Math.random() * 90000);
+        if (refId) refId.textContent = refNo;
+        var paidAt = new Date();
+        var paidOn = document.getElementById('rx-cp-paid-on');
+        if (window.CMReport) {
+          if (paidOn) paidOn.textContent = CMReport.fmtDateTime(paidAt);
+          CMReport.mount(document.getElementById('rx-cp-step-3'), CMReport.build({
+            bureau: currentBureau, name: currentName, pan: panInp ? panInp.value.toUpperCase() : '', phone: currentPhone,
+            refId: refNo, amount: currentPrice, method: payLabel(), paidAt: paidAt
+          }));
         }
 
         goToStep(4);

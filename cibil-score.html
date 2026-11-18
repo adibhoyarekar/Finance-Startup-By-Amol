@@ -71,6 +71,51 @@
       .rx-pay-apps-grid{grid-template-columns:1fr;gap:10px}
       .rx-pay-amount{font-size:28px}
     }
+
+    .rx-cp-paid-pill{color:#16a34a}
+    @media(max-width:640px){
+      .rx-cibil-page{padding:10px 0 32px;min-height:0}
+      .rx-cp-hero{margin-bottom:10px}
+      .rx-cp-hero .rx-crumb,.rx-cp-hero p,.rx-cp-chips{display:none}
+      .rx-cp-hero h1{font-size:21px;margin:0}
+      .rx-cp-steps{margin-bottom:12px;padding:8px 10px;gap:6px}
+      .rx-cp-step-item:not(.is-active) .rx-cp-step-txt{display:none}
+      .rx-cp-step-line{max-width:none}
+      .rx-cp-card{padding:14px}
+      .rx-cp-card-head{margin-bottom:10px}
+      .rx-cp-card-head h2{font-size:17px}
+      #rx-cp-step-1 .rx-cp-card-sub{display:none}
+      .rx-cp-card-sub{margin-bottom:12px;font-size:12.5px}
+      .rx-cp-options{gap:10px}
+      .rx-cp-bureau-card{flex-direction:row;align-items:center;gap:12px;padding:12px 14px}
+      .rx-cp-bureau-ico{width:44px;height:44px;border-radius:12px}
+      .rx-cp-bureau-ico svg{width:22px;height:22px}
+      .rx-cp-bureau-body p,.rx-cp-bureau-btn{display:none}
+      .rx-cp-badge-pop{top:-9px;right:12px}
+      .rx-cp-active-bureau{margin-bottom:12px;padding:8px 12px}
+      .rx-cp-form{gap:12px}
+      .rx-cp-field input{height:46px}
+      .rx-cp-err{min-height:14px}
+      .rx-pay-secure-tag{display:none}
+      #rx-cp-step-pay .rx-cp-back-btn{margin-bottom:6px}
+      .rx-pay-summary{padding:12px 14px;gap:8px;border-radius:14px}
+      .rx-pay-amount-row{padding:6px 0}
+      .rx-pay-amount{font-size:26px}
+      .rx-pay-applicant-bar{gap:2px 10px;font-size:12px}
+      .rx-pay-container{padding:12px 10px 16px;gap:12px}
+      .rx-pay-apps-grid{grid-template-columns:1fr 1fr;gap:8px}
+      .rx-pay-app-btn{padding:9px 10px;gap:8px;border-radius:12px}
+      .rx-pay-app-ico{width:32px;height:32px}
+      .rx-pay-app-name{font-size:13px}
+      .rx-pay-radio-dot{width:15px;height:15px}
+      .rx-cp-success{padding:0 0 4px}
+      .rx-cp-check-icon{width:56px;height:56px;margin-bottom:10px}
+      .rx-cp-check-icon svg{width:32px;height:32px}
+      .rx-cp-success h2{font-size:20px;margin-bottom:4px}
+      .rx-cp-success p{margin-bottom:14px;font-size:13.5px}
+      .rx-cp-summary-box{padding:6px 14px;margin-bottom:14px}
+      .rx-cp-summary-row{padding:6px 0;font-size:13px}
+    }
   </style>
 </head>
 <body class="rx antialiased text-gray-900 bg-white">
@@ -379,32 +424,18 @@
               <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
             </div>
             <h2>Payment Successful!</h2>
-            <p>Thank you, <b id="rx-cp-res-name">User</b>. Your payment has been received and official credit bureau assessment has been logged successfully.</p>
+            <p>Thank you, <b id="rx-cp-res-name">User</b>. Your payment is confirmed and your credit report is ready.</p>
 
             <div class="rx-cp-summary-box">
-              <div class="rx-cp-summary-row">
-                <span>Reference ID</span>
-                <strong id="rx-cp-ref-id">RAV-CIBIL-78392</strong>
-              </div>
-              <div class="rx-cp-summary-row">
-                <span>Bureau(s) Selected</span>
-                <strong id="rx-cp-res-bureau">Both (CRIF + TransUnion)</strong>
-              </div>
-              <div class="rx-cp-summary-row">
-                <span>Amount Paid</span>
-                <strong id="rx-cp-res-amount" style="color:#16a34a">₹250 &bull; Paid (Online)</strong>
-              </div>
-              <div class="rx-cp-summary-row">
-                <span>Mobile Number</span>
-                <strong id="rx-cp-res-phone">+91 ••••• •••••</strong>
-              </div>
-              <div class="rx-cp-summary-row">
-                <span>Credit Report Status</span>
-                <strong style="color:#16a34a">✓ Payment Confirmed &bull; Report In Process</strong>
-              </div>
+              <div class="rx-cp-summary-row"><span>Payment Status</span><strong class="rx-cp-paid-pill">&#10003; Paid</strong></div>
+              <div class="rx-cp-summary-row"><span>Payment ID</span><strong id="rx-cp-ref-id">CM-CIBIL-00000</strong></div>
+              <div class="rx-cp-summary-row"><span>Paid On</span><strong id="rx-cp-paid-on">-</strong></div>
+              <div class="rx-cp-summary-row"><span>Bureau(s) Selected</span><strong id="rx-cp-res-bureau">Both (CRIF + TransUnion)</strong></div>
+              <div class="rx-cp-summary-row"><span>Amount Paid</span><strong id="rx-cp-res-amount" style="color:#16a34a">&#8377;250</strong></div>
+              <div class="rx-cp-summary-row"><span>Mobile Number</span><strong id="rx-cp-res-phone">+91 ••••• •••••</strong></div>
             </div>
 
-            <p style="font-size:13px;color:var(--rx-mute);margin-bottom:24px;">An official summary and advisory link will be sent to your registered phone number via WhatsApp and SMS shortly.</p>
+            <div class="cmr-actions"><div class="cmr-act-row"><button type="button" class="cmr-btn is-primary" data-cmr="view" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span data-cmr-label>View report</span></button><button type="button" class="cmr-btn" data-cmr="download"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 11l5 5 5-5M5 21h14"/></svg><span>Download PDF</span></button></div><div class="cmr-share"><span>Share</span><a class="cmr-link is-wa" data-cmr="wa" href="#" target="_blank" rel="noopener"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp</a><a class="cmr-link is-mail" data-cmr="mail" href="#"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Email</a></div><div class="cmr-panel" data-cmr="panel" hidden></div></div>
 
             <div class="rx-cp-actions">
               <a href="index.html" class="rx-cp-btn-home">Return to Home Page</a>
@@ -447,6 +478,7 @@
   <script src="rx.js?v=1"></script>
   <script src="site.js?v=3"></script>
   <script src="consent.js?v=7"></script>
-  <script src="cibil-page.js?v=4"></script>
+  <script src="cibil-report.js?v=1"></script>
+  <script src="cibil-page.js?v=5"></script>
 </body>
 </html>
