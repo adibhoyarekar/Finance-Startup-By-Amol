@@ -55,30 +55,6 @@
   var currentPhone = '';
   var selectedApp = 'Google Pay';
 
-  var modalLottieAnim = null;
-
-  function initModalPaymentLottie() {
-    var container = document.getElementById('rx-cibil-lottie');
-    if (!container || !window.lottie || modalLottieAnim) return;
-
-    try {
-      var params = {
-        container: container,
-        renderer: 'svg',
-        loop: true,
-        autoplay: true
-      };
-      if (window.PAYMENT_LOTTIE_DATA) {
-        params.animationData = window.PAYMENT_LOTTIE_DATA;
-      } else {
-        params.path = 'animations/payment.json';
-      }
-      modalLottieAnim = window.lottie.loadAnimation(params);
-    } catch (e) {
-      console.warn('Modal Lottie initialization failed:', e);
-    }
-  }
-
   function updateModalPayBtn() {
     if (!payBtnText) return;
     payBtnText.textContent = 'Pay ₹' + currentPrice + ' via ' + (selectedApp || 'UPI') + ' →';
@@ -90,9 +66,6 @@
       if (s) s.style.display = 'none';
     });
     if (show) show.style.display = '';
-    if (show === stepPay) {
-      initModalPaymentLottie();
-    }
   }
 
   function resetModal() {
@@ -159,7 +132,7 @@
   }
 
   /* UPI app option buttons inside modal */
-  var upiApps = modal.querySelectorAll('.rx-upi-app');
+  var upiApps = modal.querySelectorAll('.rx-pay-app-btn');
   upiApps.forEach(function (btn) {
     btn.addEventListener('click', function () {
       upiApps.forEach(function (b) { b.classList.remove('is-active'); });

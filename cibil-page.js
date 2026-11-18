@@ -74,30 +74,6 @@
     payBtnText.textContent = 'Pay ₹' + currentPrice + ' via ' + (selectedApp || 'UPI') + ' →';
   }
 
-  var lottieAnim = null;
-
-  function initPaymentLottie() {
-    var container = document.getElementById('rx-cp-lottie');
-    if (!container || !window.lottie || lottieAnim) return;
-
-    try {
-      var params = {
-        container: container,
-        renderer: 'svg',
-        loop: true,
-        autoplay: true
-      };
-      if (window.PAYMENT_LOTTIE_DATA) {
-        params.animationData = window.PAYMENT_LOTTIE_DATA;
-      } else {
-        params.path = 'animations/payment.json';
-      }
-      lottieAnim = window.lottie.loadAnimation(params);
-    } catch (e) {
-      console.warn('Lottie initialization failed:', e);
-    }
-  }
-
   /* Step switcher */
   function goToStep(num, skipHash) {
     if (step1) step1.style.display = 'none';
@@ -132,7 +108,6 @@
       if (line2) line2.classList.add('is-done');
       if (ind3) ind3.classList.add('is-active');
       if (!skipHash) history.pushState(null, '', '#step3');
-      initPaymentLottie();
     } else if (num === 4) {
       if (step3) step3.style.display = '';
       if (ind1) ind1.classList.add('is-done');
@@ -210,7 +185,7 @@
   }
 
   /* UPI App option selection */
-  var upiApps = document.querySelectorAll('#rx-cp-step-pay .rx-upi-app');
+  var upiApps = document.querySelectorAll('#rx-cp-step-pay .rx-pay-app-btn');
   upiApps.forEach(function (btn) {
     btn.addEventListener('click', function () {
       upiApps.forEach(function (b) { b.classList.remove('is-active'); });

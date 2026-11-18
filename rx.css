@@ -735,63 +735,62 @@ body.rx{font-family:var(--rx-font);color:var(--rx-text);background:#fff}
 .rx-cibil-done{width:100%;height:46px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:var(--rx-green);color:#fff;font-weight:700;border:0;cursor:pointer}
 .rx-cibil-done:hover{background:#15803d}
 
-/* ===== REDESIGNED CLEAN UPI PAYMENT EXPERIENCE ===== */
-.rx-upi-wrapper{display:flex;flex-direction:column;align-items:center;padding:8px 4px 16px;gap:20px;width:100%;box-sizing:border-box}
+/* ===== CLEAN UPI CHECKOUT (Inspired by RAVEN Login Page Design) ===== */
+.rx-pay-container{display:flex;flex-direction:column;gap:16px;padding:16px 24px 28px;box-sizing:border-box;width:100%}
 
-/* Hero Amount & Illustration Block */
-.rx-upi-hero{display:flex;flex-direction:column;align-items:center;text-align:center;width:100%;gap:10px}
-.rx-upi-lottie-circle{width:92px;height:92px;border-radius:50%;background:linear-gradient(145deg,#eff6ff 0%,#f8fafc 100%);border:2px solid #dbeafe;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 25px -6px rgba(29,78,216,.14);margin-bottom:2px;overflow:hidden;flex:none}
-.rx-upi-lottie-circle .rx-lottie-anim{width:82px;height:82px}
+/* Order Summary Box */
+.rx-pay-summary{background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:16px;padding:18px 20px;display:flex;flex-direction:column;gap:12px}
+.rx-pay-summary-top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.rx-pay-bureau-badge{font-size:13px;font-weight:700;color:#1d4ed8;background:#eff6ff;border:1px solid #bfdbfe;padding:4px 12px;border-radius:20px}
+.rx-pay-instant-badge{font-size:11.5px;font-weight:700;color:#16a34a;background:#e6f7ec;padding:3px 10px;border-radius:12px}
+.rx-pay-amount-row{display:flex;align-items:flex-end;justify-content:space-between;padding:8px 0;border-top:1px dashed #e2e8f0;border-bottom:1px dashed #e2e8f0;margin:2px 0}
+.rx-pay-amount-label{display:block;font-size:12px;font-weight:500;color:#64748b;margin-bottom:2px}
+.rx-pay-amount{font-size:32px;font-weight:800;color:#0f172a;line-height:1;letter-spacing:-.02em}
+.rx-pay-currency{font-size:22px;font-weight:700;color:#1d4ed8;margin-right:2px}
+.rx-pay-secure-tag{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:#16a34a;background:#fff;border:1px solid #bbf7d0;padding:5px 10px;border-radius:8px}
+.rx-pay-applicant-bar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:12.5px;color:#64748b}
+.rx-pay-applicant-bar strong{color:#0f172a;font-weight:600}
 
-.rx-upi-badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--rx-blue);background:#e8efff;padding:4px 14px;border-radius:20px;letter-spacing:.01em}
+/* Section Label */
+.rx-pay-section-label{font-size:13.5px;font-weight:700;color:#0f172a;margin-top:2px;display:flex;align-items:center;gap:6px}
 
-.rx-upi-price-tag{display:inline-flex;align-items:baseline;gap:2px;color:var(--rx-navy);margin:2px 0}
-.rx-upi-cur{font-size:24px;font-weight:700;color:var(--rx-blue)}
-.rx-upi-val{font-size:42px;font-weight:800;line-height:1;letter-spacing:-.02em;color:var(--rx-ink)}
+/* UPI Apps Grid (like au-roles in signup.html) */
+.rx-pay-apps-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;width:100%}
+.rx-pay-app-btn{display:flex;align-items:center;gap:12px;padding:13px 15px;background:#ffffff;border:1.5px solid #e2e8f0;border-radius:14px;cursor:pointer;font-family:inherit;text-align:left;transition:all .2s ease;position:relative;box-sizing:border-box;outline:none}
+.rx-pay-app-btn:hover{border-color:#93c5fd;background:#f8fafc;transform:translateY(-1px);box-shadow:0 4px 12px rgba(29,78,216,.08)}
+.rx-pay-app-btn.is-active{border-color:#1d4ed8;background:#eff6ff;box-shadow:0 0 0 2px rgba(29,78,216,.25)}
+.rx-pay-app-ico{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid #e2e8f0;flex:none}
+.rx-pay-app-name{font-size:14px;font-weight:600;color:#0f172a;flex:1}
+.rx-pay-radio-dot{width:18px;height:18px;border-radius:50%;border:2px solid #cbd5e1;background:#fff;transition:all .2s ease;flex:none}
+.rx-pay-app-btn.is-active .rx-pay-radio-dot{border-color:#1d4ed8;background:#1d4ed8;box-shadow:inset 0 0 0 3px #ffffff}
 
-.rx-upi-applicant-sub{margin:0;font-size:13px;color:var(--rx-mute);display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px}
-.rx-upi-applicant-sub strong{color:var(--rx-ink);font-weight:600}
+/* Custom VPA Input (like au-in on login page) */
+.rx-pay-vpa-field{display:flex;flex-direction:column;gap:6px;width:100%}
+.rx-pay-vpa-field label{font-size:12.5px;font-weight:600;color:#475569}
+.rx-pay-vpa-wrap{display:flex;align-items:center;border:1.5px solid #cbd5e1;border-radius:10px;background:#ffffff;padding:0 14px;height:48px;transition:all .2s}
+.rx-pay-vpa-wrap:focus-within{border-color:#1d4ed8;box-shadow:0 0 0 3px rgba(29,78,216,.15)}
+.rx-pay-vpa-icon{font-size:16px;font-weight:700;color:#94a3b8;margin-right:10px;flex:none}
+.rx-pay-vpa-wrap input{flex:1;border:0;outline:0;font:inherit;font-size:14.5px;color:#0f172a;background:transparent}
 
-/* UPI Payment Card */
-.rx-upi-card{width:100%;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:18px;padding:20px 22px;display:flex;flex-direction:column;gap:14px;box-sizing:border-box}
-.rx-upi-card-head{display:flex;align-items:center;justify-content:space-between;padding-bottom:12px;border-bottom:1px solid #eef2f7}
-.rx-upi-head-left{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--rx-ink)}
-.rx-upi-fast-badge{font-size:11.5px;font-weight:700;color:#16a34a;background:#e6f7ec;padding:3px 10px;border-radius:12px}
+/* Primary Submit CTA (like au-submit on login page) */
+.rx-pay-submit-btn{width:100%;height:50px;background:linear-gradient(135deg,#0b2b5e 0%,#1d4ed8 100%);color:#ffffff;font:inherit;font-size:16px;font-weight:700;border:0;border-radius:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:all .22s ease;box-shadow:0 10px 24px -6px rgba(29,78,216,.45);margin-top:4px}
+.rx-pay-submit-btn:hover{filter:brightness(1.1);transform:translateY(-1px);box-shadow:0 14px 28px -6px rgba(29,78,216,.55)}
+.rx-pay-submit-btn:active{transform:translateY(0)}
+.rx-pay-submit-btn:disabled{opacity:.75;cursor:not-allowed}
 
-/* UPI Apps Grid */
-.rx-upi-apps{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;width:100%}
-.rx-upi-app{display:flex;align-items:center;gap:12px;padding:12px 14px;background:#fff;border:1.5px solid #e2e8f0;border-radius:12px;cursor:pointer;font-family:inherit;text-align:left;transition:all .2s ease;position:relative}
-.rx-upi-app:hover{border-color:var(--rx-blue);background:#fafcff;transform:translateY(-1px);box-shadow:0 4px 12px rgba(29,78,216,.08)}
-.rx-upi-app.is-active{border-color:var(--rx-blue);background:#f0f6ff;box-shadow:0 0 0 2px rgba(29,78,216,.2)}
-
-.rx-upi-app-ico{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:#fff;border:1px solid #e2e8f0;flex:none}
-.rx-upi-app-title{font-size:13.5px;font-weight:700;color:var(--rx-ink);flex:1}
-.rx-upi-radio{width:16px;height:16px;border-radius:50%;border:2px solid #cbd5e1;background:#fff;transition:all .2s;flex:none}
-.rx-upi-app.is-active .rx-upi-radio{border-color:var(--rx-blue);background:var(--rx-blue);box-shadow:inset 0 0 0 3px #fff}
-
-/* Custom UPI ID Field */
-.rx-upi-id-field{display:flex;flex-direction:column;gap:6px;width:100%;margin-top:2px}
-.rx-upi-id-field label{font-size:12px;font-weight:600;color:var(--rx-mute)}
-.rx-upi-input-group{display:flex;align-items:center;border:1.5px solid #cbd5e1;border-radius:10px;background:#fff;padding:0 14px;height:46px;transition:all .2s}
-.rx-upi-input-group:focus-within{border-color:var(--rx-blue);box-shadow:0 0 0 3px rgba(29,78,216,.12)}
-.rx-upi-input-group input{flex:1;border:0;outline:0;font:inherit;font-size:14px;color:var(--rx-ink);background:transparent}
-
-/* Submit Pay CTA */
-.rx-upi-submit-btn{width:100%;height:52px;background:linear-gradient(135deg,var(--rx-navy),var(--rx-blue));color:#fff;font:inherit;font-size:16px;font-weight:700;border:0;border-radius:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:all .22s ease;box-shadow:0 10px 24px -6px rgba(29,86,184,.45);margin-top:4px}
-.rx-upi-submit-btn:hover{filter:brightness(1.1);transform:translateY(-1px);box-shadow:0 14px 28px -6px rgba(29,86,184,.55)}
-.rx-upi-submit-btn:active{transform:translateY(0)}
-.rx-upi-submit-btn:disabled{opacity:.75;cursor:not-allowed}
-
-/* Trust Bar */
-.rx-upi-trust{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;font-size:12px;font-weight:600;color:var(--rx-mute);padding-top:2px}
-.rx-upi-trust span{display:inline-flex;align-items:center;gap:5px}
+/* Trust Badges */
+.rx-pay-trust-row{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;font-size:12px;font-weight:600;color:#64748b;padding-top:2px}
+.rx-pay-trust-row span{display:inline-flex;align-items:center;gap:5px}
 
 .rx-cibil-success-details{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:12px 16px;margin:12px 0 16px;display:flex;flex-direction:column;gap:6px;text-align:left;font-size:13px}
 .rx-cibil-success-details div{display:flex;justify-content:space-between}
 
-/* Modal specific padding */
-.rx-cibil-modal .rx-upi-wrapper{padding:6px 20px 24px}
-.rx-cibil-modal .rx-upi-card{padding:16px 18px}
+.rx-cibil-modal{width:94%;max-width:520px;border:0;border-radius:20px;padding:0;background:#ffffff;box-shadow:0 25px 60px -15px rgba(11,43,94,.35);box-sizing:border-box}
+@media(max-width:640px){
+  .rx-pay-container{padding:14px 16px 22px;gap:14px}
+  .rx-pay-apps-grid{grid-template-columns:1fr;gap:10px}
+  .rx-pay-amount{font-size:28px}
+}
 
 /* ===== DEDICATED FULL-PAGE CIBIL FLOW (cibil-score.html) ===== */
 .rx-cibil-page{background:linear-gradient(180deg,#f8fafc 0%,#f0f4f9 100%);min-height:85vh;padding:32px 0 64px}
