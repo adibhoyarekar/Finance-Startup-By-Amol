@@ -68,10 +68,12 @@
   var currentName = '';
   var currentPhone = '';
   var selectedApp = 'Google Pay';
+  var payMethod = 'upi';
+  function payLabel() { return payMethod === 'card' ? 'Card' : (selectedApp || 'UPI'); }
 
   function updatePayBtn() {
     if (!payBtnText) return;
-    payBtnText.textContent = 'Pay ₹' + currentPrice + ' via ' + (selectedApp || 'UPI') + ' →';
+    payBtnText.textContent = 'Pay ₹' + currentPrice + ' via ' + payLabel() + ' →';
   }
 
   /* Step switcher */
@@ -195,6 +197,7 @@
       if (appType === 'gpay') selectedApp = 'Google Pay';
       else if (appType === 'phonepe') selectedApp = 'PhonePe';
       else if (appType === 'paytm') selectedApp = 'Paytm';
+      else if (appType === 'qr') selectedApp = 'UPI QR';
       else selectedApp = 'UPI';
 
       if (customUpiField) {
@@ -203,6 +206,24 @@
           customUpiInp.focus();
         }
       }
+      var qrNote = document.getElementById('rx-cp-qr-note');
+      if (qrNote) qrNote.hidden = appType !== 'qr';
+      updatePayBtn();
+    });
+  });
+
+  /* Payment method tabs: UPI / Card */
+  var payTabs = document.getElementById('rx-cp-step-pay').querySelectorAll('.rx-pay-method');
+  var payPanels = document.getElementById('rx-cp-step-pay').querySelectorAll('.rx-pay-panel');
+  payTabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      payMethod = tab.getAttribute('data-method');
+      payTabs.forEach(function (t) {
+        var on = t === tab;
+        t.classList.toggle('is-active', on);
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      payPanels.forEach(function (p) { p.hidden = p.getAttribute('data-panel') !== payMethod; });
       updatePayBtn();
     });
   });
@@ -276,7 +297,7 @@
   if (payBtn) {
     payBtn.addEventListener('click', function () {
       payBtn.disabled = true;
-      if (payBtnText) payBtnText.textContent = 'Connecting to ' + (selectedApp || 'UPI') + '...';
+      if (payBtnText) payBtnText.textContent = 'Connecting to ' + payLabel() + '...';
 
       setTimeout(function () {
         payBtn.disabled = false;
@@ -285,7 +306,7 @@
         // Populate Success Screen
         if (resName) resName.textContent = currentName;
         if (resBureau) resBureau.textContent = BUREAU_MAP[currentBureau] || BUREAU_MAP.both;
-        if (resAmount) resAmount.innerHTML = '₹' + currentPrice + ' &bull; Paid via ' + (selectedApp || 'UPI');
+        if (resAmount) resAmount.innerHTML = '₹' + currentPrice + ' &bull; Paid via ' + payLabel();
         if (resPhone) {
           resPhone.textContent = '+91 ' + currentPhone.substring(0, 2) + '•••• ••' + currentPhone.substring(8);
         }
