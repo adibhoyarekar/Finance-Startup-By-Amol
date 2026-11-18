@@ -39,8 +39,10 @@
   var payName = document.getElementById('rx-cp-pay-name');
   var payPhone = document.getElementById('rx-cp-pay-phone');
   var payTotal = document.getElementById('rx-cp-pay-total');
-  var customUpiField = document.getElementById('rx-cp-upi-field');
-  var customUpiInp = document.getElementById('rx-cp-vpa');
+  var payMsg = stepPay ? stepPay.querySelector('[data-cm-msg]') : null;
+  var recheckBtn = stepPay ? stepPay.querySelector('[data-cm-recheck]') : null;
+  var guardEl = stepPay ? stepPay.querySelector('[data-cm-guard]') : null;
+  var testBadge = stepPay ? stepPay.querySelector('[data-cm-test]') : null;
 
   // Success step elements
   var resName = document.getElementById('rx-cp-res-name');
@@ -67,17 +69,37 @@
   var currentPrice = 250;
   var currentName = '';
   var currentPhone = '';
-  var selectedApp = 'Google Pay';
-  var payMethod = 'upi';
-  function payLabel() { return payMethod === 'card' ? 'Card' : (selectedApp || 'UPI'); }
+  var currentPan = '';
+  var paidView = null;
+  var openOrderId = null;
 
   function updatePayBtn() {
     if (!payBtnText) return;
-    payBtnText.textContent = 'Pay ₹' + currentPrice + ' via ' + payLabel() + ' →';
+    payBtnText.textContent = 'Pay ₹' + currentPrice + ' securely →';
+  }
+
+  function setMsg(text, tone, recheck) {
+    if (payMsg) {
+      payMsg.textContent = text || '';
+      payMsg.className = 'rx-pay-msg' + (tone && tone !== 'info' ? ' is-' + tone : '');
+      payMsg.hidden = !text;
+    }
+    if (recheckBtn) recheckBtn.hidden = !recheck;
+  }
+
+  function setBusy(busy, label) {
+    if (!payBtn) return;
+    payBtn.disabled = busy;
+    if (busy && payBtnText) payBtnText.textContent = label;
+    if (!busy) updatePayBtn();
   }
 
   /* Step switcher */
   function goToStep(num, skipHash) {
+    if (num === 3 && paidView) num = 4;
+    if (num === 4 && !paidView) num = currentName || openOrderId ? 3 : 1;
+    if (num === 3 && !currentName && !openOrderId) num = 1;
+    if (num === 2 && !currentName && skipHash) num = 1;
     if (step1) step1.style.display = 'none';
     if (step2) step2.style.display = 'none';
     if (stepPay) stepPay.style.display = 'none';
@@ -186,48 +208,6 @@
     });
   }
 
-  /* UPI App option selection */
-  var upiApps = document.querySelectorAll('#rx-cp-step-pay .rx-pay-app-btn');
-  upiApps.forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      upiApps.forEach(function (b) { b.classList.remove('is-active'); });
-      btn.classList.add('is-active');
-      var appType = btn.getAttribute('data-app');
-
-      if (appType === 'gpay') selectedApp = 'Google Pay';
-      else if (appType === 'phonepe') selectedApp = 'PhonePe';
-      else if (appType === 'paytm') selectedApp = 'Paytm';
-      else if (appType === 'qr') selectedApp = 'UPI QR';
-      else selectedApp = 'UPI';
-
-      if (customUpiField) {
-        customUpiField.style.display = (appType === 'other') ? 'flex' : 'none';
-        if (appType === 'other' && customUpiInp) {
-          customUpiInp.focus();
-        }
-      }
-      var qrNote = document.getElementById('rx-cp-qr-note');
-      if (qrNote) qrNote.hidden = appType !== 'qr';
-      updatePayBtn();
-    });
-  });
-
-  /* Payment method tabs: UPI / Card */
-  var payTabs = document.getElementById('rx-cp-step-pay').querySelectorAll('.rx-pay-method');
-  var payPanels = document.getElementById('rx-cp-step-pay').querySelectorAll('.rx-pay-panel');
-  payTabs.forEach(function (tab) {
-    tab.addEventListener('click', function () {
-      payMethod = tab.getAttribute('data-method');
-      payTabs.forEach(function (t) {
-        var on = t === tab;
-        t.classList.toggle('is-active', on);
-        t.setAttribute('aria-selected', on ? 'true' : 'false');
-      });
-      payPanels.forEach(function (p) { p.hidden = p.getAttribute('data-panel') !== payMethod; });
-      updatePayBtn();
-    });
-  });
-
   /* Clear errors helper */
   function clearErrors() {
     document.querySelectorAll('.rx-cp-err').forEach(function (el) { el.textContent = ''; });
@@ -258,9 +238,9 @@
     }
 
     // 2. PAN format ABCDE1234F
-    var panRegex = /^[A-Z]{5}[0-9]{4}[A-Z]$/;
+    var panRegex = /^[A-Z]{3}P[A-Z][0-9]{4}[A-Z]$/;
     if (!panVal || !panRegex.test(panVal)) {
-      setError('field-cp-pan', 'rx-cp-err-pan', 'Please enter a valid 10-digit PAN card number (e.g. ABCDE1234F)');
+      setError('field-cp-pan', 'rx-cp-err-pan', 'Please enter a valid individual PAN (e.g. ABCPE1234F)');
       valid = false;
     }
 
@@ -282,6 +262,7 @@
 
     currentName = nameVal;
     currentPhone = phoneVal;
+    currentPan = panVal;
 
     // Populate Payment Screen
     if (payBureauPill) payBureauPill.textContent = BUREAU_MAP[currentBureau] || BUREAU_MAP.both;
@@ -289,41 +270,79 @@
     if (payPhone) payPhone.textContent = '+91 ' + currentPhone;
     if (payTotal) payTotal.textContent = currentPrice;
     updatePayBtn();
+    setMsg('');
 
     goToStep(3);
   });
 
-  /* Pay button click (Frontend simulated payment) */
+  function showPaid(v) {
+    paidView = v;
+    openOrderId = null;
+    var paidAt = new Date(v.payment.paidAt);
+    if (resName) resName.textContent = v.customer.name;
+    if (resBureau) resBureau.textContent = v.bureauLabel;
+    if (resAmount) resAmount.textContent = '₹' + v.amount + ' • Paid via ' + v.payment.method;
+    if (resPhone) resPhone.textContent = '+91 ' + v.customer.phone.slice(0, 2) + '•••• ••' + v.customer.phone.slice(8);
+    if (refId) refId.textContent = v.payment.id;
+    var orderEl = document.getElementById('rx-cp-order-id');
+    if (orderEl) orderEl.textContent = v.orderId;
+    var paidOn = document.getElementById('rx-cp-paid-on');
+    if (window.CMReport) {
+      if (paidOn) paidOn.textContent = CMReport.fmtDateTime(paidAt);
+      CMReport.mount(step3, CMReport.build({
+        bureau: v.bureau, name: v.customer.name, pan: v.customer.pan, phone: v.customer.phone,
+        refId: v.payment.id, amount: v.amount, method: v.payment.method, paidAt: paidAt
+      }));
+    }
+    setMsg('');
+    goToStep(4);
+  }
+
+  function onView(v) {
+    if (v.state === 'READY') return showPaid(v);
+    openOrderId = v.state === 'PENDING' || v.state === 'PROCESSING' ? v.orderId : null;
+    var m = CMPay.message(v);
+    setMsg(m.text, m.tone, m.recheck);
+  }
+
+  function onError(e) {
+    if (e && e.fields) {
+      var map = { name: ['field-cp-name', 'rx-cp-err-name'], pan: ['field-cp-pan', 'rx-cp-err-pan'], phone: ['field-cp-phone', 'rx-cp-err-phone'] };
+      Object.keys(e.fields).forEach(function (k) { if (map[k]) setError(map[k][0], map[k][1], e.fields[k]); });
+      goToStep(2);
+      return;
+    }
+    setMsg((e && e.message) || 'Something went wrong. Please try again.', 'error');
+  }
+
+  function track(promise) {
+    return promise.then(onView, onError).then(function () { setBusy(false); });
+  }
+
+  if (window.CMPay) {
+    CMPay.config().then(function (c) { if (testBadge) testBadge.hidden = c.mode !== 'sandbox' || !c.enabled; }, function () {});
+    CMPay.mountGuard(guardEl);
+  }
+
   if (payBtn) {
     payBtn.addEventListener('click', function () {
-      payBtn.disabled = true;
-      if (payBtnText) payBtnText.textContent = 'Connecting to ' + payLabel() + '...';
-
-      setTimeout(function () {
-        payBtn.disabled = false;
-        updatePayBtn();
-
-        // Populate Success Screen
-        if (resName) resName.textContent = currentName;
-        if (resBureau) resBureau.textContent = BUREAU_MAP[currentBureau] || BUREAU_MAP.both;
-        if (resAmount) resAmount.innerHTML = '₹' + currentPrice + ' &bull; Paid via ' + payLabel();
-        if (resPhone) {
-          resPhone.textContent = '+91 ' + currentPhone.substring(0, 2) + '•••• ••' + currentPhone.substring(8);
+      if (!window.CMPay || payBtn.disabled) return;
+      setMsg('');
+      setBusy(true, 'Opening secure payment…');
+      track(CMPay.pay({ bureau: currentBureau, name: currentName, phone: currentPhone, pan: currentPan, consent: true }, {
+        guardEl: guardEl,
+        onUpdate: function (v) {
+          if (v.state === 'PENDING' || v.state === 'PROCESSING') { setBusy(true, 'Confirming payment…'); onView(v); }
         }
-        var refNo = 'CM-CIBIL-' + Math.floor(10000 + Math.random() * 90000);
-        if (refId) refId.textContent = refNo;
-        var paidAt = new Date();
-        var paidOn = document.getElementById('rx-cp-paid-on');
-        if (window.CMReport) {
-          if (paidOn) paidOn.textContent = CMReport.fmtDateTime(paidAt);
-          CMReport.mount(document.getElementById('rx-cp-step-3'), CMReport.build({
-            bureau: currentBureau, name: currentName, pan: panInp ? panInp.value.toUpperCase() : '', phone: currentPhone,
-            refId: refNo, amount: currentPrice, method: payLabel(), paidAt: paidAt
-          }));
-        }
+      }));
+    });
+  }
 
-        goToStep(4);
-      }, 700);
+  if (recheckBtn) {
+    recheckBtn.addEventListener('click', function () {
+      if (!openOrderId) return;
+      setBusy(true, 'Checking payment…');
+      track(CMPay.resume(openOrderId, { maxMs: 30000, onUpdate: onView }));
     });
   }
 
@@ -332,17 +351,32 @@
     againBtn.addEventListener('click', function () {
       form.reset();
       clearErrors();
+      paidView = null;
+      currentName = '';
+      if (window.CMPay) CMPay.clear();
       goToStep(1);
     });
   }
 
-  // Initial step setup based on hash or default
-  if (location.hash === '#step2') {
-    goToStep(2, true);
-  } else if (location.hash === '#step3') {
+  /* Returning from a bank or UPI redirect, or reopening the page after closing it mid-payment */
+  function resumeId() {
+    var q = new URLSearchParams(location.search).get('order_id');
+    if (q && window.CMPay && CMPay.hasToken(q)) return q;
+    return window.CMPay ? CMPay.lastOpen() : null;
+  }
+  var resumeOrder = resumeId();
+  if (new URLSearchParams(location.search).has('order_id')) history.replaceState(null, '', location.pathname + location.hash);
+
+  if (resumeOrder) {
+    openOrderId = resumeOrder;
     goToStep(3, true);
-  } else if (location.hash === '#step4') {
-    goToStep(4, true);
+    setMsg('Checking your payment status…', 'info');
+    setBusy(true, 'Checking payment…');
+    track(CMPay.resume(resumeOrder, { maxMs: 60000, onUpdate: function (v) { if (v.state === 'PENDING' || v.state === 'PROCESSING') onView(v); } })).then(function () {
+      if (!paidView && !openOrderId) goToStep(1, true);
+    });
+  } else if (location.hash === '#step2') {
+    goToStep(2, true);
   } else {
     goToStep(1, true);
   }
