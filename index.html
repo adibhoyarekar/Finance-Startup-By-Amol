@@ -392,74 +392,97 @@
       </form>
     </div>
 
-    <!-- Step 3: Payment (Frontend) -->
+    <!-- Step 3: Payment (Frontend UPI Only) -->
     <div class="rx-cibil-step" id="rx-cibil-step-pay" style="display:none">
       <div class="rx-cibil-hd">
         <button type="button" class="rx-cibil-back" aria-label="Go back" id="rx-cibil-pay-back">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
         </button>
-        <h2>Complete Payment</h2>
+        <h2>UPI Checkout</h2>
         <button type="button" class="rx-cibil-x" aria-label="Close" data-rx-cibil-close>&times;</button>
       </div>
 
-      <div class="rx-cibil-pay-content">
-        <!-- Lottie Animation Container -->
-        <div class="rx-cibil-lottie-wrap">
-          <div id="rx-cibil-lottie" style="width:130px;height:130px;margin:0 auto"></div>
+      <div class="rx-upi-wrapper">
+        <!-- Top Hero: Ambient Lottie Animation & Payable Amount -->
+        <div class="rx-upi-hero">
+          <div class="rx-upi-lottie-circle">
+            <div id="rx-cibil-lottie" class="rx-lottie-anim"></div>
+          </div>
+          <span class="rx-upi-badge" id="rx-cibil-pay-bureau-pill">Both Reports (CRIF + TransUnion)</span>
+          <div class="rx-upi-price-tag">
+            <span class="rx-upi-cur">₹</span>
+            <span class="rx-upi-val" id="rx-cibil-pay-total">250</span>
+          </div>
+          <p class="rx-upi-applicant-sub">
+            Applicant: <strong id="rx-cibil-pay-name">-</strong> &bull; <span id="rx-cibil-pay-phone">+91 ••••••••••</span>
+          </p>
         </div>
 
-        <!-- Order Summary -->
-        <div class="rx-cibil-order-summary">
-          <div class="rx-cibil-order-row">
-            <span>Selected Bureau</span>
-            <strong id="rx-cibil-pay-bureau">Both Reports</strong>
+        <!-- UPI Payment Card -->
+        <div class="rx-upi-card">
+          <div class="rx-upi-card-head">
+            <div class="rx-upi-head-left">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--rx-blue)"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+              <strong>Pay via UPI</strong>
+            </div>
+            <span class="rx-upi-fast-badge">⚡ Instant Score Delivery</span>
           </div>
-          <div class="rx-cibil-order-row">
-            <span>Applicant</span>
-            <strong id="rx-cibil-pay-name">-</strong>
+
+          <!-- UPI App Selector Grid -->
+          <div class="rx-upi-apps">
+            <button type="button" class="rx-upi-app is-active" data-app="gpay">
+              <span class="rx-upi-app-ico">
+                <svg width="22" height="22" viewBox="0 0 24 24"><path fill="#4285F4" d="M12 5c1.6 0 3 .6 4.1 1.6l3.1-3.1C17.3 1.8 14.8 1 12 1 7.5 1 3.7 3.6 1.9 7.3l3.7 2.9C6.5 7.4 9 5 12 5z"/><path fill="#34A853" d="M12 23c3.2 0 6-1.1 8-3l-3.7-2.9c-1.1.7-2.5 1.2-4.3 1.2-3 0-5.5-2-6.4-4.8L1.9 16.4C3.7 20.1 7.5 23 12 23z"/><path fill="#FBBC05" d="M5.6 13.5c-.2-.7-.4-1.5-.4-2.5s.2-1.7.4-2.5L1.9 5.6C1.2 7.1.8 8.8.8 11s.4 3.9 1.1 5.4l3.7-2.9z"/><path fill="#EA4335" d="M20 12c0-.7-.1-1.4-.2-2H12v4.2h4.5c-.2 1.1-.9 2.1-1.8 2.8l3.7 2.9c2.2-2 3.6-5 3.6-7.9z"/></svg>
+              </span>
+              <span class="rx-upi-app-title">Google Pay</span>
+              <span class="rx-upi-radio"></span>
+            </button>
+
+            <button type="button" class="rx-upi-app" data-app="phonepe">
+              <span class="rx-upi-app-ico" style="background:#5f259f;color:#fff;font-weight:800;font-size:16px;line-height:1">
+                पे
+              </span>
+              <span class="rx-upi-app-title">PhonePe</span>
+              <span class="rx-upi-radio"></span>
+            </button>
+
+            <button type="button" class="rx-upi-app" data-app="paytm">
+              <span class="rx-upi-app-ico" style="background:#00baf2;color:#fff;font-weight:900;font-size:11px;letter-spacing:-.02em">
+                Paytm
+              </span>
+              <span class="rx-upi-app-title">Paytm UPI</span>
+              <span class="rx-upi-radio"></span>
+            </button>
+
+            <button type="button" class="rx-upi-app" data-app="other">
+              <span class="rx-upi-app-ico" style="background:#0b2b5e;color:#fff;font-weight:800;font-size:11px">
+                UPI
+              </span>
+              <span class="rx-upi-app-title">Any UPI ID</span>
+              <span class="rx-upi-radio"></span>
+            </button>
           </div>
-          <div class="rx-cibil-order-row">
-            <span>Bureau Report Fee</span>
-            <span id="rx-cibil-pay-fee">₹250</span>
+
+          <!-- Custom UPI ID field -->
+          <div class="rx-upi-id-field" id="rx-cibil-upi-field" style="display:none">
+            <label for="rx-cibil-vpa">Enter your UPI ID / VPA</label>
+            <div class="rx-upi-input-group">
+              <input type="text" id="rx-cibil-vpa" placeholder="e.g. yourname@okhdfcbank" autocomplete="off">
+            </div>
           </div>
-          <div class="rx-cibil-order-row">
-            <span>GST &amp; Portal Charges</span>
-            <span style="color:#16a34a">₹0 (Waived)</span>
-          </div>
-          <div class="rx-cibil-order-row rx-cibil-order-total">
-            <span>Total Payable Amount</span>
-            <strong id="rx-cibil-pay-total">₹250</strong>
-          </div>
+
+          <!-- Submit Pay Button -->
+          <button type="button" class="rx-upi-submit-btn" id="rx-cibil-pay-now">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <span id="rx-cibil-pay-btn-text">Pay ₹250 via UPI &rarr;</span>
+          </button>
         </div>
 
-        <!-- Payment Method Selection -->
-        <div class="rx-cibil-pm-selector">
-          <span class="rx-cibil-pm-label">Choose Payment Method:</span>
-          <div class="rx-cibil-pm-options">
-            <label class="rx-cibil-pm-card is-active">
-              <input type="radio" name="rx_cibil_pm" value="upi" checked>
-              <span class="rx-cibil-pm-icon">⚡</span>
-              <span>UPI (Google Pay / PhonePe / Paytm)</span>
-            </label>
-            <label class="rx-cibil-pm-card">
-              <input type="radio" name="rx_cibil_pm" value="card">
-              <span class="rx-cibil-pm-icon">💳</span>
-              <span>Credit / Debit Card</span>
-            </label>
-            <label class="rx-cibil-pm-card">
-              <input type="radio" name="rx_cibil_pm" value="netbanking">
-              <span class="rx-cibil-pm-icon">🏦</span>
-              <span>Net Banking</span>
-            </label>
-          </div>
+        <!-- Trust Bar -->
+        <div class="rx-upi-trust">
+          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 256-Bit SSL Encrypted</span>
+          <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2.6"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Instant Verification</span>
         </div>
-
-        <button type="button" class="rx-cibil-pay-now-btn" id="rx-cibil-pay-now">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          <span id="rx-cibil-pay-btn-text">Pay ₹250 Securely</span>
-        </button>
-
-        <p class="rx-cibil-pay-note">🔒 256-Bit SSL Encrypted &bull; Instant Bureau Dispatch</p>
       </div>
     </div>
 

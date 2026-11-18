@@ -2,28 +2,29 @@
 (function () {
   'use strict';
 
-  var modal     = document.getElementById('rx-cibil-modal');
-  var openBtn   = document.getElementById('rx-cibil-btn');
-  var step1     = document.getElementById('rx-cibil-step1');
-  var step2     = document.getElementById('rx-cibil-step2');
-  var stepPay   = document.getElementById('rx-cibil-step-pay');
-  var step3     = document.getElementById('rx-cibil-step3');
+  var modal      = document.getElementById('rx-cibil-modal');
+  var openBtn    = document.getElementById('rx-cibil-btn');
+  var step1      = document.getElementById('rx-cibil-step1');
+  var step2      = document.getElementById('rx-cibil-step2');
+  var stepPay    = document.getElementById('rx-cibil-step-pay');
+  var step3      = document.getElementById('rx-cibil-step3');
 
-  var backBtn   = document.getElementById('rx-cibil-back');
+  var backBtn    = document.getElementById('rx-cibil-back');
   var payBackBtn = document.getElementById('rx-cibil-pay-back');
-  var payBtn    = document.getElementById('rx-cibil-pay-now');
+  var payBtn     = document.getElementById('rx-cibil-pay-now');
   var payBtnText = document.getElementById('rx-cibil-pay-btn-text');
 
-  var form      = document.getElementById('rx-cibil-form');
-  var bureauTag = document.getElementById('rx-cibil-bureau-tag');
-  var bureauVal = document.getElementById('rx-cibil-bureau-val');
-  var formTitle = document.getElementById('rx-cibil-form-title');
+  var form       = document.getElementById('rx-cibil-form');
+  var bureauTag  = document.getElementById('rx-cibil-bureau-tag');
+  var bureauVal  = document.getElementById('rx-cibil-bureau-val');
+  var formTitle  = document.getElementById('rx-cibil-form-title');
 
   // Payment elements
-  var payBureau = document.getElementById('rx-cibil-pay-bureau');
-  var payName   = document.getElementById('rx-cibil-pay-name');
-  var payFee    = document.getElementById('rx-cibil-pay-fee');
-  var payTotal  = document.getElementById('rx-cibil-pay-total');
+  var payBureauPill = document.getElementById('rx-cibil-pay-bureau-pill');
+  var payName    = document.getElementById('rx-cibil-pay-name');
+  var payPhone   = document.getElementById('rx-cibil-pay-phone');
+  var payTotal   = document.getElementById('rx-cibil-pay-total');
+  var customUpiField = document.getElementById('rx-cibil-upi-field');
 
   // Success elements
   var modalResName   = document.getElementById('rx-cibil-modal-res-name');
@@ -52,6 +53,7 @@
   var currentPrice = 250;
   var currentName = '';
   var currentPhone = '';
+  var selectedApp = 'Google Pay';
 
   var modalLottieAnim = null;
 
@@ -75,6 +77,11 @@
     } catch (e) {
       console.warn('Modal Lottie initialization failed:', e);
     }
+  }
+
+  function updateModalPayBtn() {
+    if (!payBtnText) return;
+    payBtnText.textContent = 'Pay ₹' + currentPrice + ' via ' + (selectedApp || 'UPI') + ' →';
   }
 
   /* ---- helpers ---- */
@@ -101,7 +108,6 @@
 
   /* ---- open / close ---- */
   openBtn.addEventListener('click', function (e) {
-    // On mobile devices (<=768px), navigate directly to dedicated multi-step page
     if (window.innerWidth <= 768) {
       return; // Allows standard navigation to cibil-score.html
     }
@@ -152,11 +158,27 @@
     });
   }
 
-  /* Payment method selector mockup */
-  modal.querySelectorAll('.rx-cibil-pm-card').forEach(function (card) {
-    card.addEventListener('click', function () {
-      modal.querySelectorAll('.rx-cibil-pm-card').forEach(function (c) { c.classList.remove('is-active'); });
-      card.classList.add('is-active');
+  /* UPI app option buttons inside modal */
+  var upiApps = modal.querySelectorAll('.rx-upi-app');
+  upiApps.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      upiApps.forEach(function (b) { b.classList.remove('is-active'); });
+      btn.classList.add('is-active');
+      var appType = btn.getAttribute('data-app');
+
+      if (appType === 'gpay') selectedApp = 'Google Pay';
+      else if (appType === 'phonepe') selectedApp = 'PhonePe';
+      else if (appType === 'paytm') selectedApp = 'Paytm';
+      else selectedApp = 'UPI';
+
+      if (customUpiField) {
+        customUpiField.style.display = (appType === 'other') ? 'flex' : 'none';
+        if (appType === 'other') {
+          var inp = document.getElementById('rx-cibil-vpa');
+          if (inp) inp.focus();
+        }
+      }
+      updateModalPayBtn();
     });
   });
 
@@ -220,11 +242,11 @@
     currentPhone = phoneVal;
 
     // Populate Payment step
-    if (payBureau) payBureau.textContent = BUREAU_LABELS[currentBureau];
+    if (payBureauPill) payBureauPill.textContent = BUREAU_LABELS[currentBureau];
     if (payName) payName.textContent = currentName;
-    if (payFee) payFee.textContent = '₹' + currentPrice;
-    if (payTotal) payTotal.textContent = '₹' + currentPrice;
-    if (payBtnText) payBtnText.textContent = 'Pay ₹' + currentPrice + ' Securely';
+    if (payPhone) payPhone.textContent = '+91 ' + currentPhone;
+    if (payTotal) payTotal.textContent = currentPrice;
+    updateModalPayBtn();
 
     showStep(stepPay);
   });
@@ -233,14 +255,14 @@
   if (payBtn) {
     payBtn.addEventListener('click', function () {
       payBtn.disabled = true;
-      if (payBtnText) payBtnText.textContent = 'Processing Payment...';
+      if (payBtnText) payBtnText.textContent = 'Connecting to ' + (selectedApp || 'UPI') + '...';
 
       setTimeout(function () {
         payBtn.disabled = false;
-        if (payBtnText) payBtnText.textContent = 'Pay ₹' + currentPrice + ' Securely';
+        updateModalPayBtn();
 
         if (modalResName) modalResName.textContent = currentName;
-        if (modalResAmount) modalResAmount.textContent = '₹' + currentPrice;
+        if (modalResAmount) modalResAmount.textContent = '₹' + currentPrice + ' via ' + (selectedApp || 'UPI');
         if (modalRef) {
           modalRef.textContent = 'RAV-CIBIL-' + Math.floor(10000 + Math.random() * 90000);
         }
