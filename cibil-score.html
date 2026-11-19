@@ -57,6 +57,15 @@
       .rx-cp-field input{height:46px}
       .rx-cp-err{min-height:14px}
     }
+    #field-cp-gender[hidden]{display:none}
+    .rx-cp-gender{display:flex;gap:10px}
+    .rx-cp-gopt{flex:1;position:relative;cursor:pointer}
+    .rx-cp-field .rx-cp-gopt input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+    .rx-cp-gopt span{display:flex;align-items:center;justify-content:center;height:50px;border:1.5px solid #d0daf0;border-radius:10px;font-size:15px;font-weight:600;color:var(--rx-ink);background:#fff;transition:border-color .2s,box-shadow .2s,background .2s,color .2s}
+    .rx-cp-gopt input:checked+span{border-color:var(--rx-blue);background:#eaf1ff;color:var(--rx-blue)}
+    .rx-cp-gopt input:focus-visible+span{box-shadow:0 0 0 3px rgba(29,86,184,.18)}
+    .rx-cp-field.has-error .rx-cp-gopt span{border-color:var(--rx-red);box-shadow:0 0 0 3px rgba(239,68,68,.12)}
+    @media (max-width:640px){.rx-cp-gopt span{height:46px}}
   </style>
 </head>
 <body class="rx antialiased text-gray-900 bg-white">
@@ -230,6 +239,16 @@
               <span class="rx-cp-err" id="rx-cp-err-phone"></span>
             </div>
 
+            <!-- Gender (TransUnion) -->
+            <div class="rx-cp-field" id="field-cp-gender" hidden>
+              <label id="rx-cp-gender-label">Gender <span style="color:var(--rx-red)">*</span></label>
+              <div class="rx-cp-gender" role="radiogroup" aria-labelledby="rx-cp-gender-label">
+                <label class="rx-cp-gopt"><input type="radio" name="gender" value="male"><span>Male</span></label>
+                <label class="rx-cp-gopt"><input type="radio" name="gender" value="female"><span>Female</span></label>
+              </div>
+              <span class="rx-cp-err" id="rx-cp-err-gender"></span>
+            </div>
+
             <!-- Consent -->
             <label class="rx-cp-consent">
               <input type="checkbox" id="rx-cp-consent" checked required>
@@ -285,8 +304,8 @@
   <script src="site.js?v=3"></script>
   <script src="consent.js?v=7"></script>
   <script src="cibil-report.js?v=2"></script>
-  <script src="cibil-pay.js?v=3"></script>
+  <script src="cibil-pay.js?v=4"></script>
   <script src="cm-screen.js?v=2"></script>
-  <script src="cibil-page.js?v=9"></script>
+  <script src="cibil-page.js?v=10"></script>
 </body>
 </html>

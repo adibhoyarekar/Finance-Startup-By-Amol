@@ -71,7 +71,14 @@
     var label = BUREAU_MAP[currentBureau];
     if (selectedBureauName) selectedBureauName.textContent = label + ' (₹' + currentPrice + ')';
     if (formHeading) formHeading.textContent = 'Enter Details for ' + label;
+    var gf = document.getElementById('field-cp-gender');
+    if (gf) gf.hidden = !(currentBureau === 'transunion' || currentBureau === 'both');
     updateSubmit();
+  }
+
+  function genderValue() {
+    var r = form.querySelector('input[name="gender"]:checked');
+    return r ? r.value : '';
   }
 
   /* Keep the step bar in view without jumping the page when it is already visible */
@@ -154,7 +161,7 @@
   }
 
   function saveDraft(d) {
-    try { sessionStorage.setItem(DRAFT_KEY, JSON.stringify({ bureau: d.bureau, name: d.name, phone: d.phone })); } catch (e) { /* storage blocked */ }
+    try { sessionStorage.setItem(DRAFT_KEY, JSON.stringify({ bureau: d.bureau, name: d.name, phone: d.phone, gender: d.gender || '' })); } catch (e) { /* storage blocked */ }
   }
   function restoreDraft() {
     var d = null;
@@ -163,6 +170,7 @@
     setBureau(d.bureau);
     if (nameInp && d.name) nameInp.value = d.name;
     if (phoneInp && d.phone) phoneInp.value = d.phone;
+    if (d.gender) { var gr = form.querySelector('input[name="gender"][value="' + d.gender + '"]'); if (gr) gr.checked = true; }
     return true;
   }
 
@@ -340,7 +348,7 @@
       setBusy(false);
       if (e && e.fields) {
         Screen.hide();
-        var map = { name: ['field-cp-name', 'rx-cp-err-name'], pan: ['field-cp-pan', 'rx-cp-err-pan'], phone: ['field-cp-phone', 'rx-cp-err-phone'] };
+        var map = { name: ['field-cp-name', 'rx-cp-err-name'], pan: ['field-cp-pan', 'rx-cp-err-pan'], phone: ['field-cp-phone', 'rx-cp-err-phone'], gender: ['field-cp-gender', 'rx-cp-err-gender'] };
         Object.keys(e.fields).forEach(function (k) { if (map[k]) setError(map[k][0], map[k][1], e.fields[k]); });
         return;
       }
@@ -375,18 +383,24 @@
       setError('field-cp-phone', 'rx-cp-err-phone', 'Please enter a valid 10-digit mobile number starting with 6, 7, 8, or 9');
       valid = false;
     }
+    var needsGender = currentBureau === 'transunion' || currentBureau === 'both';
+    var genderVal = needsGender ? genderValue() : '';
+    if (needsGender && !genderVal) {
+      setError('field-cp-gender', 'rx-cp-err-gender', 'Please select your gender');
+      valid = false;
+    }
     if (consentInp && !consentInp.checked) {
       var errConsent = document.getElementById('rx-cp-err-consent');
       if (errConsent) errConsent.textContent = 'Please accept the authorization to fetch your credit report';
       valid = false;
     }
     if (!valid) {
-      var firstBad = form.querySelector('.has-error input');
+      var firstBad = form.querySelector('.has-error input[type="text"],.has-error input[type="tel"],.has-error input[type="radio"]');
       if (firstBad) firstBad.focus();
       return;
     }
 
-    var details = { bureau: currentBureau, name: nameVal, phone: phoneVal, pan: panVal, consent: true, owner: me ? me.id : null, client: forClient ? forClient.id : null };
+    var details = { bureau: currentBureau, name: nameVal, phone: phoneVal, pan: panVal, gender: needsGender ? genderVal : null, consent: true, owner: me ? me.id : null, client: forClient ? forClient.id : null };
     saveDraft(details);
     startPayment(details);
   });

@@ -26,6 +26,7 @@ export function newOrder(input) {
     v: 1,
     bureau: input.bureau,
     amount: product.amount,
+    gender: input.gender || null,
     currency: 'INR',
     status: 'CREATED',
     fulfil: 'NONE',
@@ -102,7 +103,7 @@ async function fulfil(store, o) {
   o.fulfilAttempts = (o.fulfilAttempts || 0) + 1;
   await saveOrder(store, o);
   try {
-    const report = await fetchReport({ bureau: o.bureau, name: decrypt(o.nameEnc), pan: decrypt(o.panEnc), phone: decrypt(o.phoneEnc) });
+    const report = await fetchReport({ bureau: o.bureau, name: decrypt(o.nameEnc), pan: decrypt(o.panEnc), phone: decrypt(o.phoneEnc), gender: o.gender || null });
     o.report = report;
     o.fulfil = 'DONE';
     o.deliveredAt = Date.now();

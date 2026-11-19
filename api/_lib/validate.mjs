@@ -20,8 +20,13 @@ export function validateOrderInput(body) {
   const phone = typeof body.phone === 'string' ? body.phone.trim() : '';
   if (!PHONE_RE.test(phone)) fields.phone = 'Enter a valid 10-digit mobile number.';
 
+  // TransUnion needs gender to match the person; CRIF does not.
+  const needsGender = bureau === 'transunion' || bureau === 'both';
+  const gender = typeof body.gender === 'string' ? body.gender.trim().toLowerCase() : '';
+  if (needsGender && gender !== 'male' && gender !== 'female') fields.gender = 'Select your gender.';
+
   if (body.consent !== true) fields.consent = 'Please give your consent to fetch your credit report.';
 
   if (Object.keys(fields).length) throw new HttpError(422, 'invalid_input', 'Please check the highlighted details.', { fields });
-  return { bureau, name, pan, phone };
+  return { bureau, name, pan, phone, gender: needsGender ? gender : null };
 }
