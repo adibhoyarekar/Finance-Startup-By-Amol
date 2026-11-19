@@ -23,6 +23,10 @@
     .rx-cp-step.is-enter .rx-cp-consent,.rx-cp-step.is-enter .rx-cp-submit-btn{animation-delay:.14s}
     @keyframes rxCpIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
     .rx-cp-bureau-card.is-picked{transform:scale(.98)}
+    .rx-cp-bureau-ico{width:66px;height:66px;border-radius:18px}
+    .cm-bureau-anim{display:flex;align-items:center;justify-content:center;width:132%;height:132%;flex:none;pointer-events:none}
+    .cm-bureau-anim svg{display:block}
+    .cm-bureau-anim .rv-fallback{width:28px;height:28px}
     @media(prefers-reduced-motion:reduce){.rx-cp-step.is-enter,.rx-cp-step.is-enter *{animation:none!important}}
     .rx-pay-guard{display:flex;justify-content:center;min-height:65px}
     .rx-pay-guard[hidden]{display:none}
@@ -45,7 +49,7 @@
       .rx-cp-options{gap:10px}
       .rx-cp-bureau-card{flex-direction:row;align-items:center;gap:12px;padding:12px 14px}
       .rx-cp-bureau-ico{width:44px;height:44px;border-radius:12px}
-      .rx-cp-bureau-ico svg{width:22px;height:22px}
+      .rx-cp-bureau-ico .rv-fallback{width:22px;height:22px}
       .rx-cp-bureau-body p,.rx-cp-bureau-btn{display:none}
       .rx-cp-badge-pop{top:-9px;right:12px}
       .rx-cp-active-bureau{margin-bottom:12px;padding:8px 12px}
@@ -137,7 +141,7 @@
             <!-- Option 1: CRIF -->
             <button type="button" class="rx-cp-bureau-card" data-bureau="crif" data-price="99" style="--opt-c:#1d4ed8;--opt-bg:#e8efff">
               <span class="rx-cp-bureau-ico">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 8h10M7 12h6M7 16h8"/></svg>
+                <span class="cm-bureau-anim" data-lottie="animations/cm-bureau-crif.json" aria-hidden="true"><svg class="rv-fallback" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 8h10M7 12h6M7 16h8"/></svg></span>
               </span>
               <div class="rx-cp-bureau-body">
                 <div class="rx-cp-bureau-title-row">
@@ -152,7 +156,7 @@
             <!-- Option 2: TransUnion -->
             <button type="button" class="rx-cp-bureau-card" data-bureau="transunion" data-price="199" style="--opt-c:#16a34a;--opt-bg:#e6f7ec">
               <span class="rx-cp-bureau-ico">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8"/></svg>
+                <span class="cm-bureau-anim" data-lottie="animations/cm-bureau-tu.json" aria-hidden="true"><svg class="rv-fallback" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8"/></svg></span>
               </span>
               <div class="rx-cp-bureau-body">
                 <div class="rx-cp-bureau-title-row">
@@ -168,7 +172,7 @@
             <button type="button" class="rx-cp-bureau-card is-popular" data-bureau="both" data-price="250" style="--opt-c:#7c3aed;--opt-bg:#f1ebff">
               <span class="rx-cp-badge-pop">⭐ Best Value &bull; Save ₹48</span>
               <span class="rx-cp-bureau-ico">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="18" height="8" rx="2"/></svg>
+                <span class="cm-bureau-anim" data-lottie="animations/cm-bureau-both.json" aria-hidden="true"><svg class="rv-fallback" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="18" height="8" rx="2"/></svg></span>
               </span>
               <div class="rx-cp-bureau-body">
                 <div class="rx-cp-bureau-title-row">
@@ -277,6 +281,7 @@
 
   <script src="raven-app.js?v=5"></script>
   <script src="rx.js?v=1"></script>
+  <script src="lottie.min.js"></script>
   <script src="site.js?v=3"></script>
   <script src="consent.js?v=7"></script>
   <script src="cibil-report.js?v=2"></script>
