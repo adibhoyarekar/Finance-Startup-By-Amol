@@ -74,7 +74,7 @@ function req(path, body, { origin = ORIGIN, type = 'application/json', ip, heade
     body: method === 'GET' ? undefined : typeof body === 'string' ? body : JSON.stringify(body)
   });
 }
-const VALID = { bureau: 'crif', name: 'Rahul Sharma', pan: 'ABCPE1234F', phone: '9876543210', consent: true };
+const VALID = { bureau: 'crif', name: 'Rahul Sharma', pan: 'ABCPE1234F', phone: '9876543210', gender: 'male', consent: true };
 let phoneN = 0;
 function details(extra = {}) {
   phoneN += 1;
@@ -119,6 +119,18 @@ test('price is set by the server, not the browser', async () => {
   assert.equal(sent.order_meta.notify_url, 'https://credmates.test/api/cashfree/webhook');
   assert.equal(sent.order_meta.return_url, 'https://credmates.test/cibil-score.html?order_id={order_id}');
   assert.ok(!JSON.stringify(sent).includes('ABCPE1234F'), 'PAN must not be sent to the gateway');
+});
+
+test('gender is required for TransUnion and Both, optional for CRIF', async () => {
+  for (const bureau of ['transunion', 'both']) {
+    for (const gender of [undefined, '', 'other', 'M', 5]) {
+      const { res, body } = await createOrder({ bureau, gender });
+      assert.equal(res.status, 422, bureau + ' ' + gender);
+      assert.ok(body.fields.gender);
+    }
+    assert.equal((await createOrder({ bureau, gender: 'female' })).res.status, 201);
+  }
+  assert.equal((await createOrder({ bureau: 'crif', gender: undefined })).res.status, 201);
 });
 
 test('PAN, name and phone are encrypted at rest', async () => {

@@ -168,6 +168,7 @@
         if (!token) throw fail('security_check', 'Please complete the security check, then tap Pay.');
       }
       var body = { bureau: details.bureau, name: details.name, phone: details.phone, pan: details.pan, consent: details.consent === true, turnstileToken: token };
+      if (details.gender) body.gender = details.gender;
       return api('/api/cibil/order', body).then(function (o) {
         resetGuard(ui.guardEl);
         remember(o.orderId, o.accessToken, o.paymentSessionId, o.mode, { owner: details.owner || null, client: details.client || null, bureau: details.bureau, amount: o.amount });
