@@ -2,7 +2,7 @@
    each with a progress tracker. Credit report status comes from the payment server; the
    rest lives in this browser like the other account pages (see raven-app.js). */
 (function () {
-  var App = window.RavenApp, UI = window.RavenUI, Pay = window.CMPay, S = window.RavenAuctions;
+  var App = window.RavenApp, UI = window.RavenUI, Pay = window.CMPay, S = window.RavenAuctions, Track = window.CMTrack;
   var me = App && App.guard();
   if (!me || !UI) return;
   var esc = App.esc, ic = UI.icon, $ = function (id) { return document.getElementById(id); };
@@ -25,7 +25,7 @@
   $('top-area').textContent = isAgent ? 'Agent dashboard' : 'My account';
   $('me-avatar').innerHTML = UI.avatar(name, 'is-sm');
   $('me-name').textContent = name;
-  $('o-sub').textContent = isAgent ? 'Credit reports you ordered, your client files and auction bids – and where each one stands.' : 'Your credit reports and auction bids – and where each one stands.';
+  $('o-sub').textContent = isAgent ? 'Credit reports you ordered, your client files and auction bids – and where each one stands.' : 'Your credit reports, loan applications and auction bids – and where each one stands.';
   document.addEventListener('click', function (e) { if (e.target.closest('[data-logout]')) { App.logout(); location.href = 'index.html'; } });
   UI.hydrate();
 
@@ -167,8 +167,24 @@
       meta: [prod].concat(c.amount ? [rupee(c.amount)] : []).concat(c.mobile ? [c.mobile] : []).concat(c.city ? [c.city] : []).concat(['Updated ' + when(c.updatedAt || c.createdAt)]),
       steps: steps(STAGES.map(function (s, i) { return [STAGE_LABEL[s], closed ? (i === 0 ? 'done' : 'todo') : i < idx ? 'done' : i === idx ? (s === 'disbursed' ? 'done' : 'now') : 'todo']; }).concat(closed ? [['Rejected / closed', 'fail']] : [])),
       note: due ? 'Follow-up due ' + new Date(c.followUp).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' }) + '.' + (last ? ' Last update: ' + last.text : '') : last ? 'Last update: ' + last.text : '',
-      actions: btn('Open file', 'href="dashboard.html#c-' + encodeURIComponent(c.id) + '"', true, 'user') + btn('Check CIBIL', 'href="cibil-score.html?client=' + encodeURIComponent(c.id) + '"', false, 'file'),
+      actions: btn('Open file', 'href="dashboard.html#c-' + encodeURIComponent(c.id) + '"', true, 'user') + (Track ? btn('Share tracker', 'data-share="' + esc(c.id) + '"', false, 'globe') : '') + btn('Check CIBIL', 'href="cibil-score.html?client=' + encodeURIComponent(c.id) + '"', false, 'file'),
       search: [c.name, c.mobile, c.city, prod, label].join(' ')
+    };
+  }
+
+  /* ---------- loan applications shared by an agent (customers) ---------- */
+  function loanItem(t) {
+    var closed = t.stage === 'closed', idx = closed ? 0 : Track.STAGES.indexOf(t.stage);
+    var info = Track.STAGE[t.stage];
+    return {
+      kind: 'loan', id: t.id, at: Date.parse(t.updatedAt || 0) || t.savedAt || 0, title: t.productLabel + ' application', icon: 'briefcase',
+      tone: closed ? 'mute' : t.stage === 'disbursed' ? 'ok' : 'info', pill: info.label,
+      bucket: closed ? 'closed' : t.stage === 'disbursed' ? 'done' : 'active',
+      meta: [].concat(t.amount ? [rupee(t.amount)] : []).concat(t.agent ? ['Advisor ' + t.agent] : []).concat(t.updatedAt ? ['Updated ' + when(t.updatedAt)] : []),
+      steps: steps(Track.STAGES.map(function (s, i) { return [Track.STAGE[s].short, closed ? (i === 0 ? 'done' : 'todo') : i < idx || (i === idx && s === 'disbursed') ? 'done' : i === idx ? 'now' : 'todo']; }).concat(closed ? [['Closed', 'fail']] : [])),
+      note: info.text,
+      actions: btn('Open tracker', 'href="track.html#t=' + t.token + '"', true, 'eye') + (t.agentMobile ? btn('Call advisor', 'href="tel:+91' + t.agentMobile + '"', false, 'phone') : '') + btn('Remove', 'data-untrack="' + esc(t.id) + '"', false, 'trash'),
+      search: [t.productLabel, t.agent, info.label, t.name].join(' ')
     };
   }
 
@@ -203,13 +219,14 @@
   }
 
   /* ---------- render ---------- */
-  var TYPES = [['all', 'All'], ['report', 'Credit reports']].concat(isAgent ? [['file', 'Client files']] : []).concat([['auction', 'Auctions']]);
+  var TYPES = [['all', 'All'], ['report', 'Credit reports']].concat(isAgent ? [['file', 'Client files']] : [['loan', 'Loan applications']]).concat([['auction', 'Auctions']]);
   var STATUS = [['all', 'Any status'], ['action', 'Needs action'], ['active', 'In progress'], ['done', 'Completed'], ['closed', 'Closed']];
   var TONE_PILL = { ok: 'st-disbursed', info: 'st-submitted', warn: 'st-docs', bad: 'ord-bad', mute: 'st-closed' };
 
   function items() {
     var list = myReports().map(reportItem);
     if (isAgent) list = list.concat(App.clients().map(clientItem));
+    else if (Track) list = list.concat(Track.list().map(loanItem));
     list = list.concat(myAuctions().map(auctionItem));
     return list.sort(function (a, b) { return (b.bucket === 'action') - (a.bucket === 'action') || b.at - a.at; });
   }
@@ -247,7 +264,7 @@
       return (filter.type === 'all' || x.kind === filter.type) && (filter.status === 'all' || x.bucket === filter.status) && (!q || x.search.toLowerCase().indexOf(q) !== -1);
     });
     $('o-list').innerHTML = shown.length ? shown.map(card).join('') : '<div class="ap-card ap-empty"><span class="art">' + ic('listcheck', 28) + '</span><h3>' +
-      (all.length ? 'No orders match' : 'No orders yet') + '</h3><p>' + (all.length ? 'Try another filter or clear the search.' : isAgent ? 'Check a client’s CIBIL score, add a client file or join a bank auction – everything shows up here.' : 'Check your CIBIL score or join a bank auction – your orders will show up here.') + '</p>' +
+      (all.length ? 'No orders match' : 'No orders yet') + '</h3><p>' + (all.length ? 'Try another filter or clear the search.' : isAgent ? 'Check a client’s CIBIL score, add a client file or join a bank auction – everything shows up here.' : 'Check your CIBIL score, open a loan status link from your advisor or join a bank auction – your orders will show up here.') + '</p>' +
       (all.length ? '' : '<a class="ap-btn is-primary" href="cibil-score.html">' + ic('plus', 18) + 'Check CIBIL score</a>') + '</div>';
     $('o-foot').textContent = all.some(function (x) { return x.kind === 'report'; }) ? 'Credit reports bought on this device are listed for 30 days. Statuses update automatically.' : '';
   }
@@ -276,6 +293,15 @@
       CMReport.mount(dr, reportData(v));
       return;
     }
+    if ((t = e.target.closest('[data-untrack]'))) { Track.remove(t.getAttribute('data-untrack')); UI.toast('Removed from your orders'); render(); return; }
+    if ((t = e.target.closest('[data-share]'))) { shareTracker(App.getClient(t.getAttribute('data-share'))); return; }
+    if ((t = e.target.closest('[data-copy]'))) {
+      var inp = document.getElementById('trk-link');
+      var done = function () { UI.toast('Link copied'); };
+      if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(inp.value).then(done, function () { inp.select(); document.execCommand('copy'); done(); });
+      else { inp.select(); document.execCommand('copy'); done(); }
+      return;
+    }
     if ((t = e.target.closest('[data-pay]'))) {
       t.disabled = true;
       t.textContent = 'Opening payment…';
@@ -285,6 +311,23 @@
       });
     }
   });
+  function shareTracker(c) {
+    if (!c || !Track) return;
+    var url = Track.link(Track.encode(c, me));
+    var stage = Track.STAGE[c.status] || Track.STAGE.new;
+    var mob = String(c.mobile || '').replace(/\D/g, '').slice(-10);
+    var msg = 'Hi ' + String(c.name || '').split(' ')[0] + ', your ' + ((App.PRODUCTS[c.product] || App.PRODUCTS.other).label) + ' application is now at: ' + stage.label + '. See the details here: ' + url;
+    UI.openDrawer({
+      title: 'Share status with ' + esc(c.name),
+      body: '<p class="ap-muted" style="font-size:.875rem;line-height:1.55;margin-bottom:1rem">Send this link so ' + esc(String(c.name || 'your client').split(' ')[0]) + ' can see where the application stands. It shows the current stage: <b>' + esc(stage.label) + '</b>. When the stage changes, send a fresh link.</p>' +
+        '<label class="ap-field"><span style="font-size:.8rem;color:var(--ap-mute)">Tracker link</span><input class="ap-input" id="trk-link" readonly value="' + esc(url) + '" style="width:100%;margin-top:.35rem"></label>' +
+        '<div style="display:flex;flex-direction:column;gap:.6rem;margin-top:1rem">' +
+        (/^[6-9]\d{9}$/.test(mob) ? '<a class="ap-btn is-primary" target="_blank" rel="noopener" href="https://wa.me/91' + mob + '?text=' + encodeURIComponent(msg) + '">' + ic('chat', 18) + 'Send on WhatsApp</a>' : '') +
+        '<button type="button" class="ap-btn" data-copy>' + ic('file', 18) + 'Copy link</button>' +
+        '<a class="ap-btn" target="_blank" rel="noopener" href="' + esc(url) + '">' + ic('eye', 18) + 'Preview what the client sees</a></div>'
+    });
+  }
+
   $('o-search').addEventListener('input', function () { filter.q = this.value.trim(); render(); });
   $('o-refresh').addEventListener('click', function () { refresh(true); });
 

@@ -1,0 +1,57 @@
+/* Loan application status page (track.html) */
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:Poppins,system-ui,sans-serif;color:#0f172a;background:radial-gradient(900px 420px at 50% -120px,#dbe7ff,transparent),#f5f7fb}
+a{color:inherit}
+.tk-bar{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px clamp(16px,4vw,40px);background:rgba(255,255,255,.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(15,23,42,.06)}
+.tk-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#0b2b5e;font-weight:800;font-size:17px}
+.tk-badge{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:#1d4ed8;background:#fff;border:1px solid #bfdbfe;border-radius:999px;padding:6px 12px}
+.tk-wrap{display:flex;justify-content:center;padding:clamp(18px,5vh,48px) 14px 48px}
+.tk-card{width:100%;max-width:560px;background:#fff;border-radius:24px;box-shadow:0 30px 70px -30px rgba(11,43,94,.35),0 2px 6px rgba(15,23,42,.05);padding:clamp(22px,5vw,36px);animation:tkUp .5s cubic-bezier(.2,.8,.2,1) both}
+@keyframes tkUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.tk-eyebrow{margin:0 0 6px;font-size:13px;font-weight:600;color:#1d4ed8}
+.tk-card h1{margin:0 0 18px;font-size:clamp(21px,4.6vw,26px);line-height:1.25;font-weight:800;letter-spacing:-.01em}
+.tk-now{display:flex;flex-direction:column;gap:2px;padding:14px 16px;border-radius:16px;margin-bottom:20px;background:#eff6ff;border:1px solid #bfdbfe}
+.tk-now-l{font-size:12px;font-weight:600;color:#64748b;text-transform:uppercase;letter-spacing:.04em}
+.tk-now strong{font-size:19px;font-weight:800;color:#1d4ed8}
+.tk-now.is-good{background:#f0fdf9;border-color:#99f6e4}.tk-now.is-good strong{color:#0f766e}
+.tk-now.is-done{background:#ecfdf3;border-color:#bbf7d0}.tk-now.is-done strong{color:#15803d}
+.tk-now.is-closed{background:#f8fafc;border-color:#e2e8f0}.tk-now.is-closed strong{color:#475569}
+
+.tk-steps{list-style:none;margin:0 0 20px;padding:0}
+.tk-steps li{position:relative;display:flex;align-items:flex-start;gap:14px;padding:0 0 18px;opacity:0;animation:tkUp .45s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:calc(.15s + var(--d) * 90ms)}
+.tk-steps li:last-child{padding-bottom:0}
+.tk-steps li:not(:last-child)::before{content:"";position:absolute;left:13px;top:28px;bottom:2px;width:2px;border-radius:2px;background:#e2e8f0}
+.tk-steps li.is-done:not(:last-child)::before{background:#16a34a}
+.tk-dot{flex:none;display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;border:2px solid #e2e8f0;background:#fff;color:#fff}
+.tk-steps b{display:block;font-size:15px;font-weight:600;color:#94a3b8;line-height:28px}
+.tk-steps small{display:block;margin-top:-2px;font-size:12.5px;font-weight:600;color:#1d4ed8}
+.tk-steps li.is-done .tk-dot{background:#16a34a;border-color:#16a34a}
+.tk-steps li.is-done b{color:#0f172a}
+.tk-steps li.is-now .tk-dot{border-color:#1d4ed8;box-shadow:0 0 0 5px rgba(29,78,216,.14)}
+.tk-steps li.is-now .tk-dot::after{content:"";width:10px;height:10px;border-radius:50%;background:#1d4ed8;animation:tkPulse 1.4s ease-in-out infinite}
+.tk-steps li.is-now b{color:#1d4ed8}
+.tk-steps li.is-fail .tk-dot{background:#dc2626;border-color:#dc2626}
+.tk-steps li.is-fail b{color:#b42318}
+.tk-steps li.is-fail small{color:#b42318}
+@keyframes tkPulse{0%,100%{transform:scale(.7);opacity:.6}50%{transform:scale(1);opacity:1}}
+
+.tk-info{display:flex;gap:12px;padding:14px 16px;border-radius:16px;background:#f8fafc;border:1px solid #e2e8f0;color:#1d4ed8}
+.tk-info svg{flex:none;margin-top:2px}
+.tk-info b{display:block;font-size:14px;color:#0f172a;margin-bottom:2px}
+.tk-info p{margin:0;font-size:14px;line-height:1.6;color:#475569}
+.tk-upd{margin:12px 0 0;font-size:12.5px;color:#64748b}
+.tk-adv{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:18px;padding:14px 16px;border-radius:16px;border:1px solid #e2e8f0}
+.tk-adv span{display:block;font-size:12px;color:#64748b}
+.tk-adv strong{font-size:15px}
+.tk-adv-acts{display:flex;gap:8px}
+.tk-acts{display:flex;flex-direction:column;gap:10px;margin-top:20px}
+.tk-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 18px;border-radius:14px;border:1.5px solid #cfdcf2;background:#fff;color:#0b2b5e;font:inherit;font-size:15px;font-weight:700;text-decoration:none;cursor:pointer;transition:transform .18s ease,filter .18s ease}
+.tk-btn:hover{transform:translateY(-1px)}
+.tk-btn.is-primary{border-color:transparent;color:#fff;background:linear-gradient(135deg,#0b2b5e,#1d4ed8);box-shadow:0 14px 28px -12px rgba(29,78,216,.65)}
+.tk-btn.is-sm{min-height:40px;padding:0 14px;font-size:14px;border-radius:11px}
+.tk-btn.is-wa{color:#15803d;border-color:#bbf7d0;background:#f0fdf4}
+.tk-note{margin:16px 0 0;font-size:12px;line-height:1.5;color:#94a3b8;text-align:center}
+.tk-empty{text-align:center}
+.tk-empty-ic{display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:18px;background:#fff7ed;color:#c2410c;margin-bottom:12px}
+.tk-empty p{color:#475569;font-size:14.5px;line-height:1.6}
+@media(prefers-reduced-motion:reduce){.tk-card,.tk-steps li{animation:none;opacity:1}.tk-steps li.is-now .tk-dot::after{animation:none}}
