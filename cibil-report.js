@@ -263,5 +263,5 @@
     '@media(min-width:560px){.cmr-id{grid-template-columns:repeat(4,1fr)}}';
   var st = document.createElement('style'); st.id = 'cmr-styles'; st.textContent = css; document.head.appendChild(st);
 
-  window.CMReport = { build: build, mount: mount, fmtDateTime: fmtDateTime, pdf: pdfBytes, render: renderHTML };
+  window.CMReport = { build: build, mount: mount, fmtDateTime: fmtDateTime, pdf: pdfBytes, render: renderHTML, download: download };
 })();

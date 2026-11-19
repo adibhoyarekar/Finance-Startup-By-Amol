@@ -54,6 +54,11 @@
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var Screen = window.CMScreen;
   var Pay = window.CMPay;
+  var Acct = window.RavenApp;
+  var me = Acct && Acct.current();
+  if (me && !me.onboarded) me = null;
+  // an agent can open this page from a client's file (?client=…) to check that client's score
+  var forClient = me && me.role === 'agent' ? Acct.getClient(Acct.param('client')) : null;
 
   function updateSubmit() {
     if (submitText) submitText.textContent = 'Pay ₹' + currentPrice + ' securely →';
@@ -223,7 +228,7 @@
       ]) + REPORT_ACTIONS,
       actions: [
         { label: 'Check another score', onClick: function () { form.reset(); clearErrors(); startOver(false); } },
-        { label: 'Back to home', href: 'index.html' }
+        me ? { label: 'See all my orders', href: 'orders.html' } : { label: 'Back to home', href: 'index.html' }
       ],
       noFocus: true,
       onRender: function (card) {
@@ -381,10 +386,16 @@
       return;
     }
 
-    var details = { bureau: currentBureau, name: nameVal, phone: phoneVal, pan: panVal, consent: true };
+    var details = { bureau: currentBureau, name: nameVal, phone: phoneVal, pan: panVal, consent: true, owner: me ? me.id : null, client: forClient ? forClient.id : null };
     saveDraft(details);
     startPayment(details);
   });
+
+  if (forClient) {
+    if (nameInp && !nameInp.value && forClient.name) nameInp.value = forClient.name;
+    var mob = String(forClient.mobile || '').replace(/\D/g, '').slice(-10);
+    if (phoneInp && !phoneInp.value && /^[6-9]\d{9}$/.test(mob)) phoneInp.value = mob;
+  }
 
   if (Pay) {
     Pay.config().then(function (c) { if (testBadge) testBadge.hidden = c.mode !== 'sandbox' || !c.enabled; }, function () {});

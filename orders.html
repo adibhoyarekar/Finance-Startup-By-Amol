@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>My Orders - CredMates</title>
+  <meta name="description" content="Track your CredMates orders: credit reports, client files and bank auction bids.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0e1124">
+  <link rel="icon" type="image/svg+xml" href="images/logo-mark.svg">
+  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="app.css?v=4">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Poppins:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="orders.css?v=1">
+</head>
+<body class="ap-body">
+  <div class="ap">
+    <aside class="ap-side" aria-label="My account">
+      <a class="ap-brand" href="index.html"><img src="images/logo.svg" alt="CredMates" width="108" height="28"><small id="side-role">Customer</small></a>
+      <p class="ap-navlabel first">Menu</p>
+      <nav class="ap-nav" aria-label="Main" id="side-nav"></nav>
+      <div class="ap-sidecard">
+        <strong>Need help with an order?</strong>
+        <p>Send us the Order ID and we will check it for you.</p>
+        <a class="ap-btn is-sm" href="contact.html">Contact us</a>
+      </div>
+      <div class="ap-me">
+        <span id="me-avatar"></span>
+        <div style="min-width:0"><strong id="me-name"></strong><small id="me-role">Customer</small></div>
+        <button type="button" data-logout aria-label="Log out" data-tip="Log out"><span data-ico="logout"></span></button>
+      </div>
+    </aside>
+
+    <div class="ap-main">
+      <header class="ap-top">
+        <a class="ap-mlogo" href="index.html"><img src="images/logo.svg" alt="CredMates" width="100" height="26"></a>
+        <p class="ap-title"><span id="top-area">My account</span> <span aria-hidden="true">&nbsp;/&nbsp;</span> <b>My orders</b></p>
+        <div class="ap-topact" style="margin-left:auto">
+          <button type="button" class="ap-btn is-icon" id="o-refresh" aria-label="Refresh statuses" data-tip="Refresh"><span data-ico="clock"></span></button>
+          <a class="ap-btn is-primary ap-hide-m" id="o-new" href="cibil-score.html"><span data-ico="plus"></span>New CIBIL check</a>
+        </div>
+      </header>
+
+      <main class="ap-content">
+        <section class="ap-view is-on" aria-labelledby="o-h">
+          <div class="ord-head">
+            <div>
+              <h1 id="o-h">My orders</h1>
+              <p id="o-sub">Everything you have ordered or applied for, and where each one stands.</p>
+            </div>
+            <div class="ord-newwrap" id="o-newwrap"></div>
+          </div>
+
+          <div class="ap-kpis ord-kpis" id="o-kpis"></div>
+
+          <label class="ord-search"><span data-ico="search"></span><input id="o-search" type="search" placeholder="Search by name, order ID, payment ID or product" aria-label="Search orders" autocomplete="off"></label>
+          <div class="ap-chips" id="o-types" role="tablist" aria-label="Order type"></div>
+          <div class="ap-chips ord-status" id="o-status" role="tablist" aria-label="Order status"></div>
+
+          <div class="ord-list" id="o-list" aria-live="polite"></div>
+          <p class="ord-foot" id="o-foot"></p>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <nav class="ap-tabbar" aria-label="Main" id="tabbar"></nav>
+
+  <script src="raven-app.js?v=5"></script>
+  <script src="app-shell.js?v=6"></script>
+  <script src="auction-store.js?v=92"></script>
+  <script src="cibil-report.js?v=2"></script>
+  <script src="cibil-pay.js?v=3"></script>
+  <script src="orders.js?v=1"></script>
+</body>
+</html>

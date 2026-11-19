@@ -5,7 +5,7 @@
   var SDK_URL = 'https://sdk.cashfree.com/js/v3/cashfree.js';
   var TURNSTILE_URL = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
   var STORE_KEY = 'cm_pay_orders';
-  var KEEP_MS = 24 * 60 * 60 * 1000;
+  var KEEP_MS = 30 * 24 * 60 * 60 * 1000;
   var FINAL = { READY: 1, EXPIRED: 1, REFUND_PENDING: 1, REFUNDED: 1, REVIEW: 1 };
   var scripts = {};
   var cfgPromise = null;
@@ -63,7 +63,20 @@
     return all;
   }
   function writeSaved(all) { try { localStorage.setItem(STORE_KEY, JSON.stringify(all)); } catch (e) { /* storage full or blocked */ } }
-  function remember(id, token, session, mode) { var all = readSaved(); all[id] = { token: token, session: session, mode: mode, at: Date.now() }; writeSaved(all); }
+  function remember(id, token, session, mode, meta) {
+    var all = readSaved();
+    all[id] = Object.assign({ token: token, session: session, mode: mode, at: Date.now() }, meta || {});
+    writeSaved(all);
+  }
+  /* Orders saved on this device, newest first: [{ id, at, done, owner, client, bureau, amount }] (never the token) */
+  function list() {
+    var all = readSaved();
+    return Object.keys(all).map(function (id) {
+      var e = all[id];
+      return { id: id, at: e.at, done: !!e.done, owner: e.owner || null, client: e.client || null, bureau: e.bureau || null, amount: e.amount || null };
+    }).sort(function (a, b) { return b.at - a.at; });
+  }
+  function claim(id, owner) { var all = readSaved(); if (all[id] && !all[id].owner) { all[id].owner = owner; writeSaved(all); } }
   function settle(id) { var all = readSaved(); if (all[id]) { all[id].done = true; writeSaved(all); } }
   function tokenFor(id) { var e = readSaved()[id]; return e ? e.token : null; }
   function lastOpen(maxAgeMs) {
@@ -157,7 +170,7 @@
       var body = { bureau: details.bureau, name: details.name, phone: details.phone, pan: details.pan, consent: details.consent === true, turnstileToken: token };
       return api('/api/cibil/order', body).then(function (o) {
         resetGuard(ui.guardEl);
-        remember(o.orderId, o.accessToken, o.paymentSessionId, o.mode);
+        remember(o.orderId, o.accessToken, o.paymentSessionId, o.mode, { owner: details.owner || null, client: details.client || null, bureau: details.bureau, amount: o.amount });
         inflight = o.orderId;
         if (ui.beforeRedirect) ui.beforeRedirect(o);
         return openCheckout(o.paymentSessionId, o.mode);
@@ -184,5 +197,5 @@
   function clear() { inflight = null; }
   function forget(id) { settle(id); if (inflight === id) inflight = null; }
 
-  window.CMPay = { pay: pay, retry: retry, resume: resume, status: status, poll: poll, config: config, mountGuard: mountGuard, lastOpen: lastOpen, clear: clear, forget: forget, hasToken: function (id) { return !!tokenFor(id); } };
+  window.CMPay = { pay: pay, retry: retry, resume: resume, status: status, poll: poll, config: config, mountGuard: mountGuard, lastOpen: lastOpen, clear: clear, forget: forget, list: list, claim: claim, hasToken: function (id) { return !!tokenFor(id); } };
 })();
