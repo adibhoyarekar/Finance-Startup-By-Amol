@@ -47,6 +47,16 @@
     a.href = 'mailto:hello@credmates.business?subject=' + encodeURIComponent('Callback request – ' + name) + '&body=' + encodeURIComponent(body);
   });
 
+  // phones hide the sidebar, so its "More" links live in a sheet opened from the tab bar
+  var MORE = [['orders.html', 'listcheck', 'My orders', 'Credit reports and your other orders'],
+    ['auction-bidder.html', 'board', 'My auction bids', 'Bids, EMD payments and refunds'],
+    ['ask.html', 'chat', 'Ask a question', 'Chat with the FinMatrix assistant']];
+  $('tab-more').addEventListener('click', function () {
+    UI.openDrawer({ title: 'More', focus: '.acx-more a', body: '<ul class="acx-more">' + MORE.map(function (m) {
+      return '<li><a href="' + m[0] + '"><span class="acx-more-ic">' + ic(m[1], 20) + '</span><span class="acx-more-tx"><strong>' + m[2] + '</strong><small>' + m[3] + '</small></span>' + ic('arrow', 16) + '</a></li>';
+    }).join('') + '</ul>' });
+  });
+
   function tool(k, i, forYou) {
     var t = TOOLS[k];
     return UI.toolCard({ i: i, href: t[2], img: t[6], icon: t[0], title: t[1], text: t[3], badge: forYou ? 'For you' : '',
