@@ -210,7 +210,7 @@ body.rx{font-family:var(--rx-font);color:var(--rx-text);background:#fff}
 .rx-pl-feat svg{flex:none;margin-top:2px;padding:2px;border-radius:50%;background:#e6f7ec;color:var(--rx-green)}
 .rx-pl-pop .rx-pl-feat svg{background:#fff3cd;color:#b7791f}
 .rx-pl-note{position:relative;margin:26px 0 0;text-align:center;font-size:12px;color:#a9c0e0}
-@media(max-width:959px){.rx-pl-grid{grid-template-columns:1fr;max-width:420px}.rx-pl-pop{order:-1}}
+@media(max-width:959px){.rx-pl-grid{grid-template-columns:1fr;max-width:420px}}
 @media(max-width:767px){.rx-pl-band{padding:34px 18px 30px;border-radius:16px}.rx .rx-pl-head h2{font-size:23px}.rx-pl-head p{font-size:13px}.rx-pl-price b{font-size:36px}}
 
 /* ---------- special offers ---------- */

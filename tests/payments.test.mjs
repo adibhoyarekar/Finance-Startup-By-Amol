@@ -195,7 +195,7 @@ test('happy path: unpaid -> pending -> paid and report ready', async () => {
   pay(o.orderId, { status: 'SUCCESS' });
   s = await status(o.orderId, o.accessToken);
   assert.equal(s.body.state, 'READY');
-  assert.equal(s.body.amount, 250);
+  assert.equal(s.body.amount, 299);
   assert.equal(s.body.payment.method, 'UPI');
   assert.equal(s.body.payment.id, '5550002');
   assert.equal(s.body.customer.pan, 'ABCPE****F');
@@ -253,7 +253,7 @@ test('webhook: bad or missing signature is rejected', async () => {
 
 test('webhook: a forged "paid" event cannot mark an unpaid order as paid', async () => {
   const { body: o } = await createOrder();
-  const res = await webhookPOST(signed({ type: 'PAYMENT_SUCCESS_WEBHOOK', data: { order: { order_id: o.orderId, order_amount: 99 }, payment: { cf_payment_id: 1, payment_status: 'SUCCESS' } } }));
+  const res = await webhookPOST(signed({ type: 'PAYMENT_SUCCESS_WEBHOOK', data: { order: { order_id: o.orderId, order_amount: 149 }, payment: { cf_payment_id: 1, payment_status: 'SUCCESS' } } }));
   assert.equal(res.status, 503, 'asks Cashfree to retry until its API shows the payment');
   assert.equal((await loadOrder(getStore(), o.orderId)).status, 'CREATED');
 });
@@ -307,7 +307,7 @@ test('report failure retries with backoff, then refunds automatically', async ()
   assert.equal(s.body.state, 'REFUND_PENDING');
   assert.equal(cf.refunds.size, 1);
   const refund = [...cf.refunds.values()][0];
-  assert.equal(refund.refund_amount, 99);
+  assert.equal(refund.refund_amount, 149);
 
   cf.refunds.get(refund.refund_id).refund_status = 'SUCCESS';
   await webhookPOST(signed({ type: 'REFUND_STATUS_WEBHOOK', data: { refund: { order_id: o.orderId, refund_status: 'SUCCESS' } } }));

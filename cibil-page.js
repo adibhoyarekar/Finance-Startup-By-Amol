@@ -42,15 +42,15 @@
   };
 
   var BUREAU_PRICES = {
-    crif: 99,
+    crif: 149,
     transunion: 199,
-    both: 250
+    both: 299
   };
 
   var DRAFT_KEY = 'cm_cibil_draft';
   var RESUME_WINDOW_MS = 35 * 60 * 1000;
   var currentBureau = 'both';
-  var currentPrice = 250;
+  var currentPrice = 299;
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var Screen = window.CMScreen;
   var Pay = window.CMPay;
