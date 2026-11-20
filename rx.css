@@ -54,7 +54,7 @@ body.rx{font-family:var(--rx-font);color:var(--rx-text);background:#fff}
 .rx-dd a:hover{background:#f1f6ff;color:var(--rx-blue)}
 .rx-dd a i{display:inline-flex;align-items:center;justify-content:center;flex:none;width:34px;height:34px;border-radius:9px;background:var(--bg,#eef4ff);color:var(--c,var(--rx-blue));font-style:normal}
 .rx-dd a span small{display:block;font-size:12px;font-weight:400;color:var(--rx-mute)}
-.rx-mega{display:grid;grid-template-columns:repeat(5,minmax(170px,1fr));gap:4px 18px;width:min(1000px,calc(100vw - 40px));padding:20px 22px}
+.rx-mega{display:grid;grid-template-columns:repeat(4,minmax(170px,1fr));gap:4px 18px;width:min(1000px,calc(100vw - 40px));padding:20px 22px}
 .rx-mega h4{display:flex;align-items:center;gap:8px;margin:0 0 6px;padding:0 10px;font-size:13px;font-weight:700;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
 .rx-mega a{padding:7px 10px;font-size:13.5px}
 
@@ -894,7 +894,7 @@ body.rx{font-family:var(--rx-font);color:var(--rx-text);background:#fff}
 
 /* Explore Our Products: main tiles with sub-product panels */
 .xp{padding-top:28px}
-.xp-tiles{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px}
+.xp-tiles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
 .xp-tile{position:relative;display:flex;flex-direction:column;align-items:center;gap:10px;padding:18px 10px 14px;border:1.5px solid var(--bd);border-radius:20px;background:#fff;font:inherit;color:var(--rx-ink,#0b1f44);cursor:pointer;box-shadow:0 12px 28px -24px rgba(11,43,94,.55);transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s,border-color .2s,background .2s;-webkit-tap-highlight-color:transparent}
 .xp-tile:hover{transform:translateY(-4px);border-color:var(--c);box-shadow:0 22px 40px -26px rgba(11,43,94,.6)}
 .xp-tile:focus-visible{outline:3px solid var(--c);outline-offset:3px}
@@ -931,7 +931,7 @@ body.rx{font-family:var(--rx-font);color:var(--rx-text);background:#fff}
 .xp-go{flex:none;color:var(--c);transition:transform .2s}
 .xp-all .xp-go{color:#fff}
 .xp-subs a:hover .xp-go,.xp-all:hover .xp-go{transform:translateX(3px)}
-@media(max-width:1099px){.xp-tiles{grid-template-columns:repeat(3,minmax(0,1fr))}.xp-tile[aria-expanded="true"]::after{display:none}}
+@media(max-width:1099px){.xp-tiles{grid-template-columns:repeat(6,minmax(0,1fr))}.xp-tile{grid-column:span 2}.xp-tile:nth-child(4){grid-column:2/span 2}.xp-tile[aria-expanded="true"]::after{display:none}}
 @media(max-width:767px){
   .xp{padding-top:20px}
   .xp-tiles{gap:10px}
