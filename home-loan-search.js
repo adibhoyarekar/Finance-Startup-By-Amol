@@ -229,7 +229,7 @@
       '\nMonthly income: from Rs ' + inr(income) + '\nProperty type: ' + prop.label +
       '\nRequired loan: Rs ' + inr(a) + '\nEstimated eligibility: Rs ' + inr(eligible);
     html += '<div class="hl-cta"><a class="hl-submit" href="mailto:hello@credmates.business?subject=' +
-      encodeURIComponent('Home loan enquiry – ' + name) + '&body=' + encodeURIComponent(body) + '">Send to CredMates team</a>' +
+      encodeURIComponent('Home loan enquiry – ' + name) + '&body=' + encodeURIComponent(body) + '">Send to FinMatrix team</a>' +
       '<a class="hl-reset" href="contact.html">Talk to our team</a></div>';
     html += '<p class="hl-disc">Indicative only. Final eligibility, rate and amount depend on the lender\'s policy, CIBIL score, age, existing EMIs, property valuation and legal checks.</p>';
 

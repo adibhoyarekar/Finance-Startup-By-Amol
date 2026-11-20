@@ -1,4 +1,4 @@
-/* CIBIL checkout via Cashfree's hosted payment page – CredMates. The browser never decides that a payment succeeded; the server confirms it with Cashfree. */
+/* CIBIL checkout via Cashfree's hosted payment page – FinMatrix. The browser never decides that a payment succeeded; the server confirms it with Cashfree. */
 (function () {
   'use strict';
 

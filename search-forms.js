@@ -377,8 +377,8 @@
       buying && v.payment !== 'self' ? 'We help with the home loan and documentation till registration.' : 'We help with the agreement and registration.'];
 
     return {
-      kicker: 'Application ' + ref, title: 'Real estate application – ' + v.name, send: 'Send application to CredMates', subject: 'Real estate application ' + ref,
-      disc: 'Application summary only – your request reaches CredMates when you send it. Stamp duty, loan limits and timelines are indicative; our team confirms them for your property.',
+      kicker: 'Application ' + ref, title: 'Real estate application – ' + v.name, send: 'Send application to FinMatrix', subject: 'Real estate application ' + ref,
+      disc: 'Application summary only – your request reaches FinMatrix when you send it. Stamp duty, loan limits and timelines are indicative; our team confirms them for your property.',
       headline: L.service + ' · ' + L.ptype + ' in ' + v.location + ' · ' + short(budget),
       details: ['Ref ' + ref + (visit ? ' · visit ' + visit : ''), buying ? L.payment + (loan ? ' · loan ' + short(loan) : '') : L.pstatus],
       sub: L.service + ' · ' + L.ptype + ' · ' + L.pstatus + ' · ' + v.location,
@@ -486,7 +486,7 @@
     kyc.push('Keep PAN, Aadhaar, a cancelled cheque or bank statement, and a nominee’s details ready.');
     var start = v.start ? new Date(v.start + 'T00:00').toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }) : '';
     return {
-      kicker: 'Application ' + ref, title: 'Investment options for ' + v.name, send: 'Send application to CredMates', subject: 'Mutual fund & SIP application ' + ref,
+      kicker: 'Application ' + ref, title: 'Investment options for ' + v.name, send: 'Send application to FinMatrix', subject: 'Mutual fund & SIP application ' + ref,
       disc: 'Mutual fund investments are subject to market risks; read all scheme-related documents carefully. Projections use assumed returns for illustration only and are not guaranteed.',
       headline: (sip ? 'SIP ₹' + inr(sip) + '/mo' : '') + (sip && lump ? ' + ' : '') + (lump ? 'lump sum ' + short(lump) : '') + ' · ' + L.category + ' · ' + years + ' yrs',
       details: ['Could grow to about ' + short(value) + ' (invested ' + short(invested) + ' at ~' + rate + '% p.a.)', L.goal + ' · ' + L.risk],
@@ -638,7 +638,7 @@
         '<h3>' + (r.title ? esc(r.title) : KICKER[kind] + ' options for ' + esc(name)) + '</h3><p class="hl-rsub">' + esc(r.sub) + '</p></div>' +
         '<button type="button" class="hl-edit">Edit details</button></div>' + r.html +
         '<div class="hl-cta"><a class="hl-submit" href="mailto:hello@credmates.business?subject=' +
-        encodeURIComponent(subject) + '&body=' + encodeURIComponent(body) + '">' + (r.send || 'Send to CredMates team') + '</a>' +
+        encodeURIComponent(subject) + '&body=' + encodeURIComponent(body) + '">' + (r.send || 'Send to FinMatrix team') + '</a>' +
         '<a class="hl-reset" href="contact.html">Talk to our team</a></div>' +
         '<p class="hl-disc">' + (r.disc || (kind === 'account'
           ? 'Suggestions only. Account features, charges and minimum balance are set by each bank and change from time to time.'

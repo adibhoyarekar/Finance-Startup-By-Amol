@@ -148,6 +148,6 @@
   UI.router('home', function (view) { UI.hideTip(); if (view === 'home' || view === 'ready') render(); });
   if (App.param('welcome')) {
     history.replaceState(null, '', location.pathname + location.hash);
-    setTimeout(function () { UI.toast('Welcome to CredMates, ' + first + '! Your searches are now pre-filled.'); }, 500);
+    setTimeout(function () { UI.toast('Welcome to FinMatrix, ' + first + '! Your searches are now pre-filled.'); }, 500);
   }
 })();
