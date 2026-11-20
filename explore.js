@@ -220,4 +220,19 @@ lazyLottie(document.querySelector('.qt-cibil'), 'data-qt-lottie', '.qt-fb');
     grid.scrollTo({ left: (index() + 1) * step(), behavior: 'smooth' });
   }, 1000);
 })();
-lazyLottie(document.querySelector('.pl2'), 'data-pl-lottie', '.pl-fb');
+
+// Membership: the highlighted plan follows the cursor (desktop) or the tapped plan (phone).
+(function () {
+  var grid = document.querySelector('[data-pl-grid]');
+  if (!grid) return;
+  var plans = [].slice.call(grid.querySelectorAll('.rx-pl'));
+  var chosen = grid.querySelector('.rx-pl.is-active') || plans[0];
+  function show(p) { plans.forEach(function (x) { x.classList.toggle('is-active', x === p); }); }
+  plans.forEach(function (p) {
+    p.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') show(p); });
+    p.addEventListener('click', function () { chosen = p; show(p); });
+    p.addEventListener('focusin', function () { show(p); });
+  });
+  grid.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') show(chosen); });
+  grid.addEventListener('focusout', function (e) { if (!grid.contains(e.relatedTarget)) show(chosen); });
+})();
