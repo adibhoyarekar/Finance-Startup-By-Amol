@@ -9,7 +9,25 @@
   function close(t) {
     t.setAttribute('aria-expanded', 'false');
     var p = panelOf(t);
-    if (p) p.hidden = true;
+    if (p) { p.hidden = true; (p._anims || []).forEach(function (a) { a.pause(); }); }
+  }
+
+  // Sub-product animations load the first time their panel opens.
+  function playSubs(p) {
+    if (p._anims) { if (!reduce) p._anims.forEach(function (a) { a.play(); }); return; }
+    p._anims = [];
+    getLottie(function () {
+      p.querySelectorAll('[data-xp-sub]').forEach(function (el) {
+        var a = window.lottie.loadAnimation({ container: el, renderer: 'svg', loop: true, autoplay: false, path: el.getAttribute('data-xp-sub'), rendererSettings: { preserveAspectRatio: 'xMidYMid meet' } });
+        a.addEventListener('DOMLoaded', function () {
+          var fb = el.querySelector('.xp-sfb');
+          if (fb) fb.remove();
+          el.classList.add('is-anim');
+          if (reduce) a.goToAndStop(20, true); else if (!p.hidden) a.play();
+        });
+        p._anims.push(a);
+      });
+    });
   }
 
   function open(t) {
@@ -19,6 +37,7 @@
     if (!p) return;
     p.hidden = false;
     root.classList.add('is-open');
+    playSubs(p);
     var r = p.getBoundingClientRect();
     if (r.bottom > window.innerHeight || r.top < 0) {
       var header = document.querySelector('.rx-header');
@@ -51,6 +70,19 @@
   lazyLottie(root, 'data-xp-lottie', '.xp-fb');
 })();
 
+function getLottie(cb) {
+  if (window.lottie) return cb();
+  var s = document.querySelector('script[data-lazy-lottie]');
+  if (!s) {
+    s = document.createElement('script');
+    s.src = 'lottie.min.js';
+    s.async = true;
+    s.setAttribute('data-lazy-lottie', '');
+    document.head.appendChild(s);
+  }
+  s.addEventListener('load', function () { if (window.lottie) cb(); });
+}
+
 // Animations load only when their section comes near, so the home page stays light.
 function lazyLottie(root, attr, fbSel) {
   if (!root) return;
@@ -76,18 +108,7 @@ function lazyLottie(root, attr, fbSel) {
     if (reduce) return;
     anims.forEach(function (a) { if (v) a.play(); else a.pause(); });
   }
-  function loadLottie(cb) {
-    if (window.lottie) return cb();
-    var s = document.querySelector('script[data-lazy-lottie]');
-    if (!s) {
-      s = document.createElement('script');
-      s.src = 'lottie.min.js';
-      s.async = true;
-      s.setAttribute('data-lazy-lottie', '');
-      document.head.appendChild(s);
-    }
-    s.addEventListener('load', function () { if (window.lottie) cb(); });
-  }
+  var loadLottie = getLottie;
   if (!('IntersectionObserver' in window)) {
     visible = true;
     loadLottie(startAnims);
