@@ -84,7 +84,7 @@
       fld('Account number', '<input class="ap-input" name="acc" inputmode="numeric" value="' + esc(p.acc || '') + '">', 'Enter a valid account number.') +
       fld('IFSC', '<input class="ap-input" name="ifsc" maxlength="11" value="' + esc(p.ifsc || '') + '" placeholder="MAHB0000123" style="text-transform:uppercase">', 'Enter a valid IFSC.') +
       fld('Digital signature (DSC)', '<select class="ap-input" name="dsc">' + opts([['yes', 'I have a Class 3 DSC'], ['no', 'I don’t have a DSC yet']], p.dsc) + '</select>') +
-      '</div></div><div class="ap-fsec"><label class="ap-check"><input type="checkbox" name="consent"' + (p.consent ? ' checked' : '') + '><span>I agree to the <a href="terms.html" target="_blank">auction terms</a> and consent to CredMates verifying my PAN, Aadhaar and bank account for this purpose (DPDP Act, 2023).</span></label><p class="ap-err" data-for="consent">Please give your consent.</p></div></form>';
+      '</div></div><div class="ap-fsec"><label class="ap-check"><input type="checkbox" name="consent"' + (p.consent ? ' checked' : '') + '><span>I agree to the <a href="terms.html" target="_blank">auction terms</a> and consent to FinMatrix verifying my PAN, Aadhaar and bank account for this purpose (DPDP Act, 2023).</span></label><p class="ap-err" data-for="consent">Please give your consent.</p></div></form>';
     var dr = UI.openDrawer({ title: 'Bidder KYC', body: body, foot: '<button type="button" class="ap-btn" data-dclose2>Cancel</button><button type="button" class="ap-btn is-primary" data-go>' + ic('shield', 18) + 'Verify & save</button>' });
     var f = dr.querySelector('#kf');
     dr.querySelector('[data-dclose2]').onclick = UI.closeDrawer;

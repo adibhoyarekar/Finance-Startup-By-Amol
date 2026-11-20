@@ -952,7 +952,7 @@ body.rx{font-family:var(--rx-font);color:var(--rx-text);background:#fff}
 @media(max-width:340px){.xp-art{width:60px;height:60px}.xp-name{font-size:12.5px}}
 @media(prefers-reduced-motion:reduce){.xp-tile,.xp-panel,.xp-chev,.xp-subs a{transition:none;animation:none}}
 
-/* Why Choose CredMates: animated feature cards */
+/* Why Choose FinMatrix: animated feature cards */
 .wy-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px;margin-bottom:24px}
 .wy-card{position:relative;display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #dde7f5;border-radius:20px;box-shadow:0 14px 34px -28px rgba(11,43,94,.6);transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s,border-color .3s}
 .wy-card::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--ac);transform:scaleX(.18);transform-origin:left;transition:transform .45s cubic-bezier(.2,.8,.2,1)}

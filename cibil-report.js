@@ -1,4 +1,4 @@
-/* CredMates credit report: on-screen view, PDF download and share links (used by cibil-score.html and the Quick Tools modal) */
+/* FinMatrix credit report: on-screen view, PDF download and share links (used by cibil-score.html and the Quick Tools modal) */
 (function () {
   'use strict';
 
@@ -113,7 +113,7 @@
     d.reports.forEach(function (rep, pi) {
       ops = [];
       R(0, 0, W, 66, '#0b2b5e');
-      T(M, 32, 'CredMates', 20, true, '#ffffff'); T(M, 50, 'Credit Report', 10, false, '#bfdbfe');
+      T(M, 32, 'FinMatrix', 20, true, '#ffffff'); T(M, 50, 'Credit Report', 10, false, '#bfdbfe');
       T(380, 32, 'Report ID: ' + d.reportId, 9, true, '#ffffff'); T(380, 48, 'Generated: ' + fmtDate(d.paidAt), 9, false, '#bfdbfe');
       var y = 84;
       if (d.sample) { R(M, y, W - 2 * M, 24, '#fef3c7'); T(M + 10, y + 16, 'SAMPLE REPORT - demo data for preview. This is not your real credit report.', 9, true, '#92400e'); y += 40; }
@@ -177,14 +177,14 @@
   function download(d) {
     var url = URL.createObjectURL(new Blob([pdfBytes(d)], { type: 'application/pdf' }));
     var a = document.createElement('a');
-    a.href = url; a.download = 'CredMates-Credit-Report-' + d.refId + '.pdf';
+    a.href = url; a.download = 'FinMatrix-Credit-Report-' + d.refId + '.pdf';
     document.body.appendChild(a); a.click(); a.remove();
     setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
   }
 
   /* ---------- share ---------- */
   function summary(d) {
-    var lines = ['CredMates credit report' + (d.sample ? ' (sample)' : ''), 'Report ID: ' + d.reportId];
+    var lines = ['FinMatrix credit report' + (d.sample ? ' (sample)' : ''), 'Report ID: ' + d.reportId];
     d.reports.forEach(function (r) { lines.push(r.label + ' score: ' + r.score + ' (' + r.band.label + ')'); });
     lines.push('Payment ID: ' + d.refId + ' - Paid Rs.' + d.amount);
     return lines.join('\n');

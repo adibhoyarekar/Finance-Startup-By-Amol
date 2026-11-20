@@ -1,4 +1,4 @@
-/* Loan application tracker links – CredMates.
+/* Loan application tracker links – FinMatrix.
    An agent shares a link (track.html#t=…) that carries the client's current stage. Everything
    stays in the link and this browser; nothing is sent to a server. */
 (function () {

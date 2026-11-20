@@ -50,7 +50,7 @@
     label.textContent = reg ? 'Create account' : 'Log in';
     pass.setAttribute('autocomplete', reg ? 'new-password' : 'current-password');
     pass.placeholder = reg ? 'At least 8 characters' : 'Your password';
-    $('su-foot').innerHTML = reg ? 'Already registered? <a href="#" id="su-switch">Log in</a>' : 'New to CredMates? <a href="#" id="su-switch">Create an account</a>';
+    $('su-foot').innerHTML = reg ? 'Already registered? <a href="#" id="su-switch">Log in</a>' : 'New to FinMatrix? <a href="#" id="su-switch">Create an account</a>';
     say('');
   }
   tabs.forEach(function (t) { t.addEventListener('click', function () { setMode(t.getAttribute('data-mode')); }); });

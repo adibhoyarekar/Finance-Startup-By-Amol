@@ -1,4 +1,4 @@
-/* "Get the app": install CredMates as an app (PWA) from the header, the menu, the app sidebar
+/* "Get the app": install FinMatrix as an app (PWA) from the header, the menu, the app sidebar
    and a one-time prompt on phones. Hidden when the site is already running as the installed app. */
 (function () {
   'use strict';
@@ -109,7 +109,7 @@
     if (isIOS) {
       add(['Tap the Share button ', 'share', ' in Safari\u2019s toolbar']);
       add(['Scroll down and tap ', 'plus', ' \u201cAdd to Home Screen\u201d']);
-      add(['Tap \u201cAdd\u201d \u2013 CredMates appears on your home screen']);
+      add(['Tap \u201cAdd\u201d \u2013 FinMatrix appears on your home screen']);
     } else if (isAndroid) {
       add(['Tap the browser menu ', 'dots', ' at the top right']);
       add(['Tap \u201cInstall app\u201d or \u201cAdd to Home screen\u201d']);
@@ -117,15 +117,15 @@
     } else if (isSafariMac) {
       add(['In the menu bar, click File']);
       add(['Choose \u201cAdd to Dock\u201d']);
-      add(['Click \u201cAdd\u201d \u2013 open CredMates from your Dock']);
+      add(['Click \u201cAdd\u201d \u2013 open FinMatrix from your Dock']);
     } else if (isFirefox) {
       add(['Firefox on computers can\u2019t install web apps']);
       add(['Open this site in Chrome, Edge or Safari']);
       add(['Click \u201cGet the App\u201d again to install']);
     } else {
       add(['Click the install icon in the address bar, or open the menu ', 'dots']);
-      add(['Choose \u201cInstall CredMates\u201d (may be under \u201cCast, save and share\u201d)']);
-      add(['Click \u201cInstall\u201d \u2013 CredMates opens in its own window']);
+      add(['Choose \u201cInstall FinMatrix\u201d (may be under \u201cCast, save and share\u201d)']);
+      add(['Click \u201cInstall\u201d \u2013 FinMatrix opens in its own window']);
     }
     return s;
   }
@@ -137,18 +137,18 @@
     var panel = h('div', 'cmi-panel');
     panel.setAttribute('role', 'dialog'); panel.setAttribute('aria-modal', 'true'); panel.setAttribute('aria-labelledby', 'cmi-title');
     var head = h('div', 'cmi-head'), tx = h('div'), img = appImg(); img.width = img.height = 56;
-    var t = h('h2', null, 'Install the CredMates app'); t.id = 'cmi-title';
+    var t = h('h2', null, 'Install the FinMatrix app'); t.id = 'cmi-title';
     tx.appendChild(t); tx.appendChild(h('p', 'cmi-sub', 'Free \u00b7 No app store needed \u00b7 Takes almost no space'));
     head.appendChild(img); head.appendChild(tx);
     var perks = h('ul', 'cmi-perks');
-    ['Opens full screen, just like an app', 'One tap from your home screen', 'Same secure CredMates account and payments'].forEach(function (p) {
+    ['Opens full screen, just like an app', 'One tap from your home screen', 'Same secure FinMatrix account and payments'].forEach(function (p) {
       var li = h('li'), c = h('span'); c.innerHTML = ICON.check; li.appendChild(c); li.appendChild(doc.createTextNode(p)); perks.appendChild(li);
     });
     var x = h('button', 'cmi-x'); x.type = 'button'; x.setAttribute('aria-label', 'Close'); x.innerHTML = ICON.x; x.addEventListener('click', closeSheet);
     var row = h('div', 'cmi-row'), done = btn('Got it', 'cmi-pri', closeSheet);
     row.appendChild(done);
     panel.appendChild(x); panel.appendChild(head); panel.appendChild(perks); panel.appendChild(steps());
-    panel.appendChild(h('p', 'cmi-note', 'Already installed? Open CredMates from your home screen or app list.'));
+    panel.appendChild(h('p', 'cmi-note', 'Already installed? Open FinMatrix from your home screen or app list.'));
     panel.appendChild(row);
     sheet.appendChild(panel);
     sheet.addEventListener('click', function (e) { if (e.target === sheet) closeSheet(); });
@@ -178,7 +178,7 @@
   function card(sub) {
     var c = h('div', 'cmi cmi-card'), tx = h('span', 'cmi-t'), img = appImg(); img.width = img.height = 44;
     c.setAttribute('data-cmi', '');
-    tx.appendChild(h('b', null, 'Get the CredMates app'));
+    tx.appendChild(h('b', null, 'Get the FinMatrix app'));
     tx.appendChild(h('small', null, sub));
     c.appendChild(img); c.appendChild(tx); c.appendChild(btn('Install', 'cmi-y', install));
     return c;
@@ -187,7 +187,7 @@
     var meta = doc.querySelector('.rx-meta');
     if (meta && !meta.querySelector('.rx-install')) {
       var b = h('button', 'rx-mi rx-install'); b.type = 'button'; b.setAttribute('data-cmi', '');
-      b.setAttribute('aria-label', 'Get the CredMates app');
+      b.setAttribute('aria-label', 'Get the FinMatrix app');
       b.innerHTML = ICON.dl;
       var sp = h('span'); sp.appendChild(h('b', null, 'Get the App')); sp.appendChild(h('small', null, 'Install free'));
       b.appendChild(sp); b.addEventListener('click', install);
@@ -208,9 +208,9 @@
   function maybeBanner() {
     if (banner || installed || snoozed() || !mm('(max-width: 768px)') || !(deferred || isIOS)) return;
     if (doc.querySelector('.rv-consent') || sheet) { setTimeout(maybeBanner, 4000); return; }
-    banner = h('div', 'cmi cmi-banner'); banner.setAttribute('role', 'dialog'); banner.setAttribute('aria-label', 'Install the CredMates app');
+    banner = h('div', 'cmi cmi-banner'); banner.setAttribute('role', 'dialog'); banner.setAttribute('aria-label', 'Install the FinMatrix app');
     var head = h('div', 'cmi-banner-h'), tx = h('div');
-    tx.appendChild(h('b', null, 'Install the CredMates app'));
+    tx.appendChild(h('b', null, 'Install the FinMatrix app'));
     tx.appendChild(h('p', null, 'Quick access from your home screen. Free, no app store needed.'));
     head.appendChild(appImg()); head.appendChild(tx);
     var x = h('button', 'cmi-x'); x.type = 'button'; x.setAttribute('aria-label', 'Not now'); x.innerHTML = ICON.x;
@@ -230,7 +230,7 @@
   });
   window.addEventListener('appinstalled', function () {
     installed = true; deferred = null; removeAll();
-    toast('CredMates is installed. Open it from your home screen.');
+    toast('FinMatrix is installed. Open it from your home screen.');
   });
 
   function start() {

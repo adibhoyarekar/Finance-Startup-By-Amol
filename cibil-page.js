@@ -1,4 +1,4 @@
-/* CIBIL Score Dedicated Page Script – CredMates */
+/* CIBIL Score Dedicated Page Script – FinMatrix */
 (function () {
   'use strict';
 

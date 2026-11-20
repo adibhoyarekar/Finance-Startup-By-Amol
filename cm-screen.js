@@ -1,4 +1,4 @@
-/* Full-screen status pages (loading, success, error, warning, pending, refund) with Lottie animations – CredMates */
+/* Full-screen status pages (loading, success, error, warning, pending, refund) with Lottie animations – FinMatrix */
 (function () {
   'use strict';
 
@@ -112,7 +112,7 @@
     root.setAttribute('role', 'dialog');
     root.setAttribute('aria-modal', 'true');
     root.setAttribute('aria-labelledby', 'cms-title');
-    root.innerHTML = '<div class="cms-bar"><a class="cms-logo" href="index.html"><img src="images/rx/logo-mark.svg" alt="" width="34" height="34"><span>CredMates</span></a>' +
+    root.innerHTML = '<div class="cms-bar"><a class="cms-logo" href="index.html"><img src="images/rx/logo-mark.svg" alt="" width="34" height="34"><span>FinMatrix</span></a>' +
       '<span class="cms-secure"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Secure</span></div>' +
       '<div class="cms-body"><div class="cms-card" aria-live="polite"></div></div>';
     card = root.querySelector('.cms-card');

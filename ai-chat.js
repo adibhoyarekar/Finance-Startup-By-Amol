@@ -1,4 +1,4 @@
-/* CredMates "Ask a question" floating button - opens the full-page chat (ask.html) */
+/* FinMatrix "Ask a question" floating button - opens the full-page chat (ask.html) */
 (function () {
   if (/(^|\/)ask(\.html)?$/.test(location.pathname)) return;
   var DESKTOP = '(min-width:900px)';
@@ -41,7 +41,7 @@ html.rv-split header.z-50{right:var(--chat-w);width:auto}\
       panel.className = 'rv-chat-panel';
       panel.setAttribute('role', 'complementary');
       panel.setAttribute('aria-label', 'Ask a question');
-      panel.innerHTML = '<div class="rv-chat-top"><span>CredMates Assistant</span><span><a href="ask.html">Open full page</a> <button type="button" class="rv-chat-x" aria-label="Close chat">&times;</button></span></div><iframe title="Ask a question" src="ask.html?embed=1"></iframe>';
+      panel.innerHTML = '<div class="rv-chat-top"><span>FinMatrix Assistant</span><span><a href="ask.html">Open full page</a> <button type="button" class="rv-chat-x" aria-label="Close chat">&times;</button></span></div><iframe title="Ask a question" src="ask.html?embed=1"></iframe>';
       document.body.appendChild(panel);
       panel.querySelector('.rv-chat-x').addEventListener('click', closePanel);
     }

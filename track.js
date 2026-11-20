@@ -15,7 +15,7 @@
 
   function invalid() {
     root.innerHTML = '<div class="tk-empty"><span class="tk-empty-ic">' + ic('link', 26) + '</span><h1>This link isn’t working</h1>' +
-      '<p>The status link may be incomplete or copied wrongly. Ask your CredMates advisor to send it again, or contact us and we’ll tell you where your application stands.</p>' +
+      '<p>The status link may be incomplete or copied wrongly. Ask your FinMatrix advisor to send it again, or contact us and we’ll tell you where your application stands.</p>' +
       '<div class="tk-acts"><a class="tk-btn is-primary" href="contact.html">Contact us</a><a class="tk-btn" href="index.html">Go to home page</a></div></div>';
   }
 
@@ -39,11 +39,11 @@
       '<ol class="tk-steps">' + steps + '</ol>' +
       '<div class="tk-info">' + ic('info', 20) + '<div><b>What’s happening</b><p>' + esc(info.text) + '</p></div></div>' +
       (updated ? '<p class="tk-upd">Last updated by your advisor on ' + esc(updated) + '</p>' : '') +
-      (t.agent || t.agentMobile ? '<div class="tk-adv"><div><span>Your advisor</span><strong>' + esc(t.agent || 'CredMates advisor') + '</strong></div>' +
+      (t.agent || t.agentMobile ? '<div class="tk-adv"><div><span>Your advisor</span><strong>' + esc(t.agent || 'FinMatrix advisor') + '</strong></div>' +
         (t.agentMobile ? '<div class="tk-adv-acts"><a class="tk-btn is-sm" href="tel:+91' + esc(t.agentMobile) + '">' + ic('phone', 16) + 'Call</a><a class="tk-btn is-sm is-wa" href="https://wa.me/91' + esc(t.agentMobile) + '?text=' + encodeURIComponent('Hi, I’m checking on my ' + t.productLabel + ' application.') + '" target="_blank" rel="noopener">' + WA + 'WhatsApp</a></div>' : '') + '</div>' : '') +
-      '<div class="tk-acts">' + (mine ? '<a class="tk-btn is-primary" href="orders.html">See all my orders</a>' : '<a class="tk-btn is-primary" href="contact.html">Ask a question</a>') + '<a class="tk-btn" href="index.html">CredMates home</a></div>' +
+      '<div class="tk-acts">' + (mine ? '<a class="tk-btn is-primary" href="orders.html">See all my orders</a>' : '<a class="tk-btn is-primary" href="contact.html">Ask a question</a>') + '<a class="tk-btn" href="index.html">FinMatrix home</a></div>' +
       '<p class="tk-note">' + (saved ? 'Saved on this device' + (mine ? ' – you’ll also find it in My orders.' : '.') + ' ' : '') + 'This page shows the status your advisor last shared. For a newer update, ask them for a fresh link.</p>';
-    document.title = info.label + ' – ' + t.productLabel + ' - CredMates';
+    document.title = info.label + ' – ' + t.productLabel + ' - FinMatrix';
   }
 
   function show() { var t = T.fromLocation(); if (t) render(t); else invalid(); }
