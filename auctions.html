@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Poppins:wght@400;500;600;700;800&display=swap">
   <link rel="stylesheet" href="rx.css?v=55">
   <link rel="stylesheet" href="app.css?v=4">
-  <link rel="stylesheet" href="auction.css?v=9">
+  <link rel="stylesheet" href="auction.css?v=10">
 </head>
 <body class="rx antialiased text-gray-900 bg-white">
   <div id="top" class="min-h-screen">
@@ -43,22 +43,43 @@
     </div>
   </div>
 
-  <main>
-    <section class="rv-hero rv-hero-sm relative">
-      <div class="rv-fade-bottom"></div>
-      <div class="max-w-7xl mx-auto px-6 relative z-30">
-        <div class="max-w-xl lg:max-w-4xl lg:px-4 mx-auto text-center">
+  <main class="abx">
+    <section class="abx-hero">
+      <div class="rx-wrap abx-hero-in">
+        <div class="abx-copy">
           <nav class="rx-crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg><a href="real-estate.html">Real Estate</a><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg><span aria-current="page">Bank Auctions</span></nav>
-          <a href="funding-loans.html" class="rv-back reveal">&larr; Loans</a>
-          <h1 class="text-center text-4xl lg:text-6xl font-semibold mb-5 reveal">Bank Auctions</h1>
-          <p class="text-gray-500 text-base lg:px-10 reveal">Flats, shops, plots, vehicles and gold sold by banks under SARFAESI – watch prices move live and bid from your phone with a verified EMD.</p>
-          <p class="rv-hero-links"><a href="auction-bidder.html">My bids</a><a href="auction-bank.html">For banks</a></p>
+          <span class="abx-kick"><i class="ac-live-dot"></i>Live bank auctions</span>
+          <h1>Bank Auctions</h1>
+          <p>Flats, shops, plots, vehicles and gold sold by banks under SARFAESI. Watch prices move live and bid from your phone with a verified EMD.</p>
+          <div class="abx-ctas">
+            <a class="abx-btn is-y" href="#ac-list">See auctions<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg></a>
+            <a class="abx-btn is-o" href="#alerts"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg>Get alerts</a>
+          </div>
+          <p class="abx-links"><a href="auction-bidder.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 13l-7.5 7.5a2.1 2.1 0 0 1-3-3L11 10"/><path d="M16 16l6-6M8 8l6-6M9 7l8 8M21 11l-8-8"/></svg>My bids</a><a href="auction-bank.html"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V10M19 21V10M9 21V10M15 21V10M2 10l10-6 10 6"/></svg>For banks</a></p>
+        </div>
+        <div class="abx-board">
+          <div class="abx-board-h"><b><i class="ac-live-dot"></i>Right now</b><span>Updates live</span></div>
+          <div class="ac-strip" id="ac-strip" aria-live="polite"></div>
+          <ul class="abx-board-f">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>EMD checked by the bank before you bid</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Losing bidders get their EMD back</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <section class="pb-10 ac-list" id="ac-list">
+    <section class="ac-list" id="ac-list">
       <div class="ac-wrap">
+        <div class="abx-types" role="toolbar" aria-label="Asset type">
+          <button type="button" class="abx-type" data-ac-type="" aria-pressed="true"><i><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></i>All</button>
+          <button type="button" class="abx-type" data-ac-type="residential" aria-pressed="false"><i><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg></i>Flats &amp; houses</button>
+          <button type="button" class="abx-type" data-ac-type="commercial" aria-pressed="false"><i><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l1.5-5h15L21 9"/><path d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/><path d="M5 12v8h14v-8"/><path d="M10 20v-5h4v5"/></svg></i>Shops &amp; offices</button>
+          <button type="button" class="abx-type" data-ac-type="plot" aria-pressed="false"><i><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7l6-3 6 3 6-3v13l-6 3-6-3-6 3z"/><path d="M9 4v13M15 7v13"/></svg></i>Plots &amp; land</button>
+          <button type="button" class="abx-type" data-ac-type="vehicle" aria-pressed="false"><i><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17H3v-5l2-5h14l2 5v5h-2"/><path d="M3 12h18"/><circle cx="7.5" cy="17" r="2"/><circle cx="16.5" cy="17" r="2"/></svg></i>Vehicles</button>
+          <button type="button" class="abx-type" data-ac-type="gold" aria-pressed="false"><i><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 10h10l3 9H4z"/><path d="M9 10l1.5-5h3L15 10"/></svg></i>Gold</button>
+          <button type="button" class="abx-type" data-ac-type="industrial" aria-pressed="false"><i><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21V10l6 4V10l6 4V5h4v16z"/><path d="M3 21h18"/></svg></i>Industrial</button>
+        </div>
+        <div class="abx-bar">
         <div class="ac-tabs" id="ac-tabs" role="toolbar" aria-label="Auction status"></div>
         <div class="ac-tools" id="ac-tools">
           <label class="ac-q"><span data-ico="search" data-size="18"></span><input class="ap-input" id="f-q" type="search" placeholder="Search city, locality, bank or reference" aria-label="Search auctions"></label>
@@ -70,35 +91,40 @@
             <div class="ac-fp-f"><button type="button" class="ac-fp-clear" id="f-clear">Clear all</button><button type="button" class="ap-btn is-primary" id="f-apply">Apply filters</button></div>
           </div>
         </div>
+        </div>
         <div class="ac-active" id="f-active"></div>
         <p class="ac-count" id="ac-count"></p>
         <div class="ac-grid" id="ac-grid"></div>
-        <div class="ac-after">
-        <div class="ac-strip" id="ac-strip" aria-live="polite"></div>
         <p class="ac-demo" role="note"><span data-ico="info"></span><span><b>Demo mode:</b> auctions, bids and other bidders are simulated and saved only in this browser. Open this page in two tabs to watch bids sync live. No real money moves.</span></p>
-        </div>
       </div>
     </section>
 
-    <section class="py-10 lg:py-14">
+    <section class="abx-how" aria-labelledby="abx-how-t">
       <div class="ac-wrap">
-        <div class="text-center max-w-2xl mx-auto mb-8">
-          <h2 class="text-3xl lg:text-4xl font-semibold mb-3 reveal">How bank auctions work</h2>
-          <p class="text-gray-500 reveal">Four steps, all online. The bank verifies your EMD before you can bid, and losing bidders get their EMD back.</p>
-        </div>
-        <div class="ac-steps">
-          <div class="ac-step reveal"><span>1</span><strong>Complete KYC</strong><p>PAN, Aadhaar e-KYC and the bank account where your EMD refund should go.</p></div>
-          <div class="ac-step reveal"><span>2</span><strong>Pay EMD &amp; apply</strong><p>Usually 10% of the reserve price, paid by NEFT/RTGS before the last date. Book a site visit if you like.</p></div>
-          <div class="ac-step reveal"><span>3</span><strong>Bid live</strong><p>Bid in fixed steps or set a maximum and let auto-bid work for you. Late bids extend the clock by 5 minutes.</p></div>
-          <div class="ac-step reveal"><span>4</span><strong>Win &amp; pay</strong><p>Pay 25% by the next working day and the balance in 15 days. The bank then issues the sale certificate.</p></div>
-        </div>
+        <div class="abx-how-h"><h2 id="abx-how-t">How bank auctions work</h2><p>Four steps, all online.</p></div>
+        <ol class="abx-steps">
+          <li><i><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="12" r="2.2"/><path d="M14 10h4M14 14h3M5.5 16.5c.6-1.4 1.9-2.2 3.5-2.2s2.9.8 3.5 2.2"/></svg></i><span>Step 1</span><strong>Complete KYC</strong><p>PAN, Aadhaar e-KYC and the bank account where your EMD refund should go.</p></li>
+          <li><i><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/></svg></i><span>Step 2</span><strong>Pay EMD &amp; apply</strong><p>Usually 10% of the reserve price, paid by NEFT/RTGS before the last date. Book a site visit if you like.</p></li>
+          <li><i><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 13l-7.5 7.5a2.1 2.1 0 0 1-3-3L11 10"/><path d="M16 16l6-6M8 8l6-6M9 7l8 8M21 11l-8-8"/></svg></i><span>Step 3</span><strong>Bid live</strong><p>Bid in fixed steps or set a maximum and let auto-bid work for you. Late bids extend the clock by 5 minutes.</p></li>
+          <li><i><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg></i><span>Step 4</span><strong>Win &amp; pay</strong><p>Pay 25% by the next working day and the balance in 15 days. The bank then issues the sale certificate.</p></li>
+        </ol>
       </div>
     </section>
 
-    <section class="pb-12 lg:pb-16" id="alerts">
+    <section class="abx-alerts" id="alerts">
       <div class="ac-wrap">
-        <div class="ap-card pad" style="max-width:56rem;margin:0 auto">
-          <div class="ap-ch"><div><h2>Get auction alerts</h2><p>Tell us what you are looking for and we will message you when a bank posts a matching auction.</p></div></div>
+        <div class="abx-alert">
+          <div class="abx-alert-pitch">
+            <i class="abx-bell"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg></i>
+            <h2>Get auction alerts</h2>
+            <p>Tell us what you are looking for and we will message you when a bank posts a matching auction.</p>
+            <ul>
+              <li>WhatsApp, SMS or email</li>
+              <li>Instantly, daily or weekly</li>
+              <li>Remove an alert any time</li>
+            </ul>
+          </div>
+          <div class="abx-alert-form">
           <form id="al-form" novalidate>
             <div class="ap-fgrid3">
               <div class="ap-field"><label for="al-type">Asset type</label><select class="ap-input" id="al-type"></select></div>
@@ -110,7 +136,8 @@
             </div>
             <button class="ap-btn is-primary" type="submit" style="margin-top:1rem">Save alert</button>
           </form>
-          <div id="al-list"></div>
+            <div id="al-list"></div>
+          </div>
         </div>
         <p class="ac-note">CredMates lists auctions published by banks. Always read the bank’s sale notice and check title and dues before you bid.</p>
       </div>
@@ -144,7 +171,7 @@
   <script src="app-shell.js?v=6"></script>
   <script src="auction-store.js?v=92"></script>
   <script src="auction-ui.js?v=1"></script>
-  <script src="auctions-page.js?v=5"></script>
+  <script src="auctions-page.js?v=6"></script>
   <script src="rx.js?v=4"></script>
   <script src="site.js?v=3"></script>
   <script src="ai-chat.js?v=7"></script>
