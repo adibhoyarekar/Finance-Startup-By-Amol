@@ -1117,3 +1117,71 @@ body.rx{font-family:var(--rx-font);color:var(--rx-text);background:#fff}
 @media(max-width:959px){.pl2 .rx-pl-grid{max-width:440px}.pl2 .rx-pl.is-active{transform:none}}
 @media(max-width:767px){.rx-pl-band.pl2{padding:34px 14px 28px}.rx .pl2 .rx-pl-head h2{font-size:24px}.pl-trust{flex-direction:column;align-items:flex-start;max-width:320px;margin:26px auto 0}}
 @media(prefers-reduced-motion:reduce){.pl2 .rx-pl,.pl2 .rx-pl::before,.pl2 .rx-pl *{transition:none!important}}
+
+/* Hero: copy and actions on the left, framed family photo on the right */
+.hx{position:relative;overflow:hidden;background:radial-gradient(900px 420px at 85% 0%,#dbe8fd 0,transparent 70%),radial-gradient(600px 380px at 0% 100%,#fff4d6 0,transparent 70%),linear-gradient(180deg,#f3f8ff 0%,#fff 100%)}
+.hx::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(30,58,138,.09) 1px,transparent 1.4px);background-size:22px 22px;-webkit-mask-image:linear-gradient(180deg,#000 0,transparent 85%);mask-image:linear-gradient(180deg,#000 0,transparent 85%);pointer-events:none}
+.hx-in{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:48px;align-items:center;padding-top:52px;padding-bottom:60px}
+.hx-kicker{display:inline-flex;align-items:center;gap:9px;margin:0 0 18px;padding:7px 14px 7px 10px;border-radius:999px;background:#fff;border:1px solid #dbe5f5;box-shadow:0 6px 16px -10px rgba(11,43,94,.4);font-size:13px;font-weight:600;color:#1e3a8a}
+.hx-kicker i{width:8px;height:8px;border-radius:50%;background:#16a34a;box-shadow:0 0 0 4px rgba(22,163,74,.18)}
+.rx .hx-h1{margin:0;font-size:clamp(32px,3.6vw,50px);line-height:1.12;font-weight:800;letter-spacing:-.02em;color:var(--rx-ink)}
+.hx-h1 span{background:linear-gradient(90deg,#1d4ed8,#0d9488);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hx-sub{max-width:520px;margin:18px 0 0;font-size:16.5px;line-height:1.6;color:#475569}
+.hx-sub b{color:var(--rx-ink)}
+.hx-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.hx-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;height:52px;padding:0 24px;border-radius:14px;font-size:15.5px;font-weight:700;text-decoration:none;transition:transform .2s,box-shadow .2s,background .2s,border-color .2s}
+.hx-btn.is-primary{background:linear-gradient(135deg,#1d4ed8,#1e3a8a);color:#fff;box-shadow:0 14px 28px -14px rgba(29,78,216,.85)}
+.hx-btn.is-primary:hover{transform:translateY(-2px);box-shadow:0 18px 32px -14px rgba(29,78,216,.95)}
+.hx-btn.is-primary svg{transition:transform .2s}
+.hx-btn.is-primary:hover svg{transform:translateX(3px)}
+.hx-btn.is-ghost{background:#fff;color:var(--rx-ink);border:1.5px solid #d3def0}
+.hx-btn.is-ghost:hover{border-color:#16a34a;color:#15803d;transform:translateY(-2px)}
+.hx-btn.is-ghost svg{color:#16a34a}
+.hx-btn:focus-visible{outline:3px solid #93c5fd;outline-offset:3px}
+.hx-trust{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:34px 0 0;padding:0;list-style:none}
+.hx-trust li{display:flex;align-items:center;gap:8px;padding:10px;border-radius:14px;background:rgba(255,255,255,.75);border:1px solid #e3ebf7;font-size:12.5px;font-weight:600;line-height:1.3;color:var(--rx-ink);backdrop-filter:blur(4px)}
+.hx-trust svg{flex:none;width:26px;height:26px}
+.hx-art{position:relative;padding:0 0 26px 26px}
+.hx-photo{position:relative;overflow:hidden;aspect-ratio:1.08/1;border-radius:28px;box-shadow:0 40px 70px -40px rgba(11,43,94,.65);transform:rotate(1.2deg)}
+.hx-photo::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 1px rgba(255,255,255,.4);background:linear-gradient(180deg,transparent 60%,rgba(10,37,82,.25) 100%)}
+.hx-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:76% 50%}
+.hx-art::before{content:"";position:absolute;right:-30px;top:-30px;width:180px;height:180px;border-radius:40px;background:linear-gradient(135deg,#fde68a,#fbbf24);opacity:.55;transform:rotate(14deg);z-index:-1}
+.hx-quote{position:absolute;left:0;bottom:0;z-index:2;margin:0;padding:14px 20px 12px;border-radius:18px;background:#fff;box-shadow:0 18px 36px -18px rgba(11,43,94,.5);font-family:"Kaushan Script","Caveat",cursive;font-size:22px;line-height:1.2;color:var(--rx-navy);transform:rotate(-3deg)}
+.hx-quote svg{display:block;width:150px;height:auto;margin-top:2px}
+.hx-float{position:absolute;z-index:2;display:flex;align-items:center;gap:10px;padding:10px 14px 10px 10px;border-radius:16px;background:#fff;box-shadow:0 18px 36px -18px rgba(11,43,94,.5);animation:hxFloat 5s ease-in-out infinite}
+.hx-float i{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:11px;background:#e8f0fd;color:#1d4ed8}
+.hx-f2 i{background:#e6f7ec;color:#15803d}
+.hx-float span{display:flex;flex-direction:column}
+.hx-float b{font-size:13.5px;color:var(--rx-ink)}
+.hx-float small{font-size:11.5px;color:#64748b}
+.hx-f1{top:22px;left:0}
+.hx-f2{right:-14px;top:46%;animation-delay:-2.5s}
+@keyframes hxFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@media(max-width:1199px){.hx-trust{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:991px){
+  .hx-in{grid-template-columns:1fr;gap:34px;padding-top:34px;padding-bottom:44px}
+  .hx-copy{max-width:640px}
+  .hx-art{max-width:560px;width:100%;margin:0}
+  .hx-photo{aspect-ratio:4/3}
+}
+@media(max-width:599px){
+  .hx-in{gap:28px;padding-top:26px;padding-bottom:34px}
+  .hx-kicker{font-size:12px;margin-bottom:14px}
+  .rx .hx-h1{font-size:30px}
+  .hx-sub{font-size:15px;margin-top:14px}
+  .hx-ctas{flex-direction:column;margin-top:22px}
+  .hx-btn{width:100%;height:50px}
+  .hx-trust{margin-top:22px;gap:8px}
+  .hx-trust li{padding:9px 10px;font-size:12px}
+  .hx-trust svg{width:22px;height:22px}
+  .hx-art{padding:0 0 22px 10px}
+  .hx-photo{border-radius:22px;transform:none}
+  .hx-art::before{width:110px;height:110px;right:-14px;top:-18px;border-radius:28px}
+  .hx-quote{font-size:17px;padding:10px 14px 9px;border-radius:14px}
+  .hx-quote svg{width:110px}
+  .hx-f1{top:12px;left:0;padding:7px 10px 7px 7px}
+  .hx-f2{display:none}
+  .hx-float i{width:30px;height:30px}
+  .hx-float b{font-size:12px}.hx-float small{font-size:10.5px}
+}
+@media(prefers-reduced-motion:reduce){.hx-float{animation:none}.hx-btn{transition:none}}
