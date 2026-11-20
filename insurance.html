@@ -18,6 +18,7 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <script src="/app-install.js?v=1"></script>
+  <script src="/rx-lottie.js?v=1"></script>
 </head>
 <body class="rx antialiased text-gray-900 bg-white">
   <div id="top" class="min-h-screen">
@@ -59,36 +60,149 @@
         </div>
       </div>
     </section>
-    <section class="rx-wrap rx-sec">
-      <div class="rx-four">
-        <article class="rx-cc reveal" id="life" style="--c:#15803d;--bg:#eaf7ee;--bd:#d3eedb;--b:#16a34a">
-          <span class="rx-ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.4-9-9a5 5 0 0 1 9-3 5 5 0 0 1 9 3c-2 4.6-9 9-9 9z"/></svg></span>
-          <h3>Life Insurance</h3>
-          <p>Secure your family's future with term and savings plans.</p>
-          <ul><li>Term cover up to ₹2 Crore</li><li>Tax benefits under Sec 80C</li><li>Riders for illness and accident</li><li>Claim support from our team</li></ul>
-          <a class="rx-btn" href="contact.html?f-service=Insurance">Get a Free Quote <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </article>
-        <article class="rx-cc reveal" id="health" style="--c:#1e3a8a;--bg:#eef3ff;--bd:#dbe5fb;--b:#1e3a8a">
-          <span class="rx-ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg></span>
-          <h3>Health Insurance</h3>
-          <p>Cashless treatment at network hospitals across India.</p>
-          <ul><li>Family floater plans</li><li>Cashless hospitalisation</li><li>Pre-existing diseases after the waiting period</li><li>Plans for parents and seniors</li></ul>
-          <a class="rx-btn" href="contact.html?f-service=Insurance">Get a Free Quote <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </article>
-        <article class="rx-cc reveal" id="motor" style="--c:#ea580c;--bg:#fff3ea;--bd:#fde2cf;--b:#ef6c1a">
-          <span class="rx-ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 16l1.5-5a2 2 0 0 1 2-1.5h7a2 2 0 0 1 2 1.5L19 16"/><rect x="3" y="15" width="18" height="4" rx="1.5"/><circle cx="7.5" cy="19.5" r="1.5"/><circle cx="16.5" cy="19.5" r="1.5"/></svg></span>
-          <h3>Motor Insurance</h3>
-          <p>Comprehensive and third-party cover for car and bike.</p>
-          <ul><li>Policy issued in minutes</li><li>Zero-depreciation add-on</li><li>Cashless garages near you</li><li>Easy renewal, keep your NCB</li></ul>
-          <a class="rx-btn" href="contact.html?f-service=Insurance">Get a Free Quote <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </article>
-        <article class="rx-cc reveal" id="travel" style="--c:#6d28d9;--bg:#f4efff;--bd:#e4d9fb;--b:#6d3fdc">
-          <span class="rx-ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14L3 11l1.5-1.5 7 1L17 5a2 2 0 0 1 3 3l-5.5 5.5 1 7L14 22l-3-7z"/></svg></span>
-          <h3>Travel Insurance</h3>
-          <p>Travel worry-free in India and abroad.</p>
-          <ul><li>Medical emergencies abroad</li><li>Trip cancellation and delays</li><li>Lost baggage and passport</li><li>Single-trip and annual plans</li></ul>
-          <a class="rx-btn" href="contact.html?f-service=Insurance">Get a Free Quote <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </article>
+    <section class="ln pt-4 pb-6 lg:pb-10" id="insurance-form">
+      <span id="life" class="in-anchor"></span><span id="health" class="in-anchor"></span><span id="motor" class="in-anchor"></span><span id="travel" class="in-anchor"></span>
+      <div class="max-w-7xl mx-auto px-4 lg:px-6">
+        <div class="hl-card reveal">
+          <div class="hl-head">
+            <span class="hl-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-3.5 8-10V5l-8-3-8 3v7c0 6.5 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>
+            <div>
+              <h2 class="hl-title">Get a Free Insurance Quote</h2>
+              <p class="hl-sub">Choose the insurance type and share a few details. Our advisor compares plans from leading insurers and calls you back.</p>
+            </div>
+          </div>
+          <form class="hl-form" data-search="insurance" data-result="insurance-result" data-hash-field="in-type" novalidate>
+            <div class="hl-field hl-full">
+              <label for="in-type">Insurance Type</label>
+              <select id="in-type" name="itype" class="rv-input hl-select" required>
+                <option value="">Select Insurance Type</option>
+                <option value="life">Life Insurance</option>
+                <option value="health">Health Insurance</option>
+                <option value="motor">Motor Insurance</option>
+                <option value="travel">Travel Insurance</option>
+              </select>
+              <p class="hl-err" data-for="in-type">Please select the insurance type.</p>
+            </div>
+            <div class="hl-field">
+              <label for="in-name">Full Name</label>
+              <input id="in-name" name="name" class="rv-input" type="text" placeholder="Enter Full Name" data-check="name" autocomplete="name" maxlength="80" required>
+              <p class="hl-err" data-for="in-name">Please enter your full name.</p>
+            </div>
+            <div class="hl-field">
+              <label for="in-mobile">Mobile Number</label>
+              <input id="in-mobile" name="mobile" class="rv-input" type="tel" placeholder="Enter Mobile Number" data-check="mobile" inputmode="tel" autocomplete="tel" maxlength="16" required>
+              <p class="hl-err" data-for="in-mobile">Enter a valid 10-digit mobile number.</p>
+            </div>
+            <div class="hl-cond hl-full" data-show="itype:life"><div class="hl-subgrid">
+            <div class="hl-field">
+              <label for="in-cover">Cover Amount</label>
+              <select id="in-cover" name="cover" class="rv-input hl-select" required>
+                <option value="">Select Cover Amount</option>
+                <option value="50l">₹50 Lakh</option>
+                <option value="1cr">₹1 Crore</option>
+                <option value="1.5cr">₹1.5 Crore</option>
+                <option value="2cr">₹2 Crore or more</option>
+              </select>
+              <p class="hl-err" data-for="in-cover">Please select the cover amount.</p>
+            </div>
+            <div class="hl-field">
+              <label for="in-tobacco">Tobacco Use</label>
+              <select id="in-tobacco" name="tobacco" class="rv-input hl-select" required>
+                <option value="">Select Tobacco Use</option>
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+              </select>
+              <p class="hl-err" data-for="in-tobacco">Please select an option.</p>
+            </div>
+            </div></div>
+            <div class="hl-cond hl-full" data-show="itype:health"><div class="hl-subgrid">
+            <div class="hl-field">
+              <label for="in-members">Who to Cover</label>
+              <select id="in-members" name="members" class="rv-input hl-select" required>
+                <option value="">Select Who to Cover</option>
+                <option value="self">Only Me</option>
+                <option value="couple">Me + Spouse</option>
+                <option value="family">Family (2 Adults + Children)</option>
+                <option value="parents">Parents / Senior Citizens</option>
+              </select>
+              <p class="hl-err" data-for="in-members">Please select who to cover.</p>
+            </div>
+            <div class="hl-field">
+              <label for="in-sum">Sum Insured</label>
+              <select id="in-sum" name="sum" class="rv-input hl-select" required>
+                <option value="">Select Sum Insured</option>
+                <option value="5l">₹5 Lakh</option>
+                <option value="10l">₹10 Lakh</option>
+                <option value="25l">₹25 Lakh</option>
+                <option value="50l">₹50 Lakh or more</option>
+              </select>
+              <p class="hl-err" data-for="in-sum">Please select the sum insured.</p>
+            </div>
+            </div></div>
+            <div class="hl-cond hl-full" data-show="itype:life|health"><div class="hl-subgrid">
+            <div class="hl-field">
+              <label for="in-age">Age (eldest member)</label>
+              <input id="in-age" name="age" class="rv-input" type="text" placeholder="Enter Age" data-check="number" data-min="18" data-max="85" inputmode="numeric" maxlength="2" autocomplete="off" required>
+              <p class="hl-err" data-for="in-age">Enter an age between 18 and 85.</p>
+            </div>
+            </div></div>
+            <div class="hl-cond hl-full" data-show="itype:motor"><div class="hl-subgrid">
+            <div class="hl-field">
+              <label for="in-vehicle">Vehicle Type</label>
+              <select id="in-vehicle" name="vehicle" class="rv-input hl-select" required>
+                <option value="">Select Vehicle Type</option>
+                <option value="car">Car</option>
+                <option value="bike">Two-Wheeler</option>
+                <option value="commercial">Commercial Vehicle</option>
+              </select>
+              <p class="hl-err" data-for="in-vehicle">Please select the vehicle type.</p>
+            </div>
+            <div class="hl-field">
+              <label for="in-policy">Policy Needed</label>
+              <select id="in-policy" name="policy" class="rv-input hl-select" required>
+                <option value="">Select Policy Needed</option>
+                <option value="new">New Vehicle</option>
+                <option value="renew">Renewal</option>
+                <option value="expired">Policy Expired</option>
+              </select>
+              <p class="hl-err" data-for="in-policy">Please select the policy needed.</p>
+            </div>
+            </div></div>
+            <div class="hl-cond hl-full" data-show="itype:travel"><div class="hl-subgrid">
+            <div class="hl-field">
+              <label for="in-trip">Trip</label>
+              <select id="in-trip" name="trip" class="rv-input hl-select" required>
+                <option value="">Select Trip</option>
+                <option value="domestic">Within India</option>
+                <option value="intl">International</option>
+              </select>
+              <p class="hl-err" data-for="in-trip">Please select the trip.</p>
+            </div>
+            <div class="hl-field">
+              <label for="in-plan">Plan</label>
+              <select id="in-plan" name="plan" class="rv-input hl-select" required>
+                <option value="">Select Plan</option>
+                <option value="single">Single Trip</option>
+                <option value="annual">Annual Multi-Trip</option>
+              </select>
+              <p class="hl-err" data-for="in-plan">Please select the plan.</p>
+            </div>
+            </div></div>
+            <div class="hl-field hl-full">
+              <label for="in-city">City / Location</label>
+              <input id="in-city" name="city" class="rv-input" type="text" placeholder="Enter City / Location" autocomplete="address-level2" maxlength="60" required>
+              <p class="hl-err" data-for="in-city">Please enter the city or location.</p>
+            </div>
+            <div class="hl-full hl-actions">
+              <button type="submit" class="hl-submit">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-3.5 8-10V5l-8-3-8 3v7c0 6.5 8 10 8 10z"/></svg>
+                Get Free Quote
+              </button>
+              <button type="reset" class="hl-reset">Clear</button>
+            </div>
+          </form>
+          <div id="insurance-result" class="hl-result" hidden tabindex="-1" aria-live="polite"></div>
+        </div>
       </div>
     </section>
     <section class="rx-wrap rx-sec">
@@ -127,7 +241,8 @@
     <div class="fx-bar"><div class="rx-wrap"><span>&copy; 2026 CredMates. All Rights Reserved.</span><span class="fx-tag"><b>Your Dreams</b><i aria-hidden="true"></i><b>Our Support</b><i aria-hidden="true"></i><b>A Better Tomorrow</b></span></div></div>
   </footer>
   </div>
-  <script src="raven-app.js?v=6"></script>
+  <script src="raven-app.js?v=7"></script>
+  <script src="search-forms.js?v=6"></script>
   <script src="rx.js?v=4"></script>
   <script src="site.js?v=3"></script>
   <script src="ai-chat.js?v=7"></script>
