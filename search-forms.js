@@ -397,29 +397,40 @@
 
   /* ---------- car loan ---------- */
   function car(v, L) {
-    var used = v.ltype === 'used', yearNow = new Date().getFullYear();
+    var used = v.ltype === 'used', bike = v.ltype === 'twowheeler', cv = v.ltype === 'commercial', yearNow = new Date().getFullYear();
+    var noun = bike ? 'two-wheeler' : cv ? 'commercial vehicle' : 'car';
+    var vtype = L.ctype || L.wtype || L.cvtype || '';
     var income = { salaried: v.salary, self: v.bizincome, business: v.bizincome, cash: v.cashsalary }[v.emp] || 0;
-    var rate = { salaried: 9, self: 9.5, business: 9.5, cash: 12 }[v.emp] + (used ? 3.5 : 0);
+    var rate = { salaried: 9, self: 9.5, business: 9.5, cash: 12 }[v.emp] + (used ? 3.5 : bike ? 3 : cv ? 2.5 : 0);
     var foir = v.emp === 'cash' ? 0.35 : 0.5;
     var age = used && v.year ? yearNow - +v.year : 0;
-    var maxTenure = used ? Math.max(1, Math.min(5, 10 - age)) : 7;
+    var maxTenure = used ? Math.max(1, Math.min(5, 10 - age)) : bike || cv ? 5 : 7;
     var tenure = Math.min(+v.tenure, maxTenure), months = tenure * 12;
-    var ltv = used ? 80 : 90, ltvCap = v.price * ltv / 100;
+    var ltv = used ? 80 : cv ? 85 : 90, ltvCap = v.price * ltv / 100;
     var byIncome = principalFor(income * foir, rate, months);
     var eligible = floor10k(Math.min(ltvCap, byIncome));
     var a = v.amount, ok = a <= eligible;
     var notes = [];
-    if (+v.tenure > maxTenure) notes.push('A ' + (used ? age + '-year-old car' : 'new car') + ' can usually be financed for up to ' + maxTenure + ' year' + (maxTenure === 1 ? '' : 's') + ' (car age plus loan tenure is normally capped at 10 years), so ' + maxTenure + ' years is used here.');
+    if (+v.tenure > maxTenure) notes.push('A ' + (used ? age + '-year-old car' : 'new ' + noun) + ' can usually be financed for up to ' + maxTenure + ' year' + (maxTenure === 1 ? '' : 's') + ' (car age plus loan tenure is normally capped at 10 years), so ' + maxTenure + ' years is used here.');
     var gap = v.price - a - (v.down || 0);
-    if (gap > 1000) notes.push('Loan plus down payment is ' + short(gap) + ' short of the car price – increase the down payment or the loan.');
-    if (gap < -1000) notes.push('Loan plus down payment is ' + short(-gap) + ' more than the car price – you can borrow less.');
-    notes.push(used ? 'Used car loans are based on the lender’s valuation (usually up to 80% of it), not the asking price.' : 'Banks fund up to about 90% of the on-road price; some offer 100% to salaried customers with a good CIBIL score.');
+    if (gap > 1000) notes.push('Loan plus down payment is ' + short(gap) + ' short of the ' + noun + ' price – increase the down payment or the loan.');
+    if (gap < -1000) notes.push('Loan plus down payment is ' + short(-gap) + ' more than the ' + noun + ' price – you can borrow less.');
+    notes.push(used ? 'Used car loans are based on the lender’s valuation (usually up to 80% of it), not the asking price.'
+      : bike ? 'Two-wheeler loans usually fund up to about 90% of the on-road price, often approved at the dealer within a day.'
+        : cv ? 'Commercial vehicle loans fund up to about 85% of the price and look at what the vehicle will earn – a route permit, transport contract or driving / fleet experience helps.'
+          : 'Banks fund up to about 90% of the on-road price; some offer 100% to salaried customers with a good CIBIL score.');
     if ((v.emp === 'salaried' && v.jobexp === 'lt1') || (v.emp === 'cash' && v.workexp === 'lt1')) notes.push('Most lenders want at least 1 year of work experience – a co-applicant helps.');
     if ((v.emp === 'self' || v.emp === 'business') && v.vintage === 'lt1') notes.push('Most lenders want 2+ years of business vintage with ITR – a co-applicant or higher down payment helps.');
     if (v.emp === 'cash') notes.push('With cash salary, banks rarely lend – NBFCs may, usually with a guarantor and a higher down payment.');
 
     var cash = v.emp === 'cash', se = v.emp === 'self' || v.emp === 'business';
-    var groups = [
+    var groups = bike ? [
+      { name: 'Banks', eg: 'SBI, HDFC Bank, ICICI Bank, Axis Bank, IDFC First Bank', from: 10.5, s: cash ? 0 : 2, note: 'Lowest rates for salaried customers with a good CIBIL score' },
+      { name: 'Two-wheeler financiers', eg: 'Hero FinCorp, TVS Credit, Bajaj Finance, L&T Finance', from: 11.5, s: 2, note: 'Approval at the dealer, flexible on income proof' + (cash ? ' (often with a guarantor)' : '') }
+    ] : cv ? [
+      { name: 'Banks', eg: 'SBI, HDFC Bank, ICICI Bank, Axis Bank, Kotak', from: 10.5, s: cash ? 0 : se ? 2 : 1, note: 'Best rates for operators with ITR and banking history' },
+      { name: 'Commercial vehicle NBFCs', eg: 'Shriram Finance, Cholamandalam, Mahindra Finance, Tata Motors Finance', from: 12, s: 2, note: 'Finance first-time buyers and fleet owners, judged on vehicle earnings' }
+    ] : [
       { name: 'Banks', eg: 'SBI, HDFC Bank, ICICI Bank, Axis Bank, Bank of Baroda, Kotak', from: used ? 11.5 : 8.75, s: cash ? 0 : used ? 1 : 2, note: 'Lowest rates, longer tenure for new cars' },
       { name: 'NBFCs & captive financiers', eg: 'Mahindra Finance, Cholamandalam, Sundaram Finance, Toyota Financial Services', from: used ? 12.5 : 9.5, s: cash ? 1 : 2, note: 'Faster approvals, flexible on income proof' + (se ? ' for self-employed' : '') },
       { name: 'Used car specialists', eg: 'Shriram Finance, Cholamandalam, Mahindra Finance', from: 13, s: used ? 2 : 0, note: 'Finance older cars and private-seller deals' }
@@ -429,23 +440,25 @@
     else if (se) docs.push('ITR with computation for 2 years', 'Business proof – GST / Udyam / Shop Act', '12 months bank statement');
     else docs.push('Salary certificate from employer', '6–12 months bank statement', 'Guarantor KYC (often required)');
     docs.push(used ? 'RC copy, insurance and valuation report of the car' : 'Proforma invoice / quotation from the dealer');
+    if (cv) docs.push('Route permit, transport contract or driving licence (badge) if available');
 
     return {
       headline: 'Eligibility ' + short(eligible) + ' · EMI ₹' + inr(emi(a, rate, months)) + '/mo',
       details: [L.ltype + ' · ' + [v.brand, v.model].filter(Boolean).join(' ') + ' · price ' + short(v.price), 'Loan ' + short(a) + ' for ' + tenure + ' yrs at ~' + trim(rate) + '%'],
-      sub: L.ltype + ' · ' + L.ctype + ' · ' + [v.brand, v.model].filter(Boolean).join(' ') + ' · ' + L.emp,
-      title: 'Car loan offers for ' + v.name,
+      sub: L.ltype + ' · ' + vtype + ' · ' + [v.brand, v.model].filter(Boolean).join(' ') + ' · ' + L.emp,
+      title: (bike ? 'Two-wheeler' : cv ? 'Commercial vehicle' : 'Car') + ' loan offers for ' + v.name,
+      subject: (bike ? 'Two-wheeler' : cv ? 'Commercial vehicle' : 'Car') + ' loan enquiry',
       html: stats([
         stat('Estimated eligibility', short(eligible), 'up to ' + ltv + '% of price · ' + tenure + ' yrs'),
         stat('Loan required', short(a), '₹' + inr(a) + (v.down ? ' · down ' + short(v.down) : '')),
         stat('Approx. EMI', '₹' + inr(emi(a, rate, months)) + '/mo', tenure + ' yrs at ~' + trim(rate) + '% p.a.')
       ]) +
-        verdict(ok, ok ? '<strong>Within estimated eligibility.</strong> The loan fits the car price and the income on a ' + tenure + '-year tenure.'
+        verdict(ok, ok ? '<strong>Within estimated eligibility.</strong> The loan fits the ' + noun + ' price and the income on a ' + tenure + '-year tenure.'
           : '<strong>Above estimated eligibility by ' + short(a - eligible) + '.</strong> Increase the down payment, choose a longer tenure or add a co-applicant.') +
         grid2(box('Things to know', bullets(notes.map(esc))), box('Documents to keep ready', bullets(docs.map(esc)))) +
         lenders('Lenders that usually fit', groups, 'No standard lender fits this profile directly – our team can still help.'),
-      email: ['Mobile: ' + v.mobile, 'City: ' + v.city, 'Loan type: ' + L.ltype, 'Employment: ' + L.emp, 'Car: ' + L.ctype + ' · ' + [v.brand, v.model].filter(Boolean).join(' '),
-        'Car price: Rs ' + inr(v.price)].concat(used ? ['Year: ' + v.year, 'Registration: ' + (v.regno || '-')] : [])
+      email: ['Mobile: ' + v.mobile, 'City: ' + v.city, 'Loan type: ' + L.ltype, 'Employment: ' + L.emp, 'Vehicle: ' + vtype + ' · ' + [v.brand, v.model].filter(Boolean).join(' '),
+        'Vehicle price: Rs ' + inr(v.price)].concat(used ? ['Year: ' + v.year, 'Registration: ' + (v.regno || '-')] : [])
         .concat(['Loan required: Rs ' + inr(a), 'Down payment: Rs ' + inr(v.down || 0), 'Tenure: ' + L.tenure, 'Monthly income: Rs ' + inr(income), 'Estimated eligibility: Rs ' + inr(eligible)])
     };
   }
