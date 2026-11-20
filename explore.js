@@ -48,23 +48,29 @@
     t.focus();
   });
 
-  // Animations load only when the section comes near, so the home page stays light.
+  lazyLottie(root, 'data-xp-lottie', '.xp-fb');
+})();
+
+// Animations load only when their section comes near, so the home page stays light.
+function lazyLottie(root, attr, fbSel) {
+  if (!root) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var anims = [];
   var started = false;
+  var visible = false;
   function startAnims() {
     if (started) return;
     started = true;
-    root.querySelectorAll('[data-xp-lottie]').forEach(function (el) {
-      var a = window.lottie.loadAnimation({ container: el, renderer: 'svg', loop: true, autoplay: false, path: el.getAttribute('data-xp-lottie'), rendererSettings: { preserveAspectRatio: 'xMidYMid meet' } });
+    root.querySelectorAll('[' + attr + ']').forEach(function (el) {
+      var a = window.lottie.loadAnimation({ container: el, renderer: 'svg', loop: true, autoplay: false, path: el.getAttribute(attr), rendererSettings: { preserveAspectRatio: 'xMidYMid meet' } });
       a.addEventListener('DOMLoaded', function () {
-        var fb = el.querySelector('.xp-fb');
+        var fb = el.querySelector(fbSel);
         if (fb) fb.remove();
         if (reduce) a.goToAndStop(20, true); else if (visible) a.play();
       });
       anims.push(a);
     });
   }
-  var visible = false;
   function setVisible(v) {
     visible = v;
     if (reduce) return;
@@ -72,13 +78,16 @@
   }
   function loadLottie(cb) {
     if (window.lottie) return cb();
-    var s = document.createElement('script');
-    s.src = 'lottie.min.js';
-    s.async = true;
-    s.onload = function () { if (window.lottie) cb(); };
-    document.head.appendChild(s);
+    var s = document.querySelector('script[data-lazy-lottie]');
+    if (!s) {
+      s = document.createElement('script');
+      s.src = 'lottie.min.js';
+      s.async = true;
+      s.setAttribute('data-lazy-lottie', '');
+      document.head.appendChild(s);
+    }
+    s.addEventListener('load', function () { if (window.lottie) cb(); });
   }
-
   if (!('IntersectionObserver' in window)) {
     visible = true;
     loadLottie(startAnims);
@@ -94,4 +103,6 @@
   new IntersectionObserver(function (es) {
     es.forEach(function (e) { setVisible(e.isIntersecting); });
   }).observe(root);
-})();
+}
+
+lazyLottie(document.querySelector('[data-wy]'), 'data-wy-lottie', '.wy-fb');
