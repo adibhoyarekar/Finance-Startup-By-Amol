@@ -261,7 +261,7 @@
       (before ? '<button type="button" class="ap-btn" data-act="inspect">' + ic('calendar', 18) + 'Book a site inspection</button>' : '') +
       '<button type="button" class="ap-btn" data-act="ask">' + ic('chat', 18) + 'Ask the bank a question</button>' +
       (before ? '<button type="button" class="ap-btn" data-act="remind">' + ic('bell', 18) + 'Remind me before it starts</button>' : '') +
-      '<a class="ap-btn" href="home-loans.html#home-loan-search">' + ic('home', 18) + 'Get a loan for this purchase</a>' +
+      '<a class="ap-btn" href="home-loan-eligibility.html">' + ic('home', 18) + 'Get a loan for this purchase</a>' +
       '<a class="ap-btn" href="auction-bidder.html#disputes">' + ic('info', 18) + 'Report an issue</a></div>';
   }
 

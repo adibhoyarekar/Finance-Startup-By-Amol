@@ -1,4 +1,4 @@
-/* Home Loan Search (home-loans.html): validates the customer form, works out an
+/* Home Loan Search (home-loan-eligibility.html → home-loan-lenders.html): validates the customer form, works out an
    indicative eligibility and lists the lender groups that usually fit the profile.
    Figures are rough estimates for a first conversation, not a lender's sanction. */
 (function () {
@@ -237,11 +237,34 @@
     return '<div class="hl-stat"><p class="hl-sk">' + k + '</p><p class="hl-sv">' + v + '</p><p class="hl-ss">' + s + '</p></div>';
   }
 
+  // Multi-page flow: step 2 saves the details for this tab only and opens step 3; step 3 shows the result.
+  var STORE = 'cm_hl_flow';
+  function save() {
+    try {
+      sessionStorage.setItem(STORE, JSON.stringify({ name: nameEl.value.trim(), employment: empEl.value, income: incEl.value,
+        property: propEl.value, amount: amount(), type: form.getAttribute('data-type') || '' }));
+    } catch (x) { /* storage blocked */ }
+  }
+  function load() {
+    try { return JSON.parse(sessionStorage.getItem(STORE) || 'null'); } catch (x) { return null; }
+  }
+  function setSelect(el, v) {
+    if ([].some.call(el.options, function (o) { return o.value === v; })) el.value = v;
+  }
+  function fill(d) {
+    nameEl.value = String(d.name || '').slice(0, 80);
+    setSelect(empEl, d.employment); setSelect(incEl, String(d.income || ''));
+    if (!(form.getAttribute('data-next') && /[?&]hl-prop=/.test(location.search))) setSelect(propEl, d.property);
+    var n = parseInt(d.amount, 10) || 0;
+    amtEl.value = n ? inr(n) : ''; words.textContent = n ? short(n) : '';
+  }
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     form.classList.add('was-checked');
     var bad = check();
     if (bad.length) { bad[0].focus(); return; }
+    if (form.getAttribute('data-next')) { save(); location.href = form.getAttribute('data-next') + location.search; return; }
     render();
   });
   form.addEventListener('reset', function () {
@@ -250,5 +273,18 @@
     [nameEl, empEl, incEl, propEl, amtEl].forEach(function (el) { setErr(el, false); });
   });
 
+  var saved = load();
+  if (form.hasAttribute('data-autorun')) {
+    var back = form.getAttribute('data-back') || 'home-loan-eligibility.html';
+    if (!saved) { location.replace(back + location.search); return; }
+    fill(saved);
+    if (check().length) { location.replace(back + location.search); return; }
+    render();
+    var edit = document.getElementById('hl-edit');
+    if (edit) edit.replaceWith(edit.cloneNode(true));
+    document.getElementById('hl-edit').addEventListener('click', function () { location.href = back + location.search; });
+    return;
+  }
+  if (saved && form.getAttribute('data-next') && !nameEl.value) fill(saved);
   if (window.RavenApp) RavenApp.prefill(form, 'home');
 })();

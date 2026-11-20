@@ -40,7 +40,7 @@
   function param(name) { var m = new RegExp('[?&]' + name + '=([^&#]*)').exec(location.search); return m ? decodeURIComponent(m[1]) : ''; }
 
   var PRODUCTS = {
-    home:     { label: 'Home Loan',            page: 'home-loans.html',     section: 'home-loan-search' },
+    home:     { label: 'Home Loan',            page: 'home-loan-eligibility.html', section: 'home-loan-search' },
     business: { label: 'Business Loan',        page: 'business-loans.html', section: 'business-loan-search' },
     personal: { label: 'Personal Loan',        page: 'personal-loans.html', section: 'personal-loan-search' },
     gold:     { label: 'Gold Loan',            page: 'gold-loans.html',     section: 'gold-loan-search' },
