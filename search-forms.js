@@ -349,7 +349,7 @@
       loanBox = verdict(okLoan, okLoan
         ? '<strong>Loan of ' + short(loan) + ' is within the usual limit.</strong> Banks fund up to ' + ltv + '% of the property value, so keep at least ' + short(budget - loan) + ' as your own contribution.'
         : '<strong>Loan is above the usual limit.</strong> For a ' + short(budget) + ' property, banks usually fund up to ' + ltv + '% (' + short(maxLoan) + '). Plan an own contribution of at least ' + short(budget - maxLoan) + '.') +
-        '<p class="hl-note" style="margin:-.25rem 0 1rem"><a href="home-loans.html#home-loan-search">Check home loan eligibility and lenders →</a>' +
+        '<p class="hl-note" style="margin:-.25rem 0 1rem"><a href="home-loan-eligibility.html">Check home loan eligibility and lenders →</a>' +
         (v.approval === 'yes' ? ' · Loan approval: ready' : v.approval === 'applied' ? ' · Loan approval: applied' : ' · Getting a pre-approval first makes negotiation easier.') + '</p>';
     } else {
       tiles.push(stat('Payment', buying ? 'Self-funding' : selling ? 'Sale' : 'Rent / lease', buying ? 'no loan needed' : 'we help with the paperwork'));
