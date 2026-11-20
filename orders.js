@@ -15,10 +15,6 @@
   var reports = {}; // order id -> { view, error, loading }
 
   /* ---------- shell ---------- */
-  var NAV = isAgent
-    ? [['dashboard.html#overview', 'grid', 'Overview'], ['dashboard.html#clients', 'users', 'Clients'], ['dashboard.html#pipeline', 'board', 'Pipeline'], ['orders.html', 'listcheck', 'My orders', 1], ['auction-bidder.html', 'board', 'Auction bids'], ['dashboard.html#settings', 'gear', 'Settings']]
-    : [['account.html#home', 'grid', 'Home'], ['account.html#search', 'search', 'Search tools'], ['account.html#saved', 'bookmark', 'Saved searches'], ['orders.html', 'listcheck', 'My orders', 1], ['auction-bidder.html', 'board', 'My auction bids'], ['account.html#profile', 'user', 'Profile']];
-  $('o-nav').innerHTML = NAV.map(function (n) { return '<a href="' + n[0] + '"' + (n[3] ? ' class="is-on" aria-current="page"' : '') + '>' + ic(n[1], 18) + esc(n[2]) + '</a>'; }).join('');
   $('o-area').textContent = isAgent ? 'Agent dashboard' : 'My Account';
   $('o-area').setAttribute('href', isAgent ? 'dashboard.html' : 'account.html');
   $('o-sub').textContent = isAgent ? 'Credit reports you ordered, your client files and auction bids – and where each one stands.' : 'Your credit reports, loan applications and auction bids – and where each one stands.';
@@ -224,12 +220,15 @@
     return list.sort(function (a, b) { return (b.bucket === 'action') - (a.bucket === 'action') || b.at - a.at; });
   }
 
+  // unpaid or expired credit reports get a red stamp, like a finished report gets a green one
+  var RED_STAMP = { 'Expired': 'Expired', 'Payment failed': 'Payment failed', 'Payment not completed': 'Not paid' };
   function card(it, i) {
     var ready = it.kind === 'report' && it.pill === 'Report ready';
-    return '<article class="ox-card is-' + it.tone + (ready ? ' is-ready' : '') + '" style="--i:' + Math.min(i, 8) + '" data-kind="' + it.kind + '">' +
+    var red = it.kind === 'report' && Object.prototype.hasOwnProperty.call(RED_STAMP, it.pill) ? RED_STAMP[it.pill] : '';
+    return '<article class="ox-card is-' + it.tone + (ready ? ' is-ready' : '') + (red ? ' is-red' : '') + '" style="--i:' + Math.min(i, 8) + '" data-kind="' + it.kind + '">' +
       '<div class="ox-top"><span class="ox-ic">' + ic(it.icon, 20) + '</span>' +
       '<div class="ox-t"><h3>' + esc(it.title) + '</h3><p>' + it.meta.map(esc).join('<i aria-hidden="true">·</i>') + '</p></div>' +
-      (ready ? '<span class="ox-stamp">Report ready</span>' : '<span class="ox-st is-' + it.tone + (it.loading ? ' is-loading' : '') + '">' + esc(it.pill) + '</span>') + '</div>' +
+      (ready ? '<span class="ox-stamp">Report ready</span>' : red ? '<span class="ox-stamp is-red">' + esc(red) + '</span>' : '<span class="ox-st is-' + it.tone + (it.loading ? ' is-loading' : '') + '">' + esc(it.pill) + '</span>') + '</div>' +
       it.steps + (it.note ? '<p class="ox-note">' + esc(it.note) + '</p>' : '') +
       (it.actions ? '<div class="ox-act">' + it.actions + '</div>' : '') + '</article>';
   }
