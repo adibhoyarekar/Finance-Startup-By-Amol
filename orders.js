@@ -18,22 +18,15 @@
   var NAV = isAgent
     ? [['dashboard.html#overview', 'grid', 'Overview'], ['dashboard.html#clients', 'users', 'Clients'], ['dashboard.html#pipeline', 'board', 'Pipeline'], ['orders.html', 'listcheck', 'My orders', 1], ['auction-bidder.html', 'board', 'Auction bids'], ['dashboard.html#settings', 'gear', 'Settings']]
     : [['account.html#home', 'grid', 'Home'], ['account.html#search', 'search', 'Search tools'], ['account.html#saved', 'bookmark', 'Saved searches'], ['orders.html', 'listcheck', 'My orders', 1], ['auction-bidder.html', 'board', 'My auction bids'], ['account.html#profile', 'user', 'Profile']];
-  $('side-nav').innerHTML = NAV.map(function (n) { return '<a href="' + n[0] + '"' + (n[3] ? ' class="is-on" aria-current="page"' : '') + '>' + ic(n[1], 18) + esc(n[2]) + '</a>'; }).join('');
-  var SHORT = { 'My orders': 'Orders', 'Search tools': 'Search', 'Saved searches': 'Saved', 'My auction bids': 'Auctions', 'Auction bids': 'Auctions' };
-  $('tabbar').innerHTML = [NAV[0], NAV[1], NAV[3], NAV[4], NAV[5]].map(function (n) { return '<a class="ap-tab' + (n[3] ? ' is-on' : '') + '" href="' + n[0] + '">' + ic(n[1], 22) + esc(SHORT[n[2]] || n[2]) + '</a>'; }).join('');
-  $('side-role').textContent = $('me-role').textContent = isAgent ? 'Agent' : 'Customer';
-  $('top-area').textContent = isAgent ? 'Agent dashboard' : 'My account';
-  $('me-avatar').innerHTML = UI.avatar(name, 'is-sm');
-  $('me-name').textContent = name;
+  $('o-nav').innerHTML = NAV.map(function (n) { return '<a href="' + n[0] + '"' + (n[3] ? ' class="is-on" aria-current="page"' : '') + '>' + ic(n[1], 18) + esc(n[2]) + '</a>'; }).join('');
+  $('o-area').textContent = isAgent ? 'Agent dashboard' : 'My Account';
+  $('o-area').setAttribute('href', isAgent ? 'dashboard.html' : 'account.html');
   $('o-sub').textContent = isAgent ? 'Credit reports you ordered, your client files and auction bids – and where each one stands.' : 'Your credit reports, loan applications and auction bids – and where each one stands.';
-  document.addEventListener('click', function (e) { if (e.target.closest('[data-logout]')) { App.logout(); location.href = 'index.html'; } });
   UI.hydrate();
 
-  if (!isAgent) $('o-newwrap').innerHTML = '<a class="ap-btn is-primary ord-newbtn" href="cibil-score.html">' + ic('plus', 18) + 'New CIBIL check</a>';
+  if (!isAgent) $('o-newwrap').innerHTML = '<a class="rx-btn rx-btn-y" href="cibil-score.html">' + ic('plus', 18) + 'New CIBIL check</a>';
   if (isAgent) {
     var clients = App.clients();
-    $('o-new').textContent = '';
-    $('o-new').insertAdjacentHTML('beforeend', ic('plus', 18) + 'New CIBIL check');
     $('o-newwrap').innerHTML = clients.length ? '<label class="ord-pick"><span>Check a client’s CIBIL</span><select id="o-client"><option value="">Choose a client…</option>' +
       clients.map(function (c) { return '<option value="' + esc(c.id) + '">' + esc(c.name) + (c.mobile ? ' · ' + esc(c.mobile) : '') + '</option>'; }).join('') + '</select></label>' : '';
     var sel = $('o-client');
@@ -296,15 +289,15 @@
     $('o-list').classList.toggle('is-anim', !!anim);
     var count = function (fn) { return all.filter(fn).length; };
     var KPI = [
-      ['all', 'Total orders', all.length, 'Across everything you ordered', ''],
-      ['action', 'Needs your action', count(function (x) { return x.bucket === 'action'; }), 'Pay, bid or follow up', 'is-warn'],
-      ['active', 'In progress', count(function (x) { return x.bucket === 'active'; }), 'Being processed now', ''],
-      ['done', 'Completed', count(function (x) { return x.bucket === 'done'; }), 'Reports ready, bids won', '']
+      ['all', 'Total orders', all.length, 'Across everything you ordered', '', 'listcheck'],
+      ['action', 'Needs your action', count(function (x) { return x.bucket === 'action'; }), 'Pay, bid or follow up', 'is-warn', 'bell'],
+      ['active', 'In progress', count(function (x) { return x.bucket === 'active'; }), 'Being processed now', 'is-info', 'clock'],
+      ['done', 'Completed', count(function (x) { return x.bucket === 'done'; }), 'Reports ready, bids won', 'is-ok', 'check']
     ];
     $('o-kpis').innerHTML = KPI.map(function (k) {
       var on = filter.status === k[0];
-      return '<button type="button" class="ox-kpi ' + k[4] + (on ? ' is-on' : '') + '" data-kpi="' + k[0] + '" aria-pressed="' + on + '"><span class="ox-kpi-l">' + k[1] + '</span>' +
-        '<b class="ox-kpi-v">' + k[2] + '</b><span class="ox-kpi-h">' + k[3] + '</span></button>';
+      return '<button type="button" class="ox-kpi ' + k[4] + (on ? ' is-on' : '') + '" data-kpi="' + k[0] + '" aria-pressed="' + on + '"><span class="ox-kpi-ic">' + ic(k[5], 20) + '</span><span class="ox-kpi-tx"><span class="ox-kpi-l">' + k[1] + '</span>' +
+        '<b class="ox-kpi-v">' + k[2] + '</b><span class="ox-kpi-h">' + k[3] + '</span></span></button>';
     }).join('');
     renderFilterUi();
     var q = filter.q.toLowerCase();
