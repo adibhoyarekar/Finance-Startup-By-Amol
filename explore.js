@@ -239,3 +239,4 @@ lazyLottie(document.querySelector('.qt-cibil'), 'data-qt-lottie', '.qt-fb');
   grid.addEventListener('focusout', function (e) { if (!grid.contains(e.relatedTarget)) show(chosen); });
 })();
 lazyLottie(document.querySelector('.hx-ctas'), 'data-hx-lottie', '.hx-gfb');
+lazyLottie(document.querySelector('.fp2'), 'data-fp-lottie', '.fp2-fb');
