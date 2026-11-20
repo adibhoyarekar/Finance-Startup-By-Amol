@@ -165,21 +165,58 @@ lazyLottie(document.querySelector('[data-wy]'), 'data-wy-lottie', '.wy-fb');
 
 lazyLottie(document.querySelector('.qt-cibil'), 'data-qt-lottie', '.qt-fb');
 
-// Testimonials: dots follow the swipeable cards on phones and tablets.
+// Testimonials: slide one review right-to-left every second, looping; pause while someone is reading.
 (function () {
   var grid = document.querySelector('[data-tm]');
   var dots = document.querySelector('[data-tm-dots]');
-  if (!grid || !dots) return;
-  var cards = grid.children, ds = dots.children, raf = 0;
+  if (!grid) return;
+  var originals = [].slice.call(grid.children);
+  var count = originals.length;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Copies after the real cards make the loop seamless; screen readers only hear the real ones.
+  originals.forEach(function (c) {
+    var k = c.cloneNode(true);
+    k.classList.remove('reveal');
+    k.classList.add('is-clone');
+    k.setAttribute('aria-hidden', 'true');
+    grid.appendChild(k);
+  });
+  var cards = grid.children;
+  var ds = dots ? dots.children : [];
+  function step() { return cards[1].offsetLeft - cards[0].offsetLeft; }
+  function index() { return Math.round(grid.scrollLeft / step()); }
+  function paintDots() { var i = index() % count; for (var j = 0; j < ds.length; j++) ds[j].classList.toggle('is-on', j === i); }
+
+  var raf = 0;
   grid.addEventListener('scroll', function () {
     cancelAnimationFrame(raf);
     raf = requestAnimationFrame(function () {
-      var best = 0, dist = Infinity;
-      for (var i = 0; i < cards.length; i++) {
-        var d = Math.abs(cards[i].offsetLeft - grid.offsetLeft - grid.scrollLeft);
-        if (d < dist) { dist = d; best = i; }
+      // Once the copies have fully replaced the originals, jump back silently.
+      if (grid.scrollLeft >= step() * count - 2) {
+        grid.style.scrollBehavior = 'auto';
+        grid.scrollLeft -= step() * count;
+        grid.style.scrollBehavior = '';
       }
-      for (var j = 0; j < ds.length; j++) ds[j].classList.toggle('is-on', j === best);
+      paintDots();
     });
   }, { passive: true });
+
+  if (reduce) return;
+  var paused = false, visible = false, resumeAt = 0;
+  function hold(ms) { resumeAt = Date.now() + ms; }
+  grid.addEventListener('mouseenter', function () { paused = true; });
+  grid.addEventListener('mouseleave', function () { paused = false; });
+  grid.addEventListener('focusin', function () { paused = true; });
+  grid.addEventListener('focusout', function () { paused = false; });
+  grid.addEventListener('touchstart', function () { hold(4000); }, { passive: true });
+  grid.addEventListener('pointerdown', function () { hold(4000); });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }).observe(grid);
+  } else {
+    visible = true;
+  }
+  setInterval(function () {
+    if (paused || !visible || document.hidden || Date.now() < resumeAt) return;
+    grid.scrollTo({ left: (index() + 1) * step(), behavior: 'smooth' });
+  }, 1000);
 })();

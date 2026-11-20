@@ -1046,7 +1046,9 @@ body.rx{font-family:var(--rx-font);color:var(--rx-text);background:#fff}
 }
 
 /* What Our Customers Say: review cards */
-.tm-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;padding-top:6px}
+.tm-grid{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 4px 14px;margin:0 -4px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.tm-grid::-webkit-scrollbar{display:none}
+.tm-grid>.tm-card{flex:0 0 calc((100% - 44px)/3);scroll-snap-align:start}
 .tm-card{position:relative;display:flex;flex-direction:column;margin:0;padding:26px 24px 22px;border-radius:22px;background:#fff;border:1px solid #dde7f5;box-shadow:0 18px 40px -32px rgba(11,43,94,.6);transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
 .tm-card:hover{transform:translateY(-5px);box-shadow:0 28px 48px -30px rgba(11,43,94,.5)}
 .tm-card.is-feat{background:linear-gradient(155deg,#0f2a5f 0%,#1d4ed8 100%);border-color:transparent;color:#fff}
@@ -1066,15 +1068,13 @@ body.rx{font-family:var(--rx-font);color:var(--rx-text);background:#fff}
 .tm-card figcaption b{font-size:15px;color:var(--rx-ink)}
 .tm-card figcaption small{font-size:12.5px;color:#64748b}
 .tm-card.is-feat figcaption b{color:#fff}.tm-card.is-feat figcaption small{color:rgba(255,255,255,.75)}
-.tm-dots{display:none}
+.tm-dots{display:flex;justify-content:center;gap:8px;margin-top:10px}
+.tm-dots i{width:8px;height:8px;border-radius:99px;background:#cbd8ee;transition:width .3s,background .3s}
+.tm-dots i.is-on{width:22px;background:#1d4ed8}
 @media(max-width:991px){
-  .tm-grid{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 4px;padding:6px 4px 10px;margin:0 -4px;scrollbar-width:none}
-  .tm-grid::-webkit-scrollbar{display:none}
-  .tm-card{flex:0 0 86%;scroll-snap-align:start}
+  .tm-grid{gap:14px}
+  .tm-grid>.tm-card{flex-basis:86%}
   .tm-card:hover{transform:none}
-  .tm-dots{display:flex;justify-content:center;gap:8px;margin-top:10px}
-  .tm-dots i{width:8px;height:8px;border-radius:99px;background:#cbd8ee;transition:width .3s,background .3s}
-  .tm-dots i.is-on{width:22px;background:#1d4ed8}
 }
-@media(min-width:600px) and (max-width:991px){.tm-card{flex-basis:48%}}
+@media(min-width:600px) and (max-width:991px){.tm-grid>.tm-card{flex-basis:calc((100% - 14px)/2)}}
 @media(prefers-reduced-motion:reduce){.qt-card,.tm-card,.qt-donut{transition:none}}
