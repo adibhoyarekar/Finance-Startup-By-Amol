@@ -12,18 +12,18 @@
     'life insurance': 'cm-sub-life', 'health insurance': 'cm-sub-health', 'motor insurance': 'ln-vehicle', 'travel insurance': 'cm-sub-travel',
     'savings account': 'cm-sub-piggy', 'current account': 'cm-why-banks', 'credit cards': 'ln-bank', 'fixed deposits': 'cm-sub-vault',
     'flats / apartments': 'svc-estate-ic', 'houses': 'ln-home', 'plots': 'cm-sub-plot', 'commercial properties': 'cm-sub-shop',
-    'bank auctions': 'svc-auction-ic', 'mutual funds': 'svc-mf-ic', 'sip': 'cm-sub-sip', 'wealth management': 'cm-sub-wealth'
+    'bank auctions': 'svc-auction-ic'
   };
-  var CAT = { loans: 'cm-explore-loans', insurance: 'svc-insurance-ic', banking: 'ln-bank', 'real estate': 'svc-estate-ic', investments: 'svc-mf-ic' };
+  var CAT = { loans: 'cm-explore-loans', insurance: 'svc-insurance-ic', banking: 'ln-bank', 'real estate': 'svc-estate-ic' };
 
   var st = doc.createElement('style');
   st.textContent =
-    '.rxl{display:inline-block;flex:none;line-height:0;border-radius:7px;background:var(--rxl-bg,#eef2f8);transition:background .3s}' +
-    '.rxl.is-on{background:transparent}' +
+    '.rxl{display:inline-block;flex:none;line-height:0;background:transparent}' +
     '.rxl svg{display:block}' +
     '.rx-dd a i{position:relative}' +
-    '.rx-dd a i .rxl{position:absolute;inset:3px;background:transparent}' +
-    '.rx-dd a i.rxl-ready>svg{display:none}' +
+    '.rx-dd a i .rxl{position:absolute;inset:3px}' +
+    '.rx-dd a i.rxl-host{background:transparent}' +
+    '.rx-dd a i.rxl-host>svg{display:none}' +
     '.rx-mega h4 .rxl{width:24px;height:24px;background:transparent}' +
     '.rx-mega a{gap:9px}' +
     '.rx-mega a .rxl{width:22px;height:22px}' +
@@ -98,10 +98,8 @@
         if (!k) return;
         var s = holder(), i = a.querySelector('i');
         s.setAttribute('data-rxl', DIR + k + '.json');
-        if (i) i.appendChild(s); else a.insertBefore(s, a.firstChild);
+        if (i) { i.classList.add('rxl-host'); i.appendChild(s); } else a.insertBefore(s, a.firstChild);
         if (mega) {
-          var col = a.parentNode && a.parentNode.querySelector('h4');
-          if (col && col.style.getPropertyValue('--c')) s.style.setProperty('--rxl-bg', 'color-mix(in srgb, ' + col.style.getPropertyValue('--c') + ' 12%, #fff)');
           a.addEventListener('mouseenter', function () { play(s); });
           a.addEventListener('focus', function () { play(s); });
           a.addEventListener('mouseleave', function () { stop(s); });
