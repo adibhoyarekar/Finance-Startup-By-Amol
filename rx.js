@@ -147,16 +147,32 @@
   // offers carousel arrows
   document.querySelectorAll('[data-rx-carousel]').forEach(function (box) {
     var track = box.querySelector('.rx-of-track');
+    function go(dir) {
+      var card = track.firstElementChild, step = card ? card.getBoundingClientRect().width + 10 : 240;
+      var end = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+      if (dir > 0 && end) track.scrollTo({ left: 0, behavior: 'smooth' });
+      else if (dir < 0 && track.scrollLeft <= 2) track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
+      else track.scrollBy({ left: dir * step, behavior: 'smooth' });
+    }
     box.querySelectorAll('[data-dir]').forEach(function (b) {
-      b.addEventListener('click', function () {
-        var card = track.firstElementChild, step = card ? card.getBoundingClientRect().width + 10 : 240;
-        var dir = Number(b.getAttribute('data-dir'));
-        var end = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
-        if (dir > 0 && end) track.scrollTo({ left: 0, behavior: 'smooth' });
-        else if (dir < 0 && track.scrollLeft <= 2) track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
-        else track.scrollBy({ left: dir * step, behavior: 'smooth' });
-      });
+      b.addEventListener('click', function () { go(Number(b.getAttribute('data-dir'))); hold(4000); });
     });
+    // auto-advance every 2 seconds; pause while someone is looking at or using it
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var paused = false, visible = !('IntersectionObserver' in window), resumeAt = 0;
+    function hold(ms) { resumeAt = Date.now() + ms; }
+    track.addEventListener('mouseenter', function () { paused = true; });
+    track.addEventListener('mouseleave', function () { paused = false; });
+    track.addEventListener('focusin', function () { paused = true; });
+    track.addEventListener('focusout', function () { paused = false; });
+    track.addEventListener('touchstart', function () { hold(4000); }, { passive: true });
+    track.addEventListener('pointerdown', function () { hold(4000); });
+    if (!visible) new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }).observe(track);
+    setInterval(function () {
+      if (paused || !visible || document.hidden || Date.now() < resumeAt) return;
+      if (track.scrollWidth <= track.clientWidth + 4) return;
+      go(1);
+    }, 2000);
   });
 
   // pre-fill a form field from a menu link, e.g. bank-account.html?ba-atype=savings
