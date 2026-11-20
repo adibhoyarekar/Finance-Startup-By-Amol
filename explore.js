@@ -236,3 +236,4 @@ lazyLottie(document.querySelector('.qt-cibil'), 'data-qt-lottie', '.qt-fb');
   grid.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') show(chosen); });
   grid.addEventListener('focusout', function (e) { if (!grid.contains(e.relatedTarget)) show(chosen); });
 })();
+lazyLottie(document.querySelector('.hx-ctas'), 'data-hx-lottie', '.hx-gfb');
