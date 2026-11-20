@@ -167,7 +167,7 @@ lazyLottie(document.querySelector('[data-wy]'), 'data-wy-lottie', '.wy-fb');
 
 lazyLottie(document.querySelector('.qt-cibil'), 'data-qt-lottie', '.qt-fb');
 
-// Testimonials: slide one review right-to-left every second, looping; pause while someone is reading.
+// Testimonials: slide one review right-to-left every 2 seconds, looping; pause while someone is reading.
 (function () {
   var grid = document.querySelector('[data-tm]');
   var dots = document.querySelector('[data-tm-dots]');
@@ -220,7 +220,7 @@ lazyLottie(document.querySelector('.qt-cibil'), 'data-qt-lottie', '.qt-fb');
   setInterval(function () {
     if (paused || !visible || document.hidden || Date.now() < resumeAt) return;
     grid.scrollTo({ left: (index() + 1) * step(), behavior: 'smooth' });
-  }, 1000);
+  }, 2000);
 })();
 
 // Membership: the highlighted plan follows the cursor (desktop) or the tapped plan (phone).
