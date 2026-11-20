@@ -127,3 +127,59 @@ function lazyLottie(root, attr, fbSel) {
 }
 
 lazyLottie(document.querySelector('[data-wy]'), 'data-wy-lottie', '.wy-fb');
+
+// Quick Tools: live EMI preview; the full calculator opens with the same numbers.
+(function () {
+  var card = document.querySelector('[data-qt-emi]');
+  if (!card) return;
+  var inr = function (n) { return '₹' + Math.round(n).toLocaleString('en-IN'); };
+  var ins = {};
+  card.querySelectorAll('input[data-qt]').forEach(function (i) { ins[i.getAttribute('data-qt')] = i; });
+  function out(k, t) { var el = card.querySelector('[data-qt-o="' + k + '"]'); if (el) el.textContent = t; }
+  function calc() {
+    var p = +ins.p.value, r = +ins.r.value, n = +ins.n.value;
+    var m = r / 1200, k = n * 12;
+    var emi = m ? p * m * Math.pow(1 + m, k) / (Math.pow(1 + m, k) - 1) : p / k;
+    var tot = emi * k;
+    out('p', inr(p)); out('r', (+r.toFixed(2)) + '%'); out('n', n + (n === 1 ? ' year' : ' years'));
+    out('emi', inr(emi)); out('pri', inr(p)); out('int', inr(tot - p)); out('tot', inr(tot));
+    card.querySelector('[data-qt-donut]').style.setProperty('--pc', (p / tot * 100).toFixed(1) + '%');
+    Object.keys(ins).forEach(function (key) {
+      var i = ins[key];
+      i.style.setProperty('--fill', ((i.value - i.min) / (i.max - i.min) * 100) + '%');
+    });
+  }
+  card.addEventListener('input', function (e) { if (e.target.hasAttribute('data-qt')) calc(); });
+  var btn = card.querySelector('[data-rx-emi]');
+  var dlg = document.getElementById('rx-emi');
+  if (btn && dlg) {
+    btn.addEventListener('click', function () {
+      Object.keys(ins).forEach(function (key) {
+        var r = dlg.querySelector('input[type=range][data-k="' + key + '"]');
+        if (r) r.value = ins[key].value;
+      });
+    }, true);
+  }
+  calc();
+})();
+
+lazyLottie(document.querySelector('.qt-cibil'), 'data-qt-lottie', '.qt-fb');
+
+// Testimonials: dots follow the swipeable cards on phones and tablets.
+(function () {
+  var grid = document.querySelector('[data-tm]');
+  var dots = document.querySelector('[data-tm-dots]');
+  if (!grid || !dots) return;
+  var cards = grid.children, ds = dots.children, raf = 0;
+  grid.addEventListener('scroll', function () {
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(function () {
+      var best = 0, dist = Infinity;
+      for (var i = 0; i < cards.length; i++) {
+        var d = Math.abs(cards[i].offsetLeft - grid.offsetLeft - grid.scrollLeft);
+        if (d < dist) { dist = d; best = i; }
+      }
+      for (var j = 0; j < ds.length; j++) ds[j].classList.toggle('is-on', j === best);
+    });
+  }, { passive: true });
+})();
