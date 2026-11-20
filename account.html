@@ -6,10 +6,12 @@
   <title>My Account - FinMatrix</title>
   <meta name="description" content="Your FinMatrix profile, saved searches and recommended tools.">
   <meta name="robots" content="noindex">
-  <meta name="theme-color" content="#0e1124">
+  <meta name="theme-color" content="#eceff4">
   <link rel="icon" type="image/svg+xml" href="images/logo-mark.svg?v=2">
   <link rel="stylesheet" href="styles.css?v=3">
   <link rel="stylesheet" href="app.css?v=4">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=Figtree:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="account.css?v=1">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Poppins:wght@400;500;600;700;800&display=swap">
   <script src="app-status.js?v=1"></script>
   <link rel="manifest" href="/manifest.webmanifest">
@@ -20,7 +22,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <script src="/app-install.js?v=1"></script>
 </head>
-<body class="ap-body">
+<body class="ap-body acx">
   <div class="ap">
     <aside class="ap-side" aria-label="My account">
       <a class="ap-brand" href="index.html"><img src="images/logo.svg?v=2" alt="FinMatrix" width="108" height="28"><small>Customer</small></a>
@@ -62,76 +64,83 @@
 
       <main class="ap-content">
         <section class="ap-view" data-view="home" aria-labelledby="hm-h">
-          <div class="ap-grid ap-stagger">
-            <div class="ap-hero" style="--i:0">
-              <div class="ap-hero-row" style="align-items:center">
-                <div style="flex:1;min-width:14rem">
-                  <p class="d" id="hm-date"></p>
-                  <h1 id="hm-h">Hello</h1>
-                  <p id="hm-sub"></p>
-                  <div class="ap-hero-act">
-                    <a class="ap-btn is-white" id="hm-next" href="#search"><span data-ico="search"></span>Start a search</a>
-                    <a class="ap-btn" href="#ready"><span data-ico="listcheck"></span>Loan-ready checklist</a>
-                  </div>
-                </div>
-                <div class="ap-ring" id="hm-ring"></div>
-              </div>
-            </div>
-            <div style="--i:1">
-              <div class="ap-h" style="margin-bottom:.75rem"><div><h2 style="font-size:1.15rem;font-weight:600">Recommended for you</h2><p>Based on what you told us</p></div><a class="ap-link" href="#search">All tools</a></div>
-              <div class="ap-grid ap-g3" id="hm-tools"></div>
-            </div>
-            <div class="ap-grid ap-g2" style="--i:2">
-              <div class="ap-card pad">
-                <div class="ap-ch"><div><h2>Recent saved searches</h2><p>Pick up where you left off</p></div><a class="ap-link" href="#saved">See all</a></div>
-                <div id="hm-saved"></div>
-              </div>
-              <div class="ap-card pad">
-                <div class="ap-ch"><div><h2>Need help?</h2><p>We usually reply within a working day</p></div></div>
-                <div class="ap-actions-list">
-                  <a class="ap-btn" data-callback href="contact.html"><span data-ico="phone"></span>Request a callback</a>
-                  <a class="ap-btn" href="ask.html"><span data-ico="chat"></span>Ask a question</a>
-                  <a class="ap-btn" href="contact.html"><span data-ico="mail"></span>Contact our team</a>
+          <div class="acx-file">
+            <p class="acx-tab"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span id="hm-tab">Your loan file</span></p>
+            <div class="acx-folder">
+              <div class="acx-folder-copy">
+                <p class="acx-date" id="hm-date"></p>
+                <h1 id="hm-h">Hello</h1>
+                <p class="acx-lede" id="hm-sub"></p>
+                <div class="acx-acts">
+                  <a class="acx-btn is-paper" id="hm-next" href="#search"><span data-ico="search" data-size="18"></span>Start a search</a>
+                  <a class="acx-btn is-ghost" href="#ready"><span data-ico="listcheck" data-size="18"></span>Open my checklist</a>
                 </div>
               </div>
+              <div class="acx-pocket" id="hm-file"></div>
             </div>
           </div>
+
+          <div class="acx-cols">
+            <section class="acx-panel" aria-labelledby="hm-tools-h">
+              <header class="acx-ph"><h2 id="hm-tools-h">Searches for you</h2><a class="acx-link" href="#search">All search tools</a></header>
+              <div class="acx-rows" id="hm-tools"></div>
+            </section>
+            <section class="acx-panel" aria-labelledby="hm-saved-h">
+              <header class="acx-ph"><h2 id="hm-saved-h">Saved searches</h2><a class="acx-link" href="#saved">See all</a></header>
+              <div id="hm-saved"></div>
+            </section>
+          </div>
+
+          <section class="acx-help" aria-labelledby="hm-help-h">
+            <div>
+              <h2 id="hm-help-h">Need help with your file?</h2>
+              <p>Our team checks your case and matches you with the right lender. We usually reply within a working day.</p>
+            </div>
+            <div class="acx-help-acts">
+              <a class="acx-btn is-ink" data-callback href="contact.html"><span data-ico="phone" data-size="18"></span>Request a callback</a>
+              <a class="acx-btn is-line" href="ask.html"><span data-ico="chat" data-size="18"></span>Ask a question</a>
+              <a class="acx-btn is-line" href="contact.html"><span data-ico="mail" data-size="18"></span>Contact our team</a>
+            </div>
+          </section>
         </section>
 
         <section class="ap-view" data-view="search" aria-labelledby="sr-h">
-          <div class="ap-h"><div><h1 id="sr-h">Search tools</h1><p>Your details are filled in automatically. Save any result to compare later.</p></div></div>
-          <div class="ap-grid ap-g3 ap-stagger" id="sr-tools"></div>
+          <header class="acx-vh"><h1 id="sr-h">Search tools</h1><p>Your details fill in automatically. Save any result to compare it later.</p></header>
+          <div class="acx-rows is-grid" id="sr-tools"></div>
         </section>
 
         <section class="ap-view" data-view="saved" aria-labelledby="sv-h">
-          <div class="ap-h"><div><h1 id="sv-h">Saved searches</h1><p id="sv-sub"></p></div></div>
-          <div class="ap-grid ap-g2e" id="sv-list"></div>
+          <header class="acx-vh"><h1 id="sv-h">Saved searches</h1><p id="sv-sub"></p></header>
+          <div class="acx-slips" id="sv-list"></div>
         </section>
 
         <section class="ap-view" data-view="ready" aria-labelledby="rd-h">
-          <div class="ap-h"><div><h1 id="rd-h">Get loan-ready</h1><p>Lenders move faster when these are ready. Tick them off as you go.</p></div></div>
-          <div class="ap-grid ap-g2">
-            <div class="ap-card pad"><div class="ap-steps" id="rd-steps"></div></div>
-            <div class="ap-card pad ap-first-m" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:.75rem">
-              <div class="ap-ring is-light" id="rd-ring"></div>
+          <header class="acx-vh"><h1 id="rd-h">Get loan-ready</h1><p>Lenders decide faster when your file is complete. Tick off each paper once you have it.</p></header>
+          <div class="acx-ready">
+            <div class="acx-papers" id="rd-steps"></div>
+            <aside class="acx-summary" aria-labelledby="rd-msg">
+              <div class="acx-pocket is-small" id="rd-file"></div>
               <h2 id="rd-msg"></h2>
-              <p class="ap-muted" id="rd-tip"></p>
-            </div>
+              <p id="rd-tip"></p>
+            </aside>
           </div>
         </section>
 
         <section class="ap-view" data-view="profile" aria-labelledby="pf-h">
-          <div class="ap-h"><div><h1 id="pf-h">Profile</h1><p>Used to pre-fill your searches.</p></div></div>
-          <div class="ap-grid ap-g2e">
-            <div class="ap-card pad">
-              <div class="ap-prof" id="pf-prof"></div>
-              <div class="ap-kv" id="pf-kv" style="margin-top:1rem"></div>
-              <div style="display:flex;gap:.5rem;margin-top:1rem;flex-wrap:wrap"><a class="ap-btn" href="welcome.html?edit=1"><span data-ico="edit"></span>Edit profile</a><button type="button" class="ap-btn is-danger" data-logout><span data-ico="logout"></span>Log out</button></div>
+          <header class="acx-vh"><h1 id="pf-h">Profile</h1><p>We use these details to fill in your searches.</p></header>
+          <div class="acx-profile">
+            <div class="acx-form">
+              <div class="acx-who" id="pf-prof"></div>
+              <dl class="acx-fields" id="pf-kv"></dl>
+              <div class="acx-acts">
+                <a class="acx-btn is-ink" href="welcome.html?edit=1"><span data-ico="edit" data-size="18"></span>Edit profile</a>
+                <button type="button" class="acx-btn is-line is-danger" data-logout><span data-ico="logout" data-size="18"></span>Log out</button>
+              </div>
             </div>
-            <div class="ap-card pad">
-              <div class="ap-ch"><div><h2>About this version</h2></div></div>
-              <p class="ap-muted">This is a demo. Your account, saved searches and checklist live only in this browser on this device – nothing is sent to FinMatrix unless you request a callback or send a result by email.</p>
-            </div>
+            <aside class="acx-note">
+              <h2>Where your details are kept</h2>
+              <p>This is a demo. Your account, saved searches and checklist stay in this browser on this device. Nothing is sent to FinMatrix unless you request a callback or email a result to us.</p>
+            </aside>
           </div>
         </section>
       </main>
@@ -148,6 +157,6 @@
 
   <script src="raven-app.js?v=8"></script>
   <script src="app-shell.js?v=6"></script>
-  <script src="account.js?v=11"></script>
+  <script src="account.js?v=12"></script>
 </body>
 </html>
