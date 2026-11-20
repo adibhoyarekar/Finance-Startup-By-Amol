@@ -1384,3 +1384,61 @@ html:not(.no-lottie) .fp2-anim:not(.lt-failed) .fp2-fb{visibility:hidden}
   .of2 .rx-of{min-height:196px}
 }
 @media(prefers-reduced-motion:reduce){.of2 .rx-of,.of2 .rx-of::after,.of2-go svg{transition:none}}
+
+/* Home loans page: types first, then eligibility */
+.hlx-hero{position:relative;overflow:hidden;padding:30px 0 34px;background:radial-gradient(800px 360px at 90% -10%,#dbe8fd 0,transparent 70%),radial-gradient(520px 300px at 0 100%,#fff4d6 0,transparent 70%),linear-gradient(180deg,#f3f8ff 0%,#fff 100%)}
+.hlx-hero .rx-crumb{justify-content:flex-start;margin-bottom:10px}
+.hlx-back{display:inline-flex;align-items:center;gap:6px;margin-bottom:14px;padding:6px 12px;border-radius:999px;background:#fff;border:1px solid #dbe5f5;color:#1e3a8a;font-size:13px;font-weight:600;text-decoration:none}
+.hlx-back:hover{border-color:#1d4ed8;color:#1d4ed8}
+.rx .hlx-h1{margin:0;font-size:clamp(32px,4vw,52px);font-weight:800;line-height:1.1;letter-spacing:-.02em;color:var(--rx-ink)}
+.hlx-h1 span{background:linear-gradient(90deg,#1d4ed8,#0d9488);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hlx-lead{max-width:620px;margin:12px 0 0;font-size:16px;line-height:1.6;color:#475569}
+.hlx-steps{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 0;padding:0;list-style:none;counter-reset:none}
+.hlx-steps li{display:flex;align-items:center;gap:10px;padding:8px 14px 8px 8px;border-radius:999px;background:#fff;border:1px solid #e1e9f6;box-shadow:0 6px 16px -12px rgba(11,43,94,.5);font-size:13.5px;font-weight:600;color:var(--rx-ink)}
+.hlx-steps b{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#1d4ed8,#0a2552);color:#fff;font-size:12.5px}
+.hlx-types{padding:34px 0 26px}
+.hlx-sh{margin-bottom:18px}
+.hlx-step{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:999px;background:#eef3ff;color:#1d4ed8;font-size:11.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase}
+.rx .hlx-sh h2{margin:8px 0 4px;font-size:28px;font-weight:800;color:var(--rx-ink)}
+.hlx-sh p{margin:0;font-size:14.5px;color:#64748b}
+.hlx-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.hlx-grid .lc{position:relative;display:flex;flex-direction:column;padding:10px!important;border-radius:20px!important;border:1.5px solid #e3ebf7;background:#fff;box-shadow:0 14px 30px -26px rgba(11,43,94,.6)!important;text-decoration:none;transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s,border-color .3s}
+.hlx-grid .lc:hover{transform:translateY(-4px);border-color:#93b4f5;box-shadow:0 24px 40px -26px rgba(29,78,216,.6)!important}
+.hlx-grid .lc img{aspect-ratio:16/10;object-fit:cover;border-radius:14px!important}
+.hlx-grid .lc>div:last-child{padding:14px 8px 8px!important}
+.hlx-grid .lc .rv-go{display:none}
+.hlx-grid .lc-title{font-weight:700!important}
+.hlx-cta{display:inline-flex;align-items:center;gap:6px;margin-top:14px;padding:8px 14px;border-radius:999px;background:#eef3ff;color:#1d4ed8;font-size:13px;font-weight:700;align-self:flex-start;transition:background .2s,color .2s}
+.hlx-cta svg{transition:transform .2s}
+.hlx-grid .lc:hover .hlx-cta{background:#1d4ed8;color:#fff}
+.hlx-grid .lc:hover .hlx-cta svg{transform:translateX(3px)}
+.hlx-grid .lc.is-picked{border-color:#1d4ed8;box-shadow:0 0 0 4px rgba(29,78,216,.12),0 24px 40px -26px rgba(29,78,216,.6)!important}
+.hlx-grid .lc.is-picked .hlx-cta{background:#16a34a;color:#fff}
+.hlx-grid .lc:focus-visible{outline:3px solid #93c5fd;outline-offset:3px}
+.hlx-form-sec{padding:18px 0 40px;scroll-margin-top:90px}
+.hlx-form-sec .hl-card{border-radius:24px}
+.hlx-form-sec .hl-head .hlx-step{margin-bottom:6px}
+.hlx-picked{display:flex;align-items:center;flex-wrap:wrap;gap:8px 10px;margin:0 0 18px;padding:12px 14px;border-radius:14px;background:linear-gradient(100deg,#eef3ff,#f6f9ff);border:1px solid #c9d8f6;font-size:14px;color:#334155}
+.hlx-picked[hidden]{display:none}
+.hlx-picked span{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#64748b}
+.hlx-picked b{color:#1d4ed8;font-weight:800}
+.hlx-picked button{margin-left:auto;padding:6px 12px;border:1px solid #c9d8f6;border-radius:999px;background:#fff;color:#1e3a8a;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.hlx-picked button:hover{border-color:#1d4ed8;color:#1d4ed8}
+@media(max-width:1023px){.hlx-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:599px){
+  .hlx-hero{padding:22px 0 24px}
+  .rx .hlx-h1{font-size:32px}
+  .hlx-lead{font-size:14.5px}
+  .hlx-steps{flex-direction:column;align-items:stretch;gap:8px;margin-top:18px}
+  .rx .hlx-sh h2{font-size:22px}
+  .hlx-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .hlx-grid .lc{padding:6px!important;border-radius:16px!important}
+  .hlx-grid .lc img{border-radius:11px!important}
+  .hlx-grid .lc>div:last-child{padding:10px 6px 6px!important}
+  .hlx-grid .lc-title{font-size:14px!important;line-height:1.3}
+  .hlx-grid .lc-desc{font-size:12px!important;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .hlx-cta{margin-top:10px;padding:6px 10px;font-size:11.5px}
+}
+@media(prefers-reduced-motion:reduce){.hlx-grid .lc,.hlx-cta,.hlx-cta svg{transition:none}}
+.hlx-types .rv-search-wrap{max-width:560px;margin:0 0 20px!important;padding:0!important}
+.hlx-types .rv-search{margin:0!important}

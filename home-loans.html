@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="styles.css?v=3">
   <link rel="stylesheet" href="raven.css?v=27">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Poppins:wght@400;500;600;700;800&display=swap">
-  <link rel="stylesheet" href="rx.css?v=55">
+  <link rel="stylesheet" href="rx.css?v=59">
 </head>
 <body class="rx antialiased text-gray-900 bg-white">
   <div id="top" class="min-h-screen">
@@ -42,27 +42,91 @@
   </div>
 
   <main>
-    <section class="rv-hero rv-hero-sm relative">
-      <div class="rv-fade-bottom"></div>
-      <div class="max-w-7xl mx-auto px-6 relative z-30">
-        <div class="max-w-xl lg:max-w-4xl lg:px-4 mx-auto text-center">
-          <nav class="rx-crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg><a href="funding-loans.html">Loans</a><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg><span aria-current="page">Home Loan</span></nav>
-          <a href="funding-loans.html#loan-types" class="rv-back reveal">&larr; All loans</a>
-          <h1 class="text-center text-4xl lg:text-6xl font-semibold mb-5 reveal">Home Loan Options</h1>
-          <p class="text-gray-500 text-base lg:px-10 reveal">Whether you are buying, building or borrowing against property, pick the home loan that fits.</p>
+    <section class="hlx-hero">
+      <div class="max-w-7xl mx-auto px-4 lg:px-6">
+        <nav class="rx-crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg><a href="funding-loans.html">Loans</a><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg><span aria-current="page">Home Loan</span></nav>
+        <a href="funding-loans.html#loan-types" class="hlx-back">&larr; All loans</a>
+        <h1 class="hlx-h1">Home Loan <span>Options</span></h1>
+        <p class="hlx-lead">Whether you are buying, building or borrowing against property, pick the home loan that fits.</p>
+        <ol class="hlx-steps" aria-label="How it works">
+          <li><b>1</b><span>Choose your loan type</span></li>
+          <li><b>2</b><span>Check your eligibility</span></li>
+          <li><b>3</b><span>See lenders that fit</span></li>
+        </ol>
+      </div>
+    </section>
+    <section class="ln hlx-types" id="home-loans" aria-labelledby="hlx-types-h">
+      <div class="max-w-7xl mx-auto px-4 lg:px-6">
+        <div class="hlx-sh"><span class="hlx-step">Step 1</span><h2 id="hlx-types-h">Choose your home loan type</h2><p>Tap a loan to check your eligibility for it.</p></div>
+        <div class="rv-search-wrap reveal">
+          <label class="rv-search" for="loan-search">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+            <input id="loan-search" type="search" placeholder="Search home loans - LAP, construction, plot, renovation..." autocomplete="off" aria-label="Search home loans">
+          </label>
+          <p class="rv-count" id="loan-count" aria-live="polite"></p>
+        </div>
+        <div class="hlx-grid" id="loan-grid">
+          <a class="lc bg-white rounded-2xl p-2 lg:p-3 shadow-feature-card rv-lift flex flex-col" href="#home-loan-search" data-type="Loan Against Property (LAP)" data-keywords="lap property">
+            <div><img alt="Loan Against Property" class="rounded-xl w-full" src="images/rx/loan-against-property-chatgpt.jpg" width="640" height="400" loading="lazy"></div>
+            <div class="p-3 lg:p-5 flex flex-col flex-1">
+              <div class="flex items-center justify-between gap-2 mb-2"><h3 class="lc-title text-base lg:text-xl font-medium text-gray-900">Loan Against Property (LAP)</h3><span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+              <p class="lc-desc text-xs lg:text-sm text-gray-500">Unlock funds against your residential or commercial property for business or personal needs.</p><span class="hlx-cta">Check eligibility <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </a>
+          <a class="lc bg-white rounded-2xl p-2 lg:p-3 shadow-feature-card rv-lift flex flex-col" href="#home-loan-search" data-type="Construction Loan" data-prop="selfconst" data-keywords="build">
+            <div><img alt="Construction Loan" class="rounded-xl w-full" src="images/rx/construction-loan-chatgpt.jpg?v=2" width="640" height="400" loading="lazy"></div>
+            <div class="p-3 lg:p-5 flex flex-col flex-1">
+              <div class="flex items-center justify-between gap-2 mb-2"><h3 class="lc-title text-base lg:text-xl font-medium text-gray-900">Construction Loan</h3><span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+              <p class="lc-desc text-xs lg:text-sm text-gray-500">Finance the construction of your dream home with stage-wise disbursal.</p><span class="hlx-cta">Check eligibility <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </a>
+          <a class="lc bg-white rounded-2xl p-2 lg:p-3 shadow-feature-card rv-lift flex flex-col" href="#home-loan-search" data-type="Plot / Land Loan" data-prop="plot" data-keywords="land">
+            <div><img alt="Plot / Land Loan illustration" class="rounded-xl w-full" src="images/loan-home-plot.svg" width="640" height="400" loading="lazy"></div>
+            <div class="p-3 lg:p-5 flex flex-col flex-1">
+              <div class="flex items-center justify-between gap-2 mb-2"><h3 class="lc-title text-base lg:text-xl font-medium text-gray-900">Plot / Land Loan</h3><span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+              <p class="lc-desc text-xs lg:text-sm text-gray-500">Buy a plot or land for your future home or investment with flexible repayment.</p><span class="hlx-cta">Check eligibility <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </a>
+          <a class="lc bg-white rounded-2xl p-2 lg:p-3 shadow-feature-card rv-lift flex flex-col" href="#home-loan-search" data-type="Home Renovation Loan" data-keywords="repair">
+            <div><img alt="Home Renovation Loan" class="rounded-xl w-full" src="images/rx/home-renovation-loan-chatgpt.jpg?v=2" width="640" height="400" loading="lazy"></div>
+            <div class="p-3 lg:p-5 flex flex-col flex-1">
+              <div class="flex items-center justify-between gap-2 mb-2"><h3 class="lc-title text-base lg:text-xl font-medium text-gray-900">Home Renovation Loan</h3><span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+              <p class="lc-desc text-xs lg:text-sm text-gray-500">Repair, upgrade or remodel your home without draining your savings.</p><span class="hlx-cta">Check eligibility <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </a>
+          <a class="lc bg-white rounded-2xl p-2 lg:p-3 shadow-feature-card rv-lift flex flex-col" href="#home-loan-search" data-type="Mortgage Loan">
+            <div><img alt="Mortgage Loan illustration" class="rounded-xl w-full" src="images/loan-home-mortgage.svg" width="640" height="400" loading="lazy"></div>
+            <div class="p-3 lg:p-5 flex flex-col flex-1">
+              <div class="flex items-center justify-between gap-2 mb-2"><h3 class="lc-title text-base lg:text-xl font-medium text-gray-900">Mortgage Loan</h3><span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+              <p class="lc-desc text-xs lg:text-sm text-gray-500">Raise a large loan by mortgaging your property at competitive interest rates.</p><span class="hlx-cta">Check eligibility <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </a>
+          <a class="lc bg-white rounded-2xl p-2 lg:p-3 shadow-feature-card rv-lift flex flex-col" href="#home-loan-search" data-type="Balance Transfer + Top Up" data-keywords="balance transfer topup">
+            <div><img alt="Balance Transfer and Top Up" class="rounded-xl w-full" src="images/rx/balance-transfer-chatgpt.jpg?v=2" width="640" height="400" loading="lazy"></div>
+            <div class="p-3 lg:p-5 flex flex-col flex-1">
+              <div class="flex items-center justify-between gap-2 mb-2"><h3 class="lc-title text-base lg:text-xl font-medium text-gray-900">Balance Transfer + Top Up</h3><span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+              <p class="lc-desc text-xs lg:text-sm text-gray-500">Move your existing home loan to a lower rate and get extra funds on top.</p><span class="hlx-cta">Check eligibility <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+          </a>
+        </div>
+        <div class="rv-empty" id="loan-empty" hidden>
+          <h3>No home loans found</h3>
+          <p>Try another word, or let our team match you with the right loan.</p>
+          <a href="contact.html">Talk to our team</a>
         </div>
       </div>
     </section>
-    <section class="ln pt-4 pb-6 lg:pb-10" id="home-loan-search">
+    <section class="ln hlx-form-sec" id="home-loan-search">
       <div class="max-w-7xl mx-auto px-4 lg:px-6">
         <div class="hl-card reveal">
           <div class="hl-head">
             <span class="hl-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5L12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-5h4v5"/></svg></span>
             <div>
-              <h2 class="hl-title">Home Loan Search</h2>
+              <span class="hlx-step">Step 2</span><h2 class="hl-title">Check your home loan eligibility</h2>
               <p class="hl-sub">Tell us about the customer and property. We will show an indicative eligibility and the lenders that usually fit.</p>
             </div>
           </div>
+          <p class="hlx-picked" id="hlx-picked" hidden><span>Selected loan</span><b id="hlx-picked-name"></b><button type="button" id="hlx-change">Change</button></p>
           <form id="hl-form" class="hl-form" novalidate>
             <div class="hl-field hl-full">
               <label for="hl-name">Customer Name</label>
@@ -153,66 +217,6 @@
         </div>
       </div>
     </section>
-    <section class="ln py-10 lg:py-20" id="home-loans">
-      <div class="max-w-7xl mx-auto px-4 lg:px-6">
-        <div class="rv-search-wrap reveal">
-          <label class="rv-search" for="loan-search">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-            <input id="loan-search" type="search" placeholder="Search home loans - LAP, construction, plot, renovation..." autocomplete="off" aria-label="Search home loans">
-          </label>
-          <p class="rv-count" id="loan-count" aria-live="polite"></p>
-        </div>
-        <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-6" id="loan-grid">
-          <a class="lc bg-white rounded-2xl p-2 lg:p-3 shadow-feature-card rv-lift flex flex-col" href="contact.html" data-keywords="lap property">
-            <div><img alt="Loan Against Property" class="rounded-xl w-full" src="images/rx/loan-against-property-chatgpt.jpg" width="640" height="400" loading="lazy"></div>
-            <div class="p-3 lg:p-5 flex flex-col flex-1">
-              <div class="flex items-center justify-between gap-2 mb-2"><h3 class="lc-title text-base lg:text-xl font-medium text-gray-900">Loan Against Property (LAP)</h3><span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
-              <p class="lc-desc text-xs lg:text-sm text-gray-500">Unlock funds against your residential or commercial property for business or personal needs.</p>
-            </div>
-          </a>
-          <a class="lc bg-white rounded-2xl p-2 lg:p-3 shadow-feature-card rv-lift flex flex-col" href="contact.html" data-keywords="build">
-            <div><img alt="Construction Loan" class="rounded-xl w-full" src="images/rx/construction-loan-chatgpt.jpg?v=2" width="640" height="400" loading="lazy"></div>
-            <div class="p-3 lg:p-5 flex flex-col flex-1">
-              <div class="flex items-center justify-between gap-2 mb-2"><h3 class="lc-title text-base lg:text-xl font-medium text-gray-900">Construction Loan</h3><span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
-              <p class="lc-desc text-xs lg:text-sm text-gray-500">Finance the construction of your dream home with stage-wise disbursal.</p>
-            </div>
-          </a>
-          <a class="lc bg-white rounded-2xl p-2 lg:p-3 shadow-feature-card rv-lift flex flex-col" href="contact.html" data-keywords="land">
-            <div><img alt="Plot / Land Loan illustration" class="rounded-xl w-full" src="images/loan-home-plot.svg" width="640" height="400" loading="lazy"></div>
-            <div class="p-3 lg:p-5 flex flex-col flex-1">
-              <div class="flex items-center justify-between gap-2 mb-2"><h3 class="lc-title text-base lg:text-xl font-medium text-gray-900">Plot / Land Loan</h3><span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
-              <p class="lc-desc text-xs lg:text-sm text-gray-500">Buy a plot or land for your future home or investment with flexible repayment.</p>
-            </div>
-          </a>
-          <a class="lc bg-white rounded-2xl p-2 lg:p-3 shadow-feature-card rv-lift flex flex-col" href="contact.html" data-keywords="repair">
-            <div><img alt="Home Renovation Loan" class="rounded-xl w-full" src="images/rx/home-renovation-loan-chatgpt.jpg?v=2" width="640" height="400" loading="lazy"></div>
-            <div class="p-3 lg:p-5 flex flex-col flex-1">
-              <div class="flex items-center justify-between gap-2 mb-2"><h3 class="lc-title text-base lg:text-xl font-medium text-gray-900">Home Renovation Loan</h3><span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
-              <p class="lc-desc text-xs lg:text-sm text-gray-500">Repair, upgrade or remodel your home without draining your savings.</p>
-            </div>
-          </a>
-          <a class="lc bg-white rounded-2xl p-2 lg:p-3 shadow-feature-card rv-lift flex flex-col" href="contact.html">
-            <div><img alt="Mortgage Loan illustration" class="rounded-xl w-full" src="images/loan-home-mortgage.svg" width="640" height="400" loading="lazy"></div>
-            <div class="p-3 lg:p-5 flex flex-col flex-1">
-              <div class="flex items-center justify-between gap-2 mb-2"><h3 class="lc-title text-base lg:text-xl font-medium text-gray-900">Mortgage Loan</h3><span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
-              <p class="lc-desc text-xs lg:text-sm text-gray-500">Raise a large loan by mortgaging your property at competitive interest rates.</p>
-            </div>
-          </a>
-          <a class="lc bg-white rounded-2xl p-2 lg:p-3 shadow-feature-card rv-lift flex flex-col" href="contact.html" data-keywords="balance transfer topup">
-            <div><img alt="Balance Transfer and Top Up" class="rounded-xl w-full" src="images/rx/balance-transfer-chatgpt.jpg?v=2" width="640" height="400" loading="lazy"></div>
-            <div class="p-3 lg:p-5 flex flex-col flex-1">
-              <div class="flex items-center justify-between gap-2 mb-2"><h3 class="lc-title text-base lg:text-xl font-medium text-gray-900">Balance Transfer + Top Up</h3><span class="rv-go shrink-0"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
-              <p class="lc-desc text-xs lg:text-sm text-gray-500">Move your existing home loan to a lower rate and get extra funds on top.</p>
-            </div>
-          </a>
-        </div>
-        <div class="rv-empty" id="loan-empty" hidden>
-          <h3>No home loans found</h3>
-          <p>Try another word, or let our team match you with the right loan.</p>
-          <a href="contact.html">Talk to our team</a>
-        </div>
-      </div>
-    </section>
     <section class="pt-28 pb-10 rv-cta relative">
       <div class="rv-fade-bottom"></div>
       <div class="max-w-7xl mx-auto px-6 relative z-30">
@@ -254,6 +258,7 @@
   <script src="raven-app.js?v=5"></script>
   <script src="loan-search.js?v=2"></script>
   <script src="home-loan-search.js?v=2"></script>
+  <script src="home-loan-types.js?v=1"></script>
   <script src="rx.js?v=4"></script>
   <script src="site.js?v=3"></script>
   <script src="ai-chat.js?v=7"></script>
