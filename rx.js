@@ -70,6 +70,36 @@
       });
     });
   }
+  // phones: a placeholder short enough to read in full
+  var q = document.getElementById('rx-q');
+  if (q && window.matchMedia && window.matchMedia('(max-width:599px)').matches) q.placeholder = 'Search loans, insurance, property…';
+  // menu icons, coloured like the product sections
+  if (drawer) {
+    var P = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">';
+    var ICONS = {
+      'home': ['#1d4ed8', '#e8efff', '<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/>'],
+      'loans': ['#1d4ed8', '#e8efff', '<rect x="3" y="6" width="18" height="14" rx="2"/><path d="M16 13h2M3 10h18M7 6V4h10v2"/>'],
+      'insurance': ['#16a34a', '#e6f7ec', '<path d="M12 3l8 3v6c0 4.5-3.2 8.3-8 9-4.8-.7-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/>'],
+      'banking': ['#7c3aed', '#f1ebff', '<path d="M3 10l9-6 9 6"/><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18"/>'],
+      'real estate': ['#ea580c', '#fff0e6', '<path d="M3 21h18"/><path d="M5 21V8l7-4 7 4v13"/><path d="M9 21v-5h6v5"/>'],
+      'investments': ['#0d9488', '#e3f7f3', '<path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/>'],
+      'offers': ['#dc2626', '#feecec', '<path d="M20 12l-8 8-9-9V3h8z"/><circle cx="7.5" cy="7.5" r="1.5"/>'],
+      'contact us': ['#0284c7', '#e0f2fe', '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>'],
+      'ask a question': ['#c026d3', '#fae8ff', '<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/>']
+    };
+    drawer.querySelectorAll('.rx-drawer-body > .rx-dl, .rx-dgrp > .rx-dl').forEach(function (el) {
+      var key = (el.firstChild && el.firstChild.nodeType === 3 ? el.firstChild.nodeValue : el.textContent).trim().toLowerCase();
+      var ic = ICONS[key];
+      if (!ic || el.querySelector('.rx-dico')) return;
+      var host = el.parentElement.classList.contains('rx-dgrp') ? el.parentElement : el;
+      host.style.setProperty('--c', ic[0]);
+      host.style.setProperty('--bg', ic[1]);
+      var span = document.createElement('span');
+      span.className = 'rx-dico';
+      span.innerHTML = P + ic[2] + '</svg>';
+      el.insertBefore(span, el.firstChild);
+    });
+  }
   document.addEventListener('keydown', function (e) {
     if (e.key !== 'Escape') return;
     closeAll();
