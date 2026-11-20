@@ -220,3 +220,4 @@ lazyLottie(document.querySelector('.qt-cibil'), 'data-qt-lottie', '.qt-fb');
     grid.scrollTo({ left: (index() + 1) * step(), behavior: 'smooth' });
   }, 1000);
 })();
+lazyLottie(document.querySelector('.pl2'), 'data-pl-lottie', '.pl-fb');
