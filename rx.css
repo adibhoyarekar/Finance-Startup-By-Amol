@@ -1303,3 +1303,6 @@ body.rx{font-family:var(--rx-font);color:var(--rx-text);background:#fff}
 @media(prefers-reduced-motion:reduce){.rx-dgrp.is-open .rx-dsub{animation:none}.rx-drawer-x{transition:none}}
 .hx-h1 span{white-space:nowrap}
 @media(min-width:992px){.hx-cats{gap:7px}.hx-cats a{height:38px;padding:0 12px 0 5px;font-size:13.5px;gap:7px}.hx-cats a svg{padding:5px}}
+
+/* Ask page on phones: the chat is full-screen with its own top bar, so hide the site header */
+@media(max-width:899px){html:not(.embed) body.ask-page .rx-header{display:none}}
