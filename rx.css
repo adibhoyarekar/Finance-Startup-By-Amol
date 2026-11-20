@@ -1237,3 +1237,6 @@ body.rx{font-family:var(--rx-font);color:var(--rx-text);background:#fff}
   .fx-tag{flex-wrap:wrap;gap:6px 10px}
 }
 @media(prefers-reduced-motion:reduce){.fx-btn,.fx-soc a,.fx-col nav a,.fx-col nav a::before{transition:none}}
+.hx-gauge{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;margin:-6px 0 -6px -6px;border-radius:50%}
+.hx-gauge>svg:not(.hx-gfb){display:block;width:34px!important;height:34px!important}
+.hx-btn.is-ghost .hx-gauge .hx-gfb{color:#16a34a}
