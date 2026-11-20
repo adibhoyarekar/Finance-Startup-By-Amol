@@ -232,40 +232,88 @@
   }
 
   function card(it, i) {
-    return '<article class="ap-card ord" style="--i:' + Math.min(i, 8) + '" data-kind="' + it.kind + '">' +
-      '<div class="ord-top"><span class="ord-ic ord-ic-' + it.kind + '">' + ic(it.icon, 20) + '</span>' +
-      '<div class="ord-t"><h3>' + esc(it.title) + '</h3><p>' + it.meta.map(esc).join('<i aria-hidden="true">·</i>') + '</p></div>' +
-      '<span class="ap-pill ' + (TONE_PILL[it.tone] || '') + (it.loading ? ' is-loading' : '') + '">' + esc(it.pill) + '</span></div>' +
-      it.steps + (it.note ? '<p class="ord-note">' + esc(it.note) + '</p>' : '') +
-      (it.actions ? '<div class="ord-act">' + it.actions + '</div>' : '') + '</article>';
+    var ready = it.kind === 'report' && it.pill === 'Report ready';
+    return '<article class="ox-card is-' + it.tone + (ready ? ' is-ready' : '') + '" style="--i:' + Math.min(i, 8) + '" data-kind="' + it.kind + '">' +
+      '<div class="ox-top"><span class="ox-ic">' + ic(it.icon, 20) + '</span>' +
+      '<div class="ox-t"><h3>' + esc(it.title) + '</h3><p>' + it.meta.map(esc).join('<i aria-hidden="true">·</i>') + '</p></div>' +
+      (ready ? '<span class="ox-stamp">Report ready</span>' : '<span class="ox-st is-' + it.tone + (it.loading ? ' is-loading' : '') + '">' + esc(it.pill) + '</span>') + '</div>' +
+      it.steps + (it.note ? '<p class="ox-note">' + esc(it.note) + '</p>' : '') +
+      (it.actions ? '<div class="ox-act">' + it.actions + '</div>' : '') + '</article>';
+  }
+
+  /* ---------- filters: one icon opens a sheet with order type and status ---------- */
+  function typeLabel(v) { return (TYPES.filter(function (t) { return t[0] === v; })[0] || [v, v])[1]; }
+  function statusLabel(v) { return (STATUS.filter(function (t) { return t[0] === v; })[0] || [v, v])[1]; }
+  function filterCount(f) { return (f.type !== 'all' ? 1 : 0) + (f.status !== 'all' ? 1 : 0); }
+  function renderFilterUi() {
+    var n = filterCount(filter), badge = $('o-fbadge');
+    badge.hidden = !n; badge.textContent = n;
+    $('o-filter').classList.toggle('is-on', n > 0);
+    $('o-filter').setAttribute('aria-label', n ? 'Filter orders, ' + n + ' applied' : 'Filter orders');
+    var tags = [];
+    if (filter.type !== 'all') tags.push(['type', typeLabel(filter.type)]);
+    if (filter.status !== 'all') tags.push(['status', statusLabel(filter.status)]);
+    $('o-active').innerHTML = tags.map(function (t) {
+      return '<button type="button" class="ox-tag" data-rmf="' + t[0] + '" aria-label="Remove filter ' + esc(t[1]) + '">' + esc(t[1]) + '<span aria-hidden="true">&times;</span></button>';
+    }).join('') + (tags.length > 1 ? '<button type="button" class="ox-tag-clear" data-rmf="*">Clear all</button>' : '');
+  }
+  function openFilters() {
+    var all = items(), draft = { type: filter.type, status: filter.status };
+    function group(title, key, list, countOf) {
+      return '<fieldset class="ox-fg"><legend>' + title + '</legend><div class="ox-chips" role="radiogroup" aria-label="' + title + '">' + list.map(function (o) {
+        var on = draft[key] === o[0], n = countOf(o[0]);
+        return '<button type="button" role="radio" aria-checked="' + on + '" class="ox-chip' + (on ? ' is-on' : '') + '" data-fk="' + key + '" data-fv="' + o[0] + '">' + esc(o[1]) + (n == null ? '' : ' <b>' + n + '</b>') + '</button>';
+      }).join('') + '</div></fieldset>';
+    }
+    var dr = UI.openDrawer({
+      title: 'Filter orders', focus: '.ox-chip.is-on',
+      body: '<div class="ox-fsheet">' +
+        group('Order type', 'type', TYPES, function (v) { return v === 'all' ? all.length : all.filter(function (x) { return x.kind === v; }).length; }) +
+        group('Status', 'status', STATUS, function (v) { return v === 'all' ? null : all.filter(function (x) { return x.bucket === v; }).length; }) + '</div>',
+      foot: '<button type="button" class="ox-btn is-line" data-fclear>Clear</button><button type="button" class="ox-btn is-ink" data-fapply></button>'
+    });
+    var apply = dr.querySelector('[data-fapply]'), clear = dr.querySelector('[data-fclear]');
+    function sync() {
+      var n = filterCount(draft);
+      apply.textContent = n ? 'Show orders (' + n + ' filter' + (n === 1 ? '' : 's') + ')' : 'Show all orders';
+      clear.disabled = !n;
+      [].forEach.call(dr.querySelectorAll('.ox-chip'), function (c) {
+        var on = draft[c.getAttribute('data-fk')] === c.getAttribute('data-fv');
+        c.classList.toggle('is-on', on); c.setAttribute('aria-checked', String(on));
+      });
+    }
+    dr.querySelector('.ox-fsheet').addEventListener('click', function (e) {
+      var c = e.target.closest('.ox-chip'); if (!c) return;
+      draft[c.getAttribute('data-fk')] = c.getAttribute('data-fv'); sync();
+    });
+    clear.addEventListener('click', function () { draft.type = 'all'; draft.status = 'all'; sync(); });
+    apply.addEventListener('click', function () { filter.type = draft.type; filter.status = draft.status; UI.closeDrawer(); render(true); });
+    sync();
   }
 
   function render(anim) {
     var all = items();
     $('o-list').classList.toggle('is-anim', !!anim);
     var count = function (fn) { return all.filter(fn).length; };
-    $('o-kpis').innerHTML = [
-      ['Total orders', all.length, 'listcheck', ''],
-      ['Needs your action', count(function (x) { return x.bucket === 'action'; }), 'bell', 'is-warn'],
-      ['In progress', count(function (x) { return x.bucket === 'active'; }), 'clock', 'is-mute'],
-      ['Completed', count(function (x) { return x.bucket === 'done'; }), 'check', '']
-    ].map(function (k) {
-      return '<div class="ap-card ap-kpi"><div class="top"><p class="l">' + k[0] + '</p><span class="ic">' + ic(k[2], 16) + '</span></div><p class="v">' + k[1] + '</p></div>';
+    var KPI = [
+      ['all', 'Total orders', all.length, 'Across everything you ordered', ''],
+      ['action', 'Needs your action', count(function (x) { return x.bucket === 'action'; }), 'Pay, bid or follow up', 'is-warn'],
+      ['active', 'In progress', count(function (x) { return x.bucket === 'active'; }), 'Being processed now', ''],
+      ['done', 'Completed', count(function (x) { return x.bucket === 'done'; }), 'Reports ready, bids won', '']
+    ];
+    $('o-kpis').innerHTML = KPI.map(function (k) {
+      var on = filter.status === k[0];
+      return '<button type="button" class="ox-kpi ' + k[4] + (on ? ' is-on' : '') + '" data-kpi="' + k[0] + '" aria-pressed="' + on + '"><span class="ox-kpi-l">' + k[1] + '</span>' +
+        '<b class="ox-kpi-v">' + k[2] + '</b><span class="ox-kpi-h">' + k[3] + '</span></button>';
     }).join('');
-    $('o-types').innerHTML = TYPES.map(function (t) {
-      var n = t[0] === 'all' ? all.length : count(function (x) { return x.kind === t[0]; });
-      return '<button type="button" role="tab" class="ap-chip' + (filter.type === t[0] ? ' is-on' : '') + '" aria-selected="' + (filter.type === t[0]) + '" data-type="' + t[0] + '">' + t[1] + ' <b>' + n + '</b></button>';
-    }).join('');
-    $('o-status').innerHTML = STATUS.map(function (t) {
-      return '<button type="button" role="tab" class="ap-chip' + (filter.status === t[0] ? ' is-on' : '') + '" aria-selected="' + (filter.status === t[0]) + '" data-status="' + t[0] + '">' + t[1] + '</button>';
-    }).join('');
+    renderFilterUi();
     var q = filter.q.toLowerCase();
     var shown = all.filter(function (x) {
       return (filter.type === 'all' || x.kind === filter.type) && (filter.status === 'all' || x.bucket === filter.status) && (!q || x.search.toLowerCase().indexOf(q) !== -1);
     });
-    $('o-list').innerHTML = shown.length ? shown.map(card).join('') : '<div class="ap-card ap-empty"><span class="art">' + ic('listcheck', 28) + '</span><h3>' +
-      (all.length ? 'No orders match' : 'No orders yet') + '</h3><p>' + (all.length ? 'Try another filter or clear the search.' : isAgent ? 'Check a client’s CIBIL score, add a client file or join a bank auction – everything shows up here.' : 'Check your CIBIL score, open a loan status link from your advisor or join a bank auction – your orders will show up here.') + '</p>' +
-      (all.length ? '' : '<a class="ap-btn is-primary" href="cibil-score.html">' + ic('plus', 18) + 'Check CIBIL score</a>') + '</div>';
+    $('o-list').innerHTML = shown.length ? shown.map(card).join('') : '<div class="ox-empty"><span class="ox-empty-art">' + ic('listcheck', 26) + '</span><h2>' +
+      (all.length ? 'No orders match' : 'No orders yet') + '</h2><p>' + (all.length ? 'Try another filter or clear the search.' : isAgent ? 'Check a client’s CIBIL score, add a client file or join a bank auction – everything shows up here.' : 'Check your CIBIL score, open a loan status link from your advisor or join a bank auction – your orders will show up here.') + '</p>' +
+      (all.length ? '<button type="button" class="ox-btn is-line" data-kpi="all" data-clear>Clear filters</button>' : '<a class="ox-btn is-ink" href="cibil-score.html">' + ic('plus', 18) + 'Check CIBIL score</a>') + '</div>';
     $('o-foot').textContent = all.some(function (x) { return x.kind === 'report'; }) ? 'Credit reports bought on this device are listed for 30 days. Statuses update automatically.' : '';
   }
 
@@ -279,8 +327,9 @@
 
   document.addEventListener('click', function (e) {
     var t;
-    if ((t = e.target.closest('[data-type]'))) { filter.type = t.getAttribute('data-type'); render(true); return; }
-    if ((t = e.target.closest('[data-status]'))) { filter.status = t.getAttribute('data-status'); render(true); return; }
+    if ((t = e.target.closest('[data-kpi]'))) { filter.status = t.hasAttribute('data-clear') ? 'all' : t.getAttribute('data-kpi'); if (t.hasAttribute('data-clear')) filter.type = 'all'; render(true); return; }
+    if ((t = e.target.closest('#o-filter'))) { openFilters(); return; }
+    if ((t = e.target.closest('[data-rmf]'))) { var rk = t.getAttribute('data-rmf'); if (rk === '*') { filter.type = 'all'; filter.status = 'all'; } else filter[rk] = 'all'; render(true); return; }
     if ((t = e.target.closest('[data-refresh]'))) { loadReport(t.getAttribute('data-refresh')).then(render); render(); return; }
     if ((t = e.target.closest('[data-dl]'))) { var v1 = reports[t.getAttribute('data-dl')].view; if (v1 && window.CMReport) CMReport.download(reportData(v1)); return; }
     if ((t = e.target.closest('[data-view]'))) {
