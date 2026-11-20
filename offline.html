@@ -49,7 +49,7 @@
       window.addEventListener('online', go);
       b.addEventListener('click', function () {
         b.disabled = true; b.textContent = 'Checking…';
-        fetch('/images/rx/logo-mark.svg?ping=' + Date.now(), { method: 'HEAD', cache: 'no-store' })
+        fetch('/images/rx/logo-mark.svg?v=2?ping=' + Date.now(), { method: 'HEAD', cache: 'no-store' })
           .then(function (r) { if (r.ok) go(); else throw 0; })
           .catch(function () { b.disabled = false; b.textContent = 'Try again'; st.textContent = 'Still offline. We’ll keep trying.'; });
       });

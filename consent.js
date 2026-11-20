@@ -48,7 +48,7 @@
   wrap.setAttribute('aria-labelledby', 'rv-consent-title');
   wrap.innerHTML =
     '<div class="rv-consent-card">' +
-      '<div class="rv-consent-logo"><img src="images/logo.svg" alt="FinMatrix" width="116" height="30"></div>' +
+      '<div class="rv-consent-logo"><img src="images/logo.svg?v=2" alt="FinMatrix" width="116" height="30"></div>' +
       '<h2 id="rv-consent-title">Before you continue</h2>' +
       '<p>Please review and accept our terms to use the FinMatrix website.</p>' +
       '<ul>' +

@@ -117,7 +117,7 @@
     if (!window.fetch) return Promise.resolve(navigator.onLine !== false);
     var ctl = window.AbortController ? new AbortController() : null;
     var t = setTimeout(function () { if (ctl) ctl.abort(); }, 6000);
-    return fetch('/images/rx/logo-mark.svg?ping=' + Date.now(), { method: 'HEAD', cache: 'no-store', signal: ctl ? ctl.signal : undefined })
+    return fetch('/images/rx/logo-mark.svg?v=2?ping=' + Date.now(), { method: 'HEAD', cache: 'no-store', signal: ctl ? ctl.signal : undefined })
       .then(function (r) { clearTimeout(t); return r.ok; }, function () { clearTimeout(t); return false; });
   }
   function retry() {
