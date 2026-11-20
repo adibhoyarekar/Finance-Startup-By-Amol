@@ -68,8 +68,8 @@
           <div class="hl-head">
             <span class="hl-badge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 16l1.5-5a2 2 0 011.9-1.4h7.2a2 2 0 011.9 1.4L19 16M3 16h18v3H3z"/><circle cx="7.5" cy="19" r="1.5"/><circle cx="16.5" cy="19" r="1.5"/></svg></span>
             <div>
-              <h2 class="hl-title">Car Loan Application Form</h2>
-              <p class="hl-sub">Share the car and income details. We show your eligibility, EMI and the lenders that usually fit.</p>
+              <h2 class="hl-title">Vehicle Loan Application Form</h2>
+              <p class="hl-sub">Share the vehicle and income details. We show your eligibility, EMI and the lenders that usually fit.</p>
             </div>
           </div>
           <form class="hl-form" data-search="vehicle" data-result="vehicle-result" novalidate>
@@ -91,11 +91,13 @@
             </div>
             <p class="hl-sec-h hl-full"><span>2</span>Loan Requirement</p>
             <div class="hl-field">
-              <label for="cl-ltype">Car Loan Type</label>
+              <label for="cl-ltype">Vehicle Loan Type</label>
               <select id="cl-ltype" name="ltype" class="rv-input hl-select" required>
-                <option value="">Select Car Loan Type</option>
+                <option value="">Select Vehicle Loan Type</option>
                 <option value="new">New Car Loan</option>
                 <option value="used">Used Car Loan</option>
+                <option value="twowheeler">Two-Wheeler Loan</option>
+                <option value="commercial">Commercial Vehicle Loan</option>
               </select>
               <p class="hl-err" data-for="cl-ltype">Please select the loan type.</p>
             </div>
@@ -110,7 +112,8 @@
               </select>
               <p class="hl-err" data-for="cl-emp">Please select the employment type.</p>
             </div>
-            <p class="hl-sec-h hl-full"><span>3</span>Car Details</p>
+            <p class="hl-sec-h hl-full"><span>3</span>Vehicle Details</p>
+            <div class="hl-cond" data-show="ltype:|new|used">
             <div class="hl-field">
               <label for="cl-ctype">Car Type</label>
               <select id="cl-ctype" name="ctype" class="rv-input hl-select" required>
@@ -123,25 +126,53 @@
               </select>
               <p class="hl-err" data-for="cl-ctype">Please select the car type.</p>
             </div>
-            <div class="hl-field">
-              <label for="cl-brand">Car Brand</label>
-              <input id="cl-brand" name="brand" class="rv-input" type="text" placeholder="e.g. Maruti Suzuki" list="cl-brands" autocomplete="off" required>
-              <p class="hl-err" data-for="cl-brand">Please enter the car brand.</p>
             </div>
-            <datalist id="cl-brands"><option value="Maruti Suzuki"><option value="Hyundai"><option value="Tata Motors"><option value="Mahindra"><option value="Toyota"><option value="Kia"><option value="Honda"><option value="MG"><option value="Skoda"><option value="Volkswagen"><option value="Renault"><option value="Nissan"><option value="Citroen"><option value="BMW"><option value="Mercedes-Benz"><option value="Audi"></datalist>
+            <div class="hl-cond" data-show="ltype:twowheeler">
             <div class="hl-field">
-              <label for="cl-model">Car Model</label>
-              <input id="cl-model" name="model" class="rv-input" type="text" placeholder="e.g. Swift VXi" autocomplete="off" required>
-              <p class="hl-err" data-for="cl-model">Please enter the car model.</p>
+              <label for="cl-wtype">Two-Wheeler Type</label>
+              <select id="cl-wtype" name="wtype" class="rv-input hl-select" required>
+                <option value="">Select Two-Wheeler Type</option>
+                <option value="scooter">Scooter</option>
+                <option value="bike">Motorcycle</option>
+                <option value="premium">Premium / Superbike</option>
+                <option value="ev">Electric Scooter / Bike</option>
+              </select>
+              <p class="hl-err" data-for="cl-wtype">Please select the two-wheeler type.</p>
+            </div>
+            </div>
+            <div class="hl-cond" data-show="ltype:commercial">
+            <div class="hl-field">
+              <label for="cl-cvtype">Commercial Vehicle Type</label>
+              <select id="cl-cvtype" name="cvtype" class="rv-input hl-select" required>
+                <option value="">Select Commercial Vehicle Type</option>
+                <option value="pickup">Pickup / Small Goods Vehicle</option>
+                <option value="truck">Truck / LCV / HCV</option>
+                <option value="bus">Bus / Passenger Vehicle</option>
+                <option value="tractor">Tractor / Farm Vehicle</option>
+                <option value="three">Auto-Rickshaw / 3-Wheeler</option>
+              </select>
+              <p class="hl-err" data-for="cl-cvtype">Please select the commercial vehicle type.</p>
+            </div>
             </div>
             <div class="hl-field">
-              <label for="cl-price">Car Price (₹)</label>
+              <label for="cl-brand">Vehicle Brand</label>
+              <input id="cl-brand" name="brand" class="rv-input" type="text" placeholder="e.g. Maruti Suzuki, Honda, Tata" list="cl-brands" autocomplete="off" required>
+              <p class="hl-err" data-for="cl-brand">Please enter the vehicle brand.</p>
+            </div>
+            <datalist id="cl-brands"><option value="Maruti Suzuki"><option value="Hyundai"><option value="Tata Motors"><option value="Mahindra"><option value="Toyota"><option value="Kia"><option value="Honda"><option value="MG"><option value="Skoda"><option value="Volkswagen"><option value="Renault"><option value="Nissan"><option value="Citroen"><option value="BMW"><option value="Mercedes-Benz"><option value="Audi"><option value="Hero MotoCorp"><option value="Bajaj Auto"><option value="TVS Motor"><option value="Royal Enfield"><option value="Yamaha"><option value="Suzuki Motorcycle"><option value="Ather"><option value="Ola Electric"><option value="Ashok Leyland"><option value="Eicher"><option value="Piaggio"><option value="Force Motors"></datalist>
+            <div class="hl-field">
+              <label for="cl-model">Vehicle Model</label>
+              <input id="cl-model" name="model" class="rv-input" type="text" placeholder="e.g. Swift VXi, Activa 6G" autocomplete="off" required>
+              <p class="hl-err" data-for="cl-model">Please enter the vehicle model.</p>
+            </div>
+            <div class="hl-field">
+              <label for="cl-price">Vehicle Price (₹)</label>
               <div class="hl-money">
                 <span aria-hidden="true">₹</span>
-                <input id="cl-price" name="price" class="rv-input" type="text" inputmode="numeric" placeholder="Enter Car Price" autocomplete="off" data-check="money" data-min="50000" data-max="50000000" aria-describedby="cl-price-words" required>
+                <input id="cl-price" name="price" class="rv-input" type="text" inputmode="numeric" placeholder="Enter Vehicle Price" autocomplete="off" data-check="money" data-min="20000" data-max="50000000" aria-describedby="cl-price-words" required>
               </div>
               <p class="hl-hint" id="cl-price-words" data-words-for="cl-price" aria-live="polite"></p>
-              <p class="hl-err" data-for="cl-price">Enter a price between ₹50,000 and ₹5,00,00,000.</p>
+              <p class="hl-err" data-for="cl-price">Enter a price between ₹20,000 and ₹5,00,00,000.</p>
             </div>
             <div class="hl-cond hl-full" data-show="ltype:used"><div class="hl-subgrid">
             <div class="hl-field">
@@ -178,10 +209,10 @@
               <label for="cl-amount">Loan Amount Required (₹)</label>
               <div class="hl-money">
                 <span aria-hidden="true">₹</span>
-                <input id="cl-amount" name="amount" class="rv-input" type="text" inputmode="numeric" placeholder="Enter Loan Amount" autocomplete="off" data-check="money" data-min="50000" data-max="50000000" aria-describedby="cl-amount-words" required>
+                <input id="cl-amount" name="amount" class="rv-input" type="text" inputmode="numeric" placeholder="Enter Loan Amount" autocomplete="off" data-check="money" data-min="20000" data-max="50000000" aria-describedby="cl-amount-words" required>
               </div>
               <p class="hl-hint" id="cl-amount-words" data-words-for="cl-amount" aria-live="polite"></p>
-              <p class="hl-err" data-for="cl-amount">Enter a loan amount between ₹50,000 and ₹5,00,00,000.</p>
+              <p class="hl-err" data-for="cl-amount">Enter a loan amount between ₹20,000 and ₹5,00,00,000.</p>
             </div>
             <div class="hl-field">
               <label for="cl-down">Down Payment (₹)</label>
@@ -337,7 +368,7 @@
   </footer>
   </div>
   <script src="raven-app.js?v=7"></script>
-  <script src="search-forms.js?v=6"></script>
+  <script src="search-forms.js?v=7"></script>
   <script src="rx.js?v=4"></script>
   <script src="site.js?v=3"></script>
   <script src="ai-chat.js?v=7"></script>
