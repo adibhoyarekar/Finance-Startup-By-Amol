@@ -19,6 +19,7 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <script src="/app-install.js?v=1"></script>
+  <script src="/rx-lottie.js?v=1"></script>
 </head>
 <body class="rx antialiased text-gray-900 bg-white">
   <div id="top" class="min-h-screen">
@@ -56,7 +57,7 @@
         <nav class="rx-crumb" aria-label="Breadcrumb"><a href="index.html">Home</a><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg><a href="funding-loans.html">Loans</a><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg><span aria-current="page">Home Loan</span></nav>
         <div class="hlf-row">
           <div><h1 class="hlf-h1">Matching lenders</h1><p class="hlf-sub">Indicative eligibility and the lenders that usually fit.</p></div>
-          <ol class="hlf-prog" aria-label="Steps"><li class="is-done"><a href="home-loans.html"><b>&#10003;</b><span>Loan type</span></a></li><li class="is-done"><a href="home-loan-eligibility.html"><b>&#10003;</b><span>Eligibility</span></a></li><li class="is-on" aria-current="step"><b>3</b><span>Lenders</span></li></ol>
+          <ol class="hlf-prog" aria-label="Steps"><li class="is-done"><a href="home-loans.html"><b>&#10003;</b><span>Details</span></a></li><li class="is-on" aria-current="step"><b>2</b><span>Lenders</span></li></ol>
         </div>
       </div>
     </section>
@@ -64,7 +65,21 @@
       <div class="max-w-7xl mx-auto px-4 lg:px-6">
         <div class="hl-card">
           <p class="hlx-picked" id="hlx-picked" hidden><span>Loan type</span><b id="hlx-picked-name"></b><a href="home-loans.html">Change</a></p>
-          <form id="hl-form" class="hl-form" novalidate data-autorun data-back="home-loan-eligibility.html" hidden>
+          <form id="hl-form" class="hl-form" novalidate data-autorun data-back="home-loans.html" hidden>
+            <div class="hl-field hl-full">
+              <label for="hl-type">Loan Type</label>
+              <select id="hl-type" name="type" class="rv-input hl-select" required>
+                <option value="">Select Loan Type</option>
+                <option value="purchase">Home Loan (Buy a Home)</option>
+                <option value="lap">Loan Against Property (LAP)</option>
+                <option value="construction">Construction Loan</option>
+                <option value="plot">Plot / Land Loan</option>
+                <option value="renovation">Home Renovation Loan</option>
+                <option value="mortgage">Mortgage Loan</option>
+                <option value="bt">Balance Transfer + Top Up</option>
+              </select>
+              <p class="hl-err" data-for="hl-type">Please select the loan type.</p>
+            </div>
             <div class="hl-field hl-full">
               <label for="hl-name">Customer Name</label>
               <input id="hl-name" name="name" class="rv-input" type="text" placeholder="Enter Customer Name" autocomplete="name" required>
@@ -179,9 +194,9 @@
     <div class="fx-bar"><div class="rx-wrap"><span>&copy; 2026 CredMates. All Rights Reserved.</span><span class="fx-tag"><b>Your Dreams</b><i aria-hidden="true"></i><b>Our Support</b><i aria-hidden="true"></i><b>A Better Tomorrow</b></span></div></div>
   </footer>
   </div>
-  <script src="raven-app.js?v=6"></script>
+  <script src="raven-app.js?v=7"></script>
   <script>(function(){var d=null;try{d=JSON.parse(sessionStorage.getItem("cm_hl_flow")||"null")}catch(e){}if(d&&d.type){var n=document.getElementById("hlx-picked-name");n.textContent=String(d.type).slice(0,60);document.getElementById("hlx-picked").hidden=false}})()</script>
-  <script src="home-loan-search.js?v=3"></script>
+  <script src="home-loan-search.js?v=4"></script>
   <script src="rx.js?v=4"></script>
   <script src="site.js?v=3"></script>
   <script src="ai-chat.js?v=7"></script>

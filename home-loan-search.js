@@ -1,4 +1,4 @@
-/* Home Loan Search (home-loan-eligibility.html → home-loan-lenders.html): validates the customer form, works out an
+/* Home Loan Search (home-loans.html → home-loan-lenders.html): validates the customer form, works out an
    indicative eligibility and lists the lender groups that usually fit the profile.
    Figures are rough estimates for a first conversation, not a lender's sanction. */
 (function () {
@@ -74,6 +74,19 @@
     'pension':         ['Pension payment order', '12 months pension bank statement', 'Co-applicant income proof (if any)']
   };
 
+  // loan types offered in the Loan Type box; construction and plot loans suggest a property type
+  var TYPES = {
+    purchase: 'Home Loan (Buy a Home)', lap: 'Loan Against Property (LAP)', construction: 'Construction Loan',
+    plot: 'Plot / Land Loan', renovation: 'Home Renovation Loan', mortgage: 'Mortgage Loan', bt: 'Balance Transfer + Top Up'
+  };
+  var TYPE_PROP = { construction: 'selfconst', plot: 'plot' };
+  function typeKey(v) {
+    if (TYPES[v]) return v;
+    for (var k in TYPES) if (TYPES[k] === v) return k;
+    return '';
+  }
+
+  var typeEl = document.getElementById('hl-type');
   var nameEl = document.getElementById('hl-name');
   var empEl = document.getElementById('hl-emp');
   var incEl = document.getElementById('hl-income');
@@ -107,6 +120,11 @@
     words.textContent = digits ? short(+digits) : '';
     if (form.classList.contains('was-checked')) check();
   });
+  if (typeEl) typeEl.addEventListener('change', function () {
+    var p = TYPE_PROP[typeEl.value];
+    if (p && !propEl.value) { propEl.value = p; if (form.classList.contains('was-checked')) setErr(propEl, false); }
+    if (form.classList.contains('was-checked')) check();
+  });
   [nameEl, empEl, incEl, propEl].forEach(function (el) {
     el.addEventListener(el.tagName === 'SELECT' ? 'change' : 'input', function () {
       if (form.classList.contains('was-checked')) check();
@@ -123,6 +141,7 @@
   function check() {
     var a = amount();
     var bad = [
+      typeEl && setErr(typeEl, !TYPES[typeEl.value]) && typeEl,
       setErr(nameEl, nameEl.value.trim().length < 2) && nameEl,
       setErr(empEl, !empEl.value) && empEl,
       setErr(incEl, !incEl.value) && incEl,
@@ -155,6 +174,7 @@
 
   function render() {
     var name = nameEl.value.trim();
+    var loanType = typeEl ? TYPES[typeEl.value] || '' : '';
     var emp = EMP[empEl.value], prop = PROP[propEl.value];
     var income = +incEl.value, a = amount();
     var rate = Math.max(emp.rate, prop.rateFloor || 0);
@@ -174,7 +194,7 @@
     var html = '';
     html += '<div class="hl-rhead"><div><p class="hl-kicker">Indicative result</p>' +
       '<h3>Home loan options for ' + esc(name) + '</h3>' +
-      '<p class="hl-rsub">' + esc(emp.label) + ' · ' + esc(prop.label) + ' · Income from ₹' + inr(income) + '/month</p></div>' +
+      '<p class="hl-rsub">' + (loanType ? esc(loanType) + ' · ' : '') + esc(emp.label) + ' · ' + esc(prop.label) + ' · Income from ₹' + inr(income) + '/month</p></div>' +
       '<button type="button" class="hl-edit" id="hl-edit">Edit details</button></div>';
 
     html += '<div class="hl-stats">' +
@@ -205,7 +225,7 @@
       html += '<p class="hl-none">No standard lender group matches this profile directly. Our team handles special cases like this – share the details and we will find a route.</p>';
     }
 
-    var body = 'Home loan enquiry\n\nCustomer: ' + name + '\nEmployment: ' + emp.label +
+    var body = 'Home loan enquiry\n\n' + (loanType ? 'Loan type: ' + loanType + '\n' : '') + 'Customer: ' + name + '\nEmployment: ' + emp.label +
       '\nMonthly income: from Rs ' + inr(income) + '\nProperty type: ' + prop.label +
       '\nRequired loan: Rs ' + inr(a) + '\nEstimated eligibility: Rs ' + inr(eligible);
     html += '<div class="hl-cta"><a class="hl-submit" href="mailto:hello@credmates.business?subject=' +
@@ -216,8 +236,8 @@
     out.innerHTML = html;
     if (window.RavenApp) RavenApp.onResult({
       kind: 'home', out: out,
-      values: { name: name, employment: empEl.value, income: incEl.value, property: propEl.value, amount: a },
-      labels: { employment: emp.label, property: prop.label },
+      values: { type: typeEl ? typeEl.value : '', name: name, employment: empEl.value, income: incEl.value, property: propEl.value, amount: a },
+      labels: { type: loanType, employment: emp.label, property: prop.label },
       headline: 'Eligibility ' + short(eligible) + ' · ' + prop.product,
       details: ['Required ' + short(a) + ' · EMI ₹' + inr(reqEmi) + '/mo at ~' + trim(rate) + '%',
         'Best fit: ' + (matches.filter(function (m) { return m.s === 2; }).map(function (m) { return m.l.name; }).join(', ') || 'our team to advise')]
@@ -242,7 +262,7 @@
   function save() {
     try {
       sessionStorage.setItem(STORE, JSON.stringify({ name: nameEl.value.trim(), employment: empEl.value, income: incEl.value,
-        property: propEl.value, amount: amount(), type: form.getAttribute('data-type') || '' }));
+        property: propEl.value, amount: amount(), type: typeEl ? TYPES[typeEl.value] || '' : '', typeKey: typeEl ? typeEl.value : '' }));
     } catch (x) { /* storage blocked */ }
   }
   function load() {
@@ -252,9 +272,11 @@
     if ([].some.call(el.options, function (o) { return o.value === v; })) el.value = v;
   }
   function fill(d) {
+    var linked = form.getAttribute('data-next') && urlType();
+    if (typeEl && !linked) setSelect(typeEl, typeKey(d.typeKey || d.type || ''));
     nameEl.value = String(d.name || '').slice(0, 80);
     setSelect(empEl, d.employment); setSelect(incEl, String(d.income || ''));
-    if (!(form.getAttribute('data-next') && /[?&]hl-prop=/.test(location.search))) setSelect(propEl, d.property);
+    if (!(form.getAttribute('data-next') && (/[?&]hl-prop=/.test(location.search) || TYPE_PROP[linked]))) setSelect(propEl, d.property);
     var n = parseInt(d.amount, 10) || 0;
     amtEl.value = n ? inr(n) : ''; words.textContent = n ? short(n) : '';
   }
@@ -270,12 +292,23 @@
   form.addEventListener('reset', function () {
     form.classList.remove('was-checked');
     words.textContent = '';
-    [nameEl, empEl, incEl, propEl, amtEl].forEach(function (el) { setErr(el, false); });
+    [typeEl, nameEl, empEl, incEl, propEl, amtEl].forEach(function (el) { if (el) setErr(el, false); });
   });
+
+  // a link can pick the loan type: ?hl-type=lap (or the older ?type=lap)
+  function urlType() {
+    var q = new URLSearchParams(location.search);
+    return typeKey(q.get('hl-type') || q.get('type') || '');
+  }
+  if (typeEl && form.getAttribute('data-next') && urlType()) {
+    typeEl.value = urlType();
+    var tp = TYPE_PROP[typeEl.value];
+    if (tp && !/[?&]hl-prop=/.test(location.search)) propEl.value = tp;
+  }
 
   var saved = load();
   if (form.hasAttribute('data-autorun')) {
-    var back = form.getAttribute('data-back') || 'home-loan-eligibility.html';
+    var back = form.getAttribute('data-back') || 'home-loans.html';
     if (!saved) { location.replace(back + location.search); return; }
     fill(saved);
     if (check().length) { location.replace(back + location.search); return; }

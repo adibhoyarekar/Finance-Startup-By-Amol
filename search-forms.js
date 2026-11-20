@@ -128,7 +128,7 @@
     return {
       headline: 'Eligibility ' + short(eligible) + ' · ' + prod,
       details: ['Required ' + short(a) + ' · EMI ₹' + inr(emi(a, rate, months)) + '/mo at ~' + rate + '%', top(groups)],
-      sub: L.btype + ' · ' + L.vintage + ' in business · ' + L.itype + ' · ' + L.income + '/month',
+      sub: (L.ltype ? L.ltype + ' · ' : '') + L.btype + ' · ' + L.vintage + ' in business · ' + L.itype + ' · ' + L.income + '/month',
       html: stats([
         stat('Estimated eligibility', short(eligible), trim(months / 12) + ' yrs at ~' + rate + '% p.a.'),
         stat('Required loan', short(a), '₹' + inr(a)),
@@ -140,7 +140,7 @@
         grid2(box('Suggested product', product(prod, prodNote) + '<p class="hl-note" style="margin-top:.6rem"><strong>CIBIL:</strong> ' + CIBIL_TIPS[v.cibil] + '</p>'),
           box('Documents to keep ready', bullets(docs.map(esc)))) +
         lenders('Lenders that usually fit', groups, ''),
-      email: ['Business type: ' + L.btype, 'Vintage: ' + L.vintage, 'Income type: ' + L.itype, 'Monthly income: ' + L.income,
+      email: ['Loan type: ' + (L.ltype || '-'), 'Business type: ' + L.btype, 'Vintage: ' + L.vintage, 'Income type: ' + L.itype, 'Monthly income: ' + L.income,
         'ITR available: ' + L.itr, 'CIBIL: ' + L.cibil, 'Required loan: Rs ' + inr(a), 'Estimated eligibility: Rs ' + inr(eligible)]
     };
   }
@@ -192,7 +192,7 @@
     return {
       headline: 'Eligibility ' + short(eligible) + ' · ' + (ok ? 'within limit' : 'short by ' + short(a - eligible)),
       details: ['Required ' + short(a) + ' · EMI ₹' + inr(emi(a, rate, months)) + '/mo at ~' + trim(rate) + '%', top(groups)],
-      sub: L.emp + ' · ' + L.income + '/month · ' + v.company + ' · ' + L.exp + ' experience',
+      sub: (L.ltype ? L.ltype + ' · ' : '') + L.emp + ' · ' + L.income + '/month · ' + v.company + ' · ' + L.exp + ' experience',
       html: stats([
         stat('Estimated eligibility', short(eligible), months / 12 + ' yrs at ~' + trim(rate) + '% p.a.'),
         stat('Required loan', short(a), '₹' + inr(a)),
@@ -203,7 +203,7 @@
           : '<strong>Above estimated eligibility by ' + short(a - eligible) + '.</strong> Lower the amount, add a co-applicant, or close existing loans first.') +
         grid2(box('Things to know', bullets(notes)), box('Documents to keep ready', bullets(docs.map(esc)))) +
         lenders('Lenders that usually fit', groups, 'No unsecured lender group fits this profile directly. Our team can still look at secured options.'),
-      email: ['Employment: ' + L.emp, 'Monthly income: ' + L.income, 'Company / business: ' + v.company, 'Experience: ' + L.exp,
+      email: ['Loan type: ' + (L.ltype || '-'), 'Employment: ' + L.emp, 'Monthly income: ' + L.income, 'Company / business: ' + v.company, 'Experience: ' + L.exp,
         'Existing EMI: ' + L.existing, 'CIBIL: ' + L.cibil, 'Required loan: Rs ' + inr(a), 'Estimated eligibility: Rs ' + inr(eligible)]
     };
   }
@@ -349,7 +349,7 @@
       loanBox = verdict(okLoan, okLoan
         ? '<strong>Loan of ' + short(loan) + ' is within the usual limit.</strong> Banks fund up to ' + ltv + '% of the property value, so keep at least ' + short(budget - loan) + ' as your own contribution.'
         : '<strong>Loan is above the usual limit.</strong> For a ' + short(budget) + ' property, banks usually fund up to ' + ltv + '% (' + short(maxLoan) + '). Plan an own contribution of at least ' + short(budget - maxLoan) + '.') +
-        '<p class="hl-note" style="margin:-.25rem 0 1rem"><a href="home-loan-eligibility.html">Check home loan eligibility and lenders →</a>' +
+        '<p class="hl-note" style="margin:-.25rem 0 1rem"><a href="home-loans.html">Check home loan eligibility and lenders →</a>' +
         (v.approval === 'yes' ? ' · Loan approval: ready' : v.approval === 'applied' ? ' · Loan approval: applied' : ' · Getting a pre-approval first makes negotiation easier.') + '</p>';
     } else {
       tiles.push(stat('Payment', buying ? 'Self-funding' : selling ? 'Sale' : 'Rent / lease', buying ? 'no loan needed' : 'we help with the paperwork'));
@@ -494,8 +494,43 @@
     };
   }
 
-  var RENDER = { mf: mf, business: business, personal: personal, gold: gold, account: account, realestate: realestate, vehicle: car };
-  var KICKER = { mf: 'Mutual fund', business: 'Business loan', personal: 'Personal loan', gold: 'Gold loan', account: 'Bank account', realestate: 'Real estate', vehicle: 'Car loan' };
+  /* ---------- insurance quote request ---------- */
+  var INSURANCE = {
+    life: { name: 'Life Insurance', what: ['Term cover up to \u20b92 Crore', 'Tax benefits under Sec 80C', 'Riders for illness and accident', 'Claim support from our team'],
+      docs: ['PAN card and Aadhaar card', 'Income proof \u2013 salary slips or ITR', 'Medical tests if the insurer asks (often free)', 'Nominee details'] },
+    health: { name: 'Health Insurance', what: ['Family floater plans', 'Cashless hospitalisation', 'Pre-existing diseases after the waiting period', 'Plans for parents and seniors'],
+      docs: ['PAN card and Aadhaar card', 'Age of every member to be covered', 'Details of any existing illness or regular medicines', 'Current policy, if you want to port it'] },
+    motor: { name: 'Motor Insurance', what: ['Policy issued in minutes', 'Zero-depreciation add-on', 'Cashless garages near you', 'Easy renewal, keep your NCB'],
+      docs: ['RC book of the vehicle', 'Previous policy (for renewal)', 'PAN card and Aadhaar card', 'Purchase invoice (for a new vehicle)'] },
+    travel: { name: 'Travel Insurance', what: ['Medical emergencies abroad', 'Trip cancellation and delays', 'Lost baggage and passport', 'Single-trip and annual plans'],
+      docs: ['Passport (for trips abroad)', 'Travel dates and destination', 'Age of every traveller', 'Visa details, if available'] }
+  };
+  function insurance(v, L) {
+    var t = INSURANCE[v.itype];
+    var picks = ({
+      life: [L.cover && 'Cover ' + L.cover, L.tobacco && 'Tobacco: ' + L.tobacco],
+      health: [L.members, L.sum && 'Cover ' + L.sum],
+      motor: [L.vehicle, L.policy],
+      travel: [L.trip, L.plan]
+    }[v.itype] || []).filter(Boolean);
+    var bits = picks.concat(v.age ? ['Age ' + v.age] : [], v.city ? [v.city] : []);
+    return {
+      kicker: 'Quote request',
+      title: t.name + ' for ' + v.name,
+      sub: bits.join(' \u00b7 '),
+      subject: t.name + ' quote request',
+      headline: t.name + (picks[0] ? ' \u00b7 ' + picks[0] : ''),
+      details: bits.slice(0, 3),
+      html: verdict(true, '<strong>Next step:</strong> send these details to our insurance advisor. We compare plans from leading insurers and call you back with quotes \u2013 free of charge.') +
+        grid2(box('What a good plan should include', bullets(t.what.map(esc))), box('Keep these ready', bullets(t.docs.map(esc)))),
+      email: ['Insurance type: ' + t.name, 'Mobile: ' + v.mobile].concat(bits),
+      send: 'Send to our insurance advisor',
+      disc: 'Insurance is the subject matter of solicitation. Plans, premiums and benefits are set by the insurer; please read the policy wording before you buy.'
+    };
+  }
+
+  var RENDER = { mf: mf, business: business, personal: personal, gold: gold, account: account, realestate: realestate, vehicle: car, insurance: insurance };
+  var KICKER = { mf: 'Mutual fund', business: 'Business loan', personal: 'Personal loan', gold: 'Gold loan', account: 'Bank account', realestate: 'Real estate', vehicle: 'Car loan', insurance: 'Insurance' };
 
   /* ---------- form wiring ---------- */
   Array.prototype.forEach.call(forms, function (form) {
@@ -606,6 +641,18 @@
       out.focus({ preventScroll: true });
       out.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
+
+    // a menu link like insurance.html#motor picks that option in the form's type box
+    var hashSel = form.getAttribute('data-hash-field') && document.getElementById(form.getAttribute('data-hash-field'));
+    function fromHash() {
+      var h = location.hash.slice(1);
+      try { h = decodeURIComponent(h); } catch (x) { return; }
+      if (!hashSel || !h || ![].some.call(hashSel.options, function (o) { return o.value === h; })) return;
+      hashSel.value = h;
+      hashSel.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+    fromHash();
+    window.addEventListener('hashchange', fromHash);
 
     if (window.RavenApp) RavenApp.prefill(form, kind);
     sync();
