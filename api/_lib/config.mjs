@@ -1,7 +1,7 @@
 export const PRODUCTS = {
-  crif: { label: 'CRIF CIBIL', amount: 99 },
+  crif: { label: 'CRIF CIBIL', amount: 149 },
   transunion: { label: 'TransUnion CIBIL', amount: 199 },
-  both: { label: 'Both Reports (CRIF + TransUnion)', amount: 250 }
+  both: { label: 'Both Reports (CRIF + TransUnion)', amount: 299 }
 };
 
 export const ORDER_ID_RE = /^cm_[a-f0-9]{24}$/;
