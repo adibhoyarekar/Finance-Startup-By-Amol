@@ -951,3 +951,35 @@ body.rx{font-family:var(--rx-font);color:var(--rx-text);background:#fff}
 }
 @media(max-width:340px){.xp-art{width:60px;height:60px}.xp-name{font-size:12.5px}}
 @media(prefers-reduced-motion:reduce){.xp-tile,.xp-panel,.xp-chev,.xp-subs a{transition:none;animation:none}}
+
+/* Why Choose CredMates: animated feature cards */
+.wy-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px;margin-bottom:24px}
+.wy-card{position:relative;display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid #dde7f5;border-radius:20px;box-shadow:0 14px 34px -28px rgba(11,43,94,.6);transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s,border-color .3s}
+.wy-card::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--ac);transform:scaleX(.18);transform-origin:left;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.wy-card:hover{transform:translateY(-6px);border-color:color-mix(in srgb,var(--ac) 35%,#dde7f5);box-shadow:0 26px 46px -28px color-mix(in srgb,var(--ac) 70%,transparent)}
+.wy-card:hover::after{transform:scaleX(1)}
+.wy-art{position:relative;display:flex;align-items:center;justify-content:center;height:156px;margin:10px 10px 0;border-radius:15px;background:radial-gradient(circle at 50% 60%,#fff 0,var(--abg) 72%);background-color:var(--abg)}
+.wy-art::before{content:"";position:absolute;inset:0;border-radius:inherit;background-image:radial-gradient(color-mix(in srgb,var(--ac) 18%,transparent) 1px,transparent 1.5px);background-size:14px 14px;-webkit-mask-image:linear-gradient(180deg,#000,transparent 75%);mask-image:linear-gradient(180deg,#000,transparent 75%)}
+.wy-anim{position:relative;display:flex;align-items:center;justify-content:center;width:150px;height:150px;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.wy-card:hover .wy-anim{transform:scale(1.06)}
+.wy-anim>svg{display:block}
+.wy-fb{display:inline-flex;align-items:center;justify-content:center;width:72px;height:72px;border-radius:20px;background:#fff;color:var(--ac);box-shadow:0 10px 22px -14px rgba(11,43,94,.45)}
+.wy-num{position:absolute;top:10px;left:12px;z-index:1;padding:3px 9px;border-radius:999px;background:#fff;color:var(--ac);font-size:12px;font-weight:800;letter-spacing:.04em;box-shadow:0 4px 10px -6px rgba(11,43,94,.4)}
+.wy-body{padding:16px 18px 22px;text-align:center}
+.wy-body h3{margin:0 0 8px;font-size:16px;font-weight:700;line-height:1.25;color:var(--rx-ink)}
+.wy-body p{margin:0;font-size:13px;line-height:1.55;color:var(--rx-mute)}
+@media(max-width:1199px){.wy-grid{grid-template-columns:repeat(6,minmax(0,1fr))}.wy-card{grid-column:span 2}.wy-card:nth-child(4){grid-column:2/span 2}}
+@media(max-width:767px){
+  .wy-grid{grid-template-columns:1fr;gap:12px}
+  .wy-card,.wy-card:nth-child(4){grid-column:auto;flex-direction:row;align-items:center;border-radius:18px}
+  .wy-art{flex:none;width:104px;height:104px;margin:10px 0 10px 10px;border-radius:14px}
+  .wy-anim{width:100px;height:100px}
+  .wy-fb{width:52px;height:52px;border-radius:15px}
+  .wy-num{top:6px;left:6px;padding:2px 7px;font-size:10.5px}
+  .wy-body{padding:12px 16px 12px 14px;text-align:left}
+  .wy-body h3{font-size:15px;margin-bottom:4px}
+  .wy-body p{font-size:12.5px}
+  .wy-card::after{top:0;bottom:0;right:auto;width:4px;height:auto;transform:scaleY(.3);transform-origin:top}
+  .wy-card:hover::after{transform:scaleY(1)}
+}
+@media(prefers-reduced-motion:reduce){.wy-card,.wy-card::after,.wy-anim{transition:none}}
