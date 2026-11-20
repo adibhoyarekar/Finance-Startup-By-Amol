@@ -80,7 +80,8 @@ function getLottie(cb) {
     s.setAttribute('data-lazy-lottie', '');
     document.head.appendChild(s);
   }
-  s.addEventListener('load', function () { if (window.lottie) cb(); });
+  s.addEventListener('load', function () { if (window.lottie) cb(); else document.documentElement.classList.add('no-lottie'); });
+  s.addEventListener('error', function () { document.documentElement.classList.add('no-lottie'); });
 }
 
 // Animations load only when their section comes near, so the home page stays light.
@@ -100,6 +101,7 @@ function lazyLottie(root, attr, fbSel) {
         if (fb) fb.remove();
         if (reduce) a.goToAndStop(20, true); else if (visible) a.play();
       });
+      a.addEventListener('data_failed', function () { el.classList.add('lt-failed'); });
       anims.push(a);
     });
   }

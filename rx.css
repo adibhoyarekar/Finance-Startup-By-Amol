@@ -1306,3 +1306,6 @@ body.rx{font-family:var(--rx-font);color:var(--rx-text);background:#fff}
 
 /* Ask page on phones: the chat is full-screen with its own top bar, so hide the site header */
 @media(max-width:899px){html:not(.embed) body.ask-page .rx-header{display:none}}
+
+/* CIBIL gauges: keep the space empty until the animation is ready; show the backup only if it fails */
+html:not(.no-lottie) .hx-gauge:not(.lt-failed) .hx-gfb,html:not(.no-lottie) .qt-anim:not(.lt-failed) .qt-fb{visibility:hidden}
