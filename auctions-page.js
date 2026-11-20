@@ -104,12 +104,19 @@
       return state.tab === 'closed' ? y.endAt - x.endAt : (S.phase(x) === 'live' ? x.endAt : x.startAt) - (S.phase(y) === 'live' ? y.endAt : y.startAt);
     });
     renderActive();
+    [].forEach.call(document.querySelectorAll('[data-ac-type]'), function (c) { c.setAttribute('aria-pressed', String(c.getAttribute('data-ac-type') === state.type)); });
     $('ac-count').textContent = rows.length + ' auction' + (rows.length === 1 ? '' : 's');
     $('ac-grid').innerHTML = rows.length ? rows.map(U.card).join('') :
       '<div class="ap-card ap-empty ac-empty"><span class="art">' + UI.icon('search', 28) + '</span><h3>No auctions here</h3><p>Try another tab or clear the filters. Set an alert below and we will tell you when a matching auction is posted.</p></div>';
   }
 
   $('ac-tabs').addEventListener('click', function (e) { var b = e.target.closest('[data-tab]'); if (b) { state.tab = b.getAttribute('data-tab'); render(); } });
+  var types = document.querySelector('.abx-types');
+  if (types) types.addEventListener('click', function (e) {
+    var c = e.target.closest('[data-ac-type]'); if (!c) return;
+    var v = c.getAttribute('data-ac-type');
+    state.type = S.ASSET[v] ? v : ''; render();
+  });
   $('f-q').addEventListener('input', function () { state.q = this.value; render(); });
   $('f-open').addEventListener('click', function () { if ($('f-panel').hidden) openPanel(); else closePanel(); });
   $('f-close').addEventListener('click', closePanel);
