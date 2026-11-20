@@ -6,7 +6,7 @@
   var form = document.getElementById('ask-form');
   var input = document.getElementById('ask-input');
 
-  var AVATAR = { user: 'images/avatar-amit.svg', bot: 'images/logo-mark.svg' };
+  var AVATAR = { user: 'images/avatar-amit.svg', bot: 'images/logo-mark.svg?v=2' };
   var NAME = { user: 'You', bot: 'FinMatrix Assistant' };
   var REPLY = 'Thanks for your question! Our AI assistant is coming soon. Meanwhile, our team will be happy to help - please reach us via the Contact page.';
   var lastQuestion = '';
