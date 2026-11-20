@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="styles.css?v=3">
   <link rel="stylesheet" href="raven.css?v=29">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Poppins:wght@400;500;600;700;800&display=swap">
-  <link rel="stylesheet" href="rx.css?v=43">
+  <link rel="stylesheet" href="rx.css?v=44">
 </head>
 <body class="rx antialiased text-gray-900 bg-white">
   <div id="top" class="min-h-screen">
@@ -143,47 +143,50 @@
           <p>Free, instant tools to calculate loan EMIs and check your credit health</p>
         </div>
       </div>
-      <div class="rx-tools">
-        <!-- EMI Calculator Card -->
-        <article class="rx-tool-card reveal" style="--tc-accent:#1d4ed8;--tc-bg:#eef4ff">
-          <div class="rx-tc-header">
-            <span class="rx-tc-badge">Instant Calculator</span>
-            <span class="rx-tc-img"><img src="images/rx/emi-calculator-chatgpt.jpg" alt="EMI Calculator" loading="lazy" width="140" height="140"></span>
-          </div>
-          <div class="rx-tc-body">
+      <div class="qt">
+        <article class="qt-card qt-emi reveal" data-qt-emi>
+          <div class="qt-top">
+            <span class="qt-badge">Instant Calculator</span>
             <h3>Loan EMI Calculator</h3>
             <p>Calculate your monthly installments, total interest payable, and loan repayment schedule in seconds.</p>
+          </div>
+          <div class="qt-calc">
+            <div class="qt-sliders">
+              <label class="qt-sl"><span>Loan amount <b data-qt-o="p">₹10,00,000</b></span><input type="range" data-qt="p" min="50000" max="10000000" step="50000" value="1000000" aria-label="Loan amount"></label>
+              <label class="qt-sl"><span>Interest rate <b data-qt-o="r">8.5%</b></span><input type="range" data-qt="r" min="6" max="24" step="0.05" value="8.5" aria-label="Interest rate per year"></label>
+              <label class="qt-sl"><span>Tenure <b data-qt-o="n">10 years</b></span><input type="range" data-qt="n" min="1" max="30" step="1" value="10" aria-label="Loan tenure in years"></label>
+            </div>
+            <div class="qt-result" aria-live="polite">
+              <div class="qt-donut" data-qt-donut><div><small>Monthly EMI</small><strong data-qt-o="emi">₹12,399</strong></div></div>
+              <ul class="qt-legend">
+                <li><i class="is-p"></i>Principal <b data-qt-o="pri">₹10,00,000</b></li>
+                <li><i class="is-i"></i>Interest <b data-qt-o="int">₹4,87,817</b></li>
+                <li class="is-t">Total payable <b data-qt-o="tot">₹14,87,817</b></li>
+              </ul>
+            </div>
+          </div>
+          <div class="qt-foot">
             <div class="rx-tc-tags">
               <span>Home Loans</span>
               <span>Personal Loans</span>
               <span>Car Loans</span>
               <span>Business Loans</span>
             </div>
-          </div>
-          <div class="rx-tc-footer">
             <button type="button" class="rx-btn rx-tc-btn" data-rx-emi>Calculate EMI Now <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
           </div>
         </article>
 
-        <!-- CIBIL Score Card -->
-        <article class="rx-tool-card rx-tc-cibil reveal" style="--tc-accent:#16a34a;--tc-bg:#eaf8ee">
-          <div class="rx-tc-header">
-            <span class="rx-tc-badge rx-tc-badge-green">From ₹99</span>
-            <span class="rx-tc-img"><img src="images/rx/cibil-score-chatgpt.jpg" alt="CIBIL Score" loading="lazy" width="140" height="140"></span>
+        <article class="qt-card qt-cibil reveal">
+          <div class="qt-gauge"><span class="qt-anim" data-qt-lottie="animations/cm-bureau-tu.json" aria-hidden="true"><img class="qt-fb" src="images/rx/cibil-score-chatgpt.jpg" alt="" loading="lazy" width="140" height="140"></span><span class="qt-badge qt-badge-g">From ₹99</span></div>
+          <h3>Check CIBIL Score</h3>
+          <p>Generate your official credit score report with CRIF High Mark or TransUnion. Zero impact on your credit rating.</p>
+          <div class="rx-tc-tags">
+            <span>CRIF: ₹99</span>
+            <span>TransUnion: ₹199</span>
+            <span>Both: ₹250</span>
+            <span>No Score Impact</span>
           </div>
-          <div class="rx-tc-body">
-            <h3>Check CIBIL Score</h3>
-            <p>Generate your official credit score report with CRIF High Mark or TransUnion. Zero impact on your credit rating.</p>
-            <div class="rx-tc-tags">
-              <span>CRIF: ₹99</span>
-              <span>TransUnion: ₹199</span>
-              <span>Both: ₹250</span>
-              <span>No Score Impact</span>
-            </div>
-          </div>
-          <div class="rx-tc-footer">
-            <a href="cibil-score.html" class="rx-btn rx-tc-btn rx-tc-btn-cibil" id="rx-cibil-btn">Check CIBIL Score <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-          </div>
+          <a href="cibil-score.html" class="rx-btn rx-tc-btn rx-tc-btn-cibil" id="rx-cibil-btn">Check CIBIL Score <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </article>
       </div>
     </section>
@@ -222,11 +225,12 @@
 
     <section class="rx-wrap rx-sec">
       <div class="rx-sh"><h2>What Our Customers Say <span class="rx-stars" aria-label="Rated 5 out of 5"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg></span></h2></div>
-      <div class="rx-revs">
-        <figure class="rx-rev reveal"><img src="images/rx/av-rahul.svg" alt="" loading="lazy" width="104" height="104"><figcaption><q>I got my home loan approved within 7 days. Excellent service and good support team!</q><b>Rahul Patil</b><small>Chhatrapati Sambhajinagar</small></figcaption></figure>
-        <figure class="rx-rev reveal"><img src="images/rx/av-priya.svg" alt="" loading="lazy" width="104" height="104"><figcaption><q>Best platform for comparing insurance plans. Saved a lot of money!</q><b>Priya Deshmukh</b><small>Aurangabad</small></figcaption></figure>
-        <figure class="rx-rev reveal"><img src="images/rx/av-sandeep.svg" alt="" loading="lazy" width="104" height="104"><figcaption><q>Very helpful team. Guided me well for my personal loan. Highly recommended!</q><b>Sandeep Shinde</b><small>Jalna</small></figcaption></figure>
+      <div class="tm-grid" data-tm>
+        <figure class="tm-card reveal"><svg class="tm-q" width="44" height="44" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.6 6C6.4 7.3 4.5 9.9 4.5 13.4V18h5.6v-5.4H7.3c.1-2 1.2-3.5 3.2-4.5zm9.4 0c-3.2 1.3-5.1 3.9-5.1 7.4V18h5.6v-5.4h-2.8c.1-2 1.2-3.5 3.2-4.5z"/></svg><div class="tm-top"><span class="tm-stars" aria-label="5 out of 5"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg></span><span class="tm-tag">Home Loan</span></div><blockquote><q>I got my home loan approved within 7 days. Excellent service and good support team!</q></blockquote><figcaption><img src="images/rx/av-rahul.svg" alt="" loading="lazy" width="104" height="104"><span><b>Rahul Patil</b><small>Chhatrapati Sambhajinagar</small></span></figcaption></figure>
+        <figure class="tm-card is-feat reveal"><svg class="tm-q" width="44" height="44" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.6 6C6.4 7.3 4.5 9.9 4.5 13.4V18h5.6v-5.4H7.3c.1-2 1.2-3.5 3.2-4.5zm9.4 0c-3.2 1.3-5.1 3.9-5.1 7.4V18h5.6v-5.4h-2.8c.1-2 1.2-3.5 3.2-4.5z"/></svg><div class="tm-top"><span class="tm-stars" aria-label="5 out of 5"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg></span><span class="tm-tag">Insurance</span></div><blockquote><q>Best platform for comparing insurance plans. Saved a lot of money!</q></blockquote><figcaption><img src="images/rx/av-priya.svg" alt="" loading="lazy" width="104" height="104"><span><b>Priya Deshmukh</b><small>Aurangabad</small></span></figcaption></figure>
+        <figure class="tm-card reveal"><svg class="tm-q" width="44" height="44" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.6 6C6.4 7.3 4.5 9.9 4.5 13.4V18h5.6v-5.4H7.3c.1-2 1.2-3.5 3.2-4.5zm9.4 0c-3.2 1.3-5.1 3.9-5.1 7.4V18h5.6v-5.4h-2.8c.1-2 1.2-3.5 3.2-4.5z"/></svg><div class="tm-top"><span class="tm-stars" aria-label="5 out of 5"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg></span><span class="tm-tag">Personal Loan</span></div><blockquote><q>Very helpful team. Guided me well for my personal loan. Highly recommended!</q></blockquote><figcaption><img src="images/rx/av-sandeep.svg" alt="" loading="lazy" width="104" height="104"><span><b>Sandeep Shinde</b><small>Jalna</small></span></figcaption></figure>
       </div>
+      <div class="tm-dots" data-tm-dots aria-hidden="true"><i class="is-on"></i><i></i><i></i></div>
     </section>
 
     <section class="rx-wrap rx-sec" id="plans">
@@ -357,7 +361,7 @@
   <script src="rx-home.js?v=1"></script>
   <script src="rx.js?v=1"></script>
   <script src="site.js?v=3"></script>
-  <script src="explore.js?v=3" defer></script>
+  <script src="explore.js?v=4" defer></script>
   <script src="ai-chat.js?v=7"></script>
   <script src="consent.js?v=7"></script>
 </body>
