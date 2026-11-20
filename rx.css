@@ -983,3 +983,7 @@ body.rx{font-family:var(--rx-font);color:var(--rx-text);background:#fff}
   .wy-card:hover::after{transform:scaleY(1)}
 }
 @media(prefers-reduced-motion:reduce){.wy-card,.wy-card::after,.wy-anim{transition:none}}
+.xp-subs i{position:relative;overflow:visible}
+.xp-subs i[data-xp-sub]{width:50px;height:50px;border-radius:14px}
+.xp-subs i.is-anim>svg{position:absolute;inset:-6px;width:calc(100% + 12px)!important;height:calc(100% + 12px)!important}
+@media(max-width:767px){.xp-subs i[data-xp-sub]{width:44px;height:44px;border-radius:12px}}
