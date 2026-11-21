@@ -71,7 +71,7 @@
     var t = e.target.closest('[data-add],[data-logout]');
     if (!t) return;
     if (t.hasAttribute('data-add')) openForm(null);
-    else { App.logout(); location.href = 'index.html'; }
+    else { App.logout().then(function () { location.href = 'index.html'; }); }
   });
   document.addEventListener('keydown', function (e) {
     if (e.key === '/' && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) { e.preventDefault(); ($('g-search').offsetParent ? $('g-search') : $('cl-q')).focus(); }

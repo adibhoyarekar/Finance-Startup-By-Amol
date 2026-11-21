@@ -38,7 +38,7 @@
   $('top-me').innerHTML = UI.avatar(name, 'is-sm');
   $('top-me').style.cssText = 'width:42px;padding:0;border:0;background:none';
   document.addEventListener('click', function (e) {
-    if (e.target.closest('[data-logout]')) { App.logout(); location.href = 'index.html'; }
+    if (e.target.closest('[data-logout]')) { App.logout().then(function () { location.href = 'index.html'; }); }
   });
   var interests = (p.interests || []).filter(function (k) { return TOOLS[k]; }).map(function (k) { return TOOLS[k][1]; }).join(', ');
   var body = 'Please call me back.\n\nName: ' + name + '\nMobile: ' + (p.mobile || '') + '\nCity: ' + (p.city || '') +

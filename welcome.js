@@ -74,7 +74,7 @@
   var TYPE = { dsa: 'DSA / Loan Connector', ifa: 'Financial Advisor', bank: 'Bank / NBFC Sales', posp: 'Insurance Agent', ca: 'CA / Tax Consultant', broker: 'Real Estate Broker', other: 'Agent' };
   document.getElementById('ob-pitch').textContent = editing ? 'Update your profile' : agent ? 'Set up your agent workspace' : 'Let’s personalise FinMatrix for you';
   document.getElementById('ob-pitch-sub').textContent = editing ? 'Change anything and save – your dashboard updates instantly.' : agent ? 'Three quick steps and your client dashboard is ready.' : 'Three quick steps so your searches are pre-filled and easy to save.';
-  document.getElementById('ob-out').addEventListener('click', function (e) { e.preventDefault(); App.logout(); location.href = 'index.html'; });
+  document.getElementById('ob-out').addEventListener('click', function (e) { e.preventDefault(); App.logout().then(function () { location.href = 'index.html'; }); });
 
   function field(f) {
     var id = 'ob-' + f.n, v = data[f.n], full = f.full ? ' ob-full' : '';
